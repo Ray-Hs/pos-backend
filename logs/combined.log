@@ -9,3 +9,8 @@
 [2025-03-25 12:16:29] [32minfo[39m: Home route accessed
 [2025-03-25 12:16:37] [33mwarn[39m: This is a warning log
 [2025-03-25 12:16:39] [31merror[39m: This is an error log
+[2025-03-25 13:51:27] [32minfo[39m: Home route accessed
+[2025-03-25 13:51:43] [31merror[39m: This is an error log
+[2025-03-25 13:51:56] [33mwarn[39m: This is a warning log
+[2025-04-07 16:02:11] [32minfo[39m: Hello there!
+[2025-04-07 16:02:26] [31merror[39m: Hello there!

@@ -1,7 +1,6 @@
 import winston from "winston";
 
 // winston log for logging different format messages.
-
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(

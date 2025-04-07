@@ -3,6 +3,8 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import logger from "./infrastructure/utils/logger";
 import { PrismaClient } from "@prisma/client";
+import SERVER_CONFIG from "./config/server.config";
+import routes from "./api/routes/routes";
 const app = express();
 const corsOptions = {
   origin: "http://localhost:3001",
@@ -14,34 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const prisma = new PrismaClient();
-
-app.put("/add-data", async (req: Request, res: Response) => {
-  const user = await prisma.user.create({
-    data: {
-      name: "Shyar",
-      gender: "FEMALE",
-    },
-  });
-
-  res.json(user);
-});
-app.get("/", (req, res) => {
-  logger.info("Home route accessed");
-  res.send("Hello, Winston!");
-});
-
-app.get("/error", (req, res) => {
-  logger.error("This is an error log");
-  res.status(500).send("Something went wrong!");
-});
-
-app.get("/warn", (req, res) => {
-  logger.warn("This is a warning log");
-  res.send("Warning example");
-});
-
 app.get("/health", (req: Request, res: Response) => {
   try {
+    logger.error("Hello there!");
     res.status(200).json({
       ok: true,
       environment: process.env.NODE_ENV,
@@ -53,19 +30,6 @@ app.get("/health", (req: Request, res: Response) => {
   }
 });
 
-app.get("/api", async (req: Request, res: Response) => {
-  try {
-    const data = {
-      message: "Hello, World!",
-    };
-    res.json(data);
-  } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({
-        message: error.message,
-      });
-    }
-  }
-});
+app.use(SERVER_CONFIG.API_PREFIX, routes);
 
 export default app;
