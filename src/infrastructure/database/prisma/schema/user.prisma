@@ -1,7 +1,13 @@
+enum ROLE {
+    ADMIN
+    USER
+}
+
 model User {
     id       Int      @id @default(autoincrement())
-    name     String
-    gender   String?  @default("MALE")
+    username String   @default("User")
+    password String
+    role     ROLE     @default(USER)
     createAt DateTime @default(now())
     updateAt DateTime @updatedAt
 }
