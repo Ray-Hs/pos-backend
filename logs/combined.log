@@ -9,6 +9,13 @@
 [2025-03-25 12:16:29] [32minfo[39m: Home route accessed
 [2025-03-25 12:16:37] [33mwarn[39m: This is a warning log
 [2025-03-25 12:16:39] [31merror[39m: This is an error log
+<<<<<<< HEAD
+[2025-03-25 13:51:27] [32minfo[39m: Home route accessed
+[2025-03-25 13:51:43] [31merror[39m: This is an error log
+[2025-03-25 13:51:56] [33mwarn[39m: This is a warning log
+[2025-04-07 16:02:11] [32minfo[39m: Hello there!
+[2025-04-07 16:02:26] [31merror[39m: Hello there!
+=======
 [2025-04-08 16:06:04] [31merror[39m: Service ID Not Found: 
 [2025-04-08 16:39:17] [31merror[39m: Service ID Not Found: 
 [2025-04-08 16:39:26] [31merror[39m: Auth Create User Service:  
@@ -150,3 +157,4 @@ D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\auth\auth.repository
   10 export async function deleteUserDB(id: number) {
 → 11   return prisma.user.delete(
 An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+>>>>>>> main
