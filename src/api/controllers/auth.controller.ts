@@ -1,0 +1,72 @@
+import { Request, Response } from "express";
+import AuthService from "../../domain/auth/auth.services";
+import { AuthControllerInterface } from "../../domain/auth/auth.types";
+import {
+  CREATED_STATUS,
+  OK_STATUS,
+} from "../../infrastructure/utils/constants";
+import { TResult, User } from "../../types/common";
+
+class AuthController implements AuthControllerInterface {
+  async login(req: Request, res: Response) {
+    const body = req.body;
+    const AuthServiceInstance = new AuthService();
+    const user = await AuthServiceInstance.login(body);
+
+    return res
+      .status(user.success ? OK_STATUS : user.error?.code || 500)
+      .json(user);
+  }
+
+  async createAccount(req: Request, res: Response) {
+    const data = req.body;
+    const AuthServiceInstance = new AuthService();
+    const createdUser = await AuthServiceInstance.createUser(data);
+
+    return res
+      .status(
+        createdUser.success ? CREATED_STATUS : createdUser.error?.code || 500
+      )
+      .json(createdUser);
+  }
+
+  async updateUser(req: Request, res: Response) {
+    const data = req.body;
+    const id = parseInt(req.params.id, 10);
+    const AuthServiceInstance = new AuthService();
+    const updatedUser = await AuthServiceInstance.updateUser(id, data);
+
+    return res
+      .status(updatedUser.success ? OK_STATUS : updatedUser.error?.code || 500)
+      .json(updatedUser);
+  }
+
+  async deleteAccount(req: Request, res: Response) {
+    const id = parseInt(req.params.id, 10);
+    const AuthServiceInstance = new AuthService();
+    const deletedAccount = await AuthServiceInstance.deleteUser(id);
+
+    return res
+      .status(
+        deletedAccount.success ? OK_STATUS : deletedAccount.error?.code || 500
+      )
+      .json(deletedAccount);
+  }
+  async getUsers(req: Request, res: Response) {
+    const AuthServiceInstance = new AuthService();
+    const users = await AuthServiceInstance.getUsers();
+    return res
+      .status(users.success ? OK_STATUS : users.error?.code || 500)
+      .json(users);
+  }
+  async getUserBasedOnId(req: Request, res: Response) {
+    const id = parseInt(req.params.id, 10);
+    const AuthServiceInstance = new AuthService();
+    const user = await AuthServiceInstance.getUserBasedOnId(id);
+    return res
+      .status(user.success ? OK_STATUS : user.error?.code || 500)
+      .json(user);
+  }
+}
+
+export default AuthController;
