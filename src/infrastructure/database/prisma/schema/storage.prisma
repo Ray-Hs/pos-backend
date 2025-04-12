@@ -1,0 +1,64 @@
+model Category {
+    id             Int    @id @default(autoincrement())
+    title_en       String
+    title_ku       String
+    title_ar       String
+    description_en String @default("")
+    description_ku String @default("")
+    description_ar String @default("")
+
+    sortOrder Int     @default(0)
+    isActive  Boolean @default(true)
+    image     String?
+
+    subCategory SubCategory[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model SubCategory {
+    id             Int    @id @default(autoincrement())
+    title_en       String
+    title_ku       String
+    title_ar       String
+    description_en String @default("")
+    description_ku String @default("")
+    description_ar String @default("")
+
+    sortOrder Int     @default(0)
+    isActive  Boolean @default(true)
+    image     String?
+
+    Category   Category? @relation(fields: [categoryId], references: [id])
+    categoryId Int
+
+    items MenuItem[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model MenuItem {
+    id             Int    @id @default(autoincrement())
+    title_en       String
+    title_ku       String
+    title_ar       String
+    description_en String @default("")
+    description_ku String @default("")
+    description_ar String @default("")
+
+    SubCategory   SubCategory? @relation(fields: [subCategoryId], references: [id])
+    subCategoryId Int?
+
+    price    Float
+    company  String?
+    discount Float   @default(0)
+    isActive Boolean @default(true)
+    image    String?
+
+    // OrderItem OrderItem[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

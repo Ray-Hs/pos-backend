@@ -1,0 +1,25 @@
+// enum TableStatus {
+//     AVAILABLE
+//     OCCUPIED
+//     RECEIPT
+// }
+
+// model Table {
+//     id          Int      @id @default(autoincrement())
+//     name        String   @unique
+//     capacity    Int      @default(4)
+//     isAvailable Boolean  @default(true)
+//     orders      Order[]
+//     createdAt   DateTime @default(now())
+//     updatedAt   DateTime @updatedAt
+//     Section     Section? @relation(fields: [sectionId], references: [id])
+//     sectionId   Int?
+// }
+
+// model Section {
+//     id Int @id @default(autoincrement())
+
+//     sortOrder Int     @default(0)
+//     tables    Table[]
+//     available Int?
+// }

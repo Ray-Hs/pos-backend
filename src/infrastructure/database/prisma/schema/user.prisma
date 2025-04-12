@@ -1,13 +1,14 @@
 enum ROLE {
     ADMIN
-    USER
+    STAFF
 }
 
 model User {
     id       Int      @id @default(autoincrement())
-    username String   @default("User")
+    username String   @default("Staff")
     password String
-    role     ROLE     @default(USER)
+    role     ROLE     @default(STAFF)
+    // orders   Order[]
     createAt DateTime @default(now())
     updateAt DateTime @updatedAt
 }

@@ -1,21 +1,18 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { User } from "../../types/common";
 
-export interface DecodedJWT {
-  email: string;
-  userId: number;
+export interface DecodedJWT extends Omit<User, "password"> {
   iat?: number;
   exp?: number;
 }
 
 export const decodeJWT = (req: Request, res: Response): DecodedJWT | null => {
-  const authHeader = req.headers["authorization"];
+  const token = req.cookies?.session;
 
-  if (!authHeader) {
+  if (!token) {
     return null;
   }
-
-  const token = authHeader.split(" ")[1];
 
   try {
     const decoded = jwt.verify(
@@ -24,8 +21,9 @@ export const decodeJWT = (req: Request, res: Response): DecodedJWT | null => {
     ) as DecodedJWT;
 
     return {
-      email: decoded.email,
-      userId: decoded.userId,
+      id: decoded.id,
+      username: decoded.username,
+      role: decoded.role,
     };
   } catch (error) {
     return null;

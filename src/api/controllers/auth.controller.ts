@@ -3,16 +3,21 @@ import AuthService from "../../domain/auth/auth.services";
 import { AuthControllerInterface } from "../../domain/auth/auth.types";
 import {
   CREATED_STATUS,
+  JWT_EXPIRE,
   OK_STATUS,
 } from "../../infrastructure/utils/constants";
-import { TResult, User } from "../../types/common";
+import ms from "ms";
 
 class AuthController implements AuthControllerInterface {
   async login(req: Request, res: Response) {
     const body = req.body;
     const AuthServiceInstance = new AuthService();
     const user = await AuthServiceInstance.login(body);
-
+    res.cookie("session", user.data?.Bearer, {
+      httpOnly: true,
+      maxAge: ms(JWT_EXPIRE),
+      secure: true,
+    });
     return res
       .status(user.success ? OK_STATUS : user.error?.code || 500)
       .json(user);

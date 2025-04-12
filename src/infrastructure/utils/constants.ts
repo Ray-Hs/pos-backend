@@ -36,3 +36,19 @@ export const OK_STATUS = 200;
 // No Content
 export const NO_CONTENT_SUCCESS = "NO_CONTENT_SUCCESS";
 export const NO_CONTENT_STATUS = 204;
+
+// Token Errors
+export const NO_TOKEN_ERR = "NO_TOKEN_PROVIDED";
+export const NO_TOKEN_STATUS = 401;
+
+export const INVALID_TOKEN_ERR = "INVALID_OR_EXPIRED_TOKEN";
+export const INVALID_TOKEN_STATUS = 401;
+
+// Rate Limiter
+export const RATE_LIMIT_STATUS = 429;
+export const RATE_LIMIT_ERR = "Too many requests, please try again later.";
+export const RATE_LIMIT = 100; // Tries
+export const RATE_LIMIT_TIME_WINDOW = 15; // Minutes
+
+// JWT
+export const JWT_EXPIRE = "1d";

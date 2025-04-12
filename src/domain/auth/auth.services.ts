@@ -1,3 +1,4 @@
+import { JwtPayload } from "jsonwebtoken";
 import {
   createUserDB,
   deleteUserDB,
@@ -19,10 +20,11 @@ import {
   UNAUTHORIZED_ERR,
   UNAUTHORIZED_STATUS,
 } from "../../infrastructure/utils/constants";
+import { createJWT } from "../../infrastructure/utils/createJWT";
 import { hash, verifyHash } from "../../infrastructure/utils/encryptPassword";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { UserSchema } from "../../types/common";
+import { User, UserSchema } from "../../types/common";
 
 //? Change
 class AuthService implements AuthServiceInterface {
@@ -70,9 +72,20 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
+      const Bearer = (await createJWT(
+        userFromDb.username,
+        userFromDb.id,
+        userFromDb.role
+      )) as JwtPayload & User & string;
       return {
         success: true,
-        data: userFromDb,
+        data: {
+          Bearer,
+          user: {
+            ...userFromDb,
+            password: "",
+          },
+        },
       };
     } catch (error) {
       logger.error("Auth login Service: ", error);
