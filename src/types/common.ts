@@ -8,8 +8,9 @@ export const UserSchema = z.object({
   username: z.string(),
   password: z.string(),
   role: RoleEnum.default("STAFF"),
-  createdAt: z.string().date().optional(),
-  updatedAt: z.string().date().optional(),
+  image: z.string().nullable().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
 });
 type User = z.infer<typeof UserSchema>;
 
@@ -24,12 +25,12 @@ export const MenuItemSchema = z.object({
 
   price: z.number(),
   discount: z.number().default(0),
-  company: z.string().optional(),
+  company: z.string().nullable(),
   isActive: z.boolean().default(true),
-  image: z.string().optional(),
+  image: z.string().nullable().optional(),
 
-  createdAt: z.string().date().optional(),
-  updatedAt: z.string().date().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
 });
 
 export type MenuItem = z.infer<typeof MenuItemSchema>;
@@ -45,13 +46,13 @@ export const SubCategorySchema = z.object({
 
   sortOrder: z.number().default(0),
   isActive: z.boolean().default(true),
-  image: z.string().optional(),
+  image: z.string().nullable().optional(),
 
   categoryId: z.number(),
   items: z.array(MenuItemSchema),
 
-  createdAt: z.string().date().optional(),
-  updatedAt: z.string().date().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
 });
 
 export type SubCategory = z.infer<typeof SubCategorySchema>;
@@ -67,11 +68,11 @@ export const CategorySchema = z.object({
 
   sortOrder: z.number().default(0),
   isActive: z.boolean().default(true),
-  image: z.string().optional(),
+  image: z.string().nullable().optional(),
   subCategory: z.array(SubCategorySchema),
 
-  createdAt: z.string().date().optional(),
-  updatedAt: z.string().date().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
 });
 
 export type Category = z.infer<typeof CategorySchema>;

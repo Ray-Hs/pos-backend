@@ -78,7 +78,7 @@ export async function isAuthenticated(
       if (err) {
         if (err.name === "TokenExpiredError") {
           res.cookie("session", "", {
-            maxAge: ms("10"),
+            maxAge: ms("1s"),
           });
           return res.status(INVALID_TOKEN_STATUS).json({
             success: false,
