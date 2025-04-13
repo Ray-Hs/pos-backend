@@ -1,40 +1,40 @@
-// enum OrderStatus {
-//     PENDING
-//     PREPARING
-//     SERVED
-//     COMPLETED
-//     CANCELLED
-// }
+enum OrderStatus {
+    PENDING
+    PREPARING
+    SERVED
+    COMPLETED
+    CANCELLED
+}
 
-// enum PaymentMethod {
-//     CASH
-//     CARD
-//     MOBILE
-// }
+enum PaymentMethod {
+    CASH
+    CARD
+    MOBILE
+}
 
-// model Order {
-//     id            Int            @id @default(autoincrement())
-//     tableId       Int?
-//     userId        Int
-//     total         Float          @default(0)
-//     status        OrderStatus    @default(PENDING)
-//     paymentMethod PaymentMethod?
-//     paid          Boolean        @default(false)
-//     createdAt     DateTime       @default(now())
-//     updatedAt     DateTime       @updatedAt
+model Order {
+    id            Int            @id @default(autoincrement())
+    tableId       Int?
+    userId        Int
+    total         Float          @default(0)
+    status        OrderStatus    @default(PENDING)
+    paymentMethod PaymentMethod?
+    paid          Boolean        @default(false)
+    createdAt     DateTime       @default(now())
+    updatedAt     DateTime       @updatedAt
 
-//     table Table?      @relation(fields: [tableId], references: [id])
-//     user  User        @relation(fields: [userId], references: [id])
-//     items OrderItem[]
-// }
+    table Table?      @relation(fields: [tableId], references: [id])
+    user  User        @relation(fields: [userId], references: [id])
+    items OrderItem[]
+}
 
-// model OrderItem {
-//     id         Int   @id @default(autoincrement())
-//     orderId    Int
-//     menuItemId Int
-//     quantity   Int   @default(1)
-//     price      Float // snapshot price
+model OrderItem {
+    id         Int   @id @default(autoincrement())
+    orderId    Int
+    menuItemId Int
+    quantity   Int   @default(1)
+    price      Float // snapshot price
 
-//     order    Order    @relation(fields: [orderId], references: [id])
-//     menuItem MenuItem @relation(fields: [menuItemId], references: [id])
-// }
+    order    Order    @relation(fields: [orderId], references: [id])
+    menuItem MenuItem @relation(fields: [menuItemId], references: [id])
+}

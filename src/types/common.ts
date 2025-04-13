@@ -22,6 +22,7 @@ export const MenuItemSchema = z.object({
   description_en: z.string().default(""),
   description_ku: z.string().default(""),
   description_ar: z.string().default(""),
+  subCategoryId: z.number().nullable(),
 
   price: z.number(),
   discount: z.number().default(0),

@@ -48,11 +48,19 @@ export async function isAuthenticated(
         },
       });
 
-    const { username, role, id } = decodeJWT(req, res) as JwtPayload & User;
+    const session = decodeJWT(req, res) as JwtPayload & User;
 
-    if (username === undefined || role === undefined || id === undefined) {
+    if (
+      session?.username === undefined ||
+      session?.role === undefined ||
+      session?.id === undefined
+    ) {
       logger.warn(
-        JSON.stringify({ "Username: ": username, "Role: ": role, "ID: ": id })
+        JSON.stringify({
+          "Username: ": session?.username,
+          "Role: ": session?.role,
+          "ID: ": session?.id,
+        })
       );
       return res.status(UNAUTHORIZED_STATUS).json({
         success: false,
@@ -63,7 +71,7 @@ export async function isAuthenticated(
       });
     }
 
-    const userExists = await findUserDB(id);
+    const userExists = await findUserDB(session?.id);
 
     if (!userExists)
       return res.status(NOT_FOUND_STATUS).json({

@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { CategoryController } from "../controllers/category/category.controller";
+import { CategoryController } from "../controllers/storage/category.controller";
 import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
 import { isAuthenticated } from "../middlewares/auth.middleware";
 

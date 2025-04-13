@@ -59,6 +59,7 @@ model MenuItem {
 
     // OrderItem OrderItem[]
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    createdAt DateTime    @default(now())
+    updatedAt DateTime    @updatedAt
+    OrderItem OrderItem[]
 }

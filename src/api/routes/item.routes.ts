@@ -1,0 +1,38 @@
+import express, { Router } from "express";
+import { MenuItemController } from "../controllers/storage/item.controller";
+import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
+import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
+
+const router: Router = express.Router();
+const MenuItemInstance = new MenuItemController();
+
+router.get(
+  "/",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(MenuItemInstance.getItems)
+);
+router.get(
+  "/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(MenuItemInstance.getItemById)
+);
+router.post(
+  "/",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(MenuItemInstance.createItem)
+);
+router.put(
+  "/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(MenuItemInstance.createItem)
+);
+router.delete(
+  "/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(MenuItemInstance.createItem)
+);
+
+export default router;

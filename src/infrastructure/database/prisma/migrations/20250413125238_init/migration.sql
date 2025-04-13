@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "TableStatus" AS ENUM ('AVAILABLE', 'OCCUPIED', 'RECEIPT');
+CREATE TYPE "ROLE" AS ENUM ('ADMIN', 'STAFF');
 
 -- CreateTable
 CREATE TABLE "Category" (
@@ -7,10 +7,10 @@ CREATE TABLE "Category" (
     "title_en" TEXT NOT NULL,
     "title_ku" TEXT NOT NULL,
     "title_ar" TEXT NOT NULL,
-    "description_en" TEXT DEFAULT '',
-    "description_ku" TEXT DEFAULT '',
-    "description_ar" TEXT DEFAULT '',
-    "sortOrder" INTEGER DEFAULT 0,
+    "description_en" TEXT NOT NULL DEFAULT '',
+    "description_ku" TEXT NOT NULL DEFAULT '',
+    "description_ar" TEXT NOT NULL DEFAULT '',
+    "sortOrder" INTEGER NOT NULL DEFAULT 0,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
     "image" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -25,13 +25,13 @@ CREATE TABLE "SubCategory" (
     "title_en" TEXT NOT NULL,
     "title_ku" TEXT NOT NULL,
     "title_ar" TEXT NOT NULL,
-    "description_en" TEXT DEFAULT '',
-    "description_ku" TEXT DEFAULT '',
-    "description_ar" TEXT DEFAULT '',
-    "sortOrder" INTEGER DEFAULT 0,
+    "description_en" TEXT NOT NULL DEFAULT '',
+    "description_ku" TEXT NOT NULL DEFAULT '',
+    "description_ar" TEXT NOT NULL DEFAULT '',
+    "sortOrder" INTEGER NOT NULL DEFAULT 0,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
     "image" TEXT,
-    "categoryId" INTEGER,
+    "categoryId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -44,11 +44,13 @@ CREATE TABLE "MenuItem" (
     "title_en" TEXT NOT NULL,
     "title_ku" TEXT NOT NULL,
     "title_ar" TEXT NOT NULL,
-    "description_en" TEXT DEFAULT '',
-    "description_ku" TEXT DEFAULT '',
-    "description_ar" TEXT DEFAULT '',
+    "description_en" TEXT NOT NULL DEFAULT '',
+    "description_ku" TEXT NOT NULL DEFAULT '',
+    "description_ar" TEXT NOT NULL DEFAULT '',
     "subCategoryId" INTEGER,
-    "price" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "price" DOUBLE PRECISION NOT NULL,
+    "company" TEXT,
+    "discount" DOUBLE PRECISION NOT NULL DEFAULT 0,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
     "image" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -58,30 +60,20 @@ CREATE TABLE "MenuItem" (
 );
 
 -- CreateTable
-CREATE TABLE "Table" (
+CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
-    "title" TEXT NOT NULL DEFAULT 'table',
-    "sortOrder" INTEGER NOT NULL DEFAULT 0,
-    "status" "TableStatus" NOT NULL,
-    "sectionId" INTEGER,
+    "username" TEXT NOT NULL DEFAULT 'Staff',
+    "password" TEXT NOT NULL,
+    "role" "ROLE" NOT NULL DEFAULT 'STAFF',
+    "image" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Table_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "Section" (
-    "id" SERIAL NOT NULL,
-    "sortOrder" INTEGER NOT NULL DEFAULT 0,
-    "available" INTEGER,
-
-    CONSTRAINT "Section_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 
 -- AddForeignKey
-ALTER TABLE "SubCategory" ADD CONSTRAINT "SubCategory_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "SubCategory" ADD CONSTRAINT "SubCategory_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "MenuItem" ADD CONSTRAINT "MenuItem_subCategoryId_fkey" FOREIGN KEY ("subCategoryId") REFERENCES "SubCategory"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Table" ADD CONSTRAINT "Table_sectionId_fkey" FOREIGN KEY ("sectionId") REFERENCES "Section"("id") ON DELETE SET NULL ON UPDATE CASCADE;

@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
 import { CategoryServices } from "../../../domain/category/category.services";
 import { CategoryControllerInterface } from "../../../domain/category/category.types";
-import { OK_STATUS } from "../../../infrastructure/utils/constants";
+import {
+  CREATED_STATUS,
+  OK_STATUS,
+} from "../../../infrastructure/utils/constants";
 
 export class CategoryController implements CategoryControllerInterface {
   async getCategories(req: Request, res: Response) {
@@ -13,7 +16,7 @@ export class CategoryController implements CategoryControllerInterface {
   }
 
   async getCategoryById(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const categoryInstance = new CategoryServices();
     const data = await categoryInstance.findCategoryById(id);
     return res
@@ -26,12 +29,12 @@ export class CategoryController implements CategoryControllerInterface {
     const categoryInstance = new CategoryServices();
     const data = await categoryInstance.createCategory(dataRequest);
     return res
-      .status(data.success ? OK_STATUS : data.error?.code || 500)
+      .status(data.success ? CREATED_STATUS : data.error?.code || 500)
       .json(data);
   }
 
   async updateCategory(req: Request, res: Response) {
-    const idRequest = req.params?.id;
+    const idRequest = parseInt(req.params?.id, 10);
     const dataRequest = req.body;
     const categoryInstance = new CategoryServices();
     const data = await categoryInstance.updateCategory(idRequest, dataRequest);
@@ -41,7 +44,7 @@ export class CategoryController implements CategoryControllerInterface {
   }
 
   async deleteCategory(req: Request, res: Response) {
-    const idRequest = req.params?.id;
+    const idRequest = parseInt(req.params?.id, 10);
     const categoryInstance = new CategoryServices();
     const data = await categoryInstance.deleteCategory(idRequest);
     return res

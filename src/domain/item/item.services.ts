@@ -1,6 +1,5 @@
 import {
   BAD_REQUEST_BODY_ERR,
-  BAD_REQUEST_DELETE_ERR,
   BAD_REQUEST_ID_ERR,
   BAD_REQUEST_STATUS,
   INTERNAL_SERVER_ERR,
@@ -10,23 +9,22 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { SubCategorySchema } from "../../types/common";
-import { getItemsDB } from "../item/item.repository";
+import { MenuItemSchema } from "../../types/common";
 import {
-  createSubcategoryDB,
-  deleteSubcategoryDB,
-  findSubcategoryByIdDB,
-  getSubcategoriesDB,
-  updateSubcategoryDB,
-} from "./subcategory.repository";
-import { SubcategoryServiceInterface } from "./subcategory.types";
+  createItemDB,
+  deleteItemDB,
+  findItemByIdDB,
+  getItemsDB,
+  updateItemDB,
+} from "./item.repository";
+import { MenuItemInterface } from "./item.types";
 
-export class SubcategoryServices implements SubcategoryServiceInterface {
-  async getSubcategories() {
+export class MenuItemServices implements MenuItemInterface {
+  async getItems() {
     try {
-      const data = await getSubcategoriesDB();
+      const data = await getItemsDB();
       if (!data || data.length === 0) {
-        logger.warn("No subcategories found.");
+        logger.warn("NOT FOUND");
         return {
           success: false,
           error: {
@@ -41,76 +39,7 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         data,
       };
     } catch (error) {
-      logger.error("Get Subcategory Service: ", error);
-      return {
-        success: false,
-        error: { code: INTERNAL_SERVER_STATUS, message: INTERNAL_SERVER_ERR },
-      };
-    }
-  }
-
-  async getSubcategoryById(requestId: any) {
-    try {
-      const id = (await validateType({ id: requestId }, SubCategorySchema))?.id;
-      if (!id) {
-        logger.warn("Missing ID");
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_ID_ERR,
-          },
-        };
-      }
-
-      const data = await findSubcategoryByIdDB(id);
-
-      if (!data) {
-        logger.warn("No Subcategory found");
-        return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
-        };
-      }
-
-      return {
-        success: true,
-        data,
-      };
-    } catch (error) {
-      logger.error("Get Subcategory By ID Service: ", error);
-      return {
-        success: false,
-        error: { code: INTERNAL_SERVER_STATUS, message: INTERNAL_SERVER_ERR },
-      };
-    }
-  }
-
-  async createSubcategory(requestData: any) {
-    try {
-      const data = await validateType(requestData, SubCategorySchema);
-      if (!data) {
-        logger.warn("Missing Data");
-        return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
-        };
-      }
-
-      const createdData = await createSubcategoryDB(data);
-
-      return {
-        success: true,
-        data: createdData,
-      };
-    } catch (error) {
-      logger.error("Create Subcategory Service: ", error);
+      logger.error("Menu item Service: ", error);
       return {
         success: false,
         error: {
@@ -121,13 +50,11 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
     }
   }
 
-  async updateSubcategory(requestId: any, requestData: any) {
+  async getItemById(requestId: any) {
     try {
-      const id = (await validateType(requestId, SubCategorySchema))?.id;
-      const data = await validateType(requestData, SubCategorySchema);
-
+      const id = (await validateType({ id: requestId }, MenuItemSchema))?.id;
       if (!id) {
-        logger.warn("Missing ID");
+        logger.warn("No ID Provided");
         return {
           success: false,
           error: {
@@ -136,7 +63,35 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
           },
         };
       }
+      const item = await findItemByIdDB(id);
+      if (!item) {
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+      return {
+        success: true,
+        data: item,
+      };
+    } catch (error) {
+      logger.error("Menu item Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
 
+  async createItem(requestData: any) {
+    try {
+      const data = await validateType(requestData, MenuItemSchema);
       if (!data) {
         logger.warn("Missing Info");
         return {
@@ -148,25 +103,14 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
-      const existingSubcategory = await findSubcategoryByIdDB(id);
-      if (!existingSubcategory) {
-        logger.warn("Not Found");
-        return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
-        };
-      }
+      const createdItem = await createItemDB(data);
 
-      const updatedData = await updateSubcategoryDB(id, data);
       return {
         success: true,
-        data: updatedData,
+        data: createdItem,
       };
     } catch (error) {
-      logger.error("Create Subcategory Service: ", error);
+      logger.error("Menu item Service: ", error);
       return {
         success: false,
         error: {
@@ -177,11 +121,12 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
     }
   }
 
-  async deleteSubcategory(requestId: any) {
+  async updateItem(requestId: any, requestData: any) {
     try {
       const id = (
-        await validateType(requestId, SubCategorySchema.pick({ id: true }))
+        await validateType({ id: requestId }, MenuItemSchema.pick({ id: true }))
       )?.id;
+      const data = await validateType(requestData, MenuItemSchema);
 
       if (!id) {
         logger.warn("Missing ID");
@@ -194,9 +139,20 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
-      const existingSubcategory = await findSubcategoryByIdDB(id);
-      if (!existingSubcategory) {
-        logger.warn("Not Found");
+      if (!data) {
+        logger.warn("Missing Data");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_BODY_ERR,
+          },
+        };
+      }
+
+      const existingItem = await findItemByIdDB(id);
+      if (!existingItem) {
+        logger.warn("No Item Found");
         return {
           success: false,
           error: {
@@ -206,25 +162,59 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
-      const items = await getItemsDB();
-      if (!items || items.length === 0) {
-        const deletedSubcategory = await deleteSubcategoryDB(id);
-        return {
-          success: true,
-          data: deletedSubcategory,
-        };
-      }
-
-      //? If There are items in the menu then return a delete message.
+      const updatedData = await updateItemDB(id, data);
+      return {
+        success: true,
+        data: updatedData,
+      };
+    } catch (error) {
+      logger.error("Menu item Service: ", error);
       return {
         success: false,
         error: {
-          code: BAD_REQUEST_STATUS,
-          message: BAD_REQUEST_DELETE_ERR,
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
         },
       };
+    }
+  }
+
+  async deleteItem(requestId: any) {
+    try {
+      const id = (
+        await validateType({ id: requestId }, MenuItemSchema.pick({ id: true }))
+      )?.id;
+
+      if (!id) {
+        logger.warn("No ID Provided");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+
+      const existingItem = await findItemByIdDB(id);
+      if (!existingItem) {
+        logger.error("No Item Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      const deletedItem = await deleteItemDB(id);
+      return {
+        success: true,
+        data: deletedItem,
+      };
     } catch (error) {
-      logger.error("Create Subcategory Service: ", error);
+      logger.error("Menu item Service: ", error);
       return {
         success: false,
         error: {

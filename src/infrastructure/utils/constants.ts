@@ -18,8 +18,9 @@ export const FORBIDDEN_STATUS = 403;
 export const BAD_REQUEST_ERR = "BAD_REQUEST_ERR";
 export const BAD_REQUEST_STATUS = 400;
 
-export const BAD_REQUEST_ID_ERR = "Invalid ID format";
-export const BAD_REQUEST_BODY_ERR = "Invalid request data format";
+export const BAD_REQUEST_ID_ERR = "INVALID_ID_FORMAT";
+export const BAD_REQUEST_BODY_ERR = "INVALID_REQUEST_DATA_FORMAT";
+export const BAD_REQUEST_DELETE_ERR = "CANNOT_DELETE_DEPENDENCY_EXISTS";
 
 // Conflict
 export const CONFLICT_ERR = "CONFLICT_ERR";
@@ -46,7 +47,7 @@ export const INVALID_TOKEN_STATUS = 401;
 
 // Rate Limiter
 export const RATE_LIMIT_STATUS = 429;
-export const RATE_LIMIT_ERR = "Too many requests, please try again later.";
+export const RATE_LIMIT_ERR = "TOO_MANY_REQUESTS";
 export const RATE_LIMIT = 100; // Tries
 export const RATE_LIMIT_TIME_WINDOW = 15; // Minutes
 

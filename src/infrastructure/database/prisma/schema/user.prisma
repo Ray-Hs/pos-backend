@@ -9,7 +9,7 @@ model User {
     password  String
     role      ROLE     @default(STAFF)
     image     String?
-    // orders   Order[]
+    orders   Order[]
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
