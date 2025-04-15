@@ -723,3 +723,23 @@ Argument `title_ku` is missing.
   }
 ]
 [2025-04-15 14:59:24] [33mwarn[39m: Missing ID
+[2025-04-15 15:05:30] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "number",
+    "path": [],
+    "message": "Expected object, received number"
+  }
+]
+[2025-04-15 15:05:30] [33mwarn[39m: Missing ID
+[2025-04-15 15:05:47] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "number",
+    "path": [],
+    "message": "Expected object, received number"
+  }
+]
+[2025-04-15 15:05:47] [33mwarn[39m: Missing ID

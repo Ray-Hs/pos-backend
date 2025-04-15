@@ -180,7 +180,10 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
   async deleteSubcategory(requestId: any) {
     try {
       const id = (
-        await validateType(requestId, SubCategorySchema.pick({ id: true }))
+        await validateType(
+          { id: requestId },
+          SubCategorySchema.pick({ id: true })
+        )
       )?.id;
 
       if (!id) {

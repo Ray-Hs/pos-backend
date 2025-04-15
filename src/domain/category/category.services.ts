@@ -1,5 +1,6 @@
 import {
   BAD_REQUEST_BODY_ERR,
+  BAD_REQUEST_DELETE_ERR,
   BAD_REQUEST_ID_ERR,
   BAD_REQUEST_STATUS,
   INTERNAL_SERVER_ERR,
@@ -10,6 +11,7 @@ import {
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
 import { Category, CategorySchema } from "../../types/common";
+import { getSubcategoriesDB } from "../subcategory/subcategory.repository";
 import {
   createCategoryDB,
   deleteCategoryDB,
@@ -215,11 +217,21 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const deletedCategory = await deleteCategoryDB(id);
+      const subcategories = await getSubcategoriesDB();
+      if (!subcategories || subcategories.length === 0) {
+        const deletedCategory = await deleteCategoryDB(id);
+        return {
+          success: true,
+          data: deletedCategory,
+        };
+      }
 
       return {
-        success: true,
-        data: deletedCategory,
+        success: false,
+        error: {
+          code: BAD_REQUEST_STATUS,
+          message: BAD_REQUEST_DELETE_ERR,
+        },
       };
     } catch (error) {
       logger.error("Delete Category Service: ", error);
