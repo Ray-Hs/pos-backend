@@ -8,13 +8,19 @@ import AuthRoutes from "./auth.routes";
 import CategoryRoutes from "./category.routes";
 import ItemRoutes from "./item.routes";
 import SubcategoryRoutes from "./subcategory.routes";
+import SectionRoutes from "./section.routes";
+import TableRoutes from "./table.routes";
+import OrderRoutes from "./order.routes";
 const router: Router = express.Router();
 
+// Auth Routes
 router.use(
   "/auth",
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   AuthRoutes
 );
+
+// Storage Routes
 router.use(
   "/storage/category",
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
@@ -31,4 +37,24 @@ router.use(
   ItemRoutes
 );
 
+// Order Routes
+router.use(
+  "/order",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  OrderRoutes
+);
+
+// Section Routes
+router.use(
+  "/section",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  SectionRoutes
+);
+
+// Table Routes
+router.use(
+  "/table",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  TableRoutes
+);
 export default router;

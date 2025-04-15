@@ -15,7 +15,7 @@ router.get(
 router.get(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(categoryInstance.getCategories)
+  asyncRouteHandler(categoryInstance.getCategoryById)
 );
 
 router.post(

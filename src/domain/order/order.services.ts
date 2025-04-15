@@ -9,22 +9,22 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { Category, CategorySchema } from "../../types/common";
+import { OrderSchema } from "../../types/common";
 import {
-  createCategoryDB,
-  deleteCategoryDB,
-  findCategoryDB,
-  getCategoriesDB,
-  updateCategoryDB,
-} from "./category.repository";
-import { CategoryServiceInterface } from "./category.types";
+  createOrderDB,
+  deleteOrderDB,
+  findOrderByIdDB,
+  getOrdersDB,
+  updateOrderDB,
+} from "./order.repository";
+import { OrderServiceInterface } from "./order.types";
 
-export class CategoryServices implements CategoryServiceInterface {
-  async getCategories() {
+export class OrderServices implements OrderServiceInterface {
+  async getOrders() {
     try {
-      const categories: Category[] = await getCategoriesDB();
-      if (!categories || categories.length === 0) {
-        logger.warn("Get Categories Service Has No Entries.");
+      const data = await getOrdersDB();
+      if (!data || data.length === 0) {
+        logger.warn("No Data Found");
         return {
           success: false,
           error: {
@@ -33,58 +33,12 @@ export class CategoryServices implements CategoryServiceInterface {
           },
         };
       }
-
-      return {
-        success: true,
-        data: categories,
-      };
-    } catch (error) {
-      logger.error("Get Categories Service: ", error);
-      return {
-        success: false,
-        error: {
-          code: INTERNAL_SERVER_STATUS,
-          message: INTERNAL_SERVER_ERR,
-        },
-      };
-    }
-  }
-
-  async findCategoryById(idRequest: any) {
-    try {
-      const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
-      )?.id;
-
-      if (!id) {
-        logger.warn("Id Not Provided");
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_BODY_ERR,
-          },
-        };
-      }
-
-      const data = await findCategoryDB(id);
-      if (!data) {
-        logger.error("There is no Category");
-        return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
-        };
-      }
-
       return {
         success: true,
         data,
       };
     } catch (error) {
-      logger.error("Find Category By ID Service: ", error);
+      logger.error("Get Orders Service: ", error);
       return {
         success: false,
         error: {
@@ -95,103 +49,11 @@ export class CategoryServices implements CategoryServiceInterface {
     }
   }
 
-  async createCategory(dataRequest: any) {
-    try {
-      const category = await validateType(dataRequest, CategorySchema);
-
-      if (!category) {
-        logger.warn("Missing info: ", category);
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_BODY_ERR,
-          },
-        };
-      }
-
-      const data = await createCategoryDB(category);
-
-      return {
-        success: true,
-        data,
-      };
-    } catch (error) {
-      logger.error("Create Category Service: ", error);
-      return {
-        success: false,
-        error: {
-          code: INTERNAL_SERVER_STATUS,
-          message: INTERNAL_SERVER_ERR,
-        },
-      };
-    }
-  }
-
-  async updateCategory(idRequest: any, dataRequest: any) {
+  async getOrderById(requestId: any) {
     try {
       const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
+        await validateType({ id: requestId }, OrderSchema.pick({ id: true }))
       )?.id;
-      const data = await validateType(dataRequest, CategorySchema);
-
-      if (!id) {
-        logger.warn("Missing ID");
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_ID_ERR,
-          },
-        };
-      }
-      if (!data) {
-        logger.warn("Missing info");
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_BODY_ERR,
-          },
-        };
-      }
-
-      const existingCategory = await findCategoryDB(id);
-      if (!existingCategory) {
-        logger.warn("Not Found");
-        return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
-        };
-      }
-
-      const updatedCategory = await updateCategoryDB(id, data);
-
-      return {
-        success: true,
-        data: updatedCategory,
-      };
-    } catch (error) {
-      logger.error("Update Category Service: ", error);
-      return {
-        success: false,
-        error: {
-          code: INTERNAL_SERVER_STATUS,
-          message: INTERNAL_SERVER_ERR,
-        },
-      };
-    }
-  }
-
-  async deleteCategory(idRequest: any) {
-    try {
-      const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
-      )?.id;
-
       if (!id) {
         logger.warn("Missing ID");
         return {
@@ -203,8 +65,93 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const existingCategory = await findCategoryDB(id);
-      if (!existingCategory) {
+      const data = await findOrderByIdDB(id);
+      if (!data) {
+        logger.warn("No Data Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+      return {
+        success: true,
+        data,
+      };
+    } catch (error) {
+      logger.error("Get Order By ID Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+  async createOrder(requestData: any) {
+    try {
+      const data = await validateType(requestData, OrderSchema);
+      if (!data) {
+        logger.warn("Missing Info");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_BODY_ERR,
+          },
+        };
+      }
+
+      const createdOrder = await createOrderDB(data);
+      return {
+        success: true,
+        data: createdOrder,
+      };
+    } catch (error) {
+      logger.error("Create Order Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async updateOrder(requestId: any, requestData: any) {
+    try {
+      const id = (
+        await validateType({ id: requestId }, OrderSchema.pick({ id: true }))
+      )?.id;
+      if (!id) {
+        logger.warn("Missing ID");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+
+      const data = await validateType(requestData, OrderSchema);
+      if (!data) {
+        logger.warn("Missing Info");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_BODY_ERR,
+          },
+        };
+      }
+
+      const existingOrder = await findOrderByIdDB(id);
+      if (!existingOrder) {
         logger.warn("Not Found");
         return {
           success: false,
@@ -215,14 +162,58 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const deletedCategory = await deleteCategoryDB(id);
+      const updatedOrder = await updateOrderDB(id, data);
+      return {
+        success: true,
+        data: updatedOrder,
+      };
+    } catch (error) {
+      logger.error("Create Order Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+  async deleteOrder(requestId: any) {
+    try {
+      const id = (
+        await validateType({ id: requestId }, OrderSchema.pick({ id: true }))
+      )?.id;
+      if (!id) {
+        logger.warn("Missing ID");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+
+      const existingOrder = await findOrderByIdDB(id);
+      if (!existingOrder) {
+        logger.warn("Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      const deletedOrder = await deleteOrderDB(id);
 
       return {
         success: true,
-        data: deletedCategory,
+        data: deletedOrder,
       };
     } catch (error) {
-      logger.error("Delete Category Service: ", error);
+      logger.error("Create Order Service: ", error);
       return {
         success: false,
         error: {

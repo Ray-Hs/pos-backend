@@ -57,8 +57,6 @@ model MenuItem {
     isActive Boolean @default(true)
     image    String?
 
-    // OrderItem OrderItem[]
-
     createdAt DateTime    @default(now())
     updatedAt DateTime    @updatedAt
     OrderItem OrderItem[]

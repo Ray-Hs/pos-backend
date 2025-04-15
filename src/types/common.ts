@@ -57,6 +57,9 @@ export const SubCategorySchema = z.object({
 });
 
 export type SubCategory = z.infer<typeof SubCategorySchema>;
+export type SubCategoryRequest = Omit<SubCategory, "items"> & {
+  items: number[] | undefined;
+};
 
 export const CategorySchema = z.object({
   id: z.number().optional(),
@@ -77,6 +80,69 @@ export const CategorySchema = z.object({
 });
 
 export type Category = z.infer<typeof CategorySchema>;
+export type CategoryRequest = Omit<Category, "subCategory"> & {
+  subCategory: number[] | undefined;
+};
+
+const OrderStatusEnum = z.enum([
+  "PENDING",
+  "PREPARING",
+  "SERVED",
+  "COMPLETED",
+  "CANCELED",
+]);
+const PaymentMethodEnum = z.enum(["CASH", "CARD", "PAY_LATER"]);
+
+export type PaymentMethod = z.infer<typeof PaymentMethodEnum>;
+export type OrderStatus = z.infer<typeof OrderStatusEnum>;
+
+export const OrderItemSchema = z.object({
+  id: z.number().optional(),
+  orderId: z.number(),
+  menuItemId: z.number(),
+  quantity: z.number().default(1),
+  price: z.number(),
+});
+
+export const OrderSchema = z.object({
+  id: z.number().optional(),
+  tableId: z.number().nullable().optional(),
+  userId: z.number(),
+  total: z.number().default(0),
+  status: OrderStatusEnum,
+  paymentMethod: PaymentMethodEnum.nullable().optional(),
+  paid: z.boolean().default(false),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+  items: z.array(OrderItemSchema),
+});
+
+export type OrderItem = z.infer<typeof OrderItemSchema>;
+export type Order = z.infer<typeof OrderSchema>;
+
+const TableStatusEnum = z.enum(["AVAILABLE", "OCCUPIED", "RECEIPT"]);
+export const TableSchema = z.object({
+  id: z.number().optional(),
+  name: z.string(),
+  capacity: z.number().default(4),
+  isAvailable: z.boolean().default(true),
+  status: TableStatusEnum,
+  orders: z.array(OrderSchema).optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+  sectionId: z.number().nullable().optional(),
+});
+
+export const SectionSchema = z.object({
+  id: z.number().optional(),
+  sortOrder: z.number().default(0),
+  tables: z.array(TableSchema).optional(),
+  available: z.number().nullable().optional(),
+});
+
+export type TableStatus = z.infer<typeof TableStatusEnum>;
+export type Table = z.infer<typeof TableSchema>;
+export type Section = z.infer<typeof SectionSchema>;
 
 type TError = {
   code: number;

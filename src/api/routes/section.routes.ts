@@ -1,38 +1,38 @@
 import express, { Router } from "express";
-import { MenuItemController } from "../controllers/storage/item.controller";
 import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
 import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
+import { SectionController } from "../controllers/table/section.controller";
 
 const router: Router = express.Router();
-const MenuItemInstance = new MenuItemController();
+const sectionInstance = new SectionController();
 
 router.get(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(MenuItemInstance.getItems)
+  asyncRouteHandler(sectionInstance.getSection)
 );
 router.get(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(MenuItemInstance.getItemById)
+  asyncRouteHandler(sectionInstance.getSectionById)
 );
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),
-  asyncRouteHandler(MenuItemInstance.createItem)
+  asyncRouteHandler(sectionInstance.createSection)
 );
 router.put(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),
-  asyncRouteHandler(MenuItemInstance.updateItem)
+  asyncRouteHandler(sectionInstance.updateSection)
 );
 router.delete(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),
-  asyncRouteHandler(MenuItemInstance.deleteItem)
+  asyncRouteHandler(sectionInstance.deleteSection)
 );
 
 export default router;

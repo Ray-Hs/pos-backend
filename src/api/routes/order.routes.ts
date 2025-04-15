@@ -1,38 +1,38 @@
 import express, { Router } from "express";
-import { MenuItemController } from "../controllers/storage/item.controller";
+import { OrderController } from "../controllers/table/order.controller";
 import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
 import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
 
 const router: Router = express.Router();
-const MenuItemInstance = new MenuItemController();
+const orderController = new OrderController();
 
 router.get(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(MenuItemInstance.getItems)
+  asyncRouteHandler(orderController.getOrders)
 );
 router.get(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(MenuItemInstance.getItemById)
+  asyncRouteHandler(orderController.getOrderById)
 );
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),
-  asyncRouteHandler(MenuItemInstance.createItem)
+  asyncRouteHandler(orderController.createOrder)
 );
 router.put(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),
-  asyncRouteHandler(MenuItemInstance.updateItem)
+  asyncRouteHandler(orderController.updateOrder)
 );
 router.delete(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),
-  asyncRouteHandler(MenuItemInstance.deleteItem)
+  asyncRouteHandler(orderController.deleteOrder)
 );
 
 export default router;

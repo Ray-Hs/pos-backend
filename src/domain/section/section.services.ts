@@ -9,67 +9,22 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { Category, CategorySchema } from "../../types/common";
+import { Section, SectionSchema } from "../../types/common";
 import {
-  createCategoryDB,
-  deleteCategoryDB,
-  findCategoryDB,
-  getCategoriesDB,
-  updateCategoryDB,
-} from "./category.repository";
-import { CategoryServiceInterface } from "./category.types";
+  createSectionDB,
+  deleteSectionDB,
+  findSectionByIdDB,
+  getSectionsDB,
+  updateSectionDB,
+} from "./section.repository";
+import { SectionServiceInterface } from "./section.types";
 
-export class CategoryServices implements CategoryServiceInterface {
-  async getCategories() {
+export class SectionServices implements SectionServiceInterface {
+  async getSections() {
     try {
-      const categories: Category[] = await getCategoriesDB();
-      if (!categories || categories.length === 0) {
-        logger.warn("Get Categories Service Has No Entries.");
-        return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
-        };
-      }
-
-      return {
-        success: true,
-        data: categories,
-      };
-    } catch (error) {
-      logger.error("Get Categories Service: ", error);
-      return {
-        success: false,
-        error: {
-          code: INTERNAL_SERVER_STATUS,
-          message: INTERNAL_SERVER_ERR,
-        },
-      };
-    }
-  }
-
-  async findCategoryById(idRequest: any) {
-    try {
-      const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
-      )?.id;
-
-      if (!id) {
-        logger.warn("Id Not Provided");
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_BODY_ERR,
-          },
-        };
-      }
-
-      const data = await findCategoryDB(id);
-      if (!data) {
-        logger.error("There is no Category");
+      const data = (await getSectionsDB()) as Section[];
+      if (!data || data.length === 0) {
+        logger.warn("No Data Found");
         return {
           success: false,
           error: {
@@ -84,7 +39,7 @@ export class CategoryServices implements CategoryServiceInterface {
         data,
       };
     } catch (error) {
-      logger.error("Find Category By ID Service: ", error);
+      logger.error("Get Section Service: ", error);
       return {
         success: false,
         error: {
@@ -94,30 +49,41 @@ export class CategoryServices implements CategoryServiceInterface {
       };
     }
   }
-
-  async createCategory(dataRequest: any) {
+  async getSectionById(requestId: any) {
     try {
-      const category = await validateType(dataRequest, CategorySchema);
+      const id = (
+        await validateType({ id: requestId }, SectionSchema.pick({ id: true }))
+      )?.id;
 
-      if (!category) {
-        logger.warn("Missing info: ", category);
+      if (!id) {
+        logger.warn("Missing ID");
         return {
           success: false,
           error: {
             code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_BODY_ERR,
+            message: BAD_REQUEST_ID_ERR,
           },
         };
       }
+      const data = await findSectionByIdDB(id);
 
-      const data = await createCategoryDB(category);
+      if (!data) {
+        logger.warn("Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
 
       return {
         success: true,
         data,
       };
     } catch (error) {
-      logger.error("Create Category Service: ", error);
+      logger.error("Get Section Service: ", error);
       return {
         success: false,
         error: {
@@ -127,26 +93,12 @@ export class CategoryServices implements CategoryServiceInterface {
       };
     }
   }
-
-  async updateCategory(idRequest: any, dataRequest: any) {
+  async createSection(requestData: any) {
     try {
-      const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
-      )?.id;
-      const data = await validateType(dataRequest, CategorySchema);
+      const data = await validateType(requestData, SectionSchema);
 
-      if (!id) {
-        logger.warn("Missing ID");
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_ID_ERR,
-          },
-        };
-      }
       if (!data) {
-        logger.warn("Missing info");
+        logger.warn("Missing Info");
         return {
           success: false,
           error: {
@@ -156,26 +108,13 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const existingCategory = await findCategoryDB(id);
-      if (!existingCategory) {
-        logger.warn("Not Found");
-        return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
-        };
-      }
-
-      const updatedCategory = await updateCategoryDB(id, data);
-
+      const createdSection = await createSectionDB(data);
       return {
         success: true,
-        data: updatedCategory,
+        data: createdSection,
       };
     } catch (error) {
-      logger.error("Update Category Service: ", error);
+      logger.error("Get Section Service: ", error);
       return {
         success: false,
         error: {
@@ -186,14 +125,15 @@ export class CategoryServices implements CategoryServiceInterface {
     }
   }
 
-  async deleteCategory(idRequest: any) {
+  async updateSection(requestId: any, requestData: any) {
     try {
       const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
+        await validateType({ id: requestId }, SectionSchema.pick({ id: true }))
       )?.id;
+      const data = await validateType(requestData, SectionSchema);
 
       if (!id) {
-        logger.warn("Missing ID");
+        logger.warn("No ID Provided");
         return {
           success: false,
           error: {
@@ -203,9 +143,20 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const existingCategory = await findCategoryDB(id);
-      if (!existingCategory) {
-        logger.warn("Not Found");
+      if (!data) {
+        logger.warn("Missing Info");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_BODY_ERR,
+          },
+        };
+      }
+
+      const existingSection = await findSectionByIdDB(id);
+      if (!existingSection) {
+        logger.warn("No Section Found");
         return {
           success: false,
           error: {
@@ -215,14 +166,58 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const deletedCategory = await deleteCategoryDB(id);
-
+      const updatedSection = await updateSectionDB(id, data);
       return {
         success: true,
-        data: deletedCategory,
+        data: updatedSection,
       };
     } catch (error) {
-      logger.error("Delete Category Service: ", error);
+      logger.error("Get Section Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+  async deleteSection(requestId: any) {
+    try {
+      const id = (
+        await validateType({ id: requestId }, SectionSchema.pick({ id: true }))
+      )?.id;
+
+      if (!id) {
+        logger.warn("No ID Provided");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+
+      const existingSection = await findSectionByIdDB(id);
+      if (!existingSection) {
+        logger.warn("No Section Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      const deletedSection = await deleteSectionDB(id);
+      return {
+        success: true,
+        data: deletedSection,
+      };
+    } catch (error) {
+      logger.error("Get Section Service: ", error);
       return {
         success: false,
         error: {

@@ -3,20 +3,20 @@ enum OrderStatus {
     PREPARING
     SERVED
     COMPLETED
-    CANCELLED
+    CANCELED
 }
 
 enum PaymentMethod {
     CASH
     CARD
-    MOBILE
+    PAY_LATER
 }
 
 model Order {
     id            Int            @id @default(autoincrement())
     tableId       Int?
     userId        Int
-    total         Float          @default(0)
+    total         Float          @default(0) // Later make into invoice, include: tax, total, discount
     status        OrderStatus    @default(PENDING)
     paymentMethod PaymentMethod?
     paid          Boolean        @default(false)

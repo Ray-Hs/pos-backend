@@ -9,67 +9,22 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { Category, CategorySchema } from "../../types/common";
+import { TableSchema } from "../../types/common";
 import {
-  createCategoryDB,
-  deleteCategoryDB,
-  findCategoryDB,
-  getCategoriesDB,
-  updateCategoryDB,
-} from "./category.repository";
-import { CategoryServiceInterface } from "./category.types";
+  createTableDB,
+  deleteTableDB,
+  findTableByIdDB,
+  getTablesDB,
+  updateTableDB,
+} from "./table.repository";
+import { TableServiceInterface } from "./table.types";
 
-export class CategoryServices implements CategoryServiceInterface {
-  async getCategories() {
+export class TableServices implements TableServiceInterface {
+  async getTables() {
     try {
-      const categories: Category[] = await getCategoriesDB();
-      if (!categories || categories.length === 0) {
-        logger.warn("Get Categories Service Has No Entries.");
-        return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
-        };
-      }
-
-      return {
-        success: true,
-        data: categories,
-      };
-    } catch (error) {
-      logger.error("Get Categories Service: ", error);
-      return {
-        success: false,
-        error: {
-          code: INTERNAL_SERVER_STATUS,
-          message: INTERNAL_SERVER_ERR,
-        },
-      };
-    }
-  }
-
-  async findCategoryById(idRequest: any) {
-    try {
-      const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
-      )?.id;
-
-      if (!id) {
-        logger.warn("Id Not Provided");
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_BODY_ERR,
-          },
-        };
-      }
-
-      const data = await findCategoryDB(id);
-      if (!data) {
-        logger.error("There is no Category");
+      const data = await getTablesDB();
+      if (!data || data.length === 0) {
+        logger.warn("Not Data Found");
         return {
           success: false,
           error: {
@@ -84,7 +39,7 @@ export class CategoryServices implements CategoryServiceInterface {
         data,
       };
     } catch (error) {
-      logger.error("Find Category By ID Service: ", error);
+      logger.error("Get Tables Service: ", error);
       return {
         success: false,
         error: {
@@ -95,29 +50,41 @@ export class CategoryServices implements CategoryServiceInterface {
     }
   }
 
-  async createCategory(dataRequest: any) {
+  async getTableById(requestId: any) {
     try {
-      const category = await validateType(dataRequest, CategorySchema);
-
-      if (!category) {
-        logger.warn("Missing info: ", category);
+      const id = (
+        await validateType({ id: requestId }, TableSchema.pick({ id: true }))
+      )?.id;
+      if (!id) {
+        logger.warn("Missing ID");
         return {
           success: false,
           error: {
             code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_BODY_ERR,
+            message: BAD_REQUEST_ID_ERR,
           },
         };
       }
 
-      const data = await createCategoryDB(category);
+      const data = await findTableByIdDB(id);
+
+      if (!data) {
+        logger.warn("Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
 
       return {
         success: true,
         data,
       };
     } catch (error) {
-      logger.error("Create Category Service: ", error);
+      logger.error("Get Tables By ID Service: ", error);
       return {
         success: false,
         error: {
@@ -128,25 +95,11 @@ export class CategoryServices implements CategoryServiceInterface {
     }
   }
 
-  async updateCategory(idRequest: any, dataRequest: any) {
+  async createTable(requestData: any) {
     try {
-      const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
-      )?.id;
-      const data = await validateType(dataRequest, CategorySchema);
-
-      if (!id) {
-        logger.warn("Missing ID");
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_ID_ERR,
-          },
-        };
-      }
+      const data = await validateType(requestData, TableSchema);
       if (!data) {
-        logger.warn("Missing info");
+        logger.warn("Missing Info");
         return {
           success: false,
           error: {
@@ -156,26 +109,13 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const existingCategory = await findCategoryDB(id);
-      if (!existingCategory) {
-        logger.warn("Not Found");
-        return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
-        };
-      }
-
-      const updatedCategory = await updateCategoryDB(id, data);
-
+      const createdTable = await createTableDB(data);
       return {
         success: true,
-        data: updatedCategory,
+        data: createdTable,
       };
     } catch (error) {
-      logger.error("Update Category Service: ", error);
+      logger.error("Get Tables By ID Service: ", error);
       return {
         success: false,
         error: {
@@ -185,13 +125,11 @@ export class CategoryServices implements CategoryServiceInterface {
       };
     }
   }
-
-  async deleteCategory(idRequest: any) {
+  async updateTable(requestId: any, requestData: any) {
     try {
       const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
+        await validateType({ id: requestId }, TableSchema.pick({ id: true }))
       )?.id;
-
       if (!id) {
         logger.warn("Missing ID");
         return {
@@ -202,10 +140,21 @@ export class CategoryServices implements CategoryServiceInterface {
           },
         };
       }
+      const data = await validateType(requestData, TableSchema);
+      if (!data) {
+        logger.warn("Missing Info");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_BODY_ERR,
+          },
+        };
+      }
 
-      const existingCategory = await findCategoryDB(id);
-      if (!existingCategory) {
-        logger.warn("Not Found");
+      const existingTable = await findTableByIdDB(id);
+      if (!existingTable) {
+        logger.error("Not Found");
         return {
           success: false,
           error: {
@@ -215,14 +164,57 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const deletedCategory = await deleteCategoryDB(id);
-
+      const updatedTable = await updateTableDB(id, data);
       return {
         success: true,
-        data: deletedCategory,
+        data: updatedTable,
       };
     } catch (error) {
-      logger.error("Delete Category Service: ", error);
+      logger.error("Update Table Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async deleteTable(requestId: any) {
+    try {
+      const id = (
+        await validateType({ id: requestId }, TableSchema.pick({ id: true }))
+      )?.id;
+      if (!id) {
+        logger.warn("Missing ID");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+      const existingTable = await findTableByIdDB(id);
+      if (!existingTable) {
+        logger.error("Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      const deletedTable = await deleteTableDB(id);
+      return {
+        success: true,
+        data: deletedTable,
+      };
+    } catch (error) {
+      logger.error("Delete Table Service: ", error);
       return {
         success: false,
         error: {
