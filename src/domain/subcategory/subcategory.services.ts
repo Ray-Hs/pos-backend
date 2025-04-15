@@ -123,7 +123,7 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
 
   async updateSubcategory(requestId: any, requestData: any) {
     try {
-      const id = (await validateType(requestId, SubCategorySchema))?.id;
+      const id = (await validateType({ id: requestId }, SubCategorySchema))?.id;
       const data = await validateType(requestData, SubCategorySchema);
 
       if (!id) {
