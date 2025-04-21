@@ -754,3 +754,84 @@ Argument `title_ku` is missing.
   }
 ]
 [2025-04-15 15:05:47] [33mwarn[39m: Missing ID
+[2025-04-15 15:13:02] [31merror[39m: Get Section Service:  
+Invalid `prisma.section.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\section\section.repository.ts:25:25
+
+  22 
+  23 export function createSectionDB(data: Section) {
+  24   const tables = data?.tables;
+→ 25   return prisma.section.create(
+The column `Table.status` does not exist in the current database.
+[2025-04-15 15:13:57] [31merror[39m: Get Section Service:  
+Invalid `prisma.section.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\section\section.repository.ts:25:25
+
+  22 
+  23 export function createSectionDB(data: Section) {
+  24   const tables = data?.tables;
+→ 25   return prisma.section.create(
+The column `Table.status` does not exist in the current database.
+[2025-04-15 15:21:40] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-04-15 15:21:40] [33mwarn[39m: Missing ID
+[2025-04-15 15:24:01] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-04-15 15:24:01] [33mwarn[39m: Missing ID
+[2025-04-15 15:24:03] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-04-15 15:24:03] [33mwarn[39m: Missing ID
+[2025-04-15 15:24:06] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-04-15 15:24:06] [33mwarn[39m: Missing ID
+[2025-04-15 15:24:45] [33mwarn[39m: Not Found
+[2025-04-15 15:24:53] [33mwarn[39m: Not Found
+[2025-04-15 15:24:56] [33mwarn[39m: Not Found
+[2025-04-15 15:25:04] [33mwarn[39m: Not Found
+[2025-04-15 16:01:39] [33mwarn[39m: Not Data Found
+[2025-04-15 16:04:10] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\table\table.repository.ts:26:23
+
+  23 
+  24 export function createTableDB(data: Table) {
+  25   const { orders } = data;
+→ 26   return prisma.table.create(
+Foreign key constraint violated: `Table_sectionId_fkey (index)`
+[2025-04-15 16:04:43] [33mwarn[39m: No Data Found

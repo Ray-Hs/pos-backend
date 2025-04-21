@@ -50,16 +50,13 @@ export const SubCategorySchema = z.object({
   image: z.string().nullable().optional(),
 
   categoryId: z.number(),
-  items: z.array(MenuItemSchema),
+  items: z.array(MenuItemSchema).optional(),
 
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
 
 export type SubCategory = z.infer<typeof SubCategorySchema>;
-export type SubCategoryRequest = Omit<SubCategory, "items"> & {
-  items: number[] | undefined;
-};
 
 export const CategorySchema = z.object({
   id: z.number().optional(),
@@ -73,16 +70,13 @@ export const CategorySchema = z.object({
   sortOrder: z.number().default(0),
   isActive: z.boolean().default(true),
   image: z.string().nullable().optional(),
-  subCategory: z.array(SubCategorySchema),
+  subCategory: z.array(SubCategorySchema).optional(),
 
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
 
 export type Category = z.infer<typeof CategorySchema>;
-export type CategoryRequest = Omit<Category, "subCategory"> & {
-  subCategory: number[] | undefined;
-};
 
 const OrderStatusEnum = z.enum([
   "PENDING",
@@ -135,6 +129,7 @@ export const TableSchema = z.object({
 
 export const SectionSchema = z.object({
   id: z.number().optional(),
+  name: z.string().default("New Section"),
   sortOrder: z.number().default(0),
   tables: z.array(TableSchema).optional(),
   available: z.number().nullable().optional(),

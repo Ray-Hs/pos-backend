@@ -18,7 +18,8 @@ model Table {
 }
 
 model Section {
-    id Int @id @default(autoincrement())
+    id   Int    @id @default(autoincrement())
+    name String @default("New Section")
 
     sortOrder Int     @default(0)
     tables    Table[]

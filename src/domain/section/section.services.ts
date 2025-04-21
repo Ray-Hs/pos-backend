@@ -22,7 +22,7 @@ import { SectionServiceInterface } from "./section.types";
 export class SectionServices implements SectionServiceInterface {
   async getSections() {
     try {
-      const data = (await getSectionsDB()) as Section[];
+      const data = await getSectionsDB();
       if (!data || data.length === 0) {
         logger.warn("No Data Found");
         return {

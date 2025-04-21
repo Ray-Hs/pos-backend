@@ -5,7 +5,6 @@ export function getSubcategoriesDB() {
   return prisma.subCategory.findMany({
     include: {
       items: true,
-      Category: true,
     },
   });
 }
@@ -16,31 +15,29 @@ export function findSubcategoryByIdDB(id: number) {
       id,
     },
     include: {
-      Category: true,
       items: true,
     },
   });
 }
 
 export function createSubcategoryDB(data: SubCategory) {
-  const { items } = data;
+  const items = data?.items;
 
   return prisma.subCategory.create({
     data: {
       ...data,
       items: {
-        connect: items.map((item) => ({ id: item.id })),
+        connect: items?.map((item) => ({ id: item.id })),
       },
     },
     include: {
       items: true,
-      Category: true,
     },
   });
 }
 
 export function updateSubcategoryDB(id: number, data: SubCategory) {
-  const { items } = data;
+  const items = data?.items;
   return prisma.subCategory.update({
     where: {
       id,
@@ -48,11 +45,10 @@ export function updateSubcategoryDB(id: number, data: SubCategory) {
     data: {
       ...data,
       items: {
-        connect: items.map((item) => ({ id: item.id })),
+        connect: items?.map((item) => ({ id: item.id })),
       },
     },
     include: {
-      Category: true,
       items: true,
     },
   });
@@ -64,7 +60,6 @@ export function deleteSubcategoryDB(id: number) {
       id,
     },
     include: {
-      Category: true,
       items: true,
     },
   });
