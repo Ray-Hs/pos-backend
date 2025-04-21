@@ -10,7 +10,7 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { SubCategorySchema } from "../../types/common";
+import { SubCategory, SubCategorySchema } from "../../types/common";
 import { getItemsDB } from "../item/item.repository";
 import {
   createSubcategoryDB,

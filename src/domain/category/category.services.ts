@@ -10,8 +10,11 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { Category, CategorySchema } from "../../types/common";
-import { getSubcategoriesDB } from "../subcategory/subcategory.repository";
+import { CategorySchema } from "../../types/common";
+import {
+  findSubcategoryByIdDB,
+  getSubcategoriesByCategoryIdDB,
+} from "../subcategory/subcategory.repository";
 import {
   createCategoryDB,
   deleteCategoryDB,
@@ -216,7 +219,7 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const subcategories = await getSubcategoriesDB();
+      const subcategories = await getSubcategoriesByCategoryIdDB(id);
       if (!subcategories || subcategories.length === 0) {
         const deletedCategory = await deleteCategoryDB(id);
         return {

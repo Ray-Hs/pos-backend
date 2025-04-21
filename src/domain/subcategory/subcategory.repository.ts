@@ -9,6 +9,17 @@ export function getSubcategoriesDB() {
   });
 }
 
+export function getSubcategoriesByCategoryIdDB(id: number) {
+  return prisma.subCategory.findMany({
+    where: {
+      id,
+    },
+    include: {
+      _count: true,
+    },
+  });
+}
+
 export function findSubcategoryByIdDB(id: number) {
   return prisma.subCategory.findFirst({
     where: {
