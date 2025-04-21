@@ -9,11 +9,7 @@ export async function findCategoryDB(id: number) {
       id,
     },
     include: {
-      subCategory: {
-        include: {
-          items: true,
-        },
-      },
+      _count: true,
     },
   });
 }
@@ -21,11 +17,7 @@ export async function findCategoryDB(id: number) {
 export async function getCategoriesDB() {
   return prisma.category.findMany({
     include: {
-      subCategory: {
-        include: {
-          items: true,
-        },
-      },
+      _count: true,
     },
   });
 }
@@ -43,11 +35,7 @@ export async function updateCategoryDB(id: number, data: Category) {
       },
     },
     include: {
-      subCategory: {
-        include: {
-          items: true,
-        },
-      },
+      _count: true,
     },
   });
 }
@@ -64,11 +52,7 @@ export async function createCategoryDB(data: Category) {
       },
     },
     include: {
-      subCategory: {
-        include: {
-          items: true,
-        },
-      },
+      _count: true,
     },
   });
 }
@@ -79,11 +63,7 @@ export async function deleteCategoryDB(id: number) {
       id,
     },
     include: {
-      subCategory: {
-        include: {
-          items: true,
-        },
-      },
+      _count: true,
     },
   });
 }

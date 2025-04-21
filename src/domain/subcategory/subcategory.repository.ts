@@ -4,7 +4,7 @@ import { SubCategory } from "../../types/common";
 export function getSubcategoriesDB() {
   return prisma.subCategory.findMany({
     include: {
-      items: true,
+      _count: true,
     },
   });
 }
@@ -15,7 +15,7 @@ export function findSubcategoryByIdDB(id: number) {
       id,
     },
     include: {
-      items: true,
+      _count: true,
     },
   });
 }
@@ -31,7 +31,7 @@ export function createSubcategoryDB(data: SubCategory) {
       },
     },
     include: {
-      items: true,
+      _count: true,
     },
   });
 }
@@ -49,7 +49,7 @@ export function updateSubcategoryDB(id: number, data: SubCategory) {
       },
     },
     include: {
-      items: true,
+      _count: true,
     },
   });
 }
@@ -60,7 +60,7 @@ export function deleteSubcategoryDB(id: number) {
       id,
     },
     include: {
-      items: true,
+      _count: true,
     },
   });
 }

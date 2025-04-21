@@ -24,7 +24,7 @@ import { CategoryServiceInterface } from "./category.types";
 export class CategoryServices implements CategoryServiceInterface {
   async getCategories() {
     try {
-      const categories: Category[] = await getCategoriesDB();
+      const categories = await getCategoriesDB();
       if (!categories || categories.length === 0) {
         logger.warn("Get Categories Service Has No Entries.");
         return {
@@ -35,7 +35,6 @@ export class CategoryServices implements CategoryServiceInterface {
           },
         };
       }
-
       return {
         success: true,
         data: categories,
