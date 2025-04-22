@@ -11,7 +11,7 @@ import {
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
 import { SubCategory, SubCategorySchema } from "../../types/common";
-import { getItemsDB } from "../item/item.repository";
+import { findItemBySubCategoryIdDB, getItemsDB } from "../item/item.repository";
 import {
   createSubcategoryDB,
   deleteSubcategoryDB,
@@ -102,7 +102,6 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
           },
         };
       }
-
       const createdData = await createSubcategoryDB(data);
 
       return {
@@ -208,8 +207,8 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
           },
         };
       }
-
-      const items = await getItemsDB();
+      const items = await findItemBySubCategoryIdDB(id);
+      logger.info(JSON.stringify(items));
       if (!items || items.length === 0) {
         const deletedSubcategory = await deleteSubcategoryDB(id);
         return {

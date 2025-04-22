@@ -32,14 +32,10 @@ export function findSubcategoryByIdDB(id: number) {
 }
 
 export function createSubcategoryDB(data: SubCategory) {
-  const items = data?.items;
-
   return prisma.subCategory.create({
     data: {
       ...data,
-      items: {
-        connect: items?.map((item) => ({ id: item.id })),
-      },
+      items: {},
     },
     include: {
       _count: true,
@@ -48,13 +44,13 @@ export function createSubcategoryDB(data: SubCategory) {
 }
 
 export function updateSubcategoryDB(id: number, data: SubCategory) {
-  const items = data?.items;
+  const { items, ...rest } = data;
   return prisma.subCategory.update({
     where: {
       id,
     },
     data: {
-      ...data,
+      ...rest,
       items: {
         connect: items?.map((item) => ({ id: item.id })),
       },

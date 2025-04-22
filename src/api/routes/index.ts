@@ -6,11 +6,12 @@ import {
 import rateLimiter from "../middlewares/limiter.middleware";
 import AuthRoutes from "./auth.routes";
 import CategoryRoutes from "./category.routes";
+import InvoiceRoutes from "./invoice.routes";
 import ItemRoutes from "./item.routes";
-import SubcategoryRoutes from "./subcategory.routes";
-import SectionRoutes from "./section.routes";
-import TableRoutes from "./table.routes";
 import OrderRoutes from "./order.routes";
+import SectionRoutes from "./section.routes";
+import SubcategoryRoutes from "./subcategory.routes";
+import TableRoutes from "./table.routes";
 const router: Router = express.Router();
 
 // Auth Routes
@@ -56,5 +57,12 @@ router.use(
   "/table",
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   TableRoutes
+);
+
+// Invoice Routes
+router.use(
+  "/invoice",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  InvoiceRoutes
 );
 export default router;

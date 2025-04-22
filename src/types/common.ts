@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { number, z } from "zod";
 
 export const RoleEnum = z.enum(["ADMIN", "STAFF"]);
 type Role = z.infer<typeof RoleEnum>;
@@ -78,6 +78,22 @@ export const CategorySchema = z.object({
 
 export type Category = z.infer<typeof CategorySchema>;
 
+export const InvoiceSchema = z.object({
+  id: z.number().optional(),
+  tax: z.number().default(0),
+  discount: z.number().default(0),
+  service: z.number().default(0),
+  total: z.number(),
+  subtotal: z.number(),
+  orderId: z.number().int(),
+  userId: z.number().int(),
+  tableId: z.number().int().nullable().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+});
+
+export type Invoice = z.infer<typeof InvoiceSchema>;
+
 const OrderStatusEnum = z.enum([
   "PENDING",
   "PREPARING",
@@ -102,7 +118,6 @@ export const OrderSchema = z.object({
   id: z.number().optional(),
   tableId: z.number().nullable().optional(),
   userId: z.number(),
-  total: z.number().default(0),
   status: OrderStatusEnum,
   paymentMethod: PaymentMethodEnum.nullable().optional(),
   paid: z.boolean().default(false),
@@ -119,7 +134,7 @@ export const TableSchema = z.object({
   id: z.number().optional(),
   name: z.string(),
   capacity: z.number().default(4),
-  isAvailable: z.boolean().default(true),
+  available: z.boolean().default(true),
   status: TableStatusEnum,
   orders: z.array(OrderSchema).optional(),
   createdAt: z.date().optional(),

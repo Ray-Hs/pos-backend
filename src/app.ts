@@ -4,8 +4,7 @@ import express from "express";
 import Routes from "./api/routes";
 const app = express();
 const corsOptions: CorsOptions = {
-  origin: "http://localhost:3001",
-  allowedHeaders: ["http://localhost:3000"],
+  origin: ["http://localhost:3001", "http://localhost:3000"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
 };

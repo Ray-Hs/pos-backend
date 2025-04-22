@@ -749,3 +749,43 @@ D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\table\table.reposito
   25   const { orders } = data;
 → 26   return prisma.table.create(
 Foreign key constraint violated: `Table_sectionId_fkey (index)`
+[2025-04-21 17:42:12] [31merror[39m: No Item Found
+[2025-04-21 17:51:00] [31merror[39m: No Item Found
+[2025-04-21 17:51:12] [31merror[39m: No Item Found
+[2025-04-21 17:58:06] [31merror[39m: Create Subcategory Service:  
+Invalid `prisma.subCategory.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\subcategory\subcategory.repository.ts:37:29
+
+  34 export function createSubcategoryDB(data: SubCategory) {
+  35   const items = data?.items;
+  36 
+→ 37   return prisma.subCategory.create(
+Foreign key constraint violated: `SubCategory_categoryId_fkey (index)`
+[2025-04-21 18:00:00] [31merror[39m: Create Subcategory Service:  
+Invalid `prisma.subCategory.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\subcategory\subcategory.repository.ts:37:29
+
+  34 export function createSubcategoryDB(data: SubCategory) {
+  35   const items = data?.items;
+  36 
+→ 37   return prisma.subCategory.create(
+Foreign key constraint violated: `SubCategory_categoryId_fkey (index)`
+[2025-04-22 14:59:56] [31merror[39m: Create Subcategory Service:  
+Invalid `prisma.subCategory.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\subcategory\subcategory.repository.ts:35:29
+
+  32 }
+  33 
+  34 export function createSubcategoryDB(data: SubCategory) {
+→ 35   return prisma.subCategory.create(
+Null constraint violation on the fields: (`categoryId`)
+[2025-04-22 15:02:29] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.update()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\item\item.repository.ts:31:26
+
+  28 }
+  29 
+  30 export async function updateItemDB(id: number, data: MenuItem) {
+→ 31   return prisma.menuItem.update(
+Foreign key constraint violated: `MenuItem_subCategoryId_fkey (index)`
+[2025-04-22 17:50:02] [31merror[39m: No Item Found

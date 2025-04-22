@@ -13,6 +13,14 @@ export async function findItemByIdDB(id: number) {
   });
 }
 
+export async function findItemBySubCategoryIdDB(id: number) {
+  return prisma.menuItem.findMany({
+    where: {
+      subCategoryId: id,
+    },
+  });
+}
+
 export async function createItemDB(data: MenuItem) {
   return prisma.menuItem.create({
     data,

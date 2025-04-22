@@ -835,3 +835,75 @@ D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\table\table.reposito
 → 26   return prisma.table.create(
 Foreign key constraint violated: `Table_sectionId_fkey (index)`
 [2025-04-15 16:04:43] [33mwarn[39m: No Data Found
+[2025-04-21 17:34:43] [33mwarn[39m: Not Found
+[2025-04-21 17:42:12] [31merror[39m: No Item Found
+[2025-04-21 17:48:43] [32minfo[39m: [object Object]
+[2025-04-21 17:49:00] [32minfo[39m: [{"id":1,"title_en":"Burger EN Update","title_ku":"Burger KU Update","title_ar":"Burger AR Update","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabic","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:34:44.330Z","updatedAt":"2025-04-15T10:37:40.186Z"}]
+[2025-04-21 17:51:00] [31merror[39m: No Item Found
+[2025-04-21 17:51:12] [31merror[39m: No Item Found
+[2025-04-21 17:51:20] [32minfo[39m: [{"id":1,"title_en":"Burger EN Update","title_ku":"Burger KU Update","title_ar":"Burger AR Update","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabic","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:34:44.330Z","updatedAt":"2025-04-15T10:37:40.186Z"}]
+[2025-04-21 17:52:15] [33mwarn[39m: ID: 
+[2025-04-21 17:52:15] [32minfo[39m: [{"id":1,"title_en":"Burger EN Update","title_ku":"Burger KU Update","title_ar":"Burger AR Update","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabic","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:34:44.330Z","updatedAt":"2025-04-15T10:37:40.186Z"}]
+[2025-04-21 17:53:01] [32minfo[39m: [{"id":1,"title_en":"Burger EN Update","title_ku":"Burger KU Update","title_ar":"Burger AR Update","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabic","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:34:44.330Z","updatedAt":"2025-04-15T10:37:40.186Z"}]
+[2025-04-21 17:53:58] [32minfo[39m: []
+[2025-04-21 17:54:13] [33mwarn[39m: Not Found
+[2025-04-21 17:54:21] [33mwarn[39m: Not Found
+[2025-04-21 17:54:23] [33mwarn[39m: Not Found
+[2025-04-21 17:54:26] [33mwarn[39m: Not Found
+[2025-04-21 17:54:27] [33mwarn[39m: Not Found
+[2025-04-21 17:54:29] [33mwarn[39m: Not Found
+[2025-04-21 17:54:33] [33mwarn[39m: Not Found
+[2025-04-21 17:55:05] [33mwarn[39m: Not Found
+[2025-04-21 17:55:18] [32minfo[39m: [{"id":2,"title_en":"Burger 2 EN","title_ku":"Burger 2 KU","title_ar":"Burger 2 AR","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabi","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:35:04.095Z","updatedAt":"2025-04-15T10:35:04.095Z"}]
+[2025-04-21 17:58:06] [32minfo[39m: Data: 
+[2025-04-21 17:58:06] [31merror[39m: Create Subcategory Service:  
+Invalid `prisma.subCategory.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\subcategory\subcategory.repository.ts:37:29
+
+  34 export function createSubcategoryDB(data: SubCategory) {
+  35   const items = data?.items;
+  36 
+→ 37   return prisma.subCategory.create(
+Foreign key constraint violated: `SubCategory_categoryId_fkey (index)`
+[2025-04-21 17:58:09] [32minfo[39m: Data: 
+[2025-04-21 17:58:32] [32minfo[39m: [{"id":4,"title_en":"Burger 4 EN","title_ku":"Burger 4 KU","title_ar":"Burger 4 AR","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabi","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:35:08.033Z","updatedAt":"2025-04-15T10:35:08.033Z"}]
+[2025-04-21 17:59:38] [32minfo[39m: Data: 
+[2025-04-21 18:00:00] [32minfo[39m: Data: 
+[2025-04-21 18:00:00] [31merror[39m: Create Subcategory Service:  
+Invalid `prisma.subCategory.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\subcategory\subcategory.repository.ts:37:29
+
+  34 export function createSubcategoryDB(data: SubCategory) {
+  35   const items = data?.items;
+  36 
+→ 37   return prisma.subCategory.create(
+Foreign key constraint violated: `SubCategory_categoryId_fkey (index)`
+[2025-04-21 18:00:03] [32minfo[39m: Data: 
+[2025-04-21 18:00:32] [32minfo[39m: [{"id":4,"title_en":"Burger 4 EN","title_ku":"Burger 4 KU","title_ar":"Burger 4 AR","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabi","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:35:08.033Z","updatedAt":"2025-04-15T10:35:08.033Z"}]
+[2025-04-21 18:00:36] [32minfo[39m: [{"id":5,"title_en":"Burger 5 EN","title_ku":"Burger 5 KU","title_ar":"Burger 5 AR","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabi","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:35:10.088Z","updatedAt":"2025-04-15T10:35:10.088Z"}]
+[2025-04-21 18:02:37] [32minfo[39m: [{"id":8,"title_en":"Burger 8 EN","title_ku":"Burger 8 KU","title_ar":"Burger 8 AR","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabi","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:35:15.997Z","updatedAt":"2025-04-15T10:35:15.997Z"}]
+[2025-04-22 14:59:56] [31merror[39m: Create Subcategory Service:  
+Invalid `prisma.subCategory.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\subcategory\subcategory.repository.ts:35:29
+
+  32 }
+  33 
+  34 export function createSubcategoryDB(data: SubCategory) {
+→ 35   return prisma.subCategory.create(
+Null constraint violation on the fields: (`categoryId`)
+[2025-04-22 15:01:11] [33mwarn[39m: No Item Found
+[2025-04-22 15:02:29] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.update()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\item\item.repository.ts:31:26
+
+  28 }
+  29 
+  30 export async function updateItemDB(id: number, data: MenuItem) {
+→ 31   return prisma.menuItem.update(
+Foreign key constraint violated: `MenuItem_subCategoryId_fkey (index)`
+[2025-04-22 17:47:02] [32minfo[39m: [{"id":10,"title_en":"Burger EN Update","title_ku":"Burger KU Update","title_ar":"Burger AR Update","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabi","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:36:13.443Z","updatedAt":"2025-04-15T10:36:13.443Z"}]
+[2025-04-22 17:50:02] [31merror[39m: No Item Found
+[2025-04-22 17:50:14] [32minfo[39m: [{"id":10,"title_en":"Burger EN Update","title_ku":"Burger KU Update","title_ar":"Burger AR Update","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabi","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:36:13.443Z","updatedAt":"2025-04-15T10:36:13.443Z"}]
+[2025-04-22 17:55:42] [32minfo[39m: [{"id":10,"title_en":"Burger EN Update","title_ku":"Burger KU Update","title_ar":"Burger AR Update","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabi","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:36:13.443Z","updatedAt":"2025-04-15T10:36:13.443Z"}]
+[2025-04-22 17:56:42] [32minfo[39m: []
+[2025-04-22 17:57:00] [33mwarn[39m: No Subcategory found

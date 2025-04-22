@@ -23,11 +23,11 @@ export async function getCategoriesDB() {
 }
 
 export async function updateCategoryDB(id: number, data: Category) {
-  const subCategory = data?.subCategory;
+  const { subCategory, ...rest } = data;
   return prisma.category.update({
     where: { id },
     data: {
-      ...data,
+      ...rest,
       subCategory: {
         connect: subCategory?.map((sub) => ({
           id: sub.id,
@@ -41,10 +41,10 @@ export async function updateCategoryDB(id: number, data: Category) {
 }
 
 export async function createCategoryDB(data: Category) {
-  const subCategory = data?.subCategory;
+  const { subCategory, ...rest } = data;
   return prisma.category.create({
     data: {
-      ...data,
+      ...rest,
       subCategory: {
         connect: subCategory?.map((sub) => ({
           id: sub.id,
