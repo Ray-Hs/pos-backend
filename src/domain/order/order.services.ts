@@ -22,7 +22,17 @@ import { OrderServiceInterface } from "./order.types";
 export class OrderServices implements OrderServiceInterface {
   async getOrders() {
     try {
-      const data = await getOrdersDB();
+      const data = await getOrdersDB({
+        items: true,
+        table: true,
+        user: true,
+        _count: {
+          select: {
+            items: true,
+            Invoice: true,
+          },
+        },
+      });
       if (!data || data.length === 0) {
         logger.warn("No Data Found");
         return {
@@ -65,7 +75,17 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const data = await findOrderByIdDB(id);
+      const data = await findOrderByIdDB(id, {
+        items: true,
+        table: true,
+        user: true,
+        _count: {
+          select: {
+            items: true,
+            Invoice: true,
+          },
+        },
+      });
       if (!data) {
         logger.warn("No Data Found");
         return {
@@ -105,7 +125,17 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const createdOrder = await createOrderDB(data);
+      const createdOrder = await createOrderDB(data, {
+        items: true,
+        table: true,
+        user: true,
+        _count: {
+          select: {
+            items: true,
+            Invoice: true,
+          },
+        },
+      });
       return {
         success: true,
         data: createdOrder,
@@ -162,7 +192,17 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const updatedOrder = await updateOrderDB(id, data);
+      const updatedOrder = await updateOrderDB(id, data, {
+        items: true,
+        table: true,
+        user: true,
+        _count: {
+          select: {
+            items: true,
+            Invoice: true,
+          },
+        },
+      });
       return {
         success: true,
         data: updatedOrder,
@@ -206,7 +246,17 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const deletedOrder = await deleteOrderDB(id);
+      const deletedOrder = await deleteOrderDB(id, {
+        items: true,
+        table: true,
+        user: true,
+        _count: {
+          select: {
+            items: true,
+            Invoice: true,
+          },
+        },
+      });
 
       return {
         success: true,

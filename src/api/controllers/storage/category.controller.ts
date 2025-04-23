@@ -5,11 +5,15 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
+import { Filter } from "../../../types/common";
+import logger from "../../../infrastructure/utils/logger";
 
 export class CategoryController implements CategoryControllerInterface {
   async getCategories(req: Request, res: Response) {
+    const filter = req.query?.filter as Filter;
+    logger.info("Filter: ", filter);
     const categoryInstance = new CategoryServices();
-    const data = await categoryInstance.getCategories();
+    const data = await categoryInstance.getCategories(filter);
     return res
       .status(data.success ? OK_STATUS : data.error?.code || 500)
       .json(data);

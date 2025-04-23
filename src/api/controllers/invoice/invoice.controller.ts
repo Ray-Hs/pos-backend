@@ -24,6 +24,15 @@ export class InvoiceController implements InvoiceControllerInterface {
       response.success ? OK_STATUS : response.error?.code || 500
     );
   }
+  async findInvoicesByOrderId(req: Request, res: Response) {
+    const id = req.params?.id;
+    const invoiceInstance = new InvoiceServices();
+    const response = await invoiceInstance.findInvoicesByOrderId(id);
+
+    return res.status(
+      response.success ? OK_STATUS : response.error?.code || 500
+    );
+  }
   async createInvoice(req: Request, res: Response) {
     const body = req.body;
     const invoiceInstance = new InvoiceServices();

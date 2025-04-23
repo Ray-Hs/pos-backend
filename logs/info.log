@@ -896,3 +896,12 @@ Foreign key constraint violated: `MenuItem_subCategoryId_fkey (index)`
 [2025-04-22 17:55:42] [32minfo[39m: [{"id":10,"title_en":"Burger EN Update","title_ku":"Burger KU Update","title_ar":"Burger AR Update","description_en":"Description of the burger in english","description_ku":"Description of the burger in kurdish","description_ar":"Description of the burger in arabi","subCategoryId":null,"price":19.99,"company":null,"discount":0,"isActive":true,"image":null,"createdAt":"2025-04-15T10:36:13.443Z","updatedAt":"2025-04-15T10:36:13.443Z"}]
 [2025-04-22 17:56:42] [32minfo[39m: []
 [2025-04-22 17:57:00] [33mwarn[39m: No Subcategory found
+[2025-04-23 13:54:43] [33mwarn[39m: Not Found
+[2025-04-23 13:54:45] [33mwarn[39m: Not Found
+[2025-04-23 14:00:43] [32minfo[39m: Filter: 
+[2025-04-23 14:00:50] [32minfo[39m: Filter: 
+[2025-04-23 14:21:25] [32minfo[39m: Filter: 
+[2025-04-23 14:21:37] [32minfo[39m: Filter: 
+[2025-04-23 14:21:47] [32minfo[39m: Filter: 
+[2025-04-23 14:21:50] [32minfo[39m: Filter: 
+[2025-04-23 14:21:55] [32minfo[39m: Filter: 

@@ -1,73 +1,68 @@
+import { Prisma } from "@prisma/client";
 import prisma from "../../infrastructure/database/prisma/client";
 import { Order } from "../../types/common";
 
-export function getOrdersDB() {
+export function getOrdersDB(include?: Prisma.OrderInclude) {
   return prisma.order.findMany({
     include: {
-      items: true,
-      table: true,
-      user: true,
+      ...include,
     },
   });
 }
 
-export function findOrderByIdDB(id: number) {
+export function findOrderByIdDB(id: number, include?: Prisma.OrderInclude) {
   return prisma.order.findFirst({
     where: { id },
     include: {
-      items: true,
-      table: true,
-      user: true,
+      ...include,
     },
   });
 }
 
-export function createOrderDB(data: Order) {
-  const { items } = data;
+export function createOrderDB(data: Order, include?: Prisma.OrderInclude) {
+  const { items, ...rest } = data;
   return prisma.order.create({
     data: {
-      ...data,
+      ...rest,
       items: {
         connect: items.map((item) => ({ id: item.id })),
       },
     },
     include: {
-      items: true,
-      table: true,
-      user: true,
+      ...include,
     },
   });
 }
 
-export function updateOrderDB(id: number, data: Order) {
-  const { items } = data;
+export function updateOrderDB(
+  id: number,
+  data: Order,
+  include?: Prisma.OrderInclude
+) {
+  const { items, ...rest } = data;
   return prisma.order.update({
     where: {
       id,
     },
     data: {
-      ...data,
+      ...rest,
       items: {
         connect: items.map((item) => ({ id: item.id })),
       },
     },
     include: {
-      items: true,
-      table: true,
-      user: true,
+      ...include,
     },
   });
 }
 
-export function deleteOrderDB(id: number) {
+export function deleteOrderDB(id: number, include?: Prisma.OrderInclude) {
   return prisma.order.delete({
     where: {
       id,
     },
     include: {
-      items: true,
-      table: true,
-      user: true,
+      ...include,
     },
   });
 }

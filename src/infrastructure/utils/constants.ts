@@ -53,3 +53,6 @@ export const RATE_LIMIT_TIME_WINDOW = 15; // Minutes
 
 // JWT
 export const JWT_EXPIRE = "1d";
+
+// Invoice
+export const INVOICE_NOT_FOUND = "INVOICE_NOT_FOUND";

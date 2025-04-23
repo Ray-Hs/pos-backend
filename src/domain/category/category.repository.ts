@@ -1,28 +1,42 @@
 // Category Repository
 
+import { Prisma } from "@prisma/client";
 import prisma from "../../infrastructure/database/prisma/client";
-import { Category } from "../../types/common";
+import { Category, Filter } from "../../types/common";
 
-export async function findCategoryDB(id: number) {
+export async function findCategoryDB(
+  id: number,
+  include?: Prisma.CategoryInclude
+) {
   return prisma.category.findFirst({
     where: {
       id,
     },
     include: {
-      _count: true,
+      ...include,
     },
   });
 }
 
-export async function getCategoriesDB() {
+export async function getCategoriesDB(
+  include?: Prisma.CategoryInclude,
+  filter?: Filter
+) {
   return prisma.category.findMany({
     include: {
-      _count: true,
+      ...include,
+    },
+    orderBy: {
+      sortOrder: filter,
     },
   });
 }
 
-export async function updateCategoryDB(id: number, data: Category) {
+export async function updateCategoryDB(
+  id: number,
+  data: Category,
+  include?: Prisma.CategoryInclude
+) {
   const { subCategory, ...rest } = data;
   return prisma.category.update({
     where: { id },
@@ -35,12 +49,15 @@ export async function updateCategoryDB(id: number, data: Category) {
       },
     },
     include: {
-      _count: true,
+      ...include,
     },
   });
 }
 
-export async function createCategoryDB(data: Category) {
+export async function createCategoryDB(
+  data: Category,
+  include?: Prisma.CategoryInclude
+) {
   const { subCategory, ...rest } = data;
   return prisma.category.create({
     data: {
@@ -52,18 +69,21 @@ export async function createCategoryDB(data: Category) {
       },
     },
     include: {
-      _count: true,
+      ...include,
     },
   });
 }
 
-export async function deleteCategoryDB(id: number) {
+export async function deleteCategoryDB(
+  id: number,
+  include?: Prisma.CategoryInclude
+) {
   return prisma.category.delete({
     where: {
       id,
     },
     include: {
-      _count: true,
+      ...include,
     },
   });
 }

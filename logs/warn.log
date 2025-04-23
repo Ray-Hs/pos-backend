@@ -868,3 +868,5 @@ D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\item\item.repository
 Foreign key constraint violated: `MenuItem_subCategoryId_fkey (index)`
 [2025-04-22 17:50:02] [31merror[39m: No Item Found
 [2025-04-22 17:57:00] [33mwarn[39m: No Subcategory found
+[2025-04-23 13:54:43] [33mwarn[39m: Not Found
+[2025-04-23 13:54:45] [33mwarn[39m: Not Found

@@ -166,4 +166,6 @@ type TResult<T> = {
   error?: TError;
 };
 
+export type Filter = "asc" | "desc";
+
 export type { Role, User, TResult, TError };

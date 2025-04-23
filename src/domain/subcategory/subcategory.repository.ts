@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import prisma from "../../infrastructure/database/prisma/client";
 import { SubCategory } from "../../types/common";
 
@@ -9,41 +10,54 @@ export function getSubcategoriesDB() {
   });
 }
 
-export function getSubcategoriesByCategoryIdDB(id: number) {
+export function getSubcategoriesByCategoryIdDB(
+  id: number,
+  include?: Prisma.SubCategoryInclude
+) {
   return prisma.subCategory.findMany({
     where: {
-      id,
+      categoryId: id,
     },
     include: {
-      _count: true,
+      ...include,
     },
   });
 }
 
-export function findSubcategoryByIdDB(id: number) {
+export function findSubcategoryByIdDB(
+  id: number,
+  include?: Prisma.SubCategoryInclude
+) {
   return prisma.subCategory.findFirst({
     where: {
       id,
     },
     include: {
-      _count: true,
+      ...include,
     },
   });
 }
 
-export function createSubcategoryDB(data: SubCategory) {
+export function createSubcategoryDB(
+  data: SubCategory,
+  include?: Prisma.SubCategoryInclude
+) {
+  const { items, ...rest } = data;
   return prisma.subCategory.create({
     data: {
-      ...data,
-      items: {},
+      ...rest,
     },
     include: {
-      _count: true,
+      ...include,
     },
   });
 }
 
-export function updateSubcategoryDB(id: number, data: SubCategory) {
+export function updateSubcategoryDB(
+  id: number,
+  data: SubCategory,
+  include?: Prisma.SubCategoryInclude
+) {
   const { items, ...rest } = data;
   return prisma.subCategory.update({
     where: {
@@ -56,18 +70,21 @@ export function updateSubcategoryDB(id: number, data: SubCategory) {
       },
     },
     include: {
-      _count: true,
+      ...include,
     },
   });
 }
 
-export function deleteSubcategoryDB(id: number) {
+export function deleteSubcategoryDB(
+  id: number,
+  include?: Prisma.SubCategoryInclude
+) {
   return prisma.subCategory.delete({
     where: {
       id,
     },
     include: {
-      _count: true,
+      ...include,
     },
   });
 }

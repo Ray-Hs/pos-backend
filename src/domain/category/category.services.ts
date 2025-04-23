@@ -10,11 +10,8 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { CategorySchema } from "../../types/common";
-import {
-  findSubcategoryByIdDB,
-  getSubcategoriesByCategoryIdDB,
-} from "../subcategory/subcategory.repository";
+import { CategorySchema, Filter } from "../../types/common";
+import { getSubcategoriesByCategoryIdDB } from "../subcategory/subcategory.repository";
 import {
   createCategoryDB,
   deleteCategoryDB,
@@ -25,9 +22,9 @@ import {
 import { CategoryServiceInterface } from "./category.types";
 
 export class CategoryServices implements CategoryServiceInterface {
-  async getCategories() {
+  async getCategories(filter?: Filter) {
     try {
-      const categories = await getCategoriesDB();
+      const categories = await getCategoriesDB({ _count: true }, filter);
       if (!categories || categories.length === 0) {
         logger.warn("Get Categories Service Has No Entries.");
         return {
@@ -71,7 +68,7 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const data = await findCategoryDB(id);
+      const data = await findCategoryDB(id, { _count: true });
       if (!data) {
         logger.error("There is no Category");
         return {
@@ -114,7 +111,7 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const data = await createCategoryDB(category);
+      const data = await createCategoryDB(category, { _count: true });
 
       return {
         success: true,
@@ -172,7 +169,9 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const updatedCategory = await updateCategoryDB(id, data);
+      const updatedCategory = await updateCategoryDB(id, data, {
+        _count: true,
+      });
 
       return {
         success: true,
@@ -219,7 +218,9 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const subcategories = await getSubcategoriesByCategoryIdDB(id);
+      const subcategories = await getSubcategoriesByCategoryIdDB(id, {
+        _count: true,
+      });
       if (!subcategories || subcategories.length === 0) {
         const deletedCategory = await deleteCategoryDB(id);
         return {

@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
-import { Category, TResult } from "../../types/common";
+import { Category, Filter, TResult } from "../../types/common";
+import { Prisma } from "@prisma/client";
 
 export interface CategoryServiceInterface {
-  getCategories: () => Promise<TResult<Category[]>>;
+  getCategories: (filter?: Filter) => Promise<TResult<Category[]>>;
   findCategoryById: (idRequest: any) => Promise<TResult<Category>>;
   createCategory: (dataRequest: any) => Promise<TResult<Category>>;
   updateCategory: (
