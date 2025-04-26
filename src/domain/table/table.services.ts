@@ -1,3 +1,4 @@
+import { ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
@@ -52,10 +53,11 @@ export class TableServices implements TableServiceInterface {
 
   async getTableById(requestId: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, TableSchema.pick({ id: true }))
-      )?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        TableSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -66,7 +68,7 @@ export class TableServices implements TableServiceInterface {
         };
       }
 
-      const data = await findTableByIdDB(id);
+      const data = await findTableByIdDB(response.id);
 
       if (!data) {
         logger.warn("Not Found");
@@ -98,8 +100,8 @@ export class TableServices implements TableServiceInterface {
   async createTable(requestData: any) {
     try {
       const data = await validateType(requestData, TableSchema);
-      if (!data) {
-        logger.warn("Missing Info");
+      if (data instanceof ZodError) {
+        logger.warn("Missing Info: ", data);
         return {
           success: false,
           error: {
@@ -127,10 +129,11 @@ export class TableServices implements TableServiceInterface {
   }
   async updateTable(requestId: any, requestData: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, TableSchema.pick({ id: true }))
-      )?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        TableSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -141,8 +144,8 @@ export class TableServices implements TableServiceInterface {
         };
       }
       const data = await validateType(requestData, TableSchema);
-      if (!data) {
-        logger.warn("Missing Info");
+      if (data instanceof ZodError) {
+        logger.warn("Missing Info: ", data);
         return {
           success: false,
           error: {
@@ -152,7 +155,7 @@ export class TableServices implements TableServiceInterface {
         };
       }
 
-      const existingTable = await findTableByIdDB(id);
+      const existingTable = await findTableByIdDB(response.id);
       if (!existingTable) {
         logger.error("Not Found");
         return {
@@ -164,7 +167,7 @@ export class TableServices implements TableServiceInterface {
         };
       }
 
-      const updatedTable = await updateTableDB(id, data);
+      const updatedTable = await updateTableDB(response.id, data);
       return {
         success: true,
         data: updatedTable,
@@ -183,10 +186,11 @@ export class TableServices implements TableServiceInterface {
 
   async deleteTable(requestId: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, TableSchema.pick({ id: true }))
-      )?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        TableSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -196,7 +200,7 @@ export class TableServices implements TableServiceInterface {
           },
         };
       }
-      const existingTable = await findTableByIdDB(id);
+      const existingTable = await findTableByIdDB(response.id);
       if (!existingTable) {
         logger.error("Not Found");
         return {
@@ -208,7 +212,7 @@ export class TableServices implements TableServiceInterface {
         };
       }
 
-      const deletedTable = await deleteTableDB(id);
+      const deletedTable = await deleteTableDB(response.id);
       return {
         success: true,
         data: deletedTable,

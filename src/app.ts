@@ -1,6 +1,7 @@
 import cookieParser from "cookie-parser";
 import cors, { CorsOptions } from "cors";
 import express from "express";
+import multer from "multer";
 import Routes from "./api/routes";
 const app = express();
 const corsOptions: CorsOptions = {

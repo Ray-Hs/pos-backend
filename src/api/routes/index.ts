@@ -6,6 +6,7 @@ import {
 import rateLimiter from "../middlewares/limiter.middleware";
 import AuthRoutes from "./auth.routes";
 import CategoryRoutes from "./category.routes";
+import ImageRoutes from "./images.routes";
 import InvoiceRoutes from "./invoice.routes";
 import ItemRoutes from "./item.routes";
 import OrderRoutes from "./order.routes";
@@ -65,4 +66,12 @@ router.use(
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   InvoiceRoutes
 );
+
+// Image Routes
+router.use(
+  "/image",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  ImageRoutes
+);
+
 export default router;

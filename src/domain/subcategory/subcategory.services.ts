@@ -1,3 +1,4 @@
+import { ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_DELETE_ERR,
@@ -10,8 +11,8 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { SubCategory, SubCategorySchema } from "../../types/common";
-import { findItemBySubCategoryIdDB, getItemsDB } from "../item/item.repository";
+import { Filter, SubCategorySchema } from "../../types/common";
+import { findItemBySubCategoryIdDB } from "../item/item.repository";
 import {
   createSubcategoryDB,
   deleteSubcategoryDB,
@@ -22,9 +23,9 @@ import {
 import { SubcategoryServiceInterface } from "./subcategory.types";
 
 export class SubcategoryServices implements SubcategoryServiceInterface {
-  async getSubcategories() {
+  async getSubcategories(filter?: Filter) {
     try {
-      const data = await getSubcategoriesDB();
+      const data = await getSubcategoriesDB(filter);
       if (!data || data.length === 0) {
         logger.warn("No subcategories found.");
         return {
@@ -51,8 +52,11 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
 
   async getSubcategoryById(requestId: any) {
     try {
-      const id = (await validateType({ id: requestId }, SubCategorySchema))?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        SubCategorySchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -63,7 +67,7 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
-      const data = await findSubcategoryByIdDB(id);
+      const data = await findSubcategoryByIdDB(response.id);
 
       if (!data) {
         logger.warn("No Subcategory found");
@@ -92,8 +96,8 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
   async createSubcategory(requestData: any) {
     try {
       const data = await validateType(requestData, SubCategorySchema);
-      if (!data) {
-        logger.warn("Missing Data");
+      if (data instanceof ZodError) {
+        logger.warn("Missing Data: ", data);
         return {
           success: false,
           error: {
@@ -122,10 +126,13 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
 
   async updateSubcategory(requestId: any, requestData: any) {
     try {
-      const id = (await validateType({ id: requestId }, SubCategorySchema))?.id;
+      const response = await validateType(
+        { id: requestId },
+        SubCategorySchema.pick({ id: true })
+      );
       const data = await validateType(requestData, SubCategorySchema);
 
-      if (!id) {
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -136,8 +143,8 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
-      if (!data) {
-        logger.warn("Missing Info");
+      if (data instanceof ZodError) {
+        logger.warn("Missing Info: ", data);
         return {
           success: false,
           error: {
@@ -147,7 +154,7 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
-      const existingSubcategory = await findSubcategoryByIdDB(id);
+      const existingSubcategory = await findSubcategoryByIdDB(response.id);
       if (!existingSubcategory) {
         logger.warn("Not Found");
         return {
@@ -159,7 +166,7 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
-      const updatedData = await updateSubcategoryDB(id, data);
+      const updatedData = await updateSubcategoryDB(response.id, data);
       return {
         success: true,
         data: updatedData,
@@ -178,14 +185,12 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
 
   async deleteSubcategory(requestId: any) {
     try {
-      const id = (
-        await validateType(
-          { id: requestId },
-          SubCategorySchema.pick({ id: true })
-        )
-      )?.id;
+      const response = await validateType(
+        { id: requestId },
+        SubCategorySchema.pick({ id: true })
+      );
 
-      if (!id) {
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -196,7 +201,7 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
-      const existingSubcategory = await findSubcategoryByIdDB(id);
+      const existingSubcategory = await findSubcategoryByIdDB(response.id);
       if (!existingSubcategory) {
         logger.warn("Not Found");
         return {
@@ -207,10 +212,10 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
           },
         };
       }
-      const items = await findItemBySubCategoryIdDB(id);
+      const items = await findItemBySubCategoryIdDB(response.id);
       logger.info(JSON.stringify(items));
       if (!items || items.length === 0) {
-        const deletedSubcategory = await deleteSubcategoryDB(id);
+        const deletedSubcategory = await deleteSubcategoryDB(response.id);
         return {
           success: true,
           data: deletedSubcategory,

@@ -1,3 +1,4 @@
+import { ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_DELETE_ERR,
@@ -53,22 +54,23 @@ export class CategoryServices implements CategoryServiceInterface {
 
   async findCategoryById(idRequest: any) {
     try {
-      const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
-      )?.id;
+      const response = await validateType(
+        { id: idRequest },
+        CategorySchema.pick({ id: true })
+      );
 
-      if (!id) {
-        logger.warn("Id Not Provided");
+      if (response instanceof ZodError || !response.id) {
+        logger.warn("Validation Error: ", response);
         return {
           success: false,
           error: {
             code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_BODY_ERR,
+            message: BAD_REQUEST_ID_ERR,
           },
         };
       }
 
-      const data = await findCategoryDB(id, { _count: true });
+      const data = await findCategoryDB(response.id, { _count: true });
       if (!data) {
         logger.error("There is no Category");
         return {
@@ -100,7 +102,7 @@ export class CategoryServices implements CategoryServiceInterface {
     try {
       const category = await validateType(dataRequest, CategorySchema);
 
-      if (!category) {
+      if (category instanceof ZodError) {
         logger.warn("Missing info: ", category);
         return {
           success: false,
@@ -131,13 +133,17 @@ export class CategoryServices implements CategoryServiceInterface {
 
   async updateCategory(idRequest: any, dataRequest: any) {
     try {
-      const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
-      )?.id;
+      const idResponse = await validateType(
+        { id: idRequest },
+        CategorySchema.pick({ id: true })
+      );
       const data = await validateType(dataRequest, CategorySchema);
 
-      if (!id) {
-        logger.warn("Missing ID");
+      if (
+        idResponse instanceof ZodError ||
+        typeof idResponse.id === "undefined"
+      ) {
+        logger.warn("ID Validation Error: ", idResponse);
         return {
           success: false,
           error: {
@@ -146,8 +152,8 @@ export class CategoryServices implements CategoryServiceInterface {
           },
         };
       }
-      if (!data) {
-        logger.warn("Missing info");
+      if (data instanceof ZodError) {
+        logger.warn("Missing info: ", data);
         return {
           success: false,
           error: {
@@ -157,7 +163,7 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const existingCategory = await findCategoryDB(id);
+      const existingCategory = await findCategoryDB(idResponse.id);
       if (!existingCategory) {
         logger.warn("Not Found");
         return {
@@ -169,7 +175,7 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const updatedCategory = await updateCategoryDB(id, data, {
+      const updatedCategory = await updateCategoryDB(idResponse.id, data, {
         _count: true,
       });
 
@@ -191,11 +197,15 @@ export class CategoryServices implements CategoryServiceInterface {
 
   async deleteCategory(idRequest: any) {
     try {
-      const id = (
-        await validateType({ id: idRequest }, CategorySchema.pick({ id: true }))
-      )?.id;
+      const idResponse = await validateType(
+        { id: idRequest },
+        CategorySchema.pick({ id: true })
+      );
 
-      if (!id) {
+      if (
+        idResponse instanceof ZodError ||
+        typeof idResponse.id === "undefined"
+      ) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -206,7 +216,7 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const existingCategory = await findCategoryDB(id);
+      const existingCategory = await findCategoryDB(idResponse.id);
       if (!existingCategory) {
         logger.warn("Not Found");
         return {
@@ -218,11 +228,14 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const subcategories = await getSubcategoriesByCategoryIdDB(id, {
-        _count: true,
-      });
+      const subcategories = await getSubcategoriesByCategoryIdDB(
+        idResponse.id,
+        {
+          _count: true,
+        }
+      );
       if (!subcategories || subcategories.length === 0) {
-        const deletedCategory = await deleteCategoryDB(id);
+        const deletedCategory = await deleteCategoryDB(idResponse.id);
         return {
           success: true,
           data: deletedCategory,

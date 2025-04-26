@@ -10,7 +10,7 @@ import logger from "../../../infrastructure/utils/logger";
 
 export class CategoryController implements CategoryControllerInterface {
   async getCategories(req: Request, res: Response) {
-    const filter = req.query?.filter as Filter;
+    const filter = req.query?.sort as Filter;
     logger.info("Filter: ", filter);
     const categoryInstance = new CategoryServices();
     const data = await categoryInstance.getCategories(filter);

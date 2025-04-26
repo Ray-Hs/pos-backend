@@ -1,3 +1,4 @@
+import { ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
@@ -52,10 +53,11 @@ export class InvoiceServices implements InvoiceServiceInterface {
   }
   async findInvoice(requestId: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, InvoiceSchema.pick({ id: true }))
-      )?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        InvoiceSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -66,7 +68,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
 
-      const data = await findInvoiceByIdDB(id);
+      const data = await findInvoiceByIdDB(response.id);
 
       if (!data) {
         return {
@@ -96,10 +98,11 @@ export class InvoiceServices implements InvoiceServiceInterface {
 
   async findInvoicesByOrderId(requestId: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, InvoiceSchema.pick({ id: true }))
-      )?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        InvoiceSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -110,7 +113,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
 
-      const data = await findOrderByIdDB(id, {
+      const data = await findOrderByIdDB(response.id, {
         Invoice: true,
       });
 
@@ -156,7 +159,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
     try {
       const data = await validateType(requestData, InvoiceSchema);
 
-      if (!data) {
+      if (data instanceof ZodError) {
         logger.warn("Missing Info");
         return {
           success: false,
@@ -185,10 +188,11 @@ export class InvoiceServices implements InvoiceServiceInterface {
   }
   async updateInvoice(requestId: any, requestData: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, InvoiceSchema.pick({ id: true }))
-      )?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        InvoiceSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -200,7 +204,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
       }
       const data = await validateType(requestData, InvoiceSchema);
 
-      if (!data) {
+      if (data instanceof ZodError) {
         logger.warn("Missing Info");
         return {
           success: false,
@@ -211,9 +215,9 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
 
-      const invoice = findInvoiceByIdDB(id);
+      const invoice = findInvoiceByIdDB(response.id);
       if (!invoice) {
-        const updatedInvoice = await updateInvoiceDB(id, data);
+        const updatedInvoice = await updateInvoiceDB(response.id, data);
         return {
           success: true,
           data: updatedInvoice,
@@ -241,10 +245,11 @@ export class InvoiceServices implements InvoiceServiceInterface {
 
   async deleteInvoice(requestId: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, InvoiceSchema.pick({ id: true }))
-      )?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        InvoiceSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -255,9 +260,9 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
 
-      const invoice = findInvoiceByIdDB(id);
+      const invoice = findInvoiceByIdDB(response.id);
       if (!invoice) {
-        const deletedInvoice = await deleteInvoiceDB(id);
+        const deletedInvoice = await deleteInvoiceDB(response.id);
         return {
           success: true,
           data: deletedInvoice,

@@ -25,17 +25,18 @@ import { hash, verifyHash } from "../../infrastructure/utils/encryptPassword";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
 import { User, UserSchema } from "../../types/common";
+import { ZodError } from "zod";
 
 //? Change
 class AuthService implements AuthServiceInterface {
   async login(requestData: any) {
     try {
-      const data = await validateType(
+      const response = await validateType(
         { username: requestData.username, password: requestData.password },
         UserSchema
       );
-      if (!data) {
-        logger.warn("Missing Info: ", data);
+      if (response instanceof ZodError || !response) {
+        logger.warn("Missing Info: ", response);
         return {
           success: false,
           error: {
@@ -45,7 +46,7 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
-      const userFromDb = await findUserNameDB(data.username);
+      const userFromDb = await findUserNameDB(response.username);
       if (!userFromDb) {
         return {
           success: false,
@@ -58,10 +59,10 @@ class AuthService implements AuthServiceInterface {
 
       const dBUsername = userFromDb?.username;
       const isPasswordMatch = verifyHash(
-        data.password,
+        response.password,
         userFromDb?.password || ""
       );
-      if (!isPasswordMatch || dBUsername !== data.username) {
+      if (!isPasswordMatch || dBUsername !== response.username) {
         logger.warn("Credentials Don't Match");
         return {
           success: false,
@@ -97,10 +98,10 @@ class AuthService implements AuthServiceInterface {
   }
   async createUser(requestData: any) {
     try {
-      const user = await validateType(requestData, UserSchema);
+      const response = await validateType(requestData, UserSchema);
 
-      if (!user) {
-        logger.warn("Missing Info: ", user);
+      if (response instanceof ZodError || !response) {
+        logger.warn("Missing Info: ", response);
         return {
           success: false,
           error: {
@@ -110,10 +111,10 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
-      const password = hash(user.password);
-      const createdUser = await createUserDB(user.username, password);
+      const password = hash(response.password);
+      const createdUser = await createUserDB(response.username, password);
 
-      return { success: true, data: createdUser };
+      return { success: true, data: { ...createdUser, password: "" } };
     } catch (error) {
       logger.error("Auth Create User Service: ", error);
       return {
@@ -135,7 +136,7 @@ class AuthService implements AuthServiceInterface {
           },
         };
       }
-      return { success: true, data: users };
+      return { success: true, data: { ...users, password: "" } };
     } catch (error) {
       logger.error("Auth Get Users Service: ", error);
       return {
@@ -150,10 +151,13 @@ class AuthService implements AuthServiceInterface {
 
   async getUserBasedOnId(requestId: any) {
     try {
-      const id = (await validateType({ id: requestId }, UserSchema))?.id;
+      const response = await validateType(
+        { id: requestId },
+        UserSchema.pick({ id: true })
+      );
 
-      if (!id) {
-        logger.error("Service ID Not Found: ", id);
+      if (response instanceof ZodError || !response.id) {
+        logger.error("Service ID Not Found: ", response);
         return {
           success: false,
           error: {
@@ -163,7 +167,7 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
-      const user = await findUserDB(id);
+      const user = await findUserDB(response.id);
       if (!user) {
         logger.error("Service User Not Found: ", user);
         return {
@@ -177,7 +181,7 @@ class AuthService implements AuthServiceInterface {
 
       return {
         success: true,
-        data: user,
+        data: { ...user, password: "" },
       };
     } catch (error) {
       logger.error("Auth Get User Service: ", error);
@@ -193,9 +197,12 @@ class AuthService implements AuthServiceInterface {
 
   async updateUser(requestId: any, requestData: any) {
     try {
-      const id = (await validateType({ id: requestId }, UserSchema))?.id;
-      if (!id) {
-        logger.warn("ID Not Found");
+      const response = await validateType(
+        { id: requestId },
+        UserSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
+        logger.warn("Missing ID: ", response);
         return {
           success: false,
           error: {
@@ -204,9 +211,8 @@ class AuthService implements AuthServiceInterface {
           },
         };
       }
-
       const data = await validateType(requestData, UserSchema);
-      if (!data) {
+      if (data instanceof ZodError || !data) {
         logger.warn("Missing info", data);
         return {
           success: false,
@@ -218,14 +224,14 @@ class AuthService implements AuthServiceInterface {
       }
 
       const hashedPassword = hash(data.password);
-      const updatedUser = await updateUserDB(id, {
+      const updatedUser = await updateUserDB(response.id, {
         ...data,
         password: hashedPassword,
       });
 
       return {
         success: true,
-        data: updatedUser,
+        data: { ...updatedUser, password: "" },
       };
     } catch (error) {
       logger.error("Auth Update User Service: ", error);
@@ -241,10 +247,10 @@ class AuthService implements AuthServiceInterface {
 
   async deleteUser(requestId: any) {
     try {
-      const id = (await validateType({ id: requestId }, UserSchema))?.id;
+      const response = await validateType({ id: requestId }, UserSchema);
 
-      if (!id) {
-        logger.warn("Missing ID");
+      if (response instanceof ZodError || !response.id) {
+        logger.warn("Missing ID: ", response);
         return {
           success: false,
           error: {
@@ -254,7 +260,7 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
-      const user = await findUserDB(id);
+      const user = await findUserDB(response.id);
       if (!user) {
         return {
           success: false,
@@ -265,11 +271,11 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
-      const deletedUser = await deleteUserDB(id);
+      const deletedUser = await deleteUserDB(response.id);
 
       return {
         success: true,
-        data: deletedUser,
+        data: { ...deletedUser, password: "" },
       };
     } catch (error) {
       logger.error("Auth Delete User Service: ", error);

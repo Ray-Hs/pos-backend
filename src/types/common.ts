@@ -1,4 +1,4 @@
-import { number, z } from "zod";
+import { z } from "zod";
 
 export const RoleEnum = z.enum(["ADMIN", "STAFF"]);
 type Role = z.infer<typeof RoleEnum>;
@@ -168,4 +168,4 @@ type TResult<T> = {
 
 export type Filter = "asc" | "desc";
 
-export type { Role, User, TResult, TError };
+export type { Role, TError, TResult, User };

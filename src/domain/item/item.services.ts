@@ -1,3 +1,4 @@
+import { ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
@@ -52,8 +53,11 @@ export class MenuItemServices implements MenuItemInterface {
 
   async getItemById(requestId: any) {
     try {
-      const id = (await validateType({ id: requestId }, MenuItemSchema))?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        MenuItemSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("No ID Provided");
         return {
           success: false,
@@ -63,7 +67,7 @@ export class MenuItemServices implements MenuItemInterface {
           },
         };
       }
-      const item = await findItemByIdDB(id);
+      const item = await findItemByIdDB(response.id);
       if (!item) {
         return {
           success: false,
@@ -92,8 +96,8 @@ export class MenuItemServices implements MenuItemInterface {
   async createItem(requestData: any) {
     try {
       const data = await validateType(requestData, MenuItemSchema);
-      if (!data) {
-        logger.warn("Missing Info");
+      if (data instanceof ZodError) {
+        logger.warn("Missing Info: ", data);
         return {
           success: false,
           error: {
@@ -123,12 +127,13 @@ export class MenuItemServices implements MenuItemInterface {
 
   async updateItem(requestId: any, requestData: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, MenuItemSchema.pick({ id: true }))
-      )?.id;
+      const response = await validateType(
+        { id: requestId },
+        MenuItemSchema.pick({ id: true })
+      );
       const data = await validateType(requestData, MenuItemSchema);
 
-      if (!id) {
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -139,8 +144,8 @@ export class MenuItemServices implements MenuItemInterface {
         };
       }
 
-      if (!data) {
-        logger.warn("Missing Data");
+      if (data instanceof ZodError) {
+        logger.warn("Missing Data: ", data);
         return {
           success: false,
           error: {
@@ -150,7 +155,7 @@ export class MenuItemServices implements MenuItemInterface {
         };
       }
 
-      const existingItem = await findItemByIdDB(id);
+      const existingItem = await findItemByIdDB(response.id);
       if (!existingItem) {
         logger.warn("No Item Found");
         return {
@@ -162,7 +167,7 @@ export class MenuItemServices implements MenuItemInterface {
         };
       }
 
-      const updatedData = await updateItemDB(id, data);
+      const updatedData = await updateItemDB(response.id, data);
       return {
         success: true,
         data: updatedData,
@@ -181,11 +186,12 @@ export class MenuItemServices implements MenuItemInterface {
 
   async deleteItem(requestId: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, MenuItemSchema.pick({ id: true }))
-      )?.id;
+      const response = await validateType(
+        { id: requestId },
+        MenuItemSchema.pick({ id: true })
+      );
 
-      if (!id) {
+      if (response instanceof ZodError || !response.id) {
         logger.warn("No ID Provided");
         return {
           success: false,
@@ -196,7 +202,7 @@ export class MenuItemServices implements MenuItemInterface {
         };
       }
 
-      const existingItem = await findItemByIdDB(id);
+      const existingItem = await findItemByIdDB(response.id);
       if (!existingItem) {
         logger.error("No Item Found");
         return {
@@ -208,7 +214,7 @@ export class MenuItemServices implements MenuItemInterface {
         };
       }
 
-      const deletedItem = await deleteItemDB(id);
+      const deletedItem = await deleteItemDB(response.id);
       return {
         success: true,
         data: deletedItem,

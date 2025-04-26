@@ -5,11 +5,13 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
+import { Filter } from "../../../types/common";
 
 export class SubcategoryController implements SubcategoryControllerInterface {
   async getSubcategories(req: Request, res: Response) {
+    const filter = req.query?.filter as Filter;
     const subcategoryInstance = new SubcategoryServices();
-    const response = await subcategoryInstance.getSubcategories();
+    const response = await subcategoryInstance.getSubcategories(filter);
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

@@ -1,3 +1,4 @@
+import { ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
@@ -61,10 +62,11 @@ export class OrderServices implements OrderServiceInterface {
 
   async getOrderById(requestId: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, OrderSchema.pick({ id: true }))
-      )?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        OrderSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -75,7 +77,7 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const data = await findOrderByIdDB(id, {
+      const data = await findOrderByIdDB(response.id, {
         items: true,
         table: true,
         user: true,
@@ -114,8 +116,8 @@ export class OrderServices implements OrderServiceInterface {
   async createOrder(requestData: any) {
     try {
       const data = await validateType(requestData, OrderSchema);
-      if (!data) {
-        logger.warn("Missing Info");
+      if (data instanceof ZodError) {
+        logger.warn("Missing Info: ", data);
         return {
           success: false,
           error: {
@@ -154,10 +156,11 @@ export class OrderServices implements OrderServiceInterface {
 
   async updateOrder(requestId: any, requestData: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, OrderSchema.pick({ id: true }))
-      )?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        OrderSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -169,8 +172,8 @@ export class OrderServices implements OrderServiceInterface {
       }
 
       const data = await validateType(requestData, OrderSchema);
-      if (!data) {
-        logger.warn("Missing Info");
+      if (data instanceof ZodError) {
+        logger.warn("Missing Info: ", data);
         return {
           success: false,
           error: {
@@ -180,7 +183,7 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const existingOrder = await findOrderByIdDB(id);
+      const existingOrder = await findOrderByIdDB(response.id);
       if (!existingOrder) {
         logger.warn("Not Found");
         return {
@@ -192,7 +195,7 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const updatedOrder = await updateOrderDB(id, data, {
+      const updatedOrder = await updateOrderDB(response.id, data, {
         items: true,
         table: true,
         user: true,
@@ -220,10 +223,11 @@ export class OrderServices implements OrderServiceInterface {
   }
   async deleteOrder(requestId: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, OrderSchema.pick({ id: true }))
-      )?.id;
-      if (!id) {
+      const response = await validateType(
+        { id: requestId },
+        OrderSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -234,7 +238,7 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const existingOrder = await findOrderByIdDB(id);
+      const existingOrder = await findOrderByIdDB(response.id);
       if (!existingOrder) {
         logger.warn("Not Found");
         return {
@@ -246,7 +250,7 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const deletedOrder = await deleteOrderDB(id, {
+      const deletedOrder = await deleteOrderDB(response.id, {
         items: true,
         table: true,
         user: true,

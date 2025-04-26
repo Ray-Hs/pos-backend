@@ -1,3 +1,4 @@
+import { ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
@@ -51,11 +52,12 @@ export class SectionServices implements SectionServiceInterface {
   }
   async getSectionById(requestId: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, SectionSchema.pick({ id: true }))
-      )?.id;
+      const response = await validateType(
+        { id: requestId },
+        SectionSchema.pick({ id: true })
+      );
 
-      if (!id) {
+      if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID");
         return {
           success: false,
@@ -65,7 +67,7 @@ export class SectionServices implements SectionServiceInterface {
           },
         };
       }
-      const data = await findSectionByIdDB(id);
+      const data = await findSectionByIdDB(response.id);
 
       if (!data) {
         logger.warn("Not Found");
@@ -97,7 +99,7 @@ export class SectionServices implements SectionServiceInterface {
     try {
       const data = await validateType(requestData, SectionSchema);
 
-      if (!data) {
+      if (data instanceof ZodError) {
         logger.warn("Missing Info");
         return {
           success: false,
@@ -127,12 +129,13 @@ export class SectionServices implements SectionServiceInterface {
 
   async updateSection(requestId: any, requestData: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, SectionSchema.pick({ id: true }))
-      )?.id;
+      const response = await validateType(
+        { id: requestId },
+        SectionSchema.pick({ id: true })
+      );
       const data = await validateType(requestData, SectionSchema);
 
-      if (!id) {
+      if (response instanceof ZodError || !response.id) {
         logger.warn("No ID Provided");
         return {
           success: false,
@@ -143,8 +146,8 @@ export class SectionServices implements SectionServiceInterface {
         };
       }
 
-      if (!data) {
-        logger.warn("Missing Info");
+      if (data instanceof ZodError) {
+        logger.warn("Missing Info: ", data);
         return {
           success: false,
           error: {
@@ -154,7 +157,7 @@ export class SectionServices implements SectionServiceInterface {
         };
       }
 
-      const existingSection = await findSectionByIdDB(id);
+      const existingSection = await findSectionByIdDB(response.id);
       if (!existingSection) {
         logger.warn("No Section Found");
         return {
@@ -166,7 +169,7 @@ export class SectionServices implements SectionServiceInterface {
         };
       }
 
-      const updatedSection = await updateSectionDB(id, data);
+      const updatedSection = await updateSectionDB(response.id, data);
       return {
         success: true,
         data: updatedSection,
@@ -184,11 +187,12 @@ export class SectionServices implements SectionServiceInterface {
   }
   async deleteSection(requestId: any) {
     try {
-      const id = (
-        await validateType({ id: requestId }, SectionSchema.pick({ id: true }))
-      )?.id;
+      const response = await validateType(
+        { id: requestId },
+        SectionSchema.pick({ id: true })
+      );
 
-      if (!id) {
+      if (response instanceof ZodError || !response.id) {
         logger.warn("No ID Provided");
         return {
           success: false,
@@ -199,7 +203,7 @@ export class SectionServices implements SectionServiceInterface {
         };
       }
 
-      const existingSection = await findSectionByIdDB(id);
+      const existingSection = await findSectionByIdDB(response.id);
       if (!existingSection) {
         logger.warn("No Section Found");
         return {
@@ -211,7 +215,7 @@ export class SectionServices implements SectionServiceInterface {
         };
       }
 
-      const deletedSection = await deleteSectionDB(id);
+      const deletedSection = await deleteSectionDB(response.id);
       return {
         success: true,
         data: deletedSection,

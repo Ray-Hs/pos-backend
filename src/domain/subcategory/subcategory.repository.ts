@@ -1,11 +1,14 @@
 import { Prisma } from "@prisma/client";
 import prisma from "../../infrastructure/database/prisma/client";
-import { SubCategory } from "../../types/common";
+import { Filter, SubCategory } from "../../types/common";
 
-export function getSubcategoriesDB() {
+export function getSubcategoriesDB(filter?: Filter) {
   return prisma.subCategory.findMany({
     include: {
       _count: true,
+    },
+    orderBy: {
+      sortOrder: filter,
     },
   });
 }

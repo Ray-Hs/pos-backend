@@ -905,3 +905,109 @@ Foreign key constraint violated: `MenuItem_subCategoryId_fkey (index)`
 [2025-04-23 14:21:47] [32minfo[39m: Filter: 
 [2025-04-23 14:21:50] [32minfo[39m: Filter: 
 [2025-04-23 14:21:55] [32minfo[39m: Filter: 
+[2025-04-26 14:23:53] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-26 14:23:53] [31merror[39m: Auth login Service:  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-26 16:07:27] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-26 16:07:27] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-26 16:07:53] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "username"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-26 16:07:53] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "username"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-26 16:08:09] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "username"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-26 16:08:09] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "username"
+    ],
+    "message": "Required"
+  }
+]
