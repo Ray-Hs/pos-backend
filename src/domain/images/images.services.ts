@@ -17,7 +17,7 @@ import {
 } from "../../infrastructure/utils/constants";
 import { TResult } from "../../types/common";
 
-const bucketName = process.env.BUCKET_NAME;
+const bucketName = process.env.BUCKET_NAME || "restaurant-pos";
 
 export class imageService implements ImageServiceInterface {
   async uploadImage(
@@ -33,7 +33,9 @@ export class imageService implements ImageServiceInterface {
           },
         };
       }
-      const imagePath = `${randomUUID()}-${formatName(image?.filename)}`;
+
+      console.log(image.originalname);
+      const imagePath = `${randomUUID()}-${formatName(image?.originalname)}`;
       const fileBuffer = Buffer.from(image.buffer);
 
       const response = await b2.send(

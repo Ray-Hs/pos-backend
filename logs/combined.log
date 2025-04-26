@@ -802,3 +802,10 @@ Foreign key constraint violated: `MenuItem_subCategoryId_fkey (index)`
     "message": "Required"
   }
 ]
+[2025-04-26 17:28:01] [31merror[39m: Error uploading image:  Cannot read properties of undefined (reading 'toLowerCase')
+[2025-04-26 17:29:11] [31merror[39m: Error uploading image:  Cannot read properties of undefined (reading 'toLowerCase')
+[2025-04-26 17:30:10] [31merror[39m: Error uploading image:  No value provided for input HTTP label: Bucket.
+[2025-04-26 17:30:40] [31merror[39m: Error uploading image:  No value provided for input HTTP label: Bucket.
+[2025-04-26 17:31:36] [31merror[39m: Error uploading image:  Could not load credentials from any providers
+[2025-04-26 17:34:31] [31merror[39m: Error uploading image:  Could not load credentials from any providers
+[2025-04-26 17:36:38] [31merror[39m: Error uploading image:  Could not load credentials from any providers

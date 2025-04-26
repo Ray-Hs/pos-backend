@@ -5,6 +5,7 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
+import { log } from "console";
 
 export class ImageController implements ImageControllerInterface {
   async uploadImage(req: Request, res: Response) {
@@ -17,7 +18,7 @@ export class ImageController implements ImageControllerInterface {
       .json(response);
   }
   async deleteImage(req: Request, res: Response) {
-    const url = req.params?.url;
+    const url = req.query?.url as string;
     const imageInstance = new imageService();
     const response = await imageInstance.deleteImage(url);
 

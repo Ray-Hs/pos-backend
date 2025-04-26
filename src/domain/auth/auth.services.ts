@@ -1,4 +1,5 @@
 import { JwtPayload } from "jsonwebtoken";
+import { ZodError } from "zod";
 import {
   createUserDB,
   deleteUserDB,
@@ -25,7 +26,6 @@ import { hash, verifyHash } from "../../infrastructure/utils/encryptPassword";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
 import { User, UserSchema } from "../../types/common";
-import { ZodError } from "zod";
 
 //? Change
 class AuthService implements AuthServiceInterface {
