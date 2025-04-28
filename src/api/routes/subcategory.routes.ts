@@ -16,6 +16,11 @@ router.get(
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(SubcategoryInstance.getSubcategoryById)
 );
+router.get(
+  "/category/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(SubcategoryInstance.getSubcategoriesByCategoryIdDB)
+);
 
 router.post(
   "/",

@@ -3,6 +3,7 @@ import { Filter, SubCategory, TResult } from "../../types/common";
 
 export interface SubcategoryServiceInterface {
   getSubcategories: (filter?: Filter) => Promise<TResult<SubCategory[]>>;
+  getSubcategoriesByCategoryIdDB: (id: any) => Promise<TResult<SubCategory[]>>;
   getSubcategoryById: (requestId: any) => Promise<TResult<SubCategory>>;
   createSubcategory: (requestData: any) => Promise<TResult<SubCategory>>;
   updateSubcategory: (
@@ -14,6 +15,10 @@ export interface SubcategoryServiceInterface {
 
 export interface SubcategoryControllerInterface {
   getSubcategories: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<SubCategory[]>>>;
+  getSubcategoriesByCategoryIdDB: (
     req: Request,
     res: Response
   ) => Promise<Response<TResult<SubCategory[]>>>;

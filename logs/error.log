@@ -936,3 +936,25 @@ D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\item\item.repository
   76 ) {
 → 77   return prisma.menuItem.update(
 Foreign key constraint violated: `MenuItem_subCategoryId_fkey (index)`
+[2025-04-28 15:46:45] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "subCategoryId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-28 16:25:04] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "categoryId"
+    ],
+    "message": "Expected number, received string"
+  }
+]

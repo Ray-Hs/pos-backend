@@ -18,6 +18,18 @@ export class SubcategoryController implements SubcategoryControllerInterface {
       .json(response);
   }
 
+  async getSubcategoriesByCategoryIdDB(req: Request, res: Response) {
+    const id = parseInt(req.params?.id, 10);
+    const subcategoryInstance = new SubcategoryServices();
+    const response = await subcategoryInstance.getSubcategoriesByCategoryIdDB(
+      id
+    );
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
   async getSubcategoryById(req: Request, res: Response) {
     const id = parseInt(req.params?.id, 10);
     const subcategoryInstance = new SubcategoryServices();

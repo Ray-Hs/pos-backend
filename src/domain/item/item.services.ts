@@ -117,6 +117,7 @@ export class MenuItemServices implements MenuItemInterface {
           error: {
             code: BAD_REQUEST_STATUS,
             message: BAD_REQUEST_BODY_ERR,
+            details: data,
           },
         };
       }

@@ -109,6 +109,7 @@ export class CategoryServices implements CategoryServiceInterface {
           error: {
             code: BAD_REQUEST_STATUS,
             message: BAD_REQUEST_BODY_ERR,
+            details: category,
           },
         };
       }
@@ -159,6 +160,7 @@ export class CategoryServices implements CategoryServiceInterface {
           error: {
             code: BAD_REQUEST_STATUS,
             message: BAD_REQUEST_BODY_ERR,
+            details: data,
           },
         };
       }

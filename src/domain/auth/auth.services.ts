@@ -107,6 +107,7 @@ class AuthService implements AuthServiceInterface {
           error: {
             code: BAD_REQUEST_STATUS,
             message: BAD_REQUEST_BODY_ERR,
+            details: response,
           },
         };
       }
@@ -119,7 +120,11 @@ class AuthService implements AuthServiceInterface {
       logger.error("Auth Create User Service: ", error);
       return {
         success: false,
-        error: { code: INTERNAL_SERVER_STATUS, message: INTERNAL_SERVER_ERR },
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+          details: error,
+        },
       };
     }
   }
@@ -219,6 +224,7 @@ class AuthService implements AuthServiceInterface {
           error: {
             code: BAD_REQUEST_STATUS,
             message: BAD_REQUEST_BODY_ERR,
+            details: data,
           },
         };
       }

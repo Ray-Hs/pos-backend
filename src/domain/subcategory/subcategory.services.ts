@@ -17,6 +17,7 @@ import {
   createSubcategoryDB,
   deleteSubcategoryDB,
   findSubcategoryByIdDB,
+  getSubcategoriesByCategoryIdDB,
   getSubcategoriesDB,
   updateSubcategoryDB,
 } from "./subcategory.repository";
@@ -26,6 +27,49 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
   async getSubcategories(filter?: Filter) {
     try {
       const data = await getSubcategoriesDB(filter);
+      if (!data || data.length === 0) {
+        logger.warn("No subcategories found.");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      return {
+        success: true,
+        data,
+      };
+    } catch (error) {
+      logger.error("Get Subcategory Service: ", error);
+      return {
+        success: false,
+        error: { code: INTERNAL_SERVER_STATUS, message: INTERNAL_SERVER_ERR },
+      };
+    }
+  }
+
+  async getSubcategoriesByCategoryIdDB(id: any) {
+    try {
+      const response = await validateType(
+        { categoryId: id },
+        SubCategorySchema.pick({ categoryId: true })
+      );
+
+      if (response instanceof ZodError || !response.categoryId) {
+        logger.warn("Category Id missing");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+
+      const data = await getSubcategoriesByCategoryIdDB(response.categoryId);
       if (!data || data.length === 0) {
         logger.warn("No subcategories found.");
         return {
@@ -103,6 +147,7 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
           error: {
             code: NOT_FOUND_STATUS,
             message: NOT_FOUND_ERR,
+            details: data,
           },
         };
       }
@@ -150,6 +195,7 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
           error: {
             code: BAD_REQUEST_STATUS,
             message: BAD_REQUEST_BODY_ERR,
+            details: data,
           },
         };
       }

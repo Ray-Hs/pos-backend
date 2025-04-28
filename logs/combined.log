@@ -908,3 +908,45 @@ D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\item\item.repository
   76 ) {
 → 77   return prisma.menuItem.update(
 Foreign key constraint violated: `MenuItem_subCategoryId_fkey (index)`
+[2025-04-28 15:46:45] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "subCategoryId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-28 15:46:45] [33mwarn[39m: Missing Data:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "subCategoryId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-28 15:47:08] [33mwarn[39m: No Subcategory found
+[2025-04-28 15:47:13] [33mwarn[39m: No Subcategory found
+[2025-04-28 15:52:53] [33mwarn[39m: NOT FOUND
+[2025-04-28 15:59:10] [33mwarn[39m: No Item Found
+[2025-04-28 16:25:04] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "categoryId"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-04-28 16:25:04] [33mwarn[39m: Category Id missing
+[2025-04-28 16:25:35] [33mwarn[39m: Category Id missing
+[2025-04-28 16:27:54] [33mwarn[39m: No subcategories found.
+[2025-04-28 16:27:59] [33mwarn[39m: No subcategories found.
+[2025-04-28 16:28:02] [33mwarn[39m: No subcategories found.
