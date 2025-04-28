@@ -5,7 +5,6 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
-import { log } from "console";
 
 export class ImageController implements ImageControllerInterface {
   async uploadImage(req: Request, res: Response) {

@@ -10,7 +10,7 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { MenuItemSchema } from "../../types/common";
+import { Filter, FilterBy, Language, MenuItemSchema } from "../../types/common";
 import {
   createItemDB,
   deleteItemDB,
@@ -21,9 +21,23 @@ import {
 import { MenuItemInterface } from "./item.types";
 
 export class MenuItemServices implements MenuItemInterface {
-  async getItems() {
+  async getItems(
+    subcategoryId?: number,
+    sort?: Filter,
+    sortby?: FilterBy,
+    language?: Language
+  ) {
     try {
-      const data = await getItemsDB();
+      console.table([subcategoryId, sort, sortby, language]);
+      const data = await getItemsDB(
+        {},
+        {
+          subcategoryId,
+          sort,
+          sortby,
+          language,
+        }
+      );
       if (!data || data.length === 0) {
         logger.warn("NOT FOUND");
         return {
@@ -151,6 +165,7 @@ export class MenuItemServices implements MenuItemInterface {
           error: {
             code: BAD_REQUEST_STATUS,
             message: BAD_REQUEST_BODY_ERR,
+            details: data,
           },
         };
       }
@@ -179,6 +194,7 @@ export class MenuItemServices implements MenuItemInterface {
         error: {
           code: INTERNAL_SERVER_STATUS,
           message: INTERNAL_SERVER_ERR,
+          details: error,
         },
       };
     }

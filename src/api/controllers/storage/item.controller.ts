@@ -5,11 +5,21 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
+import { Filter, FilterBy, Language } from "../../../types/common";
 
 export class MenuItemController implements MenuItemControllerInterface {
   async getItems(req: Request, res: Response) {
+    const subcategoryId = parseInt(req.query?.subcategoryId as string, 10);
+    const sort = req.query?.sort as Filter;
+    const sortby = req.query?.sortby as FilterBy;
+    const language = req.query?.lang as Language;
     const menuItemService = new MenuItemServices();
-    const items = await menuItemService.getItems();
+    const items = await menuItemService.getItems(
+      subcategoryId,
+      sort,
+      sortby,
+      language
+    );
 
     return res
       .status(items.success ? OK_STATUS : items.error?.code || 500)

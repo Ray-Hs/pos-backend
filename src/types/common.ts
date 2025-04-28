@@ -26,7 +26,7 @@ export const MenuItemSchema = z.object({
 
   price: z.number(),
   discount: z.number().default(0),
-  company: z.string().nullable(),
+  company: z.string().nullable().optional(),
   isActive: z.boolean().default(true),
   image: z.string().nullable().optional(),
 
@@ -167,5 +167,9 @@ type TResult<T> = {
 };
 
 export type Filter = "asc" | "desc";
+
+export type FilterBy = "name" | "date" | "price";
+
+export type Language = "en" | "ar" | "ku";
 
 export type { Role, TError, TResult, User };

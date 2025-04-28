@@ -30,6 +30,13 @@ export function createTableDB(data: Table) {
         connect: orders?.map((order) => ({ id: order.id })),
       },
     },
+    include: {
+      orders: {
+        include: {
+          items: true,
+        },
+      },
+    },
   });
 }
 
@@ -45,6 +52,13 @@ export function updateTableDB(id: number, data: Table) {
         connect: orders?.map((order) => ({ id: order.id })),
       },
     },
+    include: {
+      orders: {
+        include: {
+          items: true,
+        },
+      },
+    },
   });
 }
 
@@ -52,6 +66,13 @@ export function deleteTableDB(id: number) {
   return prisma.table.delete({
     where: {
       id,
+    },
+    include: {
+      orders: {
+        include: {
+          items: true,
+        },
+      },
     },
   });
 }

@@ -1,8 +1,19 @@
 import { Request, Response } from "express";
-import { MenuItem, TResult } from "../../types/common";
+import {
+  Filter,
+  FilterBy,
+  Language,
+  MenuItem,
+  TResult,
+} from "../../types/common";
 
 export interface MenuItemInterface {
-  getItems: () => Promise<TResult<MenuItem[]>>;
+  getItems: (
+    subcategoryId?: number,
+    sort?: Filter,
+    sortby?: FilterBy,
+    language?: Language
+  ) => Promise<TResult<MenuItem[]>>;
   getItemById: (requestId: any) => Promise<TResult<MenuItem>>;
   createItem: (requestData: any) => Promise<TResult<MenuItem>>;
   updateItem: (requestId: any, requestData: any) => Promise<TResult<MenuItem>>;

@@ -13,6 +13,15 @@ export async function findCategoryDB(
       id,
     },
     include: {
+      subCategory: {
+        include: {
+          items: {
+            include: {
+              _count: true,
+            },
+          },
+        },
+      },
       ...include,
     },
   });
@@ -24,6 +33,15 @@ export async function getCategoriesDB(
 ) {
   return prisma.category.findMany({
     include: {
+      subCategory: {
+        include: {
+          items: {
+            include: {
+              _count: true,
+            },
+          },
+        },
+      },
       ...include,
     },
     orderBy: {
@@ -49,6 +67,15 @@ export async function updateCategoryDB(
       },
     },
     include: {
+      subCategory: {
+        include: {
+          items: {
+            include: {
+              _count: true,
+            },
+          },
+        },
+      },
       ...include,
     },
   });

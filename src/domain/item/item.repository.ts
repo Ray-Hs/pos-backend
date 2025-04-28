@@ -1,10 +1,37 @@
 import { Prisma } from "@prisma/client";
 import prisma from "../../infrastructure/database/prisma/client";
-import { MenuItem } from "../../types/common";
+import { Filter, FilterBy, Language, MenuItem } from "../../types/common";
 
-export async function getItemsDB(include?: Prisma.MenuItemInclude) {
+export async function getItemsDB(
+  include?: Prisma.MenuItemInclude,
+  filter?: {
+    subcategoryId?: number;
+    sort?: Filter;
+    sortby?: FilterBy;
+    language?: Language;
+  }
+) {
+  const orderByField =
+    filter?.sortby === "name"
+      ? filter?.language === "ku"
+        ? "title_ku"
+        : filter?.language === "ar"
+        ? "title_ar"
+        : "title_en"
+      : filter?.sortby === "date"
+      ? "createdAt"
+      : filter?.sortby === "price"
+      ? "price"
+      : "id";
+
   return prisma.menuItem.findMany({
     include,
+    where: filter?.subcategoryId
+      ? { subCategoryId: filter.subcategoryId }
+      : undefined,
+    orderBy: {
+      [orderByField]: filter?.sort || "asc",
+    },
   });
 }
 

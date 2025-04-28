@@ -50,6 +50,7 @@ export class imageService implements ImageServiceInterface {
       const status = response.$metadata.httpStatusCode;
 
       if (status === 200 || status === 201) {
+        console.log(response);
         return {
           success: true,
           data: {
