@@ -1124,3 +1124,20 @@ Foreign key constraint violated: `MenuItem_subCategoryId_fkey (index)`
 [2025-04-28 16:27:54] [33mwarn[39m: No subcategories found.
 [2025-04-28 16:27:59] [33mwarn[39m: No subcategories found.
 [2025-04-28 16:28:02] [33mwarn[39m: No subcategories found.
+[2025-04-28 17:23:18] [33mwarn[39m: Not Found
+[2025-04-28 17:23:38] [33mwarn[39m: Not Found
+[2025-04-28 17:24:18] [33mwarn[39m: Not Found
+[2025-04-28 17:24:20] [33mwarn[39m: Not Found
+[2025-04-28 17:25:23] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-04-28 17:25:23] [33mwarn[39m: Missing ID
+[2025-04-28 17:28:12] [33mwarn[39m: Not Found

@@ -10,14 +10,7 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import {
-  Filter,
-  FilterBy,
-  Language,
-  MenuItem,
-  MenuItemSchema,
-  TResult,
-} from "../../types/common";
+import { Filter, FilterBy, Language, MenuItemSchema } from "../../types/common";
 import {
   createItemDB,
   deleteItemDB,
@@ -26,20 +19,21 @@ import {
   updateItemDB,
 } from "./item.repository";
 import { MenuItemInterface } from "./item.types";
-import Fuse from "fuse.js";
 
 export class MenuItemServices implements MenuItemInterface {
   async getItems(
+    q?: string,
     subcategoryId?: number,
     sort?: Filter,
     sortby?: FilterBy,
     language?: Language
   ) {
     try {
-      console.table([subcategoryId, sort, sortby, language]);
+      console.table([subcategoryId, sort, sortby, language, q]);
       const data = await getItemsDB(
         {},
         {
+          q,
           subcategoryId,
           sort,
           sortby,
@@ -102,50 +96,6 @@ export class MenuItemServices implements MenuItemInterface {
       return {
         success: true,
         data: item,
-      };
-    } catch (error) {
-      logger.error("Menu item Service: ", error);
-      return {
-        success: false,
-        error: {
-          code: INTERNAL_SERVER_STATUS,
-          message: INTERNAL_SERVER_ERR,
-        },
-      };
-    }
-  }
-
-  async searchItems(q: any) {
-    try {
-      const items = await getItemsDB();
-      if (!items || items.length === 0) {
-        logger.warn("Not Found");
-        return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
-        };
-      }
-      const fuse = new Fuse(items, {
-        keys: ["title_ku", "title_ar", "title_en"],
-      });
-
-      const response = fuse.search(q);
-      if (!response || response.length === 0) {
-        logger.warn("Not Found");
-        return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
-        };
-      }
-      return {
-        success: true,
-        data: response.map((item) => item.item),
       };
     } catch (error) {
       logger.error("Menu item Service: ", error);

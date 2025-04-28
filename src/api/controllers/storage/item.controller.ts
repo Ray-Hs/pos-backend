@@ -5,7 +5,12 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
-import { Filter, FilterBy, Language } from "../../../types/common";
+import {
+  Filter,
+  FilterBy,
+  Language,
+  MenuItemSchema,
+} from "../../../types/common";
 
 export class MenuItemController implements MenuItemControllerInterface {
   async getItems(req: Request, res: Response) {
@@ -13,8 +18,10 @@ export class MenuItemController implements MenuItemControllerInterface {
     const sort = req.query?.sort as Filter;
     const sortby = req.query?.sortby as FilterBy;
     const language = req.query?.lang as Language;
+    const q = req.query?.q as string;
     const menuItemService = new MenuItemServices();
     const items = await menuItemService.getItems(
+      q,
       subcategoryId,
       sort,
       sortby,
@@ -30,16 +37,6 @@ export class MenuItemController implements MenuItemControllerInterface {
     const id = parseInt(req.params?.id, 10);
     const menuItemService = new MenuItemServices();
     const item = await menuItemService.getItemById(id);
-
-    return res
-      .status(item.success ? OK_STATUS : item.error?.code || 500)
-      .json(item);
-  }
-
-  async searchItems(req: Request, res: Response) {
-    const q = req.params?.q;
-    const menuItemService = new MenuItemServices();
-    const item = await menuItemService.searchItems(q);
 
     return res
       .status(item.success ? OK_STATUS : item.error?.code || 500)

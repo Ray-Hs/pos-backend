@@ -5,11 +5,13 @@ import { Filter, FilterBy, Language, MenuItem } from "../../types/common";
 export async function getItemsDB(
   include?: Prisma.MenuItemInclude,
   filter?: {
+    q?: string;
     subcategoryId?: number;
     sort?: Filter;
     sortby?: FilterBy;
     language?: Language;
-  }
+  },
+  text?: string
 ) {
   const orderByField =
     filter?.sortby === "name"
@@ -24,13 +26,45 @@ export async function getItemsDB(
       ? "price"
       : "id";
 
+  let whereClause = [];
+
+  if (filter?.q) {
+    whereClause.push({
+      OR: [
+        {
+          title_ar: {
+            contains: filter?.q,
+            mode: Prisma.QueryMode.insensitive,
+          },
+        },
+        {
+          title_en: {
+            contains: filter?.q,
+            mode: Prisma.QueryMode.insensitive,
+          },
+        },
+        {
+          title_ku: {
+            contains: filter?.q,
+            mode: Prisma.QueryMode.insensitive,
+          },
+        },
+      ],
+    });
+  }
+  if (filter?.subcategoryId) {
+    whereClause.push({
+      subCategoryId: filter?.subcategoryId,
+    });
+  }
+
   return prisma.menuItem.findMany({
     include,
-    where: filter?.subcategoryId
-      ? { subCategoryId: filter.subcategoryId }
-      : undefined,
     orderBy: {
       [orderByField]: filter?.sort || "asc",
+    },
+    where: {
+      AND: [...whereClause],
     },
   });
 }
