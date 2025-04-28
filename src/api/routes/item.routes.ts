@@ -16,6 +16,11 @@ router.get(
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(MenuItemInstance.getItemById)
 );
+router.get(
+  "/search/:q",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(MenuItemInstance.searchItems)
+);
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),

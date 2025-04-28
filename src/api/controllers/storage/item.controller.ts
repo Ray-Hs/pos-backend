@@ -36,6 +36,16 @@ export class MenuItemController implements MenuItemControllerInterface {
       .json(item);
   }
 
+  async searchItems(req: Request, res: Response) {
+    const q = req.params?.q;
+    const menuItemService = new MenuItemServices();
+    const item = await menuItemService.searchItems(q);
+
+    return res
+      .status(item.success ? OK_STATUS : item.error?.code || 500)
+      .json(item);
+  }
+
   async createItem(req: Request, res: Response) {
     const data = req.body;
     const menuItemService = new MenuItemServices();
