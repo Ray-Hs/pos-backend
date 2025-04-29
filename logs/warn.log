@@ -1141,3 +1141,65 @@ Foreign key constraint violated: `MenuItem_subCategoryId_fkey (index)`
 ]
 [2025-04-28 17:25:23] [33mwarn[39m: Missing ID
 [2025-04-28 17:28:12] [33mwarn[39m: Not Found
+[2025-04-28 17:42:23] [33mwarn[39m: NOT FOUND
+[2025-04-29 11:55:16] [31merror[39m: Get Categories Service:  
+Invalid `prisma.category.findMany()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\category\category.repository.ts:26:26
+
+  23 }
+  24 
+  25 export async function getCategoriesDB(filter?: Filter) {
+→ 26   return prisma.category.findMany({
+         include: {
+           subCategory: {
+             include: {
+             ~~~~~~~
+               _count: true
+             },
+             select: {
+             ~~~~~~
+               _count: {
+                 select: {
+                   items: true
+                 }
+               }
+             }
+           }
+         },
+         orderBy: {
+           sortOrder: "desc"
+         }
+       })
+
+Please either use `include` or `select`, but not both at the same time.
+[2025-04-29 11:55:19] [31merror[39m: Get Categories Service:  
+Invalid `prisma.category.findMany()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\category\category.repository.ts:26:26
+
+  23 }
+  24 
+  25 export async function getCategoriesDB(filter?: Filter) {
+→ 26   return prisma.category.findMany({
+         include: {
+           subCategory: {
+             include: {
+             ~~~~~~~
+               _count: true
+             },
+             select: {
+             ~~~~~~
+               _count: {
+                 select: {
+                   items: true
+                 }
+               }
+             }
+           }
+         },
+         orderBy: {
+           sortOrder: "desc"
+         }
+       })
+
+Please either use `include` or `select`, but not both at the same time.
+[2025-04-29 12:55:10] [31merror[39m: There is no Category

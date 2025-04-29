@@ -2,17 +2,13 @@ import { Prisma } from "@prisma/client";
 import prisma from "../../infrastructure/database/prisma/client";
 import { Filter, FilterBy, Language, MenuItem } from "../../types/common";
 
-export async function getItemsDB(
-  include?: Prisma.MenuItemInclude,
-  filter?: {
-    q?: string;
-    subcategoryId?: number;
-    sort?: Filter;
-    sortby?: FilterBy;
-    language?: Language;
-  },
-  text?: string
-) {
+export async function getItemsDB(filter?: {
+  q?: string;
+  subcategoryId?: number;
+  sort?: Filter;
+  sortby?: FilterBy;
+  language?: Language;
+}) {
   const orderByField =
     filter?.sortby === "name"
       ? filter?.language === "ku"
@@ -59,7 +55,23 @@ export async function getItemsDB(
   }
 
   return prisma.menuItem.findMany({
-    include,
+    include: {
+      SubCategory: {
+        select: {
+          Category: {
+            select: {
+              title_ar: true,
+              title_ku: true,
+              title_en: true,
+              id: true,
+            },
+          },
+          title_ar: true,
+          title_ku: true,
+          title_en: true,
+        },
+      },
+    },
     orderBy: {
       [orderByField]: filter?.sort || "asc",
     },

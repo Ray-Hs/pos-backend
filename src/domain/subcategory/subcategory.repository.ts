@@ -6,6 +6,11 @@ export function getSubcategoriesDB(filter?: Filter) {
   return prisma.subCategory.findMany({
     include: {
       _count: true,
+      items: {
+        select: {
+          _count: true,
+        },
+      },
     },
     orderBy: {
       sortOrder: filter,

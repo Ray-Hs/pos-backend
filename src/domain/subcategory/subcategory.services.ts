@@ -11,7 +11,7 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { Filter, SubCategorySchema } from "../../types/common";
+import { Filter, SubCategory, SubCategorySchema } from "../../types/common";
 import { findItemBySubCategoryIdDB } from "../item/item.repository";
 import {
   createSubcategoryDB,
@@ -38,9 +38,28 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
+      const formattedSubcategory: SubCategory[] = data.map((subcategory) => {
+        return {
+          id: subcategory.id,
+          categoryId: subcategory.categoryId,
+          title_ar: subcategory.title_ar,
+          title_en: subcategory.title_en,
+          title_ku: subcategory.title_ku,
+          description_ar: subcategory.description_ar,
+          description_en: subcategory.description_en,
+          description_ku: subcategory.description_ku,
+          isActive: subcategory.isActive,
+          sortOrder: subcategory.sortOrder,
+          image: subcategory.image,
+          itemsCount: subcategory._count.items,
+          createdAt: subcategory.createdAt,
+          updatedAt: subcategory.updatedAt,
+        };
+      });
+
       return {
         success: true,
-        data,
+        data: formattedSubcategory,
       };
     } catch (error) {
       logger.error("Get Subcategory Service: ", error);
@@ -81,9 +100,28 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
+      const formattedSubcategory: SubCategory[] = data.map((subcategory) => {
+        return {
+          id: subcategory.id,
+          categoryId: subcategory.categoryId,
+          title_ar: subcategory.title_ar,
+          title_en: subcategory.title_en,
+          title_ku: subcategory.title_ku,
+          description_ar: subcategory.description_ar,
+          description_en: subcategory.description_en,
+          description_ku: subcategory.description_ku,
+          isActive: subcategory.isActive,
+          sortOrder: subcategory.sortOrder,
+          image: subcategory.image,
+          itemsCount: subcategory._count.items,
+          createdAt: subcategory.createdAt,
+          updatedAt: subcategory.updatedAt,
+        };
+      });
+
       return {
         success: true,
-        data,
+        data: formattedSubcategory,
       };
     } catch (error) {
       logger.error("Get Subcategory Service: ", error);
@@ -124,9 +162,26 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
+      const formattedSubcategory: SubCategory = {
+        id: data.id,
+        categoryId: data.categoryId,
+        title_ar: data.title_ar,
+        title_en: data.title_en,
+        title_ku: data.title_ku,
+        description_ar: data.description_ar,
+        description_en: data.description_en,
+        description_ku: data.description_ku,
+        isActive: data.isActive,
+        sortOrder: data.sortOrder,
+        image: data.image,
+        itemsCount: data._count.items,
+        createdAt: data.createdAt,
+        updatedAt: data.updatedAt,
+      };
+
       return {
         success: true,
-        data,
+        data: formattedSubcategory,
       };
     } catch (error) {
       logger.error("Get Subcategory By ID Service: ", error);

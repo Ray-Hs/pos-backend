@@ -23,12 +23,30 @@ export const MenuItemSchema = z.object({
   description_ku: z.string().default(""),
   description_ar: z.string().default(""),
   subCategoryId: z.number().nullable(),
+  categoryId: z.number().nullable().optional(),
 
   price: z.number(),
   discount: z.number().default(0),
   company: z.string().nullable().optional(),
   isActive: z.boolean().default(true),
   image: z.string().nullable().optional(),
+
+  category: z
+    .object({
+      title_en: z.string(),
+      title_ar: z.string(),
+      title_ku: z.string(),
+    })
+    .nullable()
+    .optional(),
+  subcategory: z
+    .object({
+      title_en: z.string(),
+      title_ar: z.string(),
+      title_ku: z.string(),
+    })
+    .nullable()
+    .optional(),
 
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
@@ -51,6 +69,7 @@ export const SubCategorySchema = z.object({
 
   categoryId: z.number(),
   items: z.array(MenuItemSchema).optional(),
+  itemsCount: z.number().optional(),
 
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
@@ -71,6 +90,9 @@ export const CategorySchema = z.object({
   isActive: z.boolean().default(true),
   image: z.string().nullable().optional(),
   subCategory: z.array(SubCategorySchema).optional(),
+
+  subcategoryCount: z.number().optional(),
+  itemsCount: z.number().optional(),
 
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),

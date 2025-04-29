@@ -11,7 +11,7 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { CategorySchema, Filter } from "../../types/common";
+import { Category, CategorySchema, Filter } from "../../types/common";
 import { getSubcategoriesByCategoryIdDB } from "../subcategory/subcategory.repository";
 import {
   createCategoryDB,
@@ -25,7 +25,7 @@ import { CategoryServiceInterface } from "./category.types";
 export class CategoryServices implements CategoryServiceInterface {
   async getCategories(filter?: Filter) {
     try {
-      const categories = await getCategoriesDB({ _count: true }, filter);
+      const categories = await getCategoriesDB(filter);
       if (!categories || categories.length === 0) {
         logger.warn("Get Categories Service Has No Entries.");
         return {
@@ -36,9 +36,34 @@ export class CategoryServices implements CategoryServiceInterface {
           },
         };
       }
+
+      const formattedCategories = categories.map((category) => {
+        const itemsCount = category.subCategory.reduce(
+          (acc, subcategory) => acc + subcategory._count.items,
+          0
+        );
+
+        return {
+          id: category.id,
+          title_en: category.title_en,
+          title_ku: category.title_ku,
+          title_ar: category.title_ar,
+          description_en: category.description_en,
+          description_ku: category.description_ku,
+          description_ar: category.description_ar,
+          sortOrder: category.sortOrder,
+          isActive: category.isActive,
+          image: category.image,
+          createdAt: category.createdAt,
+          updatedAt: category.updatedAt,
+          itemsCount,
+          subcategoryCount: category._count.subCategory,
+        };
+      });
+
       return {
         success: true,
-        data: categories,
+        data: formattedCategories,
       };
     } catch (error) {
       logger.error("Get Categories Service: ", error);
@@ -70,7 +95,7 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const data = await findCategoryDB(response.id, { _count: true });
+      const data = await findCategoryDB(response.id);
       if (!data) {
         logger.error("There is no Category");
         return {
@@ -82,9 +107,29 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
+      const itemsCount = data.subCategory.reduce(
+        (acc, subcategory) => acc + subcategory._count.items,
+        0
+      );
+      const formattedCategory = {
+        id: data.id,
+        title_en: data.title_en,
+        title_ku: data.title_ku,
+        title_ar: data.title_ar,
+        description_en: data.description_en,
+        description_ku: data.description_ku,
+        description_ar: data.description_ar,
+        sortOrder: data.sortOrder,
+        isActive: data.isActive,
+        image: data.image,
+        createdAt: data.createdAt,
+        updatedAt: data.updatedAt,
+        itemsCount,
+        subcategoryCount: data._count.subCategory,
+      };
       return {
         success: true,
-        data,
+        data: formattedCategory,
       };
     } catch (error) {
       logger.error("Find Category By ID Service: ", error);
@@ -114,7 +159,7 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const data = await createCategoryDB(category, { _count: true });
+      const data = await createCategoryDB(category);
 
       return {
         success: true,
@@ -177,9 +222,7 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const updatedCategory = await updateCategoryDB(idResponse.id, data, {
-        _count: true,
-      });
+      const updatedCategory = await updateCategoryDB(idResponse.id, data);
 
       return {
         success: true,

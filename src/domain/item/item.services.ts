@@ -10,7 +10,13 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { Filter, FilterBy, Language, MenuItemSchema } from "../../types/common";
+import {
+  Filter,
+  FilterBy,
+  Language,
+  MenuItem,
+  MenuItemSchema,
+} from "../../types/common";
 import {
   createItemDB,
   deleteItemDB,
@@ -30,16 +36,13 @@ export class MenuItemServices implements MenuItemInterface {
   ) {
     try {
       console.table([subcategoryId, sort, sortby, language, q]);
-      const data = await getItemsDB(
-        {},
-        {
-          q,
-          subcategoryId,
-          sort,
-          sortby,
-          language,
-        }
-      );
+      const data = await getItemsDB({
+        q,
+        subcategoryId,
+        sort,
+        sortby,
+        language,
+      });
       if (!data || data.length === 0) {
         logger.warn("NOT FOUND");
         return {
@@ -51,9 +54,43 @@ export class MenuItemServices implements MenuItemInterface {
         };
       }
 
+      const formattedItems: MenuItem[] = data.map((item) => {
+        const categoryId = item.SubCategory?.Category?.id || null;
+        const category = {
+          title_ar: item.SubCategory?.Category?.title_ar || "",
+          title_ku: item.SubCategory?.Category?.title_ku || "",
+          title_en: item.SubCategory?.Category?.title_en || "",
+        };
+        const subcategory = {
+          title_ar: item.SubCategory?.title_ar || "",
+          title_ku: item.SubCategory?.title_ku || "",
+          title_en: item.SubCategory?.title_en || "",
+        };
+        return {
+          id: item.id,
+          title_ar: item.title_ar,
+          title_ku: item.title_ku,
+          title_en: item.title_en,
+          description_ar: item.description_ar,
+          description_en: item.description_en,
+          description_ku: item.description_ku,
+          discount: item.discount,
+          isActive: item.isActive,
+          price: item.price,
+          subCategoryId: item.subCategoryId,
+          categoryId,
+          company: item.company,
+          image: item.image,
+          category,
+          subcategory,
+          createdAt: item.createdAt,
+          updatedAt: item.updatedAt,
+        };
+      });
+
       return {
         success: true,
-        data,
+        data: formattedItems,
       };
     } catch (error) {
       logger.error("Menu item Service: ", error);
