@@ -142,8 +142,6 @@ export const OrderSchema = z.object({
   tableId: z.number().nullable().optional(),
   userId: z.number(),
   status: OrderStatusEnum,
-  paymentMethod: PaymentMethodEnum.nullable().optional(),
-  paid: z.boolean().default(false),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
   items: z.array(OrderItemSchema),
