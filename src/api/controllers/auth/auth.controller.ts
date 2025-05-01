@@ -18,7 +18,7 @@ class AuthController implements AuthControllerInterface {
         httpOnly: true,
         maxAge: ms(JWT_EXPIRE),
         secure: true,
-        sameSite: "lax",
+        sameSite: "none",
         priority: "high",
       });
     }

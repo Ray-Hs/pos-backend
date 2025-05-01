@@ -5,7 +5,12 @@ import multer from "multer";
 import Routes from "./api/routes";
 const app = express();
 const corsOptions: CorsOptions = {
-  origin: ["http://localhost:3001", "http://localhost:3000"],
+  origin: [
+    "http://localhost:3001",
+    "http://localhost:3000",
+    "http://localhost:8080",
+    "http://192.168.43.74:3000",
+  ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
 };
