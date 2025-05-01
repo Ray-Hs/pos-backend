@@ -10,7 +10,7 @@
     "dev": "dotenv -- nodemon --exec ts-node ./src/server.ts",
     "build": "tsc",
     "postinstall": "prisma generate && npm run build",
-    "start": "node public/dist/src/server.js",
+    "start": "node public/dist/src/server.js -p 3001",
     "migrate-dev": "npx prisma migrate dev",
     "migrate-deploy": "npx prisma migrate deploy",
     "generate": "npx prisma generate",
