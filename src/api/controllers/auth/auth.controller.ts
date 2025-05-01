@@ -13,11 +13,13 @@ class AuthController implements AuthControllerInterface {
     const body = req.body;
     const AuthServiceInstance = new AuthService();
     const user = await AuthServiceInstance.login(body);
-    res.cookie("session", user.data?.Bearer, {
-      httpOnly: true,
-      maxAge: ms(JWT_EXPIRE),
-      secure: true,
-    });
+    if (user.success) {
+      res.cookie("session", user.data?.Bearer, {
+        httpOnly: true,
+        maxAge: ms(JWT_EXPIRE),
+        secure: true,
+      });
+    }
     return res.status(user.success ? OK_STATUS : user.error?.code || 500).json({
       success: user.success,
       data: user.data?.user,

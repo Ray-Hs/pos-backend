@@ -16,6 +16,14 @@ export interface MenuItemInterface {
     language?: Language
   ) => Promise<TResult<MenuItem[]>>;
   getItemById: (requestId: any) => Promise<TResult<MenuItem>>;
+  getItemsByCategory: (
+    id: any,
+    q?: string,
+    subcategoryId?: number,
+    sort?: Filter,
+    sortby?: FilterBy,
+    language?: Language
+  ) => Promise<TResult<MenuItem[]>>;
   createItem: (requestData: any) => Promise<TResult<MenuItem>>;
   updateItem: (requestId: any, requestData: any) => Promise<TResult<MenuItem>>;
   deleteItem: (requestId: any) => Promise<TResult<MenuItem>>;
@@ -30,6 +38,10 @@ export interface MenuItemControllerInterface {
     req: Request,
     res: Response
   ) => Promise<Response<TResult<MenuItem>>>;
+  getItemsByCategory: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<MenuItem[]>>>;
   createItem: (
     req: Request,
     res: Response

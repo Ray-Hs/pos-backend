@@ -80,6 +80,90 @@ export async function getItemsDB(filter?: {
     },
   });
 }
+export async function getItemsByCategoryDB(
+  id: number,
+  filter?: {
+    q?: string;
+    subcategoryId?: number;
+    sort?: Filter;
+    sortby?: FilterBy;
+    language?: Language;
+  }
+) {
+  const orderByField =
+    filter?.sortby === "name"
+      ? filter?.language === "ku"
+        ? "title_ku"
+        : filter?.language === "ar"
+        ? "title_ar"
+        : "title_en"
+      : filter?.sortby === "date"
+      ? "createdAt"
+      : filter?.sortby === "price"
+      ? "price"
+      : "id";
+
+  let whereClause = [];
+
+  if (filter?.q) {
+    whereClause.push({
+      OR: [
+        {
+          title_ar: {
+            contains: filter?.q,
+            mode: Prisma.QueryMode.insensitive,
+          },
+        },
+        {
+          title_en: {
+            contains: filter?.q,
+            mode: Prisma.QueryMode.insensitive,
+          },
+        },
+        {
+          title_ku: {
+            contains: filter?.q,
+            mode: Prisma.QueryMode.insensitive,
+          },
+        },
+      ],
+    });
+  }
+  if (filter?.subcategoryId) {
+    whereClause.push({
+      subCategoryId: filter?.subcategoryId,
+    });
+  }
+
+  return prisma.menuItem.findMany({
+    include: {
+      SubCategory: {
+        select: {
+          Category: {
+            select: {
+              title_ar: true,
+              title_ku: true,
+              title_en: true,
+              id: true,
+            },
+          },
+          title_ar: true,
+          title_ku: true,
+          title_en: true,
+        },
+      },
+    },
+    orderBy: {
+      [orderByField]: filter?.sort || "asc",
+    },
+    where: {
+      SubCategory: {
+        categoryId: id,
+      },
+      AND: [...whereClause],
+    },
+  });
+}
 
 export async function findItemByIdDB(
   id: number,

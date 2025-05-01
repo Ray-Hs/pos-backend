@@ -16,6 +16,11 @@ router.get(
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(MenuItemInstance.getItemById)
 );
+router.get(
+  "/category/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(MenuItemInstance.getItemsByCategory)
+);
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),

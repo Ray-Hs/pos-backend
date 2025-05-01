@@ -21,6 +21,7 @@ import {
   createItemDB,
   deleteItemDB,
   findItemByIdDB,
+  getItemsByCategoryDB,
   getItemsDB,
   updateItemDB,
 } from "./item.repository";
@@ -37,6 +38,83 @@ export class MenuItemServices implements MenuItemInterface {
     try {
       console.table([subcategoryId, sort, sortby, language, q]);
       const data = await getItemsDB({
+        q,
+        subcategoryId,
+        sort,
+        sortby,
+        language,
+      });
+      if (!data || data.length === 0) {
+        logger.warn("NOT FOUND");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      const formattedItems: MenuItem[] = data.map((item) => {
+        const categoryId = item.SubCategory?.Category?.id || null;
+        const category = {
+          title_ar: item.SubCategory?.Category?.title_ar || "",
+          title_ku: item.SubCategory?.Category?.title_ku || "",
+          title_en: item.SubCategory?.Category?.title_en || "",
+        };
+        const subcategory = {
+          title_ar: item.SubCategory?.title_ar || "",
+          title_ku: item.SubCategory?.title_ku || "",
+          title_en: item.SubCategory?.title_en || "",
+        };
+        return {
+          id: item.id,
+          title_ar: item.title_ar,
+          title_ku: item.title_ku,
+          title_en: item.title_en,
+          description_ar: item.description_ar,
+          description_en: item.description_en,
+          description_ku: item.description_ku,
+          discount: item.discount,
+          isActive: item.isActive,
+          price: item.price,
+          subCategoryId: item.subCategoryId,
+          categoryId,
+          company: item.company,
+          image: item.image,
+          category,
+          subcategory,
+          createdAt: item.createdAt,
+          updatedAt: item.updatedAt,
+        };
+      });
+
+      return {
+        success: true,
+        data: formattedItems,
+      };
+    } catch (error) {
+      logger.error("Menu item Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+  async getItemsByCategory(
+    id: any,
+    q?: string,
+    subcategoryId?: number,
+    sort?: Filter,
+    sortby?: FilterBy,
+    language?: Language
+  ) {
+    try {
+      console.table([id, subcategoryId, sort, sortby, language, q]);
+      const data = await getItemsByCategoryDB(id, {
         q,
         subcategoryId,
         sort,
