@@ -9,6 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "dotenv -- nodemon --exec ts-node ./src/server.ts",
     "build": "tsc",
+    "postinstall": "npm run generate",
     "start": "node public/dist/src/server.js",
     "migrate-dev": "npx prisma migrate dev",
     "migrate-deploy": "npx prisma migrate deploy",
