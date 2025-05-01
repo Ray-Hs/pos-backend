@@ -11,7 +11,7 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { Category, CategorySchema, Filter } from "../../types/common";
+import { CategorySchema, Filter } from "../../types/common";
 import { getSubcategoriesByCategoryIdDB } from "../subcategory/subcategory.repository";
 import {
   createCategoryDB,
@@ -273,12 +273,7 @@ export class CategoryServices implements CategoryServiceInterface {
         };
       }
 
-      const subcategories = await getSubcategoriesByCategoryIdDB(
-        idResponse.id,
-        {
-          _count: true,
-        }
-      );
+      const subcategories = await getSubcategoriesByCategoryIdDB(idResponse.id);
       if (!subcategories || subcategories.length === 0) {
         const deletedCategory = await deleteCategoryDB(idResponse.id);
         return {

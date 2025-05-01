@@ -13,6 +13,7 @@ export const UserSchema = z.object({
   updatedAt: z.date().optional(),
 });
 type User = z.infer<typeof UserSchema>;
+export type UserWithoutPassword = Omit<User, "password">;
 
 export const MenuItemSchema = z.object({
   id: z.number().optional(),
@@ -184,6 +185,7 @@ type TError = {
 
 type TResult<T> = {
   success: boolean;
+  message?: string;
   data?: T;
   error?: TError;
 };

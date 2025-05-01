@@ -70,7 +70,7 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
     }
   }
 
-  async getSubcategoriesByCategoryIdDB(id: any) {
+  async getSubcategoriesByCategoryIdDB(id: any, filter?: Filter) {
     try {
       const response = await validateType(
         { categoryId: id },
@@ -88,7 +88,10 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
-      const data = await getSubcategoriesByCategoryIdDB(response.categoryId);
+      const data = await getSubcategoriesByCategoryIdDB(
+        response.categoryId,
+        filter
+      );
       if (!data || data.length === 0) {
         logger.warn("No subcategories found.");
         return {

@@ -5,7 +5,7 @@ enum ROLE {
 
 model User {
     id        Int       @id @default(autoincrement())
-    username  String    @default("Staff")
+    username  String    @unique @default("Staff")
     password  String
     role      ROLE      @default(STAFF)
     image     String?

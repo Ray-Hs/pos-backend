@@ -1,3 +1,9 @@
+enum PaymentMethod {
+    CASH
+    CARD
+    PAY_LATER
+}
+
 model Invoice {
     id       Int   @id @default(autoincrement())
     tax      Float @default(0)
@@ -5,6 +11,9 @@ model Invoice {
     service  Float @default(0)
     total    Float
     subtotal Float
+
+    paymentMethod PaymentMethod?
+    paid          Boolean        @default(false)
 
     orderId Int
     userId  Int

@@ -14,10 +14,12 @@ import {
   BAD_REQUEST_ERR,
   BAD_REQUEST_ID_ERR,
   BAD_REQUEST_STATUS,
+  CREATED_SUCCESS,
   INTERNAL_SERVER_ERR,
   INTERNAL_SERVER_STATUS,
   NOT_FOUND_ERR,
   NOT_FOUND_STATUS,
+  OK_SUCCESS,
   UNAUTHORIZED_ERR,
   UNAUTHORIZED_STATUS,
 } from "../../infrastructure/utils/constants";
@@ -25,7 +27,7 @@ import { createJWT } from "../../infrastructure/utils/createJWT";
 import { hash, verifyHash } from "../../infrastructure/utils/encryptPassword";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { User, UserSchema } from "../../types/common";
+import { User, UserSchema, UserWithoutPassword } from "../../types/common";
 
 //? Change
 class AuthService implements AuthServiceInterface {
@@ -78,14 +80,19 @@ class AuthService implements AuthServiceInterface {
         userFromDb.id,
         userFromDb.role
       )) as JwtPayload & User & string;
+      const user: UserWithoutPassword = {
+        id: userFromDb.id,
+        role: userFromDb.role,
+        username: userFromDb.username,
+        image: userFromDb.image,
+        createdAt: userFromDb.createdAt,
+        updatedAt: userFromDb.updatedAt,
+      };
       return {
         success: true,
         data: {
           Bearer,
-          user: {
-            ...userFromDb,
-            password: "",
-          },
+          user,
         },
       };
     } catch (error) {
@@ -115,7 +122,7 @@ class AuthService implements AuthServiceInterface {
       const password = hash(response.password);
       const createdUser = await createUserDB(response.username, password);
 
-      return { success: true, data: { ...createdUser, password: "" } };
+      return { success: true, message: CREATED_SUCCESS };
     } catch (error) {
       logger.error("Auth Create User Service: ", error);
       return {
@@ -141,7 +148,17 @@ class AuthService implements AuthServiceInterface {
           },
         };
       }
-      return { success: true, data: { ...users, password: "" } };
+
+      const data: UserWithoutPassword[] = users.map((user) => ({
+        id: user.id,
+        role: user.role,
+        username: user.username,
+        image: user.image,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+      }));
+
+      return { success: true, data };
     } catch (error) {
       logger.error("Auth Get Users Service: ", error);
       return {
@@ -184,9 +201,18 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
+      const userById: UserWithoutPassword = {
+        id: user.id,
+        role: user.role,
+        username: user.username,
+        image: user.image,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+      };
+
       return {
         success: true,
-        data: { ...user, password: "" },
+        data: userById,
       };
     } catch (error) {
       logger.error("Auth Get User Service: ", error);
@@ -237,7 +263,7 @@ class AuthService implements AuthServiceInterface {
 
       return {
         success: true,
-        data: { ...updatedUser, password: "" },
+        message: OK_SUCCESS,
       };
     } catch (error) {
       logger.error("Auth Update User Service: ", error);
@@ -253,7 +279,10 @@ class AuthService implements AuthServiceInterface {
 
   async deleteUser(requestId: any) {
     try {
-      const response = await validateType({ id: requestId }, UserSchema);
+      const response = await validateType(
+        { id: requestId },
+        UserSchema.pick({ id: true })
+      );
 
       if (response instanceof ZodError || !response.id) {
         logger.warn("Missing ID: ", response);
@@ -281,7 +310,7 @@ class AuthService implements AuthServiceInterface {
 
       return {
         success: true,
-        data: { ...deletedUser, password: "" },
+        message: OK_SUCCESS,
       };
     } catch (error) {
       logger.error("Auth Delete User Service: ", error);

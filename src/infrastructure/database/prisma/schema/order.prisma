@@ -6,19 +6,14 @@ enum OrderStatus {
     CANCELED
 }
 
-enum PaymentMethod {
-    CASH
-    CARD
-    PAY_LATER
-}
+
 
 model Order {
     id            Int            @id @default(autoincrement())
     tableId       Int?
     userId        Int
     status        OrderStatus    @default(PENDING)
-    paymentMethod PaymentMethod?
-    paid          Boolean        @default(false)
+
 
     table   Table?      @relation(fields: [tableId], references: [id])
     user    User        @relation(fields: [userId], references: [id])

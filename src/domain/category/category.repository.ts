@@ -29,9 +29,14 @@ export async function getCategoriesDB(filter?: Filter) {
         },
       },
     },
-    orderBy: {
-      sortOrder: filter,
-    },
+    orderBy: [
+      {
+        sortOrder: filter,
+      },
+      {
+        id: filter,
+      },
+    ],
   });
 }
 

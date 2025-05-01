@@ -1283,3 +1283,217 @@ Please either use `include` or `select`, but not both at the same time.
 [2025-04-29 12:41:50] [32minfo[39m: Filter: 
 [2025-04-29 12:54:41] [32minfo[39m: Filter: 
 [2025-04-29 12:55:10] [31merror[39m: There is no Category
+[2025-04-29 13:57:46] [33mwarn[39m: Credentials Don't Match
+[2025-04-29 14:15:48] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:16:39] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "username"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-29 14:16:39] [33mwarn[39m: Missing ID:  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "username"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-29 14:16:43] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "username"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-29 14:16:43] [33mwarn[39m: Missing ID:  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "username"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-29 14:17:47] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "username"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-29 14:17:47] [33mwarn[39m: Missing ID:  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "username"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-04-29 14:18:29] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:19:01] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:20:14] [31merror[39m: Auth Create User Service:  
+Invalid `prisma.user.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\auth\auth.repository.ts:5:22
+
+  2 import { User } from "../../types/common";
+  3 
+  4 export async function createUserDB(username: string, password: string) {
+→ 5   return prisma.user.create(
+Unique constraint failed on the fields: (`username`)
+[2025-04-29 14:21:24] [31merror[39m: Auth Create User Service:  
+Invalid `prisma.user.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\auth\auth.repository.ts:5:22
+
+  2 import { User } from "../../types/common";
+  3 
+  4 export async function createUserDB(username: string, password: string) {
+→ 5   return prisma.user.create(
+Unique constraint failed on the fields: (`username`)
+[2025-04-29 14:21:29] [31merror[39m: Auth Create User Service:  
+Invalid `prisma.user.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\auth\auth.repository.ts:5:22
+
+  2 import { User } from "../../types/common";
+  3 
+  4 export async function createUserDB(username: string, password: string) {
+→ 5   return prisma.user.create(
+Unique constraint failed on the fields: (`username`)
+[2025-04-29 14:22:37] [31merror[39m: Auth Create User Service:  
+Invalid `prisma.user.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\auth\auth.repository.ts:5:22
+
+  2 import { User } from "../../types/common";
+  3 
+  4 export async function createUserDB(username: string, password: string) {
+→ 5   return prisma.user.create(
+Unique constraint failed on the fields: (`username`)
+[2025-04-29 14:22:54] [31merror[39m: Auth Create User Service:  
+Invalid `prisma.user.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\auth\auth.repository.ts:5:22
+
+  2 import { User } from "../../types/common";
+  3 
+  4 export async function createUserDB(username: string, password: string) {
+→ 5   return prisma.user.create(
+Unique constraint failed on the fields: (`username`)
+[2025-04-29 14:23:36] [31merror[39m: Auth Create User Service:  
+Invalid `prisma.user.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\auth\auth.repository.ts:5:22
+
+  2 import { User } from "../../types/common";
+  3 
+  4 export async function createUserDB(username: string, password: string) {
+→ 5   return prisma.user.create(
+Unique constraint failed on the fields: (`username`)
+[2025-04-29 14:23:44] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:23:46] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:23:47] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:23:49] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:23:50] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:23:51] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:23:53] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:23:54] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:23:59] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:00] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:02] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:25] [31merror[39m: Auth Create User Service:  
+Invalid `prisma.user.create()` invocation in
+D:\Programing\WorkFolders\restaurant-pos\backend\src\domain\auth\auth.repository.ts:5:22
+
+  2 import { User } from "../../types/common";
+  3 
+  4 export async function createUserDB(username: string, password: string) {
+→ 5   return prisma.user.create(
+Unique constraint failed on the fields: (`username`)
+[2025-04-29 14:24:35] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:37] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:41] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:43] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:44] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:45] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:46] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:48] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:49] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:51] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:24:55] [31merror[39m: Service User Not Found: 
+[2025-04-29 14:39:26] [32minfo[39m: Filter: 
+[2025-04-29 14:39:52] [32minfo[39m: Filter: 
+[2025-04-30 17:34:59] [33mwarn[39m: Credentials Don't Match
+[2025-04-30 17:35:09] [33mwarn[39m: Credentials Don't Match
+[2025-04-30 17:35:21] [33mwarn[39m: Credentials Don't Match

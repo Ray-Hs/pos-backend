@@ -18,9 +18,11 @@ class AuthController implements AuthControllerInterface {
       maxAge: ms(JWT_EXPIRE),
       secure: true,
     });
-    return res
-      .status(user.success ? OK_STATUS : user.error?.code || 500)
-      .json(user);
+    return res.status(user.success ? OK_STATUS : user.error?.code || 500).json({
+      success: user.success,
+      data: user.data?.user,
+      error: user.error,
+    });
   }
 
   async createAccount(req: Request, res: Response) {
@@ -47,7 +49,7 @@ class AuthController implements AuthControllerInterface {
   }
 
   async deleteAccount(req: Request, res: Response) {
-    const id = parseInt(req.params.id, 10);
+    const id = parseInt(req.params?.id, 10);
     const AuthServiceInstance = new AuthService();
     const deletedAccount = await AuthServiceInstance.deleteUser(id);
 
