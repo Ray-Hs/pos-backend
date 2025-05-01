@@ -18,6 +18,8 @@ class AuthController implements AuthControllerInterface {
         httpOnly: true,
         maxAge: ms(JWT_EXPIRE),
         secure: true,
+        sameSite: "lax",
+        priority: "high",
       });
     }
     return res.status(user.success ? OK_STATUS : user.error?.code || 500).json({

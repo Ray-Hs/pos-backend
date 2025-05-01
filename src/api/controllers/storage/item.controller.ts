@@ -5,12 +5,7 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
-import {
-  Filter,
-  FilterBy,
-  Language,
-  MenuItemSchema,
-} from "../../../types/common";
+import { Filter, FilterBy, Language } from "../../../types/common";
 
 export class MenuItemController implements MenuItemControllerInterface {
   async getItems(req: Request, res: Response) {
