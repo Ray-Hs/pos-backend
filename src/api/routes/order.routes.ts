@@ -16,6 +16,11 @@ router.get(
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(orderController.getOrderById)
 );
+router.get(
+  "/table/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(orderController.getOrderByTableId)
+);
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),

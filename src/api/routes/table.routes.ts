@@ -16,6 +16,11 @@ router.get(
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(tableController.getTableById)
 );
+router.get(
+  "/:name",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(tableController.getTableByName)
+);
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),

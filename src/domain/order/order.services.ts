@@ -15,6 +15,7 @@ import {
   createOrderDB,
   deleteOrderDB,
   findOrderByIdDB,
+  findOrderByTableIdDB,
   getOrdersDB,
   updateOrderDB,
 } from "./order.repository";
@@ -23,17 +24,7 @@ import { OrderServiceInterface } from "./order.types";
 export class OrderServices implements OrderServiceInterface {
   async getOrders() {
     try {
-      const data = await getOrdersDB({
-        items: true,
-        table: true,
-        user: true,
-        _count: {
-          select: {
-            items: true,
-            Invoice: true,
-          },
-        },
-      });
+      const data = await getOrdersDB();
       if (!data || data.length === 0) {
         logger.warn("No Data Found");
         return {
@@ -77,17 +68,50 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const data = await findOrderByIdDB(response.id, {
-        items: true,
-        table: true,
-        user: true,
-        _count: {
-          select: {
-            items: true,
-            Invoice: true,
+      const data = await findOrderByIdDB(response.id);
+      if (!data) {
+        logger.warn("No Data Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
           },
+        };
+      }
+      return {
+        success: true,
+        data,
+      };
+    } catch (error) {
+      logger.error("Get Order By ID Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
         },
-      });
+      };
+    }
+  }
+  async getOrderByTableId(requestId: any) {
+    try {
+      const response = await validateType(
+        { id: requestId },
+        OrderSchema.pick({ id: true })
+      );
+      if (response instanceof ZodError || !response.id) {
+        logger.warn("Missing ID");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+
+      const data = await findOrderByTableIdDB(response.id);
       if (!data) {
         logger.warn("No Data Found");
         return {
@@ -127,17 +151,8 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const createdOrder = await createOrderDB(data, {
-        items: true,
-        table: true,
-        user: true,
-        _count: {
-          select: {
-            items: true,
-            Invoice: true,
-          },
-        },
-      });
+      const createdOrder = await createOrderDB(data);
+
       return {
         success: true,
         data: createdOrder,
@@ -195,17 +210,7 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const updatedOrder = await updateOrderDB(response.id, data, {
-        items: true,
-        table: true,
-        user: true,
-        _count: {
-          select: {
-            items: true,
-            Invoice: true,
-          },
-        },
-      });
+      const updatedOrder = await updateOrderDB(response.id, data);
       return {
         success: true,
         data: updatedOrder,
@@ -250,17 +255,7 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const deletedOrder = await deleteOrderDB(response.id, {
-        items: true,
-        table: true,
-        user: true,
-        _count: {
-          select: {
-            items: true,
-            Invoice: true,
-          },
-        },
-      });
+      const deletedOrder = await deleteOrderDB(response.id);
 
       return {
         success: true,

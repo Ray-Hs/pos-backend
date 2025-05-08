@@ -17,7 +17,7 @@ export class TableController implements TableControllerInterface {
   }
 
   async getTableById(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const tableServices = new TableServices();
     const response = await tableServices.getTableById(id);
 
@@ -26,10 +26,26 @@ export class TableController implements TableControllerInterface {
       .json(response);
   }
 
+  async getTableByName(req: Request, res: Response) {
+    const name = req.params?.name;
+    const tableServices = new TableServices();
+    const response = await tableServices.getTableByName(name);
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
   async createTable(req: Request, res: Response) {
     const data = req.body;
+    const sectionId = parseInt(req.query?.sectionId as string, 10);
+    const quantity = parseInt(req.query?.quantity as string, 10);
     const tableServices = new TableServices();
-    const response = await tableServices.createTable(data);
+    const response = await tableServices.createTable(
+      data,
+      quantity || 1,
+      sectionId
+    );
 
     return res
       .status(response.success ? CREATED_STATUS : response.error?.code || 500)
@@ -37,7 +53,7 @@ export class TableController implements TableControllerInterface {
   }
 
   async updateTable(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const data = req.body;
     const tableServices = new TableServices();
     const response = await tableServices.updateTable(id, data);
@@ -48,7 +64,7 @@ export class TableController implements TableControllerInterface {
   }
 
   async deleteTable(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const tableServices = new TableServices();
     const response = await tableServices.deleteTable(id);
 

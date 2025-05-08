@@ -113,9 +113,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
 
-      const data = await findOrderByIdDB(response.id, {
-        Invoice: true,
-      });
+      const data = await findOrderByIdDB(response.id);
 
       if (!data) {
         return {

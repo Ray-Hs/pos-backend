@@ -1,6 +1,7 @@
 import { ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
+  BAD_REQUEST_ERR,
   BAD_REQUEST_ID_ERR,
   BAD_REQUEST_STATUS,
   INTERNAL_SERVER_ERR,
@@ -15,6 +16,7 @@ import {
   createTableDB,
   deleteTableDB,
   findTableByIdDB,
+  findTableByNameDB,
   getTablesDB,
   updateTableDB,
 } from "./table.repository";
@@ -96,8 +98,53 @@ export class TableServices implements TableServiceInterface {
       };
     }
   }
+  async getTableByName(requestName: any) {
+    try {
+      const response = await validateType(
+        { name: requestName },
+        TableSchema.pick({ name: true })
+      );
+      if (response instanceof ZodError || !response.name) {
+        logger.warn("Missing Name");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ERR,
+          },
+        };
+      }
 
-  async createTable(requestData: any) {
+      const data = await findTableByNameDB(response.name);
+
+      if (!data) {
+        logger.warn("Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      return {
+        success: true,
+        data,
+      };
+    } catch (error) {
+      logger.error("Get Tables By ID Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async createTable(requestData: any, quantity: number, sectionId: number) {
     try {
       const data = await validateType(requestData, TableSchema);
       if (data instanceof ZodError) {
@@ -111,10 +158,9 @@ export class TableServices implements TableServiceInterface {
         };
       }
 
-      const createdTable = await createTableDB(data);
+      const createdTable = await createTableDB(data, quantity, sectionId);
       return {
         success: true,
-        data: createdTable,
       };
     } catch (error) {
       logger.error("Get Tables By ID Service: ", error);

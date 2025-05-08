@@ -4,7 +4,12 @@ import { Table, TResult } from "../../types/common";
 export interface TableServiceInterface {
   getTables: () => Promise<TResult<Table[]>>;
   getTableById: (requestId: any) => Promise<TResult<Table>>;
-  createTable: (requestData: any) => Promise<TResult<Table>>;
+  getTableByName: (requestName: any) => Promise<TResult<Table>>;
+  createTable: (
+    requestData: any,
+    quantity: number,
+    sectionId: number
+  ) => Promise<TResult<void>>;
   updateTable: (requestId: any, requestData: any) => Promise<TResult<Table>>;
   deleteTable: (requestId: any) => Promise<TResult<Table>>;
 }
@@ -15,6 +20,10 @@ export interface TableControllerInterface {
     res: Response
   ) => Promise<Response<TResult<Table[]>>>;
   getTableById: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<Table>>>;
+  getTableByName: (
     req: Request,
     res: Response
   ) => Promise<Response<TResult<Table>>>;

@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto";
 import prisma from "../../infrastructure/database/prisma/client";
 import { Table } from "../../types/common";
 
@@ -21,22 +22,46 @@ export function findTableByIdDB(id: number) {
   });
 }
 
-export function createTableDB(data: Table) {
+export function findTableByNameDB(name: string) {
+  return prisma.table.findFirst({
+    where: {
+      name,
+    },
+  });
+}
+
+export function createTableDB(
+  data: Table,
+  quantity: number,
+  sectionId?: number
+) {
   const { orders } = data;
-  return prisma.table.create({
-    data: {
-      ...data,
-      orders: {
-        connect: orders?.map((order) => ({ id: order.id })),
-      },
-    },
-    include: {
-      orders: {
-        include: {
-          items: true,
+  return prisma.$transaction(async (tx) => {
+    if (quantity > 1) {
+      return tx.table.createMany({
+        data: Array.from({ length: quantity }).map((_, i) => ({
+          sectionId,
+          status: "AVAILABLE",
+          name: `New Table ${randomUUID().slice(0, 6)}`,
+        })),
+      });
+    } else {
+      return tx.table.create({
+        data: {
+          ...data,
+          orders: {
+            connect: orders?.map((order) => ({ id: order.id })),
+          },
         },
-      },
-    },
+        include: {
+          orders: {
+            include: {
+              items: true,
+            },
+          },
+        },
+      });
+    }
   });
 }
 

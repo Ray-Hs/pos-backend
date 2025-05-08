@@ -100,6 +100,7 @@ export const CategorySchema = z.object({
 });
 
 export type Category = z.infer<typeof CategorySchema>;
+const PaymentMethodEnum = z.enum(["CASH", "CARD", "PAY_LATER"]);
 
 export const InvoiceSchema = z.object({
   id: z.number().optional(),
@@ -108,6 +109,8 @@ export const InvoiceSchema = z.object({
   service: z.number().default(0),
   total: z.number(),
   subtotal: z.number(),
+  paymentMethod: PaymentMethodEnum.nullable(),
+  paid: z.boolean().optional(),
   orderId: z.number().int(),
   userId: z.number().int(),
   tableId: z.number().int().nullable().optional(),
@@ -124,7 +127,6 @@ const OrderStatusEnum = z.enum([
   "COMPLETED",
   "CANCELED",
 ]);
-const PaymentMethodEnum = z.enum(["CASH", "CARD", "PAY_LATER"]);
 
 export type PaymentMethod = z.infer<typeof PaymentMethodEnum>;
 export type OrderStatus = z.infer<typeof OrderStatusEnum>;
@@ -149,6 +151,7 @@ export const OrderSchema = z.object({
 
 export type OrderItem = z.infer<typeof OrderItemSchema>;
 export type Order = z.infer<typeof OrderSchema>;
+export type OrderRequest = Omit<Order, "items"> & { items: number[] };
 
 const TableStatusEnum = z.enum(["AVAILABLE", "OCCUPIED", "RECEIPT"]);
 export const TableSchema = z.object({

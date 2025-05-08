@@ -26,6 +26,16 @@ export class OrderController implements OrderControllerInterface {
       .json(response);
   }
 
+  async getOrderByTableId(req: Request, res: Response) {
+    const id = req.params?.id;
+    const orderService = new OrderServices();
+    const response = await orderService.getOrderByTableId(id);
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
   async createOrder(req: Request, res: Response) {
     const body = req.body;
     const orderService = new OrderServices();

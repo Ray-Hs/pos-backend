@@ -16,6 +16,8 @@ model Table {
     section   Section?    @relation(fields: [sectionId], references: [id])
     sectionId Int?
     invoice   Invoice[]
+
+    @@index([sectionId, status])
 }
 
 model Section {
@@ -25,4 +27,6 @@ model Section {
     sortOrder Int     @default(0)
     tables    Table[]
     available Int?
+
+    @@index([sortOrder, available])
 }
