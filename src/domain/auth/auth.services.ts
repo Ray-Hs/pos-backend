@@ -17,6 +17,8 @@ import {
   CREATED_SUCCESS,
   INTERNAL_SERVER_ERR,
   INTERNAL_SERVER_STATUS,
+  NO_CONTENT_STATUS,
+  NO_CONTENT_SUCCESS,
   NOT_FOUND_ERR,
   NOT_FOUND_STATUS,
   OK_SUCCESS,
@@ -27,7 +29,12 @@ import { createJWT } from "../../infrastructure/utils/createJWT";
 import { hash, verifyHash } from "../../infrastructure/utils/encryptPassword";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { User, UserSchema, UserWithoutPassword } from "../../types/common";
+import {
+  TResult,
+  User,
+  UserSchema,
+  UserWithoutPassword,
+} from "../../types/common";
 
 //? Change
 class AuthService implements AuthServiceInterface {
@@ -99,7 +106,38 @@ class AuthService implements AuthServiceInterface {
       logger.error("Auth login Service: ", error);
       return {
         success: false,
-        error: { code: INTERNAL_SERVER_STATUS, message: INTERNAL_SERVER_ERR },
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+  async logout(cookie: string) {
+    try {
+      if (!cookie) {
+        logger.warn("No Cookie Provided");
+        return {
+          success: false,
+          error: {
+            code: NO_CONTENT_STATUS,
+            message: NO_CONTENT_SUCCESS,
+          },
+        };
+      }
+
+      return {
+        success: true,
+        message: "Logged out successfully.",
+      };
+    } catch (error) {
+      logger.error("Auth login Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
       };
     }
   }

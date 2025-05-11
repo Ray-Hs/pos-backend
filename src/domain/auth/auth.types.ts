@@ -10,6 +10,7 @@ interface AuthServiceInterface {
   ) => Promise<
     TResult<{ Bearer: JwtPayload & User; user: UserWithoutPassword }>
   >;
+  logout: (cookie: string) => Promise<TResult<void>>;
   createUser: (requestData: any) => Promise<TResult<void>>;
   updateUser: (requestId: any, requestData: any) => Promise<TResult<void>>;
   deleteUser: (requestId: any) => Promise<TResult<void>>;
@@ -20,6 +21,7 @@ interface AuthControllerInterface {
     req: Request,
     res: Response
   ) => Promise<Response<TResult<UserWithoutPassword>>>;
+  logout: (req: Request, res: Response) => Promise<Response<TResult<void>>>;
   getUsers: (
     req: Request,
     res: Response

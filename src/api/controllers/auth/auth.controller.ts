@@ -4,6 +4,8 @@ import { AuthControllerInterface } from "../../../domain/auth/auth.types";
 import {
   CREATED_STATUS,
   JWT_EXPIRE,
+  NO_CONTENT_STATUS,
+  NO_CONTENT_SUCCESS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
 import ms from "ms";
@@ -27,6 +29,28 @@ class AuthController implements AuthControllerInterface {
       data: user.data?.user,
       error: user.error,
     });
+  }
+
+  async logout(req: Request, res: Response) {
+    const cookie = req.cookies?.session;
+    const AuthServiceInstance = new AuthService();
+    const response = await AuthServiceInstance.logout(cookie);
+    if (response.success) {
+      res.clearCookie("session", {
+        httpOnly: true,
+        maxAge: ms(JWT_EXPIRE),
+        secure: true,
+        sameSite: "none",
+        priority: "high",
+      });
+    }
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json({
+        success: response.success,
+        message: response.message,
+        error: response.error,
+      });
   }
 
   async createAccount(req: Request, res: Response) {

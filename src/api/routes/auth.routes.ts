@@ -8,6 +8,7 @@ const router: Router = express.Router();
 const controllerInstance = new AuthController();
 
 router.post("/login", asyncRouteHandler(controllerInstance.login));
+router.get("/logout", asyncRouteHandler(controllerInstance.logout));
 router.post(
   "/create-account",
   asyncRouteHandler(isAuthenticated),

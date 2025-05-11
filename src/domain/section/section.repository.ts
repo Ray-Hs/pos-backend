@@ -21,12 +21,20 @@ export function findSectionByIdDB(id: number) {
 }
 
 export function createSectionDB(data: Section) {
-  const tables = data?.tables;
+  const { tables, ...rest } = data;
   return prisma.section.create({
     data: {
-      ...data,
+      ...rest,
       tables: {
-        connect: tables?.map((table) => ({ id: table.id })),
+        connectOrCreate: tables?.map((table) => ({
+          where: { id: table.id },
+          create: {
+            name: table.name,
+            available: table.available,
+            capacity: table.capacity,
+            status: table.status,
+          },
+        })),
       },
     },
     include: {

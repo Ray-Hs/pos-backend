@@ -33,6 +33,17 @@ export async function createOrderDB(data: Order) {
   const { items, ...rest } = data;
 
   return prisma.$transaction(async (tx) => {
+    // If there's a tableId, verify table status first
+    if (rest.tableId) {
+      const table = await tx.table.findUnique({
+        where: { id: rest.tableId },
+      });
+
+      if (table?.status === "OCCUPIED") {
+        throw new Error("Table is already occupied");
+      }
+    }
+
     const order = await tx.order.create({
       data: {
         ...rest,
@@ -50,6 +61,17 @@ export async function createOrderDB(data: Order) {
         items: true,
       },
     });
+
+    if (order.tableId) {
+      await tx.table.update({
+        where: {
+          id: order.tableId,
+        },
+        data: {
+          status: "OCCUPIED",
+        },
+      });
+    }
 
     return order;
   });
