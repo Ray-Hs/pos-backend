@@ -11,13 +11,14 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { TableSchema } from "../../types/common";
+import { TableSchema, TResult } from "../../types/common";
 import {
   createTableDB,
   deleteTableDB,
   findTableByIdDB,
   findTableByNameDB,
   getTablesDB,
+  transferTableDB,
   updateTableDB,
 } from "./table.repository";
 import { TableServiceInterface } from "./table.types";
@@ -216,7 +217,7 @@ export class TableServices implements TableServiceInterface {
       const updatedTable = await updateTableDB(response.id, data);
       return {
         success: true,
-        data: updatedTable,
+        message: "Updated Table Successfully",
       };
     } catch (error) {
       logger.error("Update Table Service: ", error);
@@ -261,10 +262,40 @@ export class TableServices implements TableServiceInterface {
       const deletedTable = await deleteTableDB(response.id);
       return {
         success: true,
-        data: deletedTable,
+        message: "Deleted Successfully",
       };
     } catch (error) {
       logger.error("Delete Table Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async transferTable(tableIdOne: number, tableIdTwo: number) {
+    try {
+      const data = await transferTableDB(tableIdOne, tableIdTwo);
+
+      if (!data?.success && data.code) {
+        return {
+          success: false,
+          error: {
+            code: data.code,
+            message: data.message,
+          },
+        };
+      }
+
+      return {
+        success: true,
+        message: data.message,
+      };
+    } catch (error) {
+      logger.error("Transfer Table Service: ", error);
       return {
         success: false,
         error: {

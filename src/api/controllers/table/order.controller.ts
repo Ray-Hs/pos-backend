@@ -5,6 +5,8 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
+import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
+import { UserWithoutPassword } from "../../../types/common";
 
 export class OrderController implements OrderControllerInterface {
   async getOrders(req: Request, res: Response) {
@@ -17,7 +19,7 @@ export class OrderController implements OrderControllerInterface {
   }
 
   async getOrderById(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const orderService = new OrderServices();
     const response = await orderService.getOrderById(id);
 
@@ -27,7 +29,7 @@ export class OrderController implements OrderControllerInterface {
   }
 
   async getOrderByTableId(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const orderService = new OrderServices();
     const response = await orderService.getOrderByTableId(id);
 
@@ -38,8 +40,12 @@ export class OrderController implements OrderControllerInterface {
 
   async createOrder(req: Request, res: Response) {
     const body = req.body;
+    const userId = decodeJWT(req, res) as UserWithoutPassword;
     const orderService = new OrderServices();
-    const response = await orderService.createOrder(body);
+    const response = await orderService.createOrder({
+      ...body,
+      userId: userId.id,
+    });
 
     return res
       .status(response.success ? CREATED_STATUS : response.error?.code || 500)
@@ -47,10 +53,14 @@ export class OrderController implements OrderControllerInterface {
   }
 
   async updateOrder(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const body = req.body;
+    const userId = decodeJWT(req, res) as UserWithoutPassword;
     const orderService = new OrderServices();
-    const response = await orderService.updateOrder(id, body);
+    const response = await orderService.updateOrder(id, {
+      ...body,
+      userId: userId.id,
+    });
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

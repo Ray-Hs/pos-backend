@@ -5,6 +5,7 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
+import { TResult } from "../../../types/common";
 
 export class TableController implements TableControllerInterface {
   async getTables(req: Request, res: Response) {
@@ -67,6 +68,17 @@ export class TableController implements TableControllerInterface {
     const id = parseInt(req.params?.id, 10);
     const tableServices = new TableServices();
     const response = await tableServices.deleteTable(id);
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async transferTable(req: Request, res: Response) {
+    const idOne = parseInt(req.params?.idOne, 10);
+    const idTwo = parseInt(req.params?.idTwo, 10);
+    const tableServices = new TableServices();
+    const response = await tableServices.transferTable(idOne, idTwo);
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

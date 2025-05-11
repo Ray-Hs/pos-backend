@@ -2866,3 +2866,55 @@ Foreign key constraint violated: `OrderItem_orderId_fkey (index)`
 [2025-05-11 11:59:56] [33mwarn[39m: No Cookie Provided
 [2025-05-11 12:00:56] [33mwarn[39m: No Cookie Provided
 [2025-05-11 12:02:53] [33mwarn[39m: No Cookie Provided
+[2025-05-11 12:20:52] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-05-11 12:20:52] [33mwarn[39m: Missing ID
+[2025-05-11 14:09:40] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "name"
+    ],
+    "message": "Required"
+  },
+  {
+    "expected": "'AVAILABLE' | 'OCCUPIED' | 'RECEIPT'",
+    "received": "undefined",
+    "code": "invalid_type",
+    "path": [
+      "status"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-11 14:09:40] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "name"
+    ],
+    "message": "Required"
+  },
+  {
+    "expected": "'AVAILABLE' | 'OCCUPIED' | 'RECEIPT'",
+    "received": "undefined",
+    "code": "invalid_type",
+    "path": [
+      "status"
+    ],
+    "message": "Required"
+  }
+]

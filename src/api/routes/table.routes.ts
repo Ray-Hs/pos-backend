@@ -27,6 +27,11 @@ router.post(
   asyncRouteHandler(isAdmin),
   asyncRouteHandler(tableController.createTable)
 );
+router.post(
+  "/:idOne/:idTwo",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(tableController.transferTable)
+);
 router.put(
   "/:id",
   asyncRouteHandler(isAuthenticated),

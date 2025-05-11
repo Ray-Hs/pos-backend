@@ -133,7 +133,7 @@ export type OrderStatus = z.infer<typeof OrderStatusEnum>;
 
 export const OrderItemSchema = z.object({
   id: z.number().optional(),
-  orderId: z.number(),
+  orderId: z.number().optional(),
   menuItemId: z.number(),
   quantity: z.number().default(1),
   price: z.number(),

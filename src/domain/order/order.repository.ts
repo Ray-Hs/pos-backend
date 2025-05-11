@@ -93,7 +93,11 @@ export async function updateOrderDB(id: number, data: Order) {
                 where: {
                   id: item.id,
                 },
-                data: item,
+                data: {
+                  menuItemId: item.menuItemId,
+                  price: item.price,
+                  quantity: item.quantity,
+                }
               })),
             }
           : undefined,

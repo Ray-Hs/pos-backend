@@ -2358,3 +2358,34 @@ Invalid `prisma.order.delete()` invocation:
 
 
 Foreign key constraint violated: `OrderItem_orderId_fkey (index)`
+[2025-05-11 12:20:52] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-05-11 14:09:40] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "name"
+    ],
+    "message": "Required"
+  },
+  {
+    "expected": "'AVAILABLE' | 'OCCUPIED' | 'RECEIPT'",
+    "received": "undefined",
+    "code": "invalid_type",
+    "path": [
+      "status"
+    ],
+    "message": "Required"
+  }
+]

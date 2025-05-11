@@ -1,6 +1,11 @@
 import { randomUUID } from "crypto";
 import prisma from "../../infrastructure/database/prisma/client";
 import { Table } from "../../types/common";
+import {
+  BAD_REQUEST_ERR,
+  BAD_REQUEST_STATUS,
+  NOT_FOUND_STATUS,
+} from "../../infrastructure/utils/constants";
 
 export function getTablesDB() {
   return prisma.table.findMany({
@@ -99,5 +104,119 @@ export function deleteTableDB(id: number) {
         },
       },
     },
+  });
+}
+
+interface TransferResponse {
+  success: boolean;
+  message: string;
+  code?: number;
+  data?: any;
+}
+
+export function transferTableDB(
+  idOne: number,
+  idTwo: number
+): Promise<TransferResponse> {
+  if (!idOne || !idTwo) {
+    return Promise.resolve({
+      success: false,
+      message: "Both table IDs are required",
+      code: BAD_REQUEST_STATUS,
+    });
+  }
+
+  if (idOne === idTwo) {
+    return Promise.resolve({
+      success: false,
+      message: "Cannot transfer table to itself",
+      code: BAD_REQUEST_STATUS,
+    });
+  }
+
+  return prisma.$transaction(async (tx) => {
+    const tableOne = await tx.table.findUnique({
+      where: { id: idOne },
+      include: { orders: true },
+    });
+
+    const tableTwo = await tx.table.findUnique({
+      where: { id: idTwo },
+      include: { orders: true },
+    });
+
+    if (!tableOne || !tableTwo) {
+      return {
+        success: false,
+        message: "Tables not found",
+        code: NOT_FOUND_STATUS,
+      };
+    }
+
+    if (tableTwo.orders.length > 0) {
+      return {
+        success: false,
+        message: "Destination table must be empty",
+        code: BAD_REQUEST_STATUS,
+      };
+    }
+
+    if (tableTwo.status === "OCCUPIED") {
+      return {
+        success: false,
+        message: "Cannot transfer orders from/to unavailable tables",
+        code: BAD_REQUEST_STATUS,
+      };
+    }
+
+    const latestOrderOne =
+      tableOne.orders.length > 0
+        ? tableOne.orders[tableOne.orders.length - 1]
+        : null;
+
+    if (!latestOrderOne) {
+      return {
+        success: false,
+        message: "No orders to transfer",
+        code: BAD_REQUEST_STATUS,
+      };
+    }
+
+    // First disconnect orders from source table
+    await tx.table.update({
+      where: { id: idOne },
+      data: {
+        orders: {
+          disconnect: {
+            id: latestOrderOne?.id,
+          },
+        },
+      },
+    });
+
+    // Then connect orders to destination table
+    const updatedTable = await tx.table.update({
+      where: { id: idTwo },
+      data: {
+        orders: {
+          connect: {
+            id: latestOrderOne?.id,
+          },
+        },
+      },
+      include: {
+        orders: {
+          include: {
+            items: true,
+          },
+        },
+      },
+    });
+
+    return {
+      success: true,
+      message: "Transfer completed successfully",
+      data: updatedTable,
+    };
   });
 }

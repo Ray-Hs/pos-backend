@@ -10,8 +10,12 @@ export interface TableServiceInterface {
     quantity: number,
     sectionId: number
   ) => Promise<TResult<void>>;
-  updateTable: (requestId: any, requestData: any) => Promise<TResult<Table>>;
-  deleteTable: (requestId: any) => Promise<TResult<Table>>;
+  updateTable: (requestId: any, requestData: any) => Promise<TResult<void>>;
+  deleteTable: (requestId: any) => Promise<TResult<void>>;
+  transferTable: (
+    tableIdOne: number,
+    tableIdTwo: number
+  ) => Promise<TResult<void>>;
 }
 
 export interface TableControllerInterface {
@@ -39,4 +43,8 @@ export interface TableControllerInterface {
     req: Request,
     res: Response
   ) => Promise<Response<TResult<Table>>>;
+  transferTable: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<void>>>;
 }

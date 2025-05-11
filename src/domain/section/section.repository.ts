@@ -44,13 +44,13 @@ export function createSectionDB(data: Section) {
 }
 
 export function updateSectionDB(id: number, data: Section) {
-  const tables = data?.tables;
+  const { tables, ...rest } = data;
   return prisma.section.update({
     where: {
       id,
     },
     data: {
-      ...data,
+      ...rest,
       tables: {
         connect: tables?.map((table) => ({ id: table.id })),
       },
