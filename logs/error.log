@@ -2389,3 +2389,120 @@ Foreign key constraint violated: `OrderItem_orderId_fkey (index)`
     "message": "Required"
   }
 ]
+[2025-05-11 14:54:01] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "items",
+      0,
+      "orderId"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "items",
+      1,
+      "orderId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-11 15:01:51] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "items",
+      0,
+      "orderId"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "items",
+      1,
+      "orderId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-11 15:06:53] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-11 15:07:17] [31merror[39m: Create Order Service:  
+Invalid `prisma.order.create()` invocation:
+
+{
+  data: {
+    tableId: 20,
+    userId: 1,
+    status: "PENDING",
+    ~~~~~~
+    items: {
+      create: [
+        {
+          menuItemId: 2,
+          price: 2500,
+          quantity: 2
+        },
+        {
+          menuItemId: 3,
+          price: 2500,
+          quantity: 2
+        }
+      ]
+    },
+?   id?: Int,
+?   createdAt?: DateTime,
+?   updatedAt?: DateTime,
+?   Invoice?: InvoiceUncheckedCreateNestedManyWithoutOrderInput
+  },
+  include: {
+    items: true
+  }
+}
+
+Unknown argument `status`. Available options are marked with ?.
+[2025-05-11 15:07:23] [31merror[39m: Create Order Service:  
+Invalid `prisma.order.create()` invocation:
+
+{
+  data: {
+    tableId: 22,
+    userId: 1,
+    status: "PENDING",
+    ~~~~~~
+    items: {
+      create: [
+        {
+          menuItemId: 2,
+          price: 2500,
+          quantity: 2
+        },
+        {
+          menuItemId: 3,
+          price: 2500,
+          quantity: 2
+        }
+      ]
+    },
+?   id?: Int,
+?   createdAt?: DateTime,
+?   updatedAt?: DateTime,
+?   Invoice?: InvoiceUncheckedCreateNestedManyWithoutOrderInput
+  },
+  include: {
+    items: true
+  }
+}
+
+Unknown argument `status`. Available options are marked with ?.

@@ -97,7 +97,7 @@ export async function updateOrderDB(id: number, data: Order) {
                   menuItemId: item.menuItemId,
                   price: item.price,
                   quantity: item.quantity,
-                }
+                },
               })),
             }
           : undefined,

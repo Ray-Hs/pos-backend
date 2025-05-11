@@ -133,7 +133,7 @@ export type OrderStatus = z.infer<typeof OrderStatusEnum>;
 
 export const OrderItemSchema = z.object({
   id: z.number().optional(),
-  orderId: z.number().optional(),
+  orderId: z.number(),
   menuItemId: z.number(),
   quantity: z.number().default(1),
   price: z.number(),
@@ -143,10 +143,10 @@ export const OrderSchema = z.object({
   id: z.number().optional(),
   tableId: z.number().nullable().optional(),
   userId: z.number(),
-  status: OrderStatusEnum,
+  status: OrderStatusEnum.optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
-  items: z.array(OrderItemSchema),
+  items: z.array(OrderItemSchema.extend({ orderId: z.number().optional() })),
 });
 
 export type OrderItem = z.infer<typeof OrderItemSchema>;

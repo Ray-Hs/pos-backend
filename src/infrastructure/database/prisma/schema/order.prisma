@@ -8,13 +8,28 @@ model Order {
     items   OrderItem[]
     Invoice Invoice[]
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    createdAt         DateTime           @default(now())
+    updatedAt         DateTime           @updatedAt
+    DeletedOrderItems DeletedOrderItem[]
 
     @@index([tableId, userId])
 }
 
 model OrderItem {
+    id         Int   @id @default(autoincrement())
+    orderId    Int
+    menuItemId Int
+    quantity   Int   @default(1)
+    price      Float // snapshot price
+    //? Add notes and other stuff here
+
+    order    Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+    menuItem MenuItem @relation(fields: [menuItemId], references: [id])
+
+    @@index([orderId, menuItemId, quantity])
+}
+
+model DeletedOrderItem {
     id         Int   @id @default(autoincrement())
     orderId    Int
     menuItemId Int
