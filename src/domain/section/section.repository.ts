@@ -29,8 +29,8 @@ export function createSectionDB(data: Section) {
         ...rest,
         tables: tableNumber
           ? {
-              create: Array.from({ length: tableNumber }).map((table) => ({
-                name: `${randomUUID()}-${table}`,
+              create: Array.from({ length: tableNumber }).map((_, i) => ({
+                name: `${randomUUID().slice(0, 6)}-${i}`,
                 status: "AVAILABLE",
               })),
             }
