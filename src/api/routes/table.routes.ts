@@ -17,7 +17,7 @@ router.get(
   asyncRouteHandler(tableController.getTableById)
 );
 router.get(
-  "/:name",
+  "/name/:name",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(tableController.getTableByName)
 );
