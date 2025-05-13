@@ -16,7 +16,7 @@ export class InvoiceController implements InvoiceControllerInterface {
     );
   }
   async findInvoice(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const invoiceInstance = new InvoiceServices();
     const response = await invoiceInstance.findInvoice(id);
 
@@ -25,7 +25,7 @@ export class InvoiceController implements InvoiceControllerInterface {
     );
   }
   async findInvoicesByOrderId(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const invoiceInstance = new InvoiceServices();
     const response = await invoiceInstance.findInvoicesByOrderId(id);
 
@@ -43,7 +43,7 @@ export class InvoiceController implements InvoiceControllerInterface {
     );
   }
   async updateInvoice(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const body = req.body;
     const invoiceInstance = new InvoiceServices();
     const response = await invoiceInstance.updateInvoice(id, body);
@@ -53,7 +53,7 @@ export class InvoiceController implements InvoiceControllerInterface {
     );
   }
   async deleteInvoice(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const invoiceInstance = new InvoiceServices();
     const response = await invoiceInstance.deleteInvoice(id);
 

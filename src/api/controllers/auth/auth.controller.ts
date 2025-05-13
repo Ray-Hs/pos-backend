@@ -1,14 +1,12 @@
 import { Request, Response } from "express";
+import ms from "ms";
 import AuthService from "../../../domain/auth/auth.services";
 import { AuthControllerInterface } from "../../../domain/auth/auth.types";
 import {
   CREATED_STATUS,
   JWT_EXPIRE,
-  NO_CONTENT_STATUS,
-  NO_CONTENT_SUCCESS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
-import ms from "ms";
 
 class AuthController implements AuthControllerInterface {
   async login(req: Request, res: Response) {

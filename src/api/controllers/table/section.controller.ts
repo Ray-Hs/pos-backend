@@ -37,7 +37,7 @@ export class SectionController implements SectionControllerInterface {
   }
 
   async updateSection(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const data = req.body;
     const sectionInstance = new SectionServices();
     const response = await sectionInstance.updateSection(id, data);
@@ -48,7 +48,7 @@ export class SectionController implements SectionControllerInterface {
   }
 
   async deleteSection(req: Request, res: Response) {
-    const id = req.params?.id;
+    const id = parseInt(req.params?.id, 10);
     const sectionInstance = new SectionServices();
     const response = await sectionInstance.deleteSection(id);
 

@@ -3073,3 +3073,15 @@ The table `public.DeletedOrderItem` does not exist in the current database.
   }
 ]
 [2025-05-12 20:01:55] [33mwarn[39m: Missing ID
+[2025-05-13 10:15:46] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-05-13 10:15:46] [33mwarn[39m: No ID Provided
