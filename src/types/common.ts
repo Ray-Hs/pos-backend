@@ -171,6 +171,7 @@ export const SectionSchema = z.object({
   name: z.string().default("New Section"),
   sortOrder: z.number().default(0),
   tables: z.array(TableSchema).optional(),
+  tableNumber: z.number().optional(),
   available: z.number().nullable().optional(),
 });
 

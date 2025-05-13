@@ -10,6 +10,7 @@ import ImageRoutes from "./images.routes";
 import InvoiceRoutes from "./invoice.routes";
 import ItemRoutes from "./item.routes";
 import OrderRoutes from "./order.routes";
+import OrderItemRoutes from "./orderItem.routes";
 import SectionRoutes from "./section.routes";
 import SubcategoryRoutes from "./subcategory.routes";
 import TableRoutes from "./table.routes";
@@ -45,6 +46,18 @@ router.use(
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   OrderRoutes
 );
+router.use(
+  "/order/item",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  OrderItemRoutes
+);
+
+// Invoice Routes
+router.use(
+  "/invoice",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  InvoiceRoutes
+);
 
 // Section Routes
 router.use(
@@ -58,13 +71,6 @@ router.use(
   "/table",
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   TableRoutes
-);
-
-// Invoice Routes
-router.use(
-  "/invoice",
-  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
-  InvoiceRoutes
 );
 
 // Image Routes

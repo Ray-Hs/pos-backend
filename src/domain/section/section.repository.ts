@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto";
 import prisma from "../../infrastructure/database/prisma/client";
 import { Section } from "../../types/common";
 
@@ -21,25 +22,21 @@ export function findSectionByIdDB(id: number) {
 }
 
 export function createSectionDB(data: Section) {
-  const { tables, ...rest } = data;
-  return prisma.section.create({
-    data: {
-      ...rest,
-      tables: {
-        connectOrCreate: tables?.map((table) => ({
-          where: { id: table.id },
-          create: {
-            name: table.name,
-            available: table.available,
-            capacity: table.capacity,
-            status: table.status,
-          },
-        })),
+  const { tables, tableNumber, ...rest } = data;
+  return prisma.$transaction(async (tx) => {
+    return tx.section.create({
+      data: {
+        ...rest,
+        tables: tableNumber
+          ? {
+              create: Array.from({ length: tableNumber }).map((table) => ({
+                name: `${randomUUID()}-${table}`,
+                status: "AVAILABLE",
+              })),
+            }
+          : undefined,
       },
-    },
-    include: {
-      tables: true,
-    },
+    });
   });
 }
 

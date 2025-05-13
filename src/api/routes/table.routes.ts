@@ -28,7 +28,7 @@ router.post(
   asyncRouteHandler(tableController.createTable)
 );
 router.post(
-  "/:idOne/:idTwo",
+  "/transfer",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(tableController.transferTable)
 );

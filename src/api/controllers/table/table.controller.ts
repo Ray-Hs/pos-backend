@@ -5,7 +5,6 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
-import { TResult } from "../../../types/common";
 
 export class TableController implements TableControllerInterface {
   async getTables(req: Request, res: Response) {
@@ -75,8 +74,8 @@ export class TableController implements TableControllerInterface {
   }
 
   async transferTable(req: Request, res: Response) {
-    const idOne = parseInt(req.params?.idOne, 10);
-    const idTwo = parseInt(req.params?.idTwo, 10);
+    const idOne = parseInt(req.query.from as string, 10);
+    const idTwo = parseInt(req.query.to as string, 10);
     const tableServices = new TableServices();
     const response = await tableServices.transferTable(idOne, idTwo);
 

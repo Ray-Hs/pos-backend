@@ -11,9 +11,9 @@ export class OrderItemController implements OrderItemControllerInterface {
     const client = new OrderItemServices();
     const response = await client.getOrderItems();
 
-    return res.status(
-      response.success ? OK_STATUS : response.error?.code || 500
-    );
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
   }
 
   async getOrderItemById(req: Request, res: Response) {
@@ -21,9 +21,9 @@ export class OrderItemController implements OrderItemControllerInterface {
     const client = new OrderItemServices();
     const response = await client.getOrderItemById(id);
 
-    return res.status(
-      response.success ? OK_STATUS : response.error?.code || 500
-    );
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
   }
 
   async createOrderItem(req: Request, res: Response) {
@@ -31,9 +31,9 @@ export class OrderItemController implements OrderItemControllerInterface {
     const client = new OrderItemServices();
     const response = await client.createOrderItem(data);
 
-    return res.status(
-      response.success ? CREATED_STATUS : response.error?.code || 500
-    );
+    return res
+      .status(response.success ? CREATED_STATUS : response.error?.code || 500)
+      .json(response);
   }
 
   async updateOrderItem(req: Request, res: Response) {
@@ -42,9 +42,9 @@ export class OrderItemController implements OrderItemControllerInterface {
     const client = new OrderItemServices();
     const response = await client.updateOrderItem(id, data);
 
-    return res.status(
-      response.success ? CREATED_STATUS : response.error?.code || 500
-    );
+    return res
+      .status(response.success ? CREATED_STATUS : response.error?.code || 500)
+      .json(response);
   }
 
   async deleteOrderItem(req: Request, res: Response) {
@@ -52,8 +52,8 @@ export class OrderItemController implements OrderItemControllerInterface {
     const client = new OrderItemServices();
     const response = await client.deleteOrderItem(id);
 
-    return res.status(
-      response.success ? OK_STATUS : response.error?.code || 500
-    );
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
   }
 }

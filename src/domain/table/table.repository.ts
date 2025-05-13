@@ -152,14 +152,14 @@ export function transferTableDB(
         code: NOT_FOUND_STATUS,
       };
     }
-
-    if (tableTwo.orders.length > 0) {
-      return {
-        success: false,
-        message: "Destination table must be empty",
-        code: BAD_REQUEST_STATUS,
-      };
-    }
+    //? Not Needed
+    // if (tableTwo.orders.length > 0) {
+    //   return {
+    //     success: false,
+    //     message: "Destination table must be empty",
+    //     code: BAD_REQUEST_STATUS,
+    //   };
+    // }
 
     if (tableTwo.status === "OCCUPIED") {
       return {

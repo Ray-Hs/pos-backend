@@ -1,12 +1,6 @@
 import prisma from "../../infrastructure/database/prisma/client";
 import { OrderItem } from "../../types/common";
 
-export async function createOrderItemDB(data: OrderItem) {
-  return prisma.orderItem.create({
-    data,
-  });
-}
-
 export async function getOrderItemsDB() {
   return prisma.orderItem.findMany();
 }
@@ -16,6 +10,12 @@ export async function getOrderItemByIdDB(id: number) {
     where: {
       id,
     },
+  });
+}
+
+export async function createOrderItemDB(data: OrderItem) {
+  return prisma.orderItem.create({
+    data,
   });
 }
 
@@ -29,9 +29,15 @@ export async function updateOrderItemDB(id: number, data: OrderItem) {
 }
 
 export async function deleteOrderItemDB(id: number) {
-  return prisma.orderItem.delete({
-    where: {
-      id,
-    },
+  return prisma.$transaction(async (tx) => {
+    const deletedOrderItem = await prisma.orderItem.delete({
+      where: {
+        id,
+      },
+    });
+
+    return tx.deletedOrderItem.create({
+      data: deletedOrderItem,
+    });
   });
 }
