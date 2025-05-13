@@ -22,14 +22,14 @@ export function findSectionByIdDB(id: number) {
 }
 
 export function createSectionDB(data: Section) {
-  const { tables, tableNumber, ...rest } = data;
+  const { tables, tableCount, ...rest } = data;
   return prisma.$transaction(async (tx) => {
     return tx.section.create({
       data: {
         ...rest,
-        tables: tableNumber
+        tables: tableCount
           ? {
-              create: Array.from({ length: tableNumber }).map((_, i) => ({
+              create: Array.from({ length: tableCount }).map((_, i) => ({
                 name: `${randomUUID().slice(0, 6)}-${i}`,
                 status: "AVAILABLE",
               })),
