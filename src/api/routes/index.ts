@@ -42,14 +42,14 @@ router.use(
 
 // Order Routes
 router.use(
-  "/order",
-  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
-  OrderRoutes
-);
-router.use(
   "/order/item",
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   OrderItemRoutes
+);
+router.use(
+  "/order",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  OrderRoutes
 );
 
 // Invoice Routes

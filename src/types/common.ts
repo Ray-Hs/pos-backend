@@ -26,6 +26,9 @@ export const MenuItemSchema = z.object({
   subCategoryId: z.number().nullable(),
   categoryId: z.number().nullable().optional(),
 
+  sortOrder: z.number().default(0).optional(),
+  code: z.string().nullable().optional(),
+
   price: z.number(),
   discount: z.number().default(0),
   company: z.string().nullable().optional(),
@@ -102,11 +105,21 @@ export const CategorySchema = z.object({
 export type Category = z.infer<typeof CategorySchema>;
 const PaymentMethodEnum = z.enum(["CASH", "CARD", "PAY_LATER"]);
 
+export const TaxSchema = z.object({
+  id: z.number(),
+  rate: z.number().default(0),
+});
+export type Tax = z.infer<typeof TaxSchema>;
+
+export const ServiceSchema = z.object({
+  id: z.number(),
+  amount: z.number().default(0),
+});
+export type Service = z.infer<typeof ServiceSchema>;
+
 export const InvoiceSchema = z.object({
   id: z.number().optional(),
-  tax: z.number().default(0),
   discount: z.number().default(0),
-  service: z.number().default(0),
   total: z.number(),
   subtotal: z.number(),
   paymentMethod: PaymentMethodEnum.nullable(),
@@ -114,6 +127,8 @@ export const InvoiceSchema = z.object({
   orderId: z.number().int(),
   userId: z.number().int(),
   tableId: z.number().int().nullable().optional(),
+  taxId: z.number().int().nullable().optional(),
+  serviceId: z.number().int().nullable().optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
@@ -137,6 +152,10 @@ export const OrderItemSchema = z.object({
   menuItemId: z.number(),
   quantity: z.number().default(1),
   price: z.number(),
+  sortOrder: z.number().default(0),
+  notes: z.string().nullable().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
 });
 
 export const OrderSchema = z.object({
@@ -159,11 +178,12 @@ export const TableSchema = z.object({
   name: z.string(),
   capacity: z.number().default(4),
   available: z.boolean().default(true),
-  status: TableStatusEnum,
+  status: TableStatusEnum.nullable().optional(),
+  sortOrder: z.number().default(0),
   orders: z.array(OrderSchema).optional(),
+  sectionId: z.number().nullable().optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
-  sectionId: z.number().nullable().optional(),
 });
 
 export const SectionSchema = z.object({

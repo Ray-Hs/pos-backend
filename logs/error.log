@@ -2683,3 +2683,519 @@ The table `public.DeletedOrderItem` does not exist in the current database.
     "message": "Expected number, received string"
   }
 ]
+[2025-05-13 11:31:15] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:38605`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:38605`.
+[2025-05-13 11:31:36] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:38605`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:38605`.
+[2025-05-13 11:33:52] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 11:37:22] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 11:39:34] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 11:42:02] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 11:42:29] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 11:43:08] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 11:43:49] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 11:43:58] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 11:44:36] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 11:44:59] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 11:45:01] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 11:45:53] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 11:46:10] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 11:46:33] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 11:46:36] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 11:47:04] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 12:04:52] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 12:07:25] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 12:08:11] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 12:18:06] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 12:18:50] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 12:20:40] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 12:22:21] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 12:23:46] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 12:23:50] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 12:27:44] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 12:27:47] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 12:28:25] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "items"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 12:29:29] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 12:48:38] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 12:48:39] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-05-13 12:55:54] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 13:11:12] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 13:17:09] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 13:17:50] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "orderId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 13:18:17] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "orderId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-13 13:34:37] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 13:34:46] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 13:34:59] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 13:35:11] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 13:36:35] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 13:36:49] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 13:36:53] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 14:02:20] [31merror[39m: Get Order By ID Service:  
+Invalid `prisma.order.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:38605`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:38605`.
+[2025-05-13 14:02:23] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:38605`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:38605`.
+[2025-05-13 14:06:06] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 14:16:02] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-13 14:44:52] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.findFirst()` invocation:
+
+
+The column `OrderItem.notes` does not exist in the current database.
+[2025-05-13 14:44:54] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.findFirst()` invocation:
+
+
+The column `OrderItem.notes` does not exist in the current database.
+[2025-05-13 14:44:59] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.findFirst()` invocation:
+
+
+The column `OrderItem.notes` does not exist in the current database.
+[2025-05-13 14:45:00] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.findFirst()` invocation:
+
+
+The column `OrderItem.notes` does not exist in the current database.
+[2025-05-13 14:45:21] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.findFirst()` invocation:
+
+
+The column `OrderItem.notes` does not exist in the current database.
+[2025-05-13 14:45:22] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.findFirst()` invocation:
+
+
+The column `OrderItem.notes` does not exist in the current database.
+[2025-05-13 14:45:25] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.findFirst()` invocation:
+
+
+The column `OrderItem.notes` does not exist in the current database.
+[2025-05-13 14:45:29] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.findFirst()` invocation:
+
+
+The column `OrderItem.notes` does not exist in the current database.
+[2025-05-13 14:51:14] [31merror[39m: Get Tables Service:  
+Invalid `prisma.table.findMany()` invocation:
+
+
+The column `OrderItem.notes` does not exist in the current database.
+[2025-05-13 14:51:21] [31merror[39m: Get Tables Service:  
+Invalid `prisma.table.findMany()` invocation:
+
+
+The column `OrderItem.notes` does not exist in the current database.
+[2025-05-14 11:23:59] [31merror[39m: Auth Update User Service:  
+Invalid `prisma.user.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+[2025-05-14 11:25:11] [31merror[39m: Auth Update User Service:  
+Invalid `prisma.user.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+[2025-05-14 11:37:45] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "username"
+    ],
+    "message": "Required"
+  }
+]
+[2025-05-14 13:32:05] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-05-14 14:14:01] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:38605`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:38605`.
+[2025-05-14 14:14:02] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:38605`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:38605`.
+[2025-05-14 14:14:02] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:38605`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:38605`.
+[2025-05-14 16:14:25] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.code` does not exist in the current database.
+[2025-05-14 16:20:38] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.code` does not exist in the current database.
+[2025-05-15 05:03:01] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.code` does not exist in the current database.
+[2025-05-15 05:03:03] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.code` does not exist in the current database.
+[2025-05-15 05:10:26] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.code` does not exist in the current database.
+[2025-05-15 05:10:27] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.code` does not exist in the current database.

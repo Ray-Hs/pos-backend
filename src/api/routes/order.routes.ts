@@ -12,6 +12,11 @@ router.get(
   asyncRouteHandler(orderController.getOrders)
 );
 router.get(
+  "/latest",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(orderController.getLatestOrder)
+);
+router.get(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(orderController.getOrderById)

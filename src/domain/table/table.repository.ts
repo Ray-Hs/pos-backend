@@ -6,6 +6,7 @@ import {
   BAD_REQUEST_STATUS,
   NOT_FOUND_STATUS,
 } from "../../infrastructure/utils/constants";
+import { getLatestOrderDB } from "../order/order.repository";
 
 export function getTablesDB() {
   return prisma.table.findMany({
@@ -24,6 +25,13 @@ export function findTableByIdDB(id: number) {
     where: {
       id,
     },
+    include: {
+      orders: {
+        include: {
+          items: true,
+        },
+      },
+    },
   });
 }
 
@@ -32,13 +40,20 @@ export function findTableByNameDB(name: string) {
     where: {
       name,
     },
+    include: {
+      orders: {
+        include: {
+          items: true,
+        },
+      },
+    },
   });
 }
 
 export function createTableDB(
   data: Table,
   quantity: number,
-  sectionId?: number
+  sectionId: number
 ) {
   const { orders } = data;
   return prisma.$transaction(async (tx) => {
@@ -71,16 +86,18 @@ export function createTableDB(
 }
 
 export function updateTableDB(id: number, data: Table) {
-  const { orders } = data;
+  const { orders, id: _id, ...rest } = data;
   return prisma.table.update({
     where: {
       id,
     },
     data: {
-      ...data,
-      orders: {
-        connect: orders?.map((order) => ({ id: order.id })),
-      },
+      ...rest,
+      orders: orders
+        ? {
+            connect: orders?.map((order) => ({ id: order.id })),
+          }
+        : undefined,
     },
     include: {
       orders: {
@@ -152,14 +169,6 @@ export function transferTableDB(
         code: NOT_FOUND_STATUS,
       };
     }
-    //? Not Needed
-    // if (tableTwo.orders.length > 0) {
-    //   return {
-    //     success: false,
-    //     message: "Destination table must be empty",
-    //     code: BAD_REQUEST_STATUS,
-    //   };
-    // }
 
     if (tableTwo.status === "OCCUPIED") {
       return {
@@ -169,10 +178,7 @@ export function transferTableDB(
       };
     }
 
-    const latestOrderOne =
-      tableOne.orders.length > 0
-        ? tableOne.orders[tableOne.orders.length - 1]
-        : null;
+    const latestOrderOne = await getLatestOrderDB();
 
     if (!latestOrderOne) {
       return {

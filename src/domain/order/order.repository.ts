@@ -5,7 +5,11 @@ import { Order } from "../../types/common";
 export function getOrdersDB() {
   return prisma.order.findMany({
     include: {
-      items: true,
+      items: {
+        include: {
+          menuItem: true,
+        },
+      },
     },
   });
 }
@@ -14,7 +18,26 @@ export function findOrderByIdDB(id: number) {
   return prisma.order.findFirst({
     where: { id },
     include: {
-      items: true,
+      items: {
+        include: {
+          menuItem: true,
+        },
+      },
+      Invoice: true,
+    },
+  });
+}
+export function getLatestOrderDB() {
+  return prisma.order.findFirst({
+    orderBy: {
+      createdAt: "desc",
+    },
+    include: {
+      items: {
+        include: {
+          menuItem: true,
+        },
+      },
       Invoice: true,
     },
   });
@@ -23,8 +46,13 @@ export function findOrderByIdDB(id: number) {
 export function findOrderByTableIdDB(id: number) {
   return prisma.order.findFirst({
     where: { tableId: id },
+    orderBy: { updatedAt: "desc" },
     include: {
-      items: true,
+      items: {
+        include: {
+          menuItem: true,
+        },
+      },
     },
   });
 }
@@ -58,7 +86,11 @@ export async function createOrderDB(data: Order) {
           : undefined,
       },
       include: {
-        items: true,
+        items: {
+          include: {
+            menuItem: true,
+          },
+        },
       },
     });
 

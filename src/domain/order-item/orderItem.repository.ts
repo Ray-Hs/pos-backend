@@ -10,6 +10,9 @@ export async function getOrderItemByIdDB(id: number) {
     where: {
       id,
     },
+    include: {
+      menuItem: true,
+    },
   });
 }
 

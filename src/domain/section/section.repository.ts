@@ -48,9 +48,11 @@ export function updateSectionDB(id: number, data: Section) {
     },
     data: {
       ...rest,
-      tables: {
-        connect: tables?.map((table) => ({ id: table.id })),
-      },
+      tables: tables
+        ? {
+            connect: tables?.map((table) => ({ id: table.id })),
+          }
+        : undefined,
     },
     include: {
       tables: true,

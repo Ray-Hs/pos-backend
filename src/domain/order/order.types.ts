@@ -5,6 +5,7 @@ export interface OrderServiceInterface {
   getOrders: () => Promise<TResult<Order[]>>;
   getOrderById: (requestId: any) => Promise<TResult<Order>>;
   getOrderByTableId: (requestId: any) => Promise<TResult<Order>>;
+  getLatestOrder: (requestId: any) => Promise<TResult<Order>>;
   createOrder: (requestData: any) => Promise<TResult<Order>>;
   updateOrder: (requestId: any, requestData: any) => Promise<TResult<Order>>;
   deleteOrder: (requestId: any) => Promise<TResult<Order>>;
@@ -20,6 +21,10 @@ export interface OrderControllerInterface {
     res: Response
   ) => Promise<Response<TResult<Order>>>;
   getOrderByTableId: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<Order>>>;
+  getLatestOrder: (
     req: Request,
     res: Response
   ) => Promise<Response<TResult<Order>>>;

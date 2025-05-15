@@ -1,0 +1,13 @@
+model Tax {
+    id   Int @id @default(autoincrement())
+    rate Int @default(0)
+
+    invoices Invoice[]
+}
+
+model Service {
+    id     Int @id @default(autoincrement())
+    amount Int @default(0)
+
+    invoices Invoice[]
+}

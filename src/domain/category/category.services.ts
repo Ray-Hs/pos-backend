@@ -11,7 +11,7 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { CategorySchema, Filter } from "../../types/common";
+import { Category, CategorySchema, Filter } from "../../types/common";
 import { getSubcategoriesByCategoryIdDB } from "../subcategory/subcategory.repository";
 import {
   createCategoryDB,

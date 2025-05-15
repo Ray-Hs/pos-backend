@@ -293,6 +293,17 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
+      const existingUser = await findUserDB(response.id);
+      if (!existingUser) {
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
       const hashedPassword = hash(data.password);
       const updatedUser = await updateUserDB(response.id, {
         ...data,

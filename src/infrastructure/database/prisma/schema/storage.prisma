@@ -55,11 +55,13 @@ model MenuItem {
     SubCategory   SubCategory? @relation(fields: [subCategoryId], references: [id])
     subCategoryId Int?
 
-    price    Float
-    company  String?
-    discount Float   @default(0)
-    isActive Boolean @default(true)
-    image    String?
+    price     Float
+    company   String?
+    code      String? @default("")
+    discount  Float   @default(0)
+    isActive  Boolean @default(true)
+    image     String?
+    sortOrder Int     @default(0)
 
     createdAt        DateTime           @default(now())
     updatedAt        DateTime           @updatedAt

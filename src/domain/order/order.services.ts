@@ -16,6 +16,7 @@ import {
   deleteOrderDB,
   findOrderByIdDB,
   findOrderByTableIdDB,
+  getLatestOrderDB,
   getOrdersDB,
   updateOrderDB,
 } from "./order.repository";
@@ -85,6 +86,34 @@ export class OrderServices implements OrderServiceInterface {
       };
     } catch (error) {
       logger.error("Get Order By ID Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+  async getLatestOrder() {
+    try {
+      const data = await getLatestOrderDB();
+      if (!data) {
+        logger.warn("No Data Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+      return {
+        success: true,
+        data,
+      };
+    } catch (error) {
+      logger.error("Get Latest Order Service: ", error);
       return {
         success: false,
         error: {

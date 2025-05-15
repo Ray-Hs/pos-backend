@@ -38,6 +38,15 @@ export class OrderController implements OrderControllerInterface {
       .json(response);
   }
 
+  async getLatestOrder(req: Request, res: Response) {
+    const orderService = new OrderServices();
+    const response = await orderService.getLatestOrder();
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
   async createOrder(req: Request, res: Response) {
     const body = req.body;
     const userId = decodeJWT(req, res) as UserWithoutPassword;

@@ -6,22 +6,24 @@ enum PaymentMethod {
 
 model Invoice {
     id       Int   @id @default(autoincrement())
-    tax      Float @default(0)
     discount Float @default(0) // Between 0 and 1
-    service  Float @default(0)
     total    Float
     subtotal Float
 
     paymentMethod PaymentMethod?
     paid          Boolean        @default(false)
 
-    orderId Int
-    userId  Int
-    tableId Int?
+    taxId     Int?
+    serviceId Int?
+    orderId   Int
+    userId    Int
+    tableId   Int?
 
-    order Order  @relation(fields: [orderId], references: [id])
-    user  User   @relation(fields: [userId], references: [id])
-    table Table? @relation(fields: [tableId], references: [id])
+    tax     Tax?     @relation(fields: [taxId], references: [id])
+    service Service? @relation(fields: [serviceId], references: [id])
+    order   Order    @relation(fields: [orderId], references: [id])
+    user    User     @relation(fields: [userId], references: [id])
+    table   Table?   @relation(fields: [tableId], references: [id])
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

@@ -48,7 +48,7 @@ export const INVALID_TOKEN_STATUS = 401;
 // Rate Limiter
 export const RATE_LIMIT_STATUS = 429;
 export const RATE_LIMIT_ERR = "TOO_MANY_REQUESTS";
-export const RATE_LIMIT = 100; // Tries
+export const RATE_LIMIT = 1000; // Tries
 export const RATE_LIMIT_TIME_WINDOW = 15; // Minutes
 
 // JWT

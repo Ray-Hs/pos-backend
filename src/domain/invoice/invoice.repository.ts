@@ -14,6 +14,7 @@ export async function findInvoiceByIdDB(id: number) {
 }
 
 export async function createInvoiceDB(data: Invoice) {
+  const { taxId, serviceId, ...rest } = data;
   return prisma.invoice.create({
     data,
   });

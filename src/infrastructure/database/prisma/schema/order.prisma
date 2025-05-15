@@ -16,29 +16,38 @@ model Order {
 }
 
 model OrderItem {
-    id         Int   @id @default(autoincrement())
+    id         Int     @id @default(autoincrement())
     orderId    Int
     menuItemId Int
-    quantity   Int   @default(1)
+    quantity   Int     @default(1)
     price      Float // snapshot price
-    //? Add notes and other stuff here
+    notes      String?
 
-    order    Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
-    menuItem MenuItem @relation(fields: [menuItemId], references: [id])
+    order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+    menuItem  MenuItem @relation(fields: [menuItemId], references: [id])
+    sortOrder Int      @default(0)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 
     @@index([orderId, menuItemId, quantity])
 }
 
 model DeletedOrderItem {
-    id         Int   @id @default(autoincrement())
+    id         Int     @id @default(autoincrement())
     orderId    Int
     menuItemId Int
-    quantity   Int   @default(1)
+    quantity   Int     @default(1)
     price      Float // snapshot price
-    //? Add notes and other stuff here
+    notes      String?
+
+    sortOrder Int @default(0)
 
     order    Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
     menuItem MenuItem @relation(fields: [menuItemId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 
     @@index([orderId, menuItemId, quantity])
 }
