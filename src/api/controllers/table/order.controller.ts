@@ -39,8 +39,9 @@ export class OrderController implements OrderControllerInterface {
   }
 
   async getLatestOrder(req: Request, res: Response) {
+    const id = parseInt(req.params?.id, 10);
     const orderService = new OrderServices();
-    const response = await orderService.getLatestOrder();
+    const response = await orderService.getLatestOrder(id);
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

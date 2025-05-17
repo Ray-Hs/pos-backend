@@ -178,7 +178,7 @@ export function transferTableDB(
       };
     }
 
-    const latestOrderOne = await getLatestOrderDB();
+    const latestOrderOne = await getLatestOrderDB(tableTwo.id);
 
     if (!latestOrderOne) {
       return {

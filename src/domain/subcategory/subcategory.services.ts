@@ -38,6 +38,8 @@ export class SubcategoryServices implements SubcategoryServiceInterface {
         };
       }
 
+      console.log(JSON.stringify(data));
+
       const formattedSubcategory: SubCategory[] = data.map((subcategory) => {
         return {
           id: subcategory.id,

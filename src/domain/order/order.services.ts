@@ -95,9 +95,24 @@ export class OrderServices implements OrderServiceInterface {
       };
     }
   }
-  async getLatestOrder() {
+  async getLatestOrder(requestId: number) {
     try {
-      const data = await getLatestOrderDB();
+      const tableId = await validateType(
+        { id: requestId },
+        OrderSchema.pick({ id: true })
+      );
+
+      if (tableId instanceof ZodError || !tableId.id) {
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+
+      const data = await getLatestOrderDB(tableId.id);
       if (!data) {
         logger.warn("No Data Found");
         return {
