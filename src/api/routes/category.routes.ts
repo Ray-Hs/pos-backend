@@ -24,7 +24,7 @@ router.post(
   asyncRouteHandler(categoryInstance.createCategory)
 );
 
-router.put(
+router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(categoryInstance.updateCategory)

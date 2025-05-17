@@ -27,7 +27,7 @@ router.post(
   asyncRouteHandler(isAdmin),
   asyncRouteHandler(MenuItemInstance.createItem)
 );
-router.put(
+router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),

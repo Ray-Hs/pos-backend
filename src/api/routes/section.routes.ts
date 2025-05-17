@@ -22,7 +22,7 @@ router.post(
   asyncRouteHandler(isAdmin),
   asyncRouteHandler(sectionInstance.createSection)
 );
-router.put(
+router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),

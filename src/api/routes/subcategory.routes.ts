@@ -29,7 +29,7 @@ router.post(
   asyncRouteHandler(SubcategoryInstance.createSubcategory)
 );
 
-router.put(
+router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),

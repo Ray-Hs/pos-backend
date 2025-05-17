@@ -32,7 +32,7 @@ router.post(
   asyncRouteHandler(isAdmin),
   asyncRouteHandler(orderController.createOrder)
 );
-router.put(
+router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),

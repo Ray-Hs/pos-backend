@@ -15,7 +15,7 @@ router.post(
   asyncRouteHandler(isAdmin),
   asyncRouteHandler(invoice.createInvoice)
 );
-router.put(
+router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),

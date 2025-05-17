@@ -32,7 +32,7 @@ router.post(
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(tableController.transferTable)
 );
-router.put(
+router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),

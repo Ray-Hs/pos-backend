@@ -10,6 +10,7 @@ export function getSubcategoriesDB(filter?: Filter) {
           _count: true,
         },
       },
+      Category: true,
     },
     orderBy: [{ sortOrder: filter }, { id: filter }],
   });

@@ -79,7 +79,9 @@ export const SubCategorySchema = z.object({
   updatedAt: z.date().optional(),
 });
 
-export type SubCategory = z.infer<typeof SubCategorySchema>;
+export type SubCategory = z.infer<typeof SubCategorySchema> & {
+  category?: Category;
+};
 
 export const CategorySchema = z.object({
   id: z.number().optional(),

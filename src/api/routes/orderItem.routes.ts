@@ -22,7 +22,7 @@ router.post(
   asyncRouteHandler(isAdmin),
   asyncRouteHandler(client.createOrderItem)
 );
-router.put(
+router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),
