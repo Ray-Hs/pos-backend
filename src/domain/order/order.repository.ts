@@ -29,7 +29,7 @@ export function findOrderByIdDB(id: number) {
 }
 export function getLatestOrderDB(id: number) {
   return prisma.order.findFirst({
-    where: { id },
+    where: { tableId: id },
     orderBy: {
       createdAt: "desc",
     },
