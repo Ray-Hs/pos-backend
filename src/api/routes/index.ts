@@ -14,6 +14,7 @@ import OrderItemRoutes from "./orderItem.routes";
 import SectionRoutes from "./section.routes";
 import SubcategoryRoutes from "./subcategory.routes";
 import TableRoutes from "./table.routes";
+import ConstantsRoutes from "./constants.routes";
 const router: Router = express.Router();
 
 // Auth Routes
@@ -53,6 +54,11 @@ router.use(
 );
 
 // Invoice Routes
+router.use(
+  "/invoice/constants",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  ConstantsRoutes
+);
 router.use(
   "/invoice",
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),

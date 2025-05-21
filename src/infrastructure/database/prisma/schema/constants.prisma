@@ -1,6 +1,6 @@
 model Tax {
-    id   Int @id @default(autoincrement())
-    rate Int @default(0)
+    id   Int   @id @default(autoincrement())
+    rate Float @default(0)
 
     invoices Invoice[]
 }

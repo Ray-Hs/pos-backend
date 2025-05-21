@@ -1,0 +1,17 @@
+enum Options {
+    WRITE
+    READ
+    READ_WRITE
+    NONE
+}
+
+model Permissions {
+    id        Int      @id @default(autoincrement())
+    storage   Options? @default(NONE)
+    constants Options? @default(NONE)
+    invoice   Options? @default(NONE)
+    order     Options? @default(NONE)
+    table     Options? @default(NONE)
+    section   Options? @default(NONE)
+    users     Options? @default(NONE)
+}
