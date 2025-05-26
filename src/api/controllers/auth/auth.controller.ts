@@ -1,12 +1,16 @@
 import { Request, Response } from "express";
+import { JwtPayload } from "jsonwebtoken";
 import ms from "ms";
 import AuthService from "../../../domain/auth/auth.services";
 import { AuthControllerInterface } from "../../../domain/auth/auth.types";
 import {
   CREATED_STATUS,
+  INTERNAL_SERVER_STATUS,
   JWT_EXPIRE,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
+import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
+import { UserWithoutPassword } from "../../../types/common";
 
 class AuthController implements AuthControllerInterface {
   async login(req: Request, res: Response) {
@@ -49,6 +53,14 @@ class AuthController implements AuthControllerInterface {
         message: response.message,
         error: response.error,
       });
+  }
+
+  async getCurrentUser(req: Request, res: Response) {
+    const session = decodeJWT(req, res) as JwtPayload & UserWithoutPassword;
+
+    return res
+      .status(session.id ? OK_STATUS : INTERNAL_SERVER_STATUS)
+      .json(session);
   }
 
   async createAccount(req: Request, res: Response) {

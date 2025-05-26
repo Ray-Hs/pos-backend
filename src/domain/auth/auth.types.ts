@@ -22,6 +22,10 @@ interface AuthControllerInterface {
     res: Response
   ) => Promise<Response<TResult<UserWithoutPassword>>>;
   logout: (req: Request, res: Response) => Promise<Response<TResult<void>>>;
+  getCurrentUser: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<UserWithoutPassword>>>;
   getUsers: (
     req: Request,
     res: Response

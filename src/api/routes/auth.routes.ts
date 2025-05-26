@@ -9,6 +9,10 @@ const controllerInstance = new AuthController();
 
 router.post("/login", asyncRouteHandler(controllerInstance.login));
 router.get("/logout", asyncRouteHandler(controllerInstance.logout));
+router.get(
+  "/user/current",
+  asyncRouteHandler(controllerInstance.getCurrentUser)
+);
 router.post(
   "/create-account",
   asyncRouteHandler(isAuthenticated),

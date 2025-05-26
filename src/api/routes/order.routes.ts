@@ -12,7 +12,7 @@ router.get(
   asyncRouteHandler(orderController.getOrders)
 );
 router.get(
-  "/latest",
+  "/latest/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(orderController.getLatestOrder)
 );

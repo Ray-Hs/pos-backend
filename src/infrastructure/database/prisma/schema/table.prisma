@@ -10,7 +10,7 @@ model Table {
     capacity  Int          @default(4)
     available Boolean      @default(true)
     orders    Order[]
-    status    TableStatus?
+    status    TableStatus? @default(AVAILABLE)
     createdAt DateTime     @default(now())
     updatedAt DateTime     @updatedAt
 

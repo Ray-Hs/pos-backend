@@ -6,8 +6,7 @@ import {
   INTERNAL_SERVER_ERR,
   INTERNAL_SERVER_STATUS,
   INVOICE_NOT_FOUND,
-  NOT_FOUND_ERR,
-  NOT_FOUND_STATUS,
+  NOT_FOUND_STATUS
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
@@ -32,7 +31,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
           success: false,
           error: {
             code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
+            message: INVOICE_NOT_FOUND,
           },
         };
       }
@@ -75,7 +74,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
           success: false,
           error: {
             code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
+            message: INVOICE_NOT_FOUND,
           },
         };
       }
@@ -120,7 +119,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
           success: false,
           error: {
             code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
+            message: INVOICE_NOT_FOUND,
           },
         };
       }
@@ -226,7 +225,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
         success: false,
         error: {
           code: NOT_FOUND_STATUS,
-          message: NOT_FOUND_ERR,
+          message: INVOICE_NOT_FOUND,
         },
       };
     } catch (error) {
@@ -271,7 +270,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
         success: false,
         error: {
           code: NOT_FOUND_STATUS,
-          message: NOT_FOUND_ERR,
+          message: INVOICE_NOT_FOUND,
         },
       };
     } catch (error) {

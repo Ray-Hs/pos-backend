@@ -1,4 +1,5 @@
 import prisma from "../../infrastructure/database/prisma/client";
+import logger from "../../infrastructure/utils/logger";
 import { Invoice } from "../../types/common";
 import { getConstantsDB } from "../constants/constants.repository";
 
@@ -45,7 +46,7 @@ const calculateTotal = (
 
 // Create invoice with better error handling and validation
 export const createInvoiceDB = async (data: Invoice) => {
-  const { serviceId, orderId, discount, ...rest } = data;
+  const { serviceId, orderId, discount, tableId, ...rest } = data;
 
   return prisma.$transaction(async (tx) => {
     const order = await tx.order.findFirst({
@@ -66,10 +67,11 @@ export const createInvoiceDB = async (data: Invoice) => {
 
     const total = calculateTotal(subtotal, constants, discount);
 
-    return tx.invoice.create({
+    const invoice = await tx.invoice.create({
       data: {
         ...rest,
         orderId,
+        tableId,
         subtotal,
         total,
         userId: data.userId as number,
@@ -78,6 +80,25 @@ export const createInvoiceDB = async (data: Invoice) => {
         discount: discount || 0,
       },
     });
+
+    if (tableId) {
+      console.log("Invoice Table ID: ", tableId);
+      await tx.table.update({
+        where: {
+          id: tableId || undefined,
+        },
+        data: {
+          status: "AVAILABLE",
+          orders: {
+            disconnect: {
+              id: orderId,
+            },
+          },
+        },
+      });
+    }
+
+    return invoice;
   });
 };
 
