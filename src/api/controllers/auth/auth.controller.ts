@@ -58,9 +58,10 @@ class AuthController implements AuthControllerInterface {
   async getCurrentUser(req: Request, res: Response) {
     const session = decodeJWT(req, res) as JwtPayload & UserWithoutPassword;
 
+    console.log(session);
     return res
       .status(session.id ? OK_STATUS : INTERNAL_SERVER_STATUS)
-      .json(session);
+      .json({ success: !session.id, data: session });
   }
 
   async createAccount(req: Request, res: Response) {
