@@ -61,7 +61,7 @@ class AuthController implements AuthControllerInterface {
     console.log(session);
     return res
       .status(session.id ? OK_STATUS : INTERNAL_SERVER_STATUS)
-      .json({ success: !session.id, data: session });
+      .json({ success: !!session.id, data: session });
   }
 
   async createAccount(req: Request, res: Response) {
