@@ -10485,3 +10485,26 @@ Unique constraint failed on the fields: (`settingsId`)
   }
 ]
 [2025-06-14 12:36:25] [33mwarn[39m: Printer Not Found
+[2025-06-14 13:06:01] [33mwarn[39m: Is Connected: 
+[2025-06-14 13:06:28] [33mwarn[39m: Is Connected: 
+[2025-06-14 13:27:26] [33mwarn[39m: Is Connected: 
+[2025-06-14 13:33:11] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:33:36] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:38:59] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:40:17] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:43:42] [31merror[39m: Print Error:  No driver set!
+[2025-06-14 13:44:01] [31merror[39m: Print Error:  No driver set!
+[2025-06-14 13:44:20] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:45:05] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:45:30] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:46:21] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:46:24] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:47:06] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:47:08] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:47:32] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:47:33] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:47:36] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:47:37] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:47:39] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:47:40] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 13:47:42] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')

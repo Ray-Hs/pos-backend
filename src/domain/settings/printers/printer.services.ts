@@ -1,6 +1,13 @@
+import {
+  BreakLine,
+  CharacterSet,
+  PrinterTypes,
+  ThermalPrinter,
+} from "node-thermal-printer";
 import { ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
+  BAD_REQUEST_ERR,
   BAD_REQUEST_ID_ERR,
   BAD_REQUEST_STATUS,
   INTERNAL_SERVER_ERR,
@@ -18,11 +25,7 @@ import {
   getPrintersDB,
   updatePrinterDB,
 } from "./printer.repository";
-import {
-  Printer,
-  PrinterObjectSchema,
-  PrinterServiceInterface,
-} from "./printer.types";
+import { PrinterObjectSchema, PrinterServiceInterface } from "./printer.types";
 
 export class printerService implements PrinterServiceInterface {
   async getPrinters() {
@@ -272,6 +275,79 @@ export class printerService implements PrinterServiceInterface {
       };
     } catch (error) {
       logger.error("Delete Printer: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async print(requestId: any) {
+    try {
+      const id = await validateType(
+        { id: requestId },
+        PrinterObjectSchema.pick({ id: true })
+      );
+      if (!id || id instanceof ZodError) {
+        logger.warn("Invalid Printer ID: ", id);
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+
+      if (!id.id) {
+        logger.warn("Invalid Printer ID: ", id.id);
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+
+      const printerDevice = await getPrinterByIdDB(id.id);
+      const printer = new ThermalPrinter({
+        type: PrinterTypes.EPSON,
+        interface: `tcp://192.168.1.21`,
+        removeSpecialCharacters: false,
+        lineCharacter: "=",
+        breakLine: BreakLine.WORD,
+      });
+
+      let isConnected = await printer.isPrinterConnected();
+      if (isConnected) {
+        printer.print("Hello from Xprinter XP-80C!");
+        printer.cut();
+
+        const printStatus = await printer
+          .execute()
+          .then(() => console.log("Printed successfully"))
+          .catch((err) => console.error(err));
+
+        return {
+          success: true,
+          message: "Printed Successfully",
+        };
+      }
+
+      console.warn("Is Connected: ", isConnected);
+      return {
+        success: false,
+        error: {
+          code: BAD_REQUEST_STATUS,
+          message: BAD_REQUEST_ERR,
+        },
+      };
+    } catch (error) {
+      logger.error("Print Error: ", error);
       return {
         success: false,
         error: {

@@ -19,6 +19,11 @@ router.get(
   asyncRouteHandler(client.getPrinterById)
 );
 router.post(
+  "/printers/:id/print",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(client.print)
+);
+router.post(
   "/printers",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),

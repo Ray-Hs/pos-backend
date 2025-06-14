@@ -1,11 +1,9 @@
 import { Request, Response } from "express";
-import {
-    printerService
-} from "../../../../domain/settings/printers/printer.services";
+import { printerService } from "../../../../domain/settings/printers/printer.services";
 import { PrinterControllerInterface } from "../../../../domain/settings/printers/printer.types";
 import {
-    CREATED_STATUS,
-    OK_STATUS,
+  CREATED_STATUS,
+  OK_STATUS,
 } from "../../../../infrastructure/utils/constants";
 
 export class PrinterController implements PrinterControllerInterface {
@@ -51,6 +49,16 @@ export class PrinterController implements PrinterControllerInterface {
     const id = parseInt(req.params.id, 10);
     const printerServices = new printerService();
     const response = await printerServices.deletePrinter(id);
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async print(req: Request, res: Response) {
+    const id = parseInt(req.params.id, 10);
+    const printerServices = new printerService();
+    const response = await printerServices.print(id);
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
