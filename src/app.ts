@@ -14,7 +14,7 @@ const corsOptions: CorsOptions = {
     "http://localhost:8080",
     "http://192.168.43.74:3000",
     "http://192.168.1.12:3000",
-    "https://56907bw8-3001.euw.devtunnels.ms",
+    "http://192.168.137.254:3000",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],

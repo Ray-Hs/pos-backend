@@ -357,7 +357,13 @@ export class printerService implements PrinterServiceInterface {
         printer.alignCenter();
         printer.newLine();
         printer.println("Thank you for your business!");
+        printer.printQR("https://www.youtube.com/watch?v=ECOFX9Ss0KY", {
+          cellSize: 5, // QR Cell Size, default 3
+          correction: "M", // QR Correction Level, default 'M'
+          model: 2, // QR Model, default 2
+        });
         printer.cut();
+        printer.beep(4);
 
         const printStatus = await printer
           .execute()

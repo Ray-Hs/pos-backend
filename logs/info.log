@@ -11427,3 +11427,430 @@ Unique constraint failed on the fields: (`settingsId`)
 [2025-06-14 13:47:39] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
 [2025-06-14 13:47:40] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
 [2025-06-14 13:47:42] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'toString')
+[2025-06-14 15:46:45] [32minfo[39m: Filter: 
+[2025-06-14 15:46:47] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:46:48] [33mwarn[39m: No Data Found
+[2025-06-14 15:46:49] [33mwarn[39m: No Data Found
+[2025-06-14 15:46:52] [33mwarn[39m: No Data Found
+[2025-06-14 15:46:56] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:46:57] [33mwarn[39m: No Data Found
+[2025-06-14 15:46:57] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:46:59] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:47:00] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:47:07] [32minfo[39m: Filter: 
+[2025-06-14 15:47:08] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:47:08] [33mwarn[39m: No Data Found
+[2025-06-14 15:47:09] [33mwarn[39m: No Data Found
+[2025-06-14 15:47:12] [33mwarn[39m: No Data Found
+[2025-06-14 15:47:16] [33mwarn[39m: No Data Found
+[2025-06-14 15:48:09] [32minfo[39m: Filter: 
+[2025-06-14 15:48:18] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:48:19] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:48:22] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:48:27] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:48:48] [32minfo[39m: Filter: 
+[2025-06-14 15:48:49] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:48:49] [32minfo[39m: Filter: 
+[2025-06-14 15:48:51] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:48:53] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:48:58] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:49:24] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "printersId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-14 15:49:24] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "printersId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-14 15:49:58] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:50:12] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "printersId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-14 15:50:12] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "printersId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-14 15:50:50] [32minfo[39m: Filter: 
+[2025-06-14 15:51:09] [32minfo[39m: Filter: 
+[2025-06-14 15:51:10] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:51:10] [33mwarn[39m: No Data Found
+[2025-06-14 15:51:12] [33mwarn[39m: No Data Found
+[2025-06-14 15:51:19] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:51:19] [33mwarn[39m: Missing ID
+[2025-06-14 15:51:39] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:51:39] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:10] [32minfo[39m: Filter: 
+[2025-06-14 15:52:10] [33mwarn[39m: No Data Found
+[2025-06-14 15:52:11] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:52:12] [33mwarn[39m: No Data Found
+[2025-06-14 15:52:13] [32minfo[39m: Filter: 
+[2025-06-14 15:52:14] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:52:14] [33mwarn[39m: No Data Found
+[2025-06-14 15:52:16] [32minfo[39m: Filter: 
+[2025-06-14 15:52:16] [33mwarn[39m: No Data Found
+[2025-06-14 15:52:17] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:52:29] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:29] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:33] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:33] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:33] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:33] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:33] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:33] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:34] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:34] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:34] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:34] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:35] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:35] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:35] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:35] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:35] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:35] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:36] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:36] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:36] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:36] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:36] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:36] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:37] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:37] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:37] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:37] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:37] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:37] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:38] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:38] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:38] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:38] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:38] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:38] [33mwarn[39m: Missing ID
+[2025-06-14 15:52:47] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-14 15:52:47] [33mwarn[39m: Missing ID
+[2025-06-14 15:53:13] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:53:15] [33mwarn[39m: NOT FOUND
+[2025-06-14 15:53:38] [32minfo[39m: Filter: 
+[2025-06-14 15:53:39] [33mwarn[39m: NOT FOUND
+[2025-06-14 16:00:31] [32minfo[39m: Filter: 
+[2025-06-14 16:00:33] [33mwarn[39m: NOT FOUND
+[2025-06-14 16:01:13] [31merror[39m: 
+Invalid `prisma.orderItem.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+[2025-06-14 16:01:18] [32minfo[39m: Filter: 
+[2025-06-14 16:01:19] [33mwarn[39m: NOT FOUND
+[2025-06-14 16:03:12] [33mwarn[39m: No Data Found
+[2025-06-14 16:03:13] [33mwarn[39m: NOT FOUND
+[2025-06-14 16:03:14] [33mwarn[39m: No Data Found
+[2025-06-14 16:03:28] [33mwarn[39m: No Data Found
+[2025-06-14 16:03:30] [33mwarn[39m: No Data Found
+[2025-06-14 16:03:30] [33mwarn[39m: No Data Found
+[2025-06-14 16:03:32] [33mwarn[39m: No Data Found
+[2025-06-14 16:04:44] [32minfo[39m: Filter: 
+[2025-06-14 16:04:45] [33mwarn[39m: NOT FOUND
+[2025-06-14 16:05:13] [33mwarn[39m: No Data Found
+[2025-06-14 16:05:13] [33mwarn[39m: No Data Found
+[2025-06-14 16:05:14] [33mwarn[39m: No Data Found
+[2025-06-14 16:05:15] [33mwarn[39m: No Data Found
+[2025-06-14 16:06:03] [33mwarn[39m: No Data Found
+[2025-06-14 16:06:03] [33mwarn[39m: No Data Found
+[2025-06-14 16:06:04] [33mwarn[39m: NOT FOUND
+[2025-06-14 16:06:04] [33mwarn[39m: No Data Found
+[2025-06-14 16:07:13] [33mwarn[39m: No Data Found
+[2025-06-14 16:07:13] [33mwarn[39m: No Data Found
+[2025-06-14 16:07:13] [33mwarn[39m: NOT FOUND
+[2025-06-14 16:07:14] [33mwarn[39m: No Data Found
+[2025-06-14 16:07:14] [33mwarn[39m: No Data Found
+[2025-06-14 16:07:17] [33mwarn[39m: No Data Found
+[2025-06-14 16:07:18] [33mwarn[39m: No Data Found
+[2025-06-14 16:07:19] [33mwarn[39m: No Data Found
+[2025-06-14 16:07:19] [33mwarn[39m: No Data Found
+[2025-06-14 16:08:15] [31merror[39m: Validation failed: [
+  {
+    "received": "CHECK",
+    "code": "invalid_enum_value",
+    "options": [
+      "CASH",
+      "CARD",
+      "PAY_LATER"
+    ],
+    "path": [
+      "paymentMethod"
+    ],
+    "message": "Invalid enum value. Expected 'CASH' | 'CARD' | 'PAY_LATER', received 'CHECK'"
+  }
+]
+[2025-06-14 16:08:15] [33mwarn[39m: Missing Info
+[2025-06-14 16:08:46] [33mwarn[39m: No Data Found
+[2025-06-14 16:08:47] [33mwarn[39m: No Data Found
+[2025-06-14 16:08:48] [33mwarn[39m: No Data Found
+[2025-06-14 16:08:49] [33mwarn[39m: No Data Found
+[2025-06-14 16:09:00] [33mwarn[39m: NOT FOUND
+[2025-06-14 16:09:15] [33mwarn[39m: No Data Found
+[2025-06-14 16:09:15] [33mwarn[39m: NOT FOUND
+[2025-06-14 16:09:16] [33mwarn[39m: No Data Found
+[2025-06-14 16:09:20] [33mwarn[39m: No Data Found
+[2025-06-14 16:09:20] [33mwarn[39m: NOT FOUND
+[2025-06-14 16:09:21] [33mwarn[39m: No Data Found
+[2025-06-14 16:09:27] [33mwarn[39m: NOT FOUND
+[2025-06-14 16:09:28] [33mwarn[39m: No Data Found
+[2025-06-14 16:09:29] [33mwarn[39m: No Data Found
+[2025-06-14 16:26:07] [31merror[39m: Print Error:  numberOfBeeps: Value must be between 1 and 9
+[2025-06-14 16:31:27] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'length')
+[2025-06-14 16:31:46] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'length')
+[2025-06-14 16:31:56] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'length')
+[2025-06-14 16:32:06] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'length')
+[2025-06-14 16:32:38] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'length')
+[2025-06-14 16:33:58] [31merror[39m: Print Error:  Cannot read properties of undefined (reading 'length')
+[2025-06-14 17:45:25] [32minfo[39m: Filter: 
+[2025-06-14 17:45:26] [33mwarn[39m: No Data Found
+[2025-06-14 17:45:27] [33mwarn[39m: NOT FOUND
+[2025-06-14 17:45:27] [33mwarn[39m: No Data Found
+[2025-06-14 17:45:28] [33mwarn[39m: No Data Found
+[2025-06-14 17:45:29] [33mwarn[39m: NOT FOUND
+[2025-06-14 17:45:30] [33mwarn[39m: No Data Found
+[2025-06-14 17:45:31] [33mwarn[39m: No Data Found
+[2025-06-14 17:45:31] [33mwarn[39m: NOT FOUND
+[2025-06-14 17:45:32] [33mwarn[39m: No Data Found
+[2025-06-14 17:46:12] [33mwarn[39m: NOT FOUND
+[2025-06-14 18:16:37] [32minfo[39m: Filter: 

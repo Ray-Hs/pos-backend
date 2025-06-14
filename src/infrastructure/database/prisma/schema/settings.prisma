@@ -50,3 +50,51 @@ model Roles {
     permissionsId Int
     permissions   Permissions?
 }
+
+model CRM {
+    id               Int                @id @default(autoincrement())
+    // Customer Info Management
+    customerInfo     CustomerInfo[]
+    // Company Info Management
+    companyInfo      CompanyInfo[]
+    // Customer Discount Management
+    customerDiscount CustomerDiscount[]
+}
+
+model CustomerInfo {
+    id          Int     @id @default(autoincrement())
+    code        String?
+    name        String
+    phoneNumber String
+    email       String?
+    debt        Int?
+    note        String?
+    CRMId       Int?
+    CRM         CRM?    @relation(fields: [CRMId], references: [id])
+}
+
+enum Currency {
+    IQD
+    USD
+}
+
+model CompanyInfo {
+    id          Int       @id @default(autoincrement())
+    code        String?
+    currency    Currency?
+    name        String
+    phoneNumber String
+    email       String?
+    note        String?
+    CRMId       Int?
+    CRM         CRM?      @relation(fields: [CRMId], references: [id])
+}
+
+model CustomerDiscount {
+    id          Int    @id @default(autoincrement())
+    name        String
+    phoneNumber String
+    discount    Float
+    cRMId       Int?
+    CRM         CRM?   @relation(fields: [cRMId], references: [id])
+}

@@ -1,11 +1,13 @@
 import express, { Router } from "express";
-import { PrinterController } from "../controllers/settings/printer/printer.controller";
 import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
-import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
 import { BrandController } from "../controllers/settings/branding/brand.controller";
+import { CRMController } from "../controllers/settings/crm/crm.controller";
+import { PrinterController } from "../controllers/settings/printer/printer.controller";
+import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
 const router: Router = express.Router();
 const client = new PrinterController();
 const brandClient = new BrandController();
+const controller = new CRMController();
 
 // Printers Routes
 router.get(
@@ -65,6 +67,101 @@ router.delete(
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),
   asyncRouteHandler(brandClient.deleteBrand)
+);
+
+// Customers
+router.get(
+  "/customers",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.getCustomers)
+);
+router.get(
+  "/customers/phone/:phone",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.getCustomerByPhone)
+);
+router.get(
+  "/customers/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.getCustomerById)
+);
+router.post(
+  "/customers",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.createCustomer)
+);
+router.patch(
+  "/customers/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.updateCustomer)
+);
+router.delete(
+  "/customers/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.deleteCustomer)
+);
+
+// Companies
+router.get(
+  "/companies",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.getCompanies)
+);
+router.get(
+  "/companies/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.getCompanyById)
+);
+router.post(
+  "/companies",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.createCompany)
+);
+router.patch(
+  "/companies/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.updateCompany)
+);
+router.delete(
+  "/companies/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.deleteCompany)
+);
+
+// Customer Discounts
+router.get(
+  "/customer-discounts",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.getCustomerDiscounts)
+);
+router.get(
+  "/customer-discounts/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.getCustomerDiscountById)
+);
+router.post(
+  "/customer-discounts",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.createCustomerDiscount)
+);
+router.patch(
+  "/customer-discounts/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.updateCustomerDiscount)
+);
+router.delete(
+  "/customer-discounts/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.deleteCustomerDiscount)
 );
 
 export default router;
