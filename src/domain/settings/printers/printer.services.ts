@@ -320,11 +320,43 @@ export class printerService implements PrinterServiceInterface {
         removeSpecialCharacters: false,
         lineCharacter: "=",
         breakLine: BreakLine.WORD,
+        width: 48, // For a 72mm printer, typically uses 48 characters per line
       });
 
       let isConnected = await printer.isPrinterConnected();
       if (isConnected) {
-        printer.print("Hello from Xprinter XP-80C!");
+        printer.alignCenter();
+        printer.println("MY RESTAURANT");
+        printer.println("123 Main Street");
+        printer.println("Tel: (555) 123-4567");
+        printer.drawLine();
+
+        printer.alignLeft();
+        printer.println("Order #: 1234");
+        printer.println("Date: " + new Date().toLocaleString());
+        printer.drawLine();
+
+        // Items
+        printer.tableCustom([
+          { text: "Item", align: "LEFT" },
+          { text: "Qty", align: "CENTER" },
+          { text: "Price", align: "RIGHT" },
+        ]);
+        printer.tableCustom([
+          { text: "Burger", align: "LEFT" },
+          { text: "1", align: "CENTER" },
+          { text: "$10.00", align: "RIGHT" },
+        ]);
+
+        printer.drawLine();
+        printer.alignLeft();
+        printer.println("Subtotal: $10.00");
+        printer.println("Tax: $1.00");
+        printer.println("Total: $11.00");
+
+        printer.alignCenter();
+        printer.newLine();
+        printer.println("Thank you for your business!");
         printer.cut();
 
         const printStatus = await printer
