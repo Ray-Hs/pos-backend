@@ -5,6 +5,7 @@ import Routes from "./api/routes";
 import compression from "compression";
 import { constants } from "zlib";
 
+// Addition
 const app = express();
 const corsOptions: CorsOptions = {
   origin: [
