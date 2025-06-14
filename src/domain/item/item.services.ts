@@ -84,6 +84,7 @@ export class MenuItemServices implements MenuItemInterface {
           image: item.image,
           category,
           subcategory,
+          printersId: item.printersId,
           createdAt: item.createdAt,
           updatedAt: item.updatedAt,
         };
@@ -161,6 +162,7 @@ export class MenuItemServices implements MenuItemInterface {
           image: item.image,
           category,
           subcategory,
+          printersId: item.printersId,
           createdAt: item.createdAt,
           updatedAt: item.updatedAt,
         };

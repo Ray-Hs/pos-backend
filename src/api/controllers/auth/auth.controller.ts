@@ -11,6 +11,7 @@ import {
 } from "../../../infrastructure/utils/constants";
 import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 import { UserWithoutPassword } from "../../../types/common";
+import prisma from "../../../infrastructure/database/prisma/client";
 
 class AuthController implements AuthControllerInterface {
   async login(req: Request, res: Response) {
@@ -58,10 +59,22 @@ class AuthController implements AuthControllerInterface {
   async getCurrentUser(req: Request, res: Response) {
     const session = decodeJWT(req, res) as JwtPayload & UserWithoutPassword;
 
-    console.log(session);
+    const user = await prisma.user.findFirst({
+      where: {
+        id: session.id,
+      },
+    });
+
+    const userObject: UserWithoutPassword = {
+      id: user?.id,
+      username: user?.username || "",
+      role: user?.role || "STAFF",
+      image: user?.image,
+    };
+
     return res
-      .status(session.id ? OK_STATUS : INTERNAL_SERVER_STATUS)
-      .json({ success: !!session.id, data: session });
+      .status(user?.id ? OK_STATUS : INTERNAL_SERVER_STATUS)
+      .json({ success: !!user?.id, data: userObject });
   }
 
   async createAccount(req: Request, res: Response) {

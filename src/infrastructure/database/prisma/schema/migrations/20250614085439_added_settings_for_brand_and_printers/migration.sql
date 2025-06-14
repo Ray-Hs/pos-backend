@@ -2,6 +2,9 @@
 CREATE TYPE "PaymentMethod" AS ENUM ('CASH', 'CARD', 'PAY_LATER');
 
 -- CreateEnum
+CREATE TYPE "Options" AS ENUM ('WRITE', 'READ', 'READ_WRITE', 'NONE');
+
+-- CreateEnum
 CREATE TYPE "TableStatus" AS ENUM ('AVAILABLE', 'OCCUPIED', 'RECEIPT');
 
 -- CreateEnum
@@ -10,7 +13,7 @@ CREATE TYPE "ROLE" AS ENUM ('ADMIN', 'STAFF');
 -- CreateTable
 CREATE TABLE "Tax" (
     "id" SERIAL NOT NULL,
-    "rate" INTEGER NOT NULL DEFAULT 0,
+    "rate" DOUBLE PRECISION NOT NULL DEFAULT 0,
 
     CONSTRAINT "Tax_pkey" PRIMARY KEY ("id")
 );
@@ -84,6 +87,70 @@ CREATE TABLE "DeletedOrderItem" (
 );
 
 -- CreateTable
+CREATE TABLE "Permissions" (
+    "id" SERIAL NOT NULL,
+    "storage" "Options" DEFAULT 'READ',
+    "constants" "Options" DEFAULT 'READ',
+    "invoice" "Options" DEFAULT 'WRITE',
+    "order" "Options" DEFAULT 'READ_WRITE',
+    "table" "Options" DEFAULT 'READ',
+    "section" "Options" DEFAULT 'READ',
+    "users" "Options" DEFAULT 'READ',
+    "settings" "Options" DEFAULT 'NONE',
+    "rolesId" INTEGER NOT NULL,
+
+    CONSTRAINT "Permissions_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Settings" (
+    "id" SERIAL NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Settings_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Branding" (
+    "id" SERIAL NOT NULL,
+    "restaurantName" TEXT,
+    "address" TEXT,
+    "phoneNumber" TEXT,
+    "email" TEXT,
+    "website" TEXT,
+    "restaurantLogo" TEXT,
+    "receiptHeader" TEXT,
+    "receiptFooter" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "settingsId" INTEGER NOT NULL,
+
+    CONSTRAINT "Branding_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Printers" (
+    "id" SERIAL NOT NULL,
+    "ip" TEXT NOT NULL DEFAULT '0.0.0.0',
+    "name" TEXT NOT NULL DEFAULT 'New Printer',
+    "description" TEXT,
+    "settingsId" INTEGER NOT NULL,
+
+    CONSTRAINT "Printers_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Roles" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "description" TEXT,
+    "permissionsId" INTEGER NOT NULL,
+
+    CONSTRAINT "Roles_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Category" (
     "id" SERIAL NOT NULL,
     "title_en" TEXT NOT NULL,
@@ -132,13 +199,14 @@ CREATE TABLE "MenuItem" (
     "subCategoryId" INTEGER,
     "price" DOUBLE PRECISION NOT NULL,
     "company" TEXT,
-    "code" TEXT,
+    "code" TEXT DEFAULT '',
     "discount" DOUBLE PRECISION NOT NULL DEFAULT 0,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
     "image" TEXT,
     "sortOrder" INTEGER NOT NULL DEFAULT 0,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "printersId" INTEGER,
 
     CONSTRAINT "MenuItem_pkey" PRIMARY KEY ("id")
 );
@@ -149,7 +217,7 @@ CREATE TABLE "Table" (
     "name" TEXT NOT NULL,
     "capacity" INTEGER NOT NULL DEFAULT 4,
     "available" BOOLEAN NOT NULL DEFAULT true,
-    "status" "TableStatus",
+    "status" "TableStatus" DEFAULT 'AVAILABLE',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "sectionId" INTEGER,
@@ -177,6 +245,7 @@ CREATE TABLE "User" (
     "image" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "settingsId" INTEGER,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -192,6 +261,15 @@ CREATE INDEX "OrderItem_orderId_menuItemId_quantity_idx" ON "OrderItem"("orderId
 
 -- CreateIndex
 CREATE INDEX "DeletedOrderItem_orderId_menuItemId_quantity_idx" ON "DeletedOrderItem"("orderId", "menuItemId", "quantity");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Permissions_rolesId_key" ON "Permissions"("rolesId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Branding_settingsId_key" ON "Branding"("settingsId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Roles_name_key" ON "Roles"("name");
 
 -- CreateIndex
 CREATE INDEX "Category_sortOrder_isActive_idx" ON "Category"("sortOrder", "isActive");
@@ -248,10 +326,25 @@ ALTER TABLE "DeletedOrderItem" ADD CONSTRAINT "DeletedOrderItem_orderId_fkey" FO
 ALTER TABLE "DeletedOrderItem" ADD CONSTRAINT "DeletedOrderItem_menuItemId_fkey" FOREIGN KEY ("menuItemId") REFERENCES "MenuItem"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "Permissions" ADD CONSTRAINT "Permissions_rolesId_fkey" FOREIGN KEY ("rolesId") REFERENCES "Roles"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Branding" ADD CONSTRAINT "Branding_settingsId_fkey" FOREIGN KEY ("settingsId") REFERENCES "Settings"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Printers" ADD CONSTRAINT "Printers_settingsId_fkey" FOREIGN KEY ("settingsId") REFERENCES "Settings"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "SubCategory" ADD CONSTRAINT "SubCategory_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "MenuItem" ADD CONSTRAINT "MenuItem_subCategoryId_fkey" FOREIGN KEY ("subCategoryId") REFERENCES "SubCategory"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "MenuItem" ADD CONSTRAINT "MenuItem_printersId_fkey" FOREIGN KEY ("printersId") REFERENCES "Printers"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "Table" ADD CONSTRAINT "Table_sectionId_fkey" FOREIGN KEY ("sectionId") REFERENCES "Section"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "User" ADD CONSTRAINT "User_settingsId_fkey" FOREIGN KEY ("settingsId") REFERENCES "Settings"("id") ON DELETE SET NULL ON UPDATE CASCADE;

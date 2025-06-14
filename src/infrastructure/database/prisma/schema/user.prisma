@@ -4,13 +4,15 @@ enum ROLE {
 }
 
 model User {
-    id        Int       @id @default(autoincrement())
-    username  String    @unique @default("Staff")
-    password  String
-    role      ROLE      @default(STAFF)
-    image     String?
-    orders    Order[]
-    createdAt DateTime  @default(now())
-    updatedAt DateTime  @updatedAt
-    invoice   Invoice[]
+    id         Int       @id @default(autoincrement())
+    username   String    @unique @default("Staff")
+    password   String
+    role       ROLE      @default(STAFF)
+    image      String?
+    orders     Order[]
+    createdAt  DateTime  @default(now())
+    updatedAt  DateTime  @updatedAt
+    invoice    Invoice[]
+    Settings   Settings? @relation(fields: [settingsId], references: [id])
+    settingsId Int?
 }

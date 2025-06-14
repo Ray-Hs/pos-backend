@@ -67,7 +67,6 @@ export class ConstantsService implements IConstantServices {
       }
 
       const createdConstants = await createConstantsDB(response);
-      console.log(createdConstants);
       return {
         success: true,
         data: {

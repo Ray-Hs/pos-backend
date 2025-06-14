@@ -1,7 +1,10 @@
 import cookieParser from "cookie-parser";
 import cors, { CorsOptions } from "cors";
-import express from "express";
+import express, { Request, Response } from "express";
 import Routes from "./api/routes";
+import compression from "compression";
+import { constants } from "zlib";
+
 const app = express();
 const corsOptions: CorsOptions = {
   origin: [
@@ -9,10 +12,26 @@ const corsOptions: CorsOptions = {
     "http://localhost:3000",
     "http://localhost:8080",
     "http://192.168.43.74:3000",
+    "http://192.168.1.12:3000",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
 };
+// Only compress if Content-Type is text-based
+const shouldCompress = (req: Request, res: Response) => {
+  const type = res.getHeader("Content-Type")?.toString() || "";
+  return /^(?:application\/json|text\/|application\/javascript|text\/css)/.test(
+    type
+  );
+};
+
+app.use(
+  compression({
+    level: constants.Z_BEST_SPEED, // or Z_DEFAULT_COMPRESSION
+    threshold: 1024, // only gzip responses bigger than 1 KB
+    filter: shouldCompress,
+  })
+);
 app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(express.json());

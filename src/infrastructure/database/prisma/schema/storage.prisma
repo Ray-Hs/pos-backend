@@ -67,6 +67,8 @@ model MenuItem {
     updatedAt        DateTime           @updatedAt
     OrderItem        OrderItem[]
     DeletedOrderItem DeletedOrderItem[]
+    Printer          Printers?          @relation(fields: [printersId], references: [id])
+    printersId       Int?
 
     @@index([isActive, subCategoryId])
 }

@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { BrandObject } from "../domain/settings/branding/brand.types";
+import { PrinterObjectSchema } from "../domain/settings/printers/printer.types";
 
 export const RoleEnum = z.enum(["ADMIN", "STAFF"]);
 type Role = z.infer<typeof RoleEnum>;
@@ -51,6 +53,8 @@ export const MenuItemSchema = z.object({
     })
     .nullable()
     .optional(),
+
+  printersId: z.number().nullable(),
 
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
@@ -195,6 +199,8 @@ export const SectionSchema = z.object({
   tables: z.array(TableSchema).optional(),
   tableCount: z.number().optional(),
   available: z.number().nullable().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
 });
 
 export type TableStatus = z.infer<typeof TableStatusEnum>;
@@ -221,3 +227,13 @@ export type FilterBy = "name" | "date" | "price";
 export type Language = "en" | "ar" | "ku";
 
 export type { Role, TError, TResult, User };
+
+export const SettingsSchema = z.object({
+  id: z.number().optional(),
+
+  brand: BrandObject,
+  printers: z.array(PrinterObjectSchema),
+  users: z.array(UserSchema),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+});
