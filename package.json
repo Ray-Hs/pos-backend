@@ -13,7 +13,7 @@
     "dev": "dotenv -- nodemon --exec ts-node ./src/server.ts",
     "build": "prisma generate && tsc",
     "vercel-build": "prisma generate && prisma migrate deploy && tsc",
-    "start": "node dist/src/server.js",
+    "start": "node public/dist/src/server.js",
     "migrate-dev": "npx prisma migrate dev",
     "migrate-deploy": "npx prisma migrate deploy",
     "generate": "npx prisma generate",
@@ -25,7 +25,7 @@
   "description": "",
   "dependencies": {
     "@aws-sdk/client-s3": "3.32.0",
-    "@prisma/client": "^6.7.0",
+    "@prisma/client": "^6.9.0",
     "aws-sdk": "^2.1692.0",
     "compression": "^1.8.0",
     "cookie-parser": "^1.4.7",
@@ -53,7 +53,7 @@
     "@types/winston": "^2.4.4",
     "dotenv-cli": "^8.0.0",
     "nodemon": "^3.1.9",
-    "prisma": "^6.7.0",
+    "prisma": "^6.9.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   }

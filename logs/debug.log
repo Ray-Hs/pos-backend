@@ -11865,3 +11865,40 @@ An operation failed because it depends on one or more records that were required
 [2025-06-14 17:45:32] [33mwarn[39m: No Data Found
 [2025-06-14 17:46:12] [33mwarn[39m: NOT FOUND
 [2025-06-14 18:16:37] [32minfo[39m: Filter: 
+[2025-06-16 12:16:57] [32minfo[39m: Filter: 
+[2025-06-16 12:16:57] [33mwarn[39m: No Data Found
+[2025-06-16 12:16:58] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.company` does not exist in the current database.
+[2025-06-16 12:16:59] [33mwarn[39m: No Data Found
+[2025-06-16 12:16:59] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.company` does not exist in the current database.
+[2025-06-16 12:17:00] [33mwarn[39m: No Data Found
+[2025-06-16 12:17:00] [33mwarn[39m: No Data Found
+[2025-06-16 12:17:02] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.company` does not exist in the current database.
+[2025-06-16 12:17:03] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.company` does not exist in the current database.
+[2025-06-16 12:17:04] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.company` does not exist in the current database.
+[2025-06-16 12:17:35] [33mwarn[39m: No Data Found
+[2025-06-16 12:17:35] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.findMany()` invocation:
+
+
+The column `MenuItem.company` does not exist in the current database.
+[2025-06-16 12:17:35] [33mwarn[39m: No Data Found
