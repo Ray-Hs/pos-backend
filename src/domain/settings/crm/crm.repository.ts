@@ -134,7 +134,7 @@ export async function createCustomerDiscountDB(data: CustomerDiscount) {
     const isCRMExist = await tx.cRM.findFirst();
     const crm = isCRMExist ?? (await tx.cRM.create({}));
 
-    return tx.companyInfo.create({
+    return tx.customerDiscount.create({
       data: {
         ...rest,
         CRMId: crm.id,
@@ -152,7 +152,7 @@ export async function updateCustomerDiscountDB(
     const isCRMExist = await tx.cRM.findFirst();
     const crm = isCRMExist ?? (await tx.cRM.create({}));
 
-    return tx.companyInfo.update({
+    return tx.customerDiscount.update({
       where: {
         id,
       },
