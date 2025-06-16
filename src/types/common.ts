@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { BrandObject } from "../domain/settings/branding/brand.types";
 import { PrinterObjectSchema } from "../domain/settings/printers/printer.types";
+import { CompanyInfoSchema } from "../domain/settings/crm/crm.types";
 
 export const RoleEnum = z.enum(["ADMIN", "STAFF"]);
 type Role = z.infer<typeof RoleEnum>;
@@ -33,7 +34,8 @@ export const MenuItemSchema = z.object({
 
   price: z.number(),
   discount: z.number().default(0),
-  company: z.string().nullable().optional(),
+  company: CompanyInfoSchema.nullable().optional(),
+  companyId: z.number().nullable().optional(),
   isActive: z.boolean().default(true),
   image: z.string().nullable().optional(),
 
@@ -109,7 +111,7 @@ export const CategorySchema = z.object({
 });
 
 export type Category = z.infer<typeof CategorySchema>;
-const PaymentMethodEnum = z.enum(["CASH", "CARD", "PAY_LATER"]);
+export const PaymentMethodEnum = z.enum(["CASH", "CARD", "PAY_LATER"]);
 
 export const TaxSchema = z.object({
   id: z.number(),

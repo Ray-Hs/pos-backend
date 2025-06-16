@@ -56,12 +56,12 @@ model MenuItem {
     subCategoryId Int?
 
     price     Float
-    company   String?
-    code      String? @default("")
-    discount  Float   @default(0)
-    isActive  Boolean @default(true)
+    company   CompanyInfo? @relation(fields: [companyId], references: [id])
+    code      String?      @default("")
+    discount  Float        @default(0)
+    isActive  Boolean      @default(true)
     image     String?
-    sortOrder Int     @default(0)
+    sortOrder Int          @default(0)
 
     createdAt        DateTime           @default(now())
     updatedAt        DateTime           @updatedAt
@@ -69,6 +69,7 @@ model MenuItem {
     DeletedOrderItem DeletedOrderItem[]
     Printer          Printers?          @relation(fields: [printersId], references: [id])
     printersId       Int?
+    companyId        Int?
 
     @@index([isActive, subCategoryId])
 }

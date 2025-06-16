@@ -11854,3 +11854,338 @@ An operation failed because it depends on one or more records that were required
 [2025-06-14 17:45:32] [33mwarn[39m: No Data Found
 [2025-06-14 17:46:12] [33mwarn[39m: NOT FOUND
 [2025-06-14 18:16:37] [32minfo[39m: Filter: 
+[2025-06-15 14:34:51] [32minfo[39m: Filter: 
+[2025-06-15 14:35:00] [33mwarn[39m: NOT FOUND
+[2025-06-15 14:36:03] [33mwarn[39m: Brand Not Found
+[2025-06-15 14:36:06] [33mwarn[39m: Brand Not Found
+[2025-06-15 14:36:09] [33mwarn[39m: Brand Not Found
+[2025-06-15 14:36:12] [33mwarn[39m: Brand Not Found
+[2025-06-15 14:36:14] [33mwarn[39m: Brand Not Found
+[2025-06-15 14:36:17] [33mwarn[39m: Brand Not Found
+[2025-06-15 14:36:22] [33mwarn[39m: Brand Not Found
+[2025-06-15 14:36:36] [33mwarn[39m: Brand Not Found
+[2025-06-15 14:36:38] [33mwarn[39m: Brand Not Found
+[2025-06-15 14:36:41] [33mwarn[39m: Brand Not Found
+[2025-06-15 14:36:46] [33mwarn[39m: Brand Not Found
+[2025-06-15 14:37:39] [31merror[39m: Update Brand:  
+Invalid `prisma.branding.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+[2025-06-15 14:37:55] [31merror[39m: Update Brand:  
+Invalid `prisma.branding.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+[2025-06-15 14:39:39] [33mwarn[39m: Brand Not Found
+[2025-06-15 15:18:44] [33mwarn[39m: Brand Not Found
+[2025-06-15 15:18:46] [33mwarn[39m: Brand Not Found
+[2025-06-15 15:18:50] [33mwarn[39m: Brand Not Found
+[2025-06-15 15:18:56] [33mwarn[39m: Brand Not Found
+[2025-06-15 15:41:28] [33mwarn[39m: No Printers Found
+[2025-06-15 15:47:41] [33mwarn[39m: No Data Found
+[2025-06-15 15:47:42] [32minfo[39m: Filter: 
+[2025-06-15 15:47:43] [33mwarn[39m: No Data Found
+[2025-06-15 15:47:43] [33mwarn[39m: NOT FOUND
+[2025-06-15 15:47:43] [33mwarn[39m: No Data Found
+[2025-06-15 15:47:45] [33mwarn[39m: No Data Found
+[2025-06-15 15:47:45] [33mwarn[39m: NOT FOUND
+[2025-06-15 15:47:48] [33mwarn[39m: NOT FOUND
+[2025-06-15 15:47:52] [33mwarn[39m: NOT FOUND
+[2025-06-15 16:08:38] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:08:38] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:08:41] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:08:41] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:08:44] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:08:44] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:08:48] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:08:48] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:08:52] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:08:52] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:08:55] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:08:55] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:05] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:05] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:08] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:08] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:11] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:11] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:14] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:14] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:17] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:17] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:20] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 16:12:20] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-15 17:03:42] [33mwarn[39m: Invalid Printer ID: 
+[2025-06-15 17:04:42] [33mwarn[39m: Invalid Printer ID: 
+[2025-06-15 17:05:43] [33mwarn[39m: Invalid Printer ID: 
+[2025-06-15 17:44:28] [31merror[39m: Create Company:  
+Invalid `prisma.companyInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-15 17:44:31] [31merror[39m: Create Company:  
+Invalid `prisma.companyInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-15 17:44:35] [31merror[39m: Create Company:  
+Invalid `prisma.companyInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-15 17:44:39] [31merror[39m: Create Company:  
+Invalid `prisma.companyInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-15 17:44:42] [31merror[39m: Create Company:  
+Invalid `prisma.companyInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-15 17:44:45] [31merror[39m: Create Company:  
+Invalid `prisma.companyInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)

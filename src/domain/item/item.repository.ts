@@ -56,6 +56,7 @@ export async function getItemsDB(filter?: {
 
   return prisma.menuItem.findMany({
     include: {
+      company: true,
       SubCategory: {
         select: {
           Category: {
@@ -137,6 +138,7 @@ export async function getItemsByCategoryDB(
 
   return prisma.menuItem.findMany({
     include: {
+      company: true,
       SubCategory: {
         select: {
           Category: {
@@ -193,8 +195,11 @@ export async function createItemDB(
   data: MenuItem,
   include?: Prisma.MenuItemInclude
 ) {
+  const { company, ...rest } = data;
   return prisma.menuItem.create({
-    data,
+    data: {
+      ...rest,
+    },
     include,
   });
 }
@@ -204,11 +209,14 @@ export async function updateItemDB(
   data: MenuItem,
   include?: Prisma.MenuItemInclude
 ) {
+  const { company, ...rest } = data;
   return prisma.menuItem.update({
     where: {
       id,
     },
-    data,
+    data: {
+      ...rest,
+    },
     include,
   });
 }
