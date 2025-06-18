@@ -1,7 +1,7 @@
 import prisma from "../../infrastructure/database/prisma/client";
-import logger from "../../infrastructure/utils/logger";
 import { Invoice } from "../../types/common";
 import { getConstantsDB } from "../constants/constants.repository";
+import { CustomerDiscount } from "../settings/crm/crm.types";
 
 // Get all invoices with optional pagination
 export const getInvoicesDB = async () => {
@@ -15,7 +15,7 @@ export const findInvoiceByIdDB = async (id: number) => {
   const invoice = await prisma.invoice.findFirst({
     where: { id },
     include: {
-      order: true,
+      discount: true,
       tax: true,
       service: true,
     },
@@ -29,16 +29,16 @@ export const findInvoiceByIdDB = async (id: number) => {
 };
 
 // Helper function to calculate total
-const calculateTotal = (
+export const calculateTotal = (
   subtotal: number,
   constants: any,
-  discount?: number
+  discount?: CustomerDiscount
 ): number => {
   let total = subtotal + (constants?.service?.amount ?? 0);
   total += subtotal * (constants?.tax?.rate ?? 0);
 
   if (discount) {
-    total = total * (1 - discount);
+    total = total * (1 - discount.discount);
   }
 
   return Number(total.toFixed(2));
@@ -46,16 +46,24 @@ const calculateTotal = (
 
 // Create invoice with better error handling and validation
 export const createInvoiceDB = async (data: Invoice) => {
-  const { serviceId, orderId, discount, tableId, ...rest } = data;
+  const { serviceId, discount, tableId, ...rest } = data;
 
   return prisma.$transaction(async (tx) => {
+    const invoiceRef = await tx.invoiceRef.findFirst({
+      where: {
+        id: data.invoiceRefId,
+      },
+    });
+    if (!invoiceRef) {
+      throw new Error("No Invoice Ref Found");
+    }
     const order = await tx.order.findFirst({
-      where: { id: orderId },
+      where: { id: invoiceRef?.orderId ?? undefined },
       include: { items: true },
     });
 
     if (!order) {
-      throw new Error(`Order with ID ${orderId} not found`);
+      throw new Error(`Order with ID ${invoiceRef?.orderId} not found`);
     }
 
     const constants = await getConstantsDB();
@@ -65,19 +73,24 @@ export const createInvoiceDB = async (data: Invoice) => {
       0
     );
 
-    const total = calculateTotal(subtotal, constants, discount);
+    const total = calculateTotal(
+      subtotal,
+      constants,
+      discount as CustomerDiscount
+    );
 
     const invoice = await tx.invoice.create({
       data: {
         ...rest,
-        orderId,
         tableId,
         subtotal,
         total,
         userId: data.userId as number,
         taxId: constants.tax?.id,
         serviceId: constants.service?.id,
-        discount: discount || 0,
+        invoiceRefId: invoiceRef?.id,
+        version: 1,
+        customerDiscountId: discount?.id,
       },
     });
 
@@ -91,7 +104,7 @@ export const createInvoiceDB = async (data: Invoice) => {
           status: "AVAILABLE",
           orders: {
             disconnect: {
-              id: orderId,
+              id: invoiceRef.orderId ?? undefined,
             },
           },
         },
@@ -105,14 +118,20 @@ export const createInvoiceDB = async (data: Invoice) => {
 // Update invoice with validation and recalculation
 export const updateInvoiceDB = async (id: number, data: Partial<Invoice>) => {
   return prisma.$transaction(async (tx) => {
+    const { id: _id, discount, ...rest } = data;
     const invoice = await findInvoiceByIdDB(id);
+    const invoiceRef = await tx.invoiceRef.findFirst({
+      where: {
+        id: data.invoiceRefId,
+      },
+    });
     const order = await tx.order.findFirst({
-      where: { id: invoice.orderId },
+      where: { id: invoiceRef?.orderId ?? undefined },
       include: { items: true },
     });
 
     if (!order) {
-      throw new Error(`Order with ID ${invoice.orderId} not found`);
+      throw new Error(`Order with ID ${invoiceRef?.orderId} not found`);
     }
 
     const constants = await getConstantsDB();
@@ -124,13 +143,13 @@ export const updateInvoiceDB = async (id: number, data: Partial<Invoice>) => {
     const total = calculateTotal(
       subtotal,
       constants,
-      data.discount ?? invoice.discount
+      data.discount ?? (invoice?.discount as CustomerDiscount)
     );
 
     return tx.invoice.update({
       where: { id },
       data: {
-        ...data,
+        ...rest,
         subtotal,
         total,
       },

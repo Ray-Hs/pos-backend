@@ -11252,3 +11252,243 @@ Invalid `prisma.companyInfo.create()` invocation:
 
 
 Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-17 11:58:14] [33mwarn[39m: Credentials Don't Match
+[2025-06-17 11:58:35] [33mwarn[39m: No Data Found
+[2025-06-17 11:58:36] [33mwarn[39m: NOT FOUND
+[2025-06-17 11:58:37] [33mwarn[39m: No Data Found
+[2025-06-17 11:58:37] [33mwarn[39m: No Data Found
+[2025-06-17 11:58:38] [33mwarn[39m: No Data Found
+[2025-06-17 11:59:07] [33mwarn[39m: NOT FOUND
+[2025-06-17 11:59:09] [33mwarn[39m: NOT FOUND
+[2025-06-17 11:59:11] [33mwarn[39m: NOT FOUND
+[2025-06-17 11:59:15] [33mwarn[39m: NOT FOUND
+[2025-06-17 12:00:27] [33mwarn[39m: NOT FOUND
+[2025-06-17 12:01:31] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "printersId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-17 12:01:31] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "printersId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-17 12:01:39] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "printersId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-17 12:01:39] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "printersId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-17 12:01:51] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "printersId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-17 12:01:51] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "printersId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-17 12:17:53] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 13)
+[2025-06-17 12:17:53] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 13)
+[2025-06-17 12:30:44] [33mwarn[39m: NOT FOUND
+[2025-06-17 12:30:46] [33mwarn[39m: NOT FOUND
+[2025-06-17 12:30:48] [33mwarn[39m: NOT FOUND
+[2025-06-17 12:30:53] [33mwarn[39m: NOT FOUND
+[2025-06-17 12:46:22] [33mwarn[39m: NOT FOUND
+[2025-06-17 12:46:23] [33mwarn[39m: NOT FOUND
+[2025-06-17 12:46:25] [33mwarn[39m: NOT FOUND
+[2025-06-17 12:46:30] [33mwarn[39m: NOT FOUND
+[2025-06-17 13:31:33] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
+[2025-06-17 16:18:57] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "price"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-17 16:18:57] [33mwarn[39m: Missing Data:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "price"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-17 16:19:58] [31merror[39m: Create Order Service:  
+Invalid `prisma.order.create()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 7985 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-06-17 16:20:37] [31merror[39m: Create Order Service:  
+Invalid `prisma.order.create()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 6753 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-06-17 16:37:08] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-06-17 16:46:26] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-06-17 16:46:38] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-06-17 16:46:58] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-06-17 16:47:15] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-06-17 16:47:35] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-06-17 16:47:52] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-06-17 16:48:25] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "name"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-17 16:48:25] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "name"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-17 16:51:19] [31merror[39m: Create Order Service:  Table is already occupied
+[2025-06-18 14:31:05] [33mwarn[39m: No Data Found
+[2025-06-18 14:31:05] [33mwarn[39m: NOT FOUND
+[2025-06-18 14:31:06] [33mwarn[39m: No Data Found
+[2025-06-18 14:31:06] [33mwarn[39m: No Data Found
+[2025-06-18 14:31:07] [33mwarn[39m: No Data Found
+[2025-06-18 18:46:30] [33mwarn[39m: Not Data Found
+[2025-06-18 18:46:36] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.createMany()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Table_sectionId_fkey`
+[2025-06-18 18:46:53] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.createMany()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Table_sectionId_fkey`
+[2025-06-18 18:46:55] [31merror[39m: Get Tables By ID Service:  
+Invalid `prisma.table.createMany()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Table_sectionId_fkey`
+[2025-06-18 18:49:22] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
+[2025-06-18 18:52:55] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "undefined",
+    "path": [
+      "tax"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-18 18:52:55] [33mwarn[39m: Incorrect Data:  [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "undefined",
+    "path": [
+      "tax"
+    ],
+    "message": "Required"
+  }
+]

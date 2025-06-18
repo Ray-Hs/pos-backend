@@ -1,6 +1,7 @@
 import { ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
+  BAD_REQUEST_ERR,
   BAD_REQUEST_ID_ERR,
   BAD_REQUEST_STATUS,
   INTERNAL_SERVER_ERR,
@@ -21,6 +22,8 @@ import {
   updateOrderDB,
 } from "./order.repository";
 import { OrderServiceInterface } from "./order.types";
+import { findTableByIdDB, updateTableDB } from "../table/table.repository";
+import { createInvoiceDB } from "../invoice/invoice.repository";
 
 export class OrderServices implements OrderServiceInterface {
   async getOrders() {
@@ -138,6 +141,7 @@ export class OrderServices implements OrderServiceInterface {
       };
     }
   }
+
   async getOrderByTableId(requestId: any) {
     try {
       const response = await validateType(
@@ -303,7 +307,7 @@ export class OrderServices implements OrderServiceInterface {
 
       return {
         success: true,
-        data: deletedOrder,
+        message: "Deleted Order Successfully",
       };
     } catch (error) {
       logger.error("Create Order Service: ", error);

@@ -6,7 +6,7 @@ import {
   INTERNAL_SERVER_ERR,
   INTERNAL_SERVER_STATUS,
   INVOICE_NOT_FOUND,
-  NOT_FOUND_STATUS
+  NOT_FOUND_STATUS,
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
@@ -212,7 +212,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
 
-      const invoice = findInvoiceByIdDB(response.id);
+      const invoice = await findInvoiceByIdDB(response.id);
       if (!invoice) {
         const updatedInvoice = await updateInvoiceDB(response.id, data);
         return {

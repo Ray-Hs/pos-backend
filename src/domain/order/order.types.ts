@@ -1,14 +1,19 @@
 import { Request, Response } from "express";
-import { Order, TResult } from "../../types/common";
+import { Invoice, Order, TResult } from "../../types/common";
 
 export interface OrderServiceInterface {
   getOrders: () => Promise<TResult<Order[]>>;
   getOrderById: (requestId: any) => Promise<TResult<Order>>;
   getOrderByTableId: (requestId: any) => Promise<TResult<Order>>;
   getLatestOrder: (requestId: any) => Promise<TResult<Order>>;
-  createOrder: (requestData: any) => Promise<TResult<Order>>;
-  updateOrder: (requestId: any, requestData: any) => Promise<TResult<Order>>;
-  deleteOrder: (requestId: any) => Promise<TResult<Order>>;
+  createOrder: (
+    requestData: any
+  ) => Promise<TResult<{ order: Order; invoice: Invoice }>>;
+  updateOrder: (
+    requestId: any,
+    requestData: any
+  ) => Promise<TResult<{ order: Order; invoice: Invoice }>>;
+  deleteOrder: (requestId: any) => Promise<TResult<void>>;
 }
 
 export interface OrderControllerInterface {
@@ -31,13 +36,13 @@ export interface OrderControllerInterface {
   createOrder: (
     req: Request,
     res: Response
-  ) => Promise<Response<TResult<Order>>>;
+  ) => Promise<Response<TResult<{ order: Order; invoice: Invoice }>>>;
   updateOrder: (
     req: Request,
     res: Response
-  ) => Promise<Response<TResult<Order>>>;
+  ) => Promise<Response<TResult<{ order: Order; invoice: Invoice }>>>;
   deleteOrder: (
     req: Request,
     res: Response
-  ) => Promise<Response<TResult<Order>>>;
+  ) => Promise<Response<TResult<void>>>;
 }
