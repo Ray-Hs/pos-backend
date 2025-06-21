@@ -116,13 +116,14 @@ export const createInvoiceDB = async (data: Invoice) => {
 };
 
 // Update invoice with validation and recalculation
-export const updateInvoiceDB = async (id: number, data: Partial<Invoice>) => {
+export const updateInvoiceDB = async (id: number, data: Invoice) => {
   return prisma.$transaction(async (tx) => {
-    const { id: _id, discount, ...rest } = data;
+    const { id: _id, discount, paid, ...rest } = data;
+    console.log("Invoice Function: ", rest);
     const invoice = await findInvoiceByIdDB(id);
     const invoiceRef = await tx.invoiceRef.findFirst({
       where: {
-        id: data.invoiceRefId,
+        id: invoice.invoiceRefId,
       },
     });
     const order = await tx.order.findFirst({
@@ -146,10 +147,23 @@ export const updateInvoiceDB = async (id: number, data: Partial<Invoice>) => {
       data.discount ?? (invoice?.discount as CustomerDiscount)
     );
 
+    const table = await tx.table.update({
+      where: {
+        id: order.tableId || 0,
+      },
+      data: {
+        orders: {
+          disconnect: { id: order.id },
+        },
+        status: "AVAILABLE",
+      },
+    });
+
     return tx.invoice.update({
       where: { id },
       data: {
         ...rest,
+        paid: true,
         subtotal,
         total,
       },

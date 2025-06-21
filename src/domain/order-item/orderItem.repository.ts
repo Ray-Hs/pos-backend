@@ -12,6 +12,19 @@ export async function getOrderItemByIdDB(id: number) {
     },
     include: {
       menuItem: true,
+      order: {
+        select: {
+          Invoice: {
+            select: {
+              invoices: {
+                orderBy: {
+                  createdAt: "desc",
+                },
+              },
+            },
+          },
+        },
+      },
     },
   });
 }

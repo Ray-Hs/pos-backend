@@ -28,7 +28,10 @@ export class SupplyController implements SupplyControllerInterface {
 
   async createSupply(req: Request, res: Response) {
     const supplyService = new SupplyServices();
-    const response = await supplyService.createSupply(req.body);
+    const response = await supplyService.createSupply({
+      ...req.body,
+      expiryDate: new Date(req.body.expiryDate),
+    });
 
     return res
       .status(response.success ? CREATED_STATUS : response.error?.code || 500)

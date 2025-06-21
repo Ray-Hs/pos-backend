@@ -1,9 +1,4 @@
-import {
-  BreakLine,
-  CharacterSet,
-  PrinterTypes,
-  ThermalPrinter,
-} from "node-thermal-printer";
+import { BreakLine, PrinterTypes, ThermalPrinter } from "node-thermal-printer";
 import { z, ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
@@ -17,6 +12,9 @@ import {
 } from "../../../infrastructure/utils/constants";
 import logger from "../../../infrastructure/utils/logger";
 import validateType from "../../../infrastructure/utils/validateType";
+import { OrderItemSchema } from "../../../types/common";
+import { getConstantsDB } from "../../constants/constants.repository";
+import { getBrandDB } from "../branding/brand.repository";
 import {
   createPrinterDB,
   deletePrinterDB,
@@ -26,9 +24,6 @@ import {
   updatePrinterDB,
 } from "./printer.repository";
 import { PrinterObjectSchema, PrinterServiceInterface } from "./printer.types";
-import { getBrandDB } from "../branding/brand.repository";
-import { OrderItem, OrderItemSchema } from "../../../types/common";
-import { findItemByIdDB } from "../../item/item.repository";
 
 export class printerService implements PrinterServiceInterface {
   async getPrinters() {
@@ -283,6 +278,7 @@ export class printerService implements PrinterServiceInterface {
         { id: requestId },
         PrinterObjectSchema.pick({ id: true })
       );
+
       if (!id || id instanceof ZodError || !id.id) {
         logger.warn("Invalid Printer ID: ", id);
         return {
@@ -294,7 +290,24 @@ export class printerService implements PrinterServiceInterface {
         };
       }
 
-      if (!requestData || requestData.length > 0) {
+      // Validate requestData
+      const OrderPrintSchema = z.object({
+        orderId: z.number(),
+        item: z.object({
+          title_en: z.string(),
+          quantity: z.number(),
+          price: z.number(),
+        }),
+        subtotal: z.number(),
+        tax: z.number(),
+        service: z.number(),
+        total: z.number(),
+      });
+
+      const data = await validateType(requestData, OrderPrintSchema);
+
+      if (!data || data instanceof ZodError) {
+        logger.warn("Invalid Print Data: ", data);
         return {
           success: false,
           error: {
@@ -303,7 +316,7 @@ export class printerService implements PrinterServiceInterface {
           },
         };
       }
-      const data = requestData as OrderItem[];
+      const constants = await getConstantsDB();
 
       const brand = await getBrandDB();
       const printerDevice = await getPrinterByIdDB(id.id);
@@ -332,7 +345,7 @@ export class printerService implements PrinterServiceInterface {
         printer.drawLine();
 
         printer.alignLeft();
-        printer.println(`Order #: ${data[0].orderId}`);
+        printer.println(`Order #: ${data?.orderId}`);
         printer.println("Date: " + new Date().toLocaleString());
         printer.drawLine();
 
@@ -342,20 +355,19 @@ export class printerService implements PrinterServiceInterface {
           { text: "Qty", align: "CENTER" },
           { text: "Price", align: "RIGHT" },
         ]);
-        data.map(async (orderItem) => {
-          const item = await findItemByIdDB(orderItem.menuItemId);
-          printer.tableCustom([
-            { text: item?.title_en || "", align: "LEFT" },
-            { text: orderItem.quantity.toString(), align: "CENTER" },
-            { text: orderItem.price.toString() || "", align: "RIGHT" },
-          ]);
-        });
+        printer.tableCustom([
+          { text: data?.item?.title_en || "", align: "LEFT" },
+          { text: data?.item?.quantity?.toString() || "1", align: "CENTER" },
+          { text: data?.item?.price?.toString() || "", align: "RIGHT" },
+        ]);
 
         printer.drawLine();
         printer.alignLeft();
-        printer.println("Subtotal: $10.00");
-        printer.println("Tax: $1.00");
-        printer.println("Total: $11.00");
+        printer.println(`Subtotal: $${data?.subtotal}`);
+        constants.tax && printer.println(`Tax: $${constants.tax.rate}`);
+        constants.service &&
+          printer.println(`Service: $${constants.service.amount}`);
+        printer.println(`Total: $${data.total}`);
 
         printer.alignCenter();
         printer.newLine();
@@ -369,10 +381,10 @@ export class printerService implements PrinterServiceInterface {
         printer.cut();
         printer.beep(4);
 
-        // const printStatus = await printer
-        //   .execute()
-        //   .then(() => console.log("Printed successfully"))
-        //   .catch((err) => console.error(err));
+        const printStatus = await printer
+          .execute()
+          .then(() => console.log("Printed successfully"))
+          .catch((err) => console.error(err));
 
         return {
           success: true,

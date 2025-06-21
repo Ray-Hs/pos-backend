@@ -83,7 +83,7 @@ export interface CRMControllerInterface {
 export const CustomerDiscountSchema = z.object({
   id: z.number().optional(),
   name: z.string(),
-  phoneNumber: z.string(),
+  phoneNumber: z.string().nullable().optional(),
   discount: z.number(),
   CRMId: z.number().nullable().optional(),
 });

@@ -1,7 +1,6 @@
-import { ZodError } from "zod";
+import { z, ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
-  BAD_REQUEST_ERR,
   BAD_REQUEST_ID_ERR,
   BAD_REQUEST_STATUS,
   INTERNAL_SERVER_ERR,
@@ -22,8 +21,6 @@ import {
   updateOrderDB,
 } from "./order.repository";
 import { OrderServiceInterface } from "./order.types";
-import { findTableByIdDB, updateTableDB } from "../table/table.repository";
-import { createInvoiceDB } from "../invoice/invoice.repository";
 
 export class OrderServices implements OrderServiceInterface {
   async getOrders() {
@@ -234,7 +231,10 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const data = await validateType(requestData, OrderSchema);
+      const data = await validateType(
+        requestData,
+        OrderSchema.extend({ invoiceId: z.number() })
+      );
       if (data instanceof ZodError) {
         logger.warn("Missing Info: ", data);
         return {
@@ -264,7 +264,7 @@ export class OrderServices implements OrderServiceInterface {
         data: updatedOrder,
       };
     } catch (error) {
-      logger.error("Create Order Service: ", error);
+      logger.error("Update Order Service: ", error);
       return {
         success: false,
         error: {

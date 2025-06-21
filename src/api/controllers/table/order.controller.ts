@@ -7,6 +7,7 @@ import {
 } from "../../../infrastructure/utils/constants";
 import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 import { UserWithoutPassword } from "../../../types/common";
+import logger from "../../../infrastructure/utils/logger";
 
 export class OrderController implements OrderControllerInterface {
   async getOrders(req: Request, res: Response) {
@@ -67,6 +68,7 @@ export class OrderController implements OrderControllerInterface {
     const body = req.body;
     const userId = decodeJWT(req, res) as UserWithoutPassword;
     const orderService = new OrderServices();
+    console.log(JSON.stringify(body));
     const response = await orderService.updateOrder(id, {
       ...body,
       userId: userId.id,

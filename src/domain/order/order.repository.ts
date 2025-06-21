@@ -1,15 +1,9 @@
-import { Prisma } from "@prisma/client";
 import prisma from "../../infrastructure/database/prisma/client";
-import { Order, OrderItem } from "../../types/common";
-import { findItemByIdDB } from "../item/item.repository";
-import { printerService } from "../settings/printers/printer.services";
-import {
-  calculateTotal,
-  createInvoiceDB,
-  findInvoiceByIdDB,
-} from "../invoice/invoice.repository";
+import { Order } from "../../types/common";
 import { getConstantsDB } from "../constants/constants.repository";
-import { CustomerDiscount } from "../settings/crm/crm.types";
+import { calculateTotal } from "../invoice/invoice.repository";
+import { getPrinterByIdDB } from "../settings/printers/printer.repository";
+import { printerService } from "../settings/printers/printer.services";
 
 export function getOrdersDB() {
   return prisma.order.findMany({
@@ -48,7 +42,9 @@ export function getLatestOrderDB(id: number) {
           menuItem: true,
         },
       },
-      Invoice: true,
+      Invoice: {
+        include: { invoices: { orderBy: { version: "desc" } } },
+      },
     },
   });
 }
@@ -62,6 +58,9 @@ export function findOrderByTableIdDB(id: number) {
         include: {
           menuItem: true,
         },
+      },
+      Invoice: {
+        include: { invoices: { orderBy: { version: "desc" } } },
       },
     },
   });
@@ -87,13 +86,15 @@ export async function createOrderDB(data: Order) {
       include: {
         items: {
           include: {
-            menuItem: true,
+            menuItem: {
+              include: {
+                Printer: true,
+              },
+            },
           },
         },
       },
     });
-
-    //TODO: Send orders to correct printers
 
     const constants = await getConstantsDB();
     const subtotal = order.items.reduce(
@@ -101,6 +102,43 @@ export async function createOrderDB(data: Order) {
       0
     );
     const total = calculateTotal(subtotal, constants);
+
+    //TODO: Send orders to correct printers
+    // const printPromises = order.items.map(async (item) => {
+    //   try {
+    //     const printer = await getPrinterByIdDB(
+    //       item?.menuItem?.Printer?.id || 0
+    //     );
+    //     console.log("Printer Device: ", printer);
+
+    //     if (printer) {
+    //       const printerServices = new printerService();
+    //       console.log("Order Item ID: ", item.id);
+    //       const response = await printerServices.print(printer.id, {
+    //         orderId: order.id,
+    //         item: {
+    //           title_en: item.menuItem.title_en,
+    //           quantity: item.quantity,
+    //           price: item.price,
+    //         },
+    //         subtotal,
+    //         total,
+    //         tax: constants.tax?.rate,
+    //         service: constants.service?.amount,
+    //       });
+    //       console.log("Print response:", response);
+    //       return response;
+    //     }
+    //     return null;
+    //   } catch (error) {
+    //     console.error("Print error for item:", item.id, error);
+    //     return null;
+    //   }
+    // });
+
+    // // Wait for all print operations to complete
+    // await Promise.all(printPromises);
+
     const invoiceRef = await tx.invoiceRef.create({
       data: { orderId: order.id },
     });
@@ -134,8 +172,11 @@ export async function createOrderDB(data: Order) {
   });
 }
 
-export async function updateOrderDB(id: number, data: Order) {
-  const { items, ...rest } = data;
+export async function updateOrderDB(
+  id: number,
+  data: Order & { invoiceId: number }
+) {
+  const { items, userId, reason, invoiceId, ...rest } = data;
 
   return prisma.$transaction(async (tx) => {
     const prev_order = await findOrderByIdDB(id);
@@ -153,26 +194,28 @@ export async function updateOrderDB(id: number, data: Order) {
     );
 
     if (deletedItems && deletedItems.length > 0) {
-      const deletedOrderItems = await tx.deletedOrderItem.createManyAndReturn({
+      // First, delete the order items to avoid violating required relation
+      await tx.orderItem.deleteMany({
+        where: {
+          id: {
+            in: deletedItems?.map((item) => item.id),
+          },
+        },
+      });
+
+      // Then, create deletedOrderItems for audit/history
+      await tx.deletedOrderItem.createMany({
         data: deletedItems.map((item) => ({
           orderId: id,
           menuItemId: item.menuItemId,
           quantity: item.quantity,
           price: item.price,
           notes: item.notes ?? null,
-          invoiceId: prev_order?.Invoice[0].id ?? 0, // Use 0 or handle appropriately if invoice is missing
+          invoiceId,
           sortOrder: item.sortOrder ?? undefined,
           createdAt: item.createdAt ?? undefined,
           reason: data.reason || "", // or another appropriate reason
         })),
-      });
-
-      const deleteManyItems = await tx.orderItem.deleteMany({
-        where: {
-          id: {
-            in: deletedItems.map((item) => item.id),
-          },
-        },
       });
     }
 
@@ -182,9 +225,9 @@ export async function updateOrderDB(id: number, data: Order) {
       },
       data: {
         ...rest,
+        userId,
         items: items
           ? {
-              disconnect: deletedItems?.map((item) => ({ id: item.id })),
               create: addedItems.map((item) => ({
                 menuItemId: item.menuItemId,
                 price: item.price,
@@ -218,6 +261,16 @@ export async function updateOrderDB(id: number, data: Order) {
       ...invoicesFromRef.map((invoice) => invoice.version)
     );
 
+    //? Update old Invoice version Status
+    await tx.invoice.update({
+      where: {
+        id: invoiceId,
+      },
+      data: {
+        isLatestVersion: false,
+      },
+    });
+    //? Create new invoice and assign it into invoiceRef
     const invoice = await tx.invoice.create({
       data: {
         subtotal,

@@ -214,19 +214,20 @@ export class InvoiceServices implements InvoiceServiceInterface {
 
       const invoice = await findInvoiceByIdDB(response.id);
       if (!invoice) {
-        const updatedInvoice = await updateInvoiceDB(response.id, data);
         return {
-          success: true,
-          data: updatedInvoice,
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: INVOICE_NOT_FOUND,
+          },
         };
       }
 
+      const updatedInvoice = await updateInvoiceDB(response.id, data);
+      console.log(updatedInvoice);
       return {
-        success: false,
-        error: {
-          code: NOT_FOUND_STATUS,
-          message: INVOICE_NOT_FOUND,
-        },
+        success: true,
+        data: updatedInvoice,
       };
     } catch (error) {
       logger.error("Find Invoice By ID: ", error);

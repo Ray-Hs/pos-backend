@@ -105,12 +105,12 @@ model CompanyInfo {
 }
 
 model CustomerDiscount {
-    id          Int    @id @default(autoincrement())
+    id          Int     @id @default(autoincrement())
     name        String
-    phoneNumber String @unique
+    phoneNumber String? @unique
     discount    Int
     CRMId       Int?
-    CRM         CRM?   @relation(fields: [CRMId], references: [id])
+    CRM         CRM?    @relation(fields: [CRMId], references: [id])
 
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
