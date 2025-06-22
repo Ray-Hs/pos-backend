@@ -14982,3 +14982,218 @@ Argument `where` of type PermissionWhereUniqueInput needs at least one of `id` a
 [2025-06-22 13:39:29] [33mwarn[39m: Not Data Found
 [2025-06-22 13:41:31] [33mwarn[39m: No Data Found
 [2025-06-22 13:41:31] [33mwarn[39m: Not Data Found
+[2025-06-22 13:41:50] [33mwarn[39m: Not Data Found
+[2025-06-22 13:41:50] [33mwarn[39m: No Data Found
+[2025-06-22 13:43:14] [33mwarn[39m: No Data Found
+[2025-06-22 13:43:14] [33mwarn[39m: Not Data Found
+[2025-06-22 13:43:52] [33mwarn[39m: Not Data Found
+[2025-06-22 13:48:48] [32minfo[39m: Filter: 
+[2025-06-22 13:48:48] [33mwarn[39m: Get Categories Service Has No Entries.
+[2025-06-22 13:48:48] [33mwarn[39m: No subcategories found.
+[2025-06-22 14:44:34] [32minfo[39m: Filter: 
+[2025-06-22 14:44:34] [33mwarn[39m: Get Categories Service Has No Entries.
+[2025-06-22 14:46:17] [32minfo[39m: Filter: 
+[2025-06-22 14:46:17] [33mwarn[39m: Get Categories Service Has No Entries.
+[2025-06-22 14:46:17] [33mwarn[39m: No Data Found
+[2025-06-22 14:46:18] [33mwarn[39m: No Data Found
+[2025-06-22 14:46:23] [33mwarn[39m: No subcategories found.
+[2025-06-22 14:46:24] [33mwarn[39m: No subcategories found.
+[2025-06-22 14:46:26] [33mwarn[39m: No subcategories found.
+[2025-06-22 14:46:30] [33mwarn[39m: No subcategories found.
+[2025-06-22 14:46:59] [32minfo[39m: Filter: 
+[2025-06-22 14:47:00] [33mwarn[39m: No subcategories found.
+[2025-06-22 14:47:01] [33mwarn[39m: No subcategories found.
+[2025-06-22 14:47:03] [33mwarn[39m: No subcategories found.
+[2025-06-22 14:47:07] [33mwarn[39m: No subcategories found.
+[2025-06-22 14:47:20] [33mwarn[39m: NOT FOUND
+[2025-06-22 14:47:21] [33mwarn[39m: No Printers Found
+[2025-06-22 14:47:22] [33mwarn[39m: NOT FOUND
+[2025-06-22 14:47:23] [33mwarn[39m: No Printers Found
+[2025-06-22 14:47:24] [33mwarn[39m: NOT FOUND
+[2025-06-22 14:47:25] [33mwarn[39m: No Printers Found
+[2025-06-22 14:47:28] [33mwarn[39m: NOT FOUND
+[2025-06-22 14:47:29] [33mwarn[39m: No Printers Found
+[2025-06-22 14:49:43] [33mwarn[39m: No Data Found
+[2025-06-22 14:49:44] [33mwarn[39m: No Data Found
+[2025-06-22 14:50:21] [32minfo[39m: Filter: 
+[2025-06-22 14:50:59] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "version"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-22 14:50:59] [33mwarn[39m: Missing Info
+[2025-06-22 14:54:48] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "version"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-22 14:54:48] [33mwarn[39m: Missing Info
+[2025-06-22 14:56:57] [33mwarn[39m: No Data Found
+[2025-06-22 14:56:58] [33mwarn[39m: No Data Found
+[2025-06-22 14:57:18] [33mwarn[39m: No Data Found
+[2025-06-22 14:57:18] [32minfo[39m: Filter: 
+[2025-06-22 14:57:46] [33mwarn[39m: No Data Found
+[2025-06-22 14:58:17] [33mwarn[39m: No Data Found
+[2025-06-22 14:58:18] [33mwarn[39m: No Data Found
+[2025-06-22 14:58:29] [33mwarn[39m: No Data Found
+[2025-06-22 14:58:30] [33mwarn[39m: No Data Found
+[2025-06-22 14:58:33] [33mwarn[39m: No Data Found
+[2025-06-22 14:58:34] [33mwarn[39m: No Data Found
+[2025-06-22 14:58:58] [33mwarn[39m: No Data Found
+[2025-06-22 14:58:59] [33mwarn[39m: No Data Found
+[2025-06-22 14:59:23] [33mwarn[39m: No Data Found
+[2025-06-22 14:59:24] [33mwarn[39m: No Data Found
+[2025-06-22 14:59:28] [33mwarn[39m: No Data Found
+[2025-06-22 14:59:29] [33mwarn[39m: No Data Found
+[2025-06-22 15:00:43] [33mwarn[39m: No Data Found
+[2025-06-22 15:00:44] [33mwarn[39m: No Data Found
+[2025-06-22 15:00:46] [33mwarn[39m: No Data Found
+[2025-06-22 15:00:47] [33mwarn[39m: No Data Found
+[2025-06-22 15:01:53] [33mwarn[39m: No Data Found
+[2025-06-22 15:01:54] [33mwarn[39m: No Data Found
+[2025-06-22 15:04:04] [33mwarn[39m: No Data Found
+[2025-06-22 15:04:05] [33mwarn[39m: No Data Found
+[2025-06-22 15:06:24] [33mwarn[39m: No Data Found
+[2025-06-22 15:06:24] [32minfo[39m: Filter: 
+[2025-06-22 15:06:25] [33mwarn[39m: No Data Found
+[2025-06-22 15:09:44] [33mwarn[39m: No Data Found
+[2025-06-22 15:09:45] [33mwarn[39m: No Data Found
+[2025-06-22 15:10:30] [33mwarn[39m: No Data Found
+[2025-06-22 15:10:31] [33mwarn[39m: No Data Found
+[2025-06-22 15:15:15] [33mwarn[39m: Brand Not Found
+[2025-06-22 15:15:16] [33mwarn[39m: Brand Not Found
+[2025-06-22 15:15:18] [33mwarn[39m: Brand Not Found
+[2025-06-22 15:15:22] [33mwarn[39m: Brand Not Found
+[2025-06-22 15:16:31] [33mwarn[39m: Brand Not Found
+[2025-06-22 15:16:32] [33mwarn[39m: Brand Not Found
+[2025-06-22 15:21:33] [33mwarn[39m: Brand Not Found
+[2025-06-22 15:22:12] [32minfo[39m: Filter: 
+[2025-06-22 15:25:49] [33mwarn[39m: No Data Found
+[2025-06-22 15:25:50] [33mwarn[39m: No Data Found
+[2025-06-22 15:26:19] [33mwarn[39m: No Data Found
+[2025-06-22 15:26:20] [33mwarn[39m: No Data Found
+[2025-06-22 15:26:47] [33mwarn[39m: No Data Found
+[2025-06-22 15:26:48] [33mwarn[39m: No Data Found
+[2025-06-22 15:40:55] [32minfo[39m: Filter: 
+[2025-06-22 16:04:29] [32minfo[39m: Filter: 
+[2025-06-22 16:09:49] [32minfo[39m: Filter: 
+[2025-06-22 16:27:46] [32minfo[39m: Filter: 
+[2025-06-22 16:30:44] [33mwarn[39m: No Data Found
+[2025-06-22 16:30:45] [33mwarn[39m: No Data Found
+[2025-06-22 16:32:47] [32minfo[39m: Filter: 
+[2025-06-22 16:32:56] [33mwarn[39m: No Data Found
+[2025-06-22 16:32:56] [33mwarn[39m: No Data Found
+[2025-06-22 16:32:57] [33mwarn[39m: No Data Found
+[2025-06-22 16:33:17] [32minfo[39m: Filter: 
+[2025-06-22 16:33:17] [33mwarn[39m: No Data Found
+[2025-06-22 16:33:18] [33mwarn[39m: No Data Found
+[2025-06-22 16:34:53] [32minfo[39m: Filter: 
+[2025-06-22 16:34:53] [33mwarn[39m: No Data Found
+[2025-06-22 16:34:54] [33mwarn[39m: No Data Found
+[2025-06-22 16:34:55] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-22 16:34:55] [33mwarn[39m: Missing ID
+[2025-06-22 16:38:15] [32minfo[39m: Filter: 
+[2025-06-22 16:40:09] [33mwarn[39m: No Data Found
+[2025-06-22 16:40:10] [33mwarn[39m: No Data Found
+[2025-06-22 16:44:02] [32minfo[39m: Filter: 
+[2025-06-22 16:45:20] [31merror[39m: Validation failed: [
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "CASH",
+      "CARD",
+      "DEBT"
+    ],
+    "path": [
+      "paymentMethod"
+    ],
+    "message": "Invalid enum value. Expected 'CASH' | 'CARD' | 'DEBT', received ''"
+  }
+]
+[2025-06-22 16:45:20] [33mwarn[39m: Missing Info
+[2025-06-22 16:46:44] [32minfo[39m: Filter: 
+[2025-06-22 16:47:34] [32minfo[39m: Filter: 
+[2025-06-22 16:47:43] [32minfo[39m: Filter: 
+[2025-06-22 16:48:41] [32minfo[39m: [object Object]
+[2025-06-22 16:48:44] [32minfo[39m: [object Object]
+[2025-06-22 16:48:56] [32minfo[39m: [object Object]
+[2025-06-22 16:49:02] [32minfo[39m: Filter: 
+[2025-06-22 16:49:04] [32minfo[39m: [object Object]
+[2025-06-22 16:49:14] [32minfo[39m: Filter: 
+[2025-06-22 16:49:32] [32minfo[39m: {"id":17,"paymentMethod":"DEBT","userId":1,"tableId":9}
+[2025-06-22 16:49:44] [32minfo[39m: Filter: 
+[2025-06-22 16:51:04] [32minfo[39m: {"id":17,"paymentMethod":"DEBT","userId":1,"tableId":9}
+[2025-06-22 16:51:48] [32minfo[39m: Filter: 
+[2025-06-22 16:51:53] [32minfo[39m: Filter: 
+[2025-06-22 16:52:16] [32minfo[39m: Filter: 
+[2025-06-22 16:52:47] [32minfo[39m: {"id":17,"paymentMethod":"DEBT","userId":1,"tableId":9}
+[2025-06-22 16:53:55] [32minfo[39m: Filter: 
+[2025-06-22 16:54:16] [32minfo[39m: Filter: 
+[2025-06-22 17:03:43] [32minfo[39m: Filter: 
+[2025-06-22 17:03:43] [33mwarn[39m: No Data Found
+[2025-06-22 17:03:44] [33mwarn[39m: No Data Found
+[2025-06-22 17:04:34] [33mwarn[39m: No Data Found
+[2025-06-22 17:04:35] [33mwarn[39m: No Data Found
+[2025-06-22 17:04:37] [33mwarn[39m: No Data Found
+[2025-06-22 17:04:38] [33mwarn[39m: No Data Found
+[2025-06-22 17:06:19] [32minfo[39m: Filter: 
+[2025-06-22 17:07:03] [32minfo[39m: {"id":18,"paymentMethod":"DEBT","userId":1,"tableId":1}
+[2025-06-22 17:07:14] [32minfo[39m: Filter: 
+[2025-06-22 17:07:25] [32minfo[39m: {"id":18,"paymentMethod":"DEBT","userId":1,"tableId":1}
+[2025-06-22 17:08:43] [32minfo[39m: Filter: 
+[2025-06-22 17:08:57] [32minfo[39m: Filter: 
+[2025-06-22 17:12:53] [32minfo[39m: Filter: 
+[2025-06-22 17:13:43] [31merror[39m: Validation failed: [
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "CASH",
+      "CARD",
+      "DEBT"
+    ],
+    "path": [
+      "paymentMethod"
+    ],
+    "message": "Invalid enum value. Expected 'CASH' | 'CARD' | 'DEBT', received ''"
+  }
+]
+[2025-06-22 17:13:43] [33mwarn[39m: Missing Info
+[2025-06-22 17:19:37] [32minfo[39m: Filter: 
+[2025-06-22 17:20:45] [32minfo[39m: Filter: 
+[2025-06-22 17:22:16] [32minfo[39m: Filter: 
+[2025-06-22 17:22:42] [32minfo[39m: Filter: 
+[2025-06-22 17:23:58] [32minfo[39m: Filter: 
+[2025-06-22 17:25:29] [32minfo[39m: Filter: 
+[2025-06-22 17:25:47] [32minfo[39m: Filter: 
+[2025-06-22 17:25:55] [32minfo[39m: Filter: 
+[2025-06-22 17:26:19] [32minfo[39m: Filter: 
+[2025-06-22 17:26:28] [32minfo[39m: Filter: 
+[2025-06-22 17:39:28] [32minfo[39m: Filter: 
+[2025-06-22 17:41:57] [32minfo[39m: Filter: 
+[2025-06-22 17:49:52] [32minfo[39m: Filter: 
+[2025-06-22 17:50:13] [33mwarn[39m: No Data Found
+[2025-06-22 17:50:14] [33mwarn[39m: No Data Found

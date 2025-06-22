@@ -9244,3 +9244,66 @@ Argument `where` of type PermissionWhereUniqueInput needs at least one of `id` a
     "message": "Required"
   }
 ]
+[2025-06-22 14:50:59] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "version"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-22 14:54:48] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "version"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-22 16:34:55] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-22 16:45:20] [31merror[39m: Validation failed: [
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "CASH",
+      "CARD",
+      "DEBT"
+    ],
+    "path": [
+      "paymentMethod"
+    ],
+    "message": "Invalid enum value. Expected 'CASH' | 'CARD' | 'DEBT', received ''"
+  }
+]
+[2025-06-22 17:13:43] [31merror[39m: Validation failed: [
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "CASH",
+      "CARD",
+      "DEBT"
+    ],
+    "path": [
+      "paymentMethod"
+    ],
+    "message": "Invalid enum value. Expected 'CASH' | 'CARD' | 'DEBT', received ''"
+  }
+]

@@ -311,56 +311,71 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
 
-      const updatedInvoice: Invoice = await prisma.$transaction(async (tx) => {
-        const { id: _id, discount, ...rest } = data;
+      if (data.paid) {
+        const updatedInvoice = await prisma.$transaction(async (tx) => {
+          const { id: _id, discount, ...rest } = data;
+          const updatedInvoice = await updateInvoiceDB(
+            response.id as number,
+            { ...rest, paid: true },
+            tx
+          );
+
+          const invoiceRef = await tx.invoiceRef.findFirst({
+            where: {
+              id: invoice.invoiceRefId,
+            },
+          });
+          const order = await findOrderByIdDB(
+            invoiceRef?.orderId as number,
+            tx
+          );
+
+          if (!order) {
+            throw new Error(`Order with ID ${invoiceRef?.orderId} not found`);
+          }
+
+          const constants = await getConstantsDB(tx);
+          const subtotal = order.items.reduce(
+            (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
+            0
+          );
+
+          const total = calculateTotal(
+            subtotal,
+            constants,
+            data.discount ?? (invoice?.discount as CustomerDiscount)
+          );
+
+          const table = await tx.table.update({
+            where: {
+              id: order.tableId || 0,
+            },
+            data: {
+              orders: {
+                disconnect: { id: order.id },
+              },
+              status: "AVAILABLE",
+            },
+          });
+
+          return updatedInvoice;
+        });
+
+        return {
+          success: true,
+          data: updatedInvoice,
+        };
+      } else {
         const updatedInvoice = await updateInvoiceDB(
           response.id as number,
-          { ...rest, paid: true },
-          tx
+          data,
+          prisma
         );
-
-        const invoiceRef = await tx.invoiceRef.findFirst({
-          where: {
-            id: invoice.invoiceRefId,
-          },
-        });
-        const order = await findOrderByIdDB(invoiceRef?.orderId as number, tx);
-
-        if (!order) {
-          throw new Error(`Order with ID ${invoiceRef?.orderId} not found`);
-        }
-
-        const constants = await getConstantsDB(tx);
-        const subtotal = order.items.reduce(
-          (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
-          0
-        );
-
-        const total = calculateTotal(
-          subtotal,
-          constants,
-          data.discount ?? (invoice?.discount as CustomerDiscount)
-        );
-
-        const table = await tx.table.update({
-          where: {
-            id: order.tableId || 0,
-          },
-          data: {
-            orders: {
-              disconnect: { id: order.id },
-            },
-            status: "AVAILABLE",
-          },
-        });
-
-        return updatedInvoice;
-      });
-
-      return {
-        success: true,
-        data: updatedInvoice,
-      };
+        return {
+          success: true,
+          data: updatedInvoice,
+        };
+      }
     } catch (error) {
       logger.error("Find Invoice By ID: ", error);
       return {

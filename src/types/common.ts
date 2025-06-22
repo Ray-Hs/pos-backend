@@ -38,6 +38,7 @@ export const UserSchema = z.object({
   roleId: z.number().nullable().optional(),
   role: UserRoleSchema.optional(),
   image: z.string().nullable().optional(),
+  isActive: z.boolean().default(true).optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
@@ -163,7 +164,7 @@ export const InvoiceSchema = z.object({
   taxId: z.number().int().nullable().optional(),
   serviceId: z.number().int().nullable().optional(),
   invoiceRefId: z.number().optional(),
-  version: z.number(),
+  version: z.number().optional(),
   customerDiscountId: z.number().nullable().optional(),
   isLatestVersion: z.boolean().optional(),
   createdAt: z.date().optional(),

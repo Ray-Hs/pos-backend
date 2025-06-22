@@ -51,7 +51,7 @@ export const createInvoiceDB = async (data: Invoice, client: TxClientType) => {
     data: {
       ...rest,
       customerDiscountId: discount?.id,
-      version: data.version,
+      version: data.version || 0,
       invoiceRefId: data.invoiceRefId || 0,
       total: data.total || 0,
       subtotal: data.subtotal || 0,
