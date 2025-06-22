@@ -24,6 +24,7 @@ import {
   updatePrinterDB,
 } from "./printer.repository";
 import { PrinterObjectSchema, PrinterServiceInterface } from "./printer.types";
+import prisma from "../../../infrastructure/database/prisma/client";
 
 export class printerService implements PrinterServiceInterface {
   async getPrinters() {
@@ -316,7 +317,7 @@ export class printerService implements PrinterServiceInterface {
           },
         };
       }
-      const constants = await getConstantsDB();
+      const constants = await getConstantsDB(prisma);
 
       const brand = await getBrandDB();
       const printerDevice = await getPrinterByIdDB(id.id);

@@ -94,7 +94,7 @@ export async function createOrderDB(data: Order) {
       },
     });
 
-    const constants = await getConstantsDB();
+    const constants = await getConstantsDB(tx);
     const subtotal = order.items.reduce(
       (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
       0

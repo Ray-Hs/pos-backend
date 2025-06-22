@@ -10,7 +10,7 @@ import {
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
 import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
-import { UserWithoutPassword } from "../../../types/common";
+import { UserRole, UserWithoutPassword } from "../../../types/common";
 import prisma from "../../../infrastructure/database/prisma/client";
 
 class AuthController implements AuthControllerInterface {
@@ -63,12 +63,14 @@ class AuthController implements AuthControllerInterface {
       where: {
         id: session.id,
       },
+      include: { role: true },
     });
 
     const userObject: UserWithoutPassword = {
       id: user?.id,
       username: user?.username || "",
-      role: user?.role || "STAFF",
+      roleId: user?.roleId,
+      role: user?.role as UserRole,
       image: user?.image,
     };
 

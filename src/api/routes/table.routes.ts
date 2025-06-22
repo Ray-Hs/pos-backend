@@ -1,6 +1,6 @@
 import express, { Router } from "express";
-import { TableController } from "../controllers/table/table.controller";
 import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
+import { TableController } from "../controllers/table/table.controller";
 import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
 
 const router: Router = express.Router();

@@ -16,11 +16,12 @@ import {
   updateConstantsDB,
 } from "./constants.repository";
 import { ConstantSchema, IConstantServices } from "./constants.types";
+import prisma from "../../infrastructure/database/prisma/client";
 
 export class ConstantsService implements IConstantServices {
   async getConstants() {
     try {
-      const data = await getConstantsDB();
+      const data = await getConstantsDB(prisma);
 
       if (!data) {
         logger.warn("No data found");

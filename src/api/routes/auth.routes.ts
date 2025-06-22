@@ -38,7 +38,7 @@ router.delete(
 router.patch(
   "/user/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  // asyncRouteHandler(isAdmin),
   asyncRouteHandler(controllerInstance.updateUser)
 );
 

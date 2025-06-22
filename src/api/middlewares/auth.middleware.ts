@@ -121,7 +121,7 @@ export async function isAdmin(req: Request, res: Response, next: NextFunction) {
   try {
     const { role } = (req.user as User) || {};
 
-    if (role !== "ADMIN") {
+    if (role?.name !== "ADMIN") {
       return res.status(FORBIDDEN_STATUS).json({
         success: false,
         error: {
@@ -141,4 +141,42 @@ export async function isAdmin(req: Request, res: Response, next: NextFunction) {
       },
     });
   }
+}
+
+export function hasPermission(permission: string) {
+  return (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const user = req.user as User | undefined;
+
+      if (!user || !user.role || !Array.isArray(user.role.permissions)) {
+        return res.status(FORBIDDEN_STATUS).json({
+          success: false,
+          error: {
+            code: FORBIDDEN_STATUS,
+            message: FORBIDDEN_ERR,
+          },
+        });
+      }
+
+      if (!user.role.permissions.some((perm) => perm.key === permission)) {
+        return res.status(FORBIDDEN_STATUS).json({
+          success: false,
+          error: {
+            code: FORBIDDEN_STATUS,
+            message: FORBIDDEN_ERR,
+          },
+        });
+      }
+
+      next();
+    } catch (error) {
+      logger.error("Permission Middleware: ", error);
+      res.status(INTERNAL_SERVER_STATUS).json({
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      });
+    }
+  };
 }

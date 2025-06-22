@@ -1,18 +1,38 @@
-enum ROLE {
-    ADMIN
-    STAFF
-}
-
 model User {
     id         Int       @id @default(autoincrement())
     username   String    @unique @default("Staff")
     password   String
-    role       ROLE      @default(STAFF)
+    roleId     Int?
+    role       UserRole? @relation(fields: [roleId], references: [id])
     image      String?
     orders     Order[]
     createdAt  DateTime  @default(now())
     updatedAt  DateTime  @updatedAt
     invoice    Invoice[]
-    Settings   Settings? @relation(fields: [settingsId], references: [id])
     settingsId Int?
+    Settings   Settings? @relation(fields: [settingsId], references: [id])
+    isActive   Boolean   @default(true)
+}
+
+model UserRole {
+    id          Int          @id @default(autoincrement())
+    name        String
+    description String?
+    User        User[]
+    permissions Permission[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Permission {
+    id          Int        @id @default(autoincrement())
+    key         String     @unique
+    name        String
+    description String
+    category    String?
+    UserRole    UserRole[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }

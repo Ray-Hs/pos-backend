@@ -22,6 +22,7 @@ import {
   updateTableDB,
 } from "./table.repository";
 import { TableServiceInterface } from "./table.types";
+import prisma from "../../infrastructure/database/prisma/client";
 
 export class TableServices implements TableServiceInterface {
   async getTables() {
@@ -214,7 +215,7 @@ export class TableServices implements TableServiceInterface {
         };
       }
 
-      const updatedTable = await updateTableDB(response.id, data);
+      const updatedTable = await updateTableDB(response.id, data, prisma);
       return {
         success: true,
         message: "Updated Table Successfully",

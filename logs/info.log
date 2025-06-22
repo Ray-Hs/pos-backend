@@ -14425,3 +14425,560 @@ Foreign key constraint violated on the constraint: `supply_companyId_fkey`
 [2025-06-21 17:36:04] [33mwarn[39m: No Data Found
 [2025-06-21 17:36:17] [33mwarn[39m: No Data Found
 [2025-06-21 17:36:18] [33mwarn[39m: No Data Found
+[2025-06-22 12:46:01] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "string",
+    "path": [
+      "role"
+    ],
+    "message": "Expected object, received string"
+  }
+]
+[2025-06-22 12:46:01] [33mwarn[39m: Missing info [
+  {
+    "code": "invalid_type",
+    "expected": "object",
+    "received": "string",
+    "path": [
+      "role"
+    ],
+    "message": "Expected object, received string"
+  }
+]
+[2025-06-22 12:57:14] [33mwarn[39m: No Permissions Found.
+[2025-06-22 13:01:00] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      7,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      8,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      9,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      10,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      11,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      12,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      13,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-22 13:01:00] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      7,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      8,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      9,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      10,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      11,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      12,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "permissions",
+      13,
+      "id"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-22 13:08:11] [31merror[39m: Create UserRole Service:  
+Invalid `prisma.userRole.create()` invocation:
+
+{
+  data: {
+    name: "ADMIN",
+    description: "Admin Role Permissions",
+    permissions: {
+      connectOrCreate: [
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "view_orders",
+            name: "View Orders",
+            description: "Can view all orders",
+            category: "orders"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "create_orders",
+            name: "Create Orders",
+            description: "Can create new orders",
+            category: "orders"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "edit_orders",
+            name: "Edit Orders",
+            description: "Can edit existing orders",
+            category: "orders"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "delete_orders",
+            name: "Delete Orders",
+            description: "Can delete orders",
+            category: "orders"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "process_payments",
+            name: "Process Payments",
+            description: "Can process payments",
+            category: "payments"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "issue_refunds",
+            name: "Issue Refunds",
+            description: "Can issue refunds",
+            category: "payments"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "view_menu",
+            name: "View Menu",
+            description: "Can view the menu",
+            category: "menu"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "edit_menu",
+            name: "Edit Menu",
+            description: "Can edit menu items",
+            category: "menu"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "manage_tables",
+            name: "Manage Tables",
+            description: "Can manage tables",
+            category: "tables"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "view_inventory",
+            name: "View Inventory",
+            description: "Can view inventory",
+            category: "inventory"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "manage_inventory",
+            name: "Manage Inventory",
+            description: "Can manage inventory",
+            category: "inventory"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "view_reports",
+            name: "View Reports",
+            description: "Can view reports",
+            category: "reports"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "manage_settings",
+            name: "Manage Settings",
+            description: "Can change system settings",
+            category: "settings"
+          }
+        },
+        {
+          where: {
+            id: undefined
+          },
+          create: {
+            key: "manage_users",
+            name: "Manage Users",
+            description: "Can manage users",
+            category: "users"
+          }
+        }
+      ]
+    }
+  },
+  include: {
+    permissions: true
+  }
+}
+
+Argument `where` of type PermissionWhereUniqueInput needs at least one of `id` arguments. Available options are marked with ?.
+[2025-06-22 13:14:52] [33mwarn[39m: Credentials Don't Match
+[2025-06-22 13:16:31] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "permissions"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-22 13:16:31] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "array",
+    "received": "undefined",
+    "path": [
+      "permissions"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-22 13:28:05] [33mwarn[39m: NOT FOUND
+[2025-06-22 13:28:10] [33mwarn[39m: No subcategories found.
+[2025-06-22 13:28:20] [33mwarn[39m: No Data Found
+[2025-06-22 13:33:11] [33mwarn[39m: Credentials Don't Match
+[2025-06-22 13:33:18] [33mwarn[39m: No Data Found
+[2025-06-22 13:33:18] [33mwarn[39m: Not Data Found
+[2025-06-22 13:33:31] [33mwarn[39m: No Data Found
+[2025-06-22 13:33:31] [33mwarn[39m: Not Data Found
+[2025-06-22 13:34:05] [33mwarn[39m: No Data Found
+[2025-06-22 13:34:05] [33mwarn[39m: Not Data Found
+[2025-06-22 13:36:07] [33mwarn[39m: No Data Found
+[2025-06-22 13:36:07] [33mwarn[39m: Not Data Found
+[2025-06-22 13:37:37] [33mwarn[39m: No Data Found
+[2025-06-22 13:37:37] [33mwarn[39m: Not Data Found
+[2025-06-22 13:38:13] [33mwarn[39m: No Data Found
+[2025-06-22 13:38:13] [33mwarn[39m: Not Data Found
+[2025-06-22 13:38:28] [32minfo[39m: Filter: 
+[2025-06-22 13:38:28] [33mwarn[39m: Get Categories Service Has No Entries.
+[2025-06-22 13:38:28] [33mwarn[39m: No subcategories found.
+[2025-06-22 13:38:36] [33mwarn[39m: No Data Found
+[2025-06-22 13:38:36] [33mwarn[39m: Not Data Found
+[2025-06-22 13:39:14] [33mwarn[39m: No Data Found
+[2025-06-22 13:39:14] [33mwarn[39m: Not Data Found
+[2025-06-22 13:39:29] [33mwarn[39m: No Data Found
+[2025-06-22 13:39:29] [33mwarn[39m: Not Data Found
+[2025-06-22 13:41:31] [33mwarn[39m: No Data Found
+[2025-06-22 13:41:31] [33mwarn[39m: Not Data Found

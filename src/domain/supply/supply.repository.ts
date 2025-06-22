@@ -19,33 +19,33 @@ export async function getSupplyByIdDB(id: number) {
 }
 
 export async function createSupplyDB(data: Supply) {
-  const { item_qty, package_qty, item_price } = data;
+  const { itemQty, packageQty, itemPrice } = data;
   const { company, ...rest } = data;
 
-  const total_items = item_qty * package_qty;
-  const total_price = total_items * item_price;
+  const totalItems = itemQty * packageQty;
+  const totalPrice = totalItems * itemPrice;
   return prisma.supply.create({
     data: {
       ...rest,
-      total_items,
-      total_price,
+      totalItems,
+      totalPrice,
     },
   });
 }
 
 export async function updateSupplyDB(data: Supply, id: number) {
-  const { item_qty, package_qty, item_price } = data;
+  const { itemQty, packageQty, itemPrice } = data;
   const { company, ...rest } = data;
 
-  const total_items = item_qty * package_qty;
-  const total_price = total_items * item_price;
+  const totalItems = itemQty * packageQty;
+  const totalPrice = totalItems * itemPrice;
 
   return prisma.supply.update({
     where: { id },
     data: {
       ...rest,
-      total_items,
-      total_price,
+      totalItems,
+      totalPrice,
     },
   });
 }

@@ -8,14 +8,35 @@ import {
 import { Prisma, PrismaClient } from "@prisma/client";
 import { DefaultArgs } from "@prisma/client/runtime/library";
 
-export const RoleEnum = z.enum(["ADMIN", "STAFF"]);
-type Role = z.infer<typeof RoleEnum>;
+export const PermissionSchema = z.object({
+  id: z.number().optional(),
+  key: z.string(),
+  name: z.string(),
+  description: z.string(),
+  category: z.string().nullable().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+});
+
+export const UserRoleSchema = z.object({
+  id: z.number().optional(),
+  name: z.string(),
+  description: z.string().nullable(),
+  permIds: z.array(z.number()).optional(),
+  permissions: z.array(PermissionSchema).optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+});
+
+export type Permission = z.infer<typeof PermissionSchema>;
+export type UserRole = z.infer<typeof UserRoleSchema>;
 
 export const UserSchema = z.object({
   id: z.number().optional(),
   username: z.string(),
   password: z.string(),
-  role: RoleEnum.default("STAFF"),
+  roleId: z.number().nullable().optional(),
+  role: UserRoleSchema.optional(),
   image: z.string().nullable().optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
@@ -116,7 +137,7 @@ export const CategorySchema = z.object({
 });
 
 export type Category = z.infer<typeof CategorySchema>;
-export const PaymentMethodEnum = z.enum(["CASH", "CARD", "PAY_LATER"]);
+export const PaymentMethodEnum = z.enum(["CASH", "CARD", "DEBT"]);
 
 export const TaxSchema = z.object({
   id: z.number(),
@@ -246,7 +267,7 @@ export type FilterBy = "name" | "date" | "price";
 
 export type Language = "en" | "ar" | "ku";
 
-export type { Role, TError, TResult, User };
+export type { TError, TResult, User };
 
 export const SettingsSchema = z.object({
   id: z.number().optional(),

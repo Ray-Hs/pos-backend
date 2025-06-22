@@ -11,7 +11,7 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { OrderSchema } from "../../types/common";
+import { Invoice, Order, OrderSchema } from "../../types/common";
 import { getConstantsDB } from "../constants/constants.repository";
 import { calculateTotal, updateInvoiceDB } from "../invoice/invoice.repository";
 import {
@@ -249,13 +249,27 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
+      const existingOrder = await findOrderByIdDB(response.id, prisma);
+      if (!existingOrder) {
+        logger.warn("Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
       const updatedOrder = await prisma.$transaction(async (tx) => {
         const { items, userId, reason, invoiceId, ...rest } = data;
         const prev_order = await findOrderByIdDB(response.id as number, tx);
         const order_items = prev_order?.items;
+
         if (!prev_order) {
           throw new Error("No Previous Order");
         }
+
         const deletedItems = order_items?.filter(
           (orderItem) => !items.some((item) => item.id === orderItem.id)
         );
@@ -272,6 +286,7 @@ export class OrderServices implements OrderServiceInterface {
               },
             },
           });
+
           // Then, create deletedOrderItems for audit/history
           await tx.deletedOrderItem.createMany({
             data: deletedItems.map((item) => ({
@@ -286,57 +301,84 @@ export class OrderServices implements OrderServiceInterface {
               reason: data.reason || "", // or another appropriate reason
             })),
           });
-
-          const order = await updateOrderDB(response?.id as number, data, tx);
-          const constants = await getConstantsDB(tx);
-          const subtotal = order.items.reduce(
-            (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
-            0
-          );
-          const total = calculateTotal(subtotal, constants);
-          const invoiceRef = order.Invoice[0].id;
-          const invoicesFromRef = await tx.invoice.findMany({
-            where: {
-              invoiceRefId: invoiceRef,
-            },
-          });
-          const version = Math.max(
-            ...invoicesFromRef.map((invoice) => invoice.version)
-          );
-          //? Update old Invoice version Status
-          await updateInvoiceDB(
-            invoiceId,
-            {
-              isLatestVersion: false,
-            },
-            tx
-          );
-          //? Create new invoice and assign it into invoiceRef
-          const invoice = await tx.invoice.create({
-            data: {
-              subtotal,
-              total,
-              version: version + 1,
-              invoiceRefId: invoiceRef,
-              userId: order.userId,
-              isLatestVersion: true,
-              serviceId: constants.service?.id,
-              taxId: constants.tax?.id,
-              tableId: order.tableId,
-            },
-          });
-          return { order, invoice };
         }
+
+        const order = await tx.order.update({
+          where: {
+            id: response.id,
+          },
+          data: {
+            ...rest,
+            userId,
+            items: items
+              ? {
+                  create: addedItems.map((item) => ({
+                    menuItemId: item.menuItemId,
+                    price: item.price,
+                    quantity: item.quantity,
+                  })),
+                }
+              : undefined,
+          },
+          include: {
+            items: true,
+            Invoice: {
+              orderBy: { createdAt: "desc" },
+            },
+          },
+        });
+
+        const constants = await getConstantsDB(tx);
+        const subtotal = order.items.reduce(
+          (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
+          0
+        );
+
+        const total = calculateTotal(subtotal, constants);
+        const invoiceRef = order.Invoice[0].id;
+        const invoicesFromRef = await tx.invoice.findMany({
+          where: {
+            invoiceRefId: invoiceRef,
+          },
+        });
+        const version = Math.max(
+          ...invoicesFromRef.map((invoice) => invoice.version)
+        );
+
+        //? Update old Invoice version Status
+        await tx.invoice.update({
+          where: {
+            id: invoiceId,
+          },
+          data: {
+            isLatestVersion: false,
+          },
+        });
+        //? Create new invoice and assign it into invoiceRef
+        const invoice = await tx.invoice.create({
+          data: {
+            subtotal,
+            total,
+            version: version + 1,
+            invoiceRefId: invoiceRef,
+            userId: order.userId,
+            isLatestVersion: true,
+            serviceId: constants.service?.id,
+            taxId: constants.tax?.id,
+            tableId: order.tableId,
+          },
+        });
+
+        return { order, invoice };
       });
 
-      const existingOrder = await findOrderByIdDB(response.id, prisma);
-      if (!existingOrder) {
-        logger.warn("Not Found");
+      if (!updatedOrder) {
+        logger.warn("No items were deleted, nothing to update.");
         return {
           success: false,
           error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
+            code: BAD_REQUEST_STATUS,
+            message: "No items were deleted, nothing to update.",
           },
         };
       }
@@ -356,6 +398,7 @@ export class OrderServices implements OrderServiceInterface {
       };
     }
   }
+
   async deleteOrder(requestId: any) {
     try {
       const response = await validateType(
