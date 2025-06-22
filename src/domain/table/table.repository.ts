@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import prisma from "../../infrastructure/database/prisma/client";
-import { Table } from "../../types/common";
+import { Table, TxClientType } from "../../types/common";
 import {
   BAD_REQUEST_ERR,
   BAD_REQUEST_STATUS,
@@ -85,9 +85,9 @@ export function createTableDB(
   });
 }
 
-export function updateTableDB(id: number, data: Table) {
+export function updateTableDB(id: number, data: Table, client: TxClientType) {
   const { orders, id: _id, ...rest } = data;
-  return prisma.table.update({
+  return client.table.update({
     where: {
       id,
     },

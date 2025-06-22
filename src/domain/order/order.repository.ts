@@ -1,9 +1,7 @@
 import prisma from "../../infrastructure/database/prisma/client";
-import { Order } from "../../types/common";
+import { Order, TxClientType } from "../../types/common";
 import { getConstantsDB } from "../constants/constants.repository";
 import { calculateTotal } from "../invoice/invoice.repository";
-import { getPrinterByIdDB } from "../settings/printers/printer.repository";
-import { printerService } from "../settings/printers/printer.services";
 
 export function getOrdersDB() {
   return prisma.order.findMany({
@@ -17,8 +15,8 @@ export function getOrdersDB() {
   });
 }
 
-export function findOrderByIdDB(id: number) {
-  return prisma.order.findFirst({
+export function findOrderByIdDB(id: number, client: TxClientType) {
+  return client.order.findFirst({
     where: { id },
     include: {
       items: {
@@ -174,118 +172,37 @@ export async function createOrderDB(data: Order) {
 
 export async function updateOrderDB(
   id: number,
-  data: Order & { invoiceId: number }
+  data: Order & { invoiceId: number },
+  client: TxClientType
 ) {
   const { items, userId, reason, invoiceId, ...rest } = data;
 
-  return prisma.$transaction(async (tx) => {
-    const prev_order = await findOrderByIdDB(id);
-    const order_items = prev_order?.items;
-
-    if (!prev_order) {
-      throw new Error("No Previous Order");
-    }
-
-    const deletedItems = order_items?.filter(
-      (orderItem) => !items.some((item) => item.id === orderItem.id)
-    );
-    const addedItems = items.filter(
-      (item) => !order_items?.some((orderItem) => orderItem.id === item.id)
-    );
-
-    if (deletedItems && deletedItems.length > 0) {
-      // First, delete the order items to avoid violating required relation
-      await tx.orderItem.deleteMany({
-        where: {
-          id: {
-            in: deletedItems?.map((item) => item.id),
-          },
-        },
-      });
-
-      // Then, create deletedOrderItems for audit/history
-      await tx.deletedOrderItem.createMany({
-        data: deletedItems.map((item) => ({
-          orderId: id,
-          menuItemId: item.menuItemId,
-          quantity: item.quantity,
-          price: item.price,
-          notes: item.notes ?? null,
-          invoiceId,
-          sortOrder: item.sortOrder ?? undefined,
-          createdAt: item.createdAt ?? undefined,
-          reason: data.reason || "", // or another appropriate reason
-        })),
-      });
-    }
-
-    const order = await tx.order.update({
-      where: {
-        id,
-      },
-      data: {
-        ...rest,
-        userId,
-        items: items
-          ? {
-              create: addedItems.map((item) => ({
+  return client.order.update({
+    where: {
+      id,
+    },
+    data: {
+      ...rest,
+      userId,
+      items: items
+        ? {
+            connectOrCreate: items.map((item) => ({
+              where: { id: item.id },
+              create: {
                 menuItemId: item.menuItemId,
                 price: item.price,
                 quantity: item.quantity,
-              })),
-            }
-          : undefined,
+              },
+            })),
+          }
+        : undefined,
+    },
+    include: {
+      items: true,
+      Invoice: {
+        orderBy: { createdAt: "desc" },
       },
-      include: {
-        items: true,
-        Invoice: {
-          orderBy: { createdAt: "desc" },
-        },
-      },
-    });
-
-    const constants = await getConstantsDB();
-    const subtotal = order.items.reduce(
-      (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
-      0
-    );
-
-    const total = calculateTotal(subtotal, constants);
-    const invoiceRef = order.Invoice[0].id;
-    const invoicesFromRef = await tx.invoice.findMany({
-      where: {
-        invoiceRefId: invoiceRef,
-      },
-    });
-    const version = Math.max(
-      ...invoicesFromRef.map((invoice) => invoice.version)
-    );
-
-    //? Update old Invoice version Status
-    await tx.invoice.update({
-      where: {
-        id: invoiceId,
-      },
-      data: {
-        isLatestVersion: false,
-      },
-    });
-    //? Create new invoice and assign it into invoiceRef
-    const invoice = await tx.invoice.create({
-      data: {
-        subtotal,
-        total,
-        version: version + 1,
-        invoiceRefId: invoiceRef,
-        userId: order.userId,
-        isLatestVersion: true,
-        serviceId: constants.service?.id,
-        taxId: constants.tax?.id,
-        tableId: order.tableId,
-      },
-    });
-
-    return { order, invoice };
+    },
   });
 }
 

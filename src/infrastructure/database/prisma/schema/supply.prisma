@@ -1,20 +1,20 @@
 model supply {
     id Int @id @default(autoincrement())
 
-    companyId       Int
-    company         CompanyInfo   @relation(fields: [companyId], references: [id])
-    paymentMethod   PaymentMethod @default(CASH)
-    barcode         String?
-    name            String
-    package_qty     Int
-    item_qty        Int
-    item_type       String
-    package_price   Int
-    item_price      Int
-    item_sell_price Float
-    total_items     Int?
-    total_price     Float?
-    store           String
+    invoiceNO     String?
+    companyId     Int
+    company       CompanyInfo   @relation(fields: [companyId], references: [id])
+    paymentMethod PaymentMethod @default(CASH)
+    barcode       String?
+    name          String
+    packageQty    Int
+    itemQty       Int
+    packagePrice  Int
+    itemPrice     Int
+    itemSellPrice Float
+    totalItems    Int?
+    totalPrice    Float?
+    store         String
 
     expiryDate DateTime?
     createdAt  DateTime  @default(now())

@@ -14413,3 +14413,15 @@ Invalid `prisma.supply.create()` invocation:
 
 
 Foreign key constraint violated on the constraint: `supply_companyId_fkey`
+[2025-06-21 17:28:26] [32minfo[39m: Filter: 
+[2025-06-21 17:28:26] [33mwarn[39m: No Data Found
+[2025-06-21 17:28:27] [33mwarn[39m: No Data Found
+[2025-06-21 17:28:54] [33mwarn[39m: No Data Found
+[2025-06-21 17:28:55] [33mwarn[39m: No Data Found
+[2025-06-21 17:36:00] [33mwarn[39m: No Data Found
+[2025-06-21 17:36:00] [32minfo[39m: Filter: 
+[2025-06-21 17:36:01] [33mwarn[39m: No Data Found
+[2025-06-21 17:36:03] [33mwarn[39m: No Data Found
+[2025-06-21 17:36:04] [33mwarn[39m: No Data Found
+[2025-06-21 17:36:17] [33mwarn[39m: No Data Found
+[2025-06-21 17:36:18] [33mwarn[39m: No Data Found

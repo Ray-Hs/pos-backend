@@ -1,7 +1,7 @@
 enum PaymentMethod {
     CASH
     CARD
-    PAY_LATER
+    DEBT
 }
 
 model InvoiceRef {

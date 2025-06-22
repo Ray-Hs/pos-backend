@@ -1,6 +1,5 @@
 import prisma from "../../infrastructure/database/prisma/client";
-import { Invoice } from "../../types/common";
-import { getConstantsDB } from "../constants/constants.repository";
+import { Invoice, TxClientType } from "../../types/common";
 import { CustomerDiscount } from "../settings/crm/crm.types";
 
 // Get all invoices with optional pagination
@@ -45,141 +44,37 @@ export const calculateTotal = (
 };
 
 // Create invoice with better error handling and validation
-export const createInvoiceDB = async (data: Invoice) => {
-  const { serviceId, discount, tableId, ...rest } = data;
+export const createInvoiceDB = async (data: Invoice, client: TxClientType) => {
+  const { discount, id, ...rest } = data;
 
-  return prisma.$transaction(async (tx) => {
-    const invoiceRef = await tx.invoiceRef.findFirst({
-      where: {
-        id: data.invoiceRefId,
-      },
-    });
-    if (!invoiceRef) {
-      throw new Error("No Invoice Ref Found");
-    }
-    const order = await tx.order.findFirst({
-      where: { id: invoiceRef?.orderId ?? undefined },
-      include: { items: true },
-    });
-
-    if (!order) {
-      throw new Error(`Order with ID ${invoiceRef?.orderId} not found`);
-    }
-
-    const constants = await getConstantsDB();
-
-    const subtotal = order.items.reduce(
-      (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
-      0
-    );
-
-    const total = calculateTotal(
-      subtotal,
-      constants,
-      discount as CustomerDiscount
-    );
-
-    const invoice = await tx.invoice.create({
-      data: {
-        ...rest,
-        tableId,
-        subtotal,
-        total,
-        userId: data.userId as number,
-        taxId: constants.tax?.id,
-        serviceId: constants.service?.id,
-        invoiceRefId: invoiceRef?.id,
-        version: 1,
-        customerDiscountId: discount?.id,
-      },
-    });
-
-    if (tableId) {
-      console.log("Invoice Table ID: ", tableId);
-      await tx.table.update({
-        where: {
-          id: tableId || undefined,
-        },
-        data: {
-          status: "AVAILABLE",
-          orders: {
-            disconnect: {
-              id: invoiceRef.orderId ?? undefined,
-            },
-          },
-        },
-      });
-    }
-
-    return invoice;
+  return client.invoice.create({
+    data: {
+      ...rest,
+      customerDiscountId: discount?.id,
+      version: data.version,
+      invoiceRefId: data.invoiceRefId || 0,
+      total: data.total || 0,
+      subtotal: data.subtotal || 0,
+      userId: data.userId || 0,
+    },
   });
 };
 
 // Update invoice with validation and recalculation
-export const updateInvoiceDB = async (id: number, data: Invoice) => {
-  return prisma.$transaction(async (tx) => {
-    const { id: _id, discount, paid, ...rest } = data;
-    console.log("Invoice Function: ", rest);
-    const invoice = await findInvoiceByIdDB(id);
-    const invoiceRef = await tx.invoiceRef.findFirst({
-      where: {
-        id: invoice.invoiceRefId,
-      },
-    });
-    const order = await tx.order.findFirst({
-      where: { id: invoiceRef?.orderId ?? undefined },
-      include: { items: true },
-    });
-
-    if (!order) {
-      throw new Error(`Order with ID ${invoiceRef?.orderId} not found`);
-    }
-
-    const constants = await getConstantsDB();
-    const subtotal = order.items.reduce(
-      (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
-      0
-    );
-
-    const total = calculateTotal(
-      subtotal,
-      constants,
-      data.discount ?? (invoice?.discount as CustomerDiscount)
-    );
-
-    const table = await tx.table.update({
-      where: {
-        id: order.tableId || 0,
-      },
-      data: {
-        orders: {
-          disconnect: { id: order.id },
-        },
-        status: "AVAILABLE",
-      },
-    });
-
-    return tx.invoice.update({
-      where: { id },
-      data: {
-        ...rest,
-        paid: true,
-        subtotal,
-        total,
-      },
-    });
+export const updateInvoiceDB = async (
+  id: number,
+  data: Partial<Invoice>,
+  client: TxClientType
+) => {
+  const { id: _id, discount, ...rest } = data;
+  return client.invoice.update({
+    where: { id },
+    data: { ...rest },
   });
 };
 
-// Delete invoice with validation
-export const deleteInvoiceDB = async (id: number) => {
-  const exists = await findInvoiceByIdDB(id);
-
-  if (!exists) {
-    throw new Error(`Invoice with ID ${id} not found`);
-  }
-
-  return prisma.invoice.delete({
+export const deleteInvoiceDB = async (id: number, client: TxClientType) => {
+  return client.invoice.delete({
     where: { id },
   });
 };

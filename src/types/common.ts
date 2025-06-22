@@ -5,6 +5,8 @@ import {
   CompanyInfoSchema,
   CustomerDiscountSchema,
 } from "../domain/settings/crm/crm.types";
+import { Prisma, PrismaClient } from "@prisma/client";
+import { DefaultArgs } from "@prisma/client/runtime/library";
 
 export const RoleEnum = z.enum(["ADMIN", "STAFF"]);
 type Role = z.infer<typeof RoleEnum>;
@@ -140,6 +142,9 @@ export const InvoiceSchema = z.object({
   taxId: z.number().int().nullable().optional(),
   serviceId: z.number().int().nullable().optional(),
   invoiceRefId: z.number().optional(),
+  version: z.number(),
+  customerDiscountId: z.number().nullable().optional(),
+  isLatestVersion: z.boolean().optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
@@ -252,3 +257,8 @@ export const SettingsSchema = z.object({
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
+
+export type TxClientType = Omit<
+  PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>,
+  "$connect" | "$disconnect" | "$on" | "$transaction" | "$use" | "$extends"
+>;
