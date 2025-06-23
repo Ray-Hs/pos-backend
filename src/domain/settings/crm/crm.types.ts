@@ -85,7 +85,7 @@ export const CustomerDiscountSchema = z.object({
   name: z.string(),
   phoneNumber: z.string(),
   discount: z.number(),
-  cRMId: z.number().nullable().optional(),
+  CRMId: z.number().nullable().optional(),
 });
 
 export type CustomerDiscount = z.infer<typeof CustomerDiscountSchema>;

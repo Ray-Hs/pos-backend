@@ -26,6 +26,7 @@ import {
   updatePrinterDB,
 } from "./printer.repository";
 import { PrinterObjectSchema, PrinterServiceInterface } from "./printer.types";
+import { getBrandDB } from "../branding/brand.repository";
 
 export class printerService implements PrinterServiceInterface {
   async getPrinters() {
@@ -187,7 +188,7 @@ export class printerService implements PrinterServiceInterface {
         { id: requestId },
         PrinterObjectSchema.pick({ id: true })
       );
-      if (!id || id instanceof ZodError) {
+      if (!id || id instanceof ZodError || !id.id) {
         logger.warn("Invalid Printer ID: ", id);
         return {
           success: false,
@@ -206,17 +207,6 @@ export class printerService implements PrinterServiceInterface {
           error: {
             code: BAD_REQUEST_STATUS,
             message: BAD_REQUEST_BODY_ERR,
-          },
-        };
-      }
-
-      if (!data.id || data.id !== id.id) {
-        logger.warn("Invalid Printer ID: ", id.id);
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_ID_ERR,
           },
         };
       }
@@ -313,10 +303,12 @@ export class printerService implements PrinterServiceInterface {
         };
       }
 
+      const brand = await getBrandDB();
       const printerDevice = await getPrinterByIdDB(id.id);
+      console.log(id.id);
       const printer = new ThermalPrinter({
         type: PrinterTypes.EPSON,
-        interface: `tcp://192.168.1.21`,
+        interface: `tcp://${printerDevice?.ip}`,
         removeSpecialCharacters: false,
         lineCharacter: "=",
         breakLine: BreakLine.WORD,
@@ -326,9 +318,16 @@ export class printerService implements PrinterServiceInterface {
       let isConnected = await printer.isPrinterConnected();
       if (isConnected) {
         printer.alignCenter();
-        printer.println("MY RESTAURANT");
-        printer.println("123 Main Street");
-        printer.println("Tel: (555) 123-4567");
+        printer.setTextDoubleHeight();
+        printer.println(brand?.receiptHeader || "");
+        printer.setTextNormal();
+        printer.newLine();
+        printer.drawLine();
+        printer.bold(true);
+        printer.println(brand?.restaurantName || "Restaurant Name");
+        printer.bold(false);
+        printer.println(brand?.address || "");
+        printer.println(`Tel: ${brand?.phoneNumber}`);
         printer.drawLine();
 
         printer.alignLeft();
@@ -356,12 +355,13 @@ export class printerService implements PrinterServiceInterface {
 
         printer.alignCenter();
         printer.newLine();
-        printer.println("Thank you for your business!");
-        printer.printQR("https://www.youtube.com/watch?v=ECOFX9Ss0KY", {
-          cellSize: 5, // QR Cell Size, default 3
+        printer.printQR(brand?.website || "", {
+          cellSize: 7, // QR Cell Size, default 3
           correction: "M", // QR Correction Level, default 'M'
           model: 2, // QR Model, default 2
         });
+        printer.newLine();
+        printer.println(brand?.receiptFooter || "");
         printer.cut();
         printer.beep(4);
 

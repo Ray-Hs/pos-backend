@@ -16,6 +16,8 @@ import SectionRoutes from "./section.routes";
 import SettingsRoutes from "./settings.routes";
 import SubcategoryRoutes from "./subcategory.routes";
 import TableRoutes from "./table.routes";
+import SupplyRoutes from "./supply.routes";
+import CRMRoutes from "./crm.routes";
 const router: Router = express.Router();
 
 // Auth Routes
@@ -92,6 +94,16 @@ router.use(
   "/settings",
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   SettingsRoutes
+);
+
+// CRM Routes
+router.use("/crm", rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW), CRMRoutes);
+
+// Supply Routes
+router.use(
+  "/supply",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  SupplyRoutes
 );
 
 export default router;

@@ -40,6 +40,9 @@ model Printers {
     items       MenuItem[]
     settingsId  Int?
     Settings    Settings?  @relation(fields: [settingsId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model Roles {
@@ -49,6 +52,9 @@ model Roles {
     description   String?
     permissionsId Int
     permissions   Permissions?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model CRM {
@@ -63,14 +69,17 @@ model CRM {
 
 model CustomerInfo {
     id          Int     @id @default(autoincrement())
-    code        String?
+    code        String? @unique
     name        String
-    phoneNumber String
+    phoneNumber String  @unique
     email       String?
     debt        Int?
     note        String?
     CRMId       Int?
     CRM         CRM?    @relation(fields: [CRMId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 enum Currency {
@@ -79,22 +88,29 @@ enum Currency {
 }
 
 model CompanyInfo {
-    id          Int       @id @default(autoincrement())
-    code        String?
+    id          Int        @id @default(autoincrement())
+    code        String?    @unique
     currency    Currency?
     name        String
-    phoneNumber String
+    phoneNumber String     @unique
     email       String?
     note        String?
     CRMId       Int?
-    CRM         CRM?      @relation(fields: [CRMId], references: [id])
+    CRM         CRM?       @relation(fields: [CRMId], references: [id])
+    supply      supply[]
+    MenuItem    MenuItem[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model CustomerDiscount {
-    id          Int    @id @default(autoincrement())
+    id          Int      @id @default(autoincrement())
     name        String
-    phoneNumber String
+    phoneNumber String   @unique
     discount    Float
-    cRMId       Int?
-    CRM         CRM?   @relation(fields: [cRMId], references: [id])
+    CRMId       Int?
+    CRM         CRM?     @relation(fields: [CRMId], references: [id])
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 }

@@ -130,11 +130,11 @@ export async function getCustomerDiscountByIdDB(id: number) {
 
 export async function createCustomerDiscountDB(data: CustomerDiscount) {
   return prisma.$transaction(async (tx) => {
-    const { cRMId, id: _, ...rest } = data;
+    const { CRMId, id: _, ...rest } = data;
     const isCRMExist = await tx.cRM.findFirst();
     const crm = isCRMExist ?? (await tx.cRM.create({}));
 
-    return tx.companyInfo.create({
+    return tx.customerDiscount.create({
       data: {
         ...rest,
         CRMId: crm.id,
@@ -148,11 +148,11 @@ export async function updateCustomerDiscountDB(
   id: number
 ) {
   return prisma.$transaction(async (tx) => {
-    const { cRMId, id: _, ...rest } = data;
+    const { CRMId, id: _, ...rest } = data;
     const isCRMExist = await tx.cRM.findFirst();
     const crm = isCRMExist ?? (await tx.cRM.create({}));
 
-    return tx.companyInfo.update({
+    return tx.customerDiscount.update({
       where: {
         id,
       },
@@ -167,7 +167,7 @@ export async function updateCustomerDiscountDB(
 export async function deleteCustomerDiscountDB(id: number) {
   return prisma.customerDiscount.delete({
     where: {
-      id,
+      id, 
     },
   });
 }

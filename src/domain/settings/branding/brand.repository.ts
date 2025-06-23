@@ -40,26 +40,47 @@ export async function createBrandDB(data: Brand) {
 export async function updateBrandDB(id: number, data: Brand) {
   return prisma.$transaction(async (tx) => {
     const isSettingsAvailable = await tx.settings.findFirst();
+    const isBrandAvailable = await tx.branding.findFirst();
     if (!isSettingsAvailable) {
       const newSettings = await tx.settings.create({
         data: {},
       });
+      if (!isBrandAvailable) {
+        return tx.branding.create({
+          data: {
+            ...data,
+            settingsId: newSettings.id,
+          },
+        });
+      } else {
+        return tx.branding.update({
+          where: {
+            id,
+          },
+          data: {
+            ...data,
+            settingsId: newSettings.id,
+          },
+        });
+      }
+    }
+    if (!isBrandAvailable) {
+      return tx.branding.create({
+        data: {
+          settingsId: isSettingsAvailable.id,
+        },
+      });
+    } else {
       return tx.branding.update({
         where: {
           id,
         },
         data: {
           ...data,
-          settingsId: newSettings.id,
+          settingsId: isSettingsAvailable.id,
         },
       });
     }
-    return tx.branding.update({
-      where: {
-        id,
-      },
-      data,
-    });
   });
 }
 
