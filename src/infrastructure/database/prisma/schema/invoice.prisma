@@ -1,32 +1,46 @@
 enum PaymentMethod {
     CASH
     CARD
-    PAY_LATER
+    DEBT
 }
 
-model Invoice {
-    id       Int   @id @default(autoincrement())
-    discount Float @default(0) // Between 0 and 1
-    total    Float
-    subtotal Float
-
-    paymentMethod PaymentMethod?
-    paid          Boolean        @default(false)
-
-    taxId     Int?
-    serviceId Int?
-    orderId   Int
-    userId    Int
-    tableId   Int?
-
-    tax     Tax?     @relation(fields: [taxId], references: [id])
-    service Service? @relation(fields: [serviceId], references: [id])
-    order   Order    @relation(fields: [orderId], references: [id])
-    user    User     @relation(fields: [userId], references: [id])
-    table   Table?   @relation(fields: [tableId], references: [id])
-
+model InvoiceRef {
+    id        Int      @id @default(autoincrement()) // Stable identifier
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    @@index([orderId, userId, tableId])
+    orderId Int?
+
+    invoices Invoice[] // All versions
+    Order    Order?    @relation(fields: [orderId], references: [id])
+}
+
+model Invoice {
+    id              Int     @id @default(autoincrement())
+    invoiceRefId    Int
+    version         Int
+    isLatestVersion Boolean @default(true)
+
+    subtotal      Float
+    total         Float
+    paymentMethod PaymentMethod?
+    paid          Boolean        @default(false)
+
+    taxId              Int?
+    serviceId          Int?
+    userId             Int
+    tableId            Int?
+    customerDiscountId Int?
+
+    discount   CustomerDiscount? @relation(fields: [customerDiscountId], references: [id])
+    tax        Tax?              @relation(fields: [taxId], references: [id])
+    service    Service?          @relation(fields: [serviceId], references: [id])
+    user       User              @relation(fields: [userId], references: [id])
+    table      Table?            @relation(fields: [tableId], references: [id])
+    invoiceRef InvoiceRef        @relation(fields: [invoiceRefId], references: [id])
+
+    createdAt        DateTime           @default(now())
+    DeletedOrderItem DeletedOrderItem[]
+
+    @@index([invoiceRefId, isLatestVersion])
 }

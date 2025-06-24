@@ -1,10 +1,5 @@
-import {
-  BreakLine,
-  CharacterSet,
-  PrinterTypes,
-  ThermalPrinter,
-} from "node-thermal-printer";
-import { ZodError } from "zod";
+import { BreakLine, PrinterTypes, ThermalPrinter } from "node-thermal-printer";
+import { z, ZodError } from "zod";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ERR,
@@ -17,6 +12,9 @@ import {
 } from "../../../infrastructure/utils/constants";
 import logger from "../../../infrastructure/utils/logger";
 import validateType from "../../../infrastructure/utils/validateType";
+import { OrderItemSchema } from "../../../types/common";
+import { getConstantsDB } from "../../constants/constants.repository";
+import { getBrandDB } from "../branding/brand.repository";
 import {
   createPrinterDB,
   deletePrinterDB,
@@ -26,7 +24,7 @@ import {
   updatePrinterDB,
 } from "./printer.repository";
 import { PrinterObjectSchema, PrinterServiceInterface } from "./printer.types";
-import { getBrandDB } from "../branding/brand.repository";
+import prisma from "../../../infrastructure/database/prisma/client";
 
 export class printerService implements PrinterServiceInterface {
   async getPrinters() {
@@ -275,13 +273,14 @@ export class printerService implements PrinterServiceInterface {
     }
   }
 
-  async print(requestId: any) {
+  async print(requestId: any, requestData: any) {
     try {
       const id = await validateType(
         { id: requestId },
         PrinterObjectSchema.pick({ id: true })
       );
-      if (!id || id instanceof ZodError) {
+
+      if (!id || id instanceof ZodError || !id.id) {
         logger.warn("Invalid Printer ID: ", id);
         return {
           success: false,
@@ -292,20 +291,36 @@ export class printerService implements PrinterServiceInterface {
         };
       }
 
-      if (!id.id) {
-        logger.warn("Invalid Printer ID: ", id.id);
+      // Validate requestData
+      const OrderPrintSchema = z.object({
+        orderId: z.number(),
+        item: z.object({
+          title_en: z.string(),
+          quantity: z.number(),
+          price: z.number(),
+        }),
+        subtotal: z.number(),
+        tax: z.number(),
+        service: z.number(),
+        total: z.number(),
+      });
+
+      const data = await validateType(requestData, OrderPrintSchema);
+
+      if (!data || data instanceof ZodError) {
+        logger.warn("Invalid Print Data: ", data);
         return {
           success: false,
           error: {
             code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_ID_ERR,
+            message: BAD_REQUEST_BODY_ERR,
           },
         };
       }
+      const constants = await getConstantsDB(prisma);
 
       const brand = await getBrandDB();
       const printerDevice = await getPrinterByIdDB(id.id);
-      console.log(id.id);
       const printer = new ThermalPrinter({
         type: PrinterTypes.EPSON,
         interface: `tcp://${printerDevice?.ip}`,
@@ -331,7 +346,7 @@ export class printerService implements PrinterServiceInterface {
         printer.drawLine();
 
         printer.alignLeft();
-        printer.println("Order #: 1234");
+        printer.println(`Order #: ${data?.orderId}`);
         printer.println("Date: " + new Date().toLocaleString());
         printer.drawLine();
 
@@ -342,16 +357,18 @@ export class printerService implements PrinterServiceInterface {
           { text: "Price", align: "RIGHT" },
         ]);
         printer.tableCustom([
-          { text: "Burger", align: "LEFT" },
-          { text: "1", align: "CENTER" },
-          { text: "$10.00", align: "RIGHT" },
+          { text: data?.item?.title_en || "", align: "LEFT" },
+          { text: data?.item?.quantity?.toString() || "1", align: "CENTER" },
+          { text: data?.item?.price?.toString() || "", align: "RIGHT" },
         ]);
 
         printer.drawLine();
         printer.alignLeft();
-        printer.println("Subtotal: $10.00");
-        printer.println("Tax: $1.00");
-        printer.println("Total: $11.00");
+        printer.println(`Subtotal: $${data?.subtotal}`);
+        constants.tax && printer.println(`Tax: $${constants.tax.rate}`);
+        constants.service &&
+          printer.println(`Service: $${constants.service.amount}`);
+        printer.println(`Total: $${data.total}`);
 
         printer.alignCenter();
         printer.newLine();
@@ -376,6 +393,7 @@ export class printerService implements PrinterServiceInterface {
         };
       }
 
+      console.log("Printer Buffer: ", printer.getBuffer());
       console.warn("Is Connected: ", isConnected);
       return {
         success: false,

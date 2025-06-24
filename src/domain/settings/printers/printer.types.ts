@@ -19,7 +19,7 @@ export interface PrinterServiceInterface {
   createPrinter(requestData: any): Promise<TResult<void>>;
   updatePrinter(requestData: any, requestId: any): Promise<TResult<void>>;
   deletePrinter(requestId: any): Promise<TResult<void>>;
-  print(requestId: any): Promise<TResult<void>>;
+  print(requestId: any, requestData: any): Promise<TResult<void>>;
 }
 
 export interface PrinterControllerInterface {

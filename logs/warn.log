@@ -13143,32 +13143,9 @@ Unique constraint failed on the fields: (`username`)
 Invalid `prisma.user.create()` invocation:
 
 
-Unique constraint failed on the fields: (`username`)
-[2025-06-23 12:29:43] [31merror[39m: Authenticated middleware:  
-Invalid `prisma.user.findFirst()` invocation:
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-15 17:44:45] [31merror[39m: Create Company:  
+Invalid `prisma.companyInfo.create()` invocation:
 
 
-Can't reach database server at `maglev.proxy.rlwy.net:23382`
-
-Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
-[2025-06-23 12:29:43] [31merror[39m: Authenticated middleware:  
-Invalid `prisma.user.findFirst()` invocation:
-
-
-Can't reach database server at `maglev.proxy.rlwy.net:23382`
-
-Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
-[2025-06-23 12:29:43] [31merror[39m: Authenticated middleware:  
-Invalid `prisma.user.findFirst()` invocation:
-
-
-Can't reach database server at `maglev.proxy.rlwy.net:23382`
-
-Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
-[2025-06-23 12:29:50] [31merror[39m: Authenticated middleware:  
-Invalid `prisma.user.findFirst()` invocation:
-
-
-Can't reach database server at `maglev.proxy.rlwy.net:23382`
-
-Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+Unique constraint failed on the fields: (`phoneNumber`)

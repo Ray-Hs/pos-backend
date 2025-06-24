@@ -18,6 +18,7 @@ import SubcategoryRoutes from "./subcategory.routes";
 import TableRoutes from "./table.routes";
 import SupplyRoutes from "./supply.routes";
 import CRMRoutes from "./crm.routes";
+import PermissionsRoutes from "./permissions.routes";
 const router: Router = express.Router();
 
 // Auth Routes
@@ -104,6 +105,13 @@ router.use(
   "/supply",
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   SupplyRoutes
+);
+
+// Permissions Routes
+router.use(
+  "/permissions",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  PermissionsRoutes
 );
 
 export default router;

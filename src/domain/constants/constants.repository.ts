@@ -1,15 +1,14 @@
 import prisma from "../../infrastructure/database/prisma/client";
+import { TxClientType } from "../../types/common";
 import { Constant } from "./constants.types";
 
-export async function getConstantsDB() {
-  return prisma.$transaction(async (tx) => {
-    const [tax, service] = await Promise.all([
-      tx.tax.findFirst(),
-      tx.service.findFirst(),
-    ]);
+export async function getConstantsDB(client: TxClientType) {
+  const [tax, service] = await Promise.all([
+    client.tax.findFirst(),
+    client.service.findFirst(),
+  ]);
 
-    return { tax, service };
-  });
+  return { tax, service };
 }
 
 export async function createConstantsDB(data: Constant) {

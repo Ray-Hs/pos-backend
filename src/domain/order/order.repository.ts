@@ -1,6 +1,7 @@
-import { Prisma } from "@prisma/client";
 import prisma from "../../infrastructure/database/prisma/client";
-import { Order } from "../../types/common";
+import { Order, TxClientType } from "../../types/common";
+import { getConstantsDB } from "../constants/constants.repository";
+import { calculateTotal } from "../invoice/invoice.repository";
 
 export function getOrdersDB() {
   return prisma.order.findMany({
@@ -14,8 +15,8 @@ export function getOrdersDB() {
   });
 }
 
-export function findOrderByIdDB(id: number) {
-  return prisma.order.findFirst({
+export function findOrderByIdDB(id: number, client: TxClientType) {
+  return client.order.findFirst({
     where: { id },
     include: {
       items: {
@@ -39,7 +40,9 @@ export function getLatestOrderDB(id: number) {
           menuItem: true,
         },
       },
-      Invoice: true,
+      Invoice: {
+        include: { invoices: { orderBy: { version: "desc" } } },
+      },
     },
   });
 }
@@ -54,6 +57,9 @@ export function findOrderByTableIdDB(id: number) {
           menuItem: true,
         },
       },
+      Invoice: {
+        include: { invoices: { orderBy: { version: "desc" } } },
+      },
     },
   });
 }
@@ -62,17 +68,6 @@ export async function createOrderDB(data: Order) {
   const { items, ...rest } = data;
 
   return prisma.$transaction(async (tx) => {
-    // If there's a tableId, verify table status first
-    if (rest.tableId) {
-      const table = await tx.table.findUnique({
-        where: { id: rest.tableId },
-      });
-
-      if (table?.status === "OCCUPIED") {
-        throw new Error("Table is already occupied");
-      }
-    }
-
     const order = await tx.order.create({
       data: {
         ...rest,
@@ -89,58 +84,125 @@ export async function createOrderDB(data: Order) {
       include: {
         items: {
           include: {
-            menuItem: true,
+            menuItem: {
+              include: {
+                Printer: true,
+              },
+            },
           },
         },
       },
     });
 
-    if (order.tableId) {
-      await tx.table.update({
-        where: {
-          id: order.tableId,
-        },
-        data: {
-          status: "OCCUPIED",
-        },
-      });
-    }
+    const constants = await getConstantsDB(tx);
+    const subtotal = order.items.reduce(
+      (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
+      0
+    );
+    const total = calculateTotal(subtotal, constants);
 
-    return order;
-  });
-}
+    //TODO: Send orders to correct printers
+    // const printPromises = order.items.map(async (item) => {
+    //   try {
+    //     const printer = await getPrinterByIdDB(
+    //       item?.menuItem?.Printer?.id || 0
+    //     );
+    //     console.log("Printer Device: ", printer);
 
-export async function updateOrderDB(id: number, data: Order) {
-  const { items, ...rest } = data;
+    //     if (printer) {
+    //       const printerServices = new printerService();
+    //       console.log("Order Item ID: ", item.id);
+    //       const response = await printerServices.print(printer.id, {
+    //         orderId: order.id,
+    //         item: {
+    //           title_en: item.menuItem.title_en,
+    //           quantity: item.quantity,
+    //           price: item.price,
+    //         },
+    //         subtotal,
+    //         total,
+    //         tax: constants.tax?.rate,
+    //         service: constants.service?.amount,
+    //       });
+    //       console.log("Print response:", response);
+    //       return response;
+    //     }
+    //     return null;
+    //   } catch (error) {
+    //     console.error("Print error for item:", item.id, error);
+    //     return null;
+    //   }
+    // });
 
-  return prisma.$transaction(async (tx) => {
-    const order = await tx.order.update({
-      where: {
-        id,
-      },
+    // // Wait for all print operations to complete
+    // await Promise.all(printPromises);
+
+    const invoiceRef = await tx.invoiceRef.create({
+      data: { orderId: order.id },
+    });
+    const invoice = await tx.invoice.create({
       data: {
-        ...rest,
-        items: items
-          ? {
-              updateMany: items.map((item) => ({
-                where: {
-                  id: item.id,
-                },
-                data: {
-                  menuItemId: item.menuItemId,
-                  price: item.price,
-                  quantity: item.quantity,
-                },
-              })),
-            }
-          : undefined,
-      },
-      include: {
-        items: true,
+        subtotal,
+        total,
+        version: 1,
+        invoiceRefId: invoiceRef.id,
+        userId: order.userId,
+        isLatestVersion: true,
+        serviceId: constants.service?.id,
+        taxId: constants.tax?.id,
+        tableId: order.tableId,
       },
     });
 
-    return order;
+    await tx.table.update({
+      where: {
+        id: order.tableId ?? undefined,
+      },
+      data: {
+        status: "OCCUPIED",
+      },
+    });
+
+    return {
+      order,
+      invoice,
+    };
+  });
+}
+
+export async function updateOrderDB(
+  id: number,
+  data: Order & { invoiceId: number },
+  client: TxClientType
+) {
+  const { items, userId, reason, invoiceId, ...rest } = data;
+
+  return client.order.update({
+    where: {
+      id,
+    },
+    data: {
+      ...rest,
+      userId,
+      items: items
+        ? {
+            connectOrCreate: items.map((item) => ({
+              where: { id: item.id },
+              create: {
+                menuItemId: item.menuItemId,
+                price: item.price,
+                quantity: item.quantity,
+              },
+            })),
+          }
+        : undefined,
+    },
+    include: {
+      items: true,
+      Invoice: {
+        orderBy: { createdAt: "desc" },
+      },
+    },
   });
 }
 

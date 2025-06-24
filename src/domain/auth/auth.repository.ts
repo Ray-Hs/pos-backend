@@ -20,6 +20,9 @@ export async function findUserDB(id: number) {
     where: {
       id,
     },
+    include: {
+      role: true,
+    },
   });
 }
 
@@ -28,18 +31,32 @@ export async function findUserNameDB(username: string) {
     where: {
       username,
     },
+    include: {
+      role: true,
+    },
   });
 }
 
 export async function updateUserDB(id: number, data: User) {
+  const { role, ...rest } = data;
+
   return prisma.user.update({
     where: {
       id,
     },
-    data,
+    data: {
+      ...rest,
+    },
+    include: {
+      role: true,
+    },
   });
 }
 
 export async function getUsersDB() {
-  return prisma.user.findMany();
+  return prisma.user.findMany({
+    include: {
+      role: true,
+    },
+  });
 }

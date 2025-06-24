@@ -32,6 +32,7 @@ import validateType from "../../infrastructure/utils/validateType";
 import {
   TResult,
   User,
+  UserRole,
   UserSchema,
   UserWithoutPassword,
 } from "../../types/common";
@@ -85,11 +86,11 @@ class AuthService implements AuthServiceInterface {
       const Bearer = (await createJWT(
         userFromDb.username,
         userFromDb.id,
-        userFromDb.role
+        userFromDb.role as UserRole
       )) as JwtPayload & User & string;
       const user: UserWithoutPassword = {
         id: userFromDb.id,
-        role: userFromDb.role,
+        role: userFromDb.role as UserRole,
         username: userFromDb.username,
         image: userFromDb.image,
         createdAt: userFromDb.createdAt,
@@ -189,7 +190,7 @@ class AuthService implements AuthServiceInterface {
 
       const data: UserWithoutPassword[] = users.map((user) => ({
         id: user.id,
-        role: user.role,
+        role: user.role as UserRole,
         username: user.username,
         image: user.image,
         createdAt: user.createdAt,
@@ -241,7 +242,7 @@ class AuthService implements AuthServiceInterface {
 
       const userById: UserWithoutPassword = {
         id: user.id,
-        role: user.role,
+        role: user.role as UserRole,
         username: user.username,
         image: user.image,
         createdAt: user.createdAt,

@@ -55,7 +55,7 @@ export class InvoiceController implements InvoiceControllerInterface {
     const invoiceInstance = new InvoiceServices();
     const response = await invoiceInstance.updateInvoice(id, {
       ...body,
-      userId,
+      userId: userId.id,
     });
 
     return res

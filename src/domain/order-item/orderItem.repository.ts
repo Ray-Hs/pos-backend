@@ -12,6 +12,19 @@ export async function getOrderItemByIdDB(id: number) {
     },
     include: {
       menuItem: true,
+      order: {
+        select: {
+          Invoice: {
+            select: {
+              invoices: {
+                orderBy: {
+                  createdAt: "desc",
+                },
+              },
+            },
+          },
+        },
+      },
     },
   });
 }
@@ -31,16 +44,27 @@ export async function updateOrderItemDB(id: number, data: OrderItem) {
   });
 }
 
-export async function deleteOrderItemDB(id: number) {
+export async function deleteOrderItemDB(
+  id: number,
+  reason?: string,
+  invoiceId?: number
+) {
   return prisma.$transaction(async (tx) => {
-    const deletedOrderItem = await prisma.orderItem.delete({
+    const deletedOrderItem = await tx.orderItem.delete({
       where: {
         id,
       },
     });
+    if (!invoiceId) {
+      throw new Error("No Invoice ID Provided.");
+    }
 
     return tx.deletedOrderItem.create({
-      data: deletedOrderItem,
+      data: {
+        ...deletedOrderItem,
+        reason: reason ?? "", // Provide an appropriate reason or pass as a parameter
+        invoiceId, // Set to a valid invoiceId or null if allowed
+      },
     });
   });
 }

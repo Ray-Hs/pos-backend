@@ -57,8 +57,9 @@ export class PrinterController implements PrinterControllerInterface {
 
   async print(req: Request, res: Response) {
     const id = parseInt(req.params.id, 10);
+    const data = req.body;
     const printerServices = new printerService();
-    const response = await printerServices.print(id);
+    const response = await printerServices.print(id, data);
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

@@ -1,17 +1,44 @@
 import { z } from "zod";
 import { BrandObject } from "../domain/settings/branding/brand.types";
 import { PrinterObjectSchema } from "../domain/settings/printers/printer.types";
-import { CompanyInfoSchema } from "../domain/settings/crm/crm.types";
+import {
+  CompanyInfoSchema,
+  CustomerDiscountSchema,
+} from "../domain/settings/crm/crm.types";
+import { Prisma, PrismaClient } from "@prisma/client";
+import { DefaultArgs } from "@prisma/client/runtime/library";
 
-export const RoleEnum = z.enum(["ADMIN", "STAFF"]);
-type Role = z.infer<typeof RoleEnum>;
+export const PermissionSchema = z.object({
+  id: z.number().optional(),
+  key: z.string(),
+  name: z.string(),
+  description: z.string(),
+  category: z.string().nullable().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+});
+
+export const UserRoleSchema = z.object({
+  id: z.number().optional(),
+  name: z.string(),
+  description: z.string().nullable(),
+  permIds: z.array(z.number()).optional(),
+  permissions: z.array(PermissionSchema).optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+});
+
+export type Permission = z.infer<typeof PermissionSchema>;
+export type UserRole = z.infer<typeof UserRoleSchema>;
 
 export const UserSchema = z.object({
   id: z.number().optional(),
   username: z.string(),
   password: z.string(),
-  role: RoleEnum.default("STAFF"),
+  roleId: z.number().nullable().optional(),
+  role: UserRoleSchema.optional(),
   image: z.string().nullable().optional(),
+  isActive: z.boolean().default(true).optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
@@ -111,7 +138,7 @@ export const CategorySchema = z.object({
 });
 
 export type Category = z.infer<typeof CategorySchema>;
-export const PaymentMethodEnum = z.enum(["CASH", "CARD", "PAY_LATER"]);
+export const PaymentMethodEnum = z.enum(["CASH", "CARD", "DEBT"]);
 
 export const TaxSchema = z.object({
   id: z.number(),
@@ -127,20 +154,32 @@ export type Service = z.infer<typeof ServiceSchema>;
 
 export const InvoiceSchema = z.object({
   id: z.number().optional(),
-  discount: z.number().default(0),
+  discount: CustomerDiscountSchema.nullable().optional(),
   total: z.number().optional(),
   subtotal: z.number().optional(),
-  paymentMethod: PaymentMethodEnum.nullable(),
+  paymentMethod: PaymentMethodEnum.nullable().optional(),
   paid: z.boolean().optional(),
-  orderId: z.number().int(),
   userId: z.number().int().optional(),
   tableId: z.number().int().nullable().optional(),
   taxId: z.number().int().nullable().optional(),
   serviceId: z.number().int().nullable().optional(),
+  invoiceRefId: z.number().optional(),
+  version: z.number().optional(),
+  customerDiscountId: z.number().nullable().optional(),
+  isLatestVersion: z.boolean().optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
 
+export const InvoiceRef = z.object({
+  id: z.number().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+  orderId: z.number().int(),
+  invoices: z.array(InvoiceSchema).optional(),
+});
+
+export type InvoiceRef = z.infer<typeof InvoiceRef>;
 export type Invoice = z.infer<typeof InvoiceSchema>;
 
 const OrderStatusEnum = z.enum([
@@ -171,6 +210,7 @@ export const OrderSchema = z.object({
   tableId: z.number().nullable().optional(),
   userId: z.number(),
   status: OrderStatusEnum.optional(),
+  reason: z.string().optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
   items: z.array(OrderItemSchema.extend({ orderId: z.number().optional() })),
@@ -228,7 +268,7 @@ export type FilterBy = "name" | "date" | "price";
 
 export type Language = "en" | "ar" | "ku";
 
-export type { Role, TError, TResult, User };
+export type { TError, TResult, User };
 
 export const SettingsSchema = z.object({
   id: z.number().optional(),
@@ -239,3 +279,8 @@ export const SettingsSchema = z.object({
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
+
+export type TxClientType = Omit<
+  PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>,
+  "$connect" | "$disconnect" | "$on" | "$transaction" | "$use" | "$extends"
+>;
