@@ -1,9 +1,14 @@
 import prisma from "../../../infrastructure/database/prisma/client";
+import { TxClientType } from "../../../types/common";
 import { CompanyInfo, CustomerDiscount, CustomerInfo } from "./crm.types";
 
 //? Customer Info
 export async function getCustomersInfoDB() {
-  return prisma.customerInfo.findMany();
+  return prisma.customerInfo.findMany({
+    include: {
+      customerDiscount: true,
+    },
+  });
 }
 
 export async function getCustomerByPhoneDB(phoneNumber: string) {
@@ -11,20 +16,29 @@ export async function getCustomerByPhoneDB(phoneNumber: string) {
     where: {
       phoneNumber: phoneNumber,
     },
+    include: {
+      customerDiscount: true,
+    },
   });
 }
 
-export async function getCustomerByIdDB(requestId: number) {
-  return prisma.customerInfo.findFirst({
+export async function getCustomerByIdDB(
+  requestId: number,
+  client: TxClientType
+) {
+  return client.customerInfo.findFirst({
     where: {
       id: requestId,
+    },
+    include: {
+      customerDiscount: true,
     },
   });
 }
 
 export async function createCustomerInfoDB(data: CustomerInfo) {
   return prisma.$transaction(async (tx) => {
-    const { CRMId, id, ...rest } = data;
+    const { CRMId, id, customerDiscount, ...rest } = data;
     const isCRMExist = await tx.cRM.findFirst();
     const crm = isCRMExist ?? (await tx.cRM.create({}));
 
@@ -37,21 +51,23 @@ export async function createCustomerInfoDB(data: CustomerInfo) {
   });
 }
 
-export async function updateCustomerInfoDB(data: CustomerInfo, id: number) {
-  return prisma.$transaction(async (tx) => {
-    const { CRMId, id: _, ...rest } = data;
-    const isCRMExist = await tx.cRM.findFirst();
-    const crm = isCRMExist ?? (await tx.cRM.create({}));
+export async function updateCustomerInfoDB(
+  data: CustomerInfo,
+  id: number,
+  client: TxClientType
+) {
+  const { CRMId, id: _, customerDiscount, ...rest } = data;
+  const isCRMExist = await client.cRM.findFirst();
+  const crm = isCRMExist ?? (await client.cRM.create({}));
 
-    return tx.customerInfo.update({
-      where: {
-        id,
-      },
-      data: {
-        ...rest,
-        CRMId: crm.id,
-      },
-    });
+  return client.customerInfo.update({
+    where: {
+      id,
+    },
+    data: {
+      ...rest,
+      CRMId: crm.id,
+    },
   });
 }
 
@@ -116,14 +132,32 @@ export async function deleteCompanyInfoDB(id: number) {
 }
 
 //? Customer Discount
-export async function getCustomerDiscountDB() {
-  return prisma.customerDiscount.findMany();
+export async function getCustomerDiscountDB(filter?: { isActive?: boolean }) {
+  const whereClause =
+    filter !== undefined
+      ? {
+          isActive: {
+            equals: filter?.isActive,
+          },
+        }
+      : {};
+
+  return prisma.customerDiscount.findMany({
+    where: whereClause,
+  });
 }
 
-export async function getCustomerDiscountByIdDB(id: number) {
+export async function getCustomerDiscountByIdDB(
+  id: number,
+  filter?: { isActive?: boolean }
+) {
+  console.log(filter);
   return prisma.customerDiscount.findFirst({
     where: {
       id,
+      ...(filter !== undefined
+        ? { isActive: { equals: filter.isActive } }
+        : {}),
     },
   });
 }

@@ -5,6 +5,7 @@ import {
   OK_STATUS,
   CREATED_STATUS,
 } from "../../../../infrastructure/utils/constants";
+import logger from "../../../../infrastructure/utils/logger";
 
 export class CRMController implements CRMControllerInterface {
   async getCustomers(req: Request, res: Response) {
@@ -102,17 +103,22 @@ export class CRMController implements CRMControllerInterface {
   }
 
   async getCustomerDiscounts(req: Request, res: Response) {
+    const isActive = req.query.isActive
+      ? Boolean(req.query.isActive === "true")
+      : undefined;
     const crmService = new CRMServices();
-    const response = await crmService.getCustomerDiscounts();
+    logger.info(isActive);
+    const response = await crmService.getCustomerDiscounts({ isActive });
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
       .json(response);
   }
 
   async getCustomerDiscountById(req: Request, res: Response) {
+    const isActive = Boolean(req.query.isActive);
     const crmService = new CRMServices();
     const id = parseInt(req.params.id, 10);
-    const response = await crmService.getCustomerDiscountById(id);
+    const response = await crmService.getCustomerDiscountById(id, { isActive });
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
       .json(response);

@@ -1,4 +1,5 @@
 import { ZodError } from "zod";
+import prisma from "../../infrastructure/database/prisma/client";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
@@ -11,7 +12,12 @@ import {
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
 import { Invoice, InvoiceSchema } from "../../types/common";
+import { getConstantsDB } from "../constants/constants.repository";
 import { findOrderByIdDB } from "../order/order.repository";
+import {
+  getCustomerByIdDB,
+  updateCustomerInfoDB,
+} from "../settings/crm/crm.repository";
 import {
   calculateTotal,
   createInvoiceDB,
@@ -21,9 +27,6 @@ import {
   updateInvoiceDB,
 } from "./invoice.repository";
 import { InvoiceServiceInterface } from "./invoice.types";
-import prisma from "../../infrastructure/database/prisma/client";
-import { getConstantsDB } from "../constants/constants.repository";
-import { CustomerDiscount } from "../settings/crm/crm.types";
 
 export class InvoiceServices implements InvoiceServiceInterface {
   async getInvoices() {
@@ -191,7 +194,14 @@ export class InvoiceServices implements InvoiceServiceInterface {
       }
 
       const createdInvoice: Invoice = await prisma.$transaction(async (tx) => {
-        const { discount, id, tableId, ...rest } = data;
+        const {
+          discount,
+          customerDiscount,
+          customerDiscountId,
+          id,
+          tableId,
+          ...rest
+        } = data;
         const createdInvoice = await createInvoiceDB(data, tx);
 
         const invoiceRef = await tx.invoiceRef.findFirst({
@@ -219,7 +229,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
         const total = calculateTotal(
           subtotal,
           constants,
-          discount as CustomerDiscount
+          discount || customerDiscount?.discount
         );
         const invoice = await createInvoiceDB(
           {
@@ -232,7 +242,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
             serviceId: constants.service?.id,
             invoiceRefId: invoiceRef?.id,
             version: 1,
-            customerDiscountId: discount?.id,
+            customerDiscountId: customerDiscountId,
           },
           tx
         );
@@ -312,54 +322,77 @@ export class InvoiceServices implements InvoiceServiceInterface {
       }
 
       if (data.paid) {
-        const updatedInvoice = await prisma.$transaction(async (tx) => {
-          const { id: _id, discount, ...rest } = data;
-          const updatedInvoice = await updateInvoiceDB(
-            response.id as number,
-            { ...rest, paid: true },
-            tx
-          );
-
-          const invoiceRef = await tx.invoiceRef.findFirst({
-            where: {
-              id: invoice.invoiceRefId,
-            },
-          });
-          const order = await findOrderByIdDB(
-            invoiceRef?.orderId as number,
-            tx
-          );
-
-          if (!order) {
-            throw new Error(`Order with ID ${invoiceRef?.orderId} not found`);
-          }
-
-          const constants = await getConstantsDB(tx);
-          const subtotal = order.items.reduce(
-            (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
-            0
-          );
-
-          const total = calculateTotal(
-            subtotal,
-            constants,
-            data.discount ?? (invoice?.discount as CustomerDiscount)
-          );
-
-          const table = await tx.table.update({
-            where: {
-              id: order.tableId || 0,
-            },
-            data: {
-              orders: {
-                disconnect: { id: order.id },
+        const updatedInvoice: Invoice = await prisma.$transaction(
+          async (tx) => {
+            const {
+              id: _id,
+              discount,
+              customerDiscount,
+              customerInfoId,
+              ...rest
+            } = data;
+            const invoiceRef = await tx.invoiceRef.findFirst({
+              where: {
+                id: invoice.invoiceRefId,
               },
-              status: "AVAILABLE",
-            },
-          });
+            });
+            const order = await findOrderByIdDB(
+              invoiceRef?.orderId as number,
+              tx
+            );
 
-          return updatedInvoice;
-        });
+            if (!order) {
+              throw new Error(`Order with ID ${invoiceRef?.orderId} not found`);
+            }
+
+            const table = await tx.table.update({
+              where: {
+                id: order.tableId || 0,
+              },
+              data: {
+                orders: {
+                  disconnect: { id: order.id },
+                },
+                status: "AVAILABLE",
+              },
+            });
+
+            const constants = await getConstantsDB(tx);
+            const subtotal = order.items.reduce(
+              (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
+              0
+            );
+            const total = calculateTotal(
+              subtotal,
+              constants,
+              discount || customerDiscount?.discount
+            );
+
+            const updatedInvoice = await updateInvoiceDB(
+              response.id as number,
+              { ...rest, total, customerInfoId, discount, paid: true },
+              tx
+            );
+
+            if (customerInfoId && data.paymentMethod === "DEBT") {
+              const customerInfo = await getCustomerByIdDB(
+                customerInfoId as number,
+                tx
+              );
+              if (!customerInfo) {
+                logger.warn("No Customer Info Data");
+                throw new Error("Customer Info not found.");
+              }
+              const customerInfoUpdate = await updateCustomerInfoDB(
+                { ...customerInfo, debt: total + (customerInfo.debt || 0) },
+                customerInfoId,
+                tx
+              );
+            }
+
+            return updatedInvoice;
+          }
+        );
 
         return {
           success: true,

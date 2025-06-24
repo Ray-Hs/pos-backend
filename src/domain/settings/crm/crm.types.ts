@@ -1,19 +1,6 @@
+import { Request, Response } from "express";
 import { z } from "zod";
 import { TResult } from "../../../types/common";
-import { Request, Response } from "express";
-
-export const CustomerInfoSchema = z.object({
-  id: z.number().optional(),
-  code: z.string().nullable().optional(),
-  name: z.string(),
-  phoneNumber: z.string(),
-  email: z.string().nullable().optional(),
-  debt: z.number().nullable().optional(),
-  note: z.string().nullable().optional(),
-  CRMId: z.number().nullable().optional(),
-});
-
-export type CustomerInfo = z.infer<typeof CustomerInfoSchema>;
 
 export const Currency = z.enum(["IQD", "USD"]);
 
@@ -44,8 +31,15 @@ export interface CRMServiceInterface {
   updateCompany(requestData: any, requestId: any): Promise<TResult<void>>;
   deleteCompany(requestId: any): Promise<TResult<void>>;
 
-  getCustomerDiscounts(): Promise<TResult<CustomerDiscount[]>>;
-  getCustomerDiscountById(requestId: any): Promise<TResult<CustomerDiscount>>;
+  getCustomerDiscounts(filter: {
+    isActive: boolean;
+  }): Promise<TResult<CustomerDiscount[]>>;
+  getCustomerDiscountById(
+    requestId: any,
+    filter: {
+      isActive: boolean;
+    }
+  ): Promise<TResult<CustomerDiscount>>;
   createCustomerDiscount(requestData: any): Promise<TResult<void>>;
   updateCustomerDiscount(
     requestData: any,
@@ -85,7 +79,22 @@ export const CustomerDiscountSchema = z.object({
   name: z.string(),
   phoneNumber: z.string().nullable().optional(),
   discount: z.number(),
+  isActive: z.boolean().nullable().optional(),
+  customerInfoId: z.number().nullable().optional(),
   CRMId: z.number().nullable().optional(),
 });
 
+export const CustomerInfoSchema = z.object({
+  id: z.number().optional(),
+  code: z.string().nullable().optional(),
+  name: z.string(),
+  phoneNumber: z.string(),
+  email: z.string().nullable().optional(),
+  debt: z.number().nullable().optional(),
+  note: z.string().nullable().optional(),
+  CRMId: z.number().nullable().optional(),
+  customerDiscount: CustomerDiscountSchema.nullable().optional(),
+});
+
+export type CustomerInfo = z.infer<typeof CustomerInfoSchema>;
 export type CustomerDiscount = z.infer<typeof CustomerDiscountSchema>;

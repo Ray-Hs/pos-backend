@@ -1,9 +1,10 @@
 import prisma from "../../infrastructure/database/prisma/client";
 import { User } from "../../types/common";
 
-export async function createUserDB(username: string, password: string) {
+export async function createUserDB(data: User) {
+  const {role, ...rest} = data
   return prisma.user.create({
-    data: { username, password },
+    data: { ...rest },
   });
 }
 

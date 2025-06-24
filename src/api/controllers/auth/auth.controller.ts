@@ -64,19 +64,12 @@ class AuthController implements AuthControllerInterface {
         id: session.id,
       },
       include: { role: true },
+      omit: { password: true },
     });
-
-    const userObject: UserWithoutPassword = {
-      id: user?.id,
-      username: user?.username || "",
-      roleId: user?.roleId,
-      role: user?.role as UserRole,
-      image: user?.image,
-    };
 
     return res
       .status(user?.id ? OK_STATUS : INTERNAL_SERVER_STATUS)
-      .json({ success: !!user?.id, data: userObject });
+      .json({ success: !!user?.id, data: user });
   }
 
   async createAccount(req: Request, res: Response) {

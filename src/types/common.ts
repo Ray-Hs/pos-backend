@@ -4,6 +4,7 @@ import { PrinterObjectSchema } from "../domain/settings/printers/printer.types";
 import {
   CompanyInfoSchema,
   CustomerDiscountSchema,
+  CustomerInfoSchema,
 } from "../domain/settings/crm/crm.types";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { DefaultArgs } from "@prisma/client/runtime/library";
@@ -138,7 +139,13 @@ export const CategorySchema = z.object({
 });
 
 export type Category = z.infer<typeof CategorySchema>;
-export const PaymentMethodEnum = z.enum(["CASH", "CARD", "DEBT"]);
+export const PaymentMethodEnum = z.enum([
+  "CASH",
+  "CARD",
+  "DEBT",
+  "RECEIPT",
+  "SPLIT",
+]);
 
 export const TaxSchema = z.object({
   id: z.number(),
@@ -154,7 +161,9 @@ export type Service = z.infer<typeof ServiceSchema>;
 
 export const InvoiceSchema = z.object({
   id: z.number().optional(),
-  discount: CustomerDiscountSchema.nullable().optional(),
+  customerDiscountId: z.number().nullable().optional(),
+  customerDiscount: CustomerDiscountSchema.nullable().optional(),
+  discount: z.number().nullable().optional(),
   total: z.number().optional(),
   subtotal: z.number().optional(),
   paymentMethod: PaymentMethodEnum.nullable().optional(),
@@ -165,8 +174,9 @@ export const InvoiceSchema = z.object({
   serviceId: z.number().int().nullable().optional(),
   invoiceRefId: z.number().optional(),
   version: z.number().optional(),
-  customerDiscountId: z.number().nullable().optional(),
   isLatestVersion: z.boolean().optional(),
+  customerInfoId: z.number().nullable().optional(),
+  customerInfo: CustomerInfoSchema.nullable().optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });

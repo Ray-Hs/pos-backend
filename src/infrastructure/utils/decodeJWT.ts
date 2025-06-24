@@ -23,6 +23,7 @@ export const decodeJWT = (req: Request, res: Response): DecodedJWT | null => {
     return {
       id: decoded.id,
       username: decoded.username,
+      isActive: decoded.isActive,
       role: decoded.role,
     };
   } catch (error) {

@@ -86,21 +86,19 @@ class AuthService implements AuthServiceInterface {
       const Bearer = (await createJWT(
         userFromDb.username,
         userFromDb.id,
-        userFromDb.role as UserRole
+        userFromDb.role as UserRole,
+        userFromDb.isActive
       )) as JwtPayload & User & string;
-      const user: UserWithoutPassword = {
-        id: userFromDb.id,
-        role: userFromDb.role as UserRole,
-        username: userFromDb.username,
-        image: userFromDb.image,
-        createdAt: userFromDb.createdAt,
-        updatedAt: userFromDb.updatedAt,
-      };
+      const { password, ...user } = userFromDb;
+
       return {
         success: true,
         data: {
           Bearer,
-          user,
+          user: {
+            ...user,
+            role: user.role ?? undefined,
+          },
         },
       };
     } catch (error) {
@@ -159,7 +157,7 @@ class AuthService implements AuthServiceInterface {
       }
 
       const password = hash(response.password);
-      const createdUser = await createUserDB(response.username, password);
+      const createdUser = await createUserDB(response);
 
       return { success: true, message: CREATED_SUCCESS };
     } catch (error) {
@@ -188,14 +186,12 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
-      const data: UserWithoutPassword[] = users.map((user) => ({
-        id: user.id,
-        role: user.role as UserRole,
-        username: user.username,
-        image: user.image,
-        createdAt: user.createdAt,
-        updatedAt: user.updatedAt,
-      }));
+      const data: UserWithoutPassword[] = users.map(
+        ({ password, settingsId, role, ...rest }) => ({
+          ...rest,
+          role: role ?? undefined, // convert null to undefined for compatibility
+        })
+      );
 
       return { success: true, data };
     } catch (error) {
@@ -240,18 +236,14 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
-      const userById: UserWithoutPassword = {
-        id: user.id,
-        role: user.role as UserRole,
-        username: user.username,
-        image: user.image,
-        createdAt: user.createdAt,
-        updatedAt: user.updatedAt,
-      };
+      const { password, ...userById } = user;
 
       return {
         success: true,
-        data: userById,
+        data: {
+          ...userById,
+          role: userById.role ?? undefined,
+        },
       };
     } catch (error) {
       logger.error("Auth Get User Service: ", error);

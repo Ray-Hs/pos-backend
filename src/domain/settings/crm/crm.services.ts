@@ -38,6 +38,7 @@ import {
   CustomerInfo,
   CustomerInfoSchema,
 } from "./crm.types";
+import prisma from "../../../infrastructure/database/prisma/client";
 
 export class CRMServices implements CRMServiceInterface {
   async getCustomers() {
@@ -134,7 +135,7 @@ export class CRMServices implements CRMServiceInterface {
         };
       }
 
-      const data = await getCustomerByIdDB(validated.id);
+      const data = await getCustomerByIdDB(validated.id, prisma);
       if (!data) {
         logger.warn("Customer Not Found");
         return {
@@ -168,6 +169,17 @@ export class CRMServices implements CRMServiceInterface {
           error: {
             code: BAD_REQUEST_STATUS,
             message: BAD_REQUEST_BODY_ERR,
+          },
+        };
+      }
+      const phoneNumberExists = await getCustomerByPhoneDB(data.phoneNumber);
+      if (phoneNumberExists) {
+        logger.warn("A User with the same phone number exists already.");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: "A User with the same phone number exists already.",
           },
         };
       }
@@ -215,7 +227,7 @@ export class CRMServices implements CRMServiceInterface {
           },
         };
       }
-      await updateCustomerInfoDB(data, id.id);
+      await updateCustomerInfoDB(data, id.id, prisma);
       return {
         success: true,
         message: "Updated Customer Successfully",
@@ -438,9 +450,9 @@ export class CRMServices implements CRMServiceInterface {
     }
   }
 
-  async getCustomerDiscounts() {
+  async getCustomerDiscounts(filter: { isActive?: boolean }) {
     try {
-      const data = await getCustomerDiscountDB();
+      const data = await getCustomerDiscountDB(filter);
       if (!data) {
         logger.warn("Customer Discounts Not Found");
         return {
@@ -464,7 +476,12 @@ export class CRMServices implements CRMServiceInterface {
     }
   }
 
-  async getCustomerDiscountById(requestId: any) {
+  async getCustomerDiscountById(
+    requestId: any,
+    filter: {
+      isActive: boolean;
+    }
+  ) {
     try {
       const id = await validateType(
         { id: requestId },
@@ -480,7 +497,7 @@ export class CRMServices implements CRMServiceInterface {
           },
         };
       }
-      const data = await getCustomerDiscountByIdDB(id.id);
+      const data = await getCustomerDiscountByIdDB(id.id, filter);
       if (!data) {
         logger.warn("Customer Discount Not Found");
         return {

@@ -66,8 +66,11 @@ model CustomerInfo {
     CRMId       Int?
     CRM         CRM?    @relation(fields: [CRMId], references: [id])
 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    Invoice   Invoice[]
+
+    customerDiscount CustomerDiscount?
 }
 
 enum Currency {
@@ -93,14 +96,18 @@ model CompanyInfo {
 }
 
 model CustomerDiscount {
-    id          Int     @id @default(autoincrement())
+    id          Int      @id @default(autoincrement())
     name        String
-    phoneNumber String? @unique
+    phoneNumber String?  @unique
     discount    Int
+    isActive    Boolean? @default(true)
     CRMId       Int?
-    CRM         CRM?    @relation(fields: [CRMId], references: [id])
+    CRM         CRM?     @relation(fields: [CRMId], references: [id])
 
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
     Invoice   Invoice[]
+
+    customerInfoId Int?          @unique
+    customerInfo   CustomerInfo? @relation(fields: [customerInfoId], references: [id])
 }

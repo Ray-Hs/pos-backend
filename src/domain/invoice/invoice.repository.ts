@@ -14,7 +14,7 @@ export const findInvoiceByIdDB = async (id: number) => {
   const invoice = await prisma.invoice.findFirst({
     where: { id },
     include: {
-      discount: true,
+      customerDiscount: true,
       tax: true,
       service: true,
     },
@@ -31,13 +31,13 @@ export const findInvoiceByIdDB = async (id: number) => {
 export const calculateTotal = (
   subtotal: number,
   constants: any,
-  discount?: CustomerDiscount
+  discount?: number
 ): number => {
   let total = subtotal + (constants?.service?.amount ?? 0);
   total += subtotal * (constants?.tax?.rate ?? 0);
 
   if (discount) {
-    total = total * (1 - discount.discount);
+    total = total - total * (discount / 100);
   }
 
   return Number(total.toFixed(2));
@@ -45,12 +45,21 @@ export const calculateTotal = (
 
 // Create invoice with better error handling and validation
 export const createInvoiceDB = async (data: Invoice, client: TxClientType) => {
-  const { discount, id, ...rest } = data;
+  const {
+    customerDiscountId,
+    customerDiscount,
+    customerInfoId,
+    discount,
+    id,
+    ...rest
+  } = data;
 
   return client.invoice.create({
     data: {
       ...rest,
-      customerDiscountId: discount?.id,
+      customerInfoId,
+      discount,
+      customerDiscountId: customerDiscountId,
       version: data.version || 0,
       invoiceRefId: data.invoiceRefId || 0,
       total: data.total || 0,
@@ -66,10 +75,10 @@ export const updateInvoiceDB = async (
   data: Partial<Invoice>,
   client: TxClientType
 ) => {
-  const { id: _id, discount, ...rest } = data;
+  const { id: _id, discount, customerDiscount, ...rest } = data;
   return client.invoice.update({
     where: { id },
-    data: { ...rest },
+    data: { ...rest, discount },
   });
 };
 

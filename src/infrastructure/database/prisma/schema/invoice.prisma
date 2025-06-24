@@ -2,6 +2,8 @@ enum PaymentMethod {
     CASH
     CARD
     DEBT
+    RECEIPT
+    SPLIT
 }
 
 model InvoiceRef {
@@ -31,13 +33,16 @@ model Invoice {
     userId             Int
     tableId            Int?
     customerDiscountId Int?
+    customerInfoId     Int?
 
-    discount   CustomerDiscount? @relation(fields: [customerDiscountId], references: [id])
-    tax        Tax?              @relation(fields: [taxId], references: [id])
-    service    Service?          @relation(fields: [serviceId], references: [id])
-    user       User              @relation(fields: [userId], references: [id])
-    table      Table?            @relation(fields: [tableId], references: [id])
-    invoiceRef InvoiceRef        @relation(fields: [invoiceRefId], references: [id])
+    customer         CustomerInfo?     @relation(fields: [customerInfoId], references: [id])
+    customerDiscount CustomerDiscount? @relation(fields: [customerDiscountId], references: [id])
+    discount         Int?
+    tax              Tax?              @relation(fields: [taxId], references: [id])
+    service          Service?          @relation(fields: [serviceId], references: [id])
+    user             User              @relation(fields: [userId], references: [id])
+    table            Table?            @relation(fields: [tableId], references: [id])
+    invoiceRef       InvoiceRef        @relation(fields: [invoiceRefId], references: [id])
 
     createdAt        DateTime           @default(now())
     DeletedOrderItem DeletedOrderItem[]

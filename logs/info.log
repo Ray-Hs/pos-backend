@@ -15197,3 +15197,362 @@ Argument `where` of type PermissionWhereUniqueInput needs at least one of `id` a
 [2025-06-22 17:49:52] [32minfo[39m: Filter: 
 [2025-06-22 17:50:13] [33mwarn[39m: No Data Found
 [2025-06-22 17:50:14] [33mwarn[39m: No Data Found
+[2025-06-22 17:55:09] [33mwarn[39m: No Data Found
+[2025-06-22 17:55:10] [33mwarn[39m: No Data Found
+[2025-06-22 17:57:33] [33mwarn[39m: No Data Found
+[2025-06-22 17:57:34] [33mwarn[39m: No Data Found
+[2025-06-22 17:58:06] [32minfo[39m: Filter: 
+[2025-06-22 17:58:17] [33mwarn[39m: No Data Found
+[2025-06-22 17:58:18] [33mwarn[39m: No Data Found
+[2025-06-23 09:20:27] [32minfo[39m: Filter: 
+[2025-06-23 09:20:35] [32minfo[39m: Filter: 
+[2025-06-23 09:24:54] [32minfo[39m: Filter: 
+[2025-06-23 09:28:24] [32minfo[39m: Filter: 
+[2025-06-23 09:44:36] [33mwarn[39m: No Data Found
+[2025-06-23 09:44:37] [33mwarn[39m: No Data Found
+[2025-06-23 09:46:19] [32minfo[39m: Filter: 
+[2025-06-23 09:46:19] [33mwarn[39m: No Data Found
+[2025-06-23 09:46:20] [33mwarn[39m: No Data Found
+[2025-06-23 09:46:46] [33mwarn[39m: No Data Found
+[2025-06-23 09:47:46] [33mwarn[39m: No Data Found
+[2025-06-23 09:53:04] [32minfo[39m: Filter: 
+[2025-06-23 09:53:04] [33mwarn[39m: No Data Found
+[2025-06-23 09:53:05] [33mwarn[39m: No Data Found
+[2025-06-23 09:53:13] [33mwarn[39m: No Data Found
+[2025-06-23 09:53:14] [33mwarn[39m: No Data Found
+[2025-06-23 10:48:35] [32minfo[39m: Filter: 
+[2025-06-23 10:48:36] [33mwarn[39m: No Data Found
+[2025-06-23 10:48:37] [33mwarn[39m: No Data Found
+[2025-06-23 11:47:36] [33mwarn[39m: Brand Not Found
+[2025-06-23 11:47:37] [33mwarn[39m: Brand Not Found
+[2025-06-23 11:47:39] [33mwarn[39m: Brand Not Found
+[2025-06-23 11:49:25] [33mwarn[39m: Brand Not Found
+[2025-06-23 11:49:26] [33mwarn[39m: Brand Not Found
+[2025-06-23 11:49:28] [33mwarn[39m: Brand Not Found
+[2025-06-23 11:49:32] [33mwarn[39m: Brand Not Found
+[2025-06-23 11:51:51] [32minfo[39m: Filter: 
+[2025-06-23 11:51:51] [33mwarn[39m: No Data Found
+[2025-06-23 11:51:52] [33mwarn[39m: No Data Found
+[2025-06-23 11:52:09] [33mwarn[39m: No Data Found
+[2025-06-23 11:52:10] [33mwarn[39m: No Data Found
+[2025-06-23 11:52:19] [32minfo[39m: Filter: 
+[2025-06-23 11:52:27] [33mwarn[39m: No Data Found
+[2025-06-23 11:52:28] [33mwarn[39m: No Data Found
+[2025-06-23 11:55:21] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-23 11:55:21] [33mwarn[39m: Missing ID
+[2025-06-23 11:55:35] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-23 11:55:35] [33mwarn[39m: Missing ID
+[2025-06-23 11:56:25] [33mwarn[39m: No Data Found
+[2025-06-23 11:56:26] [33mwarn[39m: No Data Found
+[2025-06-23 11:57:01] [33mwarn[39m: No Data Found
+[2025-06-23 11:57:02] [33mwarn[39m: No Data Found
+[2025-06-23 12:01:18] [33mwarn[39m: No Data Found
+[2025-06-23 12:01:20] [33mwarn[39m: No Data Found
+[2025-06-23 12:02:46] [33mwarn[39m: No Data Found
+[2025-06-23 12:02:47] [33mwarn[39m: No Data Found
+[2025-06-23 13:41:33] [33mwarn[39m: No Data Found
+[2025-06-23 13:41:34] [33mwarn[39m: No Data Found
+[2025-06-23 13:46:19] [33mwarn[39m: No Data Found
+[2025-06-23 13:46:20] [33mwarn[39m: No Data Found
+[2025-06-23 13:54:31] [32minfo[39m: Filter: 
+[2025-06-23 13:54:54] [32minfo[39m: Filter: 
+[2025-06-23 13:55:05] [33mwarn[39m: No Data Found
+[2025-06-23 13:55:06] [33mwarn[39m: No Data Found
+[2025-06-23 13:55:38] [33mwarn[39m: No Data Found
+[2025-06-23 13:55:39] [33mwarn[39m: No Data Found
+[2025-06-23 13:56:45] [33mwarn[39m: No Data Found
+[2025-06-23 13:56:46] [33mwarn[39m: No Data Found
+[2025-06-23 13:57:01] [33mwarn[39m: No Data Found
+[2025-06-23 13:57:02] [33mwarn[39m: No Data Found
+[2025-06-23 13:58:04] [32minfo[39m: Filter: 
+[2025-06-23 13:58:34] [32minfo[39m: Filter: 
+[2025-06-23 14:00:18] [33mwarn[39m: No Data Found
+[2025-06-23 14:00:19] [33mwarn[39m: No Data Found
+[2025-06-23 14:00:49] [33mwarn[39m: No Data Found
+[2025-06-23 14:00:50] [33mwarn[39m: No Data Found
+[2025-06-23 14:03:38] [33mwarn[39m: No Data Found
+[2025-06-23 14:03:39] [33mwarn[39m: No Data Found
+[2025-06-23 14:03:44] [33mwarn[39m: No Data Found
+[2025-06-23 14:03:44] [32minfo[39m: Filter: 
+[2025-06-23 14:03:46] [33mwarn[39m: No Data Found
+[2025-06-23 14:16:04] [33mwarn[39m: No Data Found
+[2025-06-23 14:16:05] [33mwarn[39m: No Data Found
+[2025-06-23 14:19:06] [33mwarn[39m: Brand Not Found
+[2025-06-23 14:19:07] [33mwarn[39m: Brand Not Found
+[2025-06-23 14:19:09] [33mwarn[39m: Brand Not Found
+[2025-06-23 16:57:27] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "customerInfoId"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-23 16:57:27] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "customerInfoId"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-23 16:58:57] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "customerInfoId"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-23 16:58:57] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "customerInfoId"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-23 17:00:21] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "customerInfoId"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-23 17:00:21] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "customerInfoId"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-23 17:01:15] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "customerInfoId"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-23 17:01:15] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "customerInfoId"
+    ],
+    "message": "Expected number, received string"
+  }
+]
+[2025-06-23 17:07:07] [32minfo[39m: Filter: 
+[2025-06-23 17:07:07] [33mwarn[39m: No Data Found
+[2025-06-23 17:07:08] [33mwarn[39m: No Data Found
+[2025-06-23 17:07:13] [33mwarn[39m: Brand Not Found
+[2025-06-23 17:07:14] [33mwarn[39m: Brand Not Found
+[2025-06-23 17:07:16] [33mwarn[39m: Brand Not Found
+[2025-06-23 17:07:20] [33mwarn[39m: Brand Not Found
+[2025-06-23 17:07:20] [33mwarn[39m: No Data Found
+[2025-06-23 17:07:21] [33mwarn[39m: No Data Found
+[2025-06-23 17:07:25] [33mwarn[39m: No Data Found
+[2025-06-23 17:07:26] [33mwarn[39m: No Data Found
+[2025-06-23 17:13:22] [33mwarn[39m: No Data Found
+[2025-06-23 17:13:23] [33mwarn[39m: No Data Found
+[2025-06-23 17:14:14] [33mwarn[39m: No Data Found
+[2025-06-23 17:14:14] [32minfo[39m: Filter: 
+[2025-06-23 17:14:15] [33mwarn[39m: No Data Found
+[2025-06-23 17:17:40] [32minfo[39m: Filter: 
+[2025-06-23 17:17:40] [33mwarn[39m: No Data Found
+[2025-06-23 17:17:41] [33mwarn[39m: No Data Found
+[2025-06-23 17:17:46] [32minfo[39m: Filter: 
+[2025-06-23 17:17:46] [33mwarn[39m: No Data Found
+[2025-06-23 17:17:47] [33mwarn[39m: No Data Found
+[2025-06-23 17:22:02] [32minfo[39m: Filter: 
+[2025-06-23 17:22:02] [33mwarn[39m: No Data Found
+[2025-06-23 17:22:03] [33mwarn[39m: No Data Found
+[2025-06-23 17:37:11] [32minfo[39m: Filter: 
+[2025-06-23 17:37:11] [33mwarn[39m: No Data Found
+[2025-06-23 17:37:12] [33mwarn[39m: No Data Found
+[2025-06-23 17:38:02] [33mwarn[39m: No Data Found
+[2025-06-23 17:38:03] [33mwarn[39m: No Data Found
+[2025-06-23 17:41:08] [33mwarn[39m: No Data Found
+[2025-06-23 17:41:09] [33mwarn[39m: No Data Found
+[2025-06-23 17:42:27] [32minfo[39m: Filter: 
+[2025-06-23 17:42:27] [33mwarn[39m: No Data Found
+[2025-06-23 17:42:28] [33mwarn[39m: No Data Found
+[2025-06-23 17:43:09] [32minfo[39m: Filter: 
+[2025-06-23 17:44:12] [33mwarn[39m: No Data Found
+[2025-06-23 17:44:13] [33mwarn[39m: No Data Found
+[2025-06-23 17:45:36] [33mwarn[39m: No Data Found
+[2025-06-23 17:45:50] [33mwarn[39m: No Data Found
+[2025-06-24 10:31:29] [32minfo[39m: false
+[2025-06-24 10:31:36] [32minfo[39m: true
+[2025-06-24 10:32:37] [32minfo[39m: true
+[2025-06-24 10:32:41] [32minfo[39m: undefined
+[2025-06-24 10:32:48] [32minfo[39m: true
+[2025-06-24 10:33:30] [32minfo[39m: true
+[2025-06-24 10:34:06] [32minfo[39m: false
+[2025-06-24 10:34:13] [32minfo[39m: true
+[2025-06-24 10:34:18] [32minfo[39m: undefined
+[2025-06-24 10:35:03] [32minfo[39m: false
+[2025-06-24 10:35:12] [32minfo[39m: undefined
+[2025-06-24 10:36:18] [32minfo[39m: false
+[2025-06-24 10:36:23] [32minfo[39m: true
+[2025-06-24 10:36:28] [32minfo[39m: undefined
+[2025-06-24 10:37:05] [32minfo[39m: undefined
+[2025-06-24 10:42:07] [32minfo[39m: undefined
+[2025-06-24 10:42:53] [32minfo[39m: undefined
+[2025-06-24 10:48:33] [32minfo[39m: undefined
+[2025-06-24 10:48:39] [32minfo[39m: undefined
+[2025-06-24 10:48:46] [32minfo[39m: undefined
+[2025-06-24 10:48:53] [32minfo[39m: undefined
+[2025-06-24 10:53:15] [32minfo[39m: Filter: 
+[2025-06-24 10:53:15] [33mwarn[39m: No Data Found
+[2025-06-24 10:53:16] [33mwarn[39m: No Data Found
+[2025-06-24 10:53:43] [33mwarn[39m: No Data Found
+[2025-06-24 10:53:44] [33mwarn[39m: No Data Found
+[2025-06-24 10:55:39] [32minfo[39m: undefined
+[2025-06-24 10:56:18] [31merror[39m: Create Customer:  
+Invalid `prisma.customerInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-24 10:56:20] [31merror[39m: Create Customer:  
+Invalid `prisma.customerInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-24 10:56:22] [31merror[39m: Create Customer:  
+Invalid `prisma.customerInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-24 10:56:24] [31merror[39m: Create Customer:  
+Invalid `prisma.customerInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-24 10:56:26] [31merror[39m: Create Customer:  
+Invalid `prisma.customerInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-24 10:56:28] [31merror[39m: Create Customer:  
+Invalid `prisma.customerInfo.create()` invocation:
+
+
+Unique constraint failed on the fields: (`phoneNumber`)
+[2025-06-24 11:00:23] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:00:25] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:00:27] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:00:29] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:00:31] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:00:33] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:00:59] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:01:01] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:01:03] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:01:05] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:01:07] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:01:09] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:04:55] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:04:57] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:04:59] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:05:02] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:05:04] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:05:06] [33mwarn[39m: A User with the same phone number exists already.
+[2025-06-24 11:05:27] [32minfo[39m: undefined
+[2025-06-24 11:07:25] [32minfo[39m: undefined
+[2025-06-24 11:07:48] [32minfo[39m: Filter: 
+[2025-06-24 11:07:48] [33mwarn[39m: No Data Found
+[2025-06-24 11:07:49] [33mwarn[39m: No Data Found
+[2025-06-24 11:08:14] [33mwarn[39m: No Data Found
+[2025-06-24 11:08:15] [33mwarn[39m: No Data Found
+[2025-06-24 11:12:45] [33mwarn[39m: No Data Found
+[2025-06-24 11:12:46] [33mwarn[39m: No Data Found
+[2025-06-24 11:12:49] [33mwarn[39m: No Data Found
+[2025-06-24 11:12:50] [33mwarn[39m: No Data Found
+[2025-06-24 11:12:51] [33mwarn[39m: No Data Found
+[2025-06-24 11:12:52] [33mwarn[39m: No Data Found
+[2025-06-24 11:12:57] [33mwarn[39m: No Data Found
+[2025-06-24 11:12:58] [33mwarn[39m: No Data Found
+[2025-06-24 11:13:03] [33mwarn[39m: No Data Found
+[2025-06-24 11:13:04] [33mwarn[39m: No Data Found
+[2025-06-24 11:13:22] [33mwarn[39m: No Data Found
+[2025-06-24 11:13:23] [33mwarn[39m: No Data Found
+[2025-06-24 11:13:26] [33mwarn[39m: No Data Found
+[2025-06-24 11:13:27] [33mwarn[39m: No Data Found
+[2025-06-24 11:13:32] [33mwarn[39m: No Data Found
+[2025-06-24 11:13:33] [33mwarn[39m: No Data Found
+[2025-06-24 11:15:58] [33mwarn[39m: No Data Found
+[2025-06-24 11:15:59] [33mwarn[39m: No Data Found
+[2025-06-24 11:16:50] [33mwarn[39m: No Data Found
+[2025-06-24 11:16:51] [33mwarn[39m: No Data Found
+[2025-06-24 11:17:10] [33mwarn[39m: No Data Found
+[2025-06-24 11:17:11] [33mwarn[39m: No Data Found
+[2025-06-24 11:17:30] [33mwarn[39m: No Data Found
+[2025-06-24 11:17:31] [33mwarn[39m: No Data Found
+[2025-06-24 11:18:04] [33mwarn[39m: No Data Found
+[2025-06-24 11:18:05] [33mwarn[39m: No Data Found
+[2025-06-24 11:22:54] [33mwarn[39m: No Data Found
+[2025-06-24 11:22:55] [33mwarn[39m: No Data Found
+[2025-06-24 11:49:06] [32minfo[39m: Filter: 
+[2025-06-24 11:53:20] [33mwarn[39m: No Data Found
+[2025-06-24 11:53:21] [33mwarn[39m: No Data Found
+[2025-06-24 11:54:16] [32minfo[39m: Filter: 
+[2025-06-24 11:54:16] [33mwarn[39m: No Data Found
+[2025-06-24 11:54:17] [33mwarn[39m: No Data Found
+[2025-06-24 11:55:12] [33mwarn[39m: No Data Found
+[2025-06-24 11:55:13] [33mwarn[39m: No Data Found
+[2025-06-24 11:55:25] [32minfo[39m: Filter: 
+[2025-06-24 11:55:26] [33mwarn[39m: No Data Found
+[2025-06-24 11:55:27] [33mwarn[39m: No Data Found
+[2025-06-24 11:56:08] [32minfo[39m: Filter: 
+[2025-06-24 11:56:08] [33mwarn[39m: No Data Found
+[2025-06-24 11:56:09] [33mwarn[39m: No Data Found
+[2025-06-24 12:02:10] [32minfo[39m: Filter: 
+[2025-06-24 12:02:22] [32minfo[39m: Filter: 
+[2025-06-24 12:07:26] [32minfo[39m: Filter: 
+[2025-06-24 12:10:40] [32minfo[39m: Filter: 
