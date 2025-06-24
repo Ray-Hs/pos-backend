@@ -2,9 +2,14 @@ import prisma from "../../infrastructure/database/prisma/client";
 import { User } from "../../types/common";
 
 export async function createUserDB(data: User) {
-  const {role, ...rest} = data
+  // Exclude fields that should not be set manually
+  const { role, id, roleId, ...rest } = data;
+  const userData = { ...rest } as any;
+  if (roleId !== undefined) {
+    userData.roleId = roleId;
+  }
   return prisma.user.create({
-    data: { ...rest },
+    data: userData,
   });
 }
 

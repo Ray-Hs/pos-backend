@@ -56,6 +56,17 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
+      if (!response.username || !response.password) {
+        logger.warn("Username or Password is missing: ", response);
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_BODY_ERR,
+          },
+        };
+      }
+
       const userFromDb = await findUserNameDB(response.username);
       if (!userFromDb) {
         return {
@@ -152,6 +163,17 @@ class AuthService implements AuthServiceInterface {
             code: BAD_REQUEST_STATUS,
             message: BAD_REQUEST_BODY_ERR,
             details: response,
+          },
+        };
+      }
+
+      if (!response.username || !response.password) {
+        logger.warn("Username or Password is missing: ", response);
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_BODY_ERR,
           },
         };
       }
@@ -297,9 +319,12 @@ class AuthService implements AuthServiceInterface {
         };
       }
 
-      const hashedPassword = hash(data.password);
+      const hashedPassword = data.password
+        ? hash(data.password)
+        : data.password;
       const updatedUser = await updateUserDB(response.id, {
         ...data,
+        isActive: data.isActive ?? existingUser.isActive,
         password: hashedPassword,
       });
 
