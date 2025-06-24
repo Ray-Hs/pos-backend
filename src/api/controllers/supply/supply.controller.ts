@@ -41,7 +41,13 @@ export class SupplyController implements SupplyControllerInterface {
   async updateSupply(req: Request, res: Response) {
     const id = parseInt(req.params.id, 10);
     const supplyService = new SupplyServices();
-    const response = await supplyService.updateSupply(req.body, id);
+    const response = await supplyService.updateSupply(
+      {
+        ...req.body,
+        expiryDate: new Date(req.body.expiryDate),
+      },
+      id
+    );
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

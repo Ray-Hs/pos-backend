@@ -201,7 +201,7 @@ export async function updateCustomerDiscountDB(
 export async function deleteCustomerDiscountDB(id: number) {
   return prisma.customerDiscount.delete({
     where: {
-      id,
+      id, 
     },
   });
 }
