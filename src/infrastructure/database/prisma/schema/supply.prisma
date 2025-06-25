@@ -15,6 +15,7 @@ model supply {
     totalItems    Int?
     totalPrice    Float?
     store         String
+    note          String?       @default("")
 
     expiryDate DateTime?
     createdAt  DateTime  @default(now())

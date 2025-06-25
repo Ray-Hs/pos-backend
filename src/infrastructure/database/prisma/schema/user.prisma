@@ -1,17 +1,19 @@
 model User {
-    id         Int       @id @default(autoincrement())
-    username   String    @unique @default("Staff")
-    password   String
-    roleId     Int?
-    role       UserRole? @relation(fields: [roleId], references: [id])
-    image      String?
-    orders     Order[]
-    createdAt  DateTime  @default(now())
-    updatedAt  DateTime  @updatedAt
-    invoice    Invoice[]
-    settingsId Int?
-    Settings   Settings? @relation(fields: [settingsId], references: [id])
-    isActive   Boolean   @default(true)
+    id          Int           @id @default(autoincrement())
+    username    String        @unique @default("Staff")
+    password    String
+    roleId      Int?
+    role        UserRole?     @relation(fields: [roleId], references: [id])
+    image       String?
+    orders      Order[]
+    createdAt   DateTime      @default(now())
+    updatedAt   DateTime      @updatedAt
+    invoice     Invoice[]
+    settingsId  Int?
+    Settings    Settings?     @relation(fields: [settingsId], references: [id])
+    isActive    Boolean       @default(true)
+    CompanyDebt CompanyDebt[]
+    Payment     Payment[]
 }
 
 model UserRole {

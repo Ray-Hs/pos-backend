@@ -17,7 +17,7 @@ export const findCompanyDebtByIdDB = async (id: number) => {
 
 // Create company debt
 export const createCompanyDebtDB = async (data: companyDebt) => {
-  const { company, id: _, ...rest } = data;
+  const { company, id: _, user, ...rest } = data;
   return prisma.companyDebt.create({
     data: {
       ...rest,
@@ -27,7 +27,7 @@ export const createCompanyDebtDB = async (data: companyDebt) => {
 
 // Update company debt
 export const updateCompanyDebtDB = async (id: number, data: companyDebt) => {
-  const { company, ...rest } = data;
+  const { company, user, ...rest } = data;
   return prisma.companyDebt.update({
     where: { id },
     data: {

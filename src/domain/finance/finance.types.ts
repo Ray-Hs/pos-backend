@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import { z } from "zod";
-import { TResult } from "../../types/common";
+import { TResult, UserSchema } from "../../types/common";
 import {
   CompanyInfoSchema,
+  Currency,
   CustomerInfoSchema,
 } from "../settings/crm/crm.types";
 
@@ -26,12 +27,40 @@ export const CompanyDebtSchema = z.object({
   quantity: z.number(),
   price: z.number(),
   totalAmount: z.number().nullable().optional(),
+  remainingAmount: z.number().nullable().optional(),
+  userId: z.number(),
+  user: UserSchema.optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
 });
 
+const PaymentSchema = z.object({
+  id: z.number().optional(),
+  companyDebtId: z.number(),
+  companyDebt: CompanyDebtSchema.optional(),
+  invoiceNumber: z.string(),
+  userId: z.number(),
+  user: UserSchema.optional(),
+  currency: Currency.optional(),
+  amount: z.number(),
+  note: z.string().nullable().optional(),
+  isLatestVersion: z.boolean().nullable().optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+});
+
+export type payment = z.infer<typeof PaymentSchema>;
 export type companyDebt = z.infer<typeof CompanyDebtSchema>;
 
 export interface FinanceServiceInterface {
   createCompanyDebt(requestData: companyDebt): Promise<TResult<companyDebt>>;
+  getCompanyDebtById(id: number): Promise<TResult<companyDebt>>;
+  updateCompanyDebt(
+    id: number,
+    requestData: companyDebt
+  ): Promise<TResult<null>>;
+  deleteCompanyDebt(id: number): Promise<TResult<null>>;
+  listCompanyDebts(): Promise<TResult<companyDebt[]>>;
 }
 
 export interface FinanceControllerInterface {

@@ -1,15 +1,36 @@
 model CompanyDebt {
-    id            Int         @id @default(autoincrement())
-    companyId     Int
-    company       CompanyInfo @relation(fields: [companyId], references: [id])
-    product       String
-    invoiceNumber String?
-    quantity      Int
-    price         Int
-    totalAmount   Int?
+    id              Int         @id @default(autoincrement())
+    companyId       Int
+    company         CompanyInfo @relation(fields: [companyId], references: [id])
+    product         String
+    invoiceNumber   String?
+    quantity        Int         @default(1)
+    price           Int         @default(0)
+    totalAmount     Int?        @default(0)
+    remainingAmount Int?        @default(0)
+    userId          Int
+    user            User        @relation(fields: [userId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    Payment   Payment[]
+
+    @@index([id, invoiceNumber])
+}
+
+model Payment {
+    id Int @id @default(autoincrement())
+
+    companyDebtId   Int
+    companyDebt     CompanyDebt @relation(fields: [companyDebtId], references: [id])
+    invoiceNumber   String
+    userId          Int
+    user            User        @relation(fields: [userId], references: [id])
+    currency        Currency    @default(IQD)
+    amount          Int
+    note            String?
+    isLatestVersion Boolean?    @default(true)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-
-    @@index([id, invoiceNumber])
 }
