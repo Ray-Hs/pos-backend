@@ -13581,3 +13581,16 @@ Unique constraint failed on the fields: (`phoneNumber`)
     "message": "Required"
   }
 ]
+[2025-06-25 16:08:45] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:08:46] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:08:48] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:09:16] [33mwarn[39m: No Data Found
+[2025-06-25 16:09:17] [33mwarn[39m: No Data Found
+[2025-06-25 16:14:22] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:14:23] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:14:25] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:15:27] [33mwarn[39m: No Data Found
+[2025-06-25 16:15:27] [33mwarn[39m: No Data Found
+[2025-06-25 16:15:28] [33mwarn[39m: No Data Found
+[2025-06-25 16:17:04] [33mwarn[39m: No Data Found
+[2025-06-25 16:17:05] [33mwarn[39m: No Data Found

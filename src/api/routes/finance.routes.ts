@@ -36,4 +36,34 @@ router.delete(
   asyncRouteHandler(controller.deleteCompanyDebt)
 );
 
+// Payments
+router.get(
+  "/payments",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.listPayments)
+);
+router.get(
+  "/payments/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.getPaymentById)
+);
+router.post(
+  "/payments",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.createPayment)
+);
+router.patch(
+  "/payments/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.updatePayment)
+);
+router.delete(
+  "/payments/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.deletePayment)
+);
+
 export default router;

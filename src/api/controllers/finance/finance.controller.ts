@@ -5,8 +5,67 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
+import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 
 export class FinanceController implements FinanceControllerInterface {
+  async listPayments(req: Request, res: Response) {
+    const financeInstance = new FinanceServices();
+    const response = await financeInstance.listPayments();
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async getPaymentById(req: Request, res: Response) {
+    const id = parseInt(req.params.id, 10);
+    const financeInstance = new FinanceServices();
+    const response = await financeInstance.getPaymentById(id);
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async createPayment(req: Request, res: Response) {
+    const body = req.body;
+    const user = decodeJWT(req, res);
+    const financeInstance = new FinanceServices();
+    const response = await financeInstance.createPayment({
+      ...body,
+      userId: user?.id,
+    });
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async updatePayment(req: Request, res: Response) {
+    const id = parseInt(req.params.id, 10);
+    const user = decodeJWT(req, res);
+    const body = req.body;
+    const financeInstance = new FinanceServices();
+    const response = await financeInstance.updatePayment(id, {
+      ...body,
+      userId: user?.id,
+    });
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async deletePayment(req: Request, res: Response) {
+    const id = parseInt(req.params.id, 10);
+    const financeInstance = new FinanceServices();
+    const response = await financeInstance.deletePayment(id);
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
   async listCompanyDebts(req: Request, res: Response) {
     const financeInstance = new FinanceServices();
     const response = await financeInstance.listCompanyDebts();
@@ -29,7 +88,11 @@ export class FinanceController implements FinanceControllerInterface {
   async createCompanyDebt(req: Request, res: Response) {
     const body = req.body;
     const financeInstance = new FinanceServices();
-    const response = await financeInstance.createCompanyDebt(body);
+    const user = decodeJWT(req, res);
+    const response = await financeInstance.createCompanyDebt({
+      ...body,
+      userId: user?.id,
+    });
 
     return res
       .status(response.success ? CREATED_STATUS : response.error?.code || 500)
@@ -39,8 +102,12 @@ export class FinanceController implements FinanceControllerInterface {
   async updateCompanyDebt(req: Request, res: Response) {
     const id = parseInt(req.params?.id, 10);
     const body = req.body;
+    const user = decodeJWT(req, res);
     const financeInstance = new FinanceServices();
-    const response = await financeInstance.updateCompanyDebt(id, body);
+    const response = await financeInstance.updateCompanyDebt(id, {
+      ...body,
+      userId: user?.id,
+    });
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

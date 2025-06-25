@@ -34,7 +34,7 @@ export const CompanyDebtSchema = z.object({
   updatedAt: z.date().optional(),
 });
 
-const PaymentSchema = z.object({
+export const PaymentSchema = z.object({
   id: z.number().optional(),
   companyDebtId: z.number(),
   companyDebt: CompanyDebtSchema.optional(),
@@ -51,7 +51,6 @@ const PaymentSchema = z.object({
 
 export type payment = z.infer<typeof PaymentSchema>;
 export type companyDebt = z.infer<typeof CompanyDebtSchema>;
-
 export interface FinanceServiceInterface {
   createCompanyDebt(requestData: companyDebt): Promise<TResult<companyDebt>>;
   getCompanyDebtById(id: number): Promise<TResult<companyDebt>>;
@@ -61,6 +60,13 @@ export interface FinanceServiceInterface {
   ): Promise<TResult<null>>;
   deleteCompanyDebt(id: number): Promise<TResult<null>>;
   listCompanyDebts(): Promise<TResult<companyDebt[]>>;
+
+  // Payment methods
+  createPayment(requestData: payment): Promise<TResult<payment>>;
+  getPaymentById(id: number): Promise<TResult<payment>>;
+  updatePayment(id: number, requestData: payment): Promise<TResult<null>>;
+  deletePayment(id: number): Promise<TResult<null>>;
+  listPayments(): Promise<TResult<payment[]>>;
 }
 
 export interface FinanceControllerInterface {
@@ -84,4 +90,20 @@ export interface FinanceControllerInterface {
     req: Request,
     res: Response
   ): Promise<Response<TResult<companyDebt[]>>>;
+
+  // Payment methods
+  createPayment(
+    req: Request,
+    res: Response
+  ): Promise<Response<TResult<payment>>>;
+  getPaymentById(
+    req: Request,
+    res: Response
+  ): Promise<Response<TResult<payment>>>;
+  updatePayment(req: Request, res: Response): Promise<Response<TResult<null>>>;
+  deletePayment(req: Request, res: Response): Promise<Response<TResult<null>>>;
+  listPayments(
+    req: Request,
+    res: Response
+  ): Promise<Response<TResult<payment[]>>>;
 }
