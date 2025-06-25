@@ -15567,3 +15567,332 @@ Unique constraint failed on the fields: (`phoneNumber`)
 [2025-06-24 12:02:22] [32minfo[39m: Filter: 
 [2025-06-24 12:07:26] [32minfo[39m: Filter: 
 [2025-06-24 12:10:40] [32minfo[39m: Filter: 
+[2025-06-25 12:15:12] [32minfo[39m: Filter: 
+[2025-06-25 12:15:30] [33mwarn[39m: No Data Found
+[2025-06-25 12:15:30] [33mwarn[39m: No Data Found
+[2025-06-25 12:15:31] [33mwarn[39m: No Data Found
+[2025-06-25 12:15:53] [32minfo[39m: undefined
+[2025-06-25 12:16:14] [32minfo[39m: undefined
+[2025-06-25 12:19:41] [32minfo[39m: Filter: 
+[2025-06-25 12:19:41] [33mwarn[39m: No Data Found
+[2025-06-25 12:19:42] [33mwarn[39m: No Data Found
+[2025-06-25 12:22:41] [32minfo[39m: undefined
+[2025-06-25 12:24:41] [32minfo[39m: Filter: 
+[2025-06-25 12:27:52] [32minfo[39m: Filter: 
+[2025-06-25 12:30:48] [32minfo[39m: Filter: 
+[2025-06-25 12:41:20] [32minfo[39m: undefined
+[2025-06-25 12:41:25] [32minfo[39m: Filter: 
+[2025-06-25 12:41:46] [32minfo[39m: undefined
+[2025-06-25 12:41:51] [32minfo[39m: Filter: 
+[2025-06-25 12:41:56] [33mwarn[39m: No Data Found
+[2025-06-25 12:41:56] [33mwarn[39m: No Data Found
+[2025-06-25 12:41:57] [33mwarn[39m: No Data Found
+[2025-06-25 12:47:07] [33mwarn[39m: No Data Found
+[2025-06-25 12:47:07] [32minfo[39m: Filter: 
+[2025-06-25 12:47:08] [33mwarn[39m: No Data Found
+[2025-06-25 12:47:28] [32minfo[39m: undefined
+[2025-06-25 12:47:56] [32minfo[39m: Filter: 
+[2025-06-25 12:48:04] [32minfo[39m: undefined
+[2025-06-25 12:48:15] [32minfo[39m: undefined
+[2025-06-25 12:48:20] [32minfo[39m: Filter: 
+[2025-06-25 12:48:24] [32minfo[39m: Filter: 
+[2025-06-25 12:48:44] [33mwarn[39m: No Data Found
+[2025-06-25 12:48:44] [33mwarn[39m: No Data Found
+[2025-06-25 12:48:45] [33mwarn[39m: No Data Found
+[2025-06-25 12:48:49] [32minfo[39m: undefined
+[2025-06-25 12:48:54] [32minfo[39m: undefined
+[2025-06-25 12:49:15] [32minfo[39m: Filter: 
+[2025-06-25 12:49:15] [33mwarn[39m: No Data Found
+[2025-06-25 12:49:16] [33mwarn[39m: No Data Found
+[2025-06-25 12:49:32] [33mwarn[39m: No Data Found
+[2025-06-25 12:49:32] [33mwarn[39m: No Data Found
+[2025-06-25 12:49:33] [33mwarn[39m: No Data Found
+[2025-06-25 12:49:39] [32minfo[39m: undefined
+[2025-06-25 12:50:00] [32minfo[39m: Filter: 
+[2025-06-25 12:57:16] [32minfo[39m: Filter: 
+[2025-06-25 12:58:33] [32minfo[39m: Filter: 
+[2025-06-25 12:59:45] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 12:59:45] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 12:59:47] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 12:59:47] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 12:59:49] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 12:59:49] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 13:14:53] [32minfo[39m: Filter: 
+[2025-06-25 13:49:04] [32minfo[39m: Filter: 
+[2025-06-25 13:49:22] [32minfo[39m: undefined

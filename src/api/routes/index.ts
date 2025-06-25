@@ -19,6 +19,7 @@ import TableRoutes from "./table.routes";
 import SupplyRoutes from "./supply.routes";
 import CRMRoutes from "./crm.routes";
 import PermissionsRoutes from "./permissions.routes";
+import FinanceRoutes from "./finance.routes";
 const router: Router = express.Router();
 
 // Auth Routes
@@ -112,6 +113,13 @@ router.use(
   "/permissions",
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   PermissionsRoutes
+);
+
+// Finance Routes
+router.use(
+  "/finance",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  FinanceRoutes
 );
 
 export default router;
