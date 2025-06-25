@@ -263,6 +263,7 @@ export class OrderServices implements OrderServiceInterface {
 
       const updatedOrder = await prisma.$transaction(async (tx) => {
         const { items, userId, reason, invoiceId, ...rest } = data;
+        console.log("Data: ", data);
         const prev_order = await findOrderByIdDB(response.id as number, tx);
         const order_items = prev_order?.items;
 

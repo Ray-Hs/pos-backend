@@ -52,13 +52,13 @@ export async function isAuthenticated(
 
     if (
       session?.username === undefined ||
-      session?.role === undefined ||
+      session?.roleId === undefined ||
       session?.id === undefined
     ) {
       logger.warn(
         JSON.stringify({
           "Username: ": session?.username,
-          "Role: ": session?.role,
+          "Role ID: ": session?.roleId,
           "ID: ": session?.id,
         })
       );

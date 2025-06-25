@@ -14366,3 +14366,1497 @@ Invalid `prisma.companyInfo.create()` invocation:
 
 Unique constraint failed on the fields: (`phoneNumber`)
 >>>>>>> eed65bb7f5c24eb9d5a266eace501ea9a5c2b037
+[2025-06-24 12:36:22] [32minfo[39m: Filter: 
+[2025-06-24 12:38:58] [32minfo[39m: Filter: 
+[2025-06-24 12:49:41] [32minfo[39m: Filter: 
+[2025-06-24 12:54:42] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 12:54:47] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 12:55:59] [33mwarn[39m: No Data Found
+[2025-06-24 12:56:00] [33mwarn[39m: No Data Found
+[2025-06-24 13:03:00] [32minfo[39m: Filter: 
+[2025-06-24 13:03:00] [33mwarn[39m: No Data Found
+[2025-06-24 13:03:01] [33mwarn[39m: No Data Found
+[2025-06-24 13:03:27] [33mwarn[39m: No Data Found
+[2025-06-24 13:03:28] [33mwarn[39m: No Data Found
+[2025-06-24 13:05:18] [32minfo[39m: Filter: 
+[2025-06-24 13:05:46] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 13:06:41] [32minfo[39m: Filter: 
+[2025-06-24 13:06:46] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 13:29:57] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 13:30:15] [32minfo[39m: Filter: 
+[2025-06-24 13:30:17] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:30:17] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:30:20] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:30:20] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:34:54] [33mwarn[39m: No Data Found
+[2025-06-24 13:34:55] [33mwarn[39m: No Data Found
+[2025-06-24 13:38:32] [32minfo[39m: Filter: 
+[2025-06-24 13:38:32] [33mwarn[39m: No Data Found
+[2025-06-24 13:38:33] [33mwarn[39m: No Data Found
+[2025-06-24 13:38:49] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:38:49] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:39:05] [32minfo[39m: Filter: 
+[2025-06-24 13:39:45] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:39:45] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:43:27] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:43:27] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:44:42] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:44:42] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:45:33] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:45:33] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:49:48] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:49:48] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:50:38] [32minfo[39m: Filter: 
+[2025-06-24 13:51:18] [33mwarn[39m: No Data Found
+[2025-06-24 13:51:19] [33mwarn[39m: No Data Found
+[2025-06-24 14:13:58] [32minfo[39m: Filter: 
+[2025-06-24 14:13:58] [33mwarn[39m: No Data Found
+[2025-06-24 14:13:59] [33mwarn[39m: No Data Found
+[2025-06-24 14:14:08] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 14:15:16] [32minfo[39m: Filter: 
+[2025-06-24 14:15:22] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 14:17:02] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 14:19:50] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 14:20:55] [32minfo[39m: undefined
+[2025-06-24 14:24:59] [33mwarn[39m: No Data Found
+[2025-06-24 14:25:00] [33mwarn[39m: No Data Found
+[2025-06-24 14:25:04] [32minfo[39m: Filter: 
+[2025-06-24 14:25:05] [33mwarn[39m: No Data Found
+[2025-06-24 14:25:06] [33mwarn[39m: No Data Found
+[2025-06-24 14:25:22] [33mwarn[39m: No Data Found
+[2025-06-24 14:25:23] [33mwarn[39m: No Data Found
+[2025-06-24 14:32:02] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:32:02] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:32:15] [32minfo[39m: Filter: 
+[2025-06-24 14:33:00] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:33:00] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:33:04] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:33:04] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:33:17] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:33:17] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:33:32] [32minfo[39m: Filter: 
+[2025-06-24 14:33:35] [33mwarn[39m: No Data Found
+[2025-06-24 14:33:36] [33mwarn[39m: No Data Found
+[2025-06-24 14:35:10] [32minfo[39m: Filter: 
+[2025-06-24 14:37:40] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:37:40] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:38:14] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:38:14] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:38:21] [32minfo[39m: Filter: 
+[2025-06-24 14:38:26] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:38:26] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:38:51] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:38:51] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:39:07] [32minfo[39m: Filter: 
+[2025-06-24 14:39:10] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:39:10] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:42:22] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 14:42:22] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 14:47:35] [32minfo[39m: Filter: 
+[2025-06-24 14:50:24] [32minfo[39m: Filter: 
+[2025-06-24 14:50:46] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      2,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 14:50:46] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      2,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 14:52:34] [32minfo[39m: Filter: 
+[2025-06-24 14:53:19] [33mwarn[39m: No Data Found
+[2025-06-24 14:53:20] [33mwarn[39m: No Data Found
+[2025-06-24 14:55:01] [33mwarn[39m: No Data Found
+[2025-06-24 14:55:02] [33mwarn[39m: No Data Found
+[2025-06-24 14:58:12] [32minfo[39m: Filter: 
+[2025-06-24 14:58:13] [33mwarn[39m: No Data Found
+[2025-06-24 14:58:14] [33mwarn[39m: No Data Found
+[2025-06-24 14:58:30] [33mwarn[39m: No Data Found
+[2025-06-24 14:58:31] [33mwarn[39m: No Data Found
+[2025-06-24 15:00:54] [33mwarn[39m: No Data Found
+[2025-06-24 15:00:55] [33mwarn[39m: No Data Found
+[2025-06-24 15:00:56] [33mwarn[39m: No Data Found
+[2025-06-24 15:00:57] [33mwarn[39m: No Data Found
+[2025-06-24 15:02:09] [32minfo[39m: Filter: 
+[2025-06-24 15:02:09] [33mwarn[39m: No Data Found
+[2025-06-24 15:02:10] [33mwarn[39m: No Data Found
+[2025-06-24 15:02:52] [33mwarn[39m: No Data Found
+[2025-06-24 15:02:53] [33mwarn[39m: No Data Found
+[2025-06-24 15:02:58] [33mwarn[39m: No Data Found
+[2025-06-24 15:02:59] [33mwarn[39m: No Data Found
+[2025-06-24 15:03:50] [33mwarn[39m: No Data Found
+[2025-06-24 15:03:51] [33mwarn[39m: No Data Found
+[2025-06-24 15:05:10] [32minfo[39m: Filter: 
+[2025-06-24 15:05:10] [33mwarn[39m: No Data Found
+[2025-06-24 15:05:11] [33mwarn[39m: No Data Found
+[2025-06-24 15:05:23] [33mwarn[39m: No Data Found
+[2025-06-24 15:05:24] [33mwarn[39m: No Data Found
+[2025-06-24 15:07:27] [32minfo[39m: Filter: 
+[2025-06-24 15:07:27] [33mwarn[39m: No Data Found
+[2025-06-24 15:07:28] [33mwarn[39m: No Data Found
+[2025-06-24 15:07:37] [33mwarn[39m: No Data Found
+[2025-06-24 15:07:38] [33mwarn[39m: No Data Found
+[2025-06-24 16:57:00] [32minfo[39m: Filter: 
+[2025-06-24 16:59:01] [33mwarn[39m: No Data Found
+[2025-06-24 16:59:02] [33mwarn[39m: No Data Found
+[2025-06-24 16:59:47] [32minfo[39m: Filter: 
+[2025-06-24 16:59:47] [33mwarn[39m: No Data Found
+[2025-06-24 16:59:48] [33mwarn[39m: No Data Found
+[2025-06-24 17:17:24] [32minfo[39m: Filter: 
+[2025-06-24 17:18:07] [33mwarn[39m: No Data Found
+[2025-06-24 17:18:08] [33mwarn[39m: No Data Found
+[2025-06-24 17:18:37] [32minfo[39m: Filter: 
+[2025-06-24 17:18:38] [33mwarn[39m: No Data Found
+[2025-06-24 17:18:39] [33mwarn[39m: No Data Found
+[2025-06-24 17:22:39] [33mwarn[39m: No Data Found
+[2025-06-24 17:22:40] [33mwarn[39m: No Data Found
+[2025-06-24 17:25:16] [33mwarn[39m: No Data Found
+[2025-06-24 17:25:17] [33mwarn[39m: No Data Found
+[2025-06-24 17:25:22] [32minfo[39m: Filter: 
+[2025-06-24 17:25:22] [33mwarn[39m: No Data Found
+[2025-06-24 17:25:24] [33mwarn[39m: No Data Found
+[2025-06-24 17:26:15] [32minfo[39m: Filter: 
+[2025-06-24 17:31:14] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 17:33:38] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 17:35:09] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 17:37:48] [33mwarn[39m: No Data Found
+[2025-06-24 17:37:49] [33mwarn[39m: No Data Found
+[2025-06-24 17:40:47] [32minfo[39m: Filter: 
+[2025-06-24 17:40:47] [33mwarn[39m: No Data Found
+[2025-06-24 17:40:48] [33mwarn[39m: No Data Found
+[2025-06-24 17:44:58] [33mwarn[39m: No Data Found
+[2025-06-24 17:44:59] [33mwarn[39m: No Data Found
+[2025-06-24 17:45:23] [32minfo[39m: Filter: 
+[2025-06-24 17:45:23] [33mwarn[39m: No Data Found
+[2025-06-24 17:45:24] [33mwarn[39m: No Data Found
+[2025-06-24 17:45:33] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 17:46:19] [33mwarn[39m: No Data Found
+[2025-06-24 17:46:19] [33mwarn[39m: No Data Found
+[2025-06-24 17:46:20] [33mwarn[39m: No Data Found
+[2025-06-24 17:47:30] [33mwarn[39m: No Data Found
+[2025-06-24 17:47:30] [33mwarn[39m: No Data Found
+[2025-06-24 17:47:31] [33mwarn[39m: No Data Found
+[2025-06-24 17:47:57] [33mwarn[39m: No Data Found
+[2025-06-24 17:47:57] [33mwarn[39m: No Data Found
+[2025-06-24 17:47:58] [33mwarn[39m: No Data Found
+[2025-06-24 17:49:58] [33mwarn[39m: No Data Found
+[2025-06-24 17:49:58] [33mwarn[39m: No Data Found
+[2025-06-24 17:49:59] [33mwarn[39m: No Data Found
+[2025-06-24 17:50:03] [33mwarn[39m: No Data Found
+[2025-06-24 17:50:04] [33mwarn[39m: No Data Found
+[2025-06-24 17:51:38] [32minfo[39m: Filter: 
+[2025-06-24 17:51:38] [33mwarn[39m: No Data Found
+[2025-06-24 17:51:39] [33mwarn[39m: No Data Found
+[2025-06-24 17:52:01] [33mwarn[39m: No Data Found
+[2025-06-24 17:52:01] [33mwarn[39m: No Data Found
+[2025-06-24 17:52:02] [33mwarn[39m: No Data Found
+[2025-06-24 17:53:56] [32minfo[39m: Filter: 
+[2025-06-24 17:54:19] [33mwarn[39m: No Data Found
+[2025-06-24 17:54:19] [33mwarn[39m: No Data Found
+[2025-06-24 17:54:20] [33mwarn[39m: No Data Found
+[2025-06-24 17:54:26] [33mwarn[39m: No Data Found
+[2025-06-24 17:54:27] [33mwarn[39m: No Data Found
+[2025-06-24 17:56:06] [33mwarn[39m: No Data Found
+[2025-06-24 17:56:06] [33mwarn[39m: No Data Found
+[2025-06-24 17:56:07] [33mwarn[39m: No Data Found
+[2025-06-24 18:08:21] [33mwarn[39m: No Data Found
+[2025-06-24 18:08:21] [33mwarn[39m: No Data Found
+[2025-06-24 18:08:22] [33mwarn[39m: No Data Found
+[2025-06-24 18:16:58] [33mwarn[39m: No Data Found
+[2025-06-24 18:16:58] [33mwarn[39m: No Data Found
+[2025-06-24 18:16:59] [33mwarn[39m: No Data Found
+[2025-06-24 18:17:14] [33mwarn[39m: No Data Found
+[2025-06-24 18:17:14] [33mwarn[39m: No Data Found
+[2025-06-24 18:17:15] [33mwarn[39m: No Data Found
+[2025-06-24 18:17:28] [32minfo[39m: undefined
+[2025-06-24 18:17:40] [32minfo[39m: Filter: 
+[2025-06-24 18:17:41] [33mwarn[39m: No Data Found
+[2025-06-24 18:17:42] [33mwarn[39m: No Data Found
+[2025-06-25 09:52:49] [32minfo[39m: Filter: 
+[2025-06-25 09:52:53] [33mwarn[39m: No Data Found
+[2025-06-25 09:52:54] [33mwarn[39m: No Data Found
+[2025-06-25 09:53:39] [33mwarn[39m: No Data Found
+[2025-06-25 09:53:40] [33mwarn[39m: No Data Found
+[2025-06-25 09:53:43] [33mwarn[39m: No Data Found
+[2025-06-25 09:53:46] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-25 09:53:46] [33mwarn[39m: Missing ID
+[2025-06-25 09:53:50] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-25 09:53:50] [33mwarn[39m: Missing ID
+[2025-06-25 09:54:19] [32minfo[39m: Filter: 
+[2025-06-25 09:54:25] [33mwarn[39m: No Data Found
+[2025-06-25 09:54:26] [33mwarn[39m: No Data Found
+[2025-06-25 09:55:53] [33mwarn[39m: No Data Found
+[2025-06-25 09:55:54] [33mwarn[39m: No Data Found
+[2025-06-25 09:55:57] [33mwarn[39m: No Data Found
+[2025-06-25 09:55:58] [33mwarn[39m: No Data Found
+[2025-06-25 09:56:09] [32minfo[39m: Filter: 
+[2025-06-25 09:56:16] [33mwarn[39m: No Data Found
+[2025-06-25 09:56:17] [33mwarn[39m: No Data Found
+[2025-06-25 09:56:25] [33mwarn[39m: No Data Found
+[2025-06-25 09:56:32] [33mwarn[39m: No Data Found
+[2025-06-25 09:56:33] [33mwarn[39m: No Data Found
+[2025-06-25 09:56:39] [33mwarn[39m: No Data Found
+[2025-06-25 09:56:40] [33mwarn[39m: No Data Found
+[2025-06-25 09:56:49] [32minfo[39m: Filter: 
+[2025-06-25 09:56:51] [33mwarn[39m: No Data Found
+[2025-06-25 09:56:52] [33mwarn[39m: No Data Found
+[2025-06-25 09:57:16] [33mwarn[39m: No Data Found
+[2025-06-25 09:57:16] [33mwarn[39m: No Data Found
+[2025-06-25 09:57:17] [33mwarn[39m: No Data Found
+[2025-06-25 10:23:08] [32minfo[39m: Filter: 
+[2025-06-25 10:23:08] [33mwarn[39m: No Data Found
+[2025-06-25 10:23:09] [33mwarn[39m: No Data Found
+[2025-06-25 10:23:25] [33mwarn[39m: No Data Found
+[2025-06-25 10:23:25] [33mwarn[39m: No Data Found
+[2025-06-25 10:23:26] [33mwarn[39m: No Data Found
+[2025-06-25 10:23:37] [33mwarn[39m: No Data Found
+[2025-06-25 10:23:37] [33mwarn[39m: No Data Found
+[2025-06-25 10:23:38] [33mwarn[39m: No Data Found
+[2025-06-25 10:23:50] [33mwarn[39m: No Data Found
+[2025-06-25 10:23:50] [33mwarn[39m: No Data Found
+[2025-06-25 10:23:51] [33mwarn[39m: No Data Found
+[2025-06-25 10:24:28] [32minfo[39m: Filter: 
+[2025-06-25 10:24:28] [33mwarn[39m: No Data Found
+[2025-06-25 10:24:29] [33mwarn[39m: No Data Found
+[2025-06-25 10:24:34] [33mwarn[39m: No Data Found
+[2025-06-25 10:24:35] [33mwarn[39m: No Data Found
+[2025-06-25 10:25:37] [33mwarn[39m: No Data Found
+[2025-06-25 10:25:37] [33mwarn[39m: No Data Found
+[2025-06-25 10:25:38] [33mwarn[39m: No Data Found
+[2025-06-25 10:26:37] [33mwarn[39m: Brand Not Found
+[2025-06-25 10:26:38] [33mwarn[39m: Brand Not Found
+[2025-06-25 10:26:40] [33mwarn[39m: Brand Not Found
+[2025-06-25 10:26:44] [33mwarn[39m: Brand Not Found
+[2025-06-25 10:27:09] [32minfo[39m: Filter: 
+[2025-06-25 10:27:09] [33mwarn[39m: No Data Found
+[2025-06-25 10:27:10] [33mwarn[39m: No Data Found
+[2025-06-25 10:37:24] [32minfo[39m: Filter: 
+[2025-06-25 10:37:24] [33mwarn[39m: No Data Found
+[2025-06-25 11:05:09] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-25 11:05:09] [33mwarn[39m: Missing ID
+[2025-06-25 11:06:22] [33mwarn[39m: Missing ID
+[2025-06-25 11:06:23] [33mwarn[39m: Missing ID
+[2025-06-25 11:06:39] [33mwarn[39m: Missing ID
+[2025-06-25 11:07:09] [33mwarn[39m: Missing ID
+[2025-06-25 11:07:58] [33mwarn[39m: Missing ID
+[2025-06-25 11:08:27] [33mwarn[39m: Missing ID
+[2025-06-25 11:10:41] [33mwarn[39m: {"Username: ":"shyar-afrini","ID: ":1}
+[2025-06-25 11:10:47] [33mwarn[39m: {"Username: ":"shyar-afrini","ID: ":1}
+[2025-06-25 11:10:57] [33mwarn[39m: {"Username: ":"shyar-afrini","ID: ":1}
+[2025-06-25 11:14:11] [33mwarn[39m: {"Username: ":"shyar-afrini","ID: ":1}
+[2025-06-25 11:16:11] [33mwarn[39m: {"Username: ":"shyar-afrini","ID: ":1}
+[2025-06-25 11:18:48] [33mwarn[39m: {"Username: ":"shyar-afrini","ID: ":1}
+[2025-06-25 11:33:55] [32minfo[39m: Filter: 
+[2025-06-25 11:33:55] [33mwarn[39m: No Data Found
+[2025-06-25 11:33:56] [33mwarn[39m: No Data Found
+[2025-06-25 11:34:13] [33mwarn[39m: Please check the table orders.
+[2025-06-25 11:34:34] [33mwarn[39m: Please check the table orders.

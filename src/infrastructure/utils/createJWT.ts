@@ -8,7 +8,7 @@ const SECRET_KEY = process.env.JWT_SECRET_KEY;
 export async function createJWT(
   username: string | null,
   id: number,
-  role: User["role"],
+  roleId: User["roleId"],
   isActive: boolean,
   expires: number = ms(JWT_EXPIRE)
 ) {
@@ -16,7 +16,7 @@ export async function createJWT(
     {
       username: username,
       id: id, // Include user id in the payload
-      role: role,
+      roleId: roleId,
       isActive,
       iat: Math.floor(Date.now() / 1000), // Convert to seconds
     },

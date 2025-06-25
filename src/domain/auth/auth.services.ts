@@ -86,7 +86,7 @@ class AuthService implements AuthServiceInterface {
       const Bearer = (await createJWT(
         userFromDb.username,
         userFromDb.id,
-        userFromDb.role as UserRole,
+        userFromDb.roleId,
         userFromDb.isActive
       )) as JwtPayload & User & string;
       const { password, ...user } = userFromDb;

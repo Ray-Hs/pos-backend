@@ -9406,3 +9406,687 @@ Invalid `prisma.customerInfo.create()` invocation:
 Unique constraint failed on the fields: (`phoneNumber`)
 =======
 >>>>>>> eed65bb7f5c24eb9d5a266eace501ea9a5c2b037
+[2025-06-24 12:54:42] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 12:54:47] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 13:05:46] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 13:06:46] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 13:29:57] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 13:30:17] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:30:20] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:38:49] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:39:45] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:43:27] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:44:42] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:45:33] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 13:49:48] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 14:14:08] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 14:15:22] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 14:17:02] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 14:19:50] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 14:32:02] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:33:00] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:33:04] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:33:17] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:37:40] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:38:14] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:38:26] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:38:51] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:39:10] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "invoiceId"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 14:42:22] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 14:50:46] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "items",
+      2,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-06-24 17:31:14] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 17:33:38] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 17:35:09] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-24 17:45:33] [31merror[39m: Find Invoice By ID:  
+Invalid `prisma.invoice.update()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_fkey`
+[2025-06-25 09:53:46] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-25 09:53:50] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]
+[2025-06-25 11:05:09] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "nan",
+    "path": [
+      "id"
+    ],
+    "message": "Expected number, received nan"
+  }
+]

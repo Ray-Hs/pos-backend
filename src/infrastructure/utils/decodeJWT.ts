@@ -24,7 +24,7 @@ export const decodeJWT = (req: Request, res: Response): DecodedJWT | null => {
       id: decoded.id,
       username: decoded.username,
       isActive: decoded.isActive,
-      role: decoded.role,
+      roleId: decoded.roleId,
     };
   } catch (error) {
     return null;

@@ -10,6 +10,7 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
+import { findTableByIdDB } from "../table/table.repository";
 import {
   createSupplyDB,
   deleteSupplyDB,
@@ -17,7 +18,7 @@ import {
   getSupplyByIdDB,
   updateSupplyDB,
 } from "./supply.repository";
-import { Supply, SupplySchema, SupplyServiceInterface } from "./supply.types";
+import { SupplySchema, SupplyServiceInterface } from "./supply.types";
 
 export class SupplyServices implements SupplyServiceInterface {
   async getSupplies() {
@@ -176,6 +177,7 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
+
       await deleteSupplyDB(id.id);
       return {
         success: true,

@@ -11,10 +11,17 @@ router.get(
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(permissions.getUserRoles)
 );
+
 router.get(
   "/",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(permissions.getPermissions)
+);
+
+router.get(
+  "/role/current",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(permissions.getCurrentUserRole)
 );
 
 router.get(

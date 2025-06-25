@@ -17,7 +17,7 @@ model Table {
     sectionId Int?
 
     invoice Invoice[]
-    Section Section?  @relation(fields: [sectionId], references: [id])
+    Section Section?  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
 
     sortOrder Int @default(0)
 

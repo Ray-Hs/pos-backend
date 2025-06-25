@@ -4,12 +4,25 @@ import { UserRolesControllerInterface } from "../../../domain/permissions/perm.t
 import {
   OK_STATUS,
   CREATED_STATUS,
+  FORBIDDEN_STATUS,
+  FORBIDDEN_ERR,
 } from "../../../infrastructure/utils/constants";
+import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 
 export class PermissionsController implements UserRolesControllerInterface {
   async getUserRoles(req: Request, res: Response) {
     const permissionsServices = new PermissionsServices();
     const response = await permissionsServices.getUserRoles();
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+  async getCurrentUserRole(req: Request, res: Response) {
+    const userRole = decodeJWT(req, res);
+    const roleId = userRole?.roleId;
+    const permissionsServices = new PermissionsServices();
+    const response = await permissionsServices.getUserRoleById(roleId);
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

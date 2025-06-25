@@ -18,6 +18,10 @@ export interface UserRolesControllerInterface {
     req: Request,
     res: Response
   ) => Promise<Response<TResult<UserRole[]>>>;
+  getCurrentUserRole: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<UserRole>>>;
   getUserRoleById: (
     req: Request,
     res: Response

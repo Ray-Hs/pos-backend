@@ -3,6 +3,7 @@ import { JwtPayload } from "jsonwebtoken";
 import ms from "ms";
 import AuthService from "../../../domain/auth/auth.services";
 import { AuthControllerInterface } from "../../../domain/auth/auth.types";
+import prisma from "../../../infrastructure/database/prisma/client";
 import {
   CREATED_STATUS,
   INTERNAL_SERVER_STATUS,
@@ -10,8 +11,7 @@ import {
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
 import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
-import { UserRole, UserWithoutPassword } from "../../../types/common";
-import prisma from "../../../infrastructure/database/prisma/client";
+import { UserWithoutPassword } from "../../../types/common";
 
 class AuthController implements AuthControllerInterface {
   async login(req: Request, res: Response) {

@@ -215,6 +215,20 @@ export class SectionServices implements SectionServiceInterface {
         };
       }
 
+      const tablesOccupied = existingSection.tables.filter(
+        (table) => table.status !== "AVAILABLE"
+      );
+
+      if (tablesOccupied.length > 0) {
+        logger.warn("Please check the table orders.");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: "Please check the table orders before deleting.",
+          },
+        };
+      }
       const deletedSection = await deleteSectionDB(response.id);
       return {
         success: true,

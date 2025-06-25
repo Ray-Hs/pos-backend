@@ -249,13 +249,25 @@ export class TableServices implements TableServiceInterface {
         };
       }
       const existingTable = await findTableByIdDB(response.id);
+
       if (!existingTable) {
-        logger.error("Not Found");
+        logger.warn("Table Doesn't exist");
         return {
           success: false,
           error: {
             code: NOT_FOUND_STATUS,
             message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      if (existingTable?.status !== "AVAILABLE") {
+        logger.warn("Can not delete an occupied table.");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: "Can not delete an occupied table.",
           },
         };
       }

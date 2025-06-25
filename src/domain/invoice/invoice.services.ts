@@ -321,7 +321,8 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
 
-      if (data.paid) {
+      console.log("Data Invoice: ", JSON.stringify(data));
+      if (data.paid || data.paymentMethod === "DEBT") {
         const updatedInvoice: Invoice = await prisma.$transaction(
           async (tx) => {
             const {
@@ -370,7 +371,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
 
             const updatedInvoice = await updateInvoiceDB(
               response.id as number,
-              { ...rest, total, customerInfoId, discount, paid: true },
+              { ...rest, total, customerInfoId, discount, paid: data.paid },
               tx
             );
 
