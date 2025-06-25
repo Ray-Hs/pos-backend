@@ -83,7 +83,7 @@ model CompanyInfo {
     code        String?    @unique
     currency    Currency?
     name        String
-    phoneNumber String     @unique
+    phoneNumber String?
     email       String?
     note        String?
     CRMId       Int?
