@@ -14905,3 +14905,14 @@ Foreign key constraint violated on the constraint: `Invoice_customerDiscountId_f
 [2025-06-25 11:33:56] [33mwarn[39m: No Data Found
 [2025-06-25 11:34:13] [33mwarn[39m: Please check the table orders.
 [2025-06-25 11:34:34] [33mwarn[39m: Please check the table orders.
+[2025-06-25 11:39:29] [33mwarn[39m: No Data Found
+[2025-06-25 11:39:30] [33mwarn[39m: No Data Found
+[2025-06-25 11:39:37] [33mwarn[39m: Can not delete an occupied table.
+[2025-06-25 11:39:47] [33mwarn[39m: No Data Found
+[2025-06-25 11:39:47] [33mwarn[39m: No Data Found
+[2025-06-25 11:39:48] [33mwarn[39m: No Data Found
+[2025-06-25 11:40:25] [33mwarn[39m: No Data Found
+[2025-06-25 11:40:26] [33mwarn[39m: No Data Found
+[2025-06-25 11:40:32] [33mwarn[39m: Please check the table orders.
+[2025-06-25 11:40:36] [33mwarn[39m: No Data Found
+[2025-06-25 11:40:36] [33mwarn[39m: No Data Found
