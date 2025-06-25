@@ -30,6 +30,7 @@ model Payment {
     amount          Int
     note            String?
     isLatestVersion Boolean?    @default(true)
+    paymentDate     DateTime    @default(now())
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

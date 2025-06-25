@@ -9,7 +9,7 @@ export const CompanyInfoSchema = z.object({
   code: z.string().nullable().optional(),
   currency: Currency.nullable(),
   name: z.string(),
-  phoneNumber: z.string(),
+  phoneNumber: z.string().nullable().optional(),
   email: z.string().nullable().optional(),
   note: z.string().nullable().optional(),
   CRMId: z.number().nullable().optional(),

@@ -18,7 +18,7 @@ import {
   getSupplyByIdDB,
   updateSupplyDB,
 } from "./supply.repository";
-import { SupplySchema, SupplyServiceInterface } from "./supply.types";
+import { Supply, SupplySchema, SupplyServiceInterface } from "./supply.types";
 
 export class SupplyServices implements SupplyServiceInterface {
   async getSupplies() {

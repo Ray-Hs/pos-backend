@@ -63,7 +63,7 @@ export const findPaymentByIdDB = async (id: number) => {
 };
 
 // Create payment
-export const createPaymentDB = async (data: any, client: TxClientType) => {
+export const createPaymentDB = async (data: payment, client: TxClientType) => {
   const { id: _, user, companyDebt, ...rest } = data;
   return client.payment.create({
     data: {

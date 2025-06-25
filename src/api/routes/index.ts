@@ -7,19 +7,20 @@ import rateLimiter from "../middlewares/limiter.middleware";
 import AuthRoutes from "./auth.routes";
 import CategoryRoutes from "./category.routes";
 import ConstantsRoutes from "./constants.routes";
+import CRMRoutes from "./crm.routes";
+import ExchangeRoutes from "./exchange.routes";
+import FinanceRoutes from "./finance.routes";
 import ImageRoutes from "./images.routes";
 import InvoiceRoutes from "./invoice.routes";
 import ItemRoutes from "./item.routes";
 import OrderRoutes from "./order.routes";
 import OrderItemRoutes from "./orderItem.routes";
+import PermissionsRoutes from "./permissions.routes";
 import SectionRoutes from "./section.routes";
 import SettingsRoutes from "./settings.routes";
 import SubcategoryRoutes from "./subcategory.routes";
-import TableRoutes from "./table.routes";
 import SupplyRoutes from "./supply.routes";
-import CRMRoutes from "./crm.routes";
-import PermissionsRoutes from "./permissions.routes";
-import FinanceRoutes from "./finance.routes";
+import TableRoutes from "./table.routes";
 const router: Router = express.Router();
 
 // Auth Routes
@@ -120,6 +121,13 @@ router.use(
   "/finance",
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   FinanceRoutes
+);
+
+// Exchange Rate Routes
+router.use(
+  "/exchange",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  ExchangeRoutes
 );
 
 export default router;

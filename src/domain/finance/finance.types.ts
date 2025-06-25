@@ -45,6 +45,7 @@ export const PaymentSchema = z.object({
   amount: z.number(),
   note: z.string().nullable().optional(),
   isLatestVersion: z.boolean().nullable().optional(),
+  paymentDate: z.date().optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });

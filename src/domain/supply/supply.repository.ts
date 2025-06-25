@@ -1,6 +1,4 @@
 import prisma from "../../infrastructure/database/prisma/client";
-import { createCompanyInfoDB } from "../settings/crm/crm.repository";
-import { CompanyInfo } from "../settings/crm/crm.types";
 import { Supply } from "./supply.types";
 
 export async function getSuppliesDB() {

@@ -67,6 +67,18 @@ export class MenuItemServices implements MenuItemInterface {
           title_ku: item.SubCategory?.title_ku || "",
           title_en: item.SubCategory?.title_en || "",
         };
+        const company = item.company
+          ? {
+              name: item.company.name,
+              currency: item.company.currency ?? null,
+              phoneNumber: item.company.phoneNumber ?? "",
+              id: item.company.id,
+              code: item.company.code ?? null,
+              email: item.company.email ?? null,
+              note: item.company.note ?? null,
+              CRMId: item.company.CRMId ?? undefined,
+            }
+          : null;
         return {
           id: item.id,
           title_ar: item.title_ar,
@@ -81,7 +93,7 @@ export class MenuItemServices implements MenuItemInterface {
           subCategoryId: item.subCategoryId,
           categoryId,
           companyId: item.companyId,
-          company: item?.company,
+          company: company,
           image: item.image,
           category,
           subcategory,
@@ -146,6 +158,18 @@ export class MenuItemServices implements MenuItemInterface {
           title_ku: item.SubCategory?.title_ku || "",
           title_en: item.SubCategory?.title_en || "",
         };
+        const company = item.company
+          ? {
+              name: item.company.name,
+              currency: item.company.currency ?? null,
+              phoneNumber: item.company.phoneNumber ?? "",
+              id: item.company.id,
+              code: item.company.code ?? null,
+              email: item.company.email ?? null,
+              note: item.company.note ?? null,
+              CRMId: item.company.CRMId ?? undefined,
+            }
+          : null;
         return {
           id: item.id,
           title_ar: item.title_ar,
@@ -160,7 +184,7 @@ export class MenuItemServices implements MenuItemInterface {
           subCategoryId: item.subCategoryId,
           categoryId,
           companyId: item.companyId,
-          company: item.company,
+          company: company,
           image: item.image,
           category,
           subcategory,

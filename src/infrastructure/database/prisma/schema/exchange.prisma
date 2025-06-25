@@ -1,0 +1,10 @@
+model ExchangeRate {
+    id Int @id @default(autoincrement())
+
+    rate   Int
+    userId Int
+    user   User @relation(fields: [userId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

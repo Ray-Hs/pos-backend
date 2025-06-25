@@ -36,7 +36,7 @@ import {
 import prisma from "../../infrastructure/database/prisma/client";
 
 export class FinanceServices implements FinanceServiceInterface {
-  async createPayment(requestData: any) {
+  async createPayment(requestData: payment) {
     try {
       const data = await validateType(requestData, PaymentSchema);
       if (data instanceof ZodError) {
@@ -49,7 +49,19 @@ export class FinanceServices implements FinanceServiceInterface {
           },
         };
       }
-      const created = await createPaymentDB(data, prisma);
+      const createdPayment = await prisma.$transaction(async (tx) => {
+        const companyDebt = await findCompanyDebtByIdDB(data.companyDebtId);
+
+        const createdPayment = await createPaymentDB(
+          {
+            ...data,
+            amount:
+              companyDebt?.remainingAmount || companyDebt?.totalAmount || 0,
+          },
+          tx
+        );
+        return createdPayment;
+      });
       return {
         success: true,
         message: "Created Payment Successfully",
@@ -147,7 +159,7 @@ export class FinanceServices implements FinanceServiceInterface {
           },
         };
       }
-      await updatePaymentDB(response.id, data, prisma);
+      await updatePaymentDB(response.id as number, data, prisma);
       return {
         success: true,
         message: "Updated Payment Successfully",

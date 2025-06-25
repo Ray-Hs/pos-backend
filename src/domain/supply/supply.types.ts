@@ -20,6 +20,7 @@ export const SupplySchema = z.object({
   totalItems: z.number().nullable().optional(),
   totalPrice: z.number().nullable().optional(),
   store: z.string(),
+  note: z.string().nullable().optional(),
 
   expiryDate: z.date().nullable().optional(),
   createdAt: z.date().optional(),
