@@ -31,6 +31,7 @@ export class SupplyController implements SupplyControllerInterface {
     const response = await supplyService.createSupply({
       ...req.body,
       expiryDate: new Date(req.body.expiryDate),
+      purchasedAt: new Date(req.body.purchasedAt),
     });
 
     return res
@@ -45,6 +46,7 @@ export class SupplyController implements SupplyControllerInterface {
       {
         ...req.body,
         expiryDate: new Date(req.body.expiryDate),
+        purchasedAt: new Date(req.body.purchasedAt),
       },
       id
     );

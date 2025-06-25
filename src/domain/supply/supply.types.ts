@@ -23,6 +23,7 @@ export const SupplySchema = z.object({
   note: z.string().nullable().optional(),
 
   expiryDate: z.date().nullable().optional(),
+  purchasedAt: z.date().optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });

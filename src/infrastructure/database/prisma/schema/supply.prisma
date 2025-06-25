@@ -17,7 +17,8 @@ model supply {
     store         String
     note          String?       @default("")
 
-    expiryDate DateTime?
-    createdAt  DateTime  @default(now())
-    updatedAt  DateTime  @updatedAt
+    expiryDate  DateTime?
+    purchasedAt DateTime  @default(now())
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
 }
