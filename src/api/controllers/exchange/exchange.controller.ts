@@ -11,6 +11,7 @@ export class ExchangeRateController implements ExchangeRateControllerInterface {
     const exchangeInstance = new ExchangeRateServices();
     const response = await exchangeInstance.createExchangeRate({
       ...body,
+      exchangeDate: new Date(body.exchangeDate),
       userId: user?.id,
     });
 

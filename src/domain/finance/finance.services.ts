@@ -19,6 +19,8 @@ import {
   updateCompanyDebtDB,
 } from "./finance.repository"; // adjust import path as needed
 import {
+  AllCompanyDebt,
+  allCompanyDebtSchema,
   CompanyDebtSchema,
   FinanceServiceInterface,
   payment,
@@ -36,6 +38,58 @@ import {
 import prisma from "../../infrastructure/database/prisma/client";
 
 export class FinanceServices implements FinanceServiceInterface {
+  async getAllCompanyDebts() {
+    try {
+      const dataResponse = await prisma.companyDebt.findMany({
+        select: {
+          id: true,
+          company: {
+            select: {
+              name: true,
+              phoneNumber: true,
+              code: true,
+            },
+          },
+          remainingAmount: true,
+          createdAt: true,
+        },
+      });
+
+      if (dataResponse.length === 0) {
+        logger.warn("No Company Debts Found.");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+      const data: AllCompanyDebt[] = dataResponse.map((debt) => ({
+        companyDebtId: debt.id,
+        companyName: debt.company.name,
+        phoneNumber: debt.company.phoneNumber ?? "",
+        code: debt.company.code,
+        remainingAmount: debt.remainingAmount,
+        createdAt: debt.createdAt,
+      }));
+
+      return {
+        success: true,
+        data,
+      };
+    } catch (error) {
+      logger.error("Create Payment Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
   async createPayment(requestData: payment) {
     try {
       const data = await validateType(requestData, PaymentSchema);

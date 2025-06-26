@@ -27,6 +27,15 @@ export class FinanceController implements FinanceControllerInterface {
       .json(response);
   }
 
+  async getALLCompanyDebts(req: Request, res: Response) {
+    const financeInstance = new FinanceServices();
+    const response = await financeInstance.getAllCompanyDebts();
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
   async createPayment(req: Request, res: Response) {
     const body = req.body;
     const user = decodeJWT(req, res);

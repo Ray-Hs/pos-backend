@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
 import { z } from "zod";
-import { TResult, User, UserSchema } from "../../types/common";
+import { TResult, UserSchema } from "../../types/common";
 
 export const ExchangeRateSchema = z.object({
   id: z.number().optional(),
   rate: z.number(),
   userId: z.number(),
   user: UserSchema.optional(),
+  exchangeDate: z.date().nullable().optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });

@@ -50,8 +50,20 @@ export const PaymentSchema = z.object({
   updatedAt: z.date().optional(),
 });
 
+export const allCompanyDebtSchema = z.object({
+  id: z.number().optional(),
+  companyDebtId: z.number(),
+  companyDebt: CompanyDebtSchema.optional(),
+  latestCompanyDebt: z.date().optional(),
+  amount: z.number().optional(),
+  phoneNumber: z.string().optional(),
+  companyCode: z.string().optional(),
+});
+
 export type payment = z.infer<typeof PaymentSchema>;
 export type companyDebt = z.infer<typeof CompanyDebtSchema>;
+export type AllCompanyDebt = z.infer<typeof allCompanyDebtSchema>;
+
 export interface FinanceServiceInterface {
   createCompanyDebt(requestData: companyDebt): Promise<TResult<companyDebt>>;
   getCompanyDebtById(id: number): Promise<TResult<companyDebt>>;
@@ -61,6 +73,7 @@ export interface FinanceServiceInterface {
   ): Promise<TResult<null>>;
   deleteCompanyDebt(id: number): Promise<TResult<null>>;
   listCompanyDebts(): Promise<TResult<companyDebt[]>>;
+  getAllCompanyDebts(): Promise<TResult<AllCompanyDebt[]>>;
 
   // Payment methods
   createPayment(requestData: payment): Promise<TResult<payment>>;
@@ -91,6 +104,10 @@ export interface FinanceControllerInterface {
     req: Request,
     res: Response
   ): Promise<Response<TResult<companyDebt[]>>>;
+  getALLCompanyDebts(
+    req: Request,
+    res: Response
+  ): Promise<Response<TResult<AllCompanyDebt[]>>>;
 
   // Payment methods
   createPayment(
