@@ -8,8 +8,9 @@ import {
 
 export class SupplyController implements SupplyControllerInterface {
   async getSupplies(req: Request, res: Response) {
+    const q = req.query.q;
     const supplyService = new SupplyServices();
-    const response = await supplyService.getSupplies();
+    const response = await supplyService.getSupplies(q?.toString() || "");
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

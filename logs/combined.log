@@ -14715,3 +14715,45 @@ Unique constraint failed on the fields: (`phoneNumber`)
 [2025-06-26 11:40:41] [31merror[39m: Create UserRole Service:  User role with this name already exists.
 [2025-06-26 11:42:53] [31merror[39m: Create UserRole Service:  User role with this name already exists.
 [2025-06-26 11:43:52] [31merror[39m: Create UserRole Service:  User role with this name already exists.
+[2025-06-26 12:16:28] [32minfo[39m: Filter: 
+[2025-06-26 12:23:11] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-26 12:23:11] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-26 12:23:43] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-26 12:23:43] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-26 12:24:04] [31merror[39m: Create Supply:  
+Invalid `prisma.supply.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `supply_companyId_fkey`

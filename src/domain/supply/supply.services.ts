@@ -21,9 +21,9 @@ import {
 import { Supply, SupplySchema, SupplyServiceInterface } from "./supply.types";
 
 export class SupplyServices implements SupplyServiceInterface {
-  async getSupplies() {
+  async getSupplies(q: string | undefined) {
     try {
-      const data = await getSuppliesDB();
+      const data = await getSuppliesDB(q);
       if (!data) {
         logger.warn("Supplies Not Found");
         return {
