@@ -10,7 +10,6 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { TResult } from "../../types/common";
 import {
   createCompanyDebtDB,
   deleteCompanyDebtDB,
@@ -21,16 +20,15 @@ import {
 } from "./finance.repository"; // adjust import path as needed
 import {
   AllCompanyDebt,
-  allCompanyDebtSchema,
   companyDebt,
   CompanyDebtSchema,
   FinanceServiceInterface,
   payment,
-  PaymentEnum,
   PaymentSchema,
 } from "./finance.types";
 
 // Helper functions for payment DB operations (to be implemented in finance.repository)
+import prisma from "../../infrastructure/database/prisma/client";
 import {
   createPaymentDB,
   deletePaymentDB,
@@ -38,14 +36,13 @@ import {
   getPaymentsDB,
   updatePaymentDB,
 } from "./finance.repository";
-import prisma from "../../infrastructure/database/prisma/client";
+import { CompanyInfo } from "../settings/crm/crm.types";
 
 export class FinanceServices implements FinanceServiceInterface {
   async getAllCompanyDebts() {
     try {
       const dataResponse = await prisma.companyDebt.findMany({
-        select: {
-          id: true,
+        include: {
           company: {
             select: {
               name: true,
@@ -53,8 +50,6 @@ export class FinanceServices implements FinanceServiceInterface {
               code: true,
             },
           },
-          remainingAmount: true,
-          createdAt: true,
         },
         orderBy: {
           createdAt: "desc",
@@ -356,7 +351,7 @@ export class FinanceServices implements FinanceServiceInterface {
     }
   }
 
-  async listPayments(): Promise<TResult<payment[]>> {
+  async listPayments() {
     try {
       const data = await getPaymentsDB();
       if (!data || data.length === 0) {
@@ -411,6 +406,7 @@ export class FinanceServices implements FinanceServiceInterface {
           },
         };
       }
+
       return {
         success: true,
         data,

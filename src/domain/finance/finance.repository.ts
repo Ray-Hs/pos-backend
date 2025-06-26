@@ -8,6 +8,15 @@ export const getCompanyDebtsDB = async (
   filter: "asc" | "desc"
 ) => {
   return client.companyDebt.findMany({
+    include: {
+      company: {
+        select: {
+          name: true,
+          phoneNumber: true,
+          currency: true,
+        },
+      },
+    },
     orderBy: { createdAt: filter },
   });
 };
@@ -75,7 +84,7 @@ export const deleteCompanyDebtDB = async (id: number) => {
 export const getPaymentsDB = async () => {
   return prisma.payment.findMany({
     orderBy: { createdAt: "desc" },
-    select: {
+    include: {
       companyDebt: {
         select: {
           companyId: true,
