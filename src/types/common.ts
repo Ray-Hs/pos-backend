@@ -262,7 +262,7 @@ export type Section = z.infer<typeof SectionSchema>;
 type TError = {
   code: number;
   message: string;
-  details?: unknown;
+  details?: string | unknown;
 };
 
 type TResult<T> = {

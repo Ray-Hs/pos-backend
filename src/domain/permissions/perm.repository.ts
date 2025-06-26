@@ -20,6 +20,7 @@ export async function findUserRoleByIdDB(id: number) {
 
 export async function createUserRoleDB(data: UserRole) {
   const { permissions, permIds, ...rest } = data;
+
   return prisma.userRole.create({
     data: {
       ...rest,

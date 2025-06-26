@@ -9544,3 +9544,5 @@ Unique constraint failed on the fields: (`phoneNumber`)
     "message": "Required"
   }
 ]
+[2025-06-26 11:40:41] [31merror[39m: Create UserRole Service:  User role with this name already exists.
+[2025-06-26 11:42:53] [31merror[39m: Create UserRole Service:  User role with this name already exists.

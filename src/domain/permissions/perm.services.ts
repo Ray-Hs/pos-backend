@@ -20,6 +20,7 @@ import {
   updateUserRoleDB,
 } from "./perm.repository";
 import { UserRolesServiceInterface } from "./perm.types";
+import prisma from "../../infrastructure/database/prisma/client";
 
 export default class UserRoleService implements UserRolesServiceInterface {
   async getUserRoles() {
@@ -107,6 +108,17 @@ export default class UserRoleService implements UserRolesServiceInterface {
           },
         };
       }
+      // Check if a user role with the same name already exists
+      const existingRole = await prisma.userRole.findUnique({
+        where: {
+          name: data.name,
+        },
+      });
+
+      if (existingRole) {
+        throw new Error("User role with this name already exists.");
+      }
+
       await createUserRoleDB(data);
       return {
         success: true,
@@ -119,6 +131,7 @@ export default class UserRoleService implements UserRolesServiceInterface {
         error: {
           code: INTERNAL_SERVER_STATUS,
           message: INTERNAL_SERVER_ERR,
+          details: `${error}`,
         },
       };
     }
