@@ -3,9 +3,25 @@ import { TxClientType } from "../../types/common";
 import { companyDebt, payment } from "./finance.types";
 
 // Get all company debts
-export const getCompanyDebtsDB = async () => {
-  return prisma.companyDebt.findMany({
-    orderBy: { createdAt: "desc" },
+export const getCompanyDebtsDB = async (
+  client: TxClientType,
+  filter: "asc" | "desc"
+) => {
+  return client.companyDebt.findMany({
+    orderBy: { createdAt: filter },
+  });
+};
+// Get all company debts
+export const listCompanyDebtsByCompanyIdDB = async (
+  id: number,
+  client: TxClientType,
+  filter: "asc" | "desc"
+) => {
+  return client.companyDebt.findMany({
+    where: {
+      companyId: id,
+    },
+    orderBy: { createdAt: filter },
   });
 };
 
@@ -18,21 +34,28 @@ export const findCompanyDebtByIdDB = async (id: number) => {
 
 // Create company debt
 export const createCompanyDebtDB = async (data: companyDebt) => {
-  const { company, id: _, user, ...rest } = data;
+  const { company, id: _, remainingAmount, companyId, user, ...rest } = data;
   return prisma.companyDebt.create({
     data: {
       ...rest,
+      companyId: companyId as number,
+      remainingAmount: data.totalAmount,
     },
   });
 };
 
 // Update company debt
-export const updateCompanyDebtDB = async (id: number, data: companyDebt) => {
-  const { company, user, ...rest } = data;
-  return prisma.companyDebt.update({
+export const updateCompanyDebtDB = async (
+  id: number,
+  data: companyDebt,
+  client: TxClientType
+) => {
+  const { company, user, status, ...rest } = data;
+  return client.companyDebt.update({
     where: { id },
     data: {
       ...rest,
+      status: status || "PARTIAL",
     },
   });
 };
@@ -52,6 +75,13 @@ export const deleteCompanyDebtDB = async (id: number) => {
 export const getPaymentsDB = async () => {
   return prisma.payment.findMany({
     orderBy: { createdAt: "desc" },
+    select: {
+      companyDebt: {
+        select: {
+          companyId: true,
+        },
+      },
+    },
   });
 };
 
@@ -59,15 +89,23 @@ export const getPaymentsDB = async () => {
 export const findPaymentByIdDB = async (id: number) => {
   return prisma.payment.findUnique({
     where: { id },
+    include: {
+      companyDebt: {
+        select: {
+          companyId: true,
+        },
+      },
+    },
   });
 };
 
 // Create payment
 export const createPaymentDB = async (data: payment, client: TxClientType) => {
-  const { id: _, user, companyDebt, ...rest } = data;
+  const { id: _, user, companyDebt, companyId, ...rest } = data;
   return client.payment.create({
     data: {
       ...rest,
+      companyDebtId: data.companyDebtId as number,
     },
   });
 };

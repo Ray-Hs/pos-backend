@@ -1,21 +1,28 @@
 model CompanyDebt {
-    id              Int         @id @default(autoincrement())
+    id              Int           @id @default(autoincrement())
     companyId       Int
-    company         CompanyInfo @relation(fields: [companyId], references: [id])
+    company         CompanyInfo   @relation(fields: [companyId], references: [id])
     product         String
     invoiceNumber   String?
-    quantity        Int         @default(1)
-    price           Int         @default(0)
-    totalAmount     Int?        @default(0)
-    remainingAmount Int?        @default(0)
+    quantity        Int           @default(1)
+    price           Int           @default(0)
+    totalAmount     Int?          @default(0)
+    remainingAmount Int?          @default(0)
     userId          Int
-    user            User        @relation(fields: [userId], references: [id])
+    user            User          @relation(fields: [userId], references: [id])
+    status          PaymentStatus @default(PENDING)
 
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
     Payment   Payment[]
 
     @@index([id, invoiceNumber])
+}
+
+enum PaymentStatus {
+    PAID
+    PARTIAL
+    PENDING
 }
 
 model Payment {

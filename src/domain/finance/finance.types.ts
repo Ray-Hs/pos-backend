@@ -18,9 +18,12 @@ export const CustomerDebt = z.object({
   updatedAt: z.date().optional(),
 });
 
+export const PaymentEnumSchema = z.enum(["PAID", "PARTIAL", "PENDING"]);
+export type PaymentEnum = z.infer<typeof PaymentEnumSchema>;
+
 export const CompanyDebtSchema = z.object({
   id: z.number().optional(),
-  companyId: z.number(),
+  companyId: z.number().optional(),
   company: CompanyInfoSchema.optional(),
   product: z.string(),
   invoiceNumber: z.string().nullable().optional(),
@@ -30,14 +33,16 @@ export const CompanyDebtSchema = z.object({
   remainingAmount: z.number().nullable().optional(),
   userId: z.number(),
   user: UserSchema.optional(),
+  status: PaymentEnumSchema.optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
 
 export const PaymentSchema = z.object({
   id: z.number().optional(),
-  companyDebtId: z.number(),
+  companyDebtId: z.number().optional(),
   companyDebt: CompanyDebtSchema.optional(),
+  companyId: z.number(),
   invoiceNumber: z.string(),
   userId: z.number(),
   user: UserSchema.optional(),

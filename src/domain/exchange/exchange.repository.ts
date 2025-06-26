@@ -43,6 +43,7 @@ export async function createExchangeRate(data: ExchangeRate) {
   return prisma.exchangeRate.create({
     data: {
       ...rest,
+      exchangeDate: data.exchangeDate || new Date(),
     },
   });
 }

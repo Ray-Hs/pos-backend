@@ -13638,3 +13638,35 @@ Invalid `prisma.supply.create()` invocation:
 
 
 Foreign key constraint violated on the constraint: `supply_companyId_fkey`
+[2025-06-26 12:36:36] [31merror[39m: Create Payment Service:  
+Invalid `prisma.payment.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Payment_companyDebtId_fkey`
+[2025-06-26 14:20:15] [31merror[39m: Create Payment Service:  
+Invalid `prisma.payment.create()` invocation:
+
+{
+  data: {
+    companyId: 1,
+    ~~~~~~~~~
+    invoiceNumber: "INVC003",
+    userId: 1,
+    currency: "IQD",
+    amount: 6000,
+    note: "No Notes",
+    companyDebtId: 2,
+?   id?: Int,
+?   isLatestVersion?: Boolean | Null,
+?   paymentDate?: DateTime,
+?   createdAt?: DateTime,
+?   updatedAt?: DateTime
+  }
+}
+
+Unknown argument `companyId`. Available options are marked with ?.
+[2025-06-26 14:26:37] [31merror[39m: Create Payment Service:  All debts are already paid.
+[2025-06-26 14:27:44] [31merror[39m: Create Payment Service:  All debts are already paid.
+[2025-06-26 14:29:10] [31merror[39m: Create Payment Service:  All debts are already paid.
+[2025-06-26 14:30:13] [31merror[39m: Create Payment Service:  All debts are already paid.
+[2025-06-26 14:31:21] [31merror[39m: Create Payment Service:  All debts are already paid.
