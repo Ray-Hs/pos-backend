@@ -1,4 +1,5 @@
 import { ZodError } from "zod";
+import prisma from "../../infrastructure/database/prisma/client";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
@@ -10,7 +11,8 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { findTableByIdDB } from "../table/table.repository";
+import { createCompanyDebtDB } from "../finance/finance.repository";
+import { getCompanyInfoByIdDB } from "../settings/crm/crm.repository";
 import {
   createSupplyDB,
   deleteSupplyDB,
@@ -18,7 +20,7 @@ import {
   getSupplyByIdDB,
   updateSupplyDB,
 } from "./supply.repository";
-import { Supply, SupplySchema, SupplyServiceInterface } from "./supply.types";
+import { SupplySchema, SupplyServiceInterface } from "./supply.types";
 
 export class SupplyServices implements SupplyServiceInterface {
   async getSupplies(q: string | undefined) {
@@ -100,7 +102,32 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
-      await createSupplyDB(data);
+
+      const createdSupply = await prisma.$transaction(async (tx) => {
+        const company = await getCompanyInfoByIdDB(data.companyId, tx);
+
+        if (!company) {
+          throw new Error(`No Company Exists with id: ${data.companyId}`);
+        }
+
+        if (data.paymentMethod === "DEBT") {
+          const createdDebt = await createCompanyDebtDB(
+            {
+              price: (data.totalPrice || 0) / (data.totalItems || 0),
+              product: data.name,
+              quantity: data.totalItems || 0,
+              companyId: company?.id,
+              currency: company?.currency || "IQD",
+              invoiceNumber: data.invoiceNO,
+              totalAmount: data.totalPrice,
+              userId: requestData.userId,
+            },
+            tx
+          );
+        }
+
+        const createdSupply = await createSupplyDB(data, tx);
+      });
       return {
         success: true,
         message: "Created Supply Successfully",

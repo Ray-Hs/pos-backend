@@ -1,4 +1,5 @@
 import prisma from "../../infrastructure/database/prisma/client";
+import { TxClientType } from "../../types/common";
 import { Supply } from "./supply.types";
 export async function getSuppliesDB(q: string | undefined) {
   //? Get supply by company name, product name, invoice number, and company code (case-insensitive)
@@ -36,6 +37,12 @@ export async function getSuppliesDB(q: string | undefined) {
               },
             },
             {
+              barcode: {
+                contains: q,
+                mode: "insensitive",
+              },
+            },
+            {
               invoiceNO: {
                 contains: q,
                 mode: "insensitive",
@@ -58,13 +65,24 @@ export async function getSupplyByIdDB(id: number) {
   });
 }
 
-export async function createSupplyDB(data: Supply) {
+export async function getSupplyByProductCode(
+  code: string,
+  client: TxClientType
+) {
+  return client.supply.findFirst({
+    where: {
+      barcode: code,
+    },
+  });
+}
+
+export async function createSupplyDB(data: Supply, client: TxClientType) {
   const { itemQty, packageQty, itemPrice } = data;
   const { company, ...rest } = data;
 
   const totalItems = itemQty * packageQty;
   const totalPrice = totalItems * itemPrice;
-  return prisma.supply.create({
+  return client.supply.create({
     data: {
       ...rest,
       totalItems,

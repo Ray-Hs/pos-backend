@@ -37,6 +37,7 @@ import {
   updatePaymentDB,
 } from "./finance.repository";
 import { CompanyInfo } from "../settings/crm/crm.types";
+import { getCompanyInfoByIdDB } from "../settings/crm/crm.repository";
 
 export class FinanceServices implements FinanceServiceInterface {
   async getAllCompanyDebts() {
@@ -105,6 +106,29 @@ export class FinanceServices implements FinanceServiceInterface {
         };
       }
 
+      if (data.amount <= 0) {
+        logger.warn("Invalid Amount.");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: "Invalid Amount.",
+          },
+        };
+      }
+
+      const company = await getCompanyInfoByIdDB(data.companyId, prisma);
+      if (data.currency !== company?.currency) {
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message:
+              "The provided currency does not match the company's registered currency.",
+          },
+        };
+      }
+
       const createdPayment = await prisma.$transaction(async (tx) => {
         // Get company debts sorted by latest first (desc order)
         const companyDebts = await listCompanyDebtsByCompanyIdDB(
@@ -112,6 +136,7 @@ export class FinanceServices implements FinanceServiceInterface {
           tx,
           "asc"
         );
+
         const allDebtsPaid = companyDebts.every(
           (debt) => debt.status === "PAID"
         );
@@ -365,17 +390,16 @@ export class FinanceServices implements FinanceServiceInterface {
         };
       }
       // Ensure each payment object matches the expected shape
-      const payments: payment[] = data.map((item: any) => ({
+      const payments: payment[] = data.map((item) => ({
         id: item.id,
         userId: item.userId,
-        companyId: item.companyId,
+        companyId: item.companyDebt.companyId,
         invoiceNumber: item.invoiceNumber,
         amount: item.amount,
         createdAt: item.createdAt,
         updatedAt: item.updatedAt,
         user: item.user,
-        company: item.company,
-        paymentType: item.paymentType,
+        company: item.companyDebt.company,
         paymentDate: item.paymentDate,
       }));
       return {
@@ -479,7 +503,7 @@ export class FinanceServices implements FinanceServiceInterface {
           },
         };
       }
-      await createCompanyDebtDB(data);
+      await createCompanyDebtDB(data, prisma);
       return {
         success: true,
         message: "Created Company Debt Successfully",

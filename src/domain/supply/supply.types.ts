@@ -1,6 +1,5 @@
-import { z } from "zod";
-import { PaymentMethodEnum } from "../../types/common";
 import { Request, Response } from "express";
+import { z } from "zod";
 import { TResult } from "../../types/common";
 import { CompanyInfoSchema } from "../settings/crm/crm.types";
 
@@ -9,7 +8,7 @@ export const SupplySchema = z.object({
   invoiceNO: z.string().nullable().optional(),
   companyId: z.number(),
   company: CompanyInfoSchema.optional(),
-  paymentMethod: PaymentMethodEnum.default("CASH"),
+  paymentMethod: z.enum(["CASH", "CARD", "DEBT"]).default("CASH"),
   barcode: z.string().nullable().optional(),
   name: z.string(),
   packageQty: z.number(),
@@ -19,7 +18,8 @@ export const SupplySchema = z.object({
   itemSellPrice: z.number(),
   totalItems: z.number().nullable().optional(),
   totalPrice: z.number().nullable().optional(),
-  store: z.string(),
+  remainingQuantity: z.number().nullable().optional(),
+  store: z.string().nullable().optional(),
   note: z.string().nullable().optional(),
 
   expiryDate: z.date().nullable().optional(),

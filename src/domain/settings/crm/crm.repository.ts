@@ -84,8 +84,8 @@ export async function getCompaniesInfoDB() {
   return prisma.companyInfo.findMany();
 }
 
-export async function getCompanyInfoByIdDB(id: number) {
-  return prisma.companyInfo.findFirst({
+export async function getCompanyInfoByIdDB(id: number, client: TxClientType) {
+  return client.companyInfo.findFirst({
     where: { id },
   });
 }
@@ -201,7 +201,7 @@ export async function updateCustomerDiscountDB(
 export async function deleteCustomerDiscountDB(id: number) {
   return prisma.customerDiscount.delete({
     where: {
-      id, 
+      id,
     },
   });
 }

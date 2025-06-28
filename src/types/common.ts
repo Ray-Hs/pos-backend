@@ -1,13 +1,13 @@
+import { Prisma, PrismaClient } from "@prisma/client";
+import { DefaultArgs } from "@prisma/client/runtime/library";
 import { z } from "zod";
 import { BrandObject } from "../domain/settings/branding/brand.types";
-import { PrinterObjectSchema } from "../domain/settings/printers/printer.types";
 import {
   CompanyInfoSchema,
   CustomerDiscountSchema,
   CustomerInfoSchema,
 } from "../domain/settings/crm/crm.types";
-import { Prisma, PrismaClient } from "@prisma/client";
-import { DefaultArgs } from "@prisma/client/runtime/library";
+import { PrinterObjectSchema } from "../domain/settings/printers/printer.types";
 
 export const PermissionSchema = z.object({
   id: z.number().optional(),

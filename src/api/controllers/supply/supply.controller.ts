@@ -5,6 +5,7 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
+import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 
 export class SupplyController implements SupplyControllerInterface {
   async getSupplies(req: Request, res: Response) {
@@ -29,8 +30,10 @@ export class SupplyController implements SupplyControllerInterface {
 
   async createSupply(req: Request, res: Response) {
     const supplyService = new SupplyServices();
+    const user = decodeJWT(req, res);
     const response = await supplyService.createSupply({
       ...req.body,
+      userId: user?.id,
       expiryDate: new Date(req.body.expiryDate),
       purchasedAt: new Date(req.body.purchasedAt),
     });

@@ -9602,3 +9602,13 @@ Unknown argument `companyId`. Available options are marked with ?.
 [2025-06-26 14:29:10] [31merror[39m: Create Payment Service:  All debts are already paid.
 [2025-06-26 14:30:13] [31merror[39m: Create Payment Service:  All debts are already paid.
 [2025-06-26 14:31:21] [31merror[39m: Create Payment Service:  All debts are already paid.
+[2025-06-26 16:58:49] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-26 16:58:52] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
