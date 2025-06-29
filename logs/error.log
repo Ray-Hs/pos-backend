@@ -9602,3 +9602,508 @@ Unknown argument `companyId`. Available options are marked with ?.
 [2025-06-26 14:29:10] [31merror[39m: Create Payment Service:  All debts are already paid.
 [2025-06-26 14:30:13] [31merror[39m: Create Payment Service:  All debts are already paid.
 [2025-06-26 14:31:21] [31merror[39m: Create Payment Service:  All debts are already paid.
+[2025-06-26 17:24:14] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 17)
+[2025-06-26 17:25:35] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 17)
+[2025-06-28 11:23:36] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-28 11:23:40] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-28 11:23:47] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-28 11:24:32] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-28 11:24:36] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-28 11:24:40] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-28 11:27:09] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-28 11:27:12] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-28 11:27:17] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-28 11:32:19] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
