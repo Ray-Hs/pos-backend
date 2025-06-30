@@ -29,6 +29,7 @@ import {
 
 // Helper functions for payment DB operations (to be implemented in finance.repository)
 import prisma from "../../infrastructure/database/prisma/client";
+import { getCompanyInfoByIdDB } from "../settings/crm/crm.repository";
 import {
   createPaymentDB,
   deletePaymentDB,
@@ -36,8 +37,7 @@ import {
   getPaymentsDB,
   updatePaymentDB,
 } from "./finance.repository";
-import { CompanyInfo } from "../settings/crm/crm.types";
-import { getCompanyInfoByIdDB } from "../settings/crm/crm.repository";
+import { User } from "../../types/common";
 
 export class FinanceServices implements FinanceServiceInterface {
   async getAllCompanyDebts() {
@@ -170,8 +170,10 @@ export class FinanceServices implements FinanceServiceInterface {
           // Create payment record for this debt
           paymentsToCreate.push({
             ...data,
+            note: data.note,
             amount: amountToPaidForThisDebt, // This is the actual paid amount for this debt
             companyDebtId: debt.id, // Assuming you have a relation to the debt
+            currency: debt.currency,
           });
 
           // Calculate what remains unpaid on this debt after our payment
@@ -376,9 +378,18 @@ export class FinanceServices implements FinanceServiceInterface {
     }
   }
 
-  async listPayments() {
+  async listPayments({
+    fromDate,
+    toDate,
+  }: {
+    fromDate?: string;
+    toDate?: string;
+  }) {
     try {
-      const data = await getPaymentsDB();
+      const data = await getPaymentsDB({
+        fromDate,
+        toDate,
+      });
       if (!data || data.length === 0) {
         logger.warn("No Payments found.");
         return {
@@ -389,22 +400,59 @@ export class FinanceServices implements FinanceServiceInterface {
           },
         };
       }
+
+      // Calculate total debt for IQD and USD
+      const totalDebt = data.reduce(
+        (acc, item) => {
+          const currency = item.currency;
+          const amount = item.companyDebt.totalAmount || 0;
+          if (currency === "IQD") {
+            acc.IQD += amount;
+          } else if (currency === "USD") {
+            acc.USD += amount;
+          }
+          return acc;
+        },
+        { IQD: 0, USD: 0 }
+      );
+
+      // Calculate total paid for IQD and USD
+      const totalPaid = data.reduce(
+        (acc, item) => {
+          const currency = item.currency;
+          const amount =
+            (item.companyDebt.totalAmount || 0) -
+              (item.companyDebt.remainingAmount || 0) || 0;
+          if (currency === "IQD") {
+            acc.IQD += amount;
+          } else if (currency === "USD") {
+            acc.USD += amount;
+          }
+          return acc;
+        },
+        { IQD: 0, USD: 0 }
+      );
+
       // Ensure each payment object matches the expected shape
       const payments: payment[] = data.map((item) => ({
+        ...item,
         id: item.id,
         userId: item.userId,
         companyId: item.companyDebt.companyId,
+        companyDebtId: item.companyDebtId,
         invoiceNumber: item.invoiceNumber,
         amount: item.amount,
+        currency: item.currency,
+        note: item.note,
         createdAt: item.createdAt,
         updatedAt: item.updatedAt,
-        user: item.user,
+        user: item.user as User,
         company: item.companyDebt.company,
         paymentDate: item.paymentDate,
       }));
       return {
         success: true,
-        data: payments,
+        data: { payments, totalDebt, totalPaid },
       };
     } catch (error) {
       logger.error("Get Payments Service: ", error);
@@ -417,9 +465,18 @@ export class FinanceServices implements FinanceServiceInterface {
       };
     }
   }
-  async listCompanyDebts() {
+  async listCompanyDebts({
+    fromDate,
+    toDate,
+  }: {
+    fromDate?: string;
+    toDate?: string;
+  }) {
     try {
-      const data = await getCompanyDebtsDB(prisma, "desc");
+      const data = await getCompanyDebtsDB(prisma, "desc", {
+        fromDate,
+        toDate,
+      });
       if (!data) {
         logger.warn("No Company Debts found.");
         return {
@@ -431,9 +488,49 @@ export class FinanceServices implements FinanceServiceInterface {
         };
       }
 
+      // Calculate total debt for IQD and USD
+      const totalDebt = data.reduce(
+        (acc, item) => {
+          const currency = item.currency;
+          const amount = item.totalAmount || 0;
+          if (currency === "IQD") {
+            acc.IQD += amount;
+          } else if (currency === "USD") {
+            acc.USD += amount;
+          }
+          return acc;
+        },
+        { IQD: 0, USD: 0 }
+      );
+
+      console.table(data);
+
+      // Calculate total paid for IQD and USD
+      const totalPaid = data.reduce(
+        (acc, item) => {
+          const currency = item.currency;
+          const amount =
+            (item.totalAmount || 0) - (item.remainingAmount || 0) || 0;
+          if (currency === "IQD") {
+            acc.IQD += amount;
+          } else if (currency === "USD") {
+            acc.USD += amount;
+          }
+          return acc;
+        },
+        { IQD: 0, USD: 0 }
+      );
+
       return {
         success: true,
-        data,
+        data: {
+          companyDebt: data.map((debt) => ({
+            ...debt,
+            user: debt.user as User,
+          })),
+          totalDebt,
+          totalPaid,
+        },
       };
     } catch (error) {
       logger.error("Get Finances Service: ", error);
@@ -599,6 +696,19 @@ export class FinanceServices implements FinanceServiceInterface {
           error: {
             code: NOT_FOUND_STATUS,
             message: NOT_FOUND_ERR,
+          },
+        };
+      }
+      if (existingFinance.status !== "PENDING") {
+        logger.warn(
+          "Cannot delete a debt that has payments associated with it."
+        );
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message:
+              "Cannot delete a debt that has payments associated with it.",
           },
         };
       }

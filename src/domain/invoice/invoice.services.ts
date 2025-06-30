@@ -11,9 +11,9 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { Invoice, InvoiceSchema } from "../../types/common";
+import { Invoice, InvoiceSchema, PaymentMethod } from "../../types/common";
 import { getConstantsDB } from "../constants/constants.repository";
-import { findOrderByIdDB } from "../order/order.repository";
+import { findOrderByIdDB, getLatestOrderDB } from "../order/order.repository";
 import {
   getCustomerByIdDB,
   updateCustomerInfoDB,
@@ -27,11 +27,13 @@ import {
   updateInvoiceDB,
 } from "./invoice.repository";
 import { InvoiceServiceInterface } from "./invoice.types";
+import { printerService } from "../settings/printers/printer.services";
+import { findTableByIdDB, updateTableDB } from "../table/table.repository";
 
 export class InvoiceServices implements InvoiceServiceInterface {
-  async getInvoices() {
+  async getInvoices(filterBy?: PaymentMethod | undefined) {
     try {
-      const data = await getInvoicesDB();
+      const data = await getInvoicesDB(filterBy);
 
       if (!data || data.length === 0) {
         return {
@@ -321,8 +323,75 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
 
-      console.log("Data Invoice: ", JSON.stringify(data));
-      if (data.paid || data.paymentMethod === "DEBT") {
+      if (data.paymentMethod === "RECEIPT") {
+        const updatedInvoice = await prisma.$transaction(async (tx) => {
+          const printerServices = new printerService();
+          console.log(JSON.stringify(data));
+          if (!data.tableId) {
+            throw new Error("Table ID Not Provided.");
+          }
+          const order = await getLatestOrderDB(data.tableId);
+          const table = await findTableByIdDB(data.tableId);
+          const updatedInvoice = await updateInvoiceDB(
+            data.id as number,
+            {
+              paymentMethod: data.paymentMethod,
+            },
+            tx
+          );
+
+          if (!table) {
+            throw new Error("Table not found.");
+          }
+
+          const updatedTable = await updateTableDB(
+            data.tableId,
+            {
+              ...table,
+              name: table.name ?? "",
+              status: "RECEIPT",
+              capacity: table.capacity, // Ensure capacity is present and not undefined
+              available: table.available, // Ensure available is present
+              sortOrder: table.sortOrder, // Ensure sortOrder is present
+            },
+            tx
+          );
+
+          const customerInfo = data.customerInfoId
+            ? await getCustomerByIdDB(data.customerInfoId, tx)
+            : null;
+
+          const constants = await getConstantsDB(tx);
+          const total = customerInfo
+            ? calculateTotal(
+                order?.Invoice[0].invoices[0].subtotal || 0,
+                constants,
+                customerInfo.customerDiscount?.discount
+              )
+            : order?.Invoice[0].invoices[0].total;
+
+          await printerServices.print(1, {
+            orderId: order?.id,
+            items: order?.items.map((item) => ({
+              title_en: item.menuItem.title_en,
+              quantity: item.quantity,
+              price: item.price,
+            })),
+            customer: customerInfo
+              ? {
+                  name: customerInfo.name,
+                  discount: customerInfo.customerDiscount?.discount,
+                }
+              : undefined,
+            subtotal: order?.Invoice[0].invoices[0].subtotal,
+            tax: constants.tax?.rate,
+            service: constants.service?.amount,
+            total: order?.Invoice[0].invoices[0].total,
+          });
+        });
+      }
+
+      if (data.paymentMethod === "DEBT") {
         const updatedInvoice: Invoice = await prisma.$transaction(
           async (tx) => {
             const {
@@ -385,7 +454,10 @@ export class InvoiceServices implements InvoiceServiceInterface {
                 throw new Error("Customer Info not found.");
               }
               const customerInfoUpdate = await updateCustomerInfoDB(
-                { ...customerInfo, debt: total + (customerInfo.debt || 0) },
+                {
+                  ...customerInfo,
+                  debt: total + (customerInfo.debt || 0),
+                },
                 customerInfoId,
                 tx
               );

@@ -23,9 +23,12 @@ import {
 import { SupplySchema, SupplyServiceInterface } from "./supply.types";
 
 export class SupplyServices implements SupplyServiceInterface {
-  async getSupplies(q: string | undefined) {
+  async getSupplies(
+    q: string | undefined,
+    expired?: { expired?: boolean | undefined; days?: number | undefined }
+  ) {
     try {
-      const data = await getSuppliesDB(q);
+      const data = await getSuppliesDB(q, expired);
       if (!data) {
         logger.warn("Supplies Not Found");
         return {

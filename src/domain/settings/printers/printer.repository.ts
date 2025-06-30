@@ -1,4 +1,5 @@
 import prisma from "../../../infrastructure/database/prisma/client";
+import { TxClientType } from "../../../types/common";
 import { Printer } from "./printer.types";
 
 export async function getPrintersDB() {
@@ -13,8 +14,8 @@ export async function getPrinterByNameDB(name: string) {
   });
 }
 
-export async function getPrinterByIdDB(id: number) {
-  return prisma.printers.findFirst({
+export async function getPrinterByIdDB(id: number, client: TxClientType) {
+  return client.printers.findFirst({
     where: {
       id,
     },

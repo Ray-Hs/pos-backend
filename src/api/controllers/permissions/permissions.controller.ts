@@ -61,7 +61,24 @@ export class PermissionsController implements UserRolesControllerInterface {
     const id = parseInt(req.params?.id, 10);
     const data = req.body;
     const permissionsServices = new PermissionsServices();
-    const response = await permissionsServices.updateUserRole(id, data);
+    const response = await permissionsServices.updateUserRole(id, {
+      ...data,
+      permissions: data.permissions.map(
+        ({
+          createdAt,
+          updatedAt,
+          ...rest
+        }: {
+          createdAt: string | Date;
+          updatedAt: string | Date;
+          [key: string]: any;
+        }) => ({
+          ...rest,
+          createdAt: new Date(createdAt),
+          updatedAt: new Date(updatedAt),
+        })
+      ),
+    });
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

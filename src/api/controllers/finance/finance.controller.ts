@@ -9,8 +9,10 @@ import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 
 export class FinanceController implements FinanceControllerInterface {
   async listPayments(req: Request, res: Response) {
+    const fromDate = req.query.fromDate as string;
+    const toDate = req.query.toDate as string;
     const financeInstance = new FinanceServices();
-    const response = await financeInstance.listPayments();
+    const response = await financeInstance.listPayments({ fromDate, toDate });
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
@@ -76,8 +78,13 @@ export class FinanceController implements FinanceControllerInterface {
   }
 
   async listCompanyDebts(req: Request, res: Response) {
+    const fromDate = req.query.fromDate as string;
+    const toDate = req.query.toDate as string;
     const financeInstance = new FinanceServices();
-    const response = await financeInstance.listCompanyDebts();
+    const response = await financeInstance.listCompanyDebts({
+      fromDate,
+      toDate,
+    });
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

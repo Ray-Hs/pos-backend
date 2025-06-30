@@ -31,7 +31,10 @@ export const SupplySchema = z.object({
 export type Supply = z.infer<typeof SupplySchema>;
 
 export interface SupplyServiceInterface {
-  getSupplies: (q: string | undefined) => Promise<TResult<Supply[]>>;
+  getSupplies: (
+    q: string | undefined,
+    expired?: { expired?: boolean | undefined; days?: number | undefined }
+  ) => Promise<TResult<Supply[]>>;
   getSupplyById: (requestId: any) => Promise<TResult<Supply>>;
   createSupply: (requestData: any) => Promise<TResult<void>>;
   updateSupply: (requestId: any, requestData: any) => Promise<TResult<void>>;

@@ -1,4 +1,5 @@
 import { ZodError } from "zod";
+import prisma from "../../../infrastructure/database/prisma/client";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
@@ -10,7 +11,6 @@ import {
 } from "../../../infrastructure/utils/constants";
 import logger from "../../../infrastructure/utils/logger";
 import validateType from "../../../infrastructure/utils/validateType";
-import { TResult } from "../../../types/common";
 import {
   createCompanyInfoDB,
   createCustomerDiscountDB,
@@ -30,15 +30,12 @@ import {
   updateCustomerInfoDB,
 } from "./crm.repository";
 import {
-  CompanyInfo,
   CompanyInfoSchema,
   CRMServiceInterface,
   CustomerDiscount,
   CustomerDiscountSchema,
-  CustomerInfo,
   CustomerInfoSchema,
 } from "./crm.types";
-import prisma from "../../../infrastructure/database/prisma/client";
 
 export class CRMServices implements CRMServiceInterface {
   async getCustomers() {
@@ -54,6 +51,108 @@ export class CRMServices implements CRMServiceInterface {
           },
         };
       }
+      return { success: true, data };
+    } catch (error) {
+      logger.error("Get Customers: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+  async getCustomerDebts() {
+    try {
+      const customerInfos = await prisma.customerInfo.findMany({
+        include: {
+          Invoice: {
+            where: { isLatestVersion: true, paymentMethod: "DEBT" },
+            select: {
+              id: true,
+              subtotal: true,
+              total: true,
+              paymentMethod: true,
+              paid: true,
+              createdAt: true,
+              invoiceRef: {
+                select: {
+                  Order: {
+                    select: {
+                      items: {
+                        select: {
+                          menuItem: {
+                            select: {
+                              title_ar: true,
+                              title_en: true,
+                              title_ku: true,
+                              price: true,
+                              image: true,
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+          customerDiscount: {
+            select: {
+              discount: true,
+              customerInfo: {
+                select: {
+                  initialDebt: true,
+                },
+              },
+            },
+          },
+        },
+      });
+      if (!customerInfos || customerInfos.length === 0) {
+        logger.warn("Customers Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      const data = customerInfos.map((customer) => {
+        return {
+          customer: {
+            id: customer.id,
+            name: customer.name,
+            phoneNumber: customer.phoneNumber,
+            email: customer.email,
+            debt: customer.debt,
+            initialDebt: customer.initialDebt,
+            code: customer.code,
+            note: customer.note,
+            discount: customer.customerDiscount?.discount,
+          },
+          invoices: customer.Invoice.map((invoice) => ({
+            id: invoice.id,
+            subtotal: invoice.subtotal,
+            total: invoice.total,
+            paymentMethod: invoice.paymentMethod,
+            paid: invoice.paid,
+            createdAt: invoice.createdAt,
+            items: invoice.invoiceRef.Order?.items.map((item) => ({
+              title_en: item.menuItem.title_en,
+              title_ar: item.menuItem.title_ar,
+              title_ku: item.menuItem.title_ku,
+              price: item.menuItem.price,
+              image: item.menuItem.image,
+            })),
+          })),
+        };
+      });
+
       return { success: true, data };
     } catch (error) {
       logger.error("Get Customers: ", error);

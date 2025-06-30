@@ -38,7 +38,7 @@ export async function getCustomerByIdDB(
 
 export async function createCustomerInfoDB(data: CustomerInfo) {
   return prisma.$transaction(async (tx) => {
-    const { CRMId, id, customerDiscount, ...rest } = data;
+    const { CRMId, id, debt, customerDiscount, ...rest } = data;
     const isCRMExist = await tx.cRM.findFirst();
     const crm = isCRMExist ?? (await tx.cRM.create({}));
 
@@ -46,6 +46,8 @@ export async function createCustomerInfoDB(data: CustomerInfo) {
       data: {
         ...rest,
         CRMId: crm.id,
+        debt,
+        initialDebt: debt,
       },
     });
   });

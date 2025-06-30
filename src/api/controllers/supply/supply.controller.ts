@@ -9,9 +9,18 @@ import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 
 export class SupplyController implements SupplyControllerInterface {
   async getSupplies(req: Request, res: Response) {
+    const expired = req.query.expired
+      ? req.query.expired === "true"
+        ? true
+        : false
+      : undefined;
+    const days = parseInt((req.query.days as string) ?? 7, 10);
     const q = req.query.q;
     const supplyService = new SupplyServices();
-    const response = await supplyService.getSupplies(q?.toString() || "");
+    const response = await supplyService.getSupplies(q?.toString(), {
+      expired,
+      days,
+    });
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

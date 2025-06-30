@@ -1,6 +1,11 @@
 import { Request, Response } from "express";
 import { z } from "zod";
-import { TResult } from "../../../types/common";
+import {
+  InvoiceRef,
+  InvoiceSchema,
+  OrderItemSchema,
+  TResult,
+} from "../../../types/common";
 
 export const Currency = z.enum(["IQD", "USD"]);
 
@@ -15,6 +20,31 @@ export const CompanyInfoSchema = z.object({
   CRMId: z.number().nullable().optional(),
 });
 
+export const CustomerDiscountSchema = z.object({
+  id: z.number().optional(),
+  name: z.string(),
+  phoneNumber: z.string().nullable().optional(),
+  discount: z.number(),
+  isActive: z.boolean().nullable().optional(),
+  customerInfoId: z.number().nullable().optional(),
+  CRMId: z.number().nullable().optional(),
+});
+
+export const CustomerInfoSchema = z.object({
+  id: z.number().optional(),
+  code: z.string().nullable().optional(),
+  name: z.string(),
+  phoneNumber: z.string(),
+  email: z.string().nullable().optional(),
+  debt: z.number().nullable().optional(),
+  initialDebt: z.number().nullable().optional(),
+  note: z.string().nullable().optional(),
+  CRMId: z.number().nullable().optional(),
+  customerDiscount: CustomerDiscountSchema.nullable().optional(),
+});
+
+export type CustomerInfo = z.infer<typeof CustomerInfoSchema>;
+export type CustomerDiscount = z.infer<typeof CustomerDiscountSchema>;
 export type CompanyInfo = z.infer<typeof CompanyInfoSchema>;
 
 export interface CRMServiceInterface {
@@ -24,6 +54,9 @@ export interface CRMServiceInterface {
   createCustomer(requestData: any): Promise<TResult<void>>;
   updateCustomer(requestData: any, requestId: any): Promise<TResult<void>>;
   deleteCustomer(requestId: any): Promise<TResult<void>>;
+
+  //? Customer Debt
+  getCustomerDebts: () => Promise<TResult<any[]>>;
 
   getCompanies(): Promise<TResult<CompanyInfo[]>>;
   getCompanyById(requestId: any): Promise<TResult<CompanyInfo>>;
@@ -72,29 +105,9 @@ export interface CRMControllerInterface {
   createCustomerDiscount(req: Request, res: Response): Promise<Response<void>>;
   updateCustomerDiscount(req: Request, res: Response): Promise<Response<void>>;
   deleteCustomerDiscount(req: Request, res: Response): Promise<Response<void>>;
+
+  getCustomerDebts: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<any[]>>>;
 }
-
-export const CustomerDiscountSchema = z.object({
-  id: z.number().optional(),
-  name: z.string(),
-  phoneNumber: z.string().nullable().optional(),
-  discount: z.number(),
-  isActive: z.boolean().nullable().optional(),
-  customerInfoId: z.number().nullable().optional(),
-  CRMId: z.number().nullable().optional(),
-});
-
-export const CustomerInfoSchema = z.object({
-  id: z.number().optional(),
-  code: z.string().nullable().optional(),
-  name: z.string(),
-  phoneNumber: z.string(),
-  email: z.string().nullable().optional(),
-  debt: z.number().nullable().optional(),
-  note: z.string().nullable().optional(),
-  CRMId: z.number().nullable().optional(),
-  customerDiscount: CustomerDiscountSchema.nullable().optional(),
-});
-
-export type CustomerInfo = z.infer<typeof CustomerInfoSchema>;
-export type CustomerDiscount = z.infer<typeof CustomerDiscountSchema>;
