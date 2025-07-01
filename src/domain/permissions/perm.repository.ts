@@ -1,5 +1,5 @@
 import prisma from "../../infrastructure/database/prisma/client";
-import { UserRole } from "../../types/common";
+import { TxClientType, UserRole } from "../../types/common";
 
 export async function getUserRolesDB() {
   return prisma.userRole.findMany({
@@ -18,40 +18,18 @@ export async function findUserRoleByIdDB(id: number) {
   });
 }
 
-export async function createUserRoleDB(data: UserRole) {
-  const { permissions, permIds, ...rest } = data;
+export async function createUserRoleDB(data: UserRole, client: TxClientType) {
+  const { permissions, name, description } = data;
 
-  return prisma.userRole.create({
+  return client.userRole.create({
     data: {
-      ...rest,
-      permissions: !permIds
-        ? {
-            connectOrCreate: permissions?.map((perm) => ({
-              where: { key: perm.key },
-              create: { ...perm },
-            })),
-          }
-        : {
-            connect: permIds.map((id) => ({ id })),
-          },
-    },
-    include: {
-      permissions: true,
-    },
-  });
-}
-
-export async function updateUserRoleDB(id: number, data: UserRole) {
-  const { permissions, permIds, ...rest } = data;
-
-  return prisma.userRole.update({
-    where: {
-      id,
-    },
-    data: {
-      ...rest,
+      name,
+      description,
       permissions: {
-        set: permIds?.map((permId) => ({ id: permId })),
+        connectOrCreate: permissions?.map((perm) => ({
+          where: { key: perm.key },
+          create: { ...perm },
+        })),
       },
     },
     include: {
@@ -60,8 +38,31 @@ export async function updateUserRoleDB(id: number, data: UserRole) {
   });
 }
 
-export async function deleteUserRoleDB(id: number) {
-  return prisma.userRole.delete({
+export async function updateUserRoleDB(id: number, data: UserRole) {
+  const { permissions, ...rest } = data;
+
+  return prisma.userRole.update({
+    where: {
+      id,
+    },
+    data: {
+      ...rest,
+      permissions: {
+        set:
+          permissions?.map(({ createdAt, updatedAt, ...perm }) => ({
+            ...perm,
+            key: perm.key,
+          })) || [],
+      },
+    },
+    include: {
+      permissions: true,
+    },
+  });
+}
+
+export async function deleteUserRoleDB(id: number, client: TxClientType) {
+  return client.userRole.delete({
     where: {
       id,
     },

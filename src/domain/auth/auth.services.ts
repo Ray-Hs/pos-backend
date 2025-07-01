@@ -179,7 +179,7 @@ class AuthService implements AuthServiceInterface {
       }
 
       const password = hash(response.password);
-      const createdUser = await createUserDB(response);
+      const createdUser = await createUserDB({ ...response, password });
 
       return { success: true, message: CREATED_SUCCESS };
     } catch (error) {

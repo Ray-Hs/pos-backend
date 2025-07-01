@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PaymentStatus, Prisma, PrismaClient } from "@prisma/client";
 import { DefaultArgs } from "@prisma/client/runtime/library";
 import { z } from "zod";
 import { BrandObject } from "../domain/settings/branding/brand.types";
@@ -8,6 +8,7 @@ import {
   CustomerInfoSchema,
 } from "../domain/settings/crm/crm.types";
 import { PrinterObjectSchema } from "../domain/settings/printers/printer.types";
+import { PaymentEnumSchema } from "../domain/finance/finance.types";
 
 export const PermissionSchema = z.object({
   id: z.number().optional(),
@@ -23,7 +24,6 @@ export const UserRoleSchema = z.object({
   id: z.number().optional(),
   name: z.string(),
   description: z.string().nullable(),
-  permIds: z.array(z.number()).optional(),
   permissions: z.array(PermissionSchema).optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
@@ -168,6 +168,7 @@ export const InvoiceSchema = z.object({
   subtotal: z.number().optional(),
   paymentMethod: PaymentMethodEnum.nullable().optional(),
   paid: z.boolean().optional(),
+  status: PaymentEnumSchema.optional().default("PENDING"),
   userId: z.number().int().optional(),
   tableId: z.number().int().nullable().optional(),
   taxId: z.number().int().nullable().optional(),

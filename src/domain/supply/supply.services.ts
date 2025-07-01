@@ -6,6 +6,7 @@ import {
   BAD_REQUEST_STATUS,
   INTERNAL_SERVER_ERR,
   INTERNAL_SERVER_STATUS,
+  LIMIT_CONSTANT,
   NOT_FOUND_ERR,
   NOT_FOUND_STATUS,
 } from "../../infrastructure/utils/constants";
@@ -23,9 +24,19 @@ import {
 import { SupplySchema, SupplyServiceInterface } from "./supply.types";
 
 export class SupplyServices implements SupplyServiceInterface {
-  async getSupplies(q: string | undefined) {
+  async getSupplies(
+    q: string | undefined,
+    expired?: {
+      expired?: boolean | undefined;
+      days?: number | undefined;
+    },
+    pagination: {
+      limit?: number;
+      page?: number;
+    } = { page: 1, limit: LIMIT_CONSTANT }
+  ) {
     try {
-      const data = await getSuppliesDB(q);
+      const data = await getSuppliesDB(q, expired, pagination);
       if (!data) {
         logger.warn("Supplies Not Found");
         return {
@@ -36,7 +47,11 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
-      return { success: true, data };
+      return {
+        success: true,
+        data,
+        pages: Math.ceil(data.length / (pagination.limit || LIMIT_CONSTANT)),
+      };
     } catch (error) {
       logger.error("Get Supplies: ", error);
       return {

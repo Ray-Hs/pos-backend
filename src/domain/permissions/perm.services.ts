@@ -108,7 +108,7 @@ export default class UserRoleService implements UserRolesServiceInterface {
           },
         };
       }
-      // Check if a user role with the same name already exists
+
       const existingRole = await prisma.userRole.findUnique({
         where: {
           name: data.name,
@@ -119,7 +119,8 @@ export default class UserRoleService implements UserRolesServiceInterface {
         throw new Error("User role with this name already exists.");
       }
 
-      await createUserRoleDB(data);
+      await createUserRoleDB(data, prisma);
+
       return {
         success: true,
         message: "Created User Role Successfully",
@@ -219,7 +220,7 @@ export default class UserRoleService implements UserRolesServiceInterface {
           },
         };
       }
-      await deleteUserRoleDB(response.id);
+      await deleteUserRoleDB(response.id, prisma);
       return {
         success: true,
         message: "Deleted UserRole Successfully",

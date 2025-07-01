@@ -1,23 +1,59 @@
 import prisma from "../../infrastructure/database/prisma/client";
+import { LIMIT_CONSTANT } from "../../infrastructure/utils/constants";
 import { TxClientType } from "../../types/common";
 import { companyDebt, payment } from "./finance.types";
 
 // Get all company debts
 export const getCompanyDebtsDB = async (
   client: TxClientType,
-  filter: "asc" | "desc"
+  filter: {
+    order: "asc" | "desc";
+    page: number;
+  },
+  dates?: { fromDate?: string; toDate?: string } | undefined
 ) => {
+  const normalizeDate = (date?: string, endOfDay = false) =>
+    date
+      ? new Date(
+          endOfDay
+            ? `${date.split("T")[0]}T23:59:59.999Z`
+            : `${date.split("T")[0]}T00:00:00.000Z`
+        )
+      : undefined;
+
+  const from = normalizeDate(dates?.fromDate);
+  const to = normalizeDate(dates?.toDate, true);
+
+  const whereClause =
+    from || to
+      ? {
+          createdAt: {
+            ...(from && { gte: from }),
+            ...(to && { lte: to }),
+          },
+        }
+      : {};
   return client.companyDebt.findMany({
+    where: whereClause,
     include: {
+      user: {
+        select: {
+          role: true,
+          username: true,
+        },
+      },
       company: {
         select: {
           name: true,
           phoneNumber: true,
           currency: true,
+          code: true,
         },
       },
     },
-    orderBy: { createdAt: filter },
+    take: LIMIT_CONSTANT,
+    skip: Math.abs((filter.page - 1) * LIMIT_CONSTANT),
+    orderBy: { createdAt: filter.order },
   });
 };
 // Get all company debts
@@ -46,7 +82,7 @@ export const createCompanyDebtDB = async (
   data: companyDebt,
   client: TxClientType
 ) => {
-  const { company, id: _, remainingAmount, companyId, user, ...rest } = data;
+  const { company, id: _, remainingAmount, companyId, ...rest } = data;
   return client.companyDebt.create({
     data: {
       ...rest,
@@ -62,7 +98,7 @@ export const updateCompanyDebtDB = async (
   data: companyDebt,
   client: TxClientType
 ) => {
-  const { company, user, status, ...rest } = data;
+  const { company, status, ...rest } = data;
   return client.companyDebt.update({
     where: { id },
     data: {
@@ -84,18 +120,54 @@ export const deleteCompanyDebtDB = async (id: number) => {
  */
 
 // Get all payments
-export const getPaymentsDB = async () => {
+export const getPaymentsDB = async ({
+  fromDate,
+  toDate,
+  page,
+}: {
+  fromDate?: string;
+  toDate?: string;
+  page: number;
+}) => {
+  const normalizeDate = (date?: string, endOfDay = false) =>
+    date
+      ? new Date(
+          endOfDay
+            ? `${date.split("T")[0]}T23:59:59.999Z`
+            : `${date.split("T")[0]}T00:00:00.000Z`
+        )
+      : undefined;
+
+  const from = normalizeDate(fromDate);
+  const to = normalizeDate(toDate, true);
+
+  const whereClause =
+    from || to
+      ? {
+          paymentDate: {
+            ...(from && { gte: from }),
+            ...(to && { lte: to }),
+          },
+        }
+      : {};
   return prisma.payment.findMany({
+    where: whereClause,
     orderBy: { createdAt: "desc" },
     include: {
-      user: true,
-      companyDebt: {
+      user: {
         select: {
-          companyId: true,
+          role: true,
+          username: true,
+        },
+      },
+      companyDebt: {
+        include: {
           company: true,
         },
       },
     },
+    take: LIMIT_CONSTANT,
+    skip: Math.abs((page - 1) * LIMIT_CONSTANT),
   });
 };
 
@@ -115,7 +187,7 @@ export const findPaymentByIdDB = async (id: number) => {
 
 // Create payment
 export const createPaymentDB = async (data: payment, client: TxClientType) => {
-  const { id: _, user, companyDebt, companyId, ...rest } = data;
+  const { id: _, companyDebt, companyId, ...rest } = data;
   return client.payment.create({
     data: {
       ...rest,
@@ -130,7 +202,7 @@ export const updatePaymentDB = async (
   data: payment,
   client: TxClientType
 ) => {
-  const { user, companyDebt, ...rest } = data;
+  const { companyDebt, ...rest } = data;
   return client.payment.update({
     where: { id },
     data: {

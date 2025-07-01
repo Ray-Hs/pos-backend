@@ -1,9 +1,10 @@
 import { ZodError } from "zod";
 import prisma from "../../../infrastructure/database/prisma/client";
+import { TxClientType } from "../../../types/common";
 import { Brand } from "./brand.types";
 
-export async function getBrandDB() {
-  return prisma.branding.findFirst();
+export async function getBrandDB(client: TxClientType) {
+  return client.branding.findFirst();
 }
 
 export async function createBrandDB(data: Brand) {

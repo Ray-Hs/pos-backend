@@ -12,6 +12,9 @@ export function hash(
 
 export function verifyHash(contentToHash: string, storedHash: string) {
   const [hash, salt] = storedHash.split(":");
+  if (!hash || !salt) {
+    throw new Error("Invalid stored hash format");
+  }
   const hashedPassword = pbkdf2Sync(
     contentToHash,
     salt,

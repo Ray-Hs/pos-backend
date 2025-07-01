@@ -1,13 +1,215 @@
 import prisma from "../../../infrastructure/database/prisma/client";
+import { LIMIT_CONSTANT } from "../../../infrastructure/utils/constants";
 import { TxClientType } from "../../../types/common";
-import { CompanyInfo, CustomerDiscount, CustomerInfo } from "./crm.types";
+import {
+  CompanyInfo,
+  CustomerDiscount,
+  CustomerInfo,
+  CustomerPayment,
+} from "./crm.types";
 
 //? Customer Info
-export async function getCustomersInfoDB() {
+export async function getCustomersInfoDB(
+  pagination: { limit?: number; page?: number } = {
+    page: 1,
+    limit: LIMIT_CONSTANT,
+  }
+) {
   return prisma.customerInfo.findMany({
     include: {
       customerDiscount: true,
     },
+  });
+}
+
+//? Customer Payment
+export async function createCustomerPaymentDB(
+  data: CustomerPayment,
+  client: TxClientType = prisma
+) {
+  return prisma.$transaction(async (tx) => {
+    const {
+      customerInfoId,
+      invoiceId,
+      paymentDate,
+      invoiceNumber,
+      amount,
+      note,
+    } = data;
+
+    // Get customer info
+    const customerInfo = await tx.customerInfo.findUnique({
+      where: { id: customerInfoId },
+      select: { initialDebt: true, debt: true },
+    });
+
+    if (!customerInfo) {
+      throw new Error("Customer not found");
+    }
+
+    // Helper function to update customer debt
+    const updateCustomerDebt = async () => {
+      // Simply subtract the payment amount from the current debt
+      const currentDebt = customerInfo.debt || 0;
+      const newDebt = Math.max(0, currentDebt - amount); // Ensure debt doesn't go negative
+
+      await tx.customerInfo.update({
+        where: { id: customerInfoId },
+        data: {
+          debt: newDebt,
+        },
+      });
+    };
+
+    // If specific invoice is provided, handle single invoice payment
+    if (invoiceId) {
+      const invoice = await tx.invoice.findFirst({
+        where: { id: invoiceId },
+      });
+
+      if (!invoice) {
+        throw new Error("Invoice not found");
+      }
+
+      if (invoice.paid) {
+        throw new Error("Invoice already paid");
+      }
+
+      // Create payment record
+      const payment = await tx.customerPayment.create({
+        data: {
+          paymentDate: paymentDate || new Date(),
+          customerInfoId,
+          invoiceId: invoiceId!,
+          invoiceNumber,
+          amount,
+          note,
+        },
+      });
+
+      // Update invoice status
+      if (amount >= invoice.total) {
+        // Fully paid
+        await tx.invoice.update({
+          where: { id: invoiceId },
+          data: {
+            paid: true,
+            status: "PAID",
+          },
+        });
+      } else {
+        // Partially paid
+        await tx.invoice.update({
+          where: { id: invoiceId },
+          data: {
+            paid: false,
+            status: "PARTIAL",
+            total: invoice.total - amount,
+          },
+        });
+      }
+
+      // Update customer debt
+      await updateCustomerDebt();
+
+      return payment;
+    }
+
+    // Handle multiple invoice payments (bulk payment)
+    const customerInvoices = await tx.invoice.findMany({
+      where: {
+        customerInfoId,
+        paid: false,
+        paymentMethod: "DEBT",
+      },
+      orderBy: { createdAt: "asc" }, // Pay oldest debts first
+    });
+
+    if (!customerInvoices || customerInvoices.length === 0) {
+      throw new Error("No unpaid invoices found for this customer");
+    }
+
+    let availablePaymentAmount = amount;
+    const paymentsToCreate = [];
+    let totalDebtReduction = 0;
+
+    // Process invoices starting from the oldest
+    for (const invoice of customerInvoices) {
+      if (availablePaymentAmount <= 0) break;
+
+      const amountToPay = Math.min(availablePaymentAmount, invoice.total);
+
+      // Create payment record
+      paymentsToCreate.push({
+        customerInfoId,
+        invoiceId: invoice.id,
+        invoiceNumber,
+        amount: amountToPay,
+        note,
+        paymentDate: paymentDate || new Date(),
+      });
+
+      // Update invoice status
+      if (amountToPay >= invoice.total) {
+        await tx.invoice.update({
+          where: { id: invoice.id },
+          data: {
+            paid: true,
+            status: "PAID",
+          },
+        });
+      } else {
+        await tx.invoice.update({
+          where: { id: invoice.id },
+          data: {
+            paid: false,
+            status: "PARTIAL",
+            total: invoice.total - amountToPay,
+          },
+        });
+      }
+
+      totalDebtReduction += amountToPay;
+      availablePaymentAmount -= amountToPay;
+    }
+
+    // Create all payment records
+    const createdPayments = [];
+    for (const paymentData of paymentsToCreate) {
+      const payment = await tx.customerPayment.create({
+        data: paymentData,
+      });
+      createdPayments.push(payment);
+    }
+
+    // Update customer debt by reducing it by the total amount paid
+    const currentDebt = customerInfo.debt || 0;
+    const newDebt = Math.max(0, currentDebt - totalDebtReduction);
+
+    await tx.customerInfo.update({
+      where: { id: customerInfoId },
+      data: {
+        debt: newDebt,
+      },
+    });
+
+    return createdPayments;
+  });
+}
+
+export async function getCustomerPaymentsByCustomerIdDB(
+  customerInfoId: number
+) {
+  return prisma.customerPayment.findMany({
+    where: { customerInfoId },
+    include: {
+      invoice: {
+        select: {
+          total: true,
+        },
+      },
+    },
+    orderBy: { createdAt: "desc" },
   });
 }
 
@@ -38,7 +240,7 @@ export async function getCustomerByIdDB(
 
 export async function createCustomerInfoDB(data: CustomerInfo) {
   return prisma.$transaction(async (tx) => {
-    const { CRMId, id, customerDiscount, ...rest } = data;
+    const { CRMId, id, debt, customerDiscount, ...rest } = data;
     const isCRMExist = await tx.cRM.findFirst();
     const crm = isCRMExist ?? (await tx.cRM.create({}));
 
@@ -46,6 +248,8 @@ export async function createCustomerInfoDB(data: CustomerInfo) {
       data: {
         ...rest,
         CRMId: crm.id,
+        debt,
+        initialDebt: debt,
       },
     });
   });
@@ -80,8 +284,16 @@ export async function deleteCustomerInfoDB(id: number) {
 }
 
 //? Company Info
-export async function getCompaniesInfoDB() {
-  return prisma.companyInfo.findMany();
+export async function getCompaniesInfoDB(
+  pagination: { page: number; limit: number } = {
+    page: 1,
+    limit: LIMIT_CONSTANT,
+  }
+) {
+  return prisma.companyInfo.findMany({
+    take: pagination.limit,
+    skip: Math.abs((pagination.page - 1) * pagination.limit),
+  });
 }
 
 export async function getCompanyInfoByIdDB(id: number, client: TxClientType) {
@@ -132,7 +344,13 @@ export async function deleteCompanyInfoDB(id: number) {
 }
 
 //? Customer Discount
-export async function getCustomerDiscountDB(filter?: { isActive?: boolean }) {
+export async function getCustomerDiscountDB(
+  filter: { isActive?: boolean; page?: number } = { page: 1 },
+  pagination: { page: number; limit: number } = {
+    page: 1,
+    limit: LIMIT_CONSTANT,
+  }
+) {
   const whereClause =
     filter !== undefined
       ? {
@@ -144,6 +362,8 @@ export async function getCustomerDiscountDB(filter?: { isActive?: boolean }) {
 
   return prisma.customerDiscount.findMany({
     where: whereClause,
+    take: pagination.limit,
+    skip: Math.abs((pagination.page - 1) * pagination.limit),
   });
 }
 

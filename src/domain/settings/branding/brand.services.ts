@@ -17,11 +17,12 @@ import {
   updateBrandDB,
 } from "./brand.repository";
 import { BrandObject, BrandServiceInterface } from "./brand.types";
+import prisma from "../../../infrastructure/database/prisma/client";
 
 export class BrandServices implements BrandServiceInterface {
   async getBrand() {
     try {
-      const data = await getBrandDB();
+      const data = await getBrandDB(prisma);
 
       if (!data) {
         logger.warn("Brand Not Found");

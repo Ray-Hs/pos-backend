@@ -56,3 +56,6 @@ export const JWT_EXPIRE = "1d";
 
 // Invoice
 export const INVOICE_NOT_FOUND = "INVOICE_NOT_FOUND";
+
+// Pagination
+export const LIMIT_CONSTANT = 20;

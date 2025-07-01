@@ -1,11 +1,23 @@
 import prisma from "../../infrastructure/database/prisma/client";
-import { Invoice, TxClientType } from "../../types/common";
-import { CustomerDiscount } from "../settings/crm/crm.types";
+import { LIMIT_CONSTANT } from "../../infrastructure/utils/constants";
+import { Invoice, PaymentMethod, TxClientType } from "../../types/common";
 
 // Get all invoices with optional pagination
-export const getInvoicesDB = async () => {
+export const getInvoicesDB = async (
+  filterBy?: PaymentMethod | undefined,
+  page: number = 1
+) => {
   return prisma.invoice.findMany({
+    where: filterBy
+      ? {
+          paymentMethod: {
+            equals: filterBy || "CASH",
+          },
+        }
+      : {},
     orderBy: { createdAt: "desc" },
+    take: LIMIT_CONSTANT,
+    skip: Math.abs((page - 1) * LIMIT_CONSTANT),
   });
 };
 
