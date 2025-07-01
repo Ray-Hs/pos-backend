@@ -45,12 +45,7 @@ import {
 } from "../../../infrastructure/utils/calculateSkip";
 
 export class CRMServices implements CRMServiceInterface {
-  async getCustomers(
-    pagination: { limit?: number; page?: number } = {
-      page: 1,
-      limit: LIMIT_CONSTANT,
-    }
-  ) {
+  async getCustomers(pagination?: { limit?: number; page?: number }) {
     try {
       const data = await getCustomersInfoDB(pagination);
       if (!data) {
@@ -457,7 +452,7 @@ export class CRMServices implements CRMServiceInterface {
     }
   }
 
-  async getCompanies(pagination: { page: number; limit: number }) {
+  async getCompanies(pagination?: { page: number; limit: number }) {
     try {
       const data = await getCompaniesInfoDB(pagination);
       if (!data) {

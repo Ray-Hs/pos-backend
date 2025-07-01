@@ -1,4 +1,8 @@
 import prisma from "../../../infrastructure/database/prisma/client";
+import {
+  calculateSkip,
+  Take,
+} from "../../../infrastructure/utils/calculateSkip";
 import { LIMIT_CONSTANT } from "../../../infrastructure/utils/constants";
 import { TxClientType } from "../../../types/common";
 import {
@@ -9,16 +13,16 @@ import {
 } from "./crm.types";
 
 //? Customer Info
-export async function getCustomersInfoDB(
-  pagination: { limit?: number; page?: number } = {
-    page: 1,
-    limit: LIMIT_CONSTANT,
-  }
-) {
+export async function getCustomersInfoDB(pagination?: {
+  limit?: number;
+  page?: number;
+}) {
   return prisma.customerInfo.findMany({
     include: {
       customerDiscount: true,
     },
+    take: Take(pagination?.limit),
+    skip: calculateSkip(pagination?.page, pagination?.limit),
   });
 }
 
@@ -284,15 +288,13 @@ export async function deleteCustomerInfoDB(id: number) {
 }
 
 //? Company Info
-export async function getCompaniesInfoDB(
-  pagination: { page: number; limit: number } = {
-    page: 1,
-    limit: LIMIT_CONSTANT,
-  }
-) {
+export async function getCompaniesInfoDB(pagination?: {
+  page: number;
+  limit: number;
+}) {
   return prisma.companyInfo.findMany({
-    take: pagination.limit,
-    skip: Math.abs((pagination.page - 1) * pagination.limit),
+    take: Take(pagination?.limit),
+    skip: calculateSkip(pagination?.page, pagination?.limit),
   });
 }
 

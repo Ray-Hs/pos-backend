@@ -48,6 +48,11 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
+      prisma.supply.aggregate({
+        _count: {
+          _all: true,
+        },
+      });
       return {
         success: true,
         data,
