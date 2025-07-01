@@ -1,4 +1,5 @@
 import prisma from "../../infrastructure/database/prisma/client";
+import { calculateSkip, Take } from "../../infrastructure/utils/calculateSkip";
 import { LIMIT_CONSTANT } from "../../infrastructure/utils/constants";
 import { TxClientType } from "../../types/common";
 import { Supply } from "./supply.types";
@@ -6,10 +7,7 @@ import { addDays } from "date-fns";
 export async function getSuppliesDB(
   q?: string | undefined,
   expired?: { expired?: boolean | undefined; days?: number | undefined },
-  pagination: { page?: number; limit?: number } = {
-    page: 1,
-    limit: LIMIT_CONSTANT,
-  }
+  pagination?: { page?: number; limit?: number }
 ) {
   //? Get supply by company name, product name, invoice number, and company code (case-insensitive)
   const soonDays = expired?.days; // Number of days to consider as "soon"
@@ -69,10 +67,8 @@ export async function getSuppliesDB(
   return prisma.supply.findMany({
     include: { company: true },
     where: whereClause,
-    take: pagination.limit || LIMIT_CONSTANT,
-    skip: Math.abs(
-      ((pagination.page || 1) - 1) * (pagination.limit || LIMIT_CONSTANT)
-    ),
+    take: Take(pagination?.limit),
+    skip: calculateSkip(pagination?.page, pagination?.limit),
   });
 }
 

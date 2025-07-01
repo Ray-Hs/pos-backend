@@ -22,18 +22,19 @@ import {
   updateSupplyDB,
 } from "./supply.repository";
 import { SupplySchema, SupplyServiceInterface } from "./supply.types";
+import { calculatePages } from "../../infrastructure/utils/calculateSkip";
 
 export class SupplyServices implements SupplyServiceInterface {
   async getSupplies(
     q: string | undefined,
+    pagination?: {
+      limit?: number;
+      page?: number;
+    },
     expired?: {
       expired?: boolean | undefined;
       days?: number | undefined;
-    },
-    pagination: {
-      limit?: number;
-      page?: number;
-    } = { page: 1, limit: LIMIT_CONSTANT }
+    }
   ) {
     try {
       const data = await getSuppliesDB(q, expired, pagination);
@@ -50,7 +51,7 @@ export class SupplyServices implements SupplyServiceInterface {
       return {
         success: true,
         data,
-        pages: Math.ceil(data.length / (pagination.limit || LIMIT_CONSTANT)),
+        pages: calculatePages(data, pagination?.limit),
       };
     } catch (error) {
       logger.error("Get Supplies: ", error);

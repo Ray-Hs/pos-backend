@@ -22,12 +22,12 @@ export class SupplyController implements SupplyControllerInterface {
     const response = await supplyService.getSupplies(
       q?.toString(),
       {
-        expired,
-        days,
-      },
-      {
         limit,
         page,
+      },
+      {
+        expired,
+        days,
       }
     );
 

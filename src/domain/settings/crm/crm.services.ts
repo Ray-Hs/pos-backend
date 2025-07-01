@@ -38,6 +38,11 @@ import {
   CustomerInfoSchema,
   CustomerPaymentRequestSchema,
 } from "./crm.types";
+import {
+  calculatePages,
+  calculateSkip,
+  Take,
+} from "../../../infrastructure/utils/calculateSkip";
 
 export class CRMServices implements CRMServiceInterface {
   async getCustomers(
@@ -133,7 +138,7 @@ export class CRMServices implements CRMServiceInterface {
     }
   }
 
-  async getCustomerDebts() {
+  async getCustomerDebts(pagination: { page: number; limit: number }) {
     try {
       const customerInfos = await prisma.customerInfo.findMany({
         include: {
@@ -180,6 +185,8 @@ export class CRMServices implements CRMServiceInterface {
             },
           },
         },
+        take: Take(pagination.limit),
+        skip: calculateSkip(pagination.page, pagination.limit),
       });
       if (!customerInfos || customerInfos.length === 0) {
         logger.warn("Customers Not Found");
@@ -223,7 +230,11 @@ export class CRMServices implements CRMServiceInterface {
         };
       });
 
-      return { success: true, data };
+      return {
+        success: true,
+        data,
+        pages: calculatePages(data, pagination.limit),
+      };
     } catch (error) {
       logger.error("Get Customers: ", error);
       return {
