@@ -1,12 +1,8 @@
 import prisma from "../../infrastructure/database/prisma/client";
-import { LIMIT_CONSTANT } from "../../infrastructure/utils/constants";
 import { Invoice, PaymentMethod, TxClientType } from "../../types/common";
 
 // Get all invoices with optional pagination
-export const getInvoicesDB = async (
-  filterBy?: PaymentMethod | undefined,
-  page: number = 1
-) => {
+export const getInvoicesDB = async (filterBy?: PaymentMethod | undefined) => {
   return prisma.invoice.findMany({
     where: filterBy
       ? {
@@ -16,8 +12,6 @@ export const getInvoicesDB = async (
         }
       : {},
     orderBy: { createdAt: "desc" },
-    take: LIMIT_CONSTANT,
-    skip: Math.abs((page - 1) * LIMIT_CONSTANT),
   });
 };
 

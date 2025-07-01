@@ -381,17 +381,14 @@ export class FinanceServices implements FinanceServiceInterface {
   async listPayments({
     fromDate,
     toDate,
-    page,
   }: {
     fromDate?: string;
     toDate?: string;
-    page?: number;
   }) {
     try {
       const data = await getPaymentsDB({
         fromDate,
         toDate,
-        page: page || 0,
       });
       if (!data || data.length === 0) {
         logger.warn("No Payments found.");
@@ -471,21 +468,15 @@ export class FinanceServices implements FinanceServiceInterface {
   async listCompanyDebts({
     fromDate,
     toDate,
-    page,
   }: {
     fromDate?: string;
     toDate?: string;
-    page?: number;
   }) {
     try {
-      const data = await getCompanyDebtsDB(
-        prisma,
-        { page: page || 1, order: "desc" },
-        {
-          fromDate,
-          toDate,
-        }
-      );
+      const data = await getCompanyDebtsDB(prisma, "desc", {
+        fromDate,
+        toDate,
+      });
       if (!data) {
         logger.warn("No Company Debts found.");
         return {

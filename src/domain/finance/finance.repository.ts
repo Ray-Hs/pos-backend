@@ -6,10 +6,7 @@ import { companyDebt, payment } from "./finance.types";
 // Get all company debts
 export const getCompanyDebtsDB = async (
   client: TxClientType,
-  filter: {
-    order: "asc" | "desc";
-    page: number;
-  },
+  filter: "asc" | "desc",
   dates?: { fromDate?: string; toDate?: string } | undefined
 ) => {
   const normalizeDate = (date?: string, endOfDay = false) =>
@@ -51,9 +48,7 @@ export const getCompanyDebtsDB = async (
         },
       },
     },
-    take: LIMIT_CONSTANT,
-    skip: Math.abs((filter.page - 1) * LIMIT_CONSTANT),
-    orderBy: { createdAt: filter.order },
+    orderBy: { createdAt: filter },
   });
 };
 // Get all company debts
@@ -123,11 +118,9 @@ export const deleteCompanyDebtDB = async (id: number) => {
 export const getPaymentsDB = async ({
   fromDate,
   toDate,
-  page,
 }: {
   fromDate?: string;
   toDate?: string;
-  page: number;
 }) => {
   const normalizeDate = (date?: string, endOfDay = false) =>
     date
@@ -166,8 +159,6 @@ export const getPaymentsDB = async ({
         },
       },
     },
-    take: LIMIT_CONSTANT,
-    skip: Math.abs((page - 1) * LIMIT_CONSTANT),
   });
 };
 

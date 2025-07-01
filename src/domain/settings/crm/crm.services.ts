@@ -132,6 +132,7 @@ export class CRMServices implements CRMServiceInterface {
       };
     }
   }
+
   async getCustomerDebts() {
     try {
       const customerInfos = await prisma.customerInfo.findMany({

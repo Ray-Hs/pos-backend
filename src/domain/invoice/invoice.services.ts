@@ -31,9 +31,9 @@ import { printerService } from "../settings/printers/printer.services";
 import { findTableByIdDB, updateTableDB } from "../table/table.repository";
 
 export class InvoiceServices implements InvoiceServiceInterface {
-  async getInvoices(filterBy?: PaymentMethod | undefined, page?: number) {
+  async getInvoices(filterBy?: PaymentMethod | undefined) {
     try {
-      const data = await getInvoicesDB(filterBy, page);
+      const data = await getInvoicesDB(filterBy);
 
       if (!data || data.length === 0) {
         return {

@@ -25,6 +25,13 @@ export class CRMController implements CRMControllerInterface {
       .status(response.success ? OK_STATUS : response.error?.code || 500)
       .json(response);
   }
+  async getCustomerDebts(req: Request, res: Response) {
+    const crmService = new CRMServices();
+    const response = await crmService.getCustomerDebts();
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
 
   async getCustomerByPhone(req: Request, res: Response) {
     const crmService = new CRMServices();
