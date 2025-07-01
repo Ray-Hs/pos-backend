@@ -14,7 +14,7 @@ export async function getSuppliesDB(
   const today = new Date();
   let whereClause: any = {};
 
-  if (expired) {
+  if (expired?.expired) {
     // Get products that are either expired or expiring soon
     const soonDate = addDays(today, soonDays || 7);
     whereClause = {
@@ -63,6 +63,8 @@ export async function getSuppliesDB(
       ],
     };
   }
+
+  console.table([whereClause]);
 
   return prisma.supply.findMany({
     include: { company: true },

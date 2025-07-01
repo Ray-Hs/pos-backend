@@ -48,15 +48,11 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
-      prisma.supply.aggregate({
-        _count: {
-          _all: true,
-        },
-      });
+      const totalPages = await prisma.supply.count();
       return {
         success: true,
         data,
-        pages: calculatePages(data, pagination?.limit),
+        pages: calculatePages(totalPages, pagination?.limit),
       };
     } catch (error) {
       logger.error("Get Supplies: ", error);

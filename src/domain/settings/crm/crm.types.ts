@@ -70,10 +70,10 @@ export type CustomerPaymentRequest = z.infer<
 >;
 
 export interface CRMServiceInterface {
-  getCustomers(pagination: {
-    page: number;
-    limit: number;
-  }): Promise<TResult<CustomerInfo[] & { pages?: number | undefined }>>;
+  getCustomers(pagination?: {
+    page?: number;
+    limit?: number;
+  }): Promise<TResult<{ data: CustomerInfo[]; pages: number }>>;
   getCustomerByPhone(phone: any): Promise<TResult<CustomerInfo>>;
   getCustomerById(requestId: any): Promise<TResult<CustomerInfo>>;
   createCustomer(requestData: any): Promise<TResult<void>>;

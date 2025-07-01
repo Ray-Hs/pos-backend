@@ -8,6 +8,6 @@ export const Take = (take?: number) => {
   return take || LIMIT_CONSTANT;
 };
 
-export const calculatePages = (data: any[], limit?: number) => {
-  return Math.ceil(data.length / (limit || LIMIT_CONSTANT));
+export const calculatePages = (totalItems?: number, limit?: number) => {
+  return Math.ceil((totalItems || 1) / (limit || LIMIT_CONSTANT));
 };

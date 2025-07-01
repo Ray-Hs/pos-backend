@@ -58,9 +58,14 @@ export class CRMServices implements CRMServiceInterface {
           },
         };
       }
+
+      const totalPages = await prisma.customerInfo.count();
       return {
         success: true,
-        data,
+        data: {
+          data,
+          pages: calculatePages(totalPages, pagination?.limit),
+        },
       };
     } catch (error) {
       logger.error("Get Customers: ", error);
@@ -225,10 +230,22 @@ export class CRMServices implements CRMServiceInterface {
         };
       });
 
+      // Count only customers who have at least one DEBT invoice (isLatestVersion: true, paymentMethod: "DEBT")
+      const totalPages = await prisma.customerInfo.count({
+        where: {
+          Invoice: {
+            some: {
+              isLatestVersion: true,
+              paymentMethod: "DEBT",
+            },
+          },
+        },
+      });
+
       return {
         success: true,
         data,
-        pages: calculatePages(data, pagination.limit),
+        pages: calculatePages(totalPages, pagination.limit),
       };
     } catch (error) {
       logger.error("Get Customers: ", error);
