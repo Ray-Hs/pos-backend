@@ -18,7 +18,7 @@ export class SupplyController implements SupplyControllerInterface {
     const days = parseInt((req.query.days as string) ?? 7, 10);
     const q = req.query.q;
     const supplyService = new SupplyServices();
-    const response = await supplyService.getSupplies(
+    const response = await supplyService.getStorage(
       q?.toString(),
       {
         limit,

@@ -17,12 +17,19 @@ import { getCompanyInfoByIdDB } from "../settings/crm/crm.repository";
 import {
   createSupplyDB,
   deleteSupplyDB,
+  getStorageDB,
+  getStorageCountDB,
   getSuppliesCountDB,
   getSuppliesDB,
   getSupplyByIdDB,
   updateSupplyDB,
 } from "./supply.repository";
-import { SupplySchema, SupplyServiceInterface } from "./supply.types";
+import {
+  Storage,
+  StorageItem,
+  SupplySchema,
+  SupplyServiceInterface,
+} from "./supply.types";
 import { calculatePages } from "../../infrastructure/utils/calculateSkip";
 
 export class SupplyServices implements SupplyServiceInterface {
@@ -67,7 +74,7 @@ export class SupplyServices implements SupplyServiceInterface {
     }
   }
   async getStorage(
-    q: string | undefined,
+    q?: string | undefined,
     pagination?: {
       limit?: number;
       page?: number;
@@ -78,9 +85,9 @@ export class SupplyServices implements SupplyServiceInterface {
     }
   ) {
     try {
-      const data = await getSuppliesDB(q, expired, pagination);
-      if (!data) {
-        logger.warn("Supplies Not Found");
+      const response = await getStorageDB(q, expired, pagination);
+      if (!response || response.length === 0) {
+        logger.warn("Storage Not Found");
         return {
           success: false,
           error: {
@@ -89,14 +96,15 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
-      const totalPages = await getSuppliesCountDB(expired);
+
+      const totalPages = await getStorageCountDB(q, expired);
       return {
         success: true,
-        data,
+        data: response,
         pages: calculatePages(totalPages, pagination?.limit),
       };
     } catch (error) {
-      logger.error("Get Supplies: ", error);
+      logger.error("Get Storage: ", error);
       return {
         success: false,
         error: {

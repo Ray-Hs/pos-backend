@@ -14,6 +14,12 @@ router.get(
 );
 
 router.get(
+  "/storage",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.getStorage)
+);
+
+router.get(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(controller.getSupplyById)
