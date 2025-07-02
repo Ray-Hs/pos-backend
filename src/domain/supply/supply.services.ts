@@ -49,7 +49,7 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
-      const totalPages = await prisma.supply.count();
+      const totalPages = await getSuppliesCountDB(expired);
       return {
         success: true,
         data,
