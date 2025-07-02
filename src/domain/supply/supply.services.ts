@@ -1,12 +1,12 @@
 import { ZodError } from "zod";
 import prisma from "../../infrastructure/database/prisma/client";
+import { calculatePages } from "../../infrastructure/utils/calculateSkip";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
   BAD_REQUEST_STATUS,
   INTERNAL_SERVER_ERR,
   INTERNAL_SERVER_STATUS,
-  LIMIT_CONSTANT,
   NOT_FOUND_ERR,
   NOT_FOUND_STATUS,
 } from "../../infrastructure/utils/constants";
@@ -17,21 +17,14 @@ import { getCompanyInfoByIdDB } from "../settings/crm/crm.repository";
 import {
   createSupplyDB,
   deleteSupplyDB,
-  getStorageDB,
   getStorageCountDB,
+  getStorageDB,
   getSuppliesCountDB,
   getSuppliesDB,
   getSupplyByIdDB,
   updateSupplyDB,
 } from "./supply.repository";
-import {
-  Storage,
-  StorageItem,
-  StorageSummary,
-  SupplySchema,
-  SupplyServiceInterface,
-} from "./supply.types";
-import { calculatePages } from "../../infrastructure/utils/calculateSkip";
+import { SupplySchema, SupplyServiceInterface } from "./supply.types";
 
 export class SupplyServices implements SupplyServiceInterface {
   async getSupplies(
@@ -57,10 +50,22 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
+      const response = await getSuppliesDB("", expired);
       const totalPages = await getSuppliesCountDB(expired);
+      const totalPurchaseValue = response.reduce(
+        (acc, item) => acc + item.itemPrice,
+        0
+      );
+      const totalSellingValue = response.reduce(
+        (acc, item) => acc + item.itemSellPrice,
+        0
+      );
       return {
         success: true,
         data,
+        totalPurchaseValue,
+        totalSellingValue,
+        potentialProfit: totalSellingValue - totalPurchaseValue,
         pages: calculatePages(totalPages, pagination?.limit),
       };
     } catch (error) {
