@@ -62,10 +62,8 @@ export class CRMServices implements CRMServiceInterface {
       const totalPages = await prisma.customerInfo.count();
       return {
         success: true,
-        data: {
-          data,
-          pages: calculatePages(totalPages, pagination?.limit),
-        },
+        data,
+        pages: calculatePages(totalPages, pagination?.limit),
       };
     } catch (error) {
       logger.error("Get Customers: ", error);
