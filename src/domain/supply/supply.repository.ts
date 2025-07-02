@@ -73,6 +73,29 @@ export async function getSuppliesDB(
     skip: calculateSkip(pagination?.page, pagination?.limit),
   });
 }
+export async function getSuppliesCountDB(expired?: {
+  expired?: boolean | undefined;
+  days?: number | undefined;
+}) {
+  //? Get supply by company name, product name, invoice number, and company code (case-insensitive)
+  const soonDays = expired?.days; // Number of days to consider as "soon"
+  const today = new Date();
+  let whereClause: any = {};
+
+  if (expired?.expired) {
+    // Get products that are either expired or expiring soon
+    const soonDate = addDays(today, soonDays || 7);
+    whereClause = {
+      expiryDate: {
+        lte: soonDate,
+      },
+    };
+  }
+
+  return prisma.supply.count({
+    where: whereClause,
+  });
+}
 
 export async function getSupplyByIdDB(id: number) {
   return prisma.supply.findFirst({

@@ -17,6 +17,7 @@ import { getCompanyInfoByIdDB } from "../settings/crm/crm.repository";
 import {
   createSupplyDB,
   deleteSupplyDB,
+  getSuppliesCountDB,
   getSuppliesDB,
   getSupplyByIdDB,
   updateSupplyDB,
@@ -88,7 +89,7 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
-      const totalPages = await prisma.supply.count();
+      const totalPages = await getSuppliesCountDB(expired);
       return {
         success: true,
         data,
