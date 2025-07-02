@@ -11,8 +11,9 @@ export class CRMController implements CRMControllerInterface {
   async getCustomers(req: Request, res: Response) {
     const limit = parseInt(req.query.limit as string, 10);
     const page = parseInt(req.query.page as string, 10);
+    const q = req.query.q as string;
     const crmService = new CRMServices();
-    const response = await crmService.getCustomers({ page, limit });
+    const response = await crmService.getCustomers({ page, limit }, q);
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
       .json(response);

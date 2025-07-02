@@ -13,14 +13,26 @@ import {
 } from "./crm.types";
 
 //? Customer Info
-export async function getCustomersInfoDB(pagination?: {
-  limit?: number;
-  page?: number;
-}) {
+export async function getCustomersInfoDB(
+  pagination?: {
+    limit?: number;
+    page?: number;
+  },
+  q?: string
+) {
+  const whereClause: any = q
+    ? {
+        OR: [
+          { name: { contains: q, mode: "insensitive" } },
+          { phoneNumber: { contains: q, mode: "insensitive" } },
+        ],
+      }
+    : {};
   return prisma.customerInfo.findMany({
     include: {
       customerDiscount: true,
     },
+    where: whereClause,
     take: Take(pagination?.limit),
     skip: calculateSkip(pagination?.page, pagination?.limit),
   });

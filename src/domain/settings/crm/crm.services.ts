@@ -45,9 +45,12 @@ import {
 } from "../../../infrastructure/utils/calculateSkip";
 
 export class CRMServices implements CRMServiceInterface {
-  async getCustomers(pagination?: { limit?: number; page?: number }) {
+  async getCustomers(
+    pagination?: { limit?: number; page?: number },
+    q?: string
+  ) {
     try {
-      const data = await getCustomersInfoDB(pagination);
+      const data = await getCustomersInfoDB(pagination, q);
       if (!data) {
         logger.warn("Customers Not Found");
         return {
