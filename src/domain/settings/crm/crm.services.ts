@@ -824,15 +824,7 @@ export class CRMServices implements CRMServiceInterface {
     }
   }
 
-  async getCustomerPayments(
-    pagination: {
-      limit: number;
-      page: number;
-    } = {
-      limit: LIMIT_CONSTANT,
-      page: 1,
-    }
-  ) {
+  async getCustomerPayments(pagination?: { limit: number; page: number }) {
     try {
       const payments = await prisma.customerPayment.findMany({
         include: {
@@ -853,8 +845,8 @@ export class CRMServices implements CRMServiceInterface {
           },
         },
         orderBy: { createdAt: "desc" },
-        take: Take(pagination.limit),
-        skip: calculateSkip(pagination.page, pagination.limit),
+        take: Take(pagination?.limit),
+        skip: calculateSkip(pagination?.page, pagination?.limit),
       });
 
       const formattedData = payments.reduce((acc: any, payment) => {
@@ -869,13 +861,19 @@ export class CRMServices implements CRMServiceInterface {
               debt: payment.customerInfo.debt,
               initialDebt: payment.customerInfo.initialDebt,
             },
-            payments: payments.map(
-              ({ customerInfo, customerInfoId, invoice, ...payment }) => ({
-                ...payment,
-              })
-            ),
+            payments: [],
           };
         }
+
+        // Add this specific payment to the customer's payments array
+        acc[customerKey].payments.push({
+          id: payment.id,
+          amount: payment.amount,
+          note: payment.note,
+          paymentDate: payment.paymentDate,
+          createdAt: payment.createdAt,
+          invoiceNumber: payment.invoiceNumber,
+        });
 
         return acc;
       }, {});

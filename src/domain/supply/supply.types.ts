@@ -49,6 +49,22 @@ export const StorageItemSchema = z.object({
   lastSale: z.date().nullable(),
 });
 
+export const StoreLocationSchema = z.object({
+  storeName: z.string(),
+  items: z.array(StorageItemSchema),
+  totalItems: z.number(),
+  totalValue: z.number(),
+  totalProfit: z.number(),
+});
+
+export const StorageSummarySchema = z.object({
+  stores: z.array(StoreLocationSchema),
+  totalStores: z.number(),
+  totalItems: z.number(),
+  totalValue: z.number(),
+  totalProfit: z.number(),
+});
+
 export const StorageSchema = SupplySchema.pick({
   id: true,
   barcode: true,
@@ -67,6 +83,8 @@ export const StorageSchema = SupplySchema.pick({
 export type Supply = z.infer<typeof SupplySchema>;
 export type Storage = z.infer<typeof StorageSchema>;
 export type StorageItem = z.infer<typeof StorageItemSchema>;
+export type StoreLocation = z.infer<typeof StoreLocationSchema>;
+export type StorageSummary = z.infer<typeof StorageSummarySchema>;
 
 export interface SupplyServiceInterface {
   getStorage: (
@@ -76,7 +94,7 @@ export interface SupplyServiceInterface {
       limit?: number;
     },
     expired?: { expired?: boolean | undefined; days?: number | undefined }
-  ) => Promise<TResult<StorageItem[] & { pages?: number }>>;
+  ) => Promise<TResult<StorageSummary & { pages?: number }>>;
   getSupplies: (
     q: string | undefined,
     pagination?: {
@@ -95,7 +113,7 @@ export interface SupplyControllerInterface {
   getStorage: (
     req: Request,
     res: Response
-  ) => Promise<Response<TResult<StorageItem[]>>>;
+  ) => Promise<Response<TResult<StorageSummary>>>;
   getSupplies: (
     req: Request,
     res: Response

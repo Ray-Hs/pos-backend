@@ -27,6 +27,7 @@ import {
 import {
   Storage,
   StorageItem,
+  StorageSummary,
   SupplySchema,
   SupplyServiceInterface,
 } from "./supply.types";
@@ -86,7 +87,7 @@ export class SupplyServices implements SupplyServiceInterface {
   ) {
     try {
       const response = await getStorageDB(q, expired, pagination);
-      if (!response || response.length === 0) {
+      if (!response || response.stores.length === 0) {
         logger.warn("Storage Not Found");
         return {
           success: false,

@@ -78,7 +78,7 @@ export async function getStorageDB(
   q?: string | undefined,
   expired?: { expired?: boolean | undefined; days?: number | undefined },
   pagination?: { page?: number; limit?: number }
-): Promise<any[]> {
+): Promise<any> {
   const soonDays = expired?.days; // Number of days to consider as "soon"
   const today = new Date();
   let whereClause: any = {
@@ -133,29 +133,44 @@ export async function getStorageDB(
     include: {
       company: true,
     },
-    orderBy: [
-      { name: "asc" },
-      { store: "asc" },
-      { expiryDate: "asc" },
-    ],
+    orderBy: [{ store: "asc" }, { name: "asc" }, { expiryDate: "asc" }],
     take: Take(pagination?.limit),
     skip: calculateSkip(pagination?.page, pagination?.limit),
   });
 
-  // Group supplies by item name and store
-  const storageMap = new Map<string, any>();
+  // Group supplies by store location
+  const storeMap = new Map<string, any>();
+  let totalItems = 0;
+  let totalValue = 0;
+  let totalProfit = 0;
 
   for (const supply of supplies) {
-    const key = `${supply.name}-${supply.store || 'default'}`;
-    
-    if (!storageMap.has(key)) {
-      storageMap.set(key, {
+    const storeName = supply.store || "Default Store";
+
+    if (!storeMap.has(storeName)) {
+      storeMap.set(storeName, {
+        storeName,
+        items: new Map(), // Use Map to handle duplicate items
+        totalItems: 0,
+        totalValue: 0,
+        totalProfit: 0,
+      });
+    }
+
+    const store = storeMap.get(storeName);
+    const itemKey = `${supply.name}-${supply.barcode || "no-barcode"}`;
+
+    if (!store.items.has(itemKey)) {
+      // Create new storage item
+      const storageItem = {
         item: supply.name,
-        quantity: 0,
+        quantity: supply.remainingQuantity || 0,
         price: supply.itemPrice,
         sellPrice: supply.itemSellPrice,
-        totalValue: 0,
-        profit: 0,
+        totalValue: (supply.remainingQuantity || 0) * supply.itemPrice,
+        profit:
+          (supply.remainingQuantity || 0) *
+          (supply.itemSellPrice - supply.itemPrice),
         companyDetails: {
           id: supply.company.id,
           name: supply.company.name,
@@ -168,35 +183,69 @@ export async function getStorageDB(
         expiryDate: supply.expiryDate,
         lastRestock: supply.createdAt,
         lastSale: null, // Will be updated if we find sales data
-      });
-    }
+      };
 
-    const storageItem = storageMap.get(key);
-    storageItem.quantity += supply.remainingQuantity || 0;
-    storageItem.totalValue += (supply.remainingQuantity || 0) * supply.itemPrice;
-    storageItem.profit += (supply.remainingQuantity || 0) * (supply.itemSellPrice - supply.itemPrice);
-    
-    // Update earliest expiry date
-    if (supply.expiryDate && (!storageItem.expiryDate || supply.expiryDate < storageItem.expiryDate)) {
-      storageItem.expiryDate = supply.expiryDate;
-    }
-    
-    // Update latest restock date
-    if (supply.createdAt && (!storageItem.lastRestock || supply.createdAt > storageItem.lastRestock)) {
-      storageItem.lastRestock = supply.createdAt;
+      store.items.set(itemKey, storageItem);
+    } else {
+      // Update existing item (combine quantities)
+      const existingItem = store.items.get(itemKey);
+      existingItem.quantity += supply.remainingQuantity || 0;
+      existingItem.totalValue +=
+        (supply.remainingQuantity || 0) * supply.itemPrice;
+      existingItem.profit +=
+        (supply.remainingQuantity || 0) *
+        (supply.itemSellPrice - supply.itemPrice);
+
+      // Update earliest expiry date
+      if (
+        supply.expiryDate &&
+        (!existingItem.expiryDate ||
+          supply.expiryDate < existingItem.expiryDate)
+      ) {
+        existingItem.expiryDate = supply.expiryDate;
+      }
+
+      // Update latest restock date
+      if (
+        supply.createdAt &&
+        (!existingItem.lastRestock ||
+          supply.createdAt > existingItem.lastRestock)
+      ) {
+        existingItem.lastRestock = supply.createdAt;
+      }
     }
   }
 
-  // Try to get last sale information for each item
-  // Note: This is a simplified approach. You might want to create a more sophisticated query
-  // that joins with order items to get actual sales data
-  for (const [key, storageItem] of storageMap) {
-    // For now, we'll set lastSale to null as it requires joining with order data
-    // You can implement this later by querying order items that match the item name
-    storageItem.lastSale = null;
+  // Calculate store totals and convert items Map to array
+  for (const [storeName, store] of storeMap) {
+    store.items = Array.from(store.items.values()).sort((a: any, b: any) =>
+      a.item.localeCompare(b.item)
+    );
+
+    for (const item of store.items) {
+      store.totalItems += item.quantity;
+      store.totalValue += item.totalValue;
+      store.totalProfit += item.profit;
+
+      // Update overall totals
+      totalItems += item.quantity;
+      totalValue += item.totalValue;
+      totalProfit += item.profit;
+    }
   }
 
-  return Array.from(storageMap.values());
+  // Convert map to array and sort stores
+  const stores = Array.from(storeMap.values()).sort((a, b) =>
+    a.storeName.localeCompare(b.storeName)
+  );
+
+  return {
+    stores,
+    totalStores: stores.length,
+    totalItems,
+    totalValue,
+    totalProfit,
+  };
 }
 
 export async function getSuppliesCountDB(expired?: {
@@ -275,24 +324,21 @@ export async function getStorageCountDB(
     ];
   }
 
-  // Get unique item-store combinations count
+  // Count unique stores
   const supplies = await prisma.supply.findMany({
     where: whereClause,
     select: {
-      name: true,
       store: true,
     },
   });
 
-  const uniqueItems = new Set();
-  supplies.forEach(supply => {
-    uniqueItems.add(`${supply.name}-${supply.store || 'default'}`);
+  const uniqueStores = new Set();
+  supplies.forEach((supply) => {
+    uniqueStores.add(supply.store || "Default Store");
   });
 
-  return uniqueItems.size;
+  return uniqueStores.size;
 }
-
-
 
 export async function getSupplyByIdDB(id: number) {
   return prisma.supply.findFirst({
@@ -327,6 +373,7 @@ export async function createSupplyDB(data: Supply, client: TxClientType) {
       ...rest,
       totalItems,
       totalPrice,
+      remainingQuantity: totalItems,
     },
   });
 }

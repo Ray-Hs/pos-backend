@@ -22,9 +22,10 @@ export async function getCustomersInfoDB(
 ) {
   const whereClause: any = q
     ? {
-        OR: [
+        OR: [ 
           { name: { contains: q, mode: "insensitive" } },
           { phoneNumber: { contains: q, mode: "insensitive" } },
+          { paymentMethod: { contains: q, mode: "insensitive" } },
         ],
       }
     : {};
