@@ -73,7 +73,7 @@ export interface CRMServiceInterface {
   getCustomers(pagination?: {
     page?: number;
     limit?: number;
-  }): Promise<TResult<CustomerInfo[] & { pages: number }>>;
+  }): Promise<TResult<CustomerInfo[] & { pages?: number | undefined }>>;
   getCustomerByPhone(phone: any): Promise<TResult<CustomerInfo>>;
   getCustomerById(requestId: any): Promise<TResult<CustomerInfo>>;
   createCustomer(requestData: any): Promise<TResult<void>>;
