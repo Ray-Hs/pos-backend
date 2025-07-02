@@ -31,6 +31,13 @@ export const SupplySchema = z.object({
 export type Supply = z.infer<typeof SupplySchema>;
 
 export interface SupplyServiceInterface {
+  getStorage: (
+    q: string | undefined,
+    pagination?: {
+      page?: number;
+      limit?: number;
+    }
+  ) => Promise<TResult<Supply[] & { pages?: number }>>;
   getSupplies: (
     q: string | undefined,
     pagination?: {
@@ -46,6 +53,10 @@ export interface SupplyServiceInterface {
 }
 
 export interface SupplyControllerInterface {
+  getStorage: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<Supply[]>>>;
   getSupplies: (
     req: Request,
     res: Response

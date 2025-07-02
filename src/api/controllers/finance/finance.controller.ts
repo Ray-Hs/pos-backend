@@ -11,8 +11,13 @@ export class FinanceController implements FinanceControllerInterface {
   async listPayments(req: Request, res: Response) {
     const fromDate = req.query.fromDate as string;
     const toDate = req.query.toDate as string;
+    const limit = parseInt(req.query.limit as string, 10);
+    const page = parseInt(req.query.page as string, 10);
     const financeInstance = new FinanceServices();
-    const response = await financeInstance.listPayments({ fromDate, toDate });
+    const response = await financeInstance.listPayments(
+      { fromDate, toDate },
+      { page, limit }
+    );
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
@@ -80,11 +85,19 @@ export class FinanceController implements FinanceControllerInterface {
   async listCompanyDebts(req: Request, res: Response) {
     const fromDate = req.query.fromDate as string;
     const toDate = req.query.toDate as string;
+    const limit = parseInt(req.query.limit as string, 10);
+    const page = parseInt(req.query.page as string, 10);
     const financeInstance = new FinanceServices();
-    const response = await financeInstance.listCompanyDebts({
-      fromDate,
-      toDate,
-    });
+    const response = await financeInstance.listCompanyDebts(
+      {
+        fromDate,
+        toDate,
+      },
+      {
+        page,
+        limit,
+      }
+    );
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

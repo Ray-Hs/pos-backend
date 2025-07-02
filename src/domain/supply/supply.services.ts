@@ -65,6 +65,46 @@ export class SupplyServices implements SupplyServiceInterface {
       };
     }
   }
+  async getStorage(
+    q: string | undefined,
+    pagination?: {
+      limit?: number;
+      page?: number;
+    },
+    expired?: {
+      expired?: boolean | undefined;
+      days?: number | undefined;
+    }
+  ) {
+    try {
+      const data = await getSuppliesDB(q, expired, pagination);
+      if (!data) {
+        logger.warn("Supplies Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+      const totalPages = await prisma.supply.count();
+      return {
+        success: true,
+        data,
+        pages: calculatePages(totalPages, pagination?.limit),
+      };
+    } catch (error) {
+      logger.error("Get Supplies: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
 
   async getSupplyById(requestId: any) {
     try {

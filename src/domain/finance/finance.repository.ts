@@ -1,4 +1,5 @@
 import prisma from "../../infrastructure/database/prisma/client";
+import { calculateSkip, Take } from "../../infrastructure/utils/calculateSkip";
 import { LIMIT_CONSTANT } from "../../infrastructure/utils/constants";
 import { TxClientType } from "../../types/common";
 import { companyDebt, payment } from "./finance.types";
@@ -7,7 +8,11 @@ import { companyDebt, payment } from "./finance.types";
 export const getCompanyDebtsDB = async (
   client: TxClientType,
   filter: "asc" | "desc",
-  dates?: { fromDate?: string; toDate?: string } | undefined
+  dates?: { fromDate?: string; toDate?: string } | undefined,
+  pagination?: {
+    limit?: number;
+    page?: number;
+  }
 ) => {
   const normalizeDate = (date?: string, endOfDay = false) =>
     date
@@ -49,6 +54,8 @@ export const getCompanyDebtsDB = async (
       },
     },
     orderBy: { createdAt: filter },
+    take: Take(pagination?.limit),
+    skip: calculateSkip(pagination?.page, pagination?.limit),
   });
 };
 // Get all company debts
@@ -115,13 +122,19 @@ export const deleteCompanyDebtDB = async (id: number) => {
  */
 
 // Get all payments
-export const getPaymentsDB = async ({
-  fromDate,
-  toDate,
-}: {
-  fromDate?: string;
-  toDate?: string;
-}) => {
+export const getPaymentsDB = async (
+  {
+    fromDate,
+    toDate,
+  }: {
+    fromDate?: string;
+    toDate?: string;
+  },
+  pagination?: {
+    limit?: number;
+    page?: number;
+  }
+) => {
   const normalizeDate = (date?: string, endOfDay = false) =>
     date
       ? new Date(
@@ -159,6 +172,8 @@ export const getPaymentsDB = async ({
         },
       },
     },
+    take: Take(pagination?.limit),
+    skip: calculateSkip(pagination?.page, pagination?.limit),
   });
 };
 

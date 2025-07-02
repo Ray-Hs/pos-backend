@@ -38,6 +38,7 @@ import {
   updatePaymentDB,
 } from "./finance.repository";
 import { User } from "../../types/common";
+import { calculatePages } from "../../infrastructure/utils/calculateSkip";
 
 export class FinanceServices implements FinanceServiceInterface {
   async getAllCompanyDebts() {
@@ -378,18 +379,27 @@ export class FinanceServices implements FinanceServiceInterface {
     }
   }
 
-  async listPayments({
-    fromDate,
-    toDate,
-  }: {
-    fromDate?: string;
-    toDate?: string;
-  }) {
+  async listPayments(
+    {
+      fromDate,
+      toDate,
+    }: {
+      fromDate?: string;
+      toDate?: string;
+    },
+    pagination?: {
+      limit?: number;
+      page?: number;
+    }
+  ) {
     try {
-      const data = await getPaymentsDB({
-        fromDate,
-        toDate,
-      });
+      const data = await getPaymentsDB(
+        {
+          fromDate,
+          toDate,
+        },
+        pagination
+      );
       if (!data || data.length === 0) {
         logger.warn("No Payments found.");
         return {
@@ -402,36 +412,22 @@ export class FinanceServices implements FinanceServiceInterface {
       }
 
       // Calculate total debt for IQD and USD
-      const totalDebt = data.reduce(
-        (acc, item) => {
-          const currency = item.currency;
-          const amount = item.companyDebt.totalAmount || 0;
-          if (currency === "IQD") {
-            acc.IQD += amount;
-          } else if (currency === "USD") {
-            acc.USD += amount;
-          }
-          return acc;
+      const totalDebt = await prisma.companyDebt.groupBy({
+        by: ["currency"],
+        _sum: {
+          totalAmount: true,
         },
-        { IQD: 0, USD: 0 }
-      );
+      });
 
       // Calculate total paid for IQD and USD
-      const totalPaid = data.reduce(
-        (acc, item) => {
-          const currency = item.currency;
-          const amount =
-            (item.companyDebt.totalAmount || 0) -
-              (item.companyDebt.remainingAmount || 0) || 0;
-          if (currency === "IQD") {
-            acc.IQD += amount;
-          } else if (currency === "USD") {
-            acc.USD += amount;
-          }
-          return acc;
+      const totalPaid = await prisma.payment.groupBy({
+        by: ["currency"],
+        _sum: {
+          amount: true,
         },
-        { IQD: 0, USD: 0 }
-      );
+      });
+
+      const totalPages = await prisma.payment.count();
 
       // Ensure each payment object matches the expected shape
       const payments: payment[] = data.map((item) => ({
@@ -450,9 +446,29 @@ export class FinanceServices implements FinanceServiceInterface {
         company: item.companyDebt.company,
         paymentDate: item.paymentDate,
       }));
+
       return {
         success: true,
-        data: { payments, totalDebt, totalPaid },
+        data: {
+          payments,
+          totalDebt: {
+            IQD:
+              totalDebt.find((debt) => debt.currency === "IQD")?._sum
+                .totalAmount ?? 0,
+            USD:
+              totalDebt.find((debt) => debt.currency === "USD")?._sum
+                .totalAmount ?? 0,
+          },
+          totalPaid: {
+            IQD:
+              totalPaid.find((debt) => debt.currency === "IQD")?._sum.amount ??
+              0,
+            USD:
+              totalPaid.find((debt) => debt.currency === "USD")?._sum.amount ??
+              0,
+          },
+          pages: calculatePages(totalPages, pagination?.limit),
+        },
       };
     } catch (error) {
       logger.error("Get Payments Service: ", error);
@@ -465,18 +481,29 @@ export class FinanceServices implements FinanceServiceInterface {
       };
     }
   }
-  async listCompanyDebts({
-    fromDate,
-    toDate,
-  }: {
-    fromDate?: string;
-    toDate?: string;
-  }) {
+  async listCompanyDebts(
+    {
+      fromDate,
+      toDate,
+    }: {
+      fromDate?: string;
+      toDate?: string;
+    },
+    pagination?: {
+      limit?: number;
+      page?: number;
+    }
+  ) {
     try {
-      const data = await getCompanyDebtsDB(prisma, "desc", {
-        fromDate,
-        toDate,
-      });
+      const data = await getCompanyDebtsDB(
+        prisma,
+        "desc",
+        {
+          fromDate,
+          toDate,
+        },
+        pagination
+      );
       if (!data) {
         logger.warn("No Company Debts found.");
         return {
@@ -489,35 +516,22 @@ export class FinanceServices implements FinanceServiceInterface {
       }
 
       // Calculate total debt for IQD and USD
-      const totalDebt = data.reduce(
-        (acc, item) => {
-          const currency = item.currency;
-          const amount = item.totalAmount || 0;
-          if (currency === "IQD") {
-            acc.IQD += amount;
-          } else if (currency === "USD") {
-            acc.USD += amount;
-          }
-          return acc;
+      const totalDebt = await prisma.companyDebt.groupBy({
+        by: ["currency"],
+        _sum: {
+          totalAmount: true,
         },
-        { IQD: 0, USD: 0 }
-      );
+      });
 
       // Calculate total paid for IQD and USD
-      const totalPaid = data.reduce(
-        (acc, item) => {
-          const currency = item.currency;
-          const amount =
-            (item.totalAmount || 0) - (item.remainingAmount || 0) || 0;
-          if (currency === "IQD") {
-            acc.IQD += amount;
-          } else if (currency === "USD") {
-            acc.USD += amount;
-          }
-          return acc;
+      const totalPaid = await prisma.payment.groupBy({
+        by: ["currency"],
+        _sum: {
+          amount: true,
         },
-        { IQD: 0, USD: 0 }
-      );
+      });
+
+      const totalPages = await prisma.companyDebt.count();
 
       return {
         success: true,
@@ -526,8 +540,23 @@ export class FinanceServices implements FinanceServiceInterface {
             ...debt,
             user: debt.user as User,
           })),
-          totalDebt,
-          totalPaid,
+          totalDebt: {
+            IQD:
+              totalDebt.find((debt) => debt.currency === "IQD")?._sum
+                .totalAmount ?? 0,
+            USD:
+              totalDebt.find((debt) => debt.currency === "USD")?._sum
+                .totalAmount ?? 0,
+          },
+          totalPaid: {
+            IQD:
+              totalPaid.find((debt) => debt.currency === "IQD")?._sum.amount ??
+              0,
+            USD:
+              totalPaid.find((debt) => debt.currency === "USD")?._sum.amount ??
+              0,
+          },
+          pages: calculatePages(totalPages, pagination?.limit),
         },
       };
     } catch (error) {

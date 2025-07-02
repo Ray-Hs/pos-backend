@@ -113,7 +113,11 @@ export interface FinanceServiceInterface {
   }: {
     fromDate: string;
     toDate: string;
-  }): Promise<TResult<{ companyDebt: companyDebt[] } & totalDebtAndPaid>>;
+  }): Promise<
+    TResult<
+      { companyDebt: companyDebt[] } & totalDebtAndPaid & { pages: number }
+    >
+  >;
   getAllCompanyDebts(): Promise<TResult<AllCompanyDebt[]>>;
 
   // Payment methods
@@ -121,13 +125,21 @@ export interface FinanceServiceInterface {
   getPaymentById(id: number): Promise<TResult<payment>>;
   updatePayment(id: number, requestData: payment): Promise<TResult<null>>;
   deletePayment(id: number): Promise<TResult<null>>;
-  listPayments({
-    fromDate,
-    toDate,
-  }: {
-    fromDate?: string;
-    toDate?: string;
-  }): Promise<TResult<{ payments: payment[] } & totalDebtAndPaid>>;
+  listPayments(
+    {
+      fromDate,
+      toDate,
+    }: {
+      fromDate?: string;
+      toDate?: string;
+    },
+    pagination?: {
+      limit?: number;
+      page?: number;
+    }
+  ): Promise<
+    TResult<{ payments: payment[] } & totalDebtAndPaid & { pages: number }>
+  >;
 }
 
 export interface FinanceControllerInterface {
