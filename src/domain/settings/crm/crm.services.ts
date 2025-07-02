@@ -850,8 +850,8 @@ export class CRMServices implements CRMServiceInterface {
           },
         },
         orderBy: { createdAt: "desc" },
-        take: pagination.limit,
-        skip: Math.abs((pagination.page - 1) * pagination.limit),
+        take: Take(pagination.limit),
+        skip: calculateSkip(pagination.page, pagination.limit),
       });
 
       const formattedData = payments.reduce((acc: any, payment) => {
