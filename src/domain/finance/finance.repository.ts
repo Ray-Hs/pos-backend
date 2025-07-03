@@ -42,9 +42,12 @@ export const findCompanyDebtByIdDB = async (id: number) => {
 };
 
 // Create company debt
-export const createCompanyDebtDB = async (data: companyDebt) => {
+export const createCompanyDebtDB = async (
+  data: companyDebt,
+  client: TxClientType
+) => {
   const { company, id: _, remainingAmount, companyId, user, ...rest } = data;
-  return prisma.companyDebt.create({
+  return client.companyDebt.create({
     data: {
       ...rest,
       companyId: companyId as number,
@@ -85,9 +88,11 @@ export const getPaymentsDB = async () => {
   return prisma.payment.findMany({
     orderBy: { createdAt: "desc" },
     include: {
+      user: true,
       companyDebt: {
         select: {
           companyId: true,
+          company: true,
         },
       },
     },

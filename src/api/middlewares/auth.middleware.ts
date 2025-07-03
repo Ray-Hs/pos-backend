@@ -82,6 +82,17 @@ export async function isAuthenticated(
         },
       });
 
+    if (!userExists.isActive) {
+      logger.warn("User is not active.");
+      return {
+        success: false,
+        error: {
+          code: UNAUTHORIZED_STATUS,
+          message: "User is not active, please contact admin to activate.",
+        },
+      };
+    }
+
     jwt.verify(token, SECRET_KEY as string, (err: any, user: any) => {
       if (err) {
         if (err.name === "TokenExpiredError") {

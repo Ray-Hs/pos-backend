@@ -15,6 +15,7 @@ model User {
     CompanyDebt  CompanyDebt[]
     Payment      Payment[]
     ExchangeRate ExchangeRate[]
+    supply       supply[]
 }
 
 model UserRole {

@@ -33,6 +33,7 @@ export const CompanyDebtSchema = z.object({
   remainingAmount: z.number().nullable().optional(),
   userId: z.number(),
   user: UserSchema.optional(),
+  currency: Currency.optional(),
   status: PaymentEnumSchema.optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),

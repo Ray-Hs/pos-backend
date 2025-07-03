@@ -9602,6 +9602,7 @@ Unknown argument `companyId`. Available options are marked with ?.
 [2025-06-26 14:29:10] [31merror[39m: Create Payment Service:  All debts are already paid.
 [2025-06-26 14:30:13] [31merror[39m: Create Payment Service:  All debts are already paid.
 [2025-06-26 14:31:21] [31merror[39m: Create Payment Service:  All debts are already paid.
+<<<<<<< HEAD
 [2025-06-26 17:24:14] [31merror[39m: Auth login Service:  
 Invalid `prisma.user.findFirst()` invocation:
 
@@ -10107,3 +10108,112 @@ Timed out fetching a new connection from the connection pool. More info: http://
     "message": "Invalid date"
   }
 ]
+=======
+[2025-06-26 16:58:49] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-26 16:58:52] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+>>>>>>> ae0c30a98ab43ba5da37ffe5ff12f99a575cd7d5
+[2025-06-29 09:59:40] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:41] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:44] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:46] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:48] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:50] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:52] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:54] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 10:00:09] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 10:00:12] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 10:00:16] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 10:00:21] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 10:07:05] [31merror[39m: Auth Create User Service:  
+Invalid `prisma.user.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `User_roleId_fkey`
+[2025-06-29 10:08:41] [31merror[39m: Create UserRole Service:  
+Invalid `prisma.userRole.create()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-06-29 10:09:43] [31merror[39m: Create UserRole Service:  
+Invalid `prisma.userRole.create()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-06-29 10:12:37] [31merror[39m: Create UserRole Service:  
+Invalid `prisma.userRole.create()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-06-29 10:14:32] [31merror[39m: Create UserRole Service:  
+Invalid `prisma.userRole.create()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-06-29 10:14:47] [31merror[39m: Create UserRole Service:  
+Invalid `prisma.userRole.create()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-06-29 10:15:30] [31merror[39m: Auth login Service:  The "salt" argument must be of type string or an instance of ArrayBuffer, Buffer, TypedArray, or DataView. Received undefined
+[2025-06-29 10:15:54] [31merror[39m: Auth login Service:  The "salt" argument must be of type string or an instance of ArrayBuffer, Buffer, TypedArray, or DataView. Received undefined
+[2025-06-29 10:16:11] [31merror[39m: Auth Create User Service:  
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`username`)

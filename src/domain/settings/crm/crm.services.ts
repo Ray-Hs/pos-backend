@@ -319,7 +319,7 @@ export class CRMServices implements CRMServiceInterface {
           },
         };
       }
-      const data = await getCompanyInfoByIdDB(id.id);
+      const data = await getCompanyInfoByIdDB(id.id, prisma);
       if (!data) {
         logger.warn("Company Not Found");
         return {
