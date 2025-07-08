@@ -48,8 +48,8 @@ model CustomerPayment {
     id             Int          @id @default(autoincrement())
     customerInfoId Int
     customerInfo   CustomerInfo @relation(fields: [customerInfoId], references: [id])
-    invoiceId      Int
-    invoice        Invoice      @relation(fields: [invoiceId], references: [id])
+    invoiceId      Int?
+    invoice        Invoice?     @relation(fields: [invoiceId], references: [id])
     invoiceNumber  String?
     amount         Int
     note           String?

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Invoice" ADD COLUMN     "debt" DOUBLE PRECISION DEFAULT 0;

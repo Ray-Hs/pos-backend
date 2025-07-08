@@ -326,7 +326,6 @@ export class InvoiceServices implements InvoiceServiceInterface {
       if (data.paymentMethod === "RECEIPT") {
         const updatedInvoice = await prisma.$transaction(async (tx) => {
           const printerServices = new printerService();
-          console.log(JSON.stringify(data));
           if (!data.tableId) {
             throw new Error("Table ID Not Provided.");
           }
@@ -370,24 +369,24 @@ export class InvoiceServices implements InvoiceServiceInterface {
               )
             : order?.Invoice[0].invoices[0].total;
 
-          await printerServices.print(1, {
-            orderId: order?.id,
-            items: order?.items.map((item) => ({
-              title_en: item.menuItem.title_en,
-              quantity: item.quantity,
-              price: item.price,
-            })),
-            customer: customerInfo
-              ? {
-                  name: customerInfo.name,
-                  discount: customerInfo.customerDiscount?.discount,
-                }
-              : undefined,
-            subtotal: order?.Invoice[0].invoices[0].subtotal,
-            tax: constants.tax?.rate,
-            service: constants.service?.amount,
-            total: order?.Invoice[0].invoices[0].total,
-          });
+          // await printerServices.print(1, {
+          //   orderId: order?.id,
+          //   items: order?.items.map((item) => ({
+          //     title_en: item.menuItem.title_en,
+          //     quantity: item.quantity,
+          //     price: item.price,
+          //   })),
+          //   customer: customerInfo
+          //     ? {
+          //         name: customerInfo.name,
+          //         discount: customerInfo.customerDiscount?.discount,
+          //       }
+          //     : undefined,
+          //   subtotal: order?.Invoice[0].invoices[0].subtotal,
+          //   tax: constants.tax?.rate,
+          //   service: constants.service?.amount,
+          //   total: order?.Invoice[0].invoices[0].total,
+          // });
         });
       }
 
@@ -399,8 +398,14 @@ export class InvoiceServices implements InvoiceServiceInterface {
               discount,
               customerDiscount,
               customerInfoId,
+              debt,
               ...rest
             } = data;
+
+            if (!debt) {
+              throw new Error("Debt Value not provided.");
+            }
+
             const invoiceRef = await tx.invoiceRef.findFirst({
               where: {
                 id: invoice.invoiceRefId,
@@ -440,7 +445,14 @@ export class InvoiceServices implements InvoiceServiceInterface {
 
             const updatedInvoice = await updateInvoiceDB(
               response.id as number,
-              { ...rest, total, customerInfoId, discount, paid: data.paid },
+              {
+                ...rest,
+                total,
+                debt,
+                customerInfoId,
+                discount,
+                paid: data.paid,
+              },
               tx
             );
 
@@ -456,7 +468,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
               const customerInfoUpdate = await updateCustomerInfoDB(
                 {
                   ...customerInfo,
-                  debt: total + (customerInfo.debt || 0),
+                  debt: debt + (customerInfo.debt || 0),
                 },
                 customerInfoId,
                 tx

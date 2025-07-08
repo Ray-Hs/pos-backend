@@ -149,8 +149,10 @@ export class CRMServices implements CRMServiceInterface {
               id: true,
               subtotal: true,
               total: true,
+              debt: true,
               paymentMethod: true,
               paid: true,
+              status: true,
               createdAt: true,
               invoiceRef: {
                 select: {
@@ -217,6 +219,8 @@ export class CRMServices implements CRMServiceInterface {
             id: invoice.id,
             subtotal: invoice.subtotal,
             total: invoice.total,
+            status: invoice.status,
+            debt: invoice.debt,
             paymentMethod: invoice.paymentMethod,
             paid: invoice.paid,
             createdAt: invoice.createdAt,

@@ -35,9 +35,14 @@ export function getLatestOrderDB(id: number) {
       createdAt: "desc",
     },
     include: {
+      table: true,
       items: {
         include: {
-          menuItem: true,
+          menuItem: {
+            include: {
+              Printer: true,
+            },
+          },
         },
       },
       Invoice: {

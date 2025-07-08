@@ -1,9 +1,12 @@
-import { BreakLine, PrinterTypes, ThermalPrinter } from "node-thermal-printer";
+import {
+  characterSet,
+  PrinterTypes,
+  ThermalPrinter,
+} from "node-thermal-printer";
 import { z, ZodError } from "zod";
 import prisma from "../../../infrastructure/database/prisma/client";
 import {
   BAD_REQUEST_BODY_ERR,
-  BAD_REQUEST_ERR,
   BAD_REQUEST_ID_ERR,
   BAD_REQUEST_STATUS,
   INTERNAL_SERVER_ERR,
@@ -13,7 +16,8 @@ import {
 } from "../../../infrastructure/utils/constants";
 import logger from "../../../infrastructure/utils/logger";
 import validateType from "../../../infrastructure/utils/validateType";
-import { getBrandDB } from "../branding/brand.repository";
+import { OrderItem, UserSchema } from "../../../types/common";
+import { getLatestOrderDB } from "../../order/order.repository";
 import {
   createPrinterDB,
   deletePrinterDB,
@@ -23,6 +27,12 @@ import {
   updatePrinterDB,
 } from "./printer.repository";
 import { PrinterObjectSchema, PrinterServiceInterface } from "./printer.types";
+import nodeHtmlToImage from "node-html-to-image";
+import htmlToImage from "html-to-image";
+import fs from "fs";
+import path from "path";
+import cheerio from "cheerio";
+import puppeteer from "puppeteer";
 
 export class printerService implements PrinterServiceInterface {
   async getPrinters() {
@@ -271,285 +281,266 @@ export class printerService implements PrinterServiceInterface {
     }
   }
 
-  async print(requestId: any, requestData: any) {
+  async print(requestData: any): Promise<{
+    success: boolean;
+    error?: { code: number; message: string };
+    details?: Array<{ ip: string; success: boolean; error?: string }>;
+  }> {
+    // 1) Validate input
+    const schema = z.object({ user: UserSchema, tableId: z.number() });
+    let data: z.infer<typeof schema>;
     try {
-      const id = await validateType(
-        { id: requestId },
-        PrinterObjectSchema.pick({ id: true })
-      );
+      data = schema.parse(requestData);
+    } catch (err) {
+      logger.warn("Invalid Print Data:", err);
+      return {
+        success: false,
+        error: { code: BAD_REQUEST_STATUS, message: BAD_REQUEST_BODY_ERR },
+      };
+    }
 
-      if (!id || id instanceof ZodError || !id.id) {
-        logger.warn("Invalid Printer ID: ", id);
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_ID_ERR,
-          },
-        };
-      }
-
-      // Validate requestData
-      const OrderPrintSchema = z.object({
-        orderId: z.number(),
-        items: z.array(
-          z.object({
-            title_en: z.string(),
-            quantity: z.number(),
-            price: z.number(),
-          })
-        ),
-        customer: z
-          .object({
-            name: z.string(),
-            discount: z.number(),
-          })
-          .optional(),
-        subtotal: z.number(),
-        tax: z.number(),
-        service: z.number(),
-        total: z.number(),
-      });
-
-      const data = await validateType(requestData, OrderPrintSchema);
-
-      if (!data || data instanceof ZodError) {
-        logger.warn("Invalid Print Data: ", data);
-        return {
-          success: false,
-          error: {
-            code: BAD_REQUEST_STATUS,
-            message: BAD_REQUEST_BODY_ERR,
-          },
-        };
-      }
-
-      const printerDevice = await prisma.$transaction(async (tx) => {
-        const printerDevice = await getPrinterByIdDB(id?.id as number, tx);
-
-        const brand = await getBrandDB(tx);
-
-        const printer = new ThermalPrinter({
-          type: PrinterTypes.EPSON,
-          interface: `tcp://${printerDevice?.ip}`,
-          removeSpecialCharacters: false,
-          lineCharacter: "=",
-          breakLine: BreakLine.WORD,
-          width: 48, // For a 72mm printer, typically uses 48 characters per line
-        });
-
-        let isConnected = await printer.isPrinterConnected();
-        if (isConnected) {
-          if (brand?.receiptHeader) {
-            // Header Section
-            printer.alignCenter();
-            printer.setTextDoubleHeight();
-            printer.bold(true);
-            printer.println(
-              brand?.receiptHeader || brand?.restaurantName || "Restaurant"
-            );
-            printer.bold(false);
-            printer.setTextNormal();
-            printer.newLine();
-          }
-
-          // Restaurant Info
-          printer.bold(true);
-          printer.println(brand?.restaurantName || "Restaurant Name");
-          printer.bold(false);
-          printer.println(brand?.address || "");
-          printer.println(`Tel: ${brand?.phoneNumber || ""}`);
-          printer.drawLine();
-          printer.newLine();
-
-          // Order Details
-          printer.alignLeft();
-          printer.println(`Order #: ${data?.orderId}`);
-          printer.println(`Date: ${new Date().toLocaleDateString()}`);
-          printer.println(`Time: ${new Date().toLocaleTimeString()}`);
-
-          // Customer Info (if available)
-          if (data.customer?.name) {
-            printer.println(`Customer: ${data.customer.name}`);
-          }
-
-          printer.drawLine();
-          printer.newLine();
-
-          // Items Header
-          printer.bold(true);
-          printer.tableCustom([
-            { text: "Item", align: "LEFT" },
-            { text: "Qty", align: "CENTER" },
-            { text: "Price", align: "RIGHT" },
-          ]);
-          printer.bold(false);
-          printer.drawLine();
-
-          // Combine duplicate items by title_en and sum their quantities and prices
-          const combinedItems = data.items.reduce((acc: any[], item) => {
-            const existing = acc.find((i) => i.title_en === item.title_en);
-            if (existing) {
-              existing.quantity += item.quantity;
-              existing.price += item.price * item.quantity;
-            } else {
-              acc.push({
-                title_en: item.title_en,
-                quantity: item.quantity,
-                price: item.price * item.quantity,
-              });
-            }
-            return acc;
-          }, []);
-
-          // Items List
-          combinedItems.forEach((item) => {
-            printer.tableCustom([
-              { text: item.title_en || "", align: "LEFT" },
-              {
-                text: item.quantity.toString(),
-                align: "CENTER",
-              },
-              {
-                text: `${item.price.toLocaleString("en-US")}`,
-                align: "RIGHT",
-              },
-            ]);
-          });
-
-          printer.drawLine();
-          printer.newLine();
-
-          // Totals Section
-          printer.alignLeft();
-
-          // Subtotal
-          const subtotalLine =
-            `Subtotal:`.padEnd(25) +
-            `IQD ${data?.subtotal.toLocaleString("en-US")}`.padStart(23);
-          printer.println(subtotalLine);
-
-          // Customer Discount (if applicable)
-          if (data.customer?.discount && data.customer.discount > 0) {
-            const discountAmount =
-              (data.customer.discount / 100) * data.subtotal;
-            const discountLine =
-              `Discount (${data.customer.discount.toFixed(0)}%):`.padEnd(25) +
-              `- IQD ${discountAmount.toLocaleString("en-US")}`.padStart(23);
-            printer.println(discountLine);
-
-            // Subtotal after discount
-            const afterDiscountTotal = data.subtotal - discountAmount;
-            const afterDiscountLine =
-              `After Discount:`.padEnd(25) +
-              `IQD ${afterDiscountTotal.toLocaleString("en-US")}`.padStart(23);
-            printer.println(afterDiscountLine);
-          }
-
-          // Tax (if applicable)
-          if (data.tax !== undefined && data.tax > 0) {
-            const discountAmount =
-              ((data.customer?.discount || 0) / 100) * data.subtotal;
-            const taxableAmount = data.customer?.discount
-              ? data.subtotal - discountAmount
-              : data.subtotal;
-            const taxAmount = taxableAmount * data.tax;
-            const taxLine =
-              `Tax (${(data.tax * 100).toFixed(0)}%):`.padEnd(25) +
-              `IQD ${taxAmount.toLocaleString("en-US")}`.padStart(23);
-            printer.println(taxLine);
-          }
-
-          // Service Charge (if applicable)
-          if (data.service && data.service > 0) {
-            const serviceLine =
-              `Service Charge:`.padEnd(25) +
-              `IQD ${data.service.toLocaleString("en-US")}`.padStart(23);
-            printer.println(serviceLine);
-          }
-
-          // Total
-          printer.drawLine();
-          printer.bold(true);
-          printer.setTextDoubleHeight();
-          const totalLine =
-            `TOTAL:`.padEnd(5) +
-            `IQD ${data.total.toLocaleString("en-US")}`.padStart(5);
-          printer.println(totalLine);
-          printer.setTextNormal();
-          printer.bold(false);
-          printer.drawLine();
-          printer.newLine();
-
-          // Footer Section
-          printer.alignCenter();
-          printer.println("Thank you for your visit!");
-          printer.println("Please come again!");
-          printer.newLine();
-
-          // QR Code (if website available)
-          if (brand?.website) {
-            printer.printQR(brand.website, {
-              cellSize: 6,
-              correction: "M",
-              model: 2,
-            });
-            printer.newLine();
-            printer.println("Scan for more info");
-            printer.newLine();
-          }
-
-          // Additional footer text
-          if (brand?.receiptFooter) {
-            printer.bold(true);
-            printer.println(brand.receiptFooter);
-            printer.bold(false);
-            printer.newLine();
-          }
-
-          printer.newLine();
-          printer.cut();
-          printer.beep(2); // Reduced beeps for better customer experience
-
-          const printStatus = await printer
-            .execute()
-            .then(() => {
-              console.log("Receipt printed successfully");
-              return { success: true };
-            })
-            .catch((err) => {
-              console.error("Print execution error:", err);
-              throw err;
-            });
-
-          return {
-            success: true,
-            message: "Receipt printed successfully",
-          };
-        } else {
-          console.log("Printer Buffer: ", printer.getBuffer());
-          console.warn("Printer not connected: ", isConnected);
-
-          return {
-            success: false,
-            error: {
-              code: BAD_REQUEST_STATUS,
-              message: "Printer not connected",
-            },
-          };
-        }
-      });
-
-      return printerDevice;
-    } catch (error) {
-      logger.error("Print Error: ", error);
+    // 2) Fetch order
+    const order = await getLatestOrderDB(data.tableId);
+    if (!order || order.items.length === 0) {
+      logger.warn("No Order Items Found for table", data.tableId);
       return {
         success: false,
         error: {
           code: INTERNAL_SERVER_STATUS,
-          message: INTERNAL_SERVER_ERR,
+          message: "No items to print",
         },
       };
     }
+
+    // 3) Group items by printer IP
+    const itemsByPrinter = order.items.reduce<
+      Record<string, typeof order.items>
+    >((acc, item) => {
+      const ip = item.menuItem.Printer?.ip;
+      if (!ip) throw new Error(`No printer for item ${item.menuItem.id}`);
+      (acc[ip] ||= []).push(item);
+      return acc;
+    }, {});
+
+    // 4) Print each batch via canvas + CanvasTable
+    const results = await Promise.all(
+      Object.entries(itemsByPrinter).map(async ([ip, items]) => {
+        const printer = new ThermalPrinter({
+          type: PrinterTypes.EPSON,
+          interface: `tcp://${ip}`,
+          options: { timeout: 10000 },
+        });
+
+        if (!(await printer.isPrinterConnected())) {
+          logger.warn(`Printer ${ip} not connected`);
+          return { ip, success: false, error: "Not connected" };
+        }
+
+        // Print and cut
+        try {
+          // 2) Aggregate & count duplicates
+          const aggregated = items.reduce<typeof order.items>((acc, item) => {
+            const existing = acc.find(
+              (i) =>
+                i.menuItem.title_en === item.menuItem.title_en &&
+                i.notes === item.notes
+            );
+            if (existing) {
+              existing.quantity++;
+            } else {
+              // copy over everything from `item`, then add `quantity`
+              acc.push({ ...item, quantity: 1 });
+            }
+            return acc;
+          }, []);
+
+          // 3) Sort so those with notes come first
+          aggregated.sort((a, b) => +!!b.notes - +!!a.notes);
+
+          // 4) Build your `<tbody>` rows
+          const rowsHtml = aggregated
+            .map((i) => {
+              const noteHtml = i.notes
+                ? `<div class="item-note bold">◇ ${i.notes}</div>`
+                : "";
+              return `
+      <tr>
+        <td class="qty-col">${i.quantity} X</td>
+        <td class="item-col">
+          <div class="item-name">${i.menuItem.title_en}</div>
+          ${noteHtml}
+        </td>
+      </tr>
+    `;
+            })
+            .join("");
+
+          // 5) Final template, with dynamic rows
+          const kitchenReceiptTemplate = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+      body {
+        display: flex;
+        justify-content: center;
+        background: #f0f0f0;
+      }
+      .receipt {
+        padding: 6px;
+        width: 300px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        transform: scale(2);
+        transform-origin: top center;
+        font-family: monospace;
+        line-height: 1.4;
+      }
+      .center { text-align: center; }
+      .bold { font-weight: bold; }
+      hr {
+        border: none;
+        border-top: 1px dashed #333;
+        margin: 8px 0;
+      }
+      .item {
+        display: flex;
+        gap: 0.5em;
+      }
+      .qty   { width: 2em; }
+      .title { flex: 1; }
+      .note  {
+        margin-left: 2.5em;
+        font-size: 0.85em;
+        color: #555;
+      }
+      .items-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+      }
+        
+        .items-table th {
+            background: #000;
+            color: white;
+            padding: 12px 8px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        
+        .items-table td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+        
+        .items-table tbody tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .items-table tbody tr:hover {
+            background: #f0f0f0;
+        }
+        
+        .qty-col {
+            width: 15%;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .item-col {
+            width: 85%;
+        }
+        
+        .item-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        
+        .item-note {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+            margin-left: 4px;
+        }
+  </style>
+</head>
+<body>
+  <div class="receipt">
+    <div class="center bold">KITCHEN ORDER</div>
+    <div>Order #: ${order.id}</div>
+    <div>Table   : ${order.table?.name}</div>
+    <div>User    : ${data.user.username || ""}</div>
+    <div>Time    : ${new Date().toLocaleString()}</div>
+    <hr/>
+
+    <table class="items-table">
+      <thead>
+        <tr>
+          <th class="qty-col">QTY</th>
+          <th class="item-col">ITEMS TO PREPARE</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rowsHtml}
+      </tbody>
+    </table>
+
+    <hr/>
+    <div class="center">--- END OF ORDER ---</div>
+  </div>
+</body>
+</html>`;
+
+          const outputPath = await renderReceipt(kitchenReceiptTemplate);
+          const image = fs.readFileSync(outputPath);
+          if (image) {
+            await printer.printImageBuffer(image);
+            printer.cut();
+            await printer.execute();
+            fs.unlinkSync(outputPath);
+            logger.info(`Printed ${items.length} on ${ip}`);
+          }
+          return { ip, success: true };
+        } catch (err) {
+          logger.error(`Print failed on ${ip}:`, err);
+          return { ip, success: false, error: String(err) };
+        }
+      })
+    );
+
+    // 5) Consolidate
+    return { success: results.every((r) => r.success), details: results };
   }
+}
+
+async function renderReceipt(html: string) {
+  const browser = await puppeteer.launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
+  const page = await browser.newPage();
+
+  // 1) Load your HTML
+  await page.setContent(html, { waitUntil: "networkidle0" });
+
+  // 2) Grab the receipt container
+  const receipt = await page.$(".receipt");
+  if (!receipt) {
+    throw new Error("Could not find .receipt element");
+  }
+
+  // 3) Screenshot just that element
+  const buffer = await receipt.screenshot({
+    omitBackground: true, // => removes any transparent padding
+  });
+
+  await browser.close();
+
+  // 4) Write it out
+  const outPath = path.join(__dirname, "kitchen-receipt.png");
+  fs.writeFileSync(outPath, buffer);
+
+  return outPath;
 }
