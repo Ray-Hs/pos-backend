@@ -151,80 +151,83 @@ export function transferTableDB(
     });
   }
 
-  return prisma.$transaction(async (tx) => {
-    const tableOne = await tx.table.findUnique({
-      where: { id: idOne },
-      include: { orders: true },
-    });
+  return prisma.$transaction(
+    async (tx) => {
+      const tableOne = await tx.table.findUnique({
+        where: { id: idOne },
+        include: { orders: true },
+      });
 
-    const tableTwo = await tx.table.findUnique({
-      where: { id: idTwo },
-      include: { orders: true },
-    });
+      const tableTwo = await tx.table.findUnique({
+        where: { id: idTwo },
+        include: { orders: true },
+      });
 
-    if (!tableOne || !tableTwo) {
-      return {
-        success: false,
-        message: "Tables not found",
-        code: NOT_FOUND_STATUS,
-      };
-    }
+      if (!tableOne || !tableTwo) {
+        return {
+          success: false,
+          message: "Tables not found",
+          code: NOT_FOUND_STATUS,
+        };
+      }
 
-    if (tableTwo.status === "OCCUPIED") {
-      return {
-        success: false,
-        message: "Cannot transfer orders from/to unavailable tables",
-        code: BAD_REQUEST_STATUS,
-      };
-    }
+      if (tableTwo.status === "OCCUPIED") {
+        return {
+          success: false,
+          message: "Cannot transfer orders from/to unavailable tables",
+          code: BAD_REQUEST_STATUS,
+        };
+      }
 
-    const latestOrderOne = await getLatestOrderDB(tableOne.id);
+      const latestOrderOne = await getLatestOrderDB(tableOne.id);
 
-    if (!latestOrderOne) {
-      return {
-        success: false,
-        message: "No orders to transfer",
-        code: BAD_REQUEST_STATUS,
-      };
-    }
+      if (!latestOrderOne) {
+        return {
+          success: false,
+          message: "No orders to transfer",
+          code: BAD_REQUEST_STATUS,
+        };
+      }
 
-    // First disconnect orders from source table
-    await tx.table.update({
-      where: { id: idOne },
-      data: {
-        status: "AVAILABLE",
-        orders: {
-          disconnect: {
-            id: latestOrderOne?.id,
+      // First disconnect orders from source table
+      await tx.table.update({
+        where: { id: idOne },
+        data: {
+          status: "AVAILABLE",
+          orders: {
+            disconnect: {
+              id: latestOrderOne?.id,
+            },
           },
         },
-      },
-    });
+      });
 
-    // Then connect orders to destination table
-    const updatedTable = await tx.table.update({
-      where: { id: idTwo },
-      data: {
-        status: "OCCUPIED",
-        orders: {
-          connect: {
-            id: latestOrderOne?.id,
+      // Then connect orders to destination table
+      const updatedTable = await tx.table.update({
+        where: { id: idTwo },
+        data: {
+          status: "OCCUPIED",
+          orders: {
+            connect: {
+              id: latestOrderOne?.id,
+            },
           },
         },
-      },
-      include: {
-        orders: {
-          include: {
-            items: true,
+        include: {
+          orders: {
+            include: {
+              items: true,
+            },
           },
         },
-      },
-    });
+      });
 
-    return {
-      success: true,
-      message: "Transfer completed successfully",
-      data: updatedTable,
-    };
-  });
+      return {
+        success: true,
+        message: "Transfer completed successfully",
+        data: updatedTable,
+      };
+    },
+    { timeout: 10000 }
+  );
 }

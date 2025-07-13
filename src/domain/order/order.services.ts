@@ -198,6 +198,7 @@ export class OrderServices implements OrderServiceInterface {
           },
         };
       }
+      console.log("Order Data: ", data);
 
       const createdOrder = await createOrderDB(data);
 
@@ -277,6 +278,9 @@ export class OrderServices implements OrderServiceInterface {
         const addedItems = items.filter(
           (item) => !order_items?.some((orderItem) => orderItem.id === item.id)
         );
+        const existingItems = items.filter((item) =>
+          order_items?.some((orderItem) => orderItem.id === item.id)
+        );
 
         if (deletedItems && deletedItems.length > 0) {
           // First, delete the order items to avoid violating required relation
@@ -304,6 +308,32 @@ export class OrderServices implements OrderServiceInterface {
           });
         }
 
+        // Handle item updates separately
+        const itemsUpdate: any = {};
+
+        // Create new items if there are any
+        if (addedItems && addedItems.length > 0) {
+          itemsUpdate.create = addedItems.map((item) => ({
+            menuItemId: item.menuItemId,
+            price: item.price,
+            quantity: item.quantity,
+            notes: item.notes,
+          }));
+        }
+
+        // Update existing items if there are any
+        if (existingItems && existingItems.length > 0) {
+          itemsUpdate.update = existingItems.map((item) => ({
+            where: { id: item.id },
+            data: {
+              menuItemId: item.menuItemId,
+              price: item.price,
+              quantity: item.quantity,
+              notes: item.notes,
+            },
+          }));
+        }
+
         const order = await tx.order.update({
           where: {
             id: response.id,
@@ -311,15 +341,7 @@ export class OrderServices implements OrderServiceInterface {
           data: {
             ...rest,
             userId,
-            items: items
-              ? {
-                  create: addedItems.map((item) => ({
-                    menuItemId: item.menuItemId,
-                    price: item.price,
-                    quantity: item.quantity,
-                  })),
-                }
-              : undefined,
+            items: itemsUpdate,
           },
           include: {
             items: true,

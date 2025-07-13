@@ -22,7 +22,7 @@ export async function getCustomersInfoDB(
 ) {
   const whereClause: any = q
     ? {
-        OR: [ 
+        OR: [
           { name: { contains: q, mode: "insensitive" } },
           { phoneNumber: { contains: q, mode: "insensitive" } },
           { paymentMethod: { contains: q, mode: "insensitive" } },
@@ -57,7 +57,6 @@ export async function createCustomerPaymentDB(
     // Get customer info
     const customerInfo = await tx.customerInfo.findUnique({
       where: { id: customerInfoId },
-      select: { initialDebt: true, debt: true },
     });
 
     if (!customerInfo) {
@@ -88,6 +87,10 @@ export async function createCustomerPaymentDB(
         throw new Error("Invoice not found");
       }
 
+      if (!invoice.debt) {
+        throw new Error("No Debts found");
+      }
+
       if (invoice.paid) {
         throw new Error("Invoice already paid");
       }
@@ -105,13 +108,14 @@ export async function createCustomerPaymentDB(
       });
 
       // Update invoice status
-      if (amount >= invoice.total) {
+      if (amount >= invoice.debt) {
         // Fully paid
         await tx.invoice.update({
           where: { id: invoiceId },
           data: {
             paid: true,
             status: "PAID",
+            debt: 0,
           },
         });
       } else {
@@ -121,7 +125,7 @@ export async function createCustomerPaymentDB(
           data: {
             paid: false,
             status: "PARTIAL",
-            total: invoice.total - amount,
+            debt: (invoice?.debt || 0) - amount,
           },
         });
       }
@@ -142,7 +146,65 @@ export async function createCustomerPaymentDB(
       orderBy: { createdAt: "asc" }, // Pay oldest debts first
     });
 
-    if (!customerInvoices || customerInvoices.length === 0) {
+    if (
+      !customerInvoices ||
+      (customerInvoices.length === 0 && (customerInfo.debt || 0) > 0)
+    ) {
+      if ((customerInfo.debt || 0) > amount) {
+        const payment = prisma.$transaction(async (tx) => {
+          const customer = await updateCustomerInfoDB(
+            {
+              ...customerInfo,
+              debt: (customerInfo.debt || 0) - amount,
+            },
+            customerInfoId,
+            tx
+          );
+
+          const payment = await tx.customerPayment.create({
+            data: {
+              amount,
+              customerInfoId,
+              note,
+              invoiceNumber,
+              paymentDate: data.paymentDate || Date(),
+            },
+          });
+          return payment;
+        });
+
+        return payment;
+      } else {
+        const payment = prisma.$transaction(async (tx) => {
+          const customer = await updateCustomerInfoDB(
+            {
+              ...customerInfo,
+              debt: 0,
+            },
+            customerInfoId,
+            prisma
+          );
+
+          const payment = await tx.customerPayment.create({
+            data: {
+              amount,
+              customerInfoId,
+              note,
+              invoiceNumber,
+              paymentDate: data.paymentDate || Date(),
+            },
+          });
+          return payment;
+        });
+
+        return payment;
+      }
+    }
+
+    if (
+      !customerInvoices ||
+      (customerInvoices.length === 0 && customerInfo.debt === 0)
+    ) {
       throw new Error("No unpaid invoices found for this customer");
     }
 
@@ -154,7 +216,7 @@ export async function createCustomerPaymentDB(
     for (const invoice of customerInvoices) {
       if (availablePaymentAmount <= 0) break;
 
-      const amountToPay = Math.min(availablePaymentAmount, invoice.total);
+      const amountToPay = Math.min(availablePaymentAmount, invoice.debt || 0);
 
       // Create payment record
       paymentsToCreate.push({
@@ -167,12 +229,13 @@ export async function createCustomerPaymentDB(
       });
 
       // Update invoice status
-      if (amountToPay >= invoice.total) {
+      if (amountToPay >= (invoice.debt || 0)) {
         await tx.invoice.update({
           where: { id: invoice.id },
           data: {
             paid: true,
             status: "PAID",
+            debt: 0,
           },
         });
       } else {
@@ -181,7 +244,7 @@ export async function createCustomerPaymentDB(
           data: {
             paid: false,
             status: "PARTIAL",
-            total: invoice.total - amountToPay,
+            debt: (invoice.debt || 0) - amountToPay,
           },
         });
       }

@@ -177,6 +177,11 @@ export class SupplyServices implements SupplyServiceInterface {
 
       const createdSupply = await prisma.$transaction(async (tx) => {
         const company = await getCompanyInfoByIdDB(data.companyId, tx);
+        const prevSupply = await tx.supply.findMany({
+          where: {
+            name: data.name,
+          },
+        });
 
         if (!company) {
           throw new Error(`No Company Exists with id: ${data.companyId}`);

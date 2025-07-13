@@ -165,6 +165,7 @@ export const InvoiceSchema = z.object({
   customerDiscount: CustomerDiscountSchema.nullable().optional(),
   discount: z.number().nullable().optional(),
   total: z.number().optional(),
+  debt: z.number().nullable().optional(),
   subtotal: z.number().optional(),
   paymentMethod: PaymentMethodEnum.nullable().optional(),
   paid: z.boolean().optional(),

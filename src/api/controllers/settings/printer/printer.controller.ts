@@ -5,6 +5,7 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../../infrastructure/utils/constants";
+import { decodeJWT } from "../../../../infrastructure/utils/decodeJWT";
 
 export class PrinterController implements PrinterControllerInterface {
   async getPrinters(req: Request, res: Response) {
@@ -56,10 +57,13 @@ export class PrinterController implements PrinterControllerInterface {
   }
 
   async print(req: Request, res: Response) {
-    const id = parseInt(req.params.id, 10);
     const data = req.body;
+    const user = decodeJWT(req, res);
     const printerServices = new printerService();
-    const response = await printerServices.print(id, data);
+    const response = await printerServices.print({
+      ...data,
+      user: { username: user?.username, role: user?.role, image: user?.image },
+    });
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

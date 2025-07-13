@@ -25,6 +25,7 @@ model Invoice {
 
     subtotal      Float
     total         Float
+    debt          Float?         @default(0)
     paymentMethod PaymentMethod?
     paid          Boolean        @default(false)
     status        PaymentStatus  @default(PENDING)
