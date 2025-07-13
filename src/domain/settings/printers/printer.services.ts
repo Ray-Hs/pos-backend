@@ -523,7 +523,7 @@ async function renderReceipt(html: string) {
   const page = await browser.newPage();
 
   // 1) Load your HTML
-  await page.setContent(html, { waitUntil: "networkidle0" });
+  await page.setContent(html);
 
   // 2) Grab the receipt container
   const receipt = await page.$(".receipt");

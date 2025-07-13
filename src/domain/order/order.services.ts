@@ -198,6 +198,7 @@ export class OrderServices implements OrderServiceInterface {
           },
         };
       }
+      console.log("Order Data: ", data);
 
       const createdOrder = await createOrderDB(data);
 

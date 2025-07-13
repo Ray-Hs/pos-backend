@@ -390,6 +390,75 @@ export class InvoiceServices implements InvoiceServiceInterface {
         });
       }
 
+      if (data.paymentMethod === "CASH" || data.paymentMethod === "CARD") {
+        const updatedInvoice: Invoice = await prisma.$transaction(
+          async (tx) => {
+            const {
+              id: _id,
+              discount,
+              customerDiscount,
+              customerInfoId,
+              ...rest
+            } = data;
+
+            const invoiceRef = await tx.invoiceRef.findFirst({
+              where: {
+                id: invoice.invoiceRefId,
+              },
+            });
+            const order = await findOrderByIdDB(
+              invoiceRef?.orderId as number,
+              tx
+            );
+
+            if (!order) {
+              throw new Error(`Order with ID ${invoiceRef?.orderId} not found`);
+            }
+
+            const table = await tx.table.update({
+              where: {
+                id: order.tableId || 0,
+              },
+              data: {
+                orders: {
+                  disconnect: { id: order.id },
+                },
+                status: "AVAILABLE",
+              },
+            });
+
+            const constants = await getConstantsDB(tx);
+            const subtotal = order.items.reduce(
+              (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
+              0
+            );
+            const total = calculateTotal(
+              subtotal,
+              constants,
+              discount || customerDiscount?.discount
+            );
+
+            const updatedInvoice = await updateInvoiceDB(
+              response.id as number,
+              {
+                ...rest,
+                total,
+                customerInfoId,
+                discount,
+                paid: true,
+              },
+              tx
+            );
+            return updatedInvoice;
+          }
+        );
+
+        return {
+          success: true,
+          data: updatedInvoice,
+        };
+      }
+
       if (data.paymentMethod === "DEBT") {
         const updatedInvoice: Invoice = await prisma.$transaction(
           async (tx) => {

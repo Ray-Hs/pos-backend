@@ -46,7 +46,9 @@ export function getLatestOrderDB(id: number) {
         },
       },
       Invoice: {
-        include: { invoices: { orderBy: { version: "desc" } } },
+        include: {
+          invoices: { include: { user: true }, orderBy: { version: "desc" } },
+        },
       },
     },
   });
@@ -63,7 +65,9 @@ export function findOrderByTableIdDB(id: number) {
         },
       },
       Invoice: {
-        include: { invoices: { orderBy: { version: "desc" } } },
+        include: {
+          invoices: { include: { user: true }, orderBy: { version: "desc" } },
+        },
       },
     },
   });
@@ -82,6 +86,7 @@ export async function createOrderDB(data: Order) {
                 menuItemId: item.menuItemId,
                 price: item.price,
                 quantity: item.quantity,
+                notes: item.notes,
               })),
             }
           : undefined,
