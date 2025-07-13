@@ -32,7 +32,7 @@ model UserRole {
 model Permission {
     id          Int        @id @default(autoincrement())
     key         String     @unique
-    name        String     @unique
+    name        String
     description String
     category    String?
     UserRole    UserRole[]

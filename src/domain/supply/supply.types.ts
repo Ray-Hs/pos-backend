@@ -28,10 +28,81 @@ export const SupplySchema = z.object({
   updatedAt: z.date().optional(),
 });
 
+export const StorageItemSchema = z.object({
+  item: z.string(),
+  quantity: z.number(),
+  price: z.number(),
+  sellPrice: z.number(),
+  totalValue: z.number(),
+  profit: z.number(),
+  companyDetails: z.object({
+    id: z.number(),
+    name: z.string(),
+    code: z.string().nullable(),
+    phoneNumber: z.string().nullable(),
+    note: z.string().nullable(),
+  }),
+  store: z.string().nullable(),
+  itemCode: z.string().nullable(),
+  expiryDate: z.date().nullable(),
+  lastRestock: z.date().nullable(),
+  lastSale: z.date().nullable(),
+});
+
+export const StoreLocationSchema = z.object({
+  storeName: z.string(),
+  items: z.array(StorageItemSchema),
+  totalItems: z.number(),
+  totalValue: z.number(),
+  totalProfit: z.number(),
+});
+
+export const StorageSummarySchema = z.object({
+  stores: z.array(StoreLocationSchema),
+  totalStores: z.number(),
+  totalItems: z.number(),
+  totalValue: z.number(),
+  totalProfit: z.number(),
+});
+
+export const StorageSchema = SupplySchema.pick({
+  id: true,
+  barcode: true,
+  company: true,
+  expiryDate: true,
+  name: true,
+  store: true,
+  remainingQuantity: true,
+  itemSellPrice: true,
+  itemPrice: true,
+  itemQty: true,
+  totalItems: true,
+  totalPrice: true,
+});
+
 export type Supply = z.infer<typeof SupplySchema>;
+export type Storage = z.infer<typeof StorageSchema>;
+export type StorageItem = z.infer<typeof StorageItemSchema>;
+export type StoreLocation = z.infer<typeof StoreLocationSchema>;
+export type StorageSummary = z.infer<typeof StorageSummarySchema>;
 
 export interface SupplyServiceInterface {
-  getSupplies: (q: string | undefined) => Promise<TResult<Supply[]>>;
+  getStorage: (
+    q: string | undefined,
+    pagination?: {
+      page?: number;
+      limit?: number;
+    },
+    expired?: { expired?: boolean | undefined; days?: number | undefined }
+  ) => Promise<TResult<StorageSummary & { pages?: number }>>;
+  getSupplies: (
+    q: string | undefined,
+    pagination?: {
+      page?: number;
+      limit?: number;
+    },
+    expired?: { expired?: boolean | undefined; days?: number | undefined }
+  ) => Promise<TResult<Supply[] & { pages?: number }>>;
   getSupplyById: (requestId: any) => Promise<TResult<Supply>>;
   createSupply: (requestData: any) => Promise<TResult<void>>;
   updateSupply: (requestId: any, requestData: any) => Promise<TResult<void>>;
@@ -39,6 +110,10 @@ export interface SupplyServiceInterface {
 }
 
 export interface SupplyControllerInterface {
+  getStorage: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<StorageSummary>>>;
   getSupplies: (
     req: Request,
     res: Response

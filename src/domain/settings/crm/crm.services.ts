@@ -1,20 +1,22 @@
 import { ZodError } from "zod";
+import prisma from "../../../infrastructure/database/prisma/client";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
   BAD_REQUEST_STATUS,
   INTERNAL_SERVER_ERR,
   INTERNAL_SERVER_STATUS,
+  LIMIT_CONSTANT,
   NOT_FOUND_ERR,
   NOT_FOUND_STATUS,
 } from "../../../infrastructure/utils/constants";
 import logger from "../../../infrastructure/utils/logger";
 import validateType from "../../../infrastructure/utils/validateType";
-import { TResult } from "../../../types/common";
 import {
   createCompanyInfoDB,
   createCustomerDiscountDB,
   createCustomerInfoDB,
+  createCustomerPaymentDB,
   deleteCompanyInfoDB,
   deleteCustomerDiscountDB,
   deleteCustomerInfoDB,
@@ -30,20 +32,25 @@ import {
   updateCustomerInfoDB,
 } from "./crm.repository";
 import {
-  CompanyInfo,
   CompanyInfoSchema,
   CRMServiceInterface,
-  CustomerDiscount,
   CustomerDiscountSchema,
-  CustomerInfo,
   CustomerInfoSchema,
+  CustomerPaymentRequestSchema,
 } from "./crm.types";
-import prisma from "../../../infrastructure/database/prisma/client";
+import {
+  calculatePages,
+  calculateSkip,
+  Take,
+} from "../../../infrastructure/utils/calculateSkip";
 
 export class CRMServices implements CRMServiceInterface {
-  async getCustomers() {
+  async getCustomers(
+    pagination?: { limit?: number; page?: number },
+    q?: string
+  ) {
     try {
-      const data = await getCustomersInfoDB();
+      const data = await getCustomersInfoDB(pagination, q);
       if (!data) {
         logger.warn("Customers Not Found");
         return {
@@ -54,7 +61,193 @@ export class CRMServices implements CRMServiceInterface {
           },
         };
       }
-      return { success: true, data };
+
+      const totalPages = await prisma.customerInfo.count();
+      return {
+        success: true,
+        data,
+        pages: calculatePages(totalPages, pagination?.limit),
+      };
+    } catch (error) {
+      logger.error("Get Customers: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+  async createCustomerPayment(requestData: any) {
+    try {
+      const data = await validateType(
+        requestData,
+        CustomerPaymentRequestSchema
+      );
+
+      if (!data || data instanceof ZodError) {
+        logger.warn("Type Error: ", data);
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_BODY_ERR,
+          },
+        };
+      }
+
+      if (data.amount <= 0) {
+        logger.warn("Invalid Amount.");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: "Invalid Amount.",
+          },
+        };
+      }
+
+      // Validate customer exists
+      const customer = await getCustomerByIdDB(data.customerInfoId, prisma);
+      if (!customer) {
+        logger.warn("Customer not found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: "Customer not found",
+          },
+        };
+      }
+
+      await createCustomerPaymentDB(data, prisma);
+
+      return {
+        success: true,
+        message: "Created Customer Payment Successfully",
+      };
+    } catch (error) {
+      logger.error("Create Customer Payment: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: error instanceof Error ? error.message : INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async getCustomerDebts(pagination: { page: number; limit: number }) {
+    try {
+      const customerInfos = await prisma.customerInfo.findMany({
+        include: {
+          Invoice: {
+            where: { isLatestVersion: true, paymentMethod: "DEBT" },
+            select: {
+              id: true,
+              subtotal: true,
+              total: true,
+              paymentMethod: true,
+              paid: true,
+              createdAt: true,
+              invoiceRef: {
+                select: {
+                  Order: {
+                    select: {
+                      items: {
+                        select: {
+                          menuItem: {
+                            select: {
+                              title_ar: true,
+                              title_en: true,
+                              title_ku: true,
+                              price: true,
+                              image: true,
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+          customerDiscount: {
+            select: {
+              discount: true,
+              customerInfo: {
+                select: {
+                  initialDebt: true,
+                },
+              },
+            },
+          },
+        },
+        take: Take(pagination.limit),
+        skip: calculateSkip(pagination.page, pagination.limit),
+      });
+      if (!customerInfos || customerInfos.length === 0) {
+        logger.warn("Customers Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      const data = customerInfos.map((customer) => {
+        return {
+          customer: {
+            id: customer.id,
+            name: customer.name,
+            phoneNumber: customer.phoneNumber,
+            email: customer.email,
+            debt: customer.debt,
+            initialDebt: customer.initialDebt,
+            code: customer.code,
+            note: customer.note,
+            discount: customer.customerDiscount?.discount,
+          },
+          invoices: customer.Invoice.map((invoice) => ({
+            id: invoice.id,
+            subtotal: invoice.subtotal,
+            total: invoice.total,
+            paymentMethod: invoice.paymentMethod,
+            paid: invoice.paid,
+            createdAt: invoice.createdAt,
+            items: invoice.invoiceRef.Order?.items.map((item) => ({
+              title_en: item.menuItem.title_en,
+              title_ar: item.menuItem.title_ar,
+              title_ku: item.menuItem.title_ku,
+              price: item.menuItem.price,
+              image: item.menuItem.image,
+            })),
+          })),
+        };
+      });
+
+      // Count only customers who have at least one DEBT invoice (isLatestVersion: true, paymentMethod: "DEBT")
+      const totalPages = await prisma.customerInfo.count({
+        where: {
+          Invoice: {
+            some: {
+              isLatestVersion: true,
+              paymentMethod: "DEBT",
+            },
+          },
+        },
+      });
+
+      return {
+        success: true,
+        data,
+        pages: calculatePages(totalPages, pagination.limit),
+      };
     } catch (error) {
       logger.error("Get Customers: ", error);
       return {
@@ -277,9 +470,9 @@ export class CRMServices implements CRMServiceInterface {
     }
   }
 
-  async getCompanies() {
+  async getCompanies(pagination?: { page: number; limit: number }) {
     try {
-      const data = await getCompaniesInfoDB();
+      const data = await getCompaniesInfoDB(pagination);
       if (!data) {
         logger.warn("Companies Not Found");
         return {
@@ -450,9 +643,12 @@ export class CRMServices implements CRMServiceInterface {
     }
   }
 
-  async getCustomerDiscounts(filter: { isActive?: boolean }) {
+  async getCustomerDiscounts(
+    filter: { isActive?: boolean; page?: number },
+    pagination: { page: number; limit: number }
+  ) {
     try {
-      const data = await getCustomerDiscountDB(filter);
+      const data = await getCustomerDiscountDB(filter, pagination);
       if (!data) {
         logger.warn("Customer Discounts Not Found");
         return {
@@ -618,6 +814,73 @@ export class CRMServices implements CRMServiceInterface {
       };
     } catch (error) {
       logger.error("Delete Customer Discount: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async getCustomerPayments(pagination?: { limit: number; page: number }) {
+    try {
+      const payments = await prisma.customerPayment.findMany({
+        include: {
+          customerInfo: {
+            select: {
+              id: true,
+              name: true,
+              phoneNumber: true,
+              email: true,
+              debt: true,
+              initialDebt: true,
+            },
+          },
+          invoice: {
+            select: {
+              total: true,
+            },
+          },
+        },
+        orderBy: { createdAt: "desc" },
+        take: Take(pagination?.limit),
+        skip: calculateSkip(pagination?.page, pagination?.limit),
+      });
+
+      const formattedData = payments.reduce((acc: any, payment) => {
+        const customerKey = payment.customerInfo.id;
+
+        if (!acc[customerKey]) {
+          acc[customerKey] = {
+            customer: {
+              name: payment.customerInfo.name,
+              phoneNumber: payment.customerInfo.phoneNumber,
+              email: payment.customerInfo.email,
+              debt: payment.customerInfo.debt,
+              initialDebt: payment.customerInfo.initialDebt,
+            },
+            payments: [],
+          };
+        }
+
+        // Add this specific payment to the customer's payments array
+        acc[customerKey].payments.push({
+          id: payment.id,
+          amount: payment.amount,
+          note: payment.note,
+          paymentDate: payment.paymentDate,
+          createdAt: payment.createdAt,
+          invoiceNumber: payment.invoiceNumber,
+        });
+
+        return acc;
+      }, {});
+
+      return { success: true, data: Object.values(formattedData) };
+    } catch (error) {
+      logger.error("Get Customer Payments: ", error);
       return {
         success: false,
         error: {

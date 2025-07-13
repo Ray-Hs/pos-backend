@@ -5,13 +5,16 @@ import {
   CREATED_STATUS,
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
-import { UserWithoutPassword } from "../../../types/common";
+import { PaymentMethod, UserWithoutPassword } from "../../../types/common";
 import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 
 export class InvoiceController implements InvoiceControllerInterface {
   async getInvoices(req: Request, res: Response) {
+    const filterBy = req.query.filterBy as string | undefined;
     const invoiceInstance = new InvoiceServices();
-    const response = await invoiceInstance.getInvoices();
+    const response = await invoiceInstance.getInvoices(
+      filterBy ? (filterBy.toUpperCase() as PaymentMethod) : undefined
+    );
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

@@ -9602,513 +9602,6 @@ Unknown argument `companyId`. Available options are marked with ?.
 [2025-06-26 14:29:10] [31merror[39m: Create Payment Service:  All debts are already paid.
 [2025-06-26 14:30:13] [31merror[39m: Create Payment Service:  All debts are already paid.
 [2025-06-26 14:31:21] [31merror[39m: Create Payment Service:  All debts are already paid.
-<<<<<<< HEAD
-[2025-06-26 17:24:14] [31merror[39m: Auth login Service:  
-Invalid `prisma.user.findFirst()` invocation:
-
-
-Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 17)
-[2025-06-26 17:25:35] [31merror[39m: Auth login Service:  
-Invalid `prisma.user.findFirst()` invocation:
-
-
-Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 17)
-[2025-06-28 11:23:36] [31merror[39m: Validation failed: [
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packageQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packagePrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemSellPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_date",
-    "path": [
-      "purchasedAt"
-    ],
-    "message": "Invalid date"
-  }
-]
-[2025-06-28 11:23:40] [31merror[39m: Validation failed: [
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packageQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packagePrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemSellPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_date",
-    "path": [
-      "purchasedAt"
-    ],
-    "message": "Invalid date"
-  }
-]
-[2025-06-28 11:23:47] [31merror[39m: Validation failed: [
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packageQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packagePrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemSellPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_date",
-    "path": [
-      "purchasedAt"
-    ],
-    "message": "Invalid date"
-  }
-]
-[2025-06-28 11:24:32] [31merror[39m: Validation failed: [
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packageQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packagePrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemSellPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_date",
-    "path": [
-      "purchasedAt"
-    ],
-    "message": "Invalid date"
-  }
-]
-[2025-06-28 11:24:36] [31merror[39m: Validation failed: [
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packageQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packagePrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemSellPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_date",
-    "path": [
-      "purchasedAt"
-    ],
-    "message": "Invalid date"
-  }
-]
-[2025-06-28 11:24:40] [31merror[39m: Validation failed: [
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packageQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packagePrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemSellPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_date",
-    "path": [
-      "purchasedAt"
-    ],
-    "message": "Invalid date"
-  }
-]
-[2025-06-28 11:27:09] [31merror[39m: Validation failed: [
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packageQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packagePrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemSellPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_date",
-    "path": [
-      "purchasedAt"
-    ],
-    "message": "Invalid date"
-  }
-]
-[2025-06-28 11:27:12] [31merror[39m: Validation failed: [
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packageQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packagePrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemSellPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_date",
-    "path": [
-      "purchasedAt"
-    ],
-    "message": "Invalid date"
-  }
-]
-[2025-06-28 11:27:17] [31merror[39m: Validation failed: [
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packageQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemQty"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "packagePrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_type",
-    "expected": "number",
-    "received": "undefined",
-    "path": [
-      "itemSellPrice"
-    ],
-    "message": "Required"
-  },
-  {
-    "code": "invalid_date",
-    "path": [
-      "purchasedAt"
-    ],
-    "message": "Invalid date"
-  }
-]
-[2025-06-28 11:32:19] [31merror[39m: Validation failed: [
-  {
-    "code": "invalid_date",
-    "path": [
-      "purchasedAt"
-    ],
-    "message": "Invalid date"
-  }
-]
-=======
 [2025-06-26 16:58:49] [31merror[39m: Get Finances Service:  
 Invalid `prisma.companyDebt.findMany()` invocation:
 
@@ -10119,7 +9612,6 @@ Invalid `prisma.companyDebt.findMany()` invocation:
 
 
 The column `CompanyDebt.currency` does not exist in the current database.
->>>>>>> ae0c30a98ab43ba5da37ffe5ff12f99a575cd7d5
 [2025-06-29 09:59:40] [31merror[39m: Get Finances Service:  
 Invalid `prisma.companyDebt.findMany()` invocation:
 
@@ -10217,3 +9709,66 @@ Invalid `prisma.user.create()` invocation:
 
 
 Unique constraint failed on the fields: (`username`)
+[2025-07-03 14:38:05] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5164 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:39:03] [31merror[39m: Transfer Table Service:  Transaction API error: Transaction not found. Transaction ID is invalid, refers to an old closed transaction Prisma doesn't have information about anymore, or was obtained before disconnecting.
+[2025-07-03 14:41:28] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5274 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:41:41] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5125 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:43:40] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 6751 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:43:50] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5610 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:48:02] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5150 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:48:22] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5117 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:52:27] [31merror[39m: Transfer Table Service:  Transaction API error: Transaction already closed: A commit cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5146 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:54:08] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5265 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:54:34] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5119 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 16:24:38] [31merror[39m: Update Order Service:  Transaction API error: Transaction already closed: A commit cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 8085 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 17:47:52] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5132 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-09 11:32:16] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 8704 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-09 11:54:41] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 17)

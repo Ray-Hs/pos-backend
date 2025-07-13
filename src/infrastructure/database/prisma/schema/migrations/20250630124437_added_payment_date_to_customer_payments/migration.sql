@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "CustomerPayment" ADD COLUMN     "paymentDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

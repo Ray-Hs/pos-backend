@@ -1,5 +1,6 @@
 import { ZodError } from "zod";
 import prisma from "../../infrastructure/database/prisma/client";
+import { calculatePages } from "../../infrastructure/utils/calculateSkip";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
@@ -16,6 +17,9 @@ import { getCompanyInfoByIdDB } from "../settings/crm/crm.repository";
 import {
   createSupplyDB,
   deleteSupplyDB,
+  getStorageCountDB,
+  getStorageDB,
+  getSuppliesCountDB,
   getSuppliesDB,
   getSupplyByIdDB,
   updateSupplyDB,
@@ -23,9 +27,19 @@ import {
 import { SupplySchema, SupplyServiceInterface } from "./supply.types";
 
 export class SupplyServices implements SupplyServiceInterface {
-  async getSupplies(q: string | undefined) {
+  async getSupplies(
+    q: string | undefined,
+    pagination?: {
+      limit?: number;
+      page?: number;
+    },
+    expired?: {
+      expired?: boolean | undefined;
+      days?: number | undefined;
+    }
+  ) {
     try {
-      const data = await getSuppliesDB(q);
+      const data = await getSuppliesDB(q, expired, pagination);
       if (!data) {
         logger.warn("Supplies Not Found");
         return {
@@ -36,9 +50,67 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
-      return { success: true, data };
+      const response = await getSuppliesDB("", expired);
+      const totalPages = await getSuppliesCountDB(expired);
+      const totalPurchaseValue = response.reduce(
+        (acc, item) => acc + item.itemPrice,
+        0
+      );
+      const totalSellingValue = response.reduce(
+        (acc, item) => acc + item.itemSellPrice,
+        0
+      );
+      return {
+        success: true,
+        data,
+        totalPurchaseValue,
+        totalSellingValue,
+        potentialProfit: totalSellingValue - totalPurchaseValue,
+        pages: calculatePages(totalPages, pagination?.limit),
+      };
     } catch (error) {
       logger.error("Get Supplies: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+  async getStorage(
+    q?: string | undefined,
+    pagination?: {
+      limit?: number;
+      page?: number;
+    },
+    expired?: {
+      expired?: boolean | undefined;
+      days?: number | undefined;
+    }
+  ) {
+    try {
+      const response = await getStorageDB(q, expired, pagination);
+      if (!response || response.stores.length === 0) {
+        logger.warn("Storage Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      const totalPages = await getStorageCountDB(q, expired);
+      return {
+        success: true,
+        data: response,
+        pages: calculatePages(totalPages, pagination?.limit),
+      };
+    } catch (error) {
+      logger.error("Get Storage: ", error);
       return {
         success: false,
         error: {

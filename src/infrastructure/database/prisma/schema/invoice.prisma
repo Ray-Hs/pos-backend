@@ -27,6 +27,7 @@ model Invoice {
     total         Float
     paymentMethod PaymentMethod?
     paid          Boolean        @default(false)
+    status        PaymentStatus  @default(PENDING)
 
     taxId              Int?
     serviceId          Int?
@@ -46,6 +47,7 @@ model Invoice {
 
     createdAt        DateTime           @default(now())
     DeletedOrderItem DeletedOrderItem[]
+    CustomerPayment  CustomerPayment[]
 
     @@index([invoiceRefId, isLatestVersion])
 }

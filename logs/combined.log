@@ -14791,100 +14791,129 @@ Unknown argument `companyId`. Available options are marked with ?.
 [2025-06-26 14:30:13] [31merror[39m: Create Payment Service:  All debts are already paid.
 [2025-06-26 14:31:21] [31merror[39m: Create Payment Service:  All debts are already paid.
 [2025-06-26 14:33:07] [32minfo[39m: Excess payment amount: 9000
-[2025-06-29 09:59:40] [31merror[39m: Get Finances Service:  
+[2025-06-26 16:58:49] [31merror[39m: Get Finances Service:  
 Invalid `prisma.companyDebt.findMany()` invocation:
 
 
 The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 09:59:41] [31merror[39m: Get Finances Service:  
+[2025-06-26 16:58:52] [31merror[39m: Get Finances Service:  
 Invalid `prisma.companyDebt.findMany()` invocation:
 
 
 The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 09:59:44] [31merror[39m: Get Finances Service:  
-Invalid `prisma.companyDebt.findMany()` invocation:
+[2025-06-26 17:09:46] [33mwarn[39m: Invalid Amount.
+[2025-06-28 10:59:47] [33mwarn[39m: Invalid Amount.
+[2025-06-28 11:41:05] [32minfo[39m: Filter: 
+[2025-06-28 11:42:18] [33mwarn[39m: No Data Found
+[2025-06-28 11:42:19] [33mwarn[39m: No Data Found
+[2025-06-28 11:46:16] [32minfo[39m: Filter: 
+[2025-06-28 11:54:40] [32minfo[39m: Filter: 
+[2025-06-28 11:59:46] [32minfo[39m: Filter: 
+[2025-06-28 11:59:59] [33mwarn[39m: No Data Found
+[2025-06-28 12:00:00] [33mwarn[39m: No Data Found
+[2025-07-03 13:43:43] [32minfo[39m: Filter: 
+[2025-07-03 13:43:45] [33mwarn[39m: No Data Found
+[2025-07-03 14:02:48] [32minfo[39m: Filter: 
+[2025-07-03 14:02:50] [33mwarn[39m: No Data Found
+[2025-07-03 14:02:51] [33mwarn[39m: No Data Found
+[2025-07-03 14:38:05] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
 
 
-The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 09:59:46] [31merror[39m: Get Finances Service:  
-Invalid `prisma.companyDebt.findMany()` invocation:
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5164 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:38:52] [32minfo[39m: Filter: 
+[2025-07-03 14:39:03] [31merror[39m: Transfer Table Service:  Transaction API error: Transaction not found. Transaction ID is invalid, refers to an old closed transaction Prisma doesn't have information about anymore, or was obtained before disconnecting.
+[2025-07-03 14:41:28] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
 
 
-The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 09:59:48] [31merror[39m: Get Finances Service:  
-Invalid `prisma.companyDebt.findMany()` invocation:
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5274 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:41:41] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
 
 
-The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 09:59:50] [31merror[39m: Get Finances Service:  
-Invalid `prisma.companyDebt.findMany()` invocation:
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5125 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:42:07] [33mwarn[39m: No Data Found
+[2025-07-03 14:42:56] [32minfo[39m: Filter: 
+[2025-07-03 14:43:07] [33mwarn[39m: No Data Found
+[2025-07-03 14:43:40] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
 
 
-The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 09:59:52] [31merror[39m: Get Finances Service:  
-Invalid `prisma.companyDebt.findMany()` invocation:
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 6751 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:43:50] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
 
 
-The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 09:59:54] [31merror[39m: Get Finances Service:  
-Invalid `prisma.companyDebt.findMany()` invocation:
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5610 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:48:02] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
 
 
-The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 10:00:09] [31merror[39m: Get Finances Service:  
-Invalid `prisma.companyDebt.findMany()` invocation:
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5150 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:48:22] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
 
 
-The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 10:00:12] [31merror[39m: Get Finances Service:  
-Invalid `prisma.companyDebt.findMany()` invocation:
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5117 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:52:27] [31merror[39m: Transfer Table Service:  Transaction API error: Transaction already closed: A commit cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5146 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:54:08] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
 
 
-The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 10:00:16] [31merror[39m: Get Finances Service:  
-Invalid `prisma.companyDebt.findMany()` invocation:
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5265 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:54:34] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
 
 
-The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 10:00:21] [31merror[39m: Get Finances Service:  
-Invalid `prisma.companyDebt.findMany()` invocation:
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5119 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:56:12] [32minfo[39m: Filter: 
+[2025-07-03 16:02:23] [32minfo[39m: Filter: 
+[2025-07-03 16:06:34] [32minfo[39m: Filter: 
+[2025-07-03 16:07:14] [32minfo[39m: Filter: 
+[2025-07-03 16:07:23] [32minfo[39m: Filter: 
+[2025-07-03 16:14:33] [32minfo[39m: Filter: 
+[2025-07-03 16:24:04] [32minfo[39m: Filter: 
+[2025-07-03 16:24:38] [31merror[39m: Update Order Service:  Transaction API error: Transaction already closed: A commit cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 8085 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 16:53:58] [32minfo[39m: Filter: 
+[2025-07-03 17:47:52] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
 
 
-The column `CompanyDebt.currency` does not exist in the current database.
-[2025-06-29 10:07:05] [31merror[39m: Auth Create User Service:  
-Invalid `prisma.user.create()` invocation:
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5132 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-06 11:26:51] [32minfo[39m: Filter: 
+[2025-07-06 11:28:12] [33mwarn[39m: No Data Found
+[2025-07-06 11:28:13] [33mwarn[39m: No Data Found
+[2025-07-06 11:37:33] [32minfo[39m: Filter: 
+[2025-07-06 11:43:38] [32minfo[39m: Filter: 
+[2025-07-06 11:51:13] [32minfo[39m: Filter: 
+[2025-07-06 11:55:24] [32minfo[39m: Filter: 
+[2025-07-06 11:55:38] [32minfo[39m: Filter: 
+[2025-07-06 11:56:15] [32minfo[39m: Filter: 
+[2025-07-06 11:56:39] [32minfo[39m: Filter: 
+[2025-07-06 11:57:03] [32minfo[39m: Filter: 
+[2025-07-06 11:57:18] [32minfo[39m: Filter: 
+[2025-07-06 11:57:37] [32minfo[39m: Filter: 
+[2025-07-06 11:58:07] [32minfo[39m: Filter: 
+[2025-07-06 11:58:14] [32minfo[39m: Filter: 
+[2025-07-06 12:17:53] [32minfo[39m: Filter: 
+[2025-07-09 11:18:40] [32minfo[39m: Filter: 
+[2025-07-09 11:32:16] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
 
 
-Foreign key constraint violated on the constraint: `User_roleId_fkey`
-[2025-06-29 10:08:41] [31merror[39m: Create UserRole Service:  
-Invalid `prisma.userRole.create()` invocation:
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 8704 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-09 11:32:39] [32minfo[39m: Filter: 
+[2025-07-09 11:54:41] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
 
 
-Unique constraint failed on the fields: (`name`)
-[2025-06-29 10:09:43] [31merror[39m: Create UserRole Service:  
-Invalid `prisma.userRole.create()` invocation:
-
-
-Unique constraint failed on the fields: (`name`)
-[2025-06-29 10:12:37] [31merror[39m: Create UserRole Service:  
-Invalid `prisma.userRole.create()` invocation:
-
-
-Unique constraint failed on the fields: (`name`)
-[2025-06-29 10:14:32] [31merror[39m: Create UserRole Service:  
-Invalid `prisma.userRole.create()` invocation:
-
-
-Unique constraint failed on the fields: (`name`)
-[2025-06-29 10:14:47] [31merror[39m: Create UserRole Service:  
-Invalid `prisma.userRole.create()` invocation:
-
-
-Unique constraint failed on the fields: (`name`)
-[2025-06-29 10:15:30] [31merror[39m: Auth login Service:  The "salt" argument must be of type string or an instance of ArrayBuffer, Buffer, TypedArray, or DataView. Received undefined
-[2025-06-29 10:15:54] [31merror[39m: Auth login Service:  The "salt" argument must be of type string or an instance of ArrayBuffer, Buffer, TypedArray, or DataView. Received undefined
-[2025-06-29 10:16:11] [31merror[39m: Auth Create User Service:  
-Invalid `prisma.user.create()` invocation:
-
-
-Unique constraint failed on the fields: (`username`)
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 17)
+[2025-07-09 11:57:09] [32minfo[39m: Filter: 
+[2025-07-09 12:37:07] [32minfo[39m: Filter: 
+[2025-07-09 12:41:55] [32minfo[39m: Filter: 
+[2025-07-09 13:09:17] [32minfo[39m: Filter: 
+[2025-07-09 13:12:10] [32minfo[39m: Filter: 
+[2025-07-09 13:17:56] [32minfo[39m: Filter: 
+[2025-07-09 14:03:42] [32minfo[39m: Filter: 
+[2025-07-09 16:16:43] [32minfo[39m: Filter: 

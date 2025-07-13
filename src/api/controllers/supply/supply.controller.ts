@@ -8,10 +8,53 @@ import {
 import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 
 export class SupplyController implements SupplyControllerInterface {
-  async getSupplies(req: Request, res: Response) {
+  async getStorage(req: Request, res: Response) {
+    const limit = parseInt(req.query.limit as string, 10);
+    const page = parseInt(req.query.page as string, 10);
+    const expired =
+      req.query.expired !== undefined
+        ? req.query.expired === "true"
+        : undefined;
+    const days = parseInt((req.query.days as string) ?? 7, 10);
     const q = req.query.q;
     const supplyService = new SupplyServices();
-    const response = await supplyService.getSupplies(q?.toString() || "");
+    const response = await supplyService.getStorage(
+      q?.toString(),
+      {
+        limit,
+        page,
+      },
+      {
+        expired,
+        days,
+      }
+    );
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+  async getSupplies(req: Request, res: Response) {
+    const limit = parseInt(req.query.limit as string, 10);
+    const page = parseInt(req.query.page as string, 10);
+    const expired =
+      req.query.expired !== undefined
+        ? req.query.expired === "true"
+        : undefined;
+    const days = parseInt((req.query.days as string) ?? 7, 10);
+    const q = req.query.q;
+    const supplyService = new SupplyServices();
+    const response = await supplyService.getSupplies(
+      q?.toString(),
+      {
+        limit,
+        page,
+      },
+      {
+        expired,
+        days,
+      }
+    );
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

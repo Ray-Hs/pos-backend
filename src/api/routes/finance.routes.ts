@@ -2,10 +2,31 @@ import express, { Router } from "express";
 import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
 import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
 import { FinanceController } from "../controllers/finance/finance.controller";
+import { CRMController } from "../controllers/settings/crm/crm.controller";
 
 const router: Router = express.Router();
 const controller = new FinanceController();
+const client = new CRMController();
 
+// Customer Debts
+router.get(
+  "/customer-debts",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(client.getCustomerDebts)
+);
+
+// Customer Payments
+router.get(
+  "/customer-payments",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(client.getCustomerPayments)
+);
+router.post(
+  "/customer-payments",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(client.createCustomerPayment)
+);
 // Company Debts
 router.get(
   "/company-debts",

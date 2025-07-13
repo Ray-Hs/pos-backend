@@ -32,9 +32,20 @@ export const CompanyDebtSchema = z.object({
   totalAmount: z.number().nullable().optional(),
   remainingAmount: z.number().nullable().optional(),
   userId: z.number(),
-  user: UserSchema.optional(),
   currency: Currency.optional(),
   status: PaymentEnumSchema.optional(),
+  totalDebt: z
+    .object({
+      IQD: z.number().optional(),
+      USD: z.number().optional(),
+    })
+    .optional(),
+  totalPaid: z
+    .object({
+      IQD: z.number().optional(),
+      USD: z.number().optional(),
+    })
+    .optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
@@ -47,7 +58,6 @@ export const PaymentSchema = z.object({
   company: CompanyInfoSchema.optional(),
   invoiceNumber: z.string(),
   userId: z.number(),
-  user: UserSchema.optional(),
   currency: Currency.optional(),
   amount: z.number(),
   note: z.string().nullable().optional(),
@@ -56,6 +66,23 @@ export const PaymentSchema = z.object({
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
+
+const totalDebtAndPaidSchema = z.object({
+  totalDebt: z
+    .object({
+      IQD: z.number().optional(),
+      USD: z.number().optional(),
+    })
+    .optional(),
+  totalPaid: z
+    .object({
+      IQD: z.number().optional(),
+      USD: z.number().optional(),
+    })
+    .optional(),
+});
+
+export type totalDebtAndPaid = z.infer<typeof totalDebtAndPaidSchema>;
 
 export const allCompanyDebtSchema = z.object({
   id: z.number().optional(),
@@ -80,7 +107,17 @@ export interface FinanceServiceInterface {
     requestData: companyDebt
   ): Promise<TResult<null>>;
   deleteCompanyDebt(id: number): Promise<TResult<null>>;
-  listCompanyDebts(): Promise<TResult<companyDebt[]>>;
+  listCompanyDebts({
+    fromDate,
+    toDate,
+  }: {
+    fromDate: string;
+    toDate: string;
+  }): Promise<
+    TResult<
+      { companyDebt: companyDebt[] } & totalDebtAndPaid & { pages: number }
+    >
+  >;
   getAllCompanyDebts(): Promise<TResult<AllCompanyDebt[]>>;
 
   // Payment methods
@@ -88,7 +125,21 @@ export interface FinanceServiceInterface {
   getPaymentById(id: number): Promise<TResult<payment>>;
   updatePayment(id: number, requestData: payment): Promise<TResult<null>>;
   deletePayment(id: number): Promise<TResult<null>>;
-  listPayments(): Promise<TResult<payment[]>>;
+  listPayments(
+    {
+      fromDate,
+      toDate,
+    }: {
+      fromDate?: string;
+      toDate?: string;
+    },
+    pagination?: {
+      limit?: number;
+      page?: number;
+    }
+  ): Promise<
+    TResult<{ payments: payment[] } & totalDebtAndPaid & { pages: number }>
+  >;
 }
 
 export interface FinanceControllerInterface {

@@ -9,8 +9,21 @@ import logger from "../../../../infrastructure/utils/logger";
 
 export class CRMController implements CRMControllerInterface {
   async getCustomers(req: Request, res: Response) {
+    const limit = parseInt(req.query.limit as string, 10);
+    const page = parseInt(req.query.page as string, 10);
+    const q = req.query.q as string;
     const crmService = new CRMServices();
-    const response = await crmService.getCustomers();
+    const response = await crmService.getCustomers({ page, limit }, q);
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async getCustomerDebts(req: Request, res: Response) {
+    const limit = parseInt(req.query.limit as string, 10);
+    const page = parseInt(req.query.page as string, 10);
+    const crmService = new CRMServices();
+    const response = await crmService.getCustomerDebts({ page, limit });
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
       .json(response);
@@ -60,8 +73,10 @@ export class CRMController implements CRMControllerInterface {
   }
 
   async getCompanies(req: Request, res: Response) {
+    const page = parseInt(req.query.page as string, 10);
+    const limit = parseInt(req.query.limit as string, 10);
     const crmService = new CRMServices();
-    const response = await crmService.getCompanies();
+    const response = await crmService.getCompanies({ page, limit });
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
       .json(response);
@@ -103,12 +118,17 @@ export class CRMController implements CRMControllerInterface {
   }
 
   async getCustomerDiscounts(req: Request, res: Response) {
+    const limit = parseInt(req.query.limit as string, 10);
+    const page = parseInt(req.query.page as string, 10);
     const isActive = req.query.isActive
       ? Boolean(req.query.isActive === "true")
       : undefined;
     const crmService = new CRMServices();
     logger.info(isActive);
-    const response = await crmService.getCustomerDiscounts({ isActive });
+    const response = await crmService.getCustomerDiscounts(
+      { isActive, page },
+      { page, limit }
+    );
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
       .json(response);
@@ -145,6 +165,27 @@ export class CRMController implements CRMControllerInterface {
     const crmService = new CRMServices();
     const id = parseInt(req.params.id, 10);
     const response = await crmService.deleteCustomerDiscount(id);
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async createCustomerPayment(req: Request, res: Response) {
+    const crmService = new CRMServices();
+    const response = await crmService.createCustomerPayment({
+      ...req.body,
+      paymentDate: new Date(req.body.paymentDate),
+    });
+    return res
+      .status(response.success ? CREATED_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async getCustomerPayments(req: Request, res: Response) {
+    const page = parseInt(req.query.page as string, 10);
+    const limit = parseInt(req.query.limit as string, 10);
+    const crmService = new CRMServices();
+    const response = await crmService.getCustomerPayments({ limit, page });
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
       .json(response);

@@ -43,3 +43,19 @@ model Payment {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
+
+model CustomerPayment {
+    id             Int          @id @default(autoincrement())
+    customerInfoId Int
+    customerInfo   CustomerInfo @relation(fields: [customerInfoId], references: [id])
+    invoiceId      Int
+    invoice        Invoice      @relation(fields: [invoiceId], references: [id])
+    invoiceNumber  String?
+    amount         Int
+    note           String?
+    paymentDate    DateTime     @default(now())
+    createdAt      DateTime     @default(now())
+    updatedAt      DateTime     @updatedAt
+
+    @@index([customerInfoId, invoiceId])
+}
