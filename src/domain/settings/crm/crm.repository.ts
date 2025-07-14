@@ -440,8 +440,8 @@ export async function getCustomerDiscountDB(
 
   return prisma.customerDiscount.findMany({
     where: whereClause,
-    take: pagination.limit,
-    skip: Math.abs((pagination.page - 1) * pagination.limit),
+    take: Take(pagination.limit),
+    skip: calculateSkip(pagination.page, pagination.limit),
   });
 }
 
