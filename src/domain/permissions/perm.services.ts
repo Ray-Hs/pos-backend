@@ -220,6 +220,25 @@ export default class UserRoleService implements UserRolesServiceInterface {
           },
         };
       }
+      const userWithRole = await prisma.user.findFirst({
+        where: {
+          role: {
+            id: existingRole.id,
+          },
+        },
+      });
+
+      if (userWithRole) {
+        logger.warn("A user exists with the current role, can not delete.");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: "A user exists with the current role, can not delete.",
+          },
+        };
+      }
+
       await deleteUserRoleDB(response.id, prisma);
       return {
         success: true,

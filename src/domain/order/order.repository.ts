@@ -111,42 +111,6 @@ export async function createOrderDB(data: Order) {
     );
     const total = calculateTotal(subtotal, constants);
 
-    //TODO: Send orders to correct printers
-    // const printPromises = order.items.map(async (item) => {
-    //   try {
-    //     const printer = await getPrinterByIdDB(
-    //       item?.menuItem?.Printer?.id || 0
-    //     );
-    //     console.log("Printer Device: ", printer);
-
-    //     if (printer) {
-    //       const printerServices = new printerService();
-    //       console.log("Order Item ID: ", item.id);
-    //       const response = await printerServices.print(printer.id, {
-    //         orderId: order.id,
-    //         item: {
-    //           title_en: item.menuItem.title_en,
-    //           quantity: item.quantity,
-    //           price: item.price,
-    //         },
-    //         subtotal,
-    //         total,
-    //         tax: constants.tax?.rate,
-    //         service: constants.service?.amount,
-    //       });
-    //       console.log("Print response:", response);
-    //       return response;
-    //     }
-    //     return null;
-    //   } catch (error) {
-    //     console.error("Print error for item:", item.id, error);
-    //     return null;
-    //   }
-    // });
-
-    // // Wait for all print operations to complete
-    // await Promise.all(printPromises);
-
     const invoiceRef = await tx.invoiceRef.create({
       data: { orderId: order.id },
     });
@@ -161,6 +125,7 @@ export async function createOrderDB(data: Order) {
         serviceId: constants.service?.id,
         taxId: constants.tax?.id,
         tableId: order.tableId,
+        paymentMethod: "CASH",
       },
     });
 

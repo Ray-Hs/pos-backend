@@ -2,10 +2,8 @@ import { Request, Response } from "express";
 import PermissionsServices from "../../../domain/permissions/perm.services";
 import { UserRolesControllerInterface } from "../../../domain/permissions/perm.types";
 import {
-  OK_STATUS,
   CREATED_STATUS,
-  FORBIDDEN_STATUS,
-  FORBIDDEN_ERR,
+  OK_STATUS,
 } from "../../../infrastructure/utils/constants";
 import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 
@@ -74,8 +72,8 @@ export class PermissionsController implements UserRolesControllerInterface {
           [key: string]: any;
         }) => ({
           ...rest,
-          createdAt: new Date(createdAt),
-          updatedAt: new Date(updatedAt),
+          createdAt: createdAt ? new Date(createdAt) : new Date(),
+          updatedAt: updatedAt ? new Date(updatedAt) : new Date(),
         })
       ),
     });

@@ -18,6 +18,8 @@ export const ReportSchema = z.object({
 export type Report = z.infer<typeof ReportSchema>;
 
 export interface ReportServiceInterface {
+  getCloseDayReport: () => Promise<TResult<Report[]>>;
+  closeDayShift?: () => Promise<TResult<Report[]>>;
   getDailyReport: () => Promise<TResult<Report[]>>;
   getCompanyReport: () => Promise<TResult<Report[]>>;
   getEmployeeReport: () => Promise<TResult<Report[]>>;
@@ -25,6 +27,14 @@ export interface ReportServiceInterface {
 }
 
 export interface ReportControllerInterface {
+  getCloseDayReport: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<Report>>>;
+  closeDayShift?: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<Report[]>>>;
   getDailyReport: (
     req: Request,
     res: Response
