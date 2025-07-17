@@ -19,9 +19,13 @@ import { TResult } from "../../types/common";
 import { Report, ReportServiceInterface } from "./report.types";
 
 class ReportService implements ReportServiceInterface {
-  async getCloseDayReport(from?: Date, to?: Date): Promise<TResult<Report[]>> {
+  async getCloseDayReport(
+    from?: Date,
+    to?: Date,
+    company?: string
+  ): Promise<TResult<Report[]>> {
     try {
-      const response = await getCloseDayDB(prisma, from, to);
+      const response = await getCloseDayDB(prisma, from, to, company);
       if (!response || response.length === 0) {
         return {
           success: false,
@@ -105,7 +109,11 @@ class ReportService implements ReportServiceInterface {
     }
   }
 
-  async getCompanyReport(from?: Date, to?: Date): Promise<TResult<Report[]>> {
+  async getCompanyReport(
+    from?: Date,
+    to?: Date,
+    company?: string
+  ): Promise<TResult<Report[]>> {
     try {
       const response = await getSuppliesDB();
       if (!response || response.length === 0) {
@@ -119,6 +127,8 @@ class ReportService implements ReportServiceInterface {
       const filtered = response.filter((s) => {
         if (from && s.createdAt < from) return false;
         if (to && s.createdAt > to) return false;
+        if (company && company.toLowerCase() !== s.company.name.toLowerCase())
+          return false;
         return true;
       });
 
@@ -148,9 +158,13 @@ class ReportService implements ReportServiceInterface {
     }
   }
 
-  async getEmployeeReport(from?: Date, to?: Date): Promise<TResult<Report[]>> {
+  async getEmployeeReport(
+    from?: Date,
+    to?: Date,
+    employee?: string
+  ): Promise<TResult<Report[]>> {
     try {
-      const response = await getEmployeeSalesDB(prisma, from, to);
+      const response = await getEmployeeSalesDB(prisma, from, to, employee);
       if (!response || response.length === 0) {
         return {
           success: false,
@@ -158,9 +172,9 @@ class ReportService implements ReportServiceInterface {
         };
       }
       const data: Report[] = response.map((row) => ({
-        code: row.employeeId.toString(),
-        productName: row.product,
-        companyName: row.employeeName,
+        code: row.code,
+        productName: row.employeeName,
+        companyName: row.companyName,
         quantity: row.quantity,
         sellingPrice: row.unitPrice,
         purchasePrice: row.costPrice,
@@ -179,10 +193,7 @@ class ReportService implements ReportServiceInterface {
     }
   }
 
-  async getDeletedItemsReport(
-    from?: Date,
-    to?: Date
-  ): Promise<TResult<DeletedOrderItem[]>> {
+  async getDeletedItemsReport(from?: Date, to?: Date) {
     try {
       const response = await getDeletedItemsDB(prisma, from, to);
       if (!response || response.length === 0) {
@@ -191,7 +202,14 @@ class ReportService implements ReportServiceInterface {
           error: { code: NOT_FOUND_STATUS, message: NOT_FOUND_ERR },
         };
       }
-      return { success: true, data: response };
+      return {
+        success: true,
+        data: response.map((res) => ({
+          orderId: res.orderId,
+          order: res.order,
+          items: res.items.map(({ order, ...item }) => item),
+        })),
+      };
     } catch (error) {
       logger.error("Get Deleted Items Report:", error);
       return {

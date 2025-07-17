@@ -6,15 +6,6 @@ import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
 
 const router = Router();
 
-// Close day shift and return its report
-router.post(
-  "/close-day",
-  asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
-  asyncRouteHandler(reportController.getCloseDayReport)
-);
-
-// Fetch various reports
 router.get(
   "/close-day",
   asyncRouteHandler(isAuthenticated),
