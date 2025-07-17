@@ -1,93 +1,223 @@
-// import prisma from "../../infrastructure/database/prisma/client";
-// import {
-//   INTERNAL_SERVER_ERR,
-//   INTERNAL_SERVER_STATUS,
-//   NOT_FOUND_ERR,
-//   NOT_FOUND_STATUS,
-// } from "../../infrastructure/utils/constants";
-// import logger from "../../infrastructure/utils/logger";
-// import { getCompanyDebtsDB } from "../finance/finance.repository";
-// import { getCompaniesInfoDB } from "../settings/crm/crm.repository";
-// import { getSuppliesDB } from "../supply/supply.repository";
-// import { Report, ReportServiceInterface } from "./report.types";
+// src/services/report/report.service.ts
+import prisma from "../../infrastructure/database/prisma/client";
+import {
+  INTERNAL_SERVER_ERR,
+  INTERNAL_SERVER_STATUS,
+  NOT_FOUND_ERR,
+  NOT_FOUND_STATUS,
+} from "../../infrastructure/utils/constants";
+import logger from "../../infrastructure/utils/logger";
+import { getSuppliesDB } from "../supply/supply.repository";
+import {
+  getCloseDayDB,
+  getDeletedItemsDB,
+  getEmployeeSalesDB,
+} from "./report.repository";
+import { getOrderItemsDB } from "../order-item/orderItem.repository";
+import { DeletedOrderItem } from "@prisma/client";
+import { TResult } from "../../types/common";
+import { Report, ReportServiceInterface } from "./report.types";
 
-// class ReportService implements ReportServiceInterface {
-//   async getDailyReport() {
-//     try {
-//       const response = await getSuppliesDB();
+class ReportService implements ReportServiceInterface {
+  async getCloseDayReport(
+    from?: Date,
+    to?: Date,
+    company?: string
+  ): Promise<TResult<Report[]>> {
+    try {
+      const response = await getCloseDayDB(prisma, from, to, company);
+      if (!response || response.length === 0) {
+        return {
+          success: false,
+          error: { code: NOT_FOUND_STATUS, message: NOT_FOUND_ERR },
+        };
+      }
 
-//       if (!response || response.length === 0) {
-//         return {
-//           success: false,
-//           error: { code: NOT_FOUND_STATUS, message: NOT_FOUND_ERR },
-//         };
-//       }
+      const data: Report[] = response.map((row) => ({
+        code: row.barcode || "",
+        productName: row.name,
+        companyName: row.company?.name || "",
+        quantity: row.itemQty * row.packageQty,
+        sellingPrice: row.itemSellPrice,
+        purchasePrice: row.itemPrice,
+        totalSellingPrice: (row.totalItems || 0) * row.itemSellPrice,
+        totalPurchasePrice: row.totalPrice || 0,
+        profit:
+          (row.totalItems || 0) * row.itemSellPrice - (row.totalPrice || 0),
+      }));
 
-//       const data: Report[] = response.map((supply) => ({
-//         code: supply.barcode || "",
-//         productName: supply.name,
-//         companyName: supply.company.name,
-//         quantity: supply.itemQty * supply.packageQty,
-//         sellingPrice: supply.itemSellPrice,
-//         purchasePrice: supply.itemPrice,
-//         profit:
-//           (supply.totalPrice || 0) -
-//           (supply.totalItems || 0) * supply.itemSellPrice,
-//         totalPurchasePrice: supply.totalPrice || 0,
-//         totalSellingPrice: (supply.totalItems || 0) * supply.itemSellPrice,
-//       }));
+      return { success: true, data };
+    } catch (error) {
+      logger.error("Get Close Day Report:", error);
+      return {
+        success: false,
+        error: { code: INTERNAL_SERVER_STATUS, message: INTERNAL_SERVER_ERR },
+      };
+    }
+  }
 
-//       return {
-//         success: true,
-//         data,
-//       };
-//     } catch (error) {
-//       logger.error("Get Daily Report: ", error);
-//       return {
-//         success: false,
-//         error: {
-//           code: INTERNAL_SERVER_STATUS,
-//           message: INTERNAL_SERVER_ERR,
-//         },
-//       };
-//     }
-//   }
-//   async getCompanyReport() {
-//     try {
-//       const response = await getCompanyDebtsDB(prisma, "asc");
+  async getDailyReport(from?: Date, to?: Date): Promise<TResult<Report[]>> {
+    try {
+      // build date filter
+      const where: any = {};
+      if (from || to) {
+        where.createdAt = {};
+        if (from) where.createdAt.gte = from;
+        if (to) where.createdAt.lte = to;
+      }
 
-//       if (!response || response.length === 0) {
-//         return {
-//           success: false,
-//           error: { code: NOT_FOUND_STATUS, message: NOT_FOUND_ERR },
-//         };
-//       }
+      const response = await getOrderItemsDB({
+        where,
+        include: {
+          menuItem: {
+            include: { company: { select: { name: true } } },
+          },
+          order: true,
+        },
+      });
+      if (!response || response.length === 0) {
+        return {
+          success: false,
+          error: { code: NOT_FOUND_STATUS, message: NOT_FOUND_ERR },
+        };
+      }
 
-//       const data: Report[] = response.map((company) => ({
-//         code: company.company.code || "",
-//         productName: company.product,
-//         companyName: company.company.name,
-//         quantity: company.quantity,
-//         sellingPrice: 0,
-//         purchasePrice: 0,
-//         profit:0,
-//         totalPurchasePrice: company,
-//         totalSellingPrice: (company.totalItems || 0) * company.itemSellPrice,
-//       }));
+      const data: Report[] = response.map((orderItem) => {
+        const totalSellingPrice = (orderItem.price || 0) * orderItem.quantity;
+        const totalPurchasePrice =
+          (orderItem.menuItem.price || 0) * orderItem.quantity;
+        return {
+          code: orderItem.menuItem.code || "",
+          productName: orderItem.menuItem.title_en,
+          companyName: orderItem.menuItem.company?.name || "",
+          quantity: orderItem.quantity,
+          sellingPrice: orderItem.price,
+          purchasePrice: orderItem.menuItem.price,
+          totalSellingPrice,
+          totalPurchasePrice,
+          profit: totalSellingPrice - totalPurchasePrice,
+        };
+      });
 
-//       return {
-//         success: true,
-//         data,
-//       };
-//     } catch (error) {
-//       logger.error("Get Daily Report: ", error);
-//       return {
-//         success: false,
-//         error: {
-//           code: INTERNAL_SERVER_STATUS,
-//           message: INTERNAL_SERVER_ERR,
-//         },
-//       };
-//     }
-//   }
-// }
+      return { success: true, data };
+    } catch (error) {
+      logger.error("Get Daily Report:", error);
+      return {
+        success: false,
+        error: { code: INTERNAL_SERVER_STATUS, message: INTERNAL_SERVER_ERR },
+      };
+    }
+  }
+
+  async getCompanyReport(
+    from?: Date,
+    to?: Date,
+    company?: string
+  ): Promise<TResult<Report[]>> {
+    try {
+      const response = await getSuppliesDB();
+      if (!response || response.length === 0) {
+        return {
+          success: false,
+          error: { code: NOT_FOUND_STATUS, message: NOT_FOUND_ERR },
+        };
+      }
+
+      // optional date filter on supply.createdAt
+      const filtered = response.filter((s) => {
+        if (from && s.createdAt < from) return false;
+        if (to && s.createdAt > to) return false;
+        if (company && company.toLowerCase() !== s.company.name.toLowerCase())
+          return false;
+        return true;
+      });
+
+      const data: Report[] = filtered.map((supply) => {
+        const totalBuyingPrice = supply.itemPrice * supply.itemQty;
+        const totalSellingPrice = supply.itemSellPrice * supply.itemQty;
+        return {
+          code: supply.barcode || "",
+          productName: supply.name,
+          companyName: supply.company.name,
+          quantity: supply.itemQty,
+          sellingPrice: supply.itemSellPrice,
+          purchasePrice: supply.itemPrice,
+          totalSellingPrice,
+          totalPurchasePrice: totalBuyingPrice,
+          profit: totalSellingPrice - totalBuyingPrice,
+        };
+      });
+
+      return { success: true, data };
+    } catch (error) {
+      logger.error("Get Company Report:", error);
+      return {
+        success: false,
+        error: { code: INTERNAL_SERVER_STATUS, message: INTERNAL_SERVER_ERR },
+      };
+    }
+  }
+
+  async getEmployeeReport(
+    from?: Date,
+    to?: Date,
+    employee?: string
+  ): Promise<TResult<Report[]>> {
+    try {
+      const response = await getEmployeeSalesDB(prisma, from, to, employee);
+      if (!response || response.length === 0) {
+        return {
+          success: false,
+          error: { code: NOT_FOUND_STATUS, message: NOT_FOUND_ERR },
+        };
+      }
+      const data: Report[] = response.map((row) => ({
+        code: row.code,
+        productName: row.employeeName,
+        companyName: row.companyName,
+        quantity: row.quantity,
+        sellingPrice: row.unitPrice,
+        purchasePrice: row.costPrice,
+        totalSellingPrice: row.quantity * row.unitPrice,
+        totalPurchasePrice: row.quantity * row.costPrice,
+        profit: row.quantity * (row.unitPrice - row.costPrice),
+      }));
+
+      return { success: true, data };
+    } catch (error) {
+      logger.error("Get Employee Report:", error);
+      return {
+        success: false,
+        error: { code: INTERNAL_SERVER_STATUS, message: INTERNAL_SERVER_ERR },
+      };
+    }
+  }
+
+  async getDeletedItemsReport(from?: Date, to?: Date) {
+    try {
+      const response = await getDeletedItemsDB(prisma, from, to);
+      if (!response || response.length === 0) {
+        return {
+          success: false,
+          error: { code: NOT_FOUND_STATUS, message: NOT_FOUND_ERR },
+        };
+      }
+      return {
+        success: true,
+        data: response.map((res) => ({
+          orderId: res.orderId,
+          order: res.order,
+          items: res.items.map(({ order, ...item }) => item),
+        })),
+      };
+    } catch (error) {
+      logger.error("Get Deleted Items Report:", error);
+      return {
+        success: false,
+        error: { code: INTERNAL_SERVER_STATUS, message: INTERNAL_SERVER_ERR },
+      };
+    }
+  }
+}
+
+export default ReportService;

@@ -1,8 +1,11 @@
+import { Prisma } from "@prisma/client";
 import prisma from "../../infrastructure/database/prisma/client";
 import { OrderItem } from "../../types/common";
 
-export async function getOrderItemsDB() {
-  return prisma.orderItem.findMany();
+export async function getOrderItemsDB<T extends Prisma.OrderItemFindManyArgs>(
+  args?: Prisma.SelectSubset<T, Prisma.OrderItemFindManyArgs>
+): Promise<Prisma.OrderItemGetPayload<T>[]> {
+  return prisma.orderItem.findMany(args);
 }
 
 export async function getOrderItemByIdDB(id: number) {

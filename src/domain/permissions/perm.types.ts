@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { UserRole, TResult, Permission } from "../../types/common";
+import { DeletedOrderItem } from "@prisma/client";
 
 export interface UserRolesServiceInterface {
   getUserRoles: () => Promise<TResult<UserRole[]>>;

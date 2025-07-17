@@ -21,6 +21,7 @@ import SettingsRoutes from "./settings.routes";
 import SubcategoryRoutes from "./subcategory.routes";
 import SupplyRoutes from "./supply.routes";
 import TableRoutes from "./table.routes";
+import ReportsRoutes from "./report.routes";
 const router: Router = express.Router();
 
 // Auth Routes
@@ -128,6 +129,13 @@ router.use(
   "/exchange",
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   ExchangeRoutes
+);
+
+// Report Routes
+router.use(
+  "/report",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  ReportsRoutes
 );
 
 export default router;

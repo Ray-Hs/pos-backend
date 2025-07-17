@@ -2,10 +2,8 @@ import { Request, Response } from "express";
 import PermissionsServices from "../../../domain/permissions/perm.services";
 import { UserRolesControllerInterface } from "../../../domain/permissions/perm.types";
 import {
-  OK_STATUS,
   CREATED_STATUS,
-  FORBIDDEN_STATUS,
-  FORBIDDEN_ERR,
+  OK_STATUS,
 } from "../../../infrastructure/utils/constants";
 import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 
