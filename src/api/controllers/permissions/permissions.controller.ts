@@ -74,8 +74,8 @@ export class PermissionsController implements UserRolesControllerInterface {
           [key: string]: any;
         }) => ({
           ...rest,
-          createdAt: new Date(createdAt),
-          updatedAt: new Date(updatedAt),
+          createdAt: createdAt ? new Date(createdAt) : new Date(),
+          updatedAt: updatedAt ? new Date(updatedAt) : new Date(),
         })
       ),
     });

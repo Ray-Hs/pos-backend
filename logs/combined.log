@@ -14917,3 +14917,1467 @@ Timed out fetching a new connection from the connection pool. More info: http://
 [2025-07-09 13:17:56] [32minfo[39m: Filter: 
 [2025-07-09 14:03:42] [32minfo[39m: Filter: 
 [2025-07-09 16:16:43] [32minfo[39m: Filter: 
+[2025-07-13 15:07:25] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-07-13 15:07:32] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-07-13 15:07:43] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-07-14 16:18:05] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-07-14 16:18:09] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-07-16 18:45:02] [32minfo[39m: Filter: 
+[2025-07-16 18:45:07] [33mwarn[39m: No Data Found
+[2025-07-16 18:45:07] [33mwarn[39m: No Data Found
+[2025-07-16 18:45:08] [33mwarn[39m: No Data Found
+[2025-07-16 18:45:14] [33mwarn[39m: No Data Found
+[2025-07-16 18:45:14] [33mwarn[39m: No Data Found
+[2025-07-16 18:45:15] [33mwarn[39m: No Data Found
+[2025-07-16 18:57:13] [33mwarn[39m: User is not active.
+[2025-07-16 18:57:13] [33mwarn[39m: User is not active.
+[2025-07-16 18:57:20] [33mwarn[39m: User is not active.
+[2025-07-16 18:57:24] [33mwarn[39m: User is not active.
+[2025-07-16 18:57:24] [33mwarn[39m: User is not active.
+[2025-07-16 18:57:24] [33mwarn[39m: User is not active.
+[2025-07-16 19:32:21] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:32:21] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:32:28] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:32:28] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:40:35] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:40:35] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:41:31] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-07-16 19:41:31] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-07-16 19:41:44] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-07-16 19:41:44] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-07-16 19:48:52] [32minfo[39m: Filter: 
+[2025-07-16 19:52:26] [32minfo[39m: Filter: 
+[2025-07-16 19:52:46] [32minfo[39m: Filter: 
+[2025-07-16 20:00:21] [32minfo[39m: Filter: 
+[2025-07-16 20:00:33] [32minfo[39m: Filter: 
+[2025-07-16 20:00:58] [32minfo[39m: Filter: 
+[2025-07-16 23:19:35] [32minfo[39m: undefined
+[2025-07-16 23:34:08] [32minfo[39m: Filter: 
+[2025-07-16 23:45:45] [32minfo[39m: Filter: 
+[2025-07-16 23:47:57] [32minfo[39m: Filter: 
+[2025-07-16 23:48:00] [33mwarn[39m: No Data Found
+[2025-07-16 23:48:00] [33mwarn[39m: No Data Found
+[2025-07-16 23:48:01] [33mwarn[39m: No Data Found
+[2025-07-16 23:48:48] [33mwarn[39m: No Data Found
+[2025-07-17 00:10:35] [32minfo[39m: Filter: 
+[2025-07-17 00:14:23] [33mwarn[39m: No Data Found
+[2025-07-17 00:14:24] [33mwarn[39m: No Data Found
+[2025-07-17 13:17:52] [32minfo[39m: Filter: 
+[2025-07-17 13:23:04] [32minfo[39m: Filter: 
+[2025-07-17 13:47:21] [33mwarn[39m: Credentials Don't Match
+[2025-07-17 13:48:11] [32minfo[39m: Filter: 
+[2025-07-17 13:59:13] [32minfo[39m: Filter: 
+[2025-07-17 14:01:18] [32minfo[39m: Filter: 
+[2025-07-17 14:03:48] [32minfo[39m: Filter: 
