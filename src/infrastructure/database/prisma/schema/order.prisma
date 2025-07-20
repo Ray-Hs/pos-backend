@@ -52,3 +52,44 @@ model DeletedOrderItem {
 
     @@index([orderId, menuItemId, quantity])
 }
+
+model OrderPrintQueue {
+    id            Int         @id @default(autoincrement())
+    orderId       Int
+    printerId     Int
+    printerIp     String
+    status        PrintStatus @default(PENDING)
+    printType     PrintType   @default(ORDER_UPDATE)
+    
+    // Change tracking
+    addedItems    Json?       // Array of added items with details
+    deletedItems  Json?       // Array of deleted items with details  
+    updatedItems  Json?       // Array of updated items with old/new quantities
+    
+    // Order context
+    tableName     String?
+    userName      String?
+    orderNumber   Int?
+    
+    // Timestamps
+    createdAt     DateTime    @default(now())
+    updatedAt     DateTime    @updatedAt
+    printedAt     DateTime?
+
+    @@index([orderId, printerId])
+    @@index([status, createdAt])
+}
+
+enum PrintStatus {
+    PENDING
+    PRINTING
+    COMPLETED
+    FAILED
+    CANCELLED
+}
+
+enum PrintType {
+    NEW_ORDER
+    ORDER_UPDATE
+    ORDER_CANCELLATION
+}

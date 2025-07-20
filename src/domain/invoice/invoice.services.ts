@@ -553,11 +553,23 @@ export class InvoiceServices implements InvoiceServiceInterface {
           data: updatedInvoice,
         };
       } else {
+        console.log("Data: ", data);
         const updatedInvoice = await updateInvoiceDB(
           response.id as number,
           data,
           prisma
         );
+        if (data.paymentMethod === "SPLIT") {
+          const table = await findTableByIdDB(data.tableId as number);
+          if (!table) {
+            throw new Error("Table not found.");
+          }
+          await updateTableDB(
+            data.tableId as number,
+            { ...table, status: "SPLIT" },
+            prisma
+          );
+        }
         return {
           success: true,
           data: updatedInvoice,

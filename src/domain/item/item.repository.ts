@@ -195,10 +195,12 @@ export async function createItemDB(
   data: MenuItem,
   include?: Prisma.MenuItemInclude
 ) {
-  const { company, ...rest } = data;
+  const { company, companyId, subCategoryId, ...rest } = data;
   return prisma.menuItem.create({
     data: {
       ...rest,
+      companyId,
+      subCategoryId,
     },
     include,
   });

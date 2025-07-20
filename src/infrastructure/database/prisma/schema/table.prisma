@@ -2,6 +2,7 @@ enum TableStatus {
     AVAILABLE
     OCCUPIED
     RECEIPT
+    SPLIT
 }
 
 model Table {

@@ -7,15 +7,14 @@ import {
   NOT_FOUND_STATUS,
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
+import { TResult } from "../../types/common";
+import { getOrderItemsDB } from "../order-item/orderItem.repository";
 import { getSuppliesDB } from "../supply/supply.repository";
 import {
   getCloseDayDB,
   getDeletedItemsDB,
   getEmployeeSalesDB,
 } from "./report.repository";
-import { getOrderItemsDB } from "../order-item/orderItem.repository";
-import { DeletedOrderItem } from "@prisma/client";
-import { TResult } from "../../types/common";
 import { Report, ReportServiceInterface } from "./report.types";
 
 class ReportService implements ReportServiceInterface {
@@ -162,7 +161,7 @@ class ReportService implements ReportServiceInterface {
     from?: Date,
     to?: Date,
     employee?: string
-  ): Promise<TResult<Report[]>> {
+  ): Promise<TResult<any>> {
     try {
       const response = await getEmployeeSalesDB(prisma, from, to, employee);
       if (!response || response.length === 0) {
@@ -171,19 +170,31 @@ class ReportService implements ReportServiceInterface {
           error: { code: NOT_FOUND_STATUS, message: NOT_FOUND_ERR },
         };
       }
-      const data: Report[] = response.map((row) => ({
-        code: row.code,
-        productName: row.employeeName,
-        companyName: row.companyName,
-        quantity: row.quantity,
-        sellingPrice: row.unitPrice,
-        purchasePrice: row.costPrice,
-        totalSellingPrice: row.quantity * row.unitPrice,
-        totalPurchasePrice: row.quantity * row.costPrice,
-        profit: row.quantity * (row.unitPrice - row.costPrice),
-      }));
 
-      return { success: true, data };
+      // Group by employee name
+      const groupedData: Record<string, Report[]> = {};
+
+      response.forEach((row) => {
+        const employeeName = row.employeeName;
+
+        if (!groupedData[employeeName]) {
+          groupedData[employeeName] = [];
+        }
+
+        groupedData[employeeName].push({
+          code: row.code,
+          productName: row.productName, // This should be product name, not employee name
+          companyName: row.companyName,
+          quantity: row.quantity,
+          sellingPrice: row.unitPrice,
+          purchasePrice: row.costPrice,
+          totalSellingPrice: row.quantity * row.unitPrice,
+          totalPurchasePrice: row.quantity * row.costPrice,
+          profit: row.quantity * (row.unitPrice - row.costPrice),
+        });
+      });
+
+      return { success: true, data: groupedData };
     } catch (error) {
       logger.error("Get Employee Report:", error);
       return {
@@ -207,7 +218,9 @@ class ReportService implements ReportServiceInterface {
         data: response.map((res) => ({
           orderId: res.orderId,
           order: res.order,
-          items: res.items.map(({ order, ...item }) => item),
+          items: res.items.map(({ order, ...item }) => ({
+            ...item,
+          })),
         })),
       };
     } catch (error) {
