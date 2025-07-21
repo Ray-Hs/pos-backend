@@ -1,4 +1,4 @@
-import { ZodError } from "zod";
+import { z, ZodError } from "zod";
 import prisma from "../../infrastructure/database/prisma/client";
 import { calculatePages } from "../../infrastructure/utils/calculateSkip";
 import {
@@ -24,7 +24,8 @@ import {
   getSupplyByIdDB,
   updateSupplyDB,
 } from "./supply.repository";
-import { SupplySchema, SupplyServiceInterface } from "./supply.types";
+import { Supply, SupplySchema, SupplyServiceInterface } from "./supply.types";
+import { createItemDB } from "../item/item.repository";
 
 export class SupplyServices implements SupplyServiceInterface {
   async getSupplies(
@@ -163,7 +164,17 @@ export class SupplyServices implements SupplyServiceInterface {
 
   async createSupply(requestData: any) {
     try {
-      const data = await validateType(requestData, SupplySchema);
+      const data = await validateType(
+        requestData,
+        SupplySchema.extend({
+          isMenuItem: z.boolean().optional(),
+          subCategoryId: z.number().nullable().optional(),
+          printersId: z.number().nullable().optional(),
+          code: z.string().optional(),
+          image: z.string().optional(),
+          discount: z.number().optional(),
+        })
+      );
       if (!data || data instanceof ZodError) {
         logger.warn("Error: ", data);
         return {
@@ -203,7 +214,37 @@ export class SupplyServices implements SupplyServiceInterface {
           );
         }
 
-        const createdSupply = await createSupplyDB(data, tx);
+        if (data.isMenuItem) {
+          await createItemDB({
+            code: data.code || "",
+            description_ar: "",
+            description_en: "",
+            description_ku: "",
+            title_ar: data.name,
+            title_en: data.name,
+            title_ku: data.name,
+            price: data.itemSellPrice,
+            companyId: company.id,
+            company,
+            image: data.image,
+            subCategoryId: data.subCategoryId || null,
+            discount: data.discount || 0,
+            isActive: true,
+            printersId: data.printersId || null,
+          });
+        }
+
+        const {
+          isMenuItem,
+          subCategoryId,
+          printersId,
+          code,
+          image,
+          discount,
+          ...rest
+        } = data;
+
+        const createdSupply = await createSupplyDB(rest, tx);
       });
       return {
         success: true,

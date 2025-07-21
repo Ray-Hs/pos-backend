@@ -60,10 +60,7 @@ export class PrinterController implements PrinterControllerInterface {
     const data = req.body;
     const user = decodeJWT(req, res);
     const printerServices = new printerService();
-    const response = await printerServices.print({
-      ...data,
-      user: { username: user?.username, role: user?.role, image: user?.image },
-    });
+    const response = await printerServices.print({ ...data, user });
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

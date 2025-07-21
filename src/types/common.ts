@@ -232,7 +232,7 @@ export type OrderItem = z.infer<typeof OrderItemSchema>;
 export type Order = z.infer<typeof OrderSchema>;
 export type OrderRequest = Omit<Order, "items"> & { items: number[] };
 
-const TableStatusEnum = z.enum(["AVAILABLE", "OCCUPIED", "RECEIPT"]);
+const TableStatusEnum = z.enum(["AVAILABLE", "OCCUPIED", "RECEIPT", "SPLIT"]);
 export const TableSchema = z.object({
   id: z.number().optional(),
   name: z.string(),

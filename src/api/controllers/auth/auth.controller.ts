@@ -22,10 +22,17 @@ class AuthController implements AuthControllerInterface {
       res.cookie("session", user.data?.Bearer, {
         httpOnly: true,
         maxAge: ms(JWT_EXPIRE),
-        secure: true,
-        sameSite: "none",
+        secure: false,
+        sameSite: "lax",
         priority: "high",
       });
+      // res.cookie("session", user.data?.Bearer, {
+      //   httpOnly: true,
+      //   maxAge: ms(JWT_EXPIRE),
+      //   secure: true,
+      //   sameSite: "none",
+      //   priority: "high",
+      // });
     }
     return res.status(user.success ? OK_STATUS : user.error?.code || 500).json({
       success: user.success,

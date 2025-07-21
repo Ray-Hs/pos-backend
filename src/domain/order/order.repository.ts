@@ -59,9 +59,41 @@ export function findOrderByTableIdDB(id: number) {
     where: { tableId: id },
     orderBy: { updatedAt: "desc" },
     include: {
+      table: true,
       items: {
         include: {
-          menuItem: true,
+          menuItem: {
+            include: {
+              Printer: true,
+            },
+          },
+        },
+      },
+      Invoice: {
+        include: {
+          invoices: { include: { user: true }, orderBy: { version: "desc" } },
+        },
+      },
+    },
+  });
+}
+
+export function findOldOrdersByTableIdDB(id: number) {
+  return prisma.order.findMany({
+    where: { tableId: id },
+    orderBy: [
+      { updatedAt: "desc" }, // newest first
+      { id: "desc" }, // tie‐breaker
+    ],
+    include: {
+      table: true,
+      items: {
+        include: {
+          menuItem: {
+            include: {
+              Printer: true,
+            },
+          },
         },
       },
       Invoice: {
@@ -92,6 +124,7 @@ export async function createOrderDB(data: Order) {
           : undefined,
       },
       include: {
+        user: true,
         items: {
           include: {
             menuItem: {

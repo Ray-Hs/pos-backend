@@ -7,6 +7,7 @@ export const ReportSchema = z.object({
   code: z.string(),
   productName: z.string(),
   companyName: z.string(),
+  employeeName: z.string().optional(),
   quantity: z.number(),
   sellingPrice: z.number(),
   totalSellingPrice: z.number(),
@@ -35,7 +36,10 @@ export interface ReportServiceInterface {
     to?: Date,
     employee?: string
   ) => Promise<TResult<Report[]>>;
-  getDeletedItemsReport: (from?: Date, to?: Date) => Promise<TResult<{ orderId: number; order: any; items: any[] }[]>>;
+  getDeletedItemsReport: (
+    from?: Date,
+    to?: Date
+  ) => Promise<TResult<{ orderId: number; order: any; items: any[] }[]>>;
 }
 
 export interface ReportControllerInterface {

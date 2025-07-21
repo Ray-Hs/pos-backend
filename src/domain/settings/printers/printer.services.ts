@@ -1,8 +1,7 @@
-import {
-  characterSet,
-  PrinterTypes,
-  ThermalPrinter,
-} from "node-thermal-printer";
+import fs from "fs";
+import { PrinterTypes, ThermalPrinter } from "node-thermal-printer";
+import path from "path";
+import puppeteer from "puppeteer";
 import { z, ZodError } from "zod";
 import prisma from "../../../infrastructure/database/prisma/client";
 import {
@@ -16,7 +15,7 @@ import {
 } from "../../../infrastructure/utils/constants";
 import logger from "../../../infrastructure/utils/logger";
 import validateType from "../../../infrastructure/utils/validateType";
-import { OrderItem, UserSchema } from "../../../types/common";
+import { OrderItemSchema, UserSchema } from "../../../types/common";
 import { getLatestOrderDB } from "../../order/order.repository";
 import {
   createPrinterDB,
@@ -27,12 +26,6 @@ import {
   updatePrinterDB,
 } from "./printer.repository";
 import { PrinterObjectSchema, PrinterServiceInterface } from "./printer.types";
-import nodeHtmlToImage from "node-html-to-image";
-import htmlToImage from "html-to-image";
-import fs from "fs";
-import path from "path";
-import cheerio from "cheerio";
-import puppeteer from "puppeteer";
 
 export class printerService implements PrinterServiceInterface {
   async getPrinters() {
@@ -287,7 +280,10 @@ export class printerService implements PrinterServiceInterface {
     details?: Array<{ ip: string; success: boolean; error?: string }>;
   }> {
     // 1) Validate input
-    const schema = z.object({ user: UserSchema, tableId: z.number() });
+    const schema = z.object({
+      user: UserSchema,
+      tableId: z.number(),
+    });
     let data: z.infer<typeof schema>;
     try {
       data = schema.parse(requestData);

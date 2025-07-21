@@ -3,10 +3,11 @@
 import { DeletedOrderItem, Prisma, PrismaClient } from "@prisma/client";
 import { Supply } from "../supply/supply.types";
 
-export interface EmployeeSalesRow {
+interface EmployeeSalesRow {
   employeeId: number;
   employeeName: string;
   code: string;
+  productName: string; // Add this field
   companyName: string;
   quantity: number;
   unitPrice: number;
@@ -43,10 +44,7 @@ export async function getCloseDayDB(
   });
 }
 
-/**
- * Aggregate total sales per employee using Prisma.groupBy,
- * then enrich with User.name and MenuItem.name.
- */
+// Modified getEmployeeSalesDB function to return individual items per employee
 export async function getEmployeeSalesDB(
   prisma: PrismaClient,
   from?: Date,
@@ -68,7 +66,7 @@ export async function getEmployeeSalesDB(
     };
   }
 
-  // 1) Get all orders with their items and user info
+  // Get all orders with their items and user info
   const orders = await prisma.order.findMany({
     where,
     include: {
@@ -86,6 +84,7 @@ export async function getEmployeeSalesDB(
           menuItem: {
             select: {
               code: true,
+              title_en: true, // Add product name
               price: true,
             },
           },
@@ -94,58 +93,28 @@ export async function getEmployeeSalesDB(
     },
   });
 
-  // 2) Group orders by userId and calculate totals
-  const employeeStats = new Map<
-    string,
-    {
-      employeeId: number;
-      employeeName: string;
-      code: string;
-      companyName: string;
-      totalQuantity: number;
-      totalRevenue: number;
-      totalCost: number;
-    }
-  >();
+  // Create individual rows for each menu item per employee
+  const results: EmployeeSalesRow[] = [];
 
   orders.forEach((order) => {
     const userId = order.userId;
     const userName = order.user.username;
-    const item = order.items[0];
-    const code = item.menuItem.code ?? "";
-    if (!employeeStats.has(userId.toString())) {
-      employeeStats.set(userId.toString(), {
-        employeeId: userId,
-        employeeName: userName,
-        code,
-        companyName: "",
-        totalQuantity: 0,
-        totalRevenue: 0,
-        totalCost: 0,
-      });
-    }
-
-    const stats = employeeStats.get(userId.toString())!;
 
     order.items.forEach((item) => {
-      stats.totalQuantity += item.quantity;
-      stats.totalRevenue += item.menuItem.price * item.quantity;
-      stats.totalCost += (item.price || 0) * item.quantity;
+      results.push({
+        employeeId: userId,
+        employeeName: userName,
+        code: item.menuItem.code ?? "",
+        productName: item.menuItem.title_en ?? "", // Add product name
+        companyName: "", // You might want to add company info from somewhere
+        quantity: item.quantity,
+        unitPrice: item.menuItem.price,
+        costPrice: item.price || 0,
+      });
     });
   });
 
-  // 3) Convert to the expected format
-  return Array.from(employeeStats.values()).map((stats) => ({
-    employeeId: stats.employeeId,
-    employeeName: stats.employeeName,
-    code: stats.code,
-    companyName: stats.companyName,
-    quantity: stats.totalQuantity,
-    unitPrice:
-      stats.totalQuantity > 0 ? stats.totalRevenue / stats.totalQuantity : 0,
-    costPrice:
-      stats.totalQuantity > 0 ? stats.totalCost / stats.totalQuantity : 0,
-  }));
+  return results;
 }
 
 /**
@@ -168,7 +137,13 @@ export async function getDeletedItemsDB(
     select: {
       order: true,
       orderId: true,
-      menuItemId: true,
+      menuItem: {
+        select: {
+          title_en: true,
+          title_ku: true,
+          title_ar: true,
+        },
+      },
       reason: true,
       price: true,
       quantity: true,

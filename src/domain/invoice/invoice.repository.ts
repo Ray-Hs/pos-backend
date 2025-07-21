@@ -81,10 +81,10 @@ export const updateInvoiceDB = async (
   data: Partial<Invoice>,
   client: TxClientType
 ) => {
-  const { id: _id, discount, customerDiscount, ...rest } = data;
+  const { id: _id, discount, customerDiscount, paymentMethod, ...rest } = data;
   return client.invoice.update({
     where: { id },
-    data: { ...rest, discount },
+    data: { ...rest, discount, paymentMethod },
   });
 };
 

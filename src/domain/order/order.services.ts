@@ -11,9 +11,10 @@ import {
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
-import { Invoice, Order, OrderSchema } from "../../types/common";
+import { OrderSchema } from "../../types/common";
 import { getConstantsDB } from "../constants/constants.repository";
-import { calculateTotal, updateInvoiceDB } from "../invoice/invoice.repository";
+import { calculateTotal } from "../invoice/invoice.repository";
+import { printerService } from "../settings/printers/printer.services";
 import {
   createOrderDB,
   deleteOrderDB,
@@ -21,7 +22,6 @@ import {
   findOrderByTableIdDB,
   getLatestOrderDB,
   getOrdersDB,
-  updateOrderDB,
 } from "./order.repository";
 import { OrderServiceInterface } from "./order.types";
 
@@ -344,6 +344,7 @@ export class OrderServices implements OrderServiceInterface {
             items: itemsUpdate,
           },
           include: {
+            user: true,
             items: true,
             Invoice: {
               orderBy: { createdAt: "desc" },
