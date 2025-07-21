@@ -12,6 +12,7 @@ interface EmployeeSalesRow {
   quantity: number;
   unitPrice: number;
   costPrice: number;
+  orders?: number;
 }
 
 /**
@@ -99,6 +100,9 @@ export async function getEmployeeSalesDB(
   orders.forEach((order) => {
     const userId = order.userId;
     const userName = order.user.username;
+    const ordersHandled = orders.filter(
+      (orderValue) => order.userId === orderValue.userId
+    ).length;
 
     order.items.forEach((item) => {
       results.push({
@@ -110,6 +114,7 @@ export async function getEmployeeSalesDB(
         quantity: item.quantity,
         unitPrice: item.menuItem.price,
         costPrice: item.price || 0,
+        orders: ordersHandled,
       });
     });
   });

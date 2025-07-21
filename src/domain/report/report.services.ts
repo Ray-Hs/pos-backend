@@ -272,6 +272,7 @@ class ReportService implements ReportServiceInterface {
           code: supply.barcode || "",
           productName: supply.name,
           companyName: supply.company.name,
+          currency: supply.company.currency,
           quantity: supply.itemQty,
           sellingPrice: supply.itemSellPrice,
           purchasePrice: supply.itemPrice,
@@ -305,30 +306,59 @@ class ReportService implements ReportServiceInterface {
         };
       }
 
-      // Group by employee name
-      const groupedData: Record<string, Report[]> = {};
+      // Group by employee name and accumulate products
+      // 1) Change your groupedData type:
+      const groupedData: Record<
+        string,
+        { orders: number; products: Report[] }
+      > = {};
 
+      // 2) Build it up:
       response.forEach((row) => {
-        const employeeName = row.employeeName;
-
-        if (!groupedData[employeeName]) {
-          groupedData[employeeName] = [];
+        const name = row.employeeName;
+        if (!groupedData[name]) {
+          groupedData[name] = { orders: row.orders as number, products: [] };
         }
 
-        groupedData[employeeName].push({
-          code: row.code,
-          productName: row.productName, // This should be product name, not employee name
-          companyName: row.companyName,
-          quantity: row.quantity,
-          sellingPrice: row.unitPrice,
-          purchasePrice: row.costPrice,
-          totalSellingPrice: row.quantity * row.unitPrice,
-          totalPurchasePrice: row.quantity * row.costPrice,
-          profit: row.quantity * (row.unitPrice - row.costPrice),
-        });
+        // accumulate each product into the `products` array
+        let prod = groupedData[name].products.find(
+          (p) => p.productName === row.productName
+        );
+        if (!prod) {
+          prod = {
+            code: row.code,
+            productName: row.productName,
+            companyName: row.companyName,
+            quantity: 0,
+            sellingPrice: row.unitPrice,
+            purchasePrice: row.costPrice,
+            totalSellingPrice: 0,
+            totalPurchasePrice: 0,
+            profit: 0,
+          };
+          groupedData[name].products.push(prod);
+        }
+
+        // now accumulate
+        prod.quantity += row.quantity;
+        prod.totalSellingPrice += row.quantity * row.unitPrice;
+        prod.totalPurchasePrice += row.quantity * row.costPrice;
+        prod.profit += row.quantity * (row.unitPrice - row.costPrice);
       });
 
-      return { success: true, data: groupedData };
+      // 3) Shape your result
+      const result: Record<string, { orders: number; products: Report[] }> = {};
+      for (const [name, group] of Object.entries(groupedData)) {
+        // you can also sort group.products here if you like
+        result[name] = {
+          orders: group.orders,
+          products: group.products.sort((a, b) =>
+            a.productName.localeCompare(b.productName)
+          ),
+        };
+      }
+
+      return { success: true, data: result };
     } catch (error) {
       logger.error("Get Employee Report:", error);
       return {
