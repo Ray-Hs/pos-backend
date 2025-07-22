@@ -69,11 +69,24 @@ class ReportService implements ReportServiceInterface {
         where,
         include: {
           menuItem: {
-            include: { company: { select: { name: true } } },
+            include: {
+              company: { select: { name: true } },
+              SubCategory: {
+                select: { Category: { select: { title_en: true } } },
+              },
+            },
           },
-          order: true,
+          order: {
+            select: {
+              Invoice: {
+                select: { invoices: { select: { paymentMethod: true } } },
+              },
+              createdAt: true,
+            },
+          },
         },
       });
+
       if (!response || response.length === 0) {
         return {
           success: false,
@@ -81,22 +94,143 @@ class ReportService implements ReportServiceInterface {
         };
       }
 
-      const data: Report[] = response.map((orderItem) => {
-        const totalSellingPrice = (orderItem.price || 0) * orderItem.quantity;
-        const totalPurchasePrice =
+      // Group by menu item title_en
+      const groupedData = response.reduce((acc, orderItem) => {
+        const key = orderItem.menuItem.title_en;
+
+        if (!acc[key]) {
+          acc[key] = {
+            code: orderItem.menuItem.code || "",
+            productName: orderItem.menuItem.title_en,
+            companyName: orderItem.menuItem.company?.name || "",
+            quantity: 0,
+            paymentMethod: {
+              card: 0,
+              cash: 0,
+              debt: 0,
+            },
+            salesTime: [] as Array<{ time: Date; quantity: number }>,
+            category: orderItem.menuItem.SubCategory?.Category?.title_en || "",
+            sellingPrice: orderItem.price,
+            purchasePrice: orderItem.menuItem.price,
+            totalSellingPrice: 0,
+            totalPurchasePrice: 0,
+            profit: 0,
+            totalQuantityForPayment: 0,
+          };
+        }
+
+        // Aggregate quantities
+        acc[key].quantity += orderItem.quantity;
+        acc[key].totalQuantityForPayment += orderItem.quantity;
+        acc[key].totalSellingPrice +=
+          (orderItem.price || 0) * orderItem.quantity;
+        acc[key].totalPurchasePrice +=
           (orderItem.menuItem.price || 0) * orderItem.quantity;
+
+        // Track payment methods - handle array safely
+        const invoices = orderItem.order?.Invoice?.[0]?.invoices;
+        if (invoices && invoices.length > 0) {
+          const paymentMethod = invoices[0]?.paymentMethod
+            ?.toLowerCase()
+            ?.trim();
+          if (paymentMethod === "card") {
+            acc[key].paymentMethod.card += orderItem.quantity;
+          } else if (paymentMethod === "cash") {
+            acc[key].paymentMethod.cash += orderItem.quantity;
+          } else if (paymentMethod === "debt") {
+            acc[key].paymentMethod.debt += orderItem.quantity;
+          } else {
+            // If payment method doesn't match any of the above, default to cash
+            acc[key].paymentMethod.cash += orderItem.quantity;
+          }
+        } else {
+          // If no payment method found, default to cash
+          acc[key].paymentMethod.cash += orderItem.quantity;
+        }
+
+        // Track sales time by hour ONLY (remove duplicate tracking)
+        if (orderItem.order?.createdAt) {
+          const orderDate = new Date(orderItem.order.createdAt);
+          // Create hour key by setting minutes, seconds, milliseconds to 0
+          const hourKey = new Date(
+            orderDate.getFullYear(),
+            orderDate.getMonth(),
+            orderDate.getDate(),
+            orderDate.getHours(),
+            0, // minutes
+            0, // seconds
+            0 // milliseconds
+          );
+
+          const existingHour = acc[key].salesTime.find(
+            (st: any) => st.time.getTime() === hourKey.getTime()
+          );
+
+          if (existingHour) {
+            existingHour.quantity += orderItem.quantity;
+          } else {
+            acc[key].salesTime.push({
+              time: hourKey,
+              quantity: orderItem.quantity,
+            });
+          }
+        }
+
+        return acc;
+      }, {} as Record<string, any>);
+
+      // Convert to percentages for payment methods and calculate final profit
+      const data = Object.values(groupedData).map((item) => {
+        const total = item.totalQuantityForPayment;
+
+        // Convert payment method quantities to percentages
+        const paymentMethod = {
+          card:
+            total > 0 ? Math.round((item.paymentMethod.card / total) * 100) : 0,
+          cash:
+            total > 0 ? Math.round((item.paymentMethod.cash / total) * 100) : 0,
+          debt:
+            total > 0 ? Math.round((item.paymentMethod.debt / total) * 100) : 0,
+        };
+
+        // Ensure percentages add up to 100% by adjusting the largest percentage
+        const percentageSum =
+          paymentMethod.card + paymentMethod.cash + paymentMethod.debt;
+        if (percentageSum !== 100 && total > 0) {
+          const difference = 100 - percentageSum;
+          // Find the payment method with the highest value and adjust it
+          if (
+            paymentMethod.cash >= paymentMethod.card &&
+            paymentMethod.cash >= paymentMethod.debt
+          ) {
+            paymentMethod.cash += difference;
+          } else if (paymentMethod.card >= paymentMethod.debt) {
+            paymentMethod.card += difference;
+          } else {
+            paymentMethod.debt += difference;
+          }
+        }
+
+        // Sort sales times by hour
+        item.salesTime.sort(
+          (a: any, b: any) => a.time.getTime() - b.time.getTime()
+        );
+
+        // Calculate final profit
+        item.profit = item.totalSellingPrice - item.totalPurchasePrice;
+
+        // Remove helper field and return clean object
+        const { totalQuantityForPayment, ...cleanItem } = item;
+
         return {
-          code: orderItem.menuItem.code || "",
-          productName: orderItem.menuItem.title_en,
-          companyName: orderItem.menuItem.company?.name || "",
-          quantity: orderItem.quantity,
-          sellingPrice: orderItem.price,
-          purchasePrice: orderItem.menuItem.price,
-          totalSellingPrice,
-          totalPurchasePrice,
-          profit: totalSellingPrice - totalPurchasePrice,
+          ...cleanItem,
+          paymentMethod,
         };
       });
+
+      // Sort by product name
+      data.sort((a, b) => a.productName.localeCompare(b.productName));
 
       return { success: true, data };
     } catch (error) {
@@ -138,6 +272,7 @@ class ReportService implements ReportServiceInterface {
           code: supply.barcode || "",
           productName: supply.name,
           companyName: supply.company.name,
+          currency: supply.company.currency,
           quantity: supply.itemQty,
           sellingPrice: supply.itemSellPrice,
           purchasePrice: supply.itemPrice,
@@ -171,30 +306,59 @@ class ReportService implements ReportServiceInterface {
         };
       }
 
-      // Group by employee name
-      const groupedData: Record<string, Report[]> = {};
+      // Group by employee name and accumulate products
+      // 1) Change your groupedData type:
+      const groupedData: Record<
+        string,
+        { orders: number; products: Report[] }
+      > = {};
 
+      // 2) Build it up:
       response.forEach((row) => {
-        const employeeName = row.employeeName;
-
-        if (!groupedData[employeeName]) {
-          groupedData[employeeName] = [];
+        const name = row.employeeName;
+        if (!groupedData[name]) {
+          groupedData[name] = { orders: row.orders as number, products: [] };
         }
 
-        groupedData[employeeName].push({
-          code: row.code,
-          productName: row.productName, // This should be product name, not employee name
-          companyName: row.companyName,
-          quantity: row.quantity,
-          sellingPrice: row.unitPrice,
-          purchasePrice: row.costPrice,
-          totalSellingPrice: row.quantity * row.unitPrice,
-          totalPurchasePrice: row.quantity * row.costPrice,
-          profit: row.quantity * (row.unitPrice - row.costPrice),
-        });
+        // accumulate each product into the `products` array
+        let prod = groupedData[name].products.find(
+          (p) => p.productName === row.productName
+        );
+        if (!prod) {
+          prod = {
+            code: row.code,
+            productName: row.productName,
+            companyName: row.companyName,
+            quantity: 0,
+            sellingPrice: row.unitPrice,
+            purchasePrice: row.costPrice,
+            totalSellingPrice: 0,
+            totalPurchasePrice: 0,
+            profit: 0,
+          };
+          groupedData[name].products.push(prod);
+        }
+
+        // now accumulate
+        prod.quantity += row.quantity;
+        prod.totalSellingPrice += row.quantity * row.unitPrice;
+        prod.totalPurchasePrice += row.quantity * row.costPrice;
+        prod.profit += row.quantity * (row.unitPrice - row.costPrice);
       });
 
-      return { success: true, data: groupedData };
+      // 3) Shape your result
+      const result: Record<string, { orders: number; products: Report[] }> = {};
+      for (const [name, group] of Object.entries(groupedData)) {
+        // you can also sort group.products here if you like
+        result[name] = {
+          orders: group.orders,
+          products: group.products.sort((a, b) =>
+            a.productName.localeCompare(b.productName)
+          ),
+        };
+      }
+
+      return { success: true, data: result };
     } catch (error) {
       logger.error("Get Employee Report:", error);
       return {
