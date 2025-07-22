@@ -174,6 +174,7 @@ export async function getStorageDB(
         companyDetails: {
           id: supply.company.id,
           name: supply.company.name,
+          currency: supply.company.currency,
           code: supply.company.code,
           phoneNumber: supply.company.phoneNumber,
           note: supply.company.note,
