@@ -140,13 +140,30 @@ export async function getDeletedItemsDB(
   // Fetch all deleted order items matching the filter
   const deletedItems = await prisma.deletedOrderItem.findMany({
     select: {
-      order: true,
+      order: {
+        include: {
+          user: {
+            select: {
+              username: true,
+            },
+          },
+        },
+      },
       orderId: true,
       menuItem: {
         select: {
           title_en: true,
           title_ku: true,
           title_ar: true,
+        },
+      },
+      invoice: {
+        select: {
+          table: {
+            select: {
+              name: true,
+            },
+          },
         },
       },
       reason: true,
@@ -157,11 +174,15 @@ export async function getDeletedItemsDB(
   });
 
   // Group by orderId
-  const grouped: Record<string, { items: any[]; order: any }> = {};
+  const grouped: Record<string, { items: any[]; order: any; table: any }> = {};
   for (const item of deletedItems) {
     const key = item.orderId?.toString() || "unknown";
     if (!grouped[key]) {
-      grouped[key] = { items: [], order: item.order };
+      grouped[key] = {
+        items: [],
+        order: item.order,
+        table: item.invoice.table?.name,
+      };
     }
     grouped[key].items.push(item);
   }
@@ -169,7 +190,7 @@ export async function getDeletedItemsDB(
   // Return grouped data as array of objects with orderId, order details, and items
   return Object.entries(grouped).map(([orderId, data]) => ({
     orderId: parseInt(orderId) || 0,
-    order: data.order,
+    order: { ...data.order, table: data.table },
     items: data.items,
   }));
 }
