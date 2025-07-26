@@ -16,6 +16,7 @@ import { getConstantsDB } from "../constants/constants.repository";
 import { calculateTotal } from "../invoice/invoice.repository";
 import { printerService } from "../settings/printers/printer.services";
 import {
+  cancelOrderDB,
   createOrderDB,
   deleteOrderDB,
   findOrderByIdDB,
@@ -460,6 +461,53 @@ export class OrderServices implements OrderServiceInterface {
       };
     } catch (error) {
       logger.error("Create Order Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async cancelOrder(tableId: any) {
+    try {
+      const response = await validateType(
+        { tableId: tableId },
+        OrderSchema.pick({ tableId: true })
+      );
+      if (response instanceof ZodError || !response.tableId) {
+        logger.warn("Missing ID");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+
+      const existingOrder = await findOrderByIdDB(response.tableId, prisma);
+      if (!existingOrder) {
+        logger.warn("Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      const canceledOrder = await cancelOrderDB(response.tableId);
+
+      return {
+        success: true,
+        message: "Canceled Order Successfully",
+      };
+    } catch (error) {
+      logger.error("Cancel Order Service: ", error);
       return {
         success: false,
         error: {

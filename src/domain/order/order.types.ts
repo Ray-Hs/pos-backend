@@ -14,6 +14,7 @@ export interface OrderServiceInterface {
     requestData: any
   ) => Promise<TResult<{ order: Order; invoice: Invoice }>>;
   deleteOrder: (requestId: any) => Promise<TResult<void>>;
+  cancelOrder: (tableId: any) => Promise<TResult<void>>;
 }
 
 export interface OrderControllerInterface {
@@ -42,6 +43,10 @@ export interface OrderControllerInterface {
     res: Response
   ) => Promise<Response<TResult<{ order: Order; invoice: Invoice }>>>;
   deleteOrder: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<void>>>;
+  cancelOrder: (
     req: Request,
     res: Response
   ) => Promise<Response<TResult<void>>>;

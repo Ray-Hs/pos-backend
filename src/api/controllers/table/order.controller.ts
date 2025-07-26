@@ -7,7 +7,6 @@ import {
 } from "../../../infrastructure/utils/constants";
 import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
 import { UserWithoutPassword } from "../../../types/common";
-import logger from "../../../infrastructure/utils/logger";
 
 export class OrderController implements OrderControllerInterface {
   async getOrders(req: Request, res: Response) {
@@ -83,6 +82,16 @@ export class OrderController implements OrderControllerInterface {
     const id = parseInt(req.params?.id, 10);
     const orderService = new OrderServices();
     const response = await orderService.deleteOrder(id);
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async cancelOrder(req: Request, res: Response) {
+    const id = parseInt(req.params?.id, 10);
+    const orderService = new OrderServices();
+    const response = await orderService.cancelOrder(id);
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
