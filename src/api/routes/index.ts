@@ -103,6 +103,50 @@ router.use(
   LocalImageRoutes
 );
 
+// Settings Routes
+router.use(
+  "/settings",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  SettingsRoutes
+);
+
+// CRM Routes
+router.use("/crm", rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW), CRMRoutes);
+
+// Supply Routes
+router.use(
+  "/supply",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  SupplyRoutes
+);
+
+// Permissions Routes
+router.use(
+  "/permissions",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  PermissionsRoutes
+);
+
+// Finance Routes
+router.use(
+  "/finance",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  FinanceRoutes
+);
+
+// Exchange Rate Routes
+router.use(
+  "/exchange",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  ExchangeRoutes
+);
+
+// Report Routes
+router.use(
+  "/report",
+  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
+  ReportsRoutes
+);
 // Static file serving endpoint for images - serve by full URL path
 router.get(
   "/*",
@@ -190,50 +234,4 @@ router.get(
     }
   })
 );
-
-// Settings Routes
-router.use(
-  "/settings",
-  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
-  SettingsRoutes
-);
-
-// CRM Routes
-router.use("/crm", rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW), CRMRoutes);
-
-// Supply Routes
-router.use(
-  "/supply",
-  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
-  SupplyRoutes
-);
-
-// Permissions Routes
-router.use(
-  "/permissions",
-  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
-  PermissionsRoutes
-);
-
-// Finance Routes
-router.use(
-  "/finance",
-  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
-  FinanceRoutes
-);
-
-// Exchange Rate Routes
-router.use(
-  "/exchange",
-  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
-  ExchangeRoutes
-);
-
-// Report Routes
-router.use(
-  "/report",
-  rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
-  ReportsRoutes
-);
-
 export default router;

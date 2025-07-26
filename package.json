@@ -11,13 +11,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "dotenv -- nodemon --exec ts-node ./src/server.ts",
-    "build": "prisma generate && tsc",
+    "build:server": "npx prisma migrate dev --name='init' && npx prisma migrate deploy && prisma generate && tsc && node ./public/dist/src/script.js",
+    "build": "tsc",
     "vercel-build": "prisma generate && prisma migrate deploy && tsc",
     "start": "node public/dist/src/server.js",
     "migrate-dev": "npx prisma migrate dev",
     "migrate-deploy": "npx prisma migrate deploy",
     "generate": "npx prisma generate",
-    "studio": "npx prisma studio"
+    "studio": "npx prisma studio",
+    "seed:customers": "ts-node data-script.ts",
+    "seed:customers:100": "set CUSTOMER_COUNT=100 && ts-node data-script.ts",
+    "seed:customers:1000": "set CUSTOMER_COUNT=1000 && ts-node data-script.ts",
+    "seed:customers:10000": "set CUSTOMER_COUNT=10000 && ts-node data-script.ts",
+    "seed:customers:100000": "set CUSTOMER_COUNT=100000 && ts-node data-script.ts",
+    "seed:customers:1000000": "set CUSTOMER_COUNT=1000000 && ts-node data-script.ts",
+    "seed:companies": "ts-node company-data-script.ts",
+    "seed:supply": "ts-node supply-data-script.ts",
+    "seed:orders": "ts-node order-data-script.ts"
   },
   "keywords": [],
   "author": "",
@@ -64,6 +74,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
     "@types/compression": "^1.8.0",
     "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",

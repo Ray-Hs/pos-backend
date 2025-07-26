@@ -10523,3 +10523,878 @@ Invalid `prisma.table.update()` invocation:
 
 
 Unique constraint failed on the fields: (`name`)
+[2025-07-22 14:10:31] [31merror[39m: Image deletion failed: Invalid image URL format
+[2025-07-22 15:29:19] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:29:20] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:29:22] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:29:26] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:29:35] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:39:26] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:39:36] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 16:44:02] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-23 23:48:51] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:48:52] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:48:55] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:48:56] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:48:58] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:02] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:03] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:04] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:06] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:11] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:12] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:26] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:30] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:33] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:34] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:55] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:50:07] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:50:08] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:51:21] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:51:22] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:51:39] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-24 00:14:51] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
+[2025-07-24 00:16:02] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
+[2025-07-24 01:14:00] [31merror[39m: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+
+Failed to convert rust `String` into napi `string`
+[2025-07-24 01:22:06] [31merror[39m: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    createdAt: {
+      gte: new Date("Invalid Date")
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+    }
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Invalid value for argument `gte`: Provided Date object is invalid. Expected Date.
+[2025-07-24 01:23:56] [31merror[39m: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    createdAt: {
+      gte: new Date("Invalid Date"),
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+      lte: new Date("Invalid Date")
+    }
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Invalid value for argument `gte`: Provided Date object is invalid. Expected Date.
+[2025-07-24 01:44:26] [31merror[39m: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+
+Failed to convert rust `String` into napi `string`
+[2025-07-24 01:46:08] [31merror[39m: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+
+Failed to convert rust `String` into napi `string`
