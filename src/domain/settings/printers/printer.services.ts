@@ -15,7 +15,11 @@ import {
 } from "../../../infrastructure/utils/constants";
 import logger from "../../../infrastructure/utils/logger";
 import validateType from "../../../infrastructure/utils/validateType";
-import { OrderItemSchema, UserSchema } from "../../../types/common";
+import {
+  OrderItemSchema,
+  OrderSchema,
+  UserSchema,
+} from "../../../types/common";
 import { getLatestOrderDB } from "../../order/order.repository";
 import {
   createPrinterDB,
@@ -283,6 +287,11 @@ export class printerService implements PrinterServiceInterface {
     const schema = z.object({
       user: UserSchema,
       tableId: z.number(),
+      order: OrderSchema.extend({
+        items: z.array(
+          OrderItemSchema.extend({ status: z.enum(["added", "deleted"]) })
+        ),
+      }),
     });
     let data: z.infer<typeof schema>;
     try {
@@ -306,6 +315,15 @@ export class printerService implements PrinterServiceInterface {
           message: "No items to print",
         },
       };
+    }
+
+    // 3) Take only the items marked added/deleted in the request
+    const changedItems = data.order.items.filter(
+      (i) => i.status === "added" || i.status === "deleted"
+    );
+    if (changedItems.length === 0) {
+      logger.info("No added/deleted items to print for table", data.tableId);
+      return { success: true, details: [] };
     }
 
     // 3) Group items by printer IP
