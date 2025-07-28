@@ -266,10 +266,9 @@ export class OrderServices implements OrderServiceInterface {
       const updatedOrder = await prisma.$transaction(async (tx) => {
         const { items, userId, reason, invoiceId, ...rest } = data;
         console.log("Data: ", data);
-        const prev_order = await findOrderByIdDB(response.id as number, tx);
-        const order_items = prev_order?.items;
+        const order_items = existingOrder?.items;
 
-        if (!prev_order) {
+        if (!existingOrder) {
           throw new Error("No Previous Order");
         }
 
@@ -334,6 +333,108 @@ export class OrderServices implements OrderServiceInterface {
             },
           }));
         }
+
+        if (!existingOrder) {
+          throw new Error("Order not found");
+        }
+
+        // Calculate old quantities by menu item name
+        const oldItemMap = new Map<string, number>();
+        for (const orderItem of existingOrder.items) {
+          const name = orderItem.menuItem?.title_en?.toLowerCase();
+          if (!name) continue;
+          const prevQty = oldItemMap.get(name) ?? 0;
+          oldItemMap.set(name, prevQty + 1);
+        }
+
+        const menuItems = await Promise.all(
+          items.map((item) => {
+            return tx.menuItem.findFirst({
+              where: {
+                id: item.menuItemId,
+              },
+            });
+          })
+        );
+
+        // Calculate new quantities by menu item name
+        const newItemMap = new Map<string, number>();
+        for (let i = 0; i < menuItems.length; i++) {
+          const item = menuItems[i];
+          const name = item?.title_en?.toLowerCase();
+          if (!name) continue;
+          const prevQty = newItemMap.get(name) ?? 0;
+          newItemMap.set(name, prevQty + 1);
+        }
+
+        // Calculate the difference and update supplies
+        const allItemNames = new Set([
+          ...oldItemMap.keys(),
+          ...newItemMap.keys(),
+        ]);
+
+        const supplies = await Promise.all(
+          Array.from(allItemNames).map(async (name) => {
+            const oldQty = oldItemMap.get(name) ?? 0;
+            const newQty = newItemMap.get(name) ?? 0;
+            const qtyDifference = newQty - oldQty;
+
+            if (qtyDifference === 0) return null;
+
+            // Find all supplies with the same name, ordered by remaining quantity (highest first)
+            const allSupplies = await tx.supply.findMany({
+              where: {
+                name: {
+                  equals: name,
+                  mode: "insensitive",
+                },
+              },
+              orderBy: {
+                remainingQuantity: "desc",
+              },
+            });
+
+            if (allSupplies.length === 0) return null;
+
+            let remainingToDeduct = qtyDifference;
+
+            // Process each supply in order
+            for (const supply of allSupplies) {
+              if (remainingToDeduct <= 0) break;
+
+              const currentRemaining = supply.remainingQuantity || 0;
+              const newRemainingQty = currentRemaining - remainingToDeduct;
+
+              if (newRemainingQty >= 0) {
+                // This supply can handle the remaining deduction
+                await tx.supply.update({
+                  where: { id: supply.id },
+                  data: {
+                    remainingQuantity: newRemainingQty,
+                  },
+                });
+                remainingToDeduct = 0;
+              } else {
+                // This supply will go to zero, deduct what we can
+                const canDeduct = currentRemaining;
+                if (canDeduct > 0) {
+                  await tx.supply.update({
+                    where: { id: supply.id },
+                    data: {
+                      remainingQuantity: 0,
+                    },
+                  });
+                  remainingToDeduct -= canDeduct;
+                }
+              }
+            }
+
+            // If remainingToDeduct > 0 here, it means we couldn't fulfill the full order
+            // but we proceed anyway as requested
+
+            return allSupplies;
+          })
+        );
 
         const order = await tx.order.update({
           where: {
