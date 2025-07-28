@@ -45,7 +45,9 @@ export class InvoiceController implements InvoiceControllerInterface {
       .json(response);
   }
   async getInvoiceRefById(req: Request, res: Response) {
-    const id = req.query?.id ? parseInt(req.params?.id, 10) : undefined;
+    const id = req.query?.id
+      ? parseInt(req.query?.id as string, 10)
+      : undefined;
     const invoiceInstance = new InvoiceServices();
     const response = await invoiceInstance.getInvoiceRefById(id);
 
