@@ -16,6 +16,7 @@ import { getConstantsDB } from "../constants/constants.repository";
 import { calculateTotal } from "../invoice/invoice.repository";
 import { printerService } from "../settings/printers/printer.services";
 import {
+  cancelOrderDB,
   createOrderDB,
   deleteOrderDB,
   findOrderByIdDB,
@@ -265,10 +266,9 @@ export class OrderServices implements OrderServiceInterface {
       const updatedOrder = await prisma.$transaction(async (tx) => {
         const { items, userId, reason, invoiceId, ...rest } = data;
         console.log("Data: ", data);
-        const prev_order = await findOrderByIdDB(response.id as number, tx);
-        const order_items = prev_order?.items;
+        const order_items = existingOrder?.items;
 
-        if (!prev_order) {
+        if (!existingOrder) {
           throw new Error("No Previous Order");
         }
 
@@ -293,7 +293,7 @@ export class OrderServices implements OrderServiceInterface {
           });
 
           // Then, create deletedOrderItems for audit/history
-          await tx.deletedOrderItem.createMany({
+          const deletedItemsCreated = await tx.deletedOrderItem.createMany({
             data: deletedItems.map((item) => ({
               orderId: response.id as number,
               menuItemId: item.menuItemId,
@@ -306,6 +306,46 @@ export class OrderServices implements OrderServiceInterface {
               reason: data.reason || "", // or another appropriate reason
             })),
           });
+
+          // Calculate quantities of deleted items by menu item name
+          const deletedItemMap = new Map<string, number>();
+          for (const orderItem of deletedItems) {
+            const name = orderItem.menuItem?.title_en?.toLowerCase();
+            if (!name) continue;
+            const prevQty = deletedItemMap.get(name) ?? 0;
+            deletedItemMap.set(name, prevQty + (orderItem.quantity ?? 0));
+          }
+
+          // Add back the deleted item quantities to supplies
+          await Promise.all(
+            Array.from(deletedItemMap.entries()).map(
+              async ([name, qtyToAdd]) => {
+                const supplies = await tx.supply.findMany({
+                  where: {
+                    name: {
+                      equals: name,
+                      mode: "insensitive",
+                    },
+                  },
+                  orderBy: {
+                    remainingQuantity: "asc", // Start with lowest quantities first
+                  },
+                });
+
+                if (supplies.length > 0) {
+                  // Add all quantity back to the first supply (or distribute if needed)
+                  const firstSupply = supplies[0];
+                  await tx.supply.update({
+                    where: { id: firstSupply.id },
+                    data: {
+                      remainingQuantity:
+                        (firstSupply.remainingQuantity || 0) + qtyToAdd,
+                    },
+                  });
+                }
+              }
+            )
+          );
         }
 
         // Handle item updates separately
@@ -333,6 +373,109 @@ export class OrderServices implements OrderServiceInterface {
             },
           }));
         }
+
+        if (!existingOrder) {
+          throw new Error("Order not found");
+        }
+
+        const menuItems = await Promise.all(
+          items.map((item) => {
+            return tx.menuItem.findFirst({
+              where: {
+                id: item.menuItemId,
+              },
+            });
+          })
+        );
+
+        // Calculate old quantities by menu item name
+        const oldItemMap = new Map<string, number>();
+        for (const orderItem of existingOrder.items) {
+          const name = orderItem.menuItem?.title_en?.toLowerCase();
+          if (!name) continue;
+          const prevQty = oldItemMap.get(name) ?? 0;
+          oldItemMap.set(name, prevQty + (orderItem.quantity ?? 0)); // Use actual quantity
+        }
+
+        // Calculate new quantities by menu item name
+        const newItemMap = new Map<string, number>();
+        for (let i = 0; i < items.length; i++) {
+          const orderItem = items[i]; // Use the order item, not menu item
+          const menuItem = menuItems[i];
+          const name = menuItem?.title_en?.toLowerCase();
+          if (!name) continue;
+          const prevQty = newItemMap.get(name) ?? 0;
+          newItemMap.set(name, prevQty + (orderItem.quantity ?? 0)); // Use actual quantity
+        }
+
+        // Calculate the difference and update supplies
+        const allItemNames = new Set([
+          ...oldItemMap.keys(),
+          ...newItemMap.keys(),
+        ]);
+
+        const supplies = await Promise.all(
+          Array.from(allItemNames).map(async (name) => {
+            const oldQty = oldItemMap.get(name) ?? 0;
+            const newQty = newItemMap.get(name) ?? 0;
+            const qtyDifference = newQty - oldQty;
+
+            if (qtyDifference === 0) return null;
+
+            // Find all supplies with the same name, ordered by remaining quantity (highest first)
+            const allSupplies = await tx.supply.findMany({
+              where: {
+                name: {
+                  equals: name,
+                  mode: "insensitive",
+                },
+              },
+              orderBy: {
+                remainingQuantity: "desc",
+              },
+            });
+
+            if (allSupplies.length === 0) return null;
+
+            let remainingToDeduct = qtyDifference;
+
+            // Process each supply in order
+            for (const supply of allSupplies) {
+              if (remainingToDeduct <= 0) break;
+
+              const currentRemaining = supply.remainingQuantity || 0;
+              const newRemainingQty = currentRemaining - remainingToDeduct;
+
+              if (newRemainingQty >= 0) {
+                // This supply can handle the remaining deduction
+                await tx.supply.update({
+                  where: { id: supply.id },
+                  data: {
+                    remainingQuantity: newRemainingQty,
+                  },
+                });
+                remainingToDeduct = 0;
+              } else {
+                // This supply will go to zero, deduct what we can
+                const canDeduct = currentRemaining;
+                if (canDeduct > 0) {
+                  await tx.supply.update({
+                    where: { id: supply.id },
+                    data: {
+                      remainingQuantity: 0,
+                    },
+                  });
+                  remainingToDeduct -= canDeduct;
+                }
+              }
+            }
+
+            // If remainingToDeduct > 0 here, it means we couldn't fulfill the full order
+            // but we proceed anyway as requested
+
+            return allSupplies;
+          })
+        );
 
         const order = await tx.order.update({
           where: {
@@ -460,6 +603,53 @@ export class OrderServices implements OrderServiceInterface {
       };
     } catch (error) {
       logger.error("Create Order Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async cancelOrder(tableId: any) {
+    try {
+      const response = await validateType(
+        { tableId: tableId },
+        OrderSchema.pick({ tableId: true })
+      );
+      if (response instanceof ZodError || !response.tableId) {
+        logger.warn("Missing ID");
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_ID_ERR,
+          },
+        };
+      }
+
+      const existingOrder = await findOrderByIdDB(response.tableId, prisma);
+      if (!existingOrder) {
+        logger.warn("Not Found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      const canceledOrder = await cancelOrderDB(response.tableId);
+
+      return {
+        success: true,
+        message: "Canceled Order Successfully",
+      };
+    } catch (error) {
+      logger.error("Cancel Order Service: ", error);
       return {
         success: false,
         error: {

@@ -44,5 +44,11 @@ router.delete(
   asyncRouteHandler(isAdmin),
   asyncRouteHandler(orderController.deleteOrder)
 );
+router.get(
+  "/cancel/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(orderController.cancelOrder)
+);
 
 export default router;

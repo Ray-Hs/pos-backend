@@ -20,6 +20,28 @@ export class InvoiceController implements InvoiceControllerInterface {
       .status(response.success ? OK_STATUS : response.error?.code || 500)
       .json(response);
   }
+
+  async showcaseInvoices(req: Request, res: Response) {
+    const filterBy = req.query.filterBy as string | undefined;
+    const invoiceInstance = new InvoiceServices();
+    const response = await invoiceInstance.showcaseInvoices(
+      filterBy ? filterBy.toUpperCase() : undefined
+    );
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async groupOrderItems(req: Request, res: Response) {
+    const orderId = parseInt(req.params.orderId, 10);
+    const invoiceInstance = new InvoiceServices();
+    const response = await invoiceInstance.groupOrderItems(orderId);
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
   async findInvoice(req: Request, res: Response) {
     const id = parseInt(req.params?.id, 10);
     const invoiceInstance = new InvoiceServices();

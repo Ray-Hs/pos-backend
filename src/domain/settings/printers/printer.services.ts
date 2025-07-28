@@ -16,6 +16,9 @@ import {
 import logger from "../../../infrastructure/utils/logger";
 import validateType from "../../../infrastructure/utils/validateType";
 import {
+  MenuItemSchema,
+  Order,
+  OrderItem,
   OrderItemSchema,
   OrderSchema,
   UserSchema,
@@ -283,19 +286,59 @@ export class printerService implements PrinterServiceInterface {
     error?: { code: number; message: string };
     details?: Array<{ ip: string; success: boolean; error?: string }>;
   }> {
-    // 1) Validate input
+    const itemSchema = z.object({
+      id: z.number(),
+      menuItemId: z.number(),
+      notes: z.string().nullable().optional(),
+      price: z.number(),
+      quantity: z.number(),
+      menuItem: MenuItemSchema.extend({ Printer: PrinterObjectSchema }),
+    });
+    // 1) First, fetch menuItems for all items that have menuItemId
+    const enrichedMarkedOrders = await Promise.all(
+      (requestData.markedOrders || []).map(async (markedOrder: any) => {
+        if (markedOrder.item?.menuItemId) {
+          const menuItem = await prisma.menuItem.findFirst({
+            where: { id: markedOrder.item.menuItemId },
+            include: { Printer: true }, // Include printer info
+          });
+
+          if (!menuItem) {
+            throw new Error(
+              `MenuItem not found for ID: ${markedOrder.item.menuItemId}`
+            );
+          }
+
+          return {
+            ...markedOrder,
+            item: {
+              ...markedOrder.item,
+              menuItem,
+            },
+          };
+        }
+        return markedOrder;
+      })
+    );
+
+    // 2) Validate input with enriched data
+    const MarkedOrderSchema = z.object({
+      item: itemSchema,
+      status: z.enum(["ADDED", "REMOVED", "STALE"]),
+    });
+
     const schema = z.object({
       user: UserSchema,
       tableId: z.number(),
-      order: OrderSchema.extend({
-        items: z.array(
-          OrderItemSchema.extend({ status: z.enum(["added", "deleted"]) })
-        ),
-      }),
+      markedOrders: z.array(MarkedOrderSchema),
     });
+
     let data: z.infer<typeof schema>;
     try {
-      data = schema.parse(requestData);
+      data = schema.parse({
+        ...requestData,
+        markedOrders: enrichedMarkedOrders,
+      });
     } catch (err) {
       logger.warn("Invalid Print Data:", err);
       return {
@@ -304,41 +347,31 @@ export class printerService implements PrinterServiceInterface {
       };
     }
 
-    // 2) Fetch order
-    const order = await getLatestOrderDB(data.tableId);
-    if (!order || order.items.length === 0) {
-      logger.warn("No Order Items Found for table", data.tableId);
-      return {
-        success: false,
-        error: {
-          code: INTERNAL_SERVER_STATUS,
-          message: "No items to print",
-        },
-      };
-    }
-
-    // 3) Take only the items marked added/deleted in the request
-    const changedItems = data.order.items.filter(
-      (i) => i.status === "added" || i.status === "deleted"
+    // 3) Filter only ADDED and REMOVED items (skip STALE)
+    const changedOrders = data.markedOrders.filter(
+      (markedOrder) =>
+        markedOrder.status === "ADDED" || markedOrder.status === "REMOVED"
     );
-    if (changedItems.length === 0) {
-      logger.info("No added/deleted items to print for table", data.tableId);
+
+    if (changedOrders.length === 0) {
+      logger.info("No added/removed items to print for table", data.tableId);
       return { success: true, details: [] };
     }
 
-    // 3) Group items by printer IP
-    const itemsByPrinter = order.items.reduce<
-      Record<string, typeof order.items>
-    >((acc, item) => {
-      const ip = item.menuItem.Printer?.ip;
-      if (!ip) throw new Error(`No printer for item ${item.menuItem.id}`);
-      (acc[ip] ||= []).push(item);
+    // 4) Group items by printer IP
+    const itemsByPrinter = changedOrders.reduce<
+      Record<string, typeof changedOrders>
+    >((acc, markedOrder) => {
+      const ip = markedOrder.item.menuItem.Printer?.ip;
+      if (!ip)
+        throw new Error(`No printer for item ${markedOrder.item.menuItem.id}`);
+      (acc[ip] ||= []).push(markedOrder);
       return acc;
     }, {});
 
-    // 4) Print each batch via canvas + CanvasTable
+    // 5) Print each batch via canvas + CanvasTable
     const results = await Promise.all(
-      Object.entries(itemsByPrinter).map(async ([ip, items]) => {
+      Object.entries(itemsByPrinter).map(async ([ip, markedOrders]) => {
         const printer = new ThermalPrinter({
           type: PrinterTypes.EPSON,
           interface: `tcp://${ip}`,
@@ -352,44 +385,74 @@ export class printerService implements PrinterServiceInterface {
 
         // Print and cut
         try {
-          // 2) Aggregate & count duplicates
-          const aggregated = items.reduce<typeof order.items>((acc, item) => {
+          // 2) Aggregate & count duplicates, grouping by item properties and status
+          const aggregated = markedOrders.reduce<
+            Array<{
+              item: z.infer<typeof schema>["markedOrders"][0]["item"];
+              status: z.infer<typeof schema>["markedOrders"][0]["status"];
+              quantity: number;
+            }>
+          >((acc, markedOrder) => {
             const existing = acc.find(
-              (i) =>
-                i.menuItem.title_en === item.menuItem.title_en &&
-                i.notes === item.notes
+              (aggItem) =>
+                aggItem.item.menuItem.title_en ===
+                  markedOrder.item.menuItem.title_en &&
+                aggItem.item.notes === markedOrder.item.notes &&
+                aggItem.status === markedOrder.status
             );
             if (existing) {
               existing.quantity++;
             } else {
-              // copy over everything from `item`, then add `quantity`
-              acc.push({ ...item, quantity: 1 });
+              acc.push({
+                item: markedOrder.item,
+                status: markedOrder.status,
+                quantity: 1,
+              });
             }
             return acc;
           }, []);
 
-          // 3) Sort so those with notes come first
-          aggregated.sort((a, b) => +!!b.notes - +!!a.notes);
+          // 3) Sort so those with notes come first, then by status (ADDED first, then REMOVED)
+          aggregated.sort((a, b) => {
+            // First sort by notes (items with notes first)
+            const noteSort = +!!b.item.notes - +!!a.item.notes;
+            if (noteSort !== 0) return noteSort;
+
+            // Then sort by status (ADDED before REMOVED)
+            if (a.status === "ADDED" && b.status === "REMOVED") return -1;
+            if (a.status === "REMOVED" && b.status === "ADDED") return 1;
+            return 0;
+          });
 
           // 4) Build your `<tbody>` rows
           const rowsHtml = aggregated
-            .map((i) => {
-              const noteHtml = i.notes
-                ? `<div class="item-note bold">◇ ${i.notes}</div>`
+            .map((aggItem) => {
+              const noteHtml = aggItem.item.notes
+                ? `<div class="item-note bold">◇ ${aggItem.item.notes}</div>`
                 : "";
+
+              const statusPrefix = aggItem.status === "REMOVED" ? "❌ " : "";
+              const statusClass =
+                aggItem.status === "REMOVED" ? "removed-item" : "";
+
               return `
-      <tr>
-        <td class="qty-col">${i.quantity} X</td>
-        <td class="item-col">
-          <div class="item-name">${i.menuItem.title_en}</div>
-          ${noteHtml}
-        </td>
-      </tr>
-    `;
+    <tr class="${statusClass}">
+      <td class="qty-col">${aggItem.quantity} X</td>
+      <td class="item-col">
+        <div class="item-name">${statusPrefix}${aggItem.item.menuItem.title_en}</div>
+        ${noteHtml}
+      </td>
+    </tr>
+  `;
             })
             .join("");
 
-          // 5) Final template, with dynamic rows
+          // 5) Get order info for receipt header
+          const order = await getLatestOrderDB(data.tableId);
+          const orderId = order?.id || data.tableId;
+          const tableName = order?.table?.name || `Table ${data.tableId}`;
+
+          // 6) Final template, with dynamic rows and enhanced styling for removed items
           const kitchenReceiptTemplate = `<!DOCTYPE html>
 <html>
 <head>
@@ -434,58 +497,67 @@ export class printerService implements PrinterServiceInterface {
         margin-bottom: 10px;
       }
         
-        .items-table th {
-            background: #000;
-            color: white;
-            padding: 12px 8px;
-            text-align: left;
-            font-weight: bold;
-            font-size: 13px;
-        }
-        
-        .items-table td {
-            padding: 12px 8px;
-            border-bottom: 1px solid #eee;
-            vertical-align: top;
-        }
-        
-        .items-table tbody tr:nth-child(even) {
-            background: #f9f9f9;
-        }
-        
-        .items-table tbody tr:hover {
-            background: #f0f0f0;
-        }
-        
-        .qty-col {
-            width: 15%;
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        .item-col {
-            width: 85%;
-        }
-        
-        .item-name {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 4px;
-        }
-        
-        .item-note {
-            font-size: 14px;
-            color: #666;
-            font-style: italic;
-            margin-left: 4px;
-        }
+      .items-table th {
+          background: #000;
+          color: white;
+          padding: 12px 8px;
+          text-align: left;
+          font-weight: bold;
+          font-size: 13px;
+      }
+      
+      .items-table td {
+          padding: 12px 8px;
+          border-bottom: 1px solid #eee;
+          vertical-align: top;
+      }
+      
+      .items-table tbody tr:nth-child(even) {
+          background: #f9f9f9;
+      }
+      
+      .items-table tbody tr:hover {
+          background: #f0f0f0;
+      }
+      
+      .removed-item {
+          background: #ffe6e6 !important;
+          text-decoration: line-through;
+      }
+      
+      .removed-item:hover {
+          background: #ffcccc !important;
+      }
+      
+      .qty-col {
+          width: 15%;
+          text-align: center;
+          font-weight: bold;
+      }
+      
+      .item-col {
+          width: 85%;
+      }
+      
+      .item-name {
+          font-weight: bold;
+          color: #333;
+          margin-bottom: 4px;
+      }
+      
+      .item-note {
+          font-size: 14px;
+          color: #666;
+          font-style: italic;
+          margin-left: 4px;
+      }
   </style>
 </head>
 <body>
   <div class="receipt">
     <div class="center bold">KITCHEN ORDER</div>
-    <div>Order #: ${order.id}</div>
-    <div>Table   : ${order.table?.name}</div>
+    <div>Order #: ${orderId}</div>
+    <div>Table   : ${tableName}</div>
     <div>User    : ${data.user.username || ""}</div>
     <div>Time    : ${new Date().toLocaleString()}</div>
     <hr/>
@@ -515,7 +587,7 @@ export class printerService implements PrinterServiceInterface {
             printer.cut();
             await printer.execute();
             fs.unlinkSync(outputPath);
-            logger.info(`Printed ${items.length} on ${ip}`);
+            logger.info(`Printed ${markedOrders.length} items on ${ip}`);
           }
           return { ip, success: true };
         } catch (err) {

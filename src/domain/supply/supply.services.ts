@@ -214,7 +214,32 @@ export class SupplyServices implements SupplyServiceInterface {
           );
         }
 
-        if (data.isMenuItem) {
+        const itemsExists = await tx.menuItem.findFirst({
+          where: {
+            OR: [
+              {
+                title_en: {
+                  equals: data.name,
+                  mode: "insensitive",
+                },
+              },
+              {
+                title_ku: {
+                  equals: data.name,
+                  mode: "insensitive",
+                },
+              },
+              {
+                title_ar: {
+                  equals: data.name,
+                  mode: "insensitive",
+                },
+              },
+            ],
+          },
+        });
+
+        if (data.isMenuItem && !itemsExists) {
           await createItemDB({
             code: data.code || "",
             description_ar: "",
