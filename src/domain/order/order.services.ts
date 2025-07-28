@@ -293,7 +293,7 @@ export class OrderServices implements OrderServiceInterface {
           });
 
           // Then, create deletedOrderItems for audit/history
-          await tx.deletedOrderItem.createMany({
+          const deletedItemsCreated = await tx.deletedOrderItem.createMany({
             data: deletedItems.map((item) => ({
               orderId: response.id as number,
               menuItemId: item.menuItemId,
@@ -306,6 +306,46 @@ export class OrderServices implements OrderServiceInterface {
               reason: data.reason || "", // or another appropriate reason
             })),
           });
+
+          // Calculate quantities of deleted items by menu item name
+          const deletedItemMap = new Map<string, number>();
+          for (const orderItem of deletedItems) {
+            const name = orderItem.menuItem?.title_en?.toLowerCase();
+            if (!name) continue;
+            const prevQty = deletedItemMap.get(name) ?? 0;
+            deletedItemMap.set(name, prevQty + (orderItem.quantity ?? 0));
+          }
+
+          // Add back the deleted item quantities to supplies
+          await Promise.all(
+            Array.from(deletedItemMap.entries()).map(
+              async ([name, qtyToAdd]) => {
+                const supplies = await tx.supply.findMany({
+                  where: {
+                    name: {
+                      equals: name,
+                      mode: "insensitive",
+                    },
+                  },
+                  orderBy: {
+                    remainingQuantity: "asc", // Start with lowest quantities first
+                  },
+                });
+
+                if (supplies.length > 0) {
+                  // Add all quantity back to the first supply (or distribute if needed)
+                  const firstSupply = supplies[0];
+                  await tx.supply.update({
+                    where: { id: firstSupply.id },
+                    data: {
+                      remainingQuantity:
+                        (firstSupply.remainingQuantity || 0) + qtyToAdd,
+                    },
+                  });
+                }
+              }
+            )
+          );
         }
 
         // Handle item updates separately
@@ -338,15 +378,6 @@ export class OrderServices implements OrderServiceInterface {
           throw new Error("Order not found");
         }
 
-        // Calculate old quantities by menu item name
-        const oldItemMap = new Map<string, number>();
-        for (const orderItem of existingOrder.items) {
-          const name = orderItem.menuItem?.title_en?.toLowerCase();
-          if (!name) continue;
-          const prevQty = oldItemMap.get(name) ?? 0;
-          oldItemMap.set(name, prevQty + 1);
-        }
-
         const menuItems = await Promise.all(
           items.map((item) => {
             return tx.menuItem.findFirst({
@@ -357,14 +388,24 @@ export class OrderServices implements OrderServiceInterface {
           })
         );
 
+        // Calculate old quantities by menu item name
+        const oldItemMap = new Map<string, number>();
+        for (const orderItem of existingOrder.items) {
+          const name = orderItem.menuItem?.title_en?.toLowerCase();
+          if (!name) continue;
+          const prevQty = oldItemMap.get(name) ?? 0;
+          oldItemMap.set(name, prevQty + (orderItem.quantity ?? 0)); // Use actual quantity
+        }
+
         // Calculate new quantities by menu item name
         const newItemMap = new Map<string, number>();
-        for (let i = 0; i < menuItems.length; i++) {
-          const item = menuItems[i];
-          const name = item?.title_en?.toLowerCase();
+        for (let i = 0; i < items.length; i++) {
+          const orderItem = items[i]; // Use the order item, not menu item
+          const menuItem = menuItems[i];
+          const name = menuItem?.title_en?.toLowerCase();
           if (!name) continue;
           const prevQty = newItemMap.get(name) ?? 0;
-          newItemMap.set(name, prevQty + 1);
+          newItemMap.set(name, prevQty + (orderItem.quantity ?? 0)); // Use actual quantity
         }
 
         // Calculate the difference and update supplies

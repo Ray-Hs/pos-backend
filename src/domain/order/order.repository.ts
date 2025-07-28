@@ -130,8 +130,6 @@ export async function createOrderDB(data: Order) {
       itemMap.set(name, prevQty + 1); // adjust this field name if needed
     }
 
-    console.log("Menu Items Data: ", itemMap);
-
     // 2. Update supplies accordingly
     const supplies = await Promise.all(
       Array.from(itemMap.entries()).map(async ([name, totalQty]) => {
