@@ -142,6 +142,7 @@ export interface CRMControllerInterface {
   ): Promise<Response<CustomerDiscount>>;
   createCustomerDiscount(req: Request, res: Response): Promise<Response<void>>;
   updateCustomerDiscount(req: Request, res: Response): Promise<Response<void>>;
+  changeCustomerDiscount(req: Request, res: Response): Promise<Response<void>>;
   deleteCustomerDiscount(req: Request, res: Response): Promise<Response<void>>;
 
   getCustomerDebts: (

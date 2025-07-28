@@ -94,6 +94,12 @@ router.patch(
   asyncRouteHandler(isAdmin),
   asyncRouteHandler(controller.updateCustomerDiscount)
 );
+router.patch(
+  "/customer-discounts/:id/change-discount",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(controller.changeCustomerDiscount)
+);
 router.delete(
   "/customer-discounts/:id",
   asyncRouteHandler(isAuthenticated),

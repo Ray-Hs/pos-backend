@@ -3,17 +3,21 @@ import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler"
 import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
 import { FinanceController } from "../controllers/finance/finance.controller";
 import { CRMController } from "../controllers/settings/crm/crm.controller";
+import { InvoiceController } from "../controllers/invoice/invoice.controller";
 
 const router: Router = express.Router();
 const controller = new FinanceController();
 const client = new CRMController();
-
+const invoice = new InvoiceController();
 // Customer Debts
 router.get(
   "/customer-debts",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(client.getCustomerDebts)
 );
+
+// Invoice
+router.get("/invoices", asyncRouteHandler(invoice.showcaseInvoices));
 
 // Customer Payments
 router.get(

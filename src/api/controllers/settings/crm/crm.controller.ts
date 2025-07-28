@@ -161,6 +161,16 @@ export class CRMController implements CRMControllerInterface {
       .json(response);
   }
 
+  async changeCustomerDiscount(req: Request, res: Response) {
+    const crmService = new CRMServices();
+    const id = parseInt(req.params.id, 10);
+    const { discount } = req.body;
+    const response = await crmService.updateCustomerDiscount({ discount }, id);
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
   async deleteCustomerDiscount(req: Request, res: Response) {
     const crmService = new CRMServices();
     const id = parseInt(req.params.id, 10);

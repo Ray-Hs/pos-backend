@@ -7,6 +7,8 @@ const router: Router = express.Router();
 const invoice = new InvoiceController();
 
 router.get("/", asyncRouteHandler(invoice.getInvoices));
+
+router.get("/order/:orderId/group-items", asyncRouteHandler(invoice.groupOrderItems));
 router.get("/:id", asyncRouteHandler(invoice.findInvoice));
 router.get("/order/:id", asyncRouteHandler(invoice.findInvoice));
 router.post(

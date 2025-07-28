@@ -18,17 +18,19 @@ import {
   getCustomerByIdDB,
   updateCustomerInfoDB,
 } from "../settings/crm/crm.repository";
+import { printerService } from "../settings/printers/printer.services";
+import { findTableByIdDB, updateTableDB } from "../table/table.repository";
 import {
   calculateTotal,
   createInvoiceDB,
   deleteInvoiceDB,
   findInvoiceByIdDB,
+  getFinanceInvoicesDB,
   getInvoicesDB,
+  groupOrderItemsDB,
   updateInvoiceDB,
 } from "./invoice.repository";
 import { InvoiceServiceInterface } from "./invoice.types";
-import { printerService } from "../settings/printers/printer.services";
-import { findTableByIdDB, updateTableDB } from "../table/table.repository";
 
 export class InvoiceServices implements InvoiceServiceInterface {
   async getInvoices(filterBy?: PaymentMethod | undefined) {
@@ -50,6 +52,65 @@ export class InvoiceServices implements InvoiceServiceInterface {
       };
     } catch (error) {
       logger.error("Get Invoices: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async showcaseInvoices(filterBy?: string) {
+    try {
+      const data = await getFinanceInvoicesDB();
+
+      if (!data || data.length === 0) {
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: INVOICE_NOT_FOUND,
+          },
+        };
+      }
+
+      return {
+        success: true,
+        data,
+      };
+    } catch (error) {
+      logger.error("Showcase Invoices: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async groupOrderItems(orderId: number) {
+    try {
+      const data = await groupOrderItemsDB(orderId);
+
+      if (!data || data.length === 0) {
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: "No order items found",
+          },
+        };
+      }
+      return {
+        success: true,
+        data,
+      };
+    } catch (error) {
+      logger.error("Group Order Items: ", error);
       return {
         success: false,
         error: {
