@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import { Invoice, TResult } from "../../types/common";
+import { Invoice, InvoiceRef, TResult } from "../../types/common";
 
 export interface InvoiceServiceInterface {
   getInvoices: () => Promise<TResult<Invoice[]>>;
   showcaseInvoices: (filterBy?: string) => Promise<TResult<Invoice[]>>;
   groupOrderItems: (orderId: number) => Promise<TResult<any[]>>;
+  getInvoiceRefById: (requestId: any) => Promise<TResult<any[]>>;
   findInvoice: (requestId: any) => Promise<TResult<Invoice>>;
   findInvoicesByOrderId: (requestId: any) => Promise<TResult<Invoice[]>>;
   createInvoice: (requestData: any) => Promise<TResult<Invoice>>;
@@ -25,6 +26,10 @@ export interface InvoiceControllerInterface {
     res: Response
   ) => Promise<Response<TResult<Invoice[]>>>;
   groupOrderItems: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<any[]>>>;
+  getInvoiceRefById: (
     req: Request,
     res: Response
   ) => Promise<Response<TResult<any[]>>>;

@@ -44,6 +44,15 @@ export class InvoiceController implements InvoiceControllerInterface {
       .status(response.success ? OK_STATUS : response.error?.code || 500)
       .json(response);
   }
+  async getInvoiceRefById(req: Request, res: Response) {
+    const id = req.query?.id ? parseInt(req.params?.id, 10) : undefined;
+    const invoiceInstance = new InvoiceServices();
+    const response = await invoiceInstance.getInvoiceRefById(id);
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
   async findInvoice(req: Request, res: Response) {
     const id = parseInt(req.params?.id, 10);
     const invoiceInstance = new InvoiceServices();
