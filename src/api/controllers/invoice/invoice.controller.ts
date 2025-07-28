@@ -22,10 +22,12 @@ export class InvoiceController implements InvoiceControllerInterface {
   }
 
   async showcaseInvoices(req: Request, res: Response) {
-    const filterBy = req.query.filterBy as string | undefined;
+    const { q, page, limit } = req.query;
     const invoiceInstance = new InvoiceServices();
     const response = await invoiceInstance.showcaseInvoices(
-      filterBy ? filterBy.toUpperCase() : undefined
+      q?.toString(),
+      parseInt(page as string),
+      parseInt(limit as string)
     );
 
     return res

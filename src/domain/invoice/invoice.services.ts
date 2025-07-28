@@ -62,9 +62,9 @@ export class InvoiceServices implements InvoiceServiceInterface {
     }
   }
 
-  async showcaseInvoices(filterBy?: string) {
+  async showcaseInvoices(q?: string, page?: number, limit?: number) {
     try {
-      const data = await getFinanceInvoicesDB();
+      const data = await getFinanceInvoicesDB(q, page, limit);
 
       if (!data || data.length === 0) {
         return {
