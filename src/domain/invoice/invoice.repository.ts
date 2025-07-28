@@ -16,13 +16,25 @@ export const getInvoicesDB = async (filterBy?: PaymentMethod | undefined) => {
   });
 };
 
-export const getFinanceInvoicesDB = async () => {
+export const getFinanceInvoicesDB = async (
+  q?: string,
+  page?: number,
+  limit?: number
+) => {
   const now = new Date();
   const yesterday = new Date(now);
   yesterday.setDate(now.getDate() - 1);
 
+  let invoiceRef;
+  if (q) {
+    invoiceRef = {
+      id: parseInt(q as string),
+    };
+  }
+
   const invoices = await prisma.invoice.findMany({
     where: {
+      invoiceRef,
       isLatestVersion: true,
       paid: true,
       createdAt: {
@@ -30,8 +42,8 @@ export const getFinanceInvoicesDB = async () => {
         lte: now,
       },
     },
-    skip: calculateSkip(),
-    take: Take(),
+    skip: calculateSkip(page, limit),
+    take: Take(limit),
     include: {
       table: {
         select: {

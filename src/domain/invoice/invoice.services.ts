@@ -7,6 +7,7 @@ import {
   INTERNAL_SERVER_ERR,
   INTERNAL_SERVER_STATUS,
   INVOICE_NOT_FOUND,
+  LIMIT_CONSTANT,
   NOT_FOUND_STATUS,
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
@@ -31,6 +32,7 @@ import {
   updateInvoiceDB,
 } from "./invoice.repository";
 import { InvoiceServiceInterface } from "./invoice.types";
+import { Prisma } from "@prisma/client";
 
 export class InvoiceServices implements InvoiceServiceInterface {
   async getInvoices(filterBy?: PaymentMethod | undefined) {
@@ -62,9 +64,9 @@ export class InvoiceServices implements InvoiceServiceInterface {
     }
   }
 
-  async showcaseInvoices(filterBy?: string) {
+  async showcaseInvoices(q?: string, page?: number, limit?: number) {
     try {
-      const data = await getFinanceInvoicesDB();
+      const data = await getFinanceInvoicesDB(q, page, limit);
 
       if (!data || data.length === 0) {
         return {
@@ -152,6 +154,77 @@ export class InvoiceServices implements InvoiceServiceInterface {
       return {
         success: true,
         data,
+      };
+    } catch (error) {
+      logger.error("Find Invoice By ID: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+  async getInvoiceRefById(requestId?: any) {
+    try {
+      let where: Prisma.InvoiceRefWhereInput = {};
+      if (requestId) {
+        where.id = requestId;
+      }
+      const data = await prisma.invoiceRef.findMany({
+        where,
+        include: {
+          invoices: {
+            select: {
+              table: {
+                select: {
+                  name: true,
+                  id: true,
+                  Section: {
+                    select: {
+                      name: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          Order: {
+            select: {
+              items: true,
+            },
+          },
+        },
+        take: LIMIT_CONSTANT,
+      });
+
+      if (!data) {
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: INVOICE_NOT_FOUND,
+          },
+        };
+      }
+
+      return {
+        success: true,
+        data: data.map((invoice) => {
+          const table = invoice.invoices[0]?.table;
+
+          return {
+            invoiceId: invoice.id,
+            orderId: invoice.orderId,
+            items: invoice.Order?.items,
+            table: {
+              id: table?.id,
+              name: table?.name,
+              section: table?.Section?.name,
+            },
+          };
+        }),
       };
     } catch (error) {
       logger.error("Find Invoice By ID: ", error);

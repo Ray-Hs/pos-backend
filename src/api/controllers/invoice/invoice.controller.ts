@@ -22,10 +22,12 @@ export class InvoiceController implements InvoiceControllerInterface {
   }
 
   async showcaseInvoices(req: Request, res: Response) {
-    const filterBy = req.query.filterBy as string | undefined;
+    const { q, page, limit } = req.query;
     const invoiceInstance = new InvoiceServices();
     const response = await invoiceInstance.showcaseInvoices(
-      filterBy ? filterBy.toUpperCase() : undefined
+      q?.toString(),
+      parseInt(page as string),
+      parseInt(limit as string)
     );
 
     return res
@@ -37,6 +39,15 @@ export class InvoiceController implements InvoiceControllerInterface {
     const orderId = parseInt(req.params.orderId, 10);
     const invoiceInstance = new InvoiceServices();
     const response = await invoiceInstance.groupOrderItems(orderId);
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+  async getInvoiceRefById(req: Request, res: Response) {
+    const id = req.query?.id ? parseInt(req.params?.id, 10) : undefined;
+    const invoiceInstance = new InvoiceServices();
+    const response = await invoiceInstance.getInvoiceRefById(id);
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
