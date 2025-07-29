@@ -7,7 +7,7 @@ import {
   INTERNAL_SERVER_ERR,
   INTERNAL_SERVER_STATUS,
   INVOICE_NOT_FOUND,
-  LIMIT_CONSTANT,
+  NOT_FOUND_ERR,
   NOT_FOUND_STATUS,
 } from "../../infrastructure/utils/constants";
 import logger from "../../infrastructure/utils/logger";
@@ -22,6 +22,7 @@ import {
 import { printerService } from "../settings/printers/printer.services";
 import { findTableByIdDB, updateTableDB } from "../table/table.repository";
 import {
+  calculateSubtotal,
   calculateTotal,
   createInvoiceDB,
   deleteInvoiceDB,
@@ -32,7 +33,6 @@ import {
   updateInvoiceDB,
 } from "./invoice.repository";
 import { InvoiceServiceInterface } from "./invoice.types";
-import { Prisma } from "@prisma/client";
 
 export class InvoiceServices implements InvoiceServiceInterface {
   async getInvoices(filterBy?: PaymentMethod | undefined) {
@@ -168,63 +168,23 @@ export class InvoiceServices implements InvoiceServiceInterface {
   }
   async getInvoiceRefById(requestId?: any) {
     try {
-      let where: Prisma.InvoiceRefWhereInput = {};
-      if (requestId) {
-        where.id = requestId;
-      }
-      const data = await prisma.invoiceRef.findMany({
-        where,
-        include: {
-          invoices: {
-            select: {
-              table: {
-                select: {
-                  name: true,
-                  id: true,
-                  Section: {
-                    select: {
-                      name: true,
-                    },
-                  },
-                },
-              },
-            },
-          },
-          Order: {
-            select: {
-              items: true,
-            },
-          },
-        },
-        take: LIMIT_CONSTANT,
-      });
+      const data = await getFinanceInvoicesDB(requestId);
 
       if (!data) {
+        logger.warn("Invoice Ref Not Found");
+
         return {
           success: false,
           error: {
             code: NOT_FOUND_STATUS,
-            message: INVOICE_NOT_FOUND,
+            message: NOT_FOUND_ERR,
           },
         };
       }
 
       return {
         success: true,
-        data: data.map((invoice) => {
-          const table = invoice.invoices[0]?.table;
-
-          return {
-            invoiceId: invoice.id,
-            orderId: invoice.orderId,
-            items: invoice.Order?.items,
-            table: {
-              id: table?.id,
-              name: table?.name,
-              section: table?.Section?.name,
-            },
-          };
-        }),
+        data,
       };
     } catch (error) {
       logger.error("Find Invoice By ID: ", error);
@@ -357,16 +317,16 @@ export class InvoiceServices implements InvoiceServiceInterface {
 
         const constants = await getConstantsDB(tx);
 
-        const subtotal = order.items.reduce(
-          (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
-          0
-        );
+        // Calculate subtotal from order items
+        const subtotal = calculateSubtotal(order.items);
 
+        // Calculate total with tax, service, and discount
         const total = calculateTotal(
           subtotal,
           constants,
           discount || customerDiscount?.discount
         );
+
         const invoice = await createInvoiceDB(
           {
             ...rest,
@@ -379,6 +339,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
             invoiceRefId: invoiceRef?.id,
             version: 1,
             customerDiscountId: customerDiscountId,
+            discount: discount || customerDiscount?.discount,
           },
           tx
         );
@@ -456,6 +417,8 @@ export class InvoiceServices implements InvoiceServiceInterface {
           },
         };
       }
+
+      console.table([invoice]);
 
       if (data.paymentMethod === "RECEIPT") {
         const updatedInvoice = await prisma.$transaction(async (tx) => {
@@ -549,23 +512,24 @@ export class InvoiceServices implements InvoiceServiceInterface {
               throw new Error(`Order with ID ${invoiceRef?.orderId} not found`);
             }
 
-            const table = await tx.table.update({
-              where: {
-                id: order.tableId || 0,
-              },
-              data: {
-                orders: {
-                  disconnect: { id: order.id },
+            const hasTable = order.tableId;
+
+            if (hasTable) {
+              const table = await tx.table.update({
+                where: {
+                  id: order.tableId || 0,
                 },
-                status: "AVAILABLE",
-              },
-            });
+                data: {
+                  orders: {
+                    disconnect: { id: order.id },
+                  },
+                  status: "AVAILABLE",
+                },
+              });
+            }
 
             const constants = await getConstantsDB(tx);
-            const subtotal = order.items.reduce(
-              (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
-              0
-            );
+            const subtotal = calculateSubtotal(order.items);
             const total = calculateTotal(
               subtotal,
               constants,
@@ -636,10 +600,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
             });
 
             const constants = await getConstantsDB(tx);
-            const subtotal = order.items.reduce(
-              (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
-              0
-            );
+            const subtotal = calculateSubtotal(order.items);
             const total = calculateTotal(
               subtotal,
               constants,
@@ -710,7 +671,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
     } catch (error) {
-      logger.error("Find Invoice By ID: ", error);
+      logger.error("Update Invoice Service: ", error);
       return {
         success: false,
         error: {

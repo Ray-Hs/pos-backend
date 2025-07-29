@@ -1,5 +1,5 @@
 import prisma from "../../infrastructure/database/prisma/client";
-import { calculateSkip, Take } from "../../infrastructure/utils/calculateSkip";
+import { LIMIT_CONSTANT } from "../../infrastructure/utils/constants";
 import { Invoice, PaymentMethod, TxClientType } from "../../types/common";
 
 // Get all invoices with optional pagination
@@ -42,8 +42,7 @@ export const getFinanceInvoicesDB = async (
         lte: now,
       },
     },
-    skip: calculateSkip(page, limit),
-    take: Take(limit),
+    take: LIMIT_CONSTANT,
     include: {
       table: {
         select: {
@@ -51,21 +50,35 @@ export const getFinanceInvoicesDB = async (
           id: true,
         },
       },
+      tax: true,
+      service: true,
       invoiceRef: {
         include: {
+          invoices: {
+            select: {
+              id: true,
+            },
+          },
           Order: {
             select: {
               createdAt: true,
               id: true,
               items: {
                 select: {
+                  id: true,
                   price: true,
                   quantity: true,
+                  createdAt: true,
+                  notes: true,
                   menuItem: {
                     select: {
+                      id: true,
                       title_ar: true,
                       title_en: true,
                       title_ku: true,
+                      image: true,
+                      subCategoryId: true,
+                      discount: true,
                     },
                   },
                 },
@@ -85,16 +98,19 @@ export const getFinanceInvoicesDB = async (
     orderBy: { createdAt: "desc" },
   });
 
-  // Group items by menuItem title for each invoice
+  // Group items by menuItem title for each invoice and calculate totals
   return invoices.map((invoice) => {
     if (invoice.invoiceRef?.Order?.items) {
       const items = invoice.invoiceRef.Order.items;
       const groupedItems = new Map<
         string,
         {
+          id: number;
           price: number;
           quantity: number;
           menuItem: any;
+          createdAt: Date;
+          notes: string;
         }
       >();
 
@@ -104,21 +120,37 @@ export const getFinanceInvoicesDB = async (
 
         if (!groupedItems.has(key)) {
           groupedItems.set(key, {
+            id: item.id as number,
             price: item.price,
             quantity: 0,
             menuItem: item.menuItem,
+            createdAt: item.createdAt,
+            notes: item.notes || "",
           });
         }
 
         const group = groupedItems.get(key)!;
         group.quantity += item.quantity;
       }
+      3;
 
       // Convert grouped items back to array
       const groupedItemsArray = Array.from(groupedItems.values());
 
+      // Calculate subtotal from grouped items
+      const calculatedSubtotal = calculateSubtotal(groupedItemsArray);
+
+      // Calculate total with tax and service
+      const calculatedTotal = calculateTotal(
+        calculatedSubtotal,
+        { tax: invoice.tax, service: invoice.service },
+        invoice.discount || undefined
+      );
+
       return {
         ...invoice,
+        subtotal: calculatedSubtotal,
+        total: calculatedTotal,
         invoiceRef: {
           ...invoice.invoiceRef,
           Order: {
@@ -132,7 +164,6 @@ export const getFinanceInvoicesDB = async (
     return invoice;
   });
 };
-
 // Find invoice by ID with proper error handling
 export const findInvoiceByIdDB = async (id: number) => {
   const invoice = await prisma.invoice.findFirst({
@@ -151,16 +182,42 @@ export const findInvoiceByIdDB = async (id: number) => {
   return invoice;
 };
 
-// Helper function to calculate total
+// Helper function to calculate subtotal from order items
+// This function sums up the total price of all items (price * quantity)
+export const calculateSubtotal = (orderItems: any[]): number => {
+  return orderItems.reduce(
+    (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
+    0
+  );
+};
+
+// Helper function to calculate total with tax and service
+// Formula: Total = Subtotal + Service Charge + Tax + Discount
+// - Service charge is a fixed amount added to subtotal
+// - Tax is calculated as a percentage of subtotal
+// - Discount is applied as a percentage of the total (after tax and service)
 export const calculateTotal = (
   subtotal: number,
-  constants: any,
+  constants: {
+    tax?: { rate: number } | null;
+    service?: { amount: number } | null;
+  },
   discount?: number
 ): number => {
-  let total = subtotal + (constants?.service?.amount ?? 0);
-  total += subtotal * (constants?.tax?.rate ?? 0);
+  let total = subtotal;
 
-  if (discount) {
+  // Add service charge (fixed amount)
+  if (constants?.service?.amount) {
+    total += constants.service.amount;
+  }
+
+  // Add tax (percentage of subtotal)
+  if (constants?.tax?.rate) {
+    total += subtotal * constants.tax.rate;
+  }
+
+  // Apply discount (percentage of total)
+  if (discount && discount > 0) {
     total = total - total * (discount / 100);
   }
 
@@ -271,4 +328,34 @@ export const groupOrderItemsDB = async (orderId: number) => {
   );
 
   return groupedArray;
+};
+
+// Test function to demonstrate invoice calculation
+export const testInvoiceCalculation = () => {
+  // Example order items
+  const orderItems = [
+    { price: 10.0, quantity: 2 }, // $20.00
+    { price: 15.5, quantity: 1 }, // $15.50
+    { price: 8.0, quantity: 3 }, // $24.00
+  ];
+
+  // Example constants
+  const constants = {
+    tax: { rate: 10 }, // 10% tax
+    service: { amount: 5.0 }, // $5.00 service charge
+  };
+
+  // Calculate subtotal
+  const subtotal = calculateSubtotal(orderItems);
+  console.log("Subtotal:", subtotal); // Should be $59.50
+
+  // Calculate total with tax and service
+  const total = calculateTotal(subtotal, constants);
+  console.log("Total (with tax and service):", total); // Should be $70.45
+
+  // Calculate total with discount
+  const totalWithDiscount = calculateTotal(subtotal, constants, 15); // 15% discount
+  console.log("Total (with 15% discount):", totalWithDiscount); // Should be $59.88
+
+  return { subtotal, total, totalWithDiscount };
 };

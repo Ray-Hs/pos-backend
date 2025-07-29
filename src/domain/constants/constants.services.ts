@@ -40,7 +40,7 @@ export class ConstantsService implements IConstantServices {
         success: true,
         data,
       };
-    } catch (error) {
+    } catch (error: any) {
       logger.error(error);
       return {
         success: false,
@@ -75,7 +75,7 @@ export class ConstantsService implements IConstantServices {
           service: createdConstants?.service || null,
         },
       };
-    } catch (error) {
+    } catch (error: any) {
       logger.error(error);
       return {
         success: false,
@@ -120,7 +120,7 @@ export class ConstantsService implements IConstantServices {
           service: updatedConstants?.service || null,
         },
       };
-    } catch (error) {
+    } catch (error: any) {
       logger.error(error);
       return {
         success: false,
@@ -166,7 +166,7 @@ export class ConstantsService implements IConstantServices {
           service: deletedConstants?.service || null,
         },
       };
-    } catch (error) {
+    } catch (error: any) {
       logger.error(error);
       return {
         success: false,
