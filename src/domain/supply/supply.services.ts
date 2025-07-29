@@ -217,13 +217,15 @@ export class SupplyServices implements SupplyServiceInterface {
         if (!company) {
           throw new Error(`No Company Exists with id: ${data.companyId}`);
         }
+        const totalItems = data.itemQty * data.packageQty;
+        const totalPrice = totalItems * data.itemPrice;
 
         if (data.paymentMethod === "DEBT") {
           const createdDebt = await createCompanyDebtDB(
             {
-              price: (data.totalPrice || 0) / (data.totalItems || 0),
+              price: (totalPrice || 0) / (totalItems || 0),
               product: data.name,
-              quantity: data.totalItems || 0,
+              quantity: totalItems || 0,
               companyId: company?.id,
               currency: company?.currency || "IQD",
               invoiceNumber: data.invoiceNO,
