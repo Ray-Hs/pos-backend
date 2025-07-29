@@ -53,20 +53,40 @@ export class SupplyServices implements SupplyServiceInterface {
       }
       const response = await getSuppliesDB("", expired);
       const totalPages = await getSuppliesCountDB(expired);
-      const totalPurchaseValue = response.reduce(
-        (acc, item) => acc + item.itemPrice,
-        0
-      );
-      const totalSellingValue = response.reduce(
-        (acc, item) => acc + item.itemSellPrice,
-        0
-      );
+      const supplies = await prisma.supply.findMany({
+        include: {
+          company: {
+            select: {
+              currency: true,
+            },
+          },
+        },
+      });
+      // Calculate total purchase and selling values for IQD and USD based on company currency
+      let totalPurchaseValue = { IQD: 0, USD: 0 };
+      let totalSellingValue = { IQD: 0, USD: 0 };
+
+      supplies.forEach((supply) => {
+        if (supply.company.currency === "USD") {
+          totalPurchaseValue.USD += supply.totalPrice || 0;
+          totalSellingValue.USD += supply.itemSellPrice || 0;
+        } else {
+          totalPurchaseValue.IQD += supply.totalPrice || 0;
+          totalSellingValue.IQD += supply.itemSellPrice || 0;
+        }
+      });
+
+      const potentialProfit = {
+        IQD: totalSellingValue.IQD - totalPurchaseValue.IQD,
+        USD: totalSellingValue.USD - totalPurchaseValue.USD,
+      };
+
       return {
         success: true,
         data,
         totalPurchaseValue,
         totalSellingValue,
-        potentialProfit: totalSellingValue - totalPurchaseValue,
+        potentialProfit,
         pages: calculatePages(totalPages, pagination?.limit),
       };
     } catch (error) {
