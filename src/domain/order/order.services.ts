@@ -786,6 +786,7 @@ export class OrderServices implements OrderServiceInterface {
           },
         };
       }
+      console.log(tableId);
 
       const supplyTransaction = await prisma.$transaction(async (tx) => {
         const existingOrder = await findOrderByIdDB(

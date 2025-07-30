@@ -1,0 +1,5627 @@
+[2025-06-24 13:07:31] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:07:31] [33mwarn[39m: Missing info [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:43:43] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:43:43] [33mwarn[39m: Missing info [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:44:13] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:44:13] [33mwarn[39m: Missing info [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:44:21] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:44:21] [33mwarn[39m: Missing info [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:45:02] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:45:02] [33mwarn[39m: Missing info [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:45:47] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-24 13:45:47] [33mwarn[39m: Missing info [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "password"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 12:15:12] [32minfo[39m: Filter: 
+[2025-06-25 12:15:30] [33mwarn[39m: No Data Found
+[2025-06-25 12:15:30] [33mwarn[39m: No Data Found
+[2025-06-25 12:15:31] [33mwarn[39m: No Data Found
+[2025-06-25 12:15:53] [32minfo[39m: undefined
+[2025-06-25 12:16:14] [32minfo[39m: undefined
+[2025-06-25 12:19:41] [32minfo[39m: Filter: 
+[2025-06-25 12:19:41] [33mwarn[39m: No Data Found
+[2025-06-25 12:19:42] [33mwarn[39m: No Data Found
+[2025-06-25 12:22:41] [32minfo[39m: undefined
+[2025-06-25 12:24:41] [32minfo[39m: Filter: 
+[2025-06-25 12:27:52] [32minfo[39m: Filter: 
+[2025-06-25 12:30:48] [32minfo[39m: Filter: 
+[2025-06-25 12:41:20] [32minfo[39m: undefined
+[2025-06-25 12:41:25] [32minfo[39m: Filter: 
+[2025-06-25 12:41:46] [32minfo[39m: undefined
+[2025-06-25 12:41:51] [32minfo[39m: Filter: 
+[2025-06-25 12:41:56] [33mwarn[39m: No Data Found
+[2025-06-25 12:41:56] [33mwarn[39m: No Data Found
+[2025-06-25 12:41:57] [33mwarn[39m: No Data Found
+[2025-06-25 12:47:07] [33mwarn[39m: No Data Found
+[2025-06-25 12:47:07] [32minfo[39m: Filter: 
+[2025-06-25 12:47:08] [33mwarn[39m: No Data Found
+[2025-06-25 12:47:28] [32minfo[39m: undefined
+[2025-06-25 12:47:56] [32minfo[39m: Filter: 
+[2025-06-25 12:48:04] [32minfo[39m: undefined
+[2025-06-25 12:48:15] [32minfo[39m: undefined
+[2025-06-25 12:48:20] [32minfo[39m: Filter: 
+[2025-06-25 12:48:24] [32minfo[39m: Filter: 
+[2025-06-25 12:48:44] [33mwarn[39m: No Data Found
+[2025-06-25 12:48:44] [33mwarn[39m: No Data Found
+[2025-06-25 12:48:45] [33mwarn[39m: No Data Found
+[2025-06-25 12:48:49] [32minfo[39m: undefined
+[2025-06-25 12:48:54] [32minfo[39m: undefined
+[2025-06-25 12:49:15] [32minfo[39m: Filter: 
+[2025-06-25 12:49:15] [33mwarn[39m: No Data Found
+[2025-06-25 12:49:16] [33mwarn[39m: No Data Found
+[2025-06-25 12:49:32] [33mwarn[39m: No Data Found
+[2025-06-25 12:49:32] [33mwarn[39m: No Data Found
+[2025-06-25 12:49:33] [33mwarn[39m: No Data Found
+[2025-06-25 12:49:39] [32minfo[39m: undefined
+[2025-06-25 12:50:00] [32minfo[39m: Filter: 
+[2025-06-25 12:57:16] [32minfo[39m: Filter: 
+[2025-06-25 12:58:33] [32minfo[39m: Filter: 
+[2025-06-25 12:59:45] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 12:59:45] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 12:59:47] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 12:59:47] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 12:59:49] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 12:59:49] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packageQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemQty"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "packagePrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemPrice"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "undefined",
+    "path": [
+      "itemSellPrice"
+    ],
+    "message": "Required"
+  }
+]
+[2025-06-25 13:14:53] [32minfo[39m: Filter: 
+[2025-06-25 13:49:04] [32minfo[39m: Filter: 
+[2025-06-25 13:49:22] [32minfo[39m: undefined
+[2025-06-25 16:08:45] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:08:46] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:08:48] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:09:16] [32minfo[39m: Filter: 
+[2025-06-25 16:09:16] [33mwarn[39m: No Data Found
+[2025-06-25 16:09:17] [33mwarn[39m: No Data Found
+[2025-06-25 16:12:41] [32minfo[39m: Filter: 
+[2025-06-25 16:14:22] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:14:23] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:14:25] [33mwarn[39m: Brand Not Found
+[2025-06-25 16:15:27] [33mwarn[39m: No Data Found
+[2025-06-25 16:15:27] [33mwarn[39m: No Data Found
+[2025-06-25 16:15:28] [33mwarn[39m: No Data Found
+[2025-06-25 16:16:19] [32minfo[39m: undefined
+[2025-06-25 16:16:57] [32minfo[39m: Filter: 
+[2025-06-25 16:17:04] [33mwarn[39m: No Data Found
+[2025-06-25 16:17:05] [33mwarn[39m: No Data Found
+[2025-06-26 11:40:41] [31merror[39m: Create UserRole Service:  User role with this name already exists.
+[2025-06-26 11:42:53] [31merror[39m: Create UserRole Service:  User role with this name already exists.
+[2025-06-26 11:43:52] [31merror[39m: Create UserRole Service:  User role with this name already exists.
+[2025-06-26 12:16:28] [32minfo[39m: Filter: 
+[2025-06-26 12:23:11] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-26 12:23:11] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-26 12:23:43] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-26 12:23:43] [33mwarn[39m: Error:  [
+  {
+    "code": "invalid_date",
+    "path": [
+      "purchasedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-06-26 12:24:04] [31merror[39m: Create Supply:  
+Invalid `prisma.supply.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `supply_companyId_fkey`
+[2025-06-26 12:36:36] [31merror[39m: Create Payment Service:  
+Invalid `prisma.payment.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `Payment_companyDebtId_fkey`
+[2025-06-26 14:20:15] [31merror[39m: Create Payment Service:  
+Invalid `prisma.payment.create()` invocation:
+
+{
+  data: {
+    companyId: 1,
+    ~~~~~~~~~
+    invoiceNumber: "INVC003",
+    userId: 1,
+    currency: "IQD",
+    amount: 6000,
+    note: "No Notes",
+    companyDebtId: 2,
+?   id?: Int,
+?   isLatestVersion?: Boolean | Null,
+?   paymentDate?: DateTime,
+?   createdAt?: DateTime,
+?   updatedAt?: DateTime
+  }
+}
+
+Unknown argument `companyId`. Available options are marked with ?.
+[2025-06-26 14:24:33] [32minfo[39m: Excess payment amount: 1000
+[2025-06-26 14:26:37] [31merror[39m: Create Payment Service:  All debts are already paid.
+[2025-06-26 14:27:44] [31merror[39m: Create Payment Service:  All debts are already paid.
+[2025-06-26 14:29:10] [31merror[39m: Create Payment Service:  All debts are already paid.
+[2025-06-26 14:30:13] [31merror[39m: Create Payment Service:  All debts are already paid.
+[2025-06-26 14:31:21] [31merror[39m: Create Payment Service:  All debts are already paid.
+[2025-06-26 14:33:07] [32minfo[39m: Excess payment amount: 9000
+[2025-06-26 16:58:49] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-26 16:58:52] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-26 17:09:46] [33mwarn[39m: Invalid Amount.
+[2025-06-28 10:59:47] [33mwarn[39m: Invalid Amount.
+[2025-06-28 11:41:05] [32minfo[39m: Filter: 
+[2025-06-28 11:42:18] [33mwarn[39m: No Data Found
+[2025-06-28 11:42:19] [33mwarn[39m: No Data Found
+[2025-06-28 11:46:16] [32minfo[39m: Filter: 
+[2025-06-28 11:54:40] [32minfo[39m: Filter: 
+[2025-06-28 11:59:46] [32minfo[39m: Filter: 
+[2025-06-28 11:59:59] [33mwarn[39m: No Data Found
+[2025-06-28 12:00:00] [33mwarn[39m: No Data Found
+[2025-06-29 09:59:40] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:41] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:44] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:46] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:48] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:50] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:52] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 09:59:54] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 10:00:09] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 10:00:12] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 10:00:16] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 10:00:21] [31merror[39m: Get Finances Service:  
+Invalid `prisma.companyDebt.findMany()` invocation:
+
+
+The column `CompanyDebt.currency` does not exist in the current database.
+[2025-06-29 10:07:05] [31merror[39m: Auth Create User Service:  
+Invalid `prisma.user.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `User_roleId_fkey`
+[2025-06-29 10:08:41] [31merror[39m: Create UserRole Service:  
+Invalid `prisma.userRole.create()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-06-29 10:09:43] [31merror[39m: Create UserRole Service:  
+Invalid `prisma.userRole.create()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-06-29 10:12:37] [31merror[39m: Create UserRole Service:  
+Invalid `prisma.userRole.create()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-06-29 10:14:32] [31merror[39m: Create UserRole Service:  
+Invalid `prisma.userRole.create()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-06-29 10:14:47] [31merror[39m: Create UserRole Service:  
+Invalid `prisma.userRole.create()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-06-29 10:15:30] [31merror[39m: Auth login Service:  The "salt" argument must be of type string or an instance of ArrayBuffer, Buffer, TypedArray, or DataView. Received undefined
+[2025-06-29 10:15:54] [31merror[39m: Auth login Service:  The "salt" argument must be of type string or an instance of ArrayBuffer, Buffer, TypedArray, or DataView. Received undefined
+[2025-06-29 10:16:11] [31merror[39m: Auth Create User Service:  
+Invalid `prisma.user.create()` invocation:
+
+
+Unique constraint failed on the fields: (`username`)
+[2025-07-03 13:43:43] [32minfo[39m: Filter: 
+[2025-07-03 13:43:45] [33mwarn[39m: No Data Found
+[2025-07-03 14:02:48] [32minfo[39m: Filter: 
+[2025-07-03 14:02:50] [33mwarn[39m: No Data Found
+[2025-07-03 14:02:51] [33mwarn[39m: No Data Found
+[2025-07-03 14:38:05] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5164 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:38:52] [32minfo[39m: Filter: 
+[2025-07-03 14:39:03] [31merror[39m: Transfer Table Service:  Transaction API error: Transaction not found. Transaction ID is invalid, refers to an old closed transaction Prisma doesn't have information about anymore, or was obtained before disconnecting.
+[2025-07-03 14:41:28] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5274 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:41:41] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5125 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:42:07] [33mwarn[39m: No Data Found
+[2025-07-03 14:42:56] [32minfo[39m: Filter: 
+[2025-07-03 14:43:07] [33mwarn[39m: No Data Found
+[2025-07-03 14:43:40] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 6751 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 14:43:50] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5610 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:48:02] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5150 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:48:22] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5117 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:52:27] [31merror[39m: Transfer Table Service:  Transaction API error: Transaction already closed: A commit cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5146 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:54:08] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5265 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:54:34] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5119 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 15:56:12] [32minfo[39m: Filter: 
+[2025-07-03 16:02:23] [32minfo[39m: Filter: 
+[2025-07-03 16:06:34] [32minfo[39m: Filter: 
+[2025-07-03 16:07:14] [32minfo[39m: Filter: 
+[2025-07-03 16:07:23] [32minfo[39m: Filter: 
+[2025-07-03 16:14:33] [32minfo[39m: Filter: 
+[2025-07-03 16:24:04] [32minfo[39m: Filter: 
+[2025-07-03 16:24:38] [31merror[39m: Update Order Service:  Transaction API error: Transaction already closed: A commit cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 8085 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-03 16:53:58] [32minfo[39m: Filter: 
+[2025-07-03 17:47:52] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 5132 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-06 11:26:51] [32minfo[39m: Filter: 
+[2025-07-06 11:28:12] [33mwarn[39m: No Data Found
+[2025-07-06 11:28:13] [33mwarn[39m: No Data Found
+[2025-07-06 11:37:33] [32minfo[39m: Filter: 
+[2025-07-06 11:43:38] [32minfo[39m: Filter: 
+[2025-07-06 11:51:13] [32minfo[39m: Filter: 
+[2025-07-06 11:55:24] [32minfo[39m: Filter: 
+[2025-07-06 11:55:38] [32minfo[39m: Filter: 
+[2025-07-06 11:56:15] [32minfo[39m: Filter: 
+[2025-07-06 11:56:39] [32minfo[39m: Filter: 
+[2025-07-06 11:57:03] [32minfo[39m: Filter: 
+[2025-07-06 11:57:18] [32minfo[39m: Filter: 
+[2025-07-06 11:57:37] [32minfo[39m: Filter: 
+[2025-07-06 11:58:07] [32minfo[39m: Filter: 
+[2025-07-06 11:58:14] [32minfo[39m: Filter: 
+[2025-07-06 12:17:53] [32minfo[39m: Filter: 
+[2025-07-09 11:18:40] [32minfo[39m: Filter: 
+[2025-07-09 11:32:16] [31merror[39m: Transfer Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 8704 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+[2025-07-09 11:32:39] [32minfo[39m: Filter: 
+[2025-07-09 11:54:41] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 17)
+[2025-07-09 11:57:09] [32minfo[39m: Filter: 
+[2025-07-09 12:37:07] [32minfo[39m: Filter: 
+[2025-07-09 12:41:55] [32minfo[39m: Filter: 
+[2025-07-09 13:09:17] [32minfo[39m: Filter: 
+[2025-07-09 13:12:10] [32minfo[39m: Filter: 
+[2025-07-09 13:17:56] [32minfo[39m: Filter: 
+[2025-07-09 14:03:42] [32minfo[39m: Filter: 
+[2025-07-09 16:16:43] [32minfo[39m: Filter: 
+[2025-07-13 15:07:25] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-07-13 15:07:32] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-07-13 15:07:43] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-07-14 16:18:05] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-07-14 16:18:09] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Can't reach database server at `maglev.proxy.rlwy.net:23382`
+
+Please make sure your database server is running at `maglev.proxy.rlwy.net:23382`.
+[2025-07-16 18:45:02] [32minfo[39m: Filter: 
+[2025-07-16 18:45:07] [33mwarn[39m: No Data Found
+[2025-07-16 18:45:07] [33mwarn[39m: No Data Found
+[2025-07-16 18:45:08] [33mwarn[39m: No Data Found
+[2025-07-16 18:45:14] [33mwarn[39m: No Data Found
+[2025-07-16 18:45:14] [33mwarn[39m: No Data Found
+[2025-07-16 18:45:15] [33mwarn[39m: No Data Found
+[2025-07-16 18:57:13] [33mwarn[39m: User is not active.
+[2025-07-16 18:57:13] [33mwarn[39m: User is not active.
+[2025-07-16 18:57:20] [33mwarn[39m: User is not active.
+[2025-07-16 18:57:24] [33mwarn[39m: User is not active.
+[2025-07-16 18:57:24] [33mwarn[39m: User is not active.
+[2025-07-16 18:57:24] [33mwarn[39m: User is not active.
+[2025-07-16 19:32:21] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:32:21] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:32:28] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:32:28] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:40:35] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:40:35] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Invalid date"
+  },
+  {
+    "code": "invalid_date",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Invalid date"
+  }
+]
+[2025-07-16 19:41:31] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-07-16 19:41:31] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-07-16 19:41:44] [31merror[39m: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-07-16 19:41:44] [33mwarn[39m: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      0,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      1,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      2,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      3,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      4,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      5,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "createdAt"
+    ],
+    "message": "Expected date, received string"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "permissions",
+      6,
+      "updatedAt"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+[2025-07-16 19:48:52] [32minfo[39m: Filter: 
+[2025-07-16 19:52:26] [32minfo[39m: Filter: 
+[2025-07-16 19:52:46] [32minfo[39m: Filter: 
+[2025-07-16 20:00:21] [32minfo[39m: Filter: 
+[2025-07-16 20:00:33] [32minfo[39m: Filter: 
+[2025-07-16 20:00:58] [32minfo[39m: Filter: 
+[2025-07-16 23:19:35] [32minfo[39m: undefined
+[2025-07-16 23:34:08] [32minfo[39m: Filter: 
+[2025-07-16 23:45:45] [32minfo[39m: Filter: 
+[2025-07-16 23:47:57] [32minfo[39m: Filter: 
+[2025-07-16 23:48:00] [33mwarn[39m: No Data Found
+[2025-07-16 23:48:00] [33mwarn[39m: No Data Found
+[2025-07-16 23:48:01] [33mwarn[39m: No Data Found
+[2025-07-16 23:48:48] [33mwarn[39m: No Data Found
+[2025-07-17 00:10:35] [32minfo[39m: Filter: 
+[2025-07-17 00:14:23] [33mwarn[39m: No Data Found
+[2025-07-17 00:14:24] [33mwarn[39m: No Data Found
+[2025-07-17 13:17:52] [32minfo[39m: Filter: 
+[2025-07-17 13:23:04] [32minfo[39m: Filter: 
+[2025-07-17 13:47:21] [33mwarn[39m: Credentials Don't Match
+[2025-07-17 13:48:11] [32minfo[39m: Filter: 
+[2025-07-17 13:59:13] [32minfo[39m: Filter: 
+[2025-07-17 14:01:18] [32minfo[39m: Filter: 
+[2025-07-17 14:03:48] [32minfo[39m: Filter: 
+[2025-07-17 14:25:04] [32minfo[39m: Filter: 
+[2025-07-17 14:26:40] [32minfo[39m: Filter: 
+[2025-07-17 14:27:11] [32minfo[39m: undefined
+[2025-07-17 14:27:55] [32minfo[39m: Filter: 
+[2025-07-17 14:28:32] [33mwarn[39m: No Data Found
+[2025-07-17 14:28:32] [33mwarn[39m: No Data Found
+[2025-07-17 14:28:33] [33mwarn[39m: No Data Found
+[2025-07-17 14:28:38] [33mwarn[39m: No Data Found
+[2025-07-17 14:28:38] [33mwarn[39m: No Data Found
+[2025-07-17 14:28:39] [33mwarn[39m: No Data Found
+[2025-07-17 14:40:09] [32minfo[39m: Filter: 
+[2025-07-17 14:40:17] [33mwarn[39m: No Data Found
+[2025-07-17 14:40:17] [33mwarn[39m: No Data Found
+[2025-07-17 14:40:18] [33mwarn[39m: No Data Found
+[2025-07-17 15:14:35] [32minfo[39m: Filter: 
+[2025-07-17 15:23:15] [32minfo[39m: Filter: 
+[2025-07-17 15:27:05] [32minfo[39m: Filter: 
+[2025-07-17 15:31:25] [32minfo[39m: Filter: 
+[2025-07-17 16:52:46] [32minfo[39m: Filter: 
+[2025-07-17 16:52:46] [33mwarn[39m: No Data Found
+[2025-07-17 16:52:47] [33mwarn[39m: No Data Found
+[2025-07-17 16:52:59] [33mwarn[39m: NOT FOUND
+[2025-07-17 16:53:02] [33mwarn[39m: NOT FOUND
+[2025-07-17 16:54:44] [32minfo[39m: Filter: 
+[2025-07-17 16:57:09] [32minfo[39m: Filter: 
+[2025-07-17 17:03:46] [32minfo[39m: Filter: 
+[2025-07-17 17:29:53] [32minfo[39m: Filter: 
+[2025-07-17 17:33:59] [32minfo[39m: Filter: 
+[2025-07-17 17:45:27] [32minfo[39m: Filter: 
+[2025-07-17 17:45:46] [32minfo[39m: Filter: 
+[2025-07-17 17:46:48] [32minfo[39m: Filter: 
+[2025-07-17 17:53:54] [32minfo[39m: Filter: 
+[2025-07-17 17:54:14] [32minfo[39m: Filter: 
+[2025-07-17 17:57:13] [32minfo[39m: Filter: 
+[2025-07-17 17:57:27] [32minfo[39m: Filter: 
+[2025-07-17 17:57:29] [32minfo[39m: Filter: 
+[2025-07-17 17:57:43] [32minfo[39m: Filter: 
+[2025-07-17 17:59:51] [32minfo[39m: Filter: 
+[2025-07-17 17:59:57] [32minfo[39m: Filter: 
+[2025-07-17 18:00:03] [32minfo[39m: Filter: 
+[2025-07-17 18:00:04] [32minfo[39m: Filter: 
+[2025-07-19 12:35:14] [32minfo[39m: Filter: 
+[2025-07-19 12:46:57] [32minfo[39m: Filter: 
+[2025-07-19 12:49:19] [33mwarn[39m: User is not active.
+[2025-07-19 12:49:19] [33mwarn[39m: User is not active.
+[2025-07-19 12:49:19] [33mwarn[39m: User is not active.
+[2025-07-19 12:49:36] [33mwarn[39m: User is not active.
+[2025-07-19 12:49:36] [33mwarn[39m: User is not active.
+[2025-07-19 12:49:36] [33mwarn[39m: User is not active.
+[2025-07-19 12:56:54] [33mwarn[39m: User is not active.
+[2025-07-19 12:56:54] [33mwarn[39m: User is not active.
+[2025-07-19 12:56:54] [33mwarn[39m: User is not active.
+[2025-07-19 13:01:23] [33mwarn[39m: User is not active.
+[2025-07-19 13:01:23] [33mwarn[39m: User is not active.
+[2025-07-19 13:01:23] [33mwarn[39m: User is not active.
+[2025-07-19 13:15:22] [33mwarn[39m: User is not active.
+[2025-07-19 13:15:22] [33mwarn[39m: User is not active.
+[2025-07-19 13:15:22] [33mwarn[39m: User is not active.
+[2025-07-19 13:16:47] [33mwarn[39m: User is not active.
+[2025-07-19 13:16:49] [33mwarn[39m: User is not active.
+[2025-07-19 13:16:58] [32minfo[39m: Filter: 
+[2025-07-19 13:17:16] [33mwarn[39m: User is not active.
+[2025-07-19 13:17:16] [32minfo[39m: Filter: 
+[2025-07-19 13:17:26] [33mwarn[39m: No Data Found
+[2025-07-19 13:17:27] [33mwarn[39m: No Data Found
+[2025-07-19 13:17:54] [33mwarn[39m: No Data Found
+[2025-07-19 13:17:55] [33mwarn[39m: No Data Found
+[2025-07-19 13:22:16] [33mwarn[39m: User is not active.
+[2025-07-19 13:22:16] [33mwarn[39m: User is not active.
+[2025-07-19 13:23:57] [33mwarn[39m: User is not active.
+[2025-07-19 13:23:57] [33mwarn[39m: User is not active.
+[2025-07-19 13:23:57] [33mwarn[39m: User is not active.
+[2025-07-19 13:24:03] [33mwarn[39m: User is not active.
+[2025-07-19 13:24:03] [33mwarn[39m: User is not active.
+[2025-07-19 13:24:03] [33mwarn[39m: User is not active.
+[2025-07-19 13:26:01] [33mwarn[39m: User is not active.
+[2025-07-19 13:26:01] [33mwarn[39m: User is not active.
+[2025-07-19 13:26:01] [33mwarn[39m: User is not active.
+[2025-07-19 13:26:25] [32minfo[39m: Filter: 
+[2025-07-19 13:26:37] [33mwarn[39m: No Data Found
+[2025-07-19 13:26:38] [33mwarn[39m: No Data Found
+[2025-07-19 13:26:59] [33mwarn[39m: NOT FOUND
+[2025-07-19 13:27:00] [33mwarn[39m: NOT FOUND
+[2025-07-19 13:28:46] [32minfo[39m: Filter: 
+[2025-07-19 13:29:24] [33mwarn[39m: User is not active.
+[2025-07-19 13:29:34] [33mwarn[39m: User is not active.
+[2025-07-19 13:29:34] [33mwarn[39m: User is not active.
+[2025-07-19 13:29:41] [33mwarn[39m: User is not active.
+[2025-07-19 13:29:45] [33mwarn[39m: User is not active.
+[2025-07-19 13:29:45] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:05] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:05] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:05] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:06] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:06] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:06] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:12] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:12] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:12] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:22] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:22] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:22] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:54] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:54] [33mwarn[39m: User is not active.
+[2025-07-19 13:30:54] [33mwarn[39m: User is not active.
+[2025-07-19 13:31:04] [33mwarn[39m: User is not active.
+[2025-07-19 13:31:08] [33mwarn[39m: User is not active.
+[2025-07-19 13:31:08] [33mwarn[39m: User is not active.
+[2025-07-19 13:32:25] [33mwarn[39m: User is not active.
+[2025-07-19 13:32:25] [33mwarn[39m: User is not active.
+[2025-07-19 13:32:25] [33mwarn[39m: User is not active.
+[2025-07-19 13:33:11] [33mwarn[39m: User is not active.
+[2025-07-19 13:33:11] [33mwarn[39m: User is not active.
+[2025-07-19 13:33:11] [33mwarn[39m: User is not active.
+[2025-07-19 14:15:32] [32minfo[39m: Filter: 
+[2025-07-19 14:23:09] [32minfo[39m: Filter: 
+[2025-07-19 14:24:02] [32minfo[39m: Filter: 
+[2025-07-19 14:29:22] [32minfo[39m: Filter: 
+[2025-07-19 14:30:05] [33mwarn[39m: No Data Found
+[2025-07-19 14:30:06] [33mwarn[39m: No Data Found
+[2025-07-19 14:31:37] [32minfo[39m: Filter: 
+[2025-07-19 14:33:40] [33mwarn[39m: NOT FOUND
+[2025-07-19 14:33:41] [33mwarn[39m: NOT FOUND
+[2025-07-19 14:33:42] [33mwarn[39m: NOT FOUND
+[2025-07-19 14:33:44] [33mwarn[39m: NOT FOUND
+[2025-07-19 14:33:45] [33mwarn[39m: NOT FOUND
+[2025-07-19 14:33:45] [33mwarn[39m: NOT FOUND
+[2025-07-19 14:55:53] [32minfo[39m: Filter: 
+[2025-07-19 15:11:14] [32minfo[39m: Filter: 
+[2025-07-19 15:34:36] [32minfo[39m: Filter: 
+[2025-07-19 15:41:42] [32minfo[39m: Filter: 
+[2025-07-19 15:47:31] [32minfo[39m: Filter: 
+[2025-07-19 15:59:13] [32minfo[39m: Filter: 
+[2025-07-19 16:26:05] [32minfo[39m: Filter: 
+[2025-07-19 16:26:18] [33mwarn[39m: No Data Found
+[2025-07-19 16:26:19] [33mwarn[39m: No Data Found
+[2025-07-19 16:46:21] [32minfo[39m: Filter: 
+[2025-07-20 12:11:02] [32minfo[39m: Filter: 
+[2025-07-20 12:18:50] [32minfo[39m: Filter: 
+[2025-07-20 12:25:28] [32minfo[39m: Filter: 
+[2025-07-20 12:29:41] [32minfo[39m: Filter: 
+[2025-07-20 12:39:55] [32minfo[39m: Filter: 
+[2025-07-20 12:49:13] [32minfo[39m: Filter: 
+[2025-07-20 12:57:39] [32minfo[39m: Filter: 
+[2025-07-20 13:06:46] [32minfo[39m: Filter: 
+[2025-07-20 13:36:19] [32minfo[39m: Filter: 
+[2025-07-20 14:31:25] [32minfo[39m: undefined
+[2025-07-20 14:37:08] [32minfo[39m: undefined
+[2025-07-20 14:38:21] [32minfo[39m: Filter: 
+[2025-07-20 14:38:21] [33mwarn[39m: No Data Found
+[2025-07-20 14:38:22] [33mwarn[39m: No Data Found
+[2025-07-20 15:18:17] [32minfo[39m: Filter: 
+[2025-07-20 15:19:20] [33mwarn[39m: NOT FOUND
+[2025-07-20 15:20:47] [33mwarn[39m: NOT FOUND
+[2025-07-20 16:50:52] [32minfo[39m: undefined
+[2025-07-20 16:51:47] [32minfo[39m: Filter: 
+[2025-07-20 16:52:43] [32minfo[39m: Filter: 
+[2025-07-20 16:57:22] [32minfo[39m: Filter: 
+[2025-07-20 16:57:27] [33mwarn[39m: NOT FOUND
+[2025-07-20 17:04:12] [32minfo[39m: Filter: 
+[2025-07-20 17:36:22] [32minfo[39m: Filter: 
+[2025-07-20 17:41:07] [32minfo[39m: Filter: 
+[2025-07-20 17:47:50] [32minfo[39m: Filter: 
+[2025-07-20 17:53:11] [32minfo[39m: Filter: 
+[2025-07-20 18:06:05] [32minfo[39m: Filter: 
+[2025-07-20 18:17:21] [32minfo[39m: Filter: 
+[2025-07-20 18:17:29] [32minfo[39m: Filter: 
+[2025-07-20 18:17:39] [32minfo[39m: Filter: 
+[2025-07-20 18:17:51] [32minfo[39m: Filter: 
+[2025-07-20 18:18:27] [32minfo[39m: Filter: 
+[2025-07-20 18:18:27] [32minfo[39m: Filter: 
+[2025-07-20 18:18:29] [32minfo[39m: Filter: 
+[2025-07-20 18:18:50] [32minfo[39m: Filter: 
+[2025-07-20 18:19:14] [32minfo[39m: Filter: 
+[2025-07-20 18:19:22] [32minfo[39m: Filter: 
+[2025-07-20 18:19:41] [32minfo[39m: Filter: 
+[2025-07-20 18:19:51] [32minfo[39m: Filter: 
+[2025-07-20 18:20:05] [32minfo[39m: Filter: 
+[2025-07-20 18:20:21] [32minfo[39m: Filter: 
+[2025-07-20 18:20:32] [32minfo[39m: Filter: 
+[2025-07-20 18:20:32] [33mwarn[39m: No Data Found
+[2025-07-20 18:20:33] [33mwarn[39m: No Data Found
+[2025-07-20 18:20:34] [33mwarn[39m: No Data Found
+[2025-07-20 18:20:35] [33mwarn[39m: No Data Found
+[2025-07-20 18:20:37] [33mwarn[39m: No Data Found
+[2025-07-20 18:20:39] [33mwarn[39m: No Data Found
+[2025-07-20 18:20:48] [32minfo[39m: Filter: 
+[2025-07-20 18:21:32] [32minfo[39m: Filter: 
+[2025-07-20 18:23:53] [32minfo[39m: Filter: 
+[2025-07-20 18:24:08] [33mwarn[39m: No Data Found
+[2025-07-20 18:24:08] [33mwarn[39m: No Data Found
+[2025-07-20 18:24:09] [33mwarn[39m: No Data Found
+[2025-07-20 18:24:35] [33mwarn[39m: No Data Found
+[2025-07-20 18:24:36] [33mwarn[39m: No Data Found
+[2025-07-20 18:24:41] [33mwarn[39m: No Data Found
+[2025-07-20 18:24:42] [33mwarn[39m: No Data Found
+[2025-07-21 11:44:57] [32minfo[39m: Filter: 
+[2025-07-21 11:45:54] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:05] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:06] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:06] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:06] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:06] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:06] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:07] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:07] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:07] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:07] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:07] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:46:08] [33mwarn[39m: Can not delete an occupied table.
+[2025-07-21 11:47:47] [31merror[39m: Update Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-07-21 11:47:52] [31merror[39m: Update Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-07-21 11:48:01] [31merror[39m: Update Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-07-21 11:48:06] [31merror[39m: Update Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+[2025-07-21 11:55:24] [33mwarn[39m: No Data Found
+[2025-07-21 11:55:24] [32minfo[39m: Filter: 
+[2025-07-21 11:55:25] [33mwarn[39m: No Data Found
+[2025-07-21 11:56:02] [33mwarn[39m: No Data Found
+[2025-07-21 11:56:03] [33mwarn[39m: No Data Found
+[2025-07-21 11:56:04] [33mwarn[39m: No Data Found
+[2025-07-21 12:02:04] [32minfo[39m: Filter: 
+[2025-07-21 12:20:22] [32minfo[39m: undefined
+[2025-07-21 12:20:47] [32minfo[39m: Filter: 
+[2025-07-21 12:22:39] [32minfo[39m: Filter: 
+[2025-07-21 12:22:39] [33mwarn[39m: No Data Found
+[2025-07-21 12:22:40] [33mwarn[39m: No Data Found
+[2025-07-21 13:16:29] [32minfo[39m: Filter: 
+[2025-07-21 13:53:16] [32minfo[39m: Filter: 
+[2025-07-21 14:00:23] [32minfo[39m: Filter: 
+[2025-07-21 14:01:29] [32minfo[39m: Filter: 
+[2025-07-21 14:03:16] [32minfo[39m: Filter: 
+[2025-07-21 14:05:46] [32minfo[39m: undefined
+[2025-07-21 14:10:30] [32minfo[39m: Filter: 
+[2025-07-21 14:10:30] [33mwarn[39m: No Data Found
+[2025-07-21 14:10:31] [33mwarn[39m: No Data Found
+[2025-07-21 14:21:55] [32minfo[39m: Filter: 
+[2025-07-21 14:32:16] [32minfo[39m: Filter: 
+[2025-07-21 17:05:22] [32minfo[39m: Filter: 
+[2025-07-21 17:06:58] [32minfo[39m: undefined
+[2025-07-21 17:07:05] [33mwarn[39m: NOT FOUND
+[2025-07-21 17:07:08] [33mwarn[39m: NOT FOUND
+[2025-07-21 17:07:09] [33mwarn[39m: NOT FOUND
+[2025-07-22 11:58:33] [32minfo[39m: Filter: 
+[2025-07-22 11:59:23] [32minfo[39m: Filter: 
+[2025-07-22 12:08:27] [32minfo[39m: Filter: 
+[2025-07-22 12:24:20] [32minfo[39m: Filter: 
+[2025-07-22 12:26:36] [32minfo[39m: Filter: 
+[2025-07-22 12:57:09] [32minfo[39m: Image uploaded successfully: http://localhost:3000/api/images/bb1b1bd6-8025-4a59-81d4-ba798136be72/41ab7bbf-8ba0-41d5-b27f-0e7b2e28edeb-image-13.png
+[2025-07-22 12:57:09] [32minfo[39m: Image uploaded successfully: http://localhost:3000/api/images/bb1b1bd6-8025-4a59-81d4-ba798136be72/41ab7bbf-8ba0-41d5-b27f-0e7b2e28edeb-image-13.png
+[2025-07-22 13:11:52] [32minfo[39m: Filter: 
+[2025-07-22 13:22:44] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/02ddfedd-ec8d-4363-a3a6-e6a5bbfe2ca8/2ce7ecaa-145c-400c-bb27-2a59fb1b6ee7-whatsapp-image-2025-04-28-at-21.37.14e494ced6-2.jpg
+[2025-07-22 13:22:44] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/02ddfedd-ec8d-4363-a3a6-e6a5bbfe2ca8/2ce7ecaa-145c-400c-bb27-2a59fb1b6ee7-whatsapp-image-2025-04-28-at-21.37.14e494ced6-2.jpg
+[2025-07-22 13:24:36] [32minfo[39m: Filter: 
+[2025-07-22 13:28:07] [32minfo[39m: Filter: 
+[2025-07-22 13:31:43] [32minfo[39m: Filter: 
+[2025-07-22 13:31:48] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/994ad09d-9bcb-4015-88d6-f049038a591b/6332b8e5-9e30-49a1-90cb-08fa04d663f0-whatsapp-image-2025-04-28-at-21.37.14e494ced6-2.jpg
+[2025-07-22 13:31:48] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/994ad09d-9bcb-4015-88d6-f049038a591b/6332b8e5-9e30-49a1-90cb-08fa04d663f0-whatsapp-image-2025-04-28-at-21.37.14e494ced6-2.jpg
+[2025-07-22 13:31:58] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/9b691627-6604-4abf-a3a3-6fb366cb5676/0289e841-107a-410d-8449-a5f7ed9befe8-img20250718211544047.jpg
+[2025-07-22 13:31:58] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/9b691627-6604-4abf-a3a3-6fb366cb5676/0289e841-107a-410d-8449-a5f7ed9befe8-img20250718211544047.jpg
+[2025-07-22 13:49:47] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/1f6fd79a-a582-48a2-bc64-67e5591ab9aa/bb20505c-f814-462e-9111-33dc74c5d412-whatsapp-image-2025-04-28-at-21.37.14e494ced6.jpg
+[2025-07-22 13:49:47] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/1f6fd79a-a582-48a2-bc64-67e5591ab9aa/bb20505c-f814-462e-9111-33dc74c5d412-whatsapp-image-2025-04-28-at-21.37.14e494ced6.jpg
+[2025-07-22 13:49:47] [32minfo[39m: Filter: 
+[2025-07-22 13:52:02] [33mwarn[39m: Not Found
+[2025-07-22 13:52:18] [32minfo[39m: Filter: 
+[2025-07-22 13:53:21] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/56ab3f55-cf2f-453d-9ae3-d781d171fb7c/4bdbf0d3-8c7a-40ff-8049-e3ff7ef1371c-dilo00ablackwhitedrawingforahalffaceforaflamewoma11809083.png
+[2025-07-22 13:53:21] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/56ab3f55-cf2f-453d-9ae3-d781d171fb7c/4bdbf0d3-8c7a-40ff-8049-e3ff7ef1371c-dilo00ablackwhitedrawingforahalffaceforaflamewoma11809083.png
+[2025-07-22 13:53:21] [32minfo[39m: Filter: 
+[2025-07-22 13:55:04] [32minfo[39m: Filter: 
+[2025-07-22 13:56:05] [32minfo[39m: Filter: 
+[2025-07-22 13:56:41] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/a9a6934a-5284-4fec-8666-30e788c32a76/4109470f-683e-4c49-8df7-a6355f1d7102-photo32025-03-2814-59-45.jpg
+[2025-07-22 13:56:41] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/a9a6934a-5284-4fec-8666-30e788c32a76/4109470f-683e-4c49-8df7-a6355f1d7102-photo32025-03-2814-59-45.jpg
+[2025-07-22 13:56:41] [32minfo[39m: Filter: 
+[2025-07-22 13:56:50] [32minfo[39m: Filter: 
+[2025-07-22 13:57:55] [32minfo[39m: Filter: 
+[2025-07-22 13:58:12] [32minfo[39m: Filter: 
+[2025-07-22 13:58:18] [32minfo[39m: Filter: 
+[2025-07-22 14:01:56] [32minfo[39m: Filter: 
+[2025-07-22 14:03:20] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/709151cf-8eec-4666-a0fa-c5a1aa9aafc2/433f7697-05a2-4844-88d3-778bd63eb936-image2025-05-1216-46-30.png
+[2025-07-22 14:03:20] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/709151cf-8eec-4666-a0fa-c5a1aa9aafc2/433f7697-05a2-4844-88d3-778bd63eb936-image2025-05-1216-46-30.png
+[2025-07-22 14:03:20] [32minfo[39m: Filter: 
+[2025-07-22 14:10:22] [32minfo[39m: Image deleted successfully: http://localhost:3001/api/images/709151cf-8eec-4666-a0fa-c5a1aa9aafc2/433f7697-05a2-4844-88d3-778bd63eb936-image2025-05-1216-46-30.png
+[2025-07-22 14:10:22] [32minfo[39m: Image deleted successfully: http://localhost:3001/api/images/709151cf-8eec-4666-a0fa-c5a1aa9aafc2/433f7697-05a2-4844-88d3-778bd63eb936-image2025-05-1216-46-30.png
+[2025-07-22 14:10:22] [32minfo[39m: Filter: 
+[2025-07-22 14:10:31] [31merror[39m: Image deletion failed: Invalid image URL format
+[2025-07-22 14:10:36] [32minfo[39m: Filter: 
+[2025-07-22 14:10:41] [32minfo[39m: Filter: 
+[2025-07-22 14:11:28] [32minfo[39m: Filter: 
+[2025-07-22 14:33:28] [32minfo[39m: Filter: 
+[2025-07-22 15:16:34] [32minfo[39m: Filter: 
+[2025-07-22 15:19:48] [32minfo[39m: Filter: 
+[2025-07-22 15:21:06] [32minfo[39m: Filter: 
+[2025-07-22 15:29:19] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:29:20] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:29:22] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:29:26] [31merror[39m: Authenticated middleware:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:29:35] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:39:26] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 15:39:36] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 16:44:02] [31merror[39m: Auth login Service:  
+Invalid `prisma.user.findFirst()` invocation:
+
+
+Database `railway` does not exist
+[2025-07-22 17:26:42] [33mwarn[39m: No Data Found
+[2025-07-22 17:26:42] [33mwarn[39m: Not Data Found
+[2025-07-22 17:26:43] [33mwarn[39m: No Data Found
+[2025-07-22 17:26:43] [33mwarn[39m: Not Data Found
+[2025-07-22 17:26:45] [33mwarn[39m: No Data Found
+[2025-07-22 17:26:45] [33mwarn[39m: Not Data Found
+[2025-07-22 17:26:49] [33mwarn[39m: No Data Found
+[2025-07-22 17:26:49] [33mwarn[39m: Not Data Found
+[2025-07-22 17:26:54] [33mwarn[39m: Brand Not Found
+[2025-07-22 17:26:55] [33mwarn[39m: Brand Not Found
+[2025-07-22 17:26:57] [33mwarn[39m: Brand Not Found
+[2025-07-22 17:27:01] [33mwarn[39m: Brand Not Found
+[2025-07-22 17:27:48] [33mwarn[39m: No Data Found
+[2025-07-22 17:27:48] [33mwarn[39m: Not Data Found
+[2025-07-22 17:27:49] [33mwarn[39m: No Data Found
+[2025-07-22 17:27:49] [33mwarn[39m: Not Data Found
+[2025-07-22 17:28:00] [33mwarn[39m: No Data Found
+[2025-07-22 17:28:00] [33mwarn[39m: Not Data Found
+[2025-07-22 17:28:01] [33mwarn[39m: No Data Found
+[2025-07-22 17:28:01] [33mwarn[39m: Not Data Found
+[2025-07-22 17:28:03] [33mwarn[39m: No Data Found
+[2025-07-22 17:28:03] [33mwarn[39m: Not Data Found
+[2025-07-22 17:28:08] [33mwarn[39m: No Data Found
+[2025-07-22 17:28:08] [33mwarn[39m: Not Data Found
+[2025-07-22 17:28:46] [32minfo[39m: Filter: 
+[2025-07-22 17:28:46] [33mwarn[39m: Get Categories Service Has No Entries.
+[2025-07-22 17:28:46] [33mwarn[39m: No Data Found
+[2025-07-22 17:28:47] [33mwarn[39m: No Data Found
+[2025-07-22 17:28:54] [33mwarn[39m: No subcategories found.
+[2025-07-22 17:28:55] [33mwarn[39m: No subcategories found.
+[2025-07-22 17:28:56] [33mwarn[39m: Storage Not Found
+[2025-07-22 17:28:57] [33mwarn[39m: Storage Not Found
+[2025-07-22 17:28:59] [33mwarn[39m: Storage Not Found
+[2025-07-22 17:29:03] [33mwarn[39m: Storage Not Found
+[2025-07-22 17:29:12] [33mwarn[39m: Storage Not Found
+[2025-07-22 17:29:13] [33mwarn[39m: Storage Not Found
+[2025-07-22 17:29:14] [33mwarn[39m: No subcategories found.
+[2025-07-22 17:29:15] [33mwarn[39m: No subcategories found.
+[2025-07-22 17:29:17] [33mwarn[39m: No subcategories found.
+[2025-07-22 17:29:21] [33mwarn[39m: NOT FOUND
+[2025-07-22 17:29:21] [33mwarn[39m: No subcategories found.
+[2025-07-22 17:29:22] [33mwarn[39m: NOT FOUND
+[2025-07-22 17:30:03] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/3ce889f6-cda2-49f4-b955-802a8751db82/5bcc7f0a-0359-4c54-9b4c-a943d7394e4f-image-14.png
+[2025-07-22 17:30:03] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/3ce889f6-cda2-49f4-b955-802a8751db82/5bcc7f0a-0359-4c54-9b4c-a943d7394e4f-image-14.png
+[2025-07-22 17:30:04] [32minfo[39m: Filter: 
+[2025-07-22 17:30:11] [33mwarn[39m: Customers Not Found
+[2025-07-22 17:30:12] [33mwarn[39m: Customers Not Found
+[2025-07-22 17:30:13] [33mwarn[39m: Customers Not Found
+[2025-07-22 17:30:14] [33mwarn[39m: Customers Not Found
+[2025-07-22 17:30:26] [33mwarn[39m: Customers Not Found
+[2025-07-22 17:30:29] [33mwarn[39m: Customers Not Found
+[2025-07-22 17:30:30] [33mwarn[39m: Customers Not Found
+[2025-07-22 17:30:31] [33mwarn[39m: Customers Not Found
+[2025-07-22 17:31:51] [32minfo[39m: undefined
+[2025-07-22 17:33:03] [33mwarn[39m: Brand Not Found
+[2025-07-22 17:33:04] [33mwarn[39m: Brand Not Found
+[2025-07-22 17:33:06] [33mwarn[39m: Brand Not Found
+[2025-07-22 17:33:10] [33mwarn[39m: No Printers Found
+[2025-07-22 17:33:10] [33mwarn[39m: Brand Not Found
+[2025-07-22 17:33:11] [33mwarn[39m: No Printers Found
+[2025-07-22 17:33:13] [33mwarn[39m: No Printers Found
+[2025-07-22 17:33:17] [33mwarn[39m: No Printers Found
+[2025-07-23 23:19:53] [32minfo[39m: Filter: 
+[2025-07-23 23:19:53] [33mwarn[39m: No subcategories found.
+[2025-07-23 23:19:54] [33mwarn[39m: No subcategories found.
+[2025-07-23 23:19:57] [33mwarn[39m: No subcategories found.
+[2025-07-23 23:19:57] [33mwarn[39m: Storage Not Found
+[2025-07-23 23:19:58] [33mwarn[39m: Storage Not Found
+[2025-07-23 23:20:01] [33mwarn[39m: No subcategories found.
+[2025-07-23 23:20:01] [33mwarn[39m: Customers Not Found
+[2025-07-23 23:20:02] [33mwarn[39m: Customers Not Found
+[2025-07-23 23:20:03] [33mwarn[39m: Customers Not Found
+[2025-07-23 23:37:12] [32minfo[39m: Filter: 
+[2025-07-23 23:37:12] [33mwarn[39m: No subcategories found.
+[2025-07-23 23:37:13] [33mwarn[39m: No subcategories found.
+[2025-07-23 23:37:15] [33mwarn[39m: Customers Not Found
+[2025-07-23 23:37:16] [33mwarn[39m: Customers Not Found
+[2025-07-23 23:37:17] [33mwarn[39m: Customers Not Found
+[2025-07-23 23:37:18] [33mwarn[39m: Customers Not Found
+[2025-07-23 23:48:51] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:48:52] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:48:55] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:48:56] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:48:58] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:02] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:03] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:04] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:06] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lionel",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:11] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:12] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:26] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:30] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:33] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:34] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:49:55] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "Lionel Collins",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:50:07] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:50:08] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "CUST-L8LDUPJB",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:51:21] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:51:22] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-23 23:51:39] [31merror[39m: Get Customers:  
+Invalid `prisma.customerInfo.findMany()` invocation:
+
+{
+  include: {
+    customerDiscount: true
+  },
+  where: {
+    OR: [
+      {
+        name: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        phoneNumber: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      },
+      {
+        paymentMethod: {
+          contains: "lio",
+          mode: "insensitive"
+        }
+      }
+    ]
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `paymentMethod`. Available options are marked with ?.
+[2025-07-24 00:06:13] [32minfo[39m: undefined
+[2025-07-24 00:13:38] [32minfo[39m: Filter: 
+[2025-07-24 00:13:38] [33mwarn[39m: No Data Found
+[2025-07-24 00:13:38] [33mwarn[39m: NOT FOUND
+[2025-07-24 00:13:39] [33mwarn[39m: No Data Found
+[2025-07-24 00:13:53] [33mwarn[39m: No subcategories found.
+[2025-07-24 00:13:54] [33mwarn[39m: No subcategories found.
+[2025-07-24 00:13:56] [33mwarn[39m: No subcategories found.
+[2025-07-24 00:14:00] [33mwarn[39m: No subcategories found.
+[2025-07-24 00:14:17] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/ab7c3f80-c2ce-4264-a21e-49d3d8157c15/6c5883e4-42e5-4fa6-bc49-02d475d8547b-fresh.png
+[2025-07-24 00:14:17] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/ab7c3f80-c2ce-4264-a21e-49d3d8157c15/6c5883e4-42e5-4fa6-bc49-02d475d8547b-fresh.png
+[2025-07-24 00:14:27] [33mwarn[39m: No Printers Found
+[2025-07-24 00:14:29] [33mwarn[39m: NOT FOUND
+[2025-07-24 00:14:31] [33mwarn[39m: No Printers Found
+[2025-07-24 00:14:51] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/ca615773-a96f-4537-ad1c-1a32a5115687/aa02c137-5e94-4a54-9a8e-3e69ad12c77a-iced-tea.png
+[2025-07-24 00:14:51] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/ca615773-a96f-4537-ad1c-1a32a5115687/aa02c137-5e94-4a54-9a8e-3e69ad12c77a-iced-tea.png
+[2025-07-24 00:14:51] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
+[2025-07-24 00:15:04] [33mwarn[39m: Brand Not Found
+[2025-07-24 00:15:05] [33mwarn[39m: Brand Not Found
+[2025-07-24 00:15:05] [33mwarn[39m: No Printers Found
+[2025-07-24 00:15:06] [33mwarn[39m: No Printers Found
+[2025-07-24 00:15:07] [33mwarn[39m: Brand Not Found
+[2025-07-24 00:15:08] [33mwarn[39m: No Printers Found
+[2025-07-24 00:15:11] [33mwarn[39m: Brand Not Found
+[2025-07-24 00:15:12] [33mwarn[39m: No Printers Found
+[2025-07-24 00:15:17] [33mwarn[39m: NOT FOUND
+[2025-07-24 00:15:18] [33mwarn[39m: NOT FOUND
+[2025-07-24 00:15:20] [33mwarn[39m: NOT FOUND
+[2025-07-24 00:15:23] [32minfo[39m: Filter: 
+[2025-07-24 00:15:26] [33mwarn[39m: NOT FOUND
+[2025-07-24 00:15:27] [33mwarn[39m: NOT FOUND
+[2025-07-24 00:15:29] [33mwarn[39m: NOT FOUND
+[2025-07-24 00:15:33] [33mwarn[39m: NOT FOUND
+[2025-07-24 00:16:02] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/1042910d-5d5e-499d-a011-0586e15dcbb0/3d56ca66-1d66-4d48-9d80-ccc20cb32a37-iced-tea.png
+[2025-07-24 00:16:02] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/1042910d-5d5e-499d-a011-0586e15dcbb0/3d56ca66-1d66-4d48-9d80-ccc20cb32a37-iced-tea.png
+[2025-07-24 00:16:02] [31merror[39m: Menu item Service:  
+Invalid `prisma.menuItem.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
+[2025-07-24 00:16:31] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/1fdbad36-ff09-4118-8e32-652f426542d1/9a6ccaed-a66c-4934-be51-d43f723b3c8b-iced-tea.png
+[2025-07-24 00:16:31] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/1fdbad36-ff09-4118-8e32-652f426542d1/9a6ccaed-a66c-4934-be51-d43f723b3c8b-iced-tea.png
+[2025-07-24 00:16:41] [33mwarn[39m: No Data Found
+[2025-07-24 00:16:43] [33mwarn[39m: No Data Found
+[2025-07-24 00:17:23] [32minfo[39m: undefined
+[2025-07-24 00:21:44] [32minfo[39m: undefined
+[2025-07-24 00:22:08] [32minfo[39m: Filter: 
+[2025-07-24 00:23:24] [32minfo[39m: Filter: 
+[2025-07-24 00:26:41] [32minfo[39m: Filter: 
+[2025-07-24 00:30:29] [32minfo[39m: Filter: 
+[2025-07-24 00:31:53] [32minfo[39m: Filter: 
+[2025-07-24 00:34:18] [32minfo[39m: Filter: 
+[2025-07-24 00:35:18] [32minfo[39m: Filter: 
+[2025-07-24 00:37:10] [32minfo[39m: Filter: 
+[2025-07-24 00:37:10] [33mwarn[39m: No Data Found
+[2025-07-24 00:37:13] [33mwarn[39m: No Data Found
+[2025-07-24 00:37:14] [33mwarn[39m: No Data Found
+[2025-07-24 00:37:19] [33mwarn[39m: No Data Found
+[2025-07-24 00:37:20] [33mwarn[39m: No Data Found
+[2025-07-24 00:42:27] [32minfo[39m: Filter: 
+[2025-07-24 00:42:31] [32minfo[39m: Filter: 
+[2025-07-24 00:42:34] [32minfo[39m: Filter: 
+[2025-07-24 00:43:07] [32minfo[39m: Filter: 
+[2025-07-24 00:50:06] [32minfo[39m: Filter: 
+[2025-07-24 00:55:33] [32minfo[39m: Filter: 
+[2025-07-24 00:56:09] [32minfo[39m: Filter: 
+[2025-07-24 01:01:10] [32minfo[39m: Filter: 
+[2025-07-24 01:10:06] [32minfo[39m: Filter: 
+[2025-07-24 01:11:06] [32minfo[39m: Filter: 
+[2025-07-24 01:14:00] [31merror[39m: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+
+Failed to convert rust `String` into napi `string`
+[2025-07-24 01:22:06] [31merror[39m: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    createdAt: {
+      gte: new Date("Invalid Date")
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+    }
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Invalid value for argument `gte`: Provided Date object is invalid. Expected Date.
+[2025-07-24 01:22:36] [32minfo[39m: Filter: 
+[2025-07-24 01:23:56] [31merror[39m: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    createdAt: {
+      gte: new Date("Invalid Date"),
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+      lte: new Date("Invalid Date")
+    }
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Invalid value for argument `gte`: Provided Date object is invalid. Expected Date.
+[2025-07-24 01:44:26] [31merror[39m: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+
+Failed to convert rust `String` into napi `string`
+[2025-07-24 01:46:08] [31merror[39m: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+
+Failed to convert rust `String` into napi `string`
+[2025-07-24 01:51:37] [32minfo[39m: Filter: 
+[2025-07-26 13:18:57] [32minfo[39m: Filter: 
+[2025-07-26 13:20:21] [33mwarn[39m: No Data Found
+[2025-07-26 13:20:22] [33mwarn[39m: No Data Found
+[2025-07-26 13:20:32] [33mwarn[39m: No Data Found
+[2025-07-26 13:20:32] [33mwarn[39m: No Data Found
+[2025-07-26 13:20:33] [33mwarn[39m: No Data Found
+[2025-07-26 13:21:02] [33mwarn[39m: No Data Found
+[2025-07-26 13:21:02] [33mwarn[39m: No Data Found
+[2025-07-26 13:21:03] [33mwarn[39m: No Data Found
+[2025-07-26 13:26:06] [33mwarn[39m: No Data Found
+[2025-07-26 13:26:06] [32minfo[39m: Filter: 
+[2025-07-26 13:26:06] [33mwarn[39m: No Data Found
+[2025-07-26 13:26:06] [33mwarn[39m: No Data Found
+[2025-07-26 13:26:07] [33mwarn[39m: No Data Found
+[2025-07-26 13:26:07] [33mwarn[39m: No Data Found
+[2025-07-26 13:26:07] [33mwarn[39m: No Data Found
+[2025-07-26 13:26:08] [33mwarn[39m: No Data Found
+[2025-07-26 13:26:08] [33mwarn[39m: No Data Found
+[2025-07-26 13:26:08] [33mwarn[39m: No Data Found
+[2025-07-26 13:26:08] [33mwarn[39m: No Data Found
+[2025-07-28 14:28:53] [32minfo[39m: Filter: 
+[2025-07-28 14:28:59] [33mwarn[39m: No Data Found
+[2025-07-28 14:28:59] [33mwarn[39m: No Data Found
+[2025-07-28 14:28:59] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:51] [32minfo[39m: Filter: 
+[2025-07-28 14:40:54] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:54] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:54] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:55] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:55] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:55] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:55] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:55] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:55] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:55] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:56] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:56] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:56] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:56] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:56] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:56] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:57] [33mwarn[39m: No Data Found
+[2025-07-28 14:40:57] [33mwarn[39m: No Data Found
+[2025-07-28 14:41:03] [33mwarn[39m: No Data Found
+[2025-07-28 14:41:03] [33mwarn[39m: No Data Found
+[2025-07-28 14:41:03] [33mwarn[39m: No Data Found
+[2025-07-28 14:41:04] [33mwarn[39m: No Data Found
+[2025-07-28 14:41:28] [32minfo[39m: Filter: 
+[2025-07-28 14:41:32] [33mwarn[39m: No Data Found
+[2025-07-28 14:41:32] [33mwarn[39m: No Data Found
+[2025-07-28 14:41:32] [33mwarn[39m: No Data Found
+[2025-07-28 14:41:33] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:36] [32minfo[39m: Filter: 
+[2025-07-28 14:42:40] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:40] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:40] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:40] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:41] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:42] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:42] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:42] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:42] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:43] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:45] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:45] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:45] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:45] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:46] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:46] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:46] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:46] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:46] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:46] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:51] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:51] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:51] [33mwarn[39m: No Data Found
+[2025-07-28 14:42:52] [33mwarn[39m: No Data Found
+[2025-07-28 15:01:11] [33mwarn[39m: Brand Not Found
+[2025-07-28 15:01:12] [33mwarn[39m: Brand Not Found
+[2025-07-28 15:01:14] [33mwarn[39m: Brand Not Found
+[2025-07-28 15:11:20] [32minfo[39m: Filter: 
+[2025-07-28 15:24:24] [32minfo[39m: Filter: 
+[2025-07-28 15:28:57] [32minfo[39m: Filter: 
+[2025-07-28 15:48:19] [32minfo[39m: Filter: 
+[2025-07-28 15:49:23] [32minfo[39m: Filter: 
+[2025-07-28 15:52:08] [32minfo[39m: Filter: 
+[2025-07-28 15:56:10] [32minfo[39m: Filter: 
+[2025-07-28 15:56:32] [32minfo[39m: Filter: 
+[2025-07-28 15:56:57] [32minfo[39m: Filter: 
+[2025-07-28 15:57:49] [32minfo[39m: Filter: 
+[2025-07-28 16:00:43] [32minfo[39m: Filter: 
+[2025-07-29 13:01:14] [32minfo[39m: Filter: 
+[2025-07-29 13:06:46] [33mwarn[39m: No Payments found.
+[2025-07-29 13:06:49] [33mwarn[39m: No Payments found.
+[2025-07-29 13:06:52] [33mwarn[39m: No Payments found.
+[2025-07-29 13:06:55] [33mwarn[39m: No Payments found.
+[2025-07-29 13:09:17] [33mwarn[39m: No Payments found.
+[2025-07-29 13:10:20] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:10:21] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:10:23] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:10:28] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:13:40] [32minfo[39m: Filter: 
+[2025-07-29 13:13:45] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:45] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:45] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:45] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:46] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:46] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:47] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:47] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:47] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:47] [33mwarn[39m: No Data Found
+[2025-07-29 13:17:18] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:17:19] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:17:21] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:17:25] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:18:07] [32minfo[39m: Filter: 
+[2025-07-29 13:18:12] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:12] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:12] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:13] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:16] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:16] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:16] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:17] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:17] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:17] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:17] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:18] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:30] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:35] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:35] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:35] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:36] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:48] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:18:49] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:19:22] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:22] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:22] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:31] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:31] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:31] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:31] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:37] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:37] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:37] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:38] [33mwarn[39m: No Data Found
+[2025-07-29 13:20:18] [32minfo[39m: Filter: 
+[2025-07-29 13:21:10] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/e8b8c22a-c462-42bd-b8b6-3f83d0a25955/5ea35985-7513-4a07-828d-27d32ea4df83-coffe.png
+[2025-07-29 13:21:10] [32minfo[39m: Image uploaded successfully: http://localhost:3001/api/images/e8b8c22a-c462-42bd-b8b6-3f83d0a25955/5ea35985-7513-4a07-828d-27d32ea4df83-coffe.png
+[2025-07-29 13:21:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:40] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:40] [32minfo[39m: Filter: 
+[2025-07-29 13:21:40] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:40] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:41] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:41] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:42] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:42] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:42] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:43] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:44] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:49] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:49] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:49] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:50] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:13] [32minfo[39m: Filter: 
+[2025-07-29 13:25:28] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:25:29] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:25:31] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:25:35] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:25:50] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:50] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:50] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:51] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:51] [32minfo[39m: Filter: 
+[2025-07-29 13:25:51] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:51] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:52] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:52] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:52] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:53] [33mwarn[39m: No Data Found
+[2025-07-29 16:07:44] [32minfo[39m: Filter: 
+[2025-07-29 16:07:44] [33mwarn[39m: No Data Found
+[2025-07-29 16:07:44] [33mwarn[39m: No Data Found
+[2025-07-29 16:07:44] [33mwarn[39m: No Data Found
+[2025-07-29 16:07:45] [33mwarn[39m: No Data Found
+[2025-07-29 16:07:50] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:07:51] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:07:53] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:07:57] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:08:40] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:08:41] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:08:43] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:08:47] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:10:36] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:10:37] [33mwarn[39m: No Data Found
+[2025-07-29 16:10:37] [33mwarn[39m: No Data Found
+[2025-07-29 16:10:37] [33mwarn[39m: No Data Found
+[2025-07-29 16:10:38] [33mwarn[39m: No Data Found
+[2025-07-29 16:14:00] [32minfo[39m: Filter: 
+[2025-07-29 16:15:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:15:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:15:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:15:35] [33mwarn[39m: No Data Found
+[2025-07-29 16:16:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:16:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:16:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:16:35] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:13] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:13] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:13] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:14] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:14] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:14] [33mwarn[39m: No Data Found
+[2025-07-29 16:25:56] [32minfo[39m: Filter: 
+[2025-07-29 16:26:16] [32minfo[39m: undefined
+[2025-07-29 17:32:46] [32minfo[39m: Filter: 
+[2025-07-29 17:33:47] [31merror[39m: Create Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: NaN,
+    product: "Fresh Cotton Computer",
+    quantity: 0,
+    currency: "IQD",
+    invoiceNumber: "73478",
+    totalAmount: undefined,
+    userId: 1,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+[2025-07-29 17:33:52] [31merror[39m: Create Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: NaN,
+    product: "Fresh Cotton Computer",
+    quantity: 0,
+    currency: "IQD",
+    invoiceNumber: "73478",
+    totalAmount: undefined,
+    userId: 1,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+[2025-07-29 17:34:08] [31merror[39m: Create Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: NaN,
+    product: "Fresh Cotton Computer",
+    quantity: 0,
+    currency: "IQD",
+    invoiceNumber: "73478",
+    totalAmount: undefined,
+    userId: 1,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+[2025-07-29 17:38:23] [32minfo[39m: Filter: 
+[2025-07-29 17:51:06] [32minfo[39m: Filter: 
+[2025-07-30 10:33:06] [32minfo[39m: Filter: 
+[2025-07-30 10:33:10] [33mwarn[39m: No Data Found
+[2025-07-30 10:33:10] [33mwarn[39m: No Data Found
+[2025-07-30 10:33:10] [33mwarn[39m: No Data Found
+[2025-07-30 10:33:11] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:02] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:02] [32minfo[39m: Filter: 
+[2025-07-30 10:34:02] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:02] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:03] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:17] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:17] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:17] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:18] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:19] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:04] [33mwarn[39m: Printer 192.168.1.1 not connected
+[2025-07-30 10:36:39] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:39] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:39] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:39] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:40] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:41] [33mwarn[39m: No Data Found
+[2025-07-30 10:37:19] [33mwarn[39m: No Data Found
+[2025-07-30 10:37:19] [33mwarn[39m: No Data Found
+[2025-07-30 10:50:52] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:50:53] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:50:55] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:50:59] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:51:55] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:51:56] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:52:25] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:12:09] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:14:43] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:16:41] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:16:46] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:18:43] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:19:10] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:20:42] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:20:50] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:22:31] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:22:33] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:22:37] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:23:56] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:23:57] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:23:59] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:03] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:08] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 11:24:25] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:26] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:28] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:32] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:32] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 11:25:43] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 11:36:23] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:36:24] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:36:26] [32minfo[39m: Filter: 
+[2025-07-30 12:06:24] [32minfo[39m: Filter: 
+[2025-07-30 12:11:11] [33mwarn[39m: Brand Not Found
+[2025-07-30 12:11:12] [33mwarn[39m: Brand Not Found
+[2025-07-30 12:11:14] [33mwarn[39m: Brand Not Found
+[2025-07-30 12:11:18] [33mwarn[39m: Brand Not Found
+[2025-07-30 12:11:20] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 12:11:25] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 12:12:36] error: Valid ID must be provided for update
+{
+  "stack": "Error: Valid ID must be provided for update\n    at updateConstantsDB (D:\\POS Backend\\src\\domain\\constants\\constants.repository.ts:60:11)\n    at ConstantsService.updateConstants (D:\\POS Backend\\src\\domain\\constants\\constants.services.ts:113:55)\n    at async updateConstants (D:\\POS Backend\\src\\api\\controllers\\constants\\constants.controller.ts:29:22)"
+}
+[2025-07-30 12:13:02] error: Valid ID must be provided for update
+{
+  "stack": "Error: Valid ID must be provided for update\n    at updateConstantsDB (D:\\POS Backend\\src\\domain\\constants\\constants.repository.ts:60:11)\n    at ConstantsService.updateConstants (D:\\POS Backend\\src\\domain\\constants\\constants.services.ts:113:55)\n    at async updateConstants (D:\\POS Backend\\src\\api\\controllers\\constants\\constants.controller.ts:29:22)"
+}
+[2025-07-30 12:13:32] warn: Brand Not Found
+[2025-07-30 12:13:33] warn: Brand Not Found
+[2025-07-30 12:13:35] warn: Brand Not Found
+[2025-07-30 12:13:39] warn: Brand Not Found
+[2025-07-30 12:13:49] warn: Brand Not Found
+[2025-07-30 12:13:50] warn: Brand Not Found
+[2025-07-30 12:13:52] warn: Brand Not Found
+[2025-07-30 12:13:54] info: Filter: 
+[2025-07-30 12:14:10] info: Filter: 
+[2025-07-30 12:14:21] info: Filter: 
+[2025-07-30 12:18:37] info: Filter: 
+[2025-07-30 12:18:55] warn: No supplies found for restoration
+{
+  "itemName": "coffee"
+}
+[2025-07-30 12:18:55] warn: No supplies found for restoration
+{
+  "itemName": "iced tea"
+}
+[2025-07-30 12:18:55] info: PERF: Fetch menu items completed in 3ms
+{
+  "count": 3,
+  "menuItems": [
+    {
+      "id": 3,
+      "title": "iced tea"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    }
+  ]
+}
+[2025-07-30 12:18:55] info: Processing supply updates
+{
+  "itemNames": [
+    "iced tea",
+    "coffee"
+  ]
+}
+[2025-07-30 12:18:55] warn: No supplies found for item
+{
+  "itemName": "coffee"
+}
+[2025-07-30 12:18:55] info: PERF: Supply updates completed in 149ms
+[2025-07-30 12:18:55] info: undefined
+[2025-07-30 12:18:55] info: PERF: updateOrder completed in 585ms
+{
+  "orderId": 102012,
+  "finalItemsCount": 3,
+  "newInvoiceId": 101022,
+  "newInvoiceVersion": 2
+}
+[2025-07-30 12:19:10] warn: No supplies found for restoration
+{
+  "itemName": "iced tea"
+}
+[2025-07-30 12:19:10] info: PERF: Fetch menu items completed in 2ms
+{
+  "count": 2,
+  "menuItems": [
+    {
+      "id": 3,
+      "title": "iced tea"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    }
+  ]
+}
+[2025-07-30 12:19:10] info: Processing supply updates
+{
+  "itemNames": [
+    "iced tea",
+    "coffee"
+  ]
+}
+[2025-07-30 12:19:10] warn: No supplies found for item
+{
+  "itemName": "coffee"
+}
+[2025-07-30 12:19:10] info: PERF: Supply updates completed in 139ms
+[2025-07-30 12:19:10] info: undefined
+[2025-07-30 12:19:10] info: PERF: updateOrder completed in 299ms
+{
+  "orderId": 102009,
+  "finalItemsCount": 2,
+  "newInvoiceId": 101023,
+  "newInvoiceVersion": 2
+}
+[2025-07-30 12:20:46] info: Filter: 
+[2025-07-30 12:20:50] info: PERF: Fetch menu items completed in 1ms
+{
+  "count": 3,
+  "menuItems": [
+    {
+      "id": 3,
+      "title": "iced tea"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    }
+  ]
+}
+[2025-07-30 12:20:50] info: Processing supply updates
+{
+  "itemNames": [
+    "iced tea",
+    "coffee"
+  ]
+}
+[2025-07-30 12:20:51] warn: No supplies found for item
+{
+  "itemName": "coffee"
+}
+[2025-07-30 12:20:51] info: PERF: Supply updates completed in 142ms
+[2025-07-30 12:20:51] info: undefined
+[2025-07-30 12:20:51] info: PERF: updateOrder completed in 159ms
+{
+  "orderId": 102014,
+  "finalItemsCount": 3,
+  "newInvoiceId": 101024,
+  "newInvoiceVersion": 2
+}
+[2025-07-30 12:21:14] info: PERF: Fetch menu items completed in 11ms
+{
+  "count": 27,
+  "menuItems": [
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 3,
+      "title": "iced tea"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 4,
+      "title": "Coffee"
+    },
+    {
+      "id": 3,
+      "title": "iced tea"
+    },
+    {
+      "id": 3,
+      "title": "iced tea"
+    },
+    {
+      "id": 3,
+      "title": "iced tea"
+    },
+    {
+      "id": 3,
+      "title": "iced tea"
+    },
+    {
+      "id": 3,
+      "title": "iced tea"
+    },
+    {
+      "id": 3,
+      "title": "iced tea"
+    },
+    {
+      "id": 3,
+      "title": "iced tea"
+    },
+    {
+      "id": 3,
+      "title": "iced tea"
+    }
+  ]
+}
+[2025-07-30 12:21:14] info: Processing supply updates
+{
+  "itemNames": [
+    "coffee",
+    "iced tea"
+  ]
+}
+[2025-07-30 12:21:15] warn: No supplies found for item
+{
+  "itemName": "coffee"
+}
+[2025-07-30 12:21:15] warn: No supplies found for item
+{
+  "itemName": "iced tea"
+}
+[2025-07-30 12:21:15] info: PERF: Supply updates completed in 284ms
+[2025-07-30 12:21:15] info: undefined
+[2025-07-30 12:21:15] info: PERF: updateOrder completed in 311ms
+{
+  "orderId": 102014,
+  "finalItemsCount": 27,
+  "newInvoiceId": 101025,
+  "newInvoiceVersion": 3
+}
+[2025-07-30 12:21:49] warn: Not Found
+[2025-07-30 12:22:25] warn: No Data Found
+[2025-07-30 12:22:25] warn: No Data Found
+[2025-07-30 12:22:25] warn: No Data Found
+[2025-07-30 12:22:26] warn: No Data Found
+[2025-07-30 12:22:35] warn: No Data Found
+[2025-07-30 12:22:35] info: Filter: 
+[2025-07-30 12:22:35] warn: No Data Found
+[2025-07-30 12:22:35] warn: No Data Found
+[2025-07-30 12:22:36] warn: No Data Found
+[2025-07-30 12:22:36] warn: No Data Found
+[2025-07-30 12:22:36] warn: No Data Found
+[2025-07-30 12:22:36] warn: No Data Found
+[2025-07-30 12:22:37] warn: No Data Found
+[2025-07-30 12:22:37] warn: No Data Found
+[2025-07-30 12:22:37] warn: No Data Found
+[2025-07-30 12:22:37] warn: No Data Found
+[2025-07-30 12:22:37] warn: No Data Found
+[2025-07-30 12:22:38] warn: No Data Found
+[2025-07-30 12:22:38] warn: No Data Found
+[2025-07-30 12:22:38] warn: No Data Found
+[2025-07-30 12:22:38] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:40] warn: No Data Found
+[2025-07-30 12:22:40] warn: No Data Found
+[2025-07-30 12:22:40] warn: No Data Found
+[2025-07-30 12:22:41] warn: No Data Found
+[2025-07-30 12:22:41] warn: No Data Found
+[2025-07-30 12:22:41] warn: No Data Found
+[2025-07-30 12:22:41] warn: No Data Found
+[2025-07-30 12:22:41] warn: No Data Found
+[2025-07-30 12:22:50] warn: No Data Found
+[2025-07-30 12:22:51] warn: No Data Found
+[2025-07-30 12:22:51] warn: No Data Found
+[2025-07-30 12:22:52] warn: No Data Found
+[2025-07-30 12:23:05] info: Filter: 
+[2025-07-30 12:23:34] info: Filter: 
+[2025-07-30 12:24:09] info: Filter: 
+[2025-07-30 12:26:48] info: Filter: 
+[2025-07-30 12:27:18] info: Filter: 
+[2025-07-30 12:37:40] info: Filter: 
+[2025-07-30 12:41:12] warn: No Data Found
+[2025-07-30 12:41:16] warn: No Data Found
+[2025-07-30 12:41:25] info: Filter: 
+[2025-07-30 12:41:25] warn: No Data Found
+[2025-07-30 12:41:25] warn: No Data Found
+[2025-07-30 12:41:25] warn: No Data Found
+[2025-07-30 12:41:26] warn: No Data Found
+[2025-07-30 12:41:35] warn: No Data Found
+[2025-07-30 12:41:35] warn: No Data Found
+[2025-07-30 12:41:36] warn: No Data Found
+[2025-07-30 12:42:07] warn: No Data Found
+[2025-07-30 12:42:07] warn: No Data Found
+[2025-07-30 12:42:08] warn: No Data Found
+[2025-07-30 13:12:14] info: Filter: 
+[2025-07-30 13:23:47] info: Filter: 
+[2025-07-30 13:25:49] warn: No Data Found
+[2025-07-30 13:25:49] warn: No Data Found
+[2025-07-30 13:25:49] warn: No Data Found
+[2025-07-30 13:25:50] warn: No Data Found
+[2025-07-30 13:25:51] warn: No Data Found
+[2025-07-30 13:25:51] warn: No Data Found
+[2025-07-30 13:25:51] warn: No Data Found
+[2025-07-30 13:25:52] warn: No Data Found
+[2025-07-30 13:25:52] warn: No Data Found
+[2025-07-30 13:25:52] warn: No Data Found
+[2025-07-30 13:37:19] info: Filter: 
+[2025-07-30 13:52:34] info: Filter: 
+[2025-07-30 13:53:21] info: Filter: 
+[2025-07-30 13:59:25] warn: No Data Found
+[2025-07-30 13:59:25] warn: No Data Found
+[2025-07-30 13:59:25] warn: No Data Found
+[2025-07-30 13:59:26] warn: No Data Found
+[2025-07-30 13:59:51] info: Filter: 
+[2025-07-30 14:01:01] info: Filter: 
+[2025-07-30 14:01:56] info: Filter: 
+[2025-07-30 14:01:56] warn: No Data Found
+[2025-07-30 14:01:56] warn: No Data Found
+[2025-07-30 14:01:56] warn: No Data Found
+[2025-07-30 14:01:57] warn: No Data Found
+[2025-07-30 14:01:58] warn: No Data Found
+[2025-07-30 14:01:58] warn: No Data Found
+[2025-07-30 14:01:58] warn: No Data Found
+[2025-07-30 14:01:58] warn: No Data Found
+[2025-07-30 14:01:59] warn: No Data Found
+[2025-07-30 14:01:59] warn: No Data Found
+[2025-07-30 14:01:59] warn: No Data Found
+[2025-07-30 14:02:58] info: Filter: 
+[2025-07-30 14:03:04] warn: No Data Found
+[2025-07-30 14:03:04] warn: No Data Found
+[2025-07-30 14:03:04] warn: No Data Found
+[2025-07-30 14:03:05] warn: No Data Found
+[2025-07-30 14:03:11] warn: No Data Found
+[2025-07-30 14:03:12] warn: No Data Found
+[2025-07-30 14:03:12] warn: No Data Found
+[2025-07-30 14:03:12] warn: No Data Found
+[2025-07-30 14:03:13] warn: No Data Found
+[2025-07-30 14:03:25] warn: No Data Found
+[2025-07-30 14:03:25] warn: No Data Found
+[2025-07-30 14:03:25] warn: No Data Found
+[2025-07-30 14:03:26] warn: No Data Found
+[2025-07-30 14:04:02] warn: No Data Found
+[2025-07-30 14:04:02] warn: No Data Found
+[2025-07-30 14:04:02] warn: No Data Found
+[2025-07-30 14:04:03] warn: No Data Found
+[2025-07-30 14:04:04] warn: No Data Found
+[2025-07-30 14:04:04] warn: No Data Found
+[2025-07-30 14:04:05] warn: No Data Found
+[2025-07-30 14:04:05] warn: No Data Found
+[2025-07-30 14:04:05] warn: No Data Found
+[2025-07-30 14:04:05] warn: No Data Found
+[2025-07-30 14:04:36] warn: No Data Found
+[2025-07-30 14:04:36] warn: No Data Found
+[2025-07-30 14:04:36] warn: No Data Found
+[2025-07-30 14:04:37] warn: No Data Found
+[2025-07-30 14:06:00] warn: No Data Found
+[2025-07-30 14:06:00] info: Filter: 
+[2025-07-30 14:06:00] warn: No Data Found
+[2025-07-30 14:06:00] warn: No Data Found
+[2025-07-30 14:06:01] warn: No Data Found
+[2025-07-30 14:06:02] warn: No Data Found
+[2025-07-30 14:06:02] warn: No Data Found
+[2025-07-30 14:06:03] warn: No Data Found
+[2025-07-30 14:06:03] warn: No Data Found
+[2025-07-30 14:07:21] warn: No Data Found
+[2025-07-30 14:07:21] warn: No Data Found
+[2025-07-30 14:07:21] warn: No Data Found
+[2025-07-30 14:07:22] warn: No Data Found
+[2025-07-30 14:07:59] warn: No Data Found
+[2025-07-30 14:07:59] info: Filter: 
+[2025-07-30 14:07:59] warn: No Data Found
+[2025-07-30 14:07:59] warn: No Data Found
+[2025-07-30 14:08:00] warn: No Data Found
+[2025-07-30 14:08:00] warn: No Data Found
+[2025-07-30 14:08:00] warn: No Data Found
+[2025-07-30 14:08:17] warn: No Data Found
+[2025-07-30 14:08:17] warn: No Data Found
+[2025-07-30 14:08:17] warn: No Data Found
+[2025-07-30 14:08:18] warn: No Data Found
+[2025-07-30 14:08:43] warn: No Data Found
+[2025-07-30 14:08:43] info: Filter: 
+[2025-07-30 14:08:43] warn: No Data Found
+[2025-07-30 14:08:43] warn: No Data Found
+[2025-07-30 14:08:44] warn: No Data Found
+[2025-07-30 14:08:53] warn: No Data Found
+[2025-07-30 14:08:53] warn: No Data Found
+[2025-07-30 14:08:54] warn: No Data Found
+[2025-07-30 14:08:54] warn: No Data Found
+[2025-07-30 14:08:55] warn: No Data Found
+[2025-07-30 14:08:55] warn: No Data Found
+[2025-07-30 14:09:12] warn: No Data Found
+[2025-07-30 14:09:12] warn: No Data Found
+[2025-07-30 14:09:12] warn: No Data Found
+[2025-07-30 14:09:13] warn: No Data Found
+[2025-07-30 14:09:31] warn: No Data Found
+[2025-07-30 14:09:31] warn: No Data Found
+[2025-07-30 14:09:31] warn: No Data Found
+[2025-07-30 14:09:32] warn: No Data Found
+[2025-07-30 14:09:32] warn: No Data Found
+[2025-07-30 14:09:32] warn: No Data Found
+[2025-07-30 14:09:33] warn: No Data Found
+[2025-07-30 14:09:33] warn: No Data Found
+[2025-07-30 14:09:33] warn: No Data Found
+[2025-07-30 14:09:45] warn: No Data Found
+[2025-07-30 14:09:45] warn: No Data Found
+[2025-07-30 14:09:45] warn: No Data Found
+[2025-07-30 14:09:46] warn: No Data Found
+[2025-07-30 14:10:10] warn: No Data Found
+[2025-07-30 14:10:10] warn: No Data Found
+[2025-07-30 14:10:11] warn: No Data Found
+[2025-07-30 14:10:11] warn: No Data Found
+[2025-07-30 14:10:12] warn: No Data Found
+[2025-07-30 14:10:35] warn: No Data Found
+[2025-07-30 14:10:35] warn: No Data Found
+[2025-07-30 14:10:35] warn: No Data Found
+[2025-07-30 14:10:36] warn: No Data Found
+[2025-07-30 14:11:12] warn: No Data Found
+[2025-07-30 14:11:13] warn: No Data Found
+[2025-07-30 14:12:14] warn: No Data Found
+[2025-07-30 14:12:14] warn: No Data Found
+[2025-07-30 14:12:14] warn: No Data Found
+[2025-07-30 14:12:15] warn: No Data Found
+[2025-07-30 14:13:39] warn: No Data Found
+[2025-07-30 14:13:39] warn: No Data Found
+[2025-07-30 14:13:39] warn: No Data Found
+[2025-07-30 14:13:40] warn: No Data Found
+[2025-07-30 14:13:40] warn: No Data Found
+[2025-07-30 14:13:40] warn: No Data Found
+[2025-07-30 14:13:40] warn: No Data Found
+[2025-07-30 14:13:41] warn: No Data Found
+[2025-07-30 14:13:41] warn: No Data Found
+[2025-07-30 14:13:41] warn: No Data Found
+[2025-07-30 14:13:41] warn: No Data Found
+[2025-07-30 14:13:41] warn: No Data Found
+[2025-07-30 14:14:05] warn: No Data Found
+[2025-07-30 14:14:05] warn: No Data Found
+[2025-07-30 14:14:05] warn: No Data Found
+[2025-07-30 14:14:07] warn: No Data Found
+[2025-07-30 14:17:27] warn: No Data Found
+[2025-07-30 14:17:27] warn: No Data Found
+[2025-07-30 14:17:29] warn: No Data Found
+[2025-07-30 14:30:02] info: Filter: 
+[2025-07-30 14:30:49] info: Filter: 
+[2025-07-30 14:32:32] warn: No Data Found
+[2025-07-30 14:32:32] warn: No Data Found
+[2025-07-30 14:32:32] warn: No Data Found
+[2025-07-30 14:32:33] warn: No Data Found
+[2025-07-30 14:32:36] warn: No Data Found
+[2025-07-30 14:32:37] warn: No Data Found
+[2025-07-30 14:33:16] warn: No Data Found
+[2025-07-30 14:33:16] warn: No Data Found
+[2025-07-30 14:33:16] warn: No Data Found
+[2025-07-30 14:33:17] warn: No Data Found
+[2025-07-30 14:33:48] warn: No Data Found
+[2025-07-30 14:33:48] info: Filter: 
+[2025-07-30 14:33:48] warn: No Data Found
+[2025-07-30 14:33:48] warn: No Data Found
+[2025-07-30 14:33:49] warn: No Data Found
+[2025-07-30 14:33:57] warn: No Data Found
+[2025-07-30 14:33:58] warn: No Data Found
+[2025-07-30 14:34:29] warn: No Data Found
+[2025-07-30 14:34:29] warn: No Data Found
+[2025-07-30 14:34:29] warn: No Data Found
+[2025-07-30 14:34:31] warn: No Data Found
+[2025-07-30 14:34:40] warn: No Data Found
+[2025-07-30 14:34:40] info: Filter: 
+[2025-07-30 14:34:40] warn: No Data Found
+[2025-07-30 14:34:40] warn: No Data Found
+[2025-07-30 14:34:41] warn: No Data Found
+[2025-07-30 14:34:43] warn: No Data Found
+[2025-07-30 14:34:43] warn: No Data Found
+[2025-07-30 14:34:49] warn: No Data Found
+[2025-07-30 14:34:49] warn: No Data Found
+[2025-07-30 14:34:49] warn: No Data Found
+[2025-07-30 14:34:50] warn: No Data Found
+[2025-07-30 14:35:39] warn: No Data Found
+[2025-07-30 14:35:40] warn: No Data Found
+[2025-07-30 14:35:56] warn: No Data Found
+[2025-07-30 14:35:56] warn: No Data Found
+[2025-07-30 14:35:56] warn: No Data Found
+[2025-07-30 14:35:57] warn: No Data Found
+[2025-07-30 14:43:59] warn: No Data Found
+[2025-07-30 14:43:59] info: Filter: 
+[2025-07-30 14:43:59] warn: No Data Found
+[2025-07-30 14:43:59] warn: No Data Found
+[2025-07-30 14:44:00] warn: No Data Found
+[2025-07-30 14:44:41] warn: No Data Found
+[2025-07-30 14:44:41] info: Filter: 
+[2025-07-30 14:44:41] warn: No Data Found
+[2025-07-30 14:44:41] warn: No Data Found
+[2025-07-30 14:44:42] warn: No Data Found
+[2025-07-30 14:44:44] warn: No Data Found
+[2025-07-30 14:44:44] warn: No Data Found
+[2025-07-30 14:44:45] warn: No Data Found
+[2025-07-30 14:44:46] warn: No Data Found
+[2025-07-30 14:46:08] warn: No Data Found
+[2025-07-30 14:46:08] warn: No Data Found
+[2025-07-30 14:46:08] warn: No Data Found
+[2025-07-30 14:46:09] warn: No Data Found
+[2025-07-30 14:48:12] warn: No Data Found
+[2025-07-30 14:48:12] warn: No Data Found
+[2025-07-30 14:48:13] warn: No Data Found
+[2025-07-30 14:48:15] warn: No Data Found
+[2025-07-30 14:48:15] info: Filter: 
+[2025-07-30 14:48:15] warn: No Data Found
+[2025-07-30 14:48:15] warn: No Data Found
+[2025-07-30 14:48:17] warn: No Data Found
+[2025-07-30 14:48:25] warn: No Data Found
+[2025-07-30 14:48:26] warn: No Data Found
+[2025-07-30 14:48:40] warn: No Data Found
+[2025-07-30 14:48:40] warn: No Data Found
+[2025-07-30 14:48:41] warn: No Data Found
+[2025-07-30 14:48:42] warn: No Data Found
+[2025-07-30 14:51:33] info: Filter: 
+[2025-07-30 14:51:33] warn: No Data Found
+[2025-07-30 14:51:33] warn: No Data Found
+[2025-07-30 14:51:33] warn: No Data Found
+[2025-07-30 14:51:34] warn: No Data Found
+[2025-07-30 14:51:38] warn: No Data Found
+[2025-07-30 14:51:39] warn: No Data Found
+[2025-07-30 14:51:49] warn: No Data Found
+[2025-07-30 14:51:49] warn: No Data Found
+[2025-07-30 14:51:49] warn: No Data Found
+[2025-07-30 14:51:50] warn: No Data Found
+[2025-07-30 15:16:28] warn: No Data Found
+[2025-07-30 15:16:28] warn: Not Data Found
+[2025-07-30 15:16:29] warn: No Data Found
+[2025-07-30 15:16:29] warn: Not Data Found
+[2025-07-30 15:16:31] warn: Not Data Found
+[2025-07-30 15:16:31] warn: No Data Found
+[2025-07-30 15:16:35] warn: Not Data Found
+[2025-07-30 15:16:35] warn: No Data Found
+[2025-07-30 15:16:38] warn: No Data Found
+[2025-07-30 15:17:23] info: Filter: 
+[2025-07-30 15:17:23] warn: Get Categories Service Has No Entries.
+[2025-07-30 15:17:23] warn: No subcategories found.
+[2025-07-30 15:17:24] warn: No subcategories found.
+[2025-07-30 15:17:26] warn: No subcategories found.
+[2025-07-30 15:17:30] warn: No subcategories found.
+[2025-07-30 15:18:04] info: Created uploads directory: D:\POS Backend\backend\uploads\images
+[2025-07-30 15:18:21] info: Image uploaded successfully: http://localhost:3001/api/images/9b5ad86d-1b13-4552-91de-502473f35e05/6b39fc92-210d-4001-acc8-eadbf9f19aa0-fresh.png
+[2025-07-30 15:18:21] info: Image uploaded successfully: http://localhost:3001/api/images/9b5ad86d-1b13-4552-91de-502473f35e05/6b39fc92-210d-4001-acc8-eadbf9f19aa0-fresh.png
+[2025-07-30 15:18:21] info: Filter: 
+[2025-07-30 15:18:30] warn: No subcategories found.
+[2025-07-30 15:18:32] warn: No subcategories found.
+[2025-07-30 15:18:36] warn: No subcategories found.
+[2025-07-30 15:19:08] info: Image uploaded successfully: http://localhost:3001/api/images/8bb1a435-f8e3-4261-b723-a0c966dc2a7e/2d605913-d922-4615-9a4b-0831ea196a9f-iced-tea.png
+[2025-07-30 15:19:08] info: Image uploaded successfully: http://localhost:3001/api/images/8bb1a435-f8e3-4261-b723-a0c966dc2a7e/2d605913-d922-4615-9a4b-0831ea196a9f-iced-tea.png
+[2025-07-30 15:19:18] warn: No Printers Found
+[2025-07-30 15:19:21] warn: NOT FOUND
+[2025-07-30 15:19:22] warn: No Printers Found
+[2025-07-30 15:19:46] info: Image uploaded successfully: http://localhost:3001/api/images/39cc2d9d-78b3-4e13-81fb-1e1e241b744d/df527541-0fad-40fd-ab15-9e29d7876b6c-iced-tea.png
+[2025-07-30 15:19:46] info: Image uploaded successfully: http://localhost:3001/api/images/39cc2d9d-78b3-4e13-81fb-1e1e241b744d/df527541-0fad-40fd-ab15-9e29d7876b6c-iced-tea.png
+[2025-07-30 15:19:46] error: Menu item Service:  
+Invalid `prisma.menuItem.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
+{
+  "code": "P2003",
+  "meta": {
+    "modelName": "MenuItem",
+    "constraint": "MenuItem_printersId_fkey"
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.menuItem.create()` invocation:\n\n\nForeign key constraint violated on the constraint: `MenuItem_printersId_fkey`\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async MenuItemServices.createItem (D:\\POS Backend\\src\\domain\\item\\item.services.ts:270:27)\n    at async createItem (D:\\POS Backend\\src\\api\\controllers\\storage\\item.controller.ts:65:18)"
+}
+[2025-07-30 15:19:58] warn: Brand Not Found
+[2025-07-30 15:19:59] warn: Brand Not Found
+[2025-07-30 15:19:59] warn: NOT FOUND
+[2025-07-30 15:20:00] warn: NOT FOUND
+[2025-07-30 15:20:01] warn: Brand Not Found
+[2025-07-30 15:20:02] warn: No Printers Found
+[2025-07-30 15:20:03] warn: No Printers Found
+[2025-07-30 15:20:05] warn: Brand Not Found
+[2025-07-30 15:20:05] warn: No Printers Found
+[2025-07-30 15:20:06] warn: No Printers Found
+[2025-07-30 15:20:08] warn: No Printers Found
+[2025-07-30 15:20:12] warn: No Printers Found
+[2025-07-30 15:20:25] warn: NOT FOUND
+[2025-07-30 15:20:26] warn: NOT FOUND
+[2025-07-30 15:20:28] warn: NOT FOUND
+[2025-07-30 15:20:34] info: Filter: 
+[2025-07-30 15:20:35] warn: NOT FOUND
+[2025-07-30 15:20:37] warn: NOT FOUND
+[2025-07-30 15:20:39] warn: NOT FOUND
+[2025-07-30 15:20:43] warn: NOT FOUND
+[2025-07-30 15:21:06] info: Image uploaded successfully: http://localhost:3001/api/images/2b75c4ac-ed07-4ac2-ab2e-59479b384307/203dd432-4db1-46ab-a70b-6c2b9c88613a-iced-tea.png
+[2025-07-30 15:21:06] info: Image uploaded successfully: http://localhost:3001/api/images/2b75c4ac-ed07-4ac2-ab2e-59479b384307/203dd432-4db1-46ab-a70b-6c2b9c88613a-iced-tea.png
+[2025-07-30 15:21:41] info: Image uploaded successfully: http://localhost:3001/api/images/30abfef3-b7af-4221-86f3-b507eb10ce4c/836b55d5-dd7c-4a81-ac9f-fa8e28f1964b-fresh.png
+[2025-07-30 15:21:41] info: Image uploaded successfully: http://localhost:3001/api/images/30abfef3-b7af-4221-86f3-b507eb10ce4c/836b55d5-dd7c-4a81-ac9f-fa8e28f1964b-fresh.png
+[2025-07-30 15:22:11] info: Image uploaded successfully: http://localhost:3001/api/images/d6ff7e06-6aea-42d3-88c1-f952e6617be5/9ec4aa4e-eb8c-44bb-9cc6-694e87bfaafa-image-14.png
+[2025-07-30 15:22:11] info: Image uploaded successfully: http://localhost:3001/api/images/d6ff7e06-6aea-42d3-88c1-f952e6617be5/9ec4aa4e-eb8c-44bb-9cc6-694e87bfaafa-image-14.png
+[2025-07-30 15:22:11] info: Filter: 
+[2025-07-30 15:22:33] info: Image uploaded successfully: http://localhost:3001/api/images/2476eded-a441-42a1-8cf7-6345a69ca783/8b5dc98c-ed9f-40c4-b079-5c27e1c01603-image-16.png
+[2025-07-30 15:22:33] info: Image uploaded successfully: http://localhost:3001/api/images/2476eded-a441-42a1-8cf7-6345a69ca783/8b5dc98c-ed9f-40c4-b079-5c27e1c01603-image-16.png
+[2025-07-30 15:23:16] info: Image uploaded successfully: http://localhost:3001/api/images/62f6b051-bcc1-4895-bade-51ea9aa23d5f/f5d76e23-5fdf-4619-bbb7-ab6120cc569d-image-16.png
+[2025-07-30 15:23:16] info: Image uploaded successfully: http://localhost:3001/api/images/62f6b051-bcc1-4895-bade-51ea9aa23d5f/f5d76e23-5fdf-4619-bbb7-ab6120cc569d-image-16.png
+[2025-07-30 15:23:41] info: Image uploaded successfully: http://localhost:3001/api/images/71dfe00c-683b-4353-b457-5070e7924f32/7a0dd326-d726-4109-9ad8-4e12cbd3b2a1-image-14.png
+[2025-07-30 15:23:41] info: Image uploaded successfully: http://localhost:3001/api/images/71dfe00c-683b-4353-b457-5070e7924f32/7a0dd326-d726-4109-9ad8-4e12cbd3b2a1-image-14.png
+[2025-07-30 15:23:51] warn: No Data Found
+[2025-07-30 15:23:51] warn: No Data Found
+[2025-07-30 15:23:51] warn: No Data Found
+[2025-07-30 15:23:52] warn: No Data Found
+[2025-07-30 15:24:06] warn: No Data Found
+[2025-07-30 15:24:06] info: Filter: 
+[2025-07-30 15:24:06] warn: No Data Found
+[2025-07-30 15:24:06] warn: No Data Found
+[2025-07-30 15:24:33] warn: No Data Found
+[2025-07-30 15:24:43] warn: No Data Found
+[2025-07-30 15:24:43] info: Filter: 
+[2025-07-30 15:24:43] warn: No Data Found
+[2025-07-30 15:24:43] warn: No Data Found
+[2025-07-30 15:24:44] warn: No Data Found
+[2025-07-30 15:25:43] warn: No Data Found
+[2025-07-30 15:25:45] warn: No Data Found
+[2025-07-30 15:25:45] warn: No Data Found
+[2025-07-30 15:27:52] warn: No Data Found
+[2025-07-30 15:29:19] warn: Not Found
+[2025-07-30 15:29:31] warn: Not Found
+[2025-07-30 15:30:00] warn: Not Found
+[2025-07-30 15:31:16] warn: Not Found
+[2025-07-30 15:32:07] info: Filter: 
+[2025-07-30 15:32:10] warn: No Data Found
+[2025-07-30 15:32:11] warn: No Data Found
+[2025-07-30 15:32:11] warn: No Data Found
+[2025-07-30 15:33:11] warn: No Data Found
+[2025-07-30 15:33:11] info: Filter: 
+[2025-07-30 15:33:11] warn: No Data Found
+[2025-07-30 15:33:11] warn: No Data Found
+[2025-07-30 15:33:12] warn: No Data Found
+[2025-07-30 15:42:34] info: Filter: 
+[2025-07-30 15:42:34] warn: No Data Found
+[2025-07-30 15:42:34] warn: No Data Found
+[2025-07-30 15:42:34] warn: No Data Found
+[2025-07-30 15:42:35] warn: No Data Found
+[2025-07-30 15:42:52] warn: No Data Found
+[2025-07-30 15:42:53] warn: No Data Found
+[2025-07-30 15:42:54] warn: No Data Found
+[2025-07-30 15:42:56] warn: No Data Found
+[2025-07-30 15:42:56] warn: No Data Found
+[2025-07-30 15:43:09] warn: No Data Found
+[2025-07-30 15:43:10] warn: No Data Found
+[2025-07-30 15:43:10] warn: No Data Found
+[2025-07-30 15:43:13] warn: No Data Found
+[2025-07-30 15:43:13] warn: No Data Found
+[2025-07-30 15:43:13] warn: No Data Found
+[2025-07-30 15:43:15] warn: No Data Found
+[2025-07-30 15:43:15] warn: No Data Found
+[2025-07-30 15:48:33] info: Filter: 
+[2025-07-30 16:02:18] warn: Brand Not Found
+[2025-07-30 16:02:19] warn: Brand Not Found
+[2025-07-30 16:02:21] warn: Brand Not Found
+[2025-07-30 16:02:25] warn: Brand Not Found
+[2025-07-30 16:02:46] warn: Brand Not Found
+[2025-07-30 16:02:47] warn: Brand Not Found
+[2025-07-30 16:02:49] warn: Brand Not Found
+[2025-07-30 16:02:53] warn: Brand Not Found
+[2025-07-30 16:02:54] warn: Brand Not Found
+[2025-07-30 16:02:56] warn: Brand Not Found
+[2025-07-30 16:03:00] warn: Brand Not Found
+[2025-07-30 16:03:11] warn: Brand Not Found
+[2025-07-30 16:03:12] warn: Brand Not Found
+[2025-07-30 16:03:31] warn: Brand Not Found
+[2025-07-30 16:03:35] warn: Brand Not Found
+[2025-07-30 16:03:59] warn: Brand Not Found
+[2025-07-30 16:04:00] warn: Brand Not Found
+[2025-07-30 16:04:18] warn: Brand Not Found
+[2025-07-30 16:04:31] warn: Brand Not Found
+[2025-07-30 16:04:31] warn: Brand Not Found
+[2025-07-30 16:04:32] warn: Brand Not Found
+[2025-07-30 16:04:34] warn: Brand Not Found
+[2025-07-30 16:04:46] warn: Brand Not Found
+[2025-07-30 16:04:46] warn: Brand Not Found
+[2025-07-30 16:04:47] warn: Brand Not Found
+[2025-07-30 16:04:52] warn: Brand Not Found
+[2025-07-30 16:05:03] warn: Brand Not Found
+[2025-07-30 16:05:04] warn: Brand Not Found
+[2025-07-30 16:05:05] warn: Brand Not Found
+[2025-07-30 16:05:24] warn: Brand Not Found
+[2025-07-30 16:07:01] warn: Brand Not Found
+[2025-07-30 16:07:56] warn: Brand Not Found
+[2025-07-30 16:07:57] warn: Brand Not Found
+[2025-07-30 16:07:59] warn: Brand Not Found
+[2025-07-30 16:08:03] warn: Brand Not Found
+[2025-07-30 16:10:47] info: Image uploaded successfully: http://localhost:3001/api/images/aacb4847-dc80-43b4-8f2f-bcaf5c44c23f/400f4467-f5a8-4d73-9327-e444708d5086-interlinked.png
+[2025-07-30 16:10:47] info: Image uploaded successfully: http://localhost:3001/api/images/aacb4847-dc80-43b4-8f2f-bcaf5c44c23f/400f4467-f5a8-4d73-9327-e444708d5086-interlinked.png
+[2025-07-30 16:11:38] info: Image uploaded successfully: http://localhost:3001/api/images/5ce02c36-4fd1-4d20-929c-dc6db4166117/ef7173bc-46bf-493d-9c2b-ea07c8ed0e94-interlinked.png
+[2025-07-30 16:11:38] info: Image uploaded successfully: http://localhost:3001/api/images/5ce02c36-4fd1-4d20-929c-dc6db4166117/ef7173bc-46bf-493d-9c2b-ea07c8ed0e94-interlinked.png
+[2025-07-30 16:19:41] info: Filter: 
+[2025-07-30 16:31:38] info: Filter: 
+[2025-07-30 16:32:14] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:32:26] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:32:39] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:32:43] info: Filter: 
+[2025-07-30 16:32:54] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:32:58] info: Filter: 
+[2025-07-30 16:33:12] info: Filter: 
+[2025-07-30 16:33:33] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:34:52] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:35:38] info: Filter: 
+[2025-07-30 16:35:53] info: Filter: 
+[2025-07-30 16:36:02] warn: No supplies found for restoration
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 16:36:02] info: PERF: Fetch menu items completed in 4ms
+{
+  "count": 4,
+  "menuItems": [
+    {
+      "id": 4,
+      "title": "CHICKEN"
+    },
+    {
+      "id": 5,
+      "title": "FRIES"
+    },
+    {
+      "id": 5,
+      "title": "FRIES"
+    },
+    {
+      "id": 3,
+      "title": "LEMONAZA"
+    }
+  ]
+}
+[2025-07-30 16:36:02] info: Processing supply updates
+{
+  "itemNames": [
+    "chicken",
+    "fries",
+    "lemonaza"
+  ]
+}
+[2025-07-30 16:36:02] warn: No supplies found for item
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 16:36:02] info: PERF: Supply updates completed in 3ms
+[2025-07-30 16:36:02] info: undefined
+[2025-07-30 16:36:02] info: PERF: updateOrder completed in 38ms
+{
+  "orderId": 3,
+  "finalItemsCount": 4,
+  "newInvoiceId": 4,
+  "newInvoiceVersion": 2
+}
+[2025-07-30 16:36:06] info: Filter: 
+[2025-07-30 16:36:10] info: PERF: Fetch menu items completed in 3ms
+{
+  "count": 5,
+  "menuItems": [
+    {
+      "id": 4,
+      "title": "CHICKEN"
+    },
+    {
+      "id": 5,
+      "title": "FRIES"
+    },
+    {
+      "id": 5,
+      "title": "FRIES"
+    },
+    {
+      "id": 3,
+      "title": "LEMONAZA"
+    },
+    {
+      "id": 3,
+      "title": "LEMONAZA"
+    }
+  ]
+}
+[2025-07-30 16:36:10] info: Processing supply updates
+{
+  "itemNames": [
+    "chicken",
+    "fries",
+    "lemonaza"
+  ]
+}
+[2025-07-30 16:36:10] warn: No supplies found for item
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 16:36:10] info: PERF: Supply updates completed in 2ms
+[2025-07-30 16:36:10] info: undefined
+[2025-07-30 16:36:10] info: PERF: updateOrder completed in 22ms
+{
+  "orderId": 3,
+  "finalItemsCount": 5,
+  "newInvoiceId": 5,
+  "newInvoiceVersion": 3
+}
+[2025-07-30 16:36:28] warn: No supplies found for restoration
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 16:36:28] info: PERF: Fetch menu items completed in 4ms
+{
+  "count": 5,
+  "menuItems": [
+    {
+      "id": 4,
+      "title": "CHICKEN"
+    },
+    {
+      "id": 5,
+      "title": "FRIES"
+    },
+    {
+      "id": 5,
+      "title": "FRIES"
+    },
+    {
+      "id": 3,
+      "title": "LEMONAZA"
+    },
+    {
+      "id": 3,
+      "title": "LEMONAZA"
+    }
+  ]
+}
+[2025-07-30 16:36:28] info: Processing supply updates
+{
+  "itemNames": [
+    "chicken",
+    "fries",
+    "lemonaza"
+  ]
+}
+[2025-07-30 16:36:28] info: PERF: Supply updates completed in 0ms
+[2025-07-30 16:36:28] info: undefined
+[2025-07-30 16:36:28] info: PERF: updateOrder completed in 23ms
+{
+  "orderId": 3,
+  "finalItemsCount": 5,
+  "newInvoiceId": 6,
+  "newInvoiceVersion": 4
+}
+[2025-07-30 16:36:32] info: Filter: 
+[2025-07-30 16:37:07] info: Filter: 
+[2025-07-30 16:38:56] warn: No Data Found
+[2025-07-30 16:38:56] warn: No Data Found
+[2025-07-30 16:38:56] warn: No Data Found
+[2025-07-30 16:38:56] warn: No Data Found
+[2025-07-30 16:38:57] warn: No Data Found
+[2025-07-30 16:39:26] warn: No Data Found
+[2025-07-30 16:39:26] warn: No Data Found
+[2025-07-30 16:39:26] warn: No Data Found
+[2025-07-30 16:39:28] warn: No Data Found
+[2025-07-30 16:39:33] warn: Customers Not Found
+[2025-07-30 16:39:34] warn: Customers Not Found
+[2025-07-30 16:39:35] warn: Customers Not Found
+[2025-07-30 16:39:36] warn: Customers Not Found
+[2025-07-30 16:42:40] warn: No Data Found
+[2025-07-30 16:42:40] info: Filter: 
+[2025-07-30 16:42:40] warn: No Data Found
+[2025-07-30 16:42:40] warn: No Data Found
+[2025-07-30 16:42:41] warn: No Data Found
+[2025-07-30 16:42:45] warn: No Data Found
+[2025-07-30 16:42:45] warn: No Data Found
+[2025-07-30 16:42:47] warn: No Data Found
+[2025-07-30 16:42:47] warn: No Data Found
+[2025-07-30 16:42:49] warn: No Data Found
+[2025-07-30 16:43:30] warn: No Data Found
+[2025-07-30 16:43:30] warn: No Data Found
+[2025-07-30 16:43:30] warn: No Data Found
+[2025-07-30 16:43:31] warn: No Data Found
+[2025-07-30 16:45:31] info: Filter: 
+[2025-07-30 16:45:31] warn: No Data Found
+[2025-07-30 16:45:31] warn: No Data Found
+[2025-07-30 16:45:31] warn: No Data Found
+[2025-07-30 16:45:32] warn: No Data Found
+[2025-07-30 16:45:36] warn: No Data Found
+[2025-07-30 16:45:36] warn: No Data Found
+[2025-07-30 16:45:39] warn: No Data Found
+[2025-07-30 16:45:39] warn: No Data Found
+[2025-07-30 16:45:40] warn: No Data Found
+[2025-07-30 16:46:10] warn: No supplies found for restoration
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 16:46:10] info: PERF: Fetch menu items completed in 2ms
+{
+  "count": 4,
+  "menuItems": [
+    {
+      "id": 3,
+      "title": "LEMONAZA"
+    },
+    {
+      "id": 5,
+      "title": "FRIES"
+    },
+    {
+      "id": 5,
+      "title": "FRIES"
+    },
+    {
+      "id": 4,
+      "title": "CHICKEN"
+    }
+  ]
+}
+[2025-07-30 16:46:10] info: Processing supply updates
+{
+  "itemNames": [
+    "lemonaza",
+    "fries",
+    "chicken"
+  ]
+}
+[2025-07-30 16:46:10] warn: No supplies found for item
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 16:46:10] info: PERF: Supply updates completed in 2ms
+[2025-07-30 16:46:10] info: undefined
+[2025-07-30 16:46:11] info: PERF: updateOrder completed in 31ms
+{
+  "orderId": 5,
+  "finalItemsCount": 4,
+  "newInvoiceId": 9,
+  "newInvoiceVersion": 2
+}
+[2025-07-30 17:04:43] info: Filter: 
+[2025-07-30 17:04:51] warn: No Data Found
+[2025-07-30 17:04:51] warn: No Data Found
+[2025-07-30 17:04:51] warn: No Data Found
+[2025-07-30 17:04:52] warn: No Data Found
+[2025-07-30 17:05:14] warn: No Data Found
+[2025-07-30 17:05:14] info: Filter: 
+[2025-07-30 17:05:14] warn: No Data Found
+[2025-07-30 17:05:14] warn: No Data Found
+[2025-07-30 17:05:15] warn: No Data Found
+[2025-07-30 17:05:15] warn: No Data Found
+[2025-07-30 17:05:16] warn: No Data Found
+[2025-07-30 17:05:16] warn: No Data Found
+[2025-07-30 17:05:17] warn: No Data Found
+[2025-07-30 17:08:48] info: Filter: 
+[2025-07-30 17:08:55] warn: No Data Found
+[2025-07-30 17:08:55] warn: No Data Found
+[2025-07-30 17:08:55] warn: No Data Found
+[2025-07-30 17:08:56] warn: No Data Found
+[2025-07-30 17:09:07] warn: No Data Found
+[2025-07-30 17:09:07] warn: No Data Found
+[2025-07-30 17:09:08] warn: No Data Found
+[2025-07-30 17:09:09] warn: No Data Found
+[2025-07-30 17:09:09] warn: No Data Found
+[2025-07-30 17:09:09] warn: No Data Found
+[2025-07-30 17:09:27] warn: No Data Found
+[2025-07-30 17:09:27] warn: No Data Found
+[2025-07-30 17:09:27] warn: No Data Found
+[2025-07-30 17:09:27] warn: No Data Found
+[2025-07-30 17:09:28] warn: No Data Found
+[2025-07-30 17:09:35] warn: No Data Found
+[2025-07-30 17:09:35] warn: No Data Found
+[2025-07-30 17:09:36] warn: No Data Found
+[2025-07-30 17:09:40] warn: No Data Found
+[2025-07-30 17:09:47] warn: No supplies found for restoration
+{
+  "itemName": "iced tea"
+}
+[2025-07-30 17:09:47] info: PERF: Fetch menu items completed in 2ms
+{
+  "count": 3,
+  "menuItems": [
+    {
+      "id": 3,
+      "title": "LEMONAZA"
+    },
+    {
+      "id": 3,
+      "title": "LEMONAZA"
+    },
+    {
+      "id": 2,
+      "title": "ICED TEA"
+    }
+  ]
+}
+[2025-07-30 17:09:47] info: Processing supply updates
+{
+  "itemNames": [
+    "lemonaza",
+    "iced tea"
+  ]
+}
+[2025-07-30 17:09:47] warn: No supplies found for item
+{
+  "itemName": "iced tea"
+}
+[2025-07-30 17:09:47] info: PERF: Supply updates completed in 3ms
+[2025-07-30 17:09:47] info: undefined
+[2025-07-30 17:09:47] info: PERF: updateOrder completed in 38ms
+{
+  "orderId": 6,
+  "finalItemsCount": 3,
+  "newInvoiceId": 12,
+  "newInvoiceVersion": 2
+}
+[2025-07-30 17:11:54] warn: No Data Found
+[2025-07-30 17:11:54] warn: No Data Found
+[2025-07-30 17:11:54] warn: No Data Found
+[2025-07-30 17:11:54] warn: No Data Found
+[2025-07-30 17:11:55] warn: No Data Found
+[2025-07-30 17:12:02] warn: No Data Found
+[2025-07-30 17:12:02] warn: No Data Found
+[2025-07-30 17:12:03] warn: No Data Found
+[2025-07-30 17:12:05] warn: No Data Found
+[2025-07-30 17:12:09] warn: No supplies found for restoration
+{
+  "itemName": "fries"
+}
+[2025-07-30 17:12:09] info: PERF: Fetch menu items completed in 2ms
+{
+  "count": 3,
+  "menuItems": [
+    {
+      "id": 3,
+      "title": "LEMONAZA"
+    },
+    {
+      "id": 5,
+      "title": "FRIES"
+    },
+    {
+      "id": 4,
+      "title": "CHICKEN"
+    }
+  ]
+}
+[2025-07-30 17:12:09] info: Processing supply updates
+{
+  "itemNames": [
+    "lemonaza",
+    "fries",
+    "chicken"
+  ]
+}
+[2025-07-30 17:12:09] warn: No supplies found for item
+{
+  "itemName": "fries"
+}
+[2025-07-30 17:12:09] info: PERF: Supply updates completed in 2ms
+[2025-07-30 17:12:09] info: undefined
+[2025-07-30 17:12:09] info: PERF: updateOrder completed in 29ms
+{
+  "orderId": 5,
+  "finalItemsCount": 3,
+  "newInvoiceId": 13,
+  "newInvoiceVersion": 3
+}
+[2025-07-30 17:12:12] warn: Customers Not Found
+[2025-07-30 17:13:01] warn: No Data Found
+[2025-07-30 17:13:01] warn: No Data Found
+[2025-07-30 17:13:01] warn: No Data Found
+[2025-07-30 17:13:02] warn: No Data Found
+[2025-07-30 17:15:19] warn: Customers Not Found
+[2025-07-30 17:15:20] warn: Customers Not Found
+[2025-07-30 17:15:21] warn: Customers Not Found
+[2025-07-30 17:15:22] warn: Customers Not Found
+[2025-07-30 17:15:24] info: Filter: 
+[2025-07-30 17:15:26] warn: Storage Not Found
+[2025-07-30 17:15:28] warn: Storage Not Found
+[2025-07-30 17:15:30] warn: Storage Not Found
+[2025-07-30 17:15:34] warn: Storage Not Found
+[2025-07-30 17:16:59] warn: No Data Found
+[2025-07-30 17:16:59] warn: No Data Found
+[2025-07-30 17:16:59] warn: No Data Found
+[2025-07-30 17:16:59] warn: No Data Found
+[2025-07-30 17:17:00] warn: No Data Found
+[2025-07-30 17:17:02] warn: No Data Found
+[2025-07-30 17:17:02] warn: No Data Found
+[2025-07-30 17:17:10] warn: No Data Found
+[2025-07-30 17:17:10] warn: No Data Found
+[2025-07-30 17:17:10] warn: No Data Found
+[2025-07-30 17:17:11] warn: No Data Found
+[2025-07-30 17:32:49] info: Filter: 
+[2025-07-30 17:32:52] warn: No Data Found
+[2025-07-30 17:32:52] warn: No Data Found
+[2025-07-30 17:32:52] warn: No Data Found
+[2025-07-30 17:32:53] warn: No Data Found
+[2025-07-30 17:32:58] warn: No Data Found
+[2025-07-30 17:32:58] warn: No Data Found
+[2025-07-30 17:32:58] warn: No Data Found
+[2025-07-30 17:32:59] warn: No Data Found
+[2025-07-30 17:40:43] info: undefined
+[2025-07-30 17:40:55] warn: Customers Not Found
+[2025-07-30 17:41:28] warn: No Data Found
+[2025-07-30 17:41:28] info: Filter: 
+[2025-07-30 17:41:28] warn: No Data Found
+[2025-07-30 17:41:29] warn: No Data Found
+[2025-07-30 17:41:30] warn: No Data Found
+[2025-07-30 17:41:30] warn: No Data Found
+[2025-07-30 17:41:30] warn: No Data Found
+[2025-07-30 17:41:33] warn: No Data Found
+[2025-07-30 17:41:33] warn: No Data Found
+[2025-07-30 17:41:37] warn: No Data Found
+[2025-07-30 17:41:38] warn: No Data Found
+[2025-07-30 17:41:40] warn: No Data Found
+[2025-07-30 17:44:30] warn: No Data Found
+[2025-07-30 17:44:30] warn: No Data Found
+[2025-07-30 17:44:30] warn: No Data Found
+[2025-07-30 17:44:31] warn: No Data Found
+[2025-07-30 17:44:35] info: Filter: 
+[2025-07-30 17:44:35] warn: No Data Found
+[2025-07-30 17:44:35] warn: No Data Found
+[2025-07-30 17:44:35] warn: No Data Found
+[2025-07-30 17:44:36] warn: No Data Found
+[2025-07-30 17:44:53] warn: No Data Found
+[2025-07-30 17:44:53] warn: No Data Found
+[2025-07-30 17:44:53] warn: No Data Found
+[2025-07-30 17:44:54] warn: No Data Found
+[2025-07-30 17:44:55] warn: No Data Found
+[2025-07-30 17:44:55] warn: No Data Found
+[2025-07-30 17:44:55] warn: No Data Found
+[2025-07-30 17:44:56] warn: No Data Found
+[2025-07-30 17:44:56] warn: No Data Found
+[2025-07-30 17:44:58] warn: No Data Found
+[2025-07-30 17:44:58] warn: No Data Found
+[2025-07-30 17:45:11] warn: No Data Found
+[2025-07-30 17:45:11] warn: No Data Found
+[2025-07-30 17:45:11] warn: No Data Found
+[2025-07-30 17:45:12] warn: No Data Found
+[2025-07-30 17:51:47] warn: No Payments found.
+[2025-07-30 17:52:26] info: Filter: 
+[2025-07-30 17:54:37] info: Filter: 
+[2025-07-30 18:02:17] info: Filter: 
+[2025-07-30 18:03:19] warn: No Data Found
+[2025-07-30 18:03:19] warn: No Data Found
+[2025-07-30 18:03:19] info: Filter: 
+[2025-07-30 18:03:19] warn: No Data Found
+[2025-07-30 18:03:20] warn: No Data Found
+[2025-07-30 18:03:32] warn: No Data Found
+[2025-07-30 18:03:35] warn: No Data Found
+[2025-07-30 18:03:35] warn: No Data Found
+[2025-07-30 18:05:39] warn: No Payments found.
+[2025-07-30 18:05:42] warn: No Payments found.
+[2025-07-30 18:05:45] warn: No Payments found.
+[2025-07-30 18:05:48] warn: No Payments found.
+[2025-07-30 18:05:51] warn: No Payments found.
+[2025-07-30 18:05:54] warn: No Payments found.
+[2025-07-30 18:06:01] warn: No Payments found.
+[2025-07-30 18:07:12] warn: No Payments found.
+[2025-07-30 18:08:33] info: Filter: 
+[2025-07-30 18:11:04] warn: No Payments found.
+[2025-07-30 18:11:08] warn: No Payments found.
+[2025-07-30 18:11:11] warn: No Payments found.
+[2025-07-30 18:11:14] warn: No Payments found.
+[2025-07-30 18:11:46] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:46] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:49] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:49] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:52] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:52] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:55] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:55] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:02] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:02] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:05] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:05] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:08] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:08] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:11] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:11] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:15:56] info: Excess payment amount: 35000
+[2025-07-30 18:16:33] warn: No Payments found.
+[2025-07-30 18:16:36] warn: No Payments found.
+[2025-07-30 18:16:39] warn: No Payments found.
+[2025-07-30 18:16:42] warn: No Payments found.
+[2025-07-30 18:17:00] warn: No Payments found.
+[2025-07-30 18:17:03] warn: No Payments found.
+[2025-07-30 18:17:12] warn: No Payments found.
+[2025-07-30 18:17:15] warn: No Payments found.
+[2025-07-30 18:17:18] warn: No Payments found.
+[2025-07-30 18:17:21] warn: No Payments found.
+[2025-07-30 18:17:23] info: Excess payment amount: 5000
+[2025-07-30 18:19:50] warn: No Payments found.
+[2025-07-30 18:19:53] warn: No Payments found.
+[2025-07-30 18:19:56] warn: No Payments found.
+[2025-07-30 18:19:59] warn: No Payments found.
+[2025-07-30 18:22:08] info: Filter: 

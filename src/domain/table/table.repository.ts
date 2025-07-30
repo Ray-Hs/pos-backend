@@ -11,11 +11,11 @@ import { getLatestOrderDB } from "../order/order.repository";
 export function getTablesDB() {
   return prisma.table.findMany({
     include: {
-      orders: {
-        include: {
-          items: true,
-        },
-      },
+      // orders: {
+      //   include: {
+      //     items: true,
+      //   },
+      // },
     },
   });
 }

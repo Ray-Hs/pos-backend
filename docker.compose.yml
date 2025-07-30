@@ -1,0 +1,23 @@
+# docker compose
+
+services:
+  backend:
+    build: .
+    container_name: pos_backend
+    restart: always
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=localhost
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=123456
+      - DB_NAME=pos
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - ./node_modules:/app/node_modules
+    command: sh -c "npm run build:server"

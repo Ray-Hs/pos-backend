@@ -23,6 +23,7 @@ class ReportController implements ReportControllerInterface {
     const { from, to } = req.query;
     const fromDate = from ? new Date(from as string) : undefined;
     const toDate = to ? new Date(to as string) : undefined;
+    console.log(fromDate, toDate);
     const result = await reportService.getDailyReport(fromDate, toDate);
     const status = result.success ? 200 : result.error?.code || 500;
     return res.status(status).json(result);

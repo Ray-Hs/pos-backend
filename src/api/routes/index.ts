@@ -147,7 +147,6 @@ router.use(
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   ReportsRoutes
 );
-
 // Static file serving endpoint for images - serve by full URL path
 router.get(
   "/*",
@@ -235,5 +234,4 @@ router.get(
     }
   })
 );
-
 export default router;
