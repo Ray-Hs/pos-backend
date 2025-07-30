@@ -4,8 +4,16 @@ import { Constant } from "./constants.types";
 
 export async function getConstantsDB(client: TxClientType) {
   const [tax, service] = await Promise.all([
-    client.tax.findFirst(),
-    client.service.findFirst(),
+    client.tax.findFirst({
+      where: {
+        id: 1,
+      },
+    }),
+    client.service.findFirst({
+      where: {
+        id: 1,
+      },
+    }),
   ]);
 
   return { tax, service };
@@ -23,7 +31,7 @@ export async function createConstantsDB(data: Constant) {
         const tax = await tx.tax.upsert({
           where: { id: 1 },
           create: { rate: data.tax.rate },
-          update: { rate: data.tax.rate },
+          update: { id: 1, rate: data.tax.rate },
         });
         constants.tax = tax;
       }
@@ -36,7 +44,7 @@ export async function createConstantsDB(data: Constant) {
           create: {
             amount: data.service.amount,
           },
-          update: { amount: data.service.amount },
+          update: { id: 1, amount: data.service.amount },
         });
         constants.service = service;
       }
