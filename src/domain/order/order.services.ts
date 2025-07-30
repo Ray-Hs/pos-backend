@@ -815,6 +815,8 @@ export class OrderServices implements OrderServiceInterface {
           })
         );
 
+        console.log("Menu Item Supply: ", menuItemsWithSupply);
+
         // Aggregate quantities for supplies with duplicate items
         const supplyQuantityMap = new Map<
           number,
@@ -840,6 +842,7 @@ export class OrderServices implements OrderServiceInterface {
 
         // Update supply quantities by adding back the canceled order quantities
         for (const item of menuItemsWithQuantity) {
+          logger.info("Item Quantity: ", item);
           const prevSupply = await tx.supply.findFirst({
             where: {
               id: item.supply.id,

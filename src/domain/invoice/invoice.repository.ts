@@ -167,7 +167,7 @@ export const calculateTotal = (
   }
   // Add tax (percentage of subtotal)
   if (constants?.tax?.rate) {
-    total += subtotal * constants.tax.rate;
+    total += total * constants.tax.rate;
   }
   // Add service charge (fixed amount)
   if (constants?.service?.amount) {
