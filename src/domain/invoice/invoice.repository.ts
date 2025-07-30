@@ -1,5 +1,6 @@
 import prisma from "../../infrastructure/database/prisma/client";
 import { LIMIT_CONSTANT } from "../../infrastructure/utils/constants";
+import loggerWithHelpers from "../../infrastructure/utils/logger";
 import { Invoice, PaymentMethod, TxClientType } from "../../types/common";
 
 // Get all invoices with optional pagination
@@ -102,60 +103,14 @@ export const getFinanceInvoicesDB = async (
   return invoices.map((invoice) => {
     if (invoice.invoiceRef?.Order?.items) {
       const items = invoice.invoiceRef.Order.items;
-      const groupedItems = new Map<
-        string,
-        {
-          id: number;
-          price: number;
-          quantity: number;
-          menuItem: any;
-          createdAt: Date;
-          notes: string;
-        }
-      >();
-
-      // Group items by menuItem title_en
-      for (const item of items) {
-        const key = item.menuItem.title_en;
-
-        if (!groupedItems.has(key)) {
-          groupedItems.set(key, {
-            id: item.id as number,
-            price: item.price,
-            quantity: 0,
-            menuItem: item.menuItem,
-            createdAt: item.createdAt,
-            notes: item.notes || "",
-          });
-        }
-
-        const group = groupedItems.get(key)!;
-        group.quantity += item.quantity;
-      }
-      3;
-
-      // Convert grouped items back to array
-      const groupedItemsArray = Array.from(groupedItems.values());
-
-      // Calculate subtotal from grouped items
-      const calculatedSubtotal = calculateSubtotal(groupedItemsArray);
-
-      // Calculate total with tax and service
-      const calculatedTotal = calculateTotal(
-        calculatedSubtotal,
-        { tax: invoice.tax, service: invoice.service },
-        invoice.discount || undefined
-      );
 
       return {
         ...invoice,
-        subtotal: calculatedSubtotal,
-        total: calculatedTotal,
         invoiceRef: {
           ...invoice.invoiceRef,
           Order: {
             ...invoice.invoiceRef.Order,
-            items: groupedItemsArray,
+            items: items,
           },
         },
       };

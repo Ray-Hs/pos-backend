@@ -327,7 +327,7 @@ export class OrderServices implements OrderServiceInterface {
               continue;
             }
             const prevQty = deletedItemMap.get(name) ?? 0;
-            deletedItemMap.set(name, prevQty + (orderItem.quantity ?? 0));
+            deletedItemMap.set(name, prevQty + (orderItem.quantity ?? 1));
           }
 
           // Add back quantities to supplies
