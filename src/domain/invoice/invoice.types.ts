@@ -3,7 +3,7 @@ import { Invoice, InvoiceRef, TResult } from "../../types/common";
 
 export interface InvoiceServiceInterface {
   getInvoices: () => Promise<TResult<Invoice[]>>;
-  showcaseInvoices: (filterBy?: string) => Promise<TResult<Invoice[]>>;
+  showcaseInvoices: (filterBy?: string) => Promise<TResult<any[]>>;
   groupOrderItems: (orderId: number) => Promise<TResult<any[]>>;
   getInvoiceRefById: (requestId: any) => Promise<TResult<any[]>>;
   findInvoice: (requestId: any) => Promise<TResult<Invoice>>;
