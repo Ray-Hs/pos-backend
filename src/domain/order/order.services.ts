@@ -787,24 +787,86 @@ export class OrderServices implements OrderServiceInterface {
         };
       }
 
-      const existingOrder = await findOrderByIdDB(response.tableId, prisma);
-      if (!existingOrder) {
-        logger.warn("Not Found");
+      const supplyTransaction = await prisma.$transaction(async (tx) => {
+        const existingOrder = await findOrderByIdDB(
+          response.tableId as number,
+          tx
+        );
+        if (!existingOrder) {
+          logger.warn("Not Found");
+          return {
+            success: false,
+            error: {
+              code: NOT_FOUND_STATUS,
+              message: NOT_FOUND_ERR,
+            },
+          };
+        }
+
+        // Get supply items for each menu item
+        const menuItemsWithSupply = await Promise.all(
+          existingOrder.items.map(async (item) => {
+            const supply = await tx.supply.findFirst({
+              where: {
+                name: item.menuItem.title_en,
+              },
+            });
+            return supply;
+          })
+        );
+
+        // Aggregate quantities for supplies with duplicate items
+        const supplyQuantityMap = new Map<
+          number,
+          {
+            supply: NonNullable<(typeof menuItemsWithSupply)[0]>;
+            quantity: number;
+          }
+        >();
+
+        existingOrder.items.forEach((item, idx) => {
+          const supply = menuItemsWithSupply[idx];
+          if (supply && item?.quantity) {
+            const key = supply.id;
+            if (supplyQuantityMap.has(key)) {
+              supplyQuantityMap.get(key)!.quantity += item.quantity;
+            } else {
+              supplyQuantityMap.set(key, { supply, quantity: item.quantity });
+            }
+          }
+        });
+
+        const menuItemsWithQuantity = Array.from(supplyQuantityMap.values());
+
+        // Update supply quantities by adding back the canceled order quantities
+        for (const item of menuItemsWithQuantity) {
+          const prevSupply = await tx.supply.findFirst({
+            where: {
+              id: item.supply.id,
+            },
+          });
+          await tx.supply.update({
+            where: {
+              id: item.supply.id,
+            },
+            data: {
+              remainingQuantity:
+                (prevSupply?.remainingQuantity || 0) + item.quantity, // Add back the quantities to supply
+            },
+          });
+        }
+
+        // Cancel the order after updating supplies
+        const canceledOrder = await cancelOrderDB(response.tableId as number);
+
         return {
-          success: false,
-          error: {
-            code: NOT_FOUND_STATUS,
-            message: NOT_FOUND_ERR,
-          },
+          success: true,
+          message: "Canceled Order Successfully",
+          canceledOrder,
         };
-      }
+      });
 
-      const canceledOrder = await cancelOrderDB(response.tableId);
-
-      return {
-        success: true,
-        message: "Canceled Order Successfully",
-      };
+      return supplyTransaction;
     } catch (error) {
       logger.error("Cancel Order Service: ", error);
       return {
