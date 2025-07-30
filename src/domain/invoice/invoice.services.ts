@@ -88,11 +88,80 @@ export class InvoiceServices implements InvoiceServiceInterface {
         skip: calculateSkip(page, limit),
         include: {
           invoices: {
-            include: { service: true, tax: true, customerDiscount: true },
+            include: {
+              service: true,
+              tax: true,
+              customerDiscount: true,
+              invoiceRef: {
+                select: {
+                  Order: {
+                    select: {
+                      items: {
+                        select: {
+                          price: true,
+                          menuItem: {
+                            select: {
+                              title_ar: true,
+                              title_en: true,
+                              title_ku: true,
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
         },
         orderBy: { createdAt: "desc" },
       });
+
+      const totalPaidDebt = (
+        await prisma.invoice.aggregate({
+          _sum: {
+            debt: true,
+          },
+          where: {
+            paid: true,
+            isLatestVersion: true,
+          },
+        })
+      )._sum.debt;
+      const totalUnPaidDebt = (
+        await prisma.invoice.aggregate({
+          _sum: {
+            debt: true,
+          },
+          where: {
+            paid: false,
+            isLatestVersion: true,
+          },
+        })
+      )._sum.debt;
+      const totalPaid = (
+        await prisma.invoice.aggregate({
+          _sum: {
+            total: true,
+          },
+          where: {
+            paid: true,
+            isLatestVersion: true,
+          },
+        })
+      )._sum.total;
+      const totalUnpaid = (
+        await prisma.invoice.aggregate({
+          _sum: {
+            total: true,
+          },
+          where: {
+            paid: false,
+            isLatestVersion: true,
+          },
+        })
+      )._sum.total;
 
       // Group items by menuItem title for each invoice and calculate totals
       const data = invoices.map((invoice) => {
@@ -102,18 +171,37 @@ export class InvoiceServices implements InvoiceServiceInterface {
             createdAt: invoice.createdAt,
             updatedAt: invoice.updatedAt,
             orderId: invoice.orderId,
-            invoices: invoice.invoices.map((inv) => ({
-              total: inv.total,
-              subtotal: inv.subtotal,
-              discount: inv.discount,
-              customerDiscount: inv.customerDiscount,
-              id: inv.id,
-              createdAt: inv.createdAt,
-              paid: inv.paid,
-              paymentMethod: inv.paymentMethod,
-              debt: inv.debt,
-              version: inv.version,
-            })),
+            invoices: invoice.invoices.map((inv) => {
+              // Group items by menuItem titles and count quantity
+              const groupedItems: Record<string, any> = {};
+              inv.invoiceRef.Order?.items.forEach((item) => {
+                const key = `${item.menuItem.title_en}|${item.menuItem.title_ku}|${item.menuItem.title_ar}`;
+                if (!groupedItems[key]) {
+                  groupedItems[key] = {
+                    price: item.price,
+                    title_en: item.menuItem.title_en,
+                    title_ku: item.menuItem.title_ku,
+                    title_ar: item.menuItem.title_ar,
+                    quantity: 1,
+                  };
+                } else {
+                  groupedItems[key].quantity += 1;
+                }
+              });
+              return {
+                total: inv.total,
+                subtotal: inv.subtotal,
+                discount: inv.discount,
+                customerDiscount: inv.customerDiscount,
+                id: inv.id,
+                createdAt: inv.createdAt,
+                paid: inv.paid,
+                paymentMethod: inv.paymentMethod,
+                debt: inv.debt,
+                version: inv.version,
+                items: Object.values(groupedItems),
+              };
+            }),
           },
         };
       });
@@ -131,6 +219,10 @@ export class InvoiceServices implements InvoiceServiceInterface {
       return {
         success: true,
         data,
+        totalPaid,
+        totalUnpaid,
+        totalPaidDebt,
+        totalUnPaidDebt,
       };
     } catch (error) {
       logger.error("Showcase Invoices: ", error);
