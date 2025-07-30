@@ -529,25 +529,6 @@ export class InvoiceServices implements InvoiceServiceInterface {
                 customerInfo.customerDiscount?.discount
               )
             : order?.Invoice[0].invoices[0].total;
-
-          // await printerServices.print(1, {
-          //   orderId: order?.id,
-          //   items: order?.items.map((item) => ({
-          //     title_en: item.menuItem.title_en,
-          //     quantity: item.quantity,
-          //     price: item.price,
-          //   })),
-          //   customer: customerInfo
-          //     ? {
-          //         name: customerInfo.name,
-          //         discount: customerInfo.customerDiscount?.discount,
-          //       }
-          //     : undefined,
-          //   subtotal: order?.Invoice[0].invoices[0].subtotal,
-          //   tax: constants.tax?.rate,
-          //   service: constants.service?.amount,
-          //   total: order?.Invoice[0].invoices[0].total,
-          // });
         });
       }
 
