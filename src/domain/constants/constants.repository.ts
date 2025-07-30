@@ -1,11 +1,19 @@
 import prisma from "../../infrastructure/database/prisma/client";
-import { TxClientType } from "../../types/common";
+import { Service, Tax, TxClientType } from "../../types/common";
 import { Constant } from "./constants.types";
 
 export async function getConstantsDB(client: TxClientType) {
   const [tax, service] = await Promise.all([
-    client.tax.findFirst(),
-    client.service.findFirst(),
+    client.tax.findFirst({
+      where: {
+        id: 1,
+      },
+    }),
+    client.service.findFirst({
+      where: {
+        id: 1,
+      },
+    }),
   ]);
 
   return { tax, service };
@@ -18,13 +26,29 @@ export async function createConstantsDB(data: Constant) {
 
   return prisma.$transaction(async (tx) => {
     try {
+      const constants: { tax?: Tax; service?: Service } = {};
       if (data.tax) {
-        const tax = await tx.tax.create({ data: data.tax });
-        return { tax };
+        const tax = await tx.tax.upsert({
+          where: { id: 1 },
+          create: { rate: data.tax.rate },
+          update: { id: 1, rate: data.tax.rate },
+        });
+        constants.tax = tax;
       }
 
-      const service = await tx.service.create({ data: data.service! });
-      return { service };
+      if (data.service) {
+        const service = await tx.service.upsert({
+          where: {
+            id: 1,
+          },
+          create: {
+            amount: data.service.amount,
+          },
+          update: { id: 1, amount: data.service.amount },
+        });
+        constants.service = service;
+      }
+      return constants;
     } catch (error) {
       throw new Error(`Failed to create constant: ${error}`);
     }
@@ -38,19 +62,29 @@ export async function updateConstantsDB(data: Constant) {
 
   return prisma.$transaction(async (tx) => {
     try {
-      if (data.tax?.id) {
-        const tax = await tx.tax.update({
-          where: { id: data.tax.id },
-          data: data.tax,
+      const constants: { tax?: Tax; service?: Service } = {};
+      if (data.tax) {
+        const tax = await tx.tax.upsert({
+          where: { id: 1 },
+          create: { rate: data.tax.rate },
+          update: { id: 1, rate: data.tax.rate },
         });
-        return { tax };
+        constants.tax = tax;
       }
 
-      const service = await tx.service.update({
-        where: { id: data.service!.id },
-        data: data.service!,
-      });
-      return { service };
+      if (data.service) {
+        const service = await tx.service.upsert({
+          where: {
+            id: 1,
+          },
+          create: {
+            amount: data.service.amount,
+          },
+          update: { id: 1, amount: data.service.amount },
+        });
+        constants.service = service;
+      }
+      return constants;
     } catch (error) {
       throw new Error(`Failed to update constant: ${error}`);
     }
