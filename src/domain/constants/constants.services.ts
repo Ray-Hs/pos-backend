@@ -34,8 +34,6 @@ export class ConstantsService implements IConstantServices {
         };
       }
 
-      console.log(data);
-
       return {
         success: true,
         data,

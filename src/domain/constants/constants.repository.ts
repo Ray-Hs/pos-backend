@@ -1,5 +1,5 @@
 import prisma from "../../infrastructure/database/prisma/client";
-import { TxClientType } from "../../types/common";
+import { Service, Tax, TxClientType } from "../../types/common";
 import { Constant } from "./constants.types";
 
 export async function getConstantsDB(client: TxClientType) {
@@ -18,13 +18,29 @@ export async function createConstantsDB(data: Constant) {
 
   return prisma.$transaction(async (tx) => {
     try {
+      const constants: { tax?: Tax; service?: Service } = {};
       if (data.tax) {
-        const tax = await tx.tax.create({ data: data.tax });
-        return { tax };
+        const tax = await tx.tax.upsert({
+          where: { id: 1 },
+          create: { rate: data.tax.rate },
+          update: { rate: data.tax.rate },
+        });
+        constants.tax = tax;
       }
 
-      const service = await tx.service.create({ data: data.service! });
-      return { service };
+      if (data.service) {
+        const service = await tx.service.upsert({
+          where: {
+            id: 1,
+          },
+          create: {
+            amount: data.service.amount,
+          },
+          update: { amount: data.service.amount },
+        });
+        constants.service = service;
+      }
+      return constants;
     } catch (error) {
       throw new Error(`Failed to create constant: ${error}`);
     }

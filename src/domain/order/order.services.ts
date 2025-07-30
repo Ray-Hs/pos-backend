@@ -222,21 +222,12 @@ export class OrderServices implements OrderServiceInterface {
   async updateOrder(requestId: any, requestData: any) {
     const startTime = Date.now();
     try {
-      logger.trace("updateOrder", "ENTER", {
-        requestId,
-        requestDataKeys: Object.keys(requestData || {}),
-      });
-
       // Validate request ID
       const response = await validateType(
         { id: requestId },
         OrderSchema.pick({ id: true })
       );
       if (response instanceof ZodError || !response.id) {
-        logger.validation("FAILED", "requestId", {
-          requestId,
-          validationError: response,
-        });
         return {
           success: false,
           error: {
@@ -245,7 +236,6 @@ export class OrderServices implements OrderServiceInterface {
           },
         };
       }
-      logger.validation("SUCCESS", "requestId", { orderId: response.id });
 
       // Validate request data
       const data = await validateType(
@@ -253,10 +243,6 @@ export class OrderServices implements OrderServiceInterface {
         OrderSchema.extend({ invoiceId: z.number() })
       );
       if (data instanceof ZodError) {
-        logger.validation("FAILED", "requestData", {
-          validationErrors: data.errors,
-          requestData: requestData,
-        });
         return {
           success: false,
           error: {
@@ -265,14 +251,8 @@ export class OrderServices implements OrderServiceInterface {
           },
         };
       }
-      logger.validation("SUCCESS", "requestData", {
-        itemsCount: data.items?.length,
-        userId: data.userId,
-        invoiceId: data.invoiceId,
-      });
 
       // Find existing order
-      logger.db("findOrderByIdDB", { orderId: response.id });
       const existingOrder = await findOrderByIdDB(response.id, prisma);
       if (!existingOrder) {
         logger.error("Order not found in database", { orderId: response.id });
@@ -284,29 +264,12 @@ export class OrderServices implements OrderServiceInterface {
           },
         };
       }
-      logger.info("Existing order found", {
-        orderId: existingOrder.id,
-        existingItemsCount: existingOrder.items?.length,
-        existingItems: existingOrder.items?.map((item) => ({
-          id: item.id,
-          menuItemId: item.menuItemId,
-          quantity: item.quantity,
-          menuItemTitle: item.menuItem?.title_en,
-        })),
-      });
 
       logger.db("transaction", { phase: "START" });
       const updatedOrder = await prisma.$transaction(async (tx) => {
         const transactionStartTime = Date.now();
 
         const { items, userId, reason, invoiceId, ...rest } = data;
-        logger.debug("Transaction data destructured", {
-          itemsCount: items.length,
-          userId,
-          reason,
-          invoiceId,
-          restKeys: Object.keys(rest),
-        });
 
         const order_items = existingOrder?.items;
         if (!existingOrder) {
@@ -327,39 +290,9 @@ export class OrderServices implements OrderServiceInterface {
           order_items?.some((orderItem) => orderItem.id === item.id)
         );
 
-        logger.info("Item differences calculated", {
-          deletedItemsCount: deletedItems?.length || 0,
-          addedItemsCount: addedItems?.length || 0,
-          existingItemsCount: existingItems?.length || 0,
-          deletedItems: deletedItems?.map((item) => ({
-            id: item.id,
-            menuItemId: item.menuItemId,
-            quantity: item.quantity,
-            menuItemTitle: item.menuItem?.title_en,
-          })),
-          addedItems: addedItems?.map((item) => ({
-            id: item.id,
-            menuItemId: item.menuItemId,
-            quantity: item.quantity,
-          })),
-          existingItems: existingItems?.map((item) => ({
-            id: item.id,
-            menuItemId: item.menuItemId,
-            quantity: item.quantity,
-          })),
-        });
-
         // Handle deleted items
         if (deletedItems && deletedItems.length > 0) {
-          logger.info("Processing deleted items", {
-            count: deletedItems.length,
-          });
-
           // Delete order items
-          const deleteStartTime = Date.now();
-          logger.db("orderItem.deleteMany", {
-            itemIds: deletedItems.map((item) => item.id),
-          });
           await tx.orderItem.deleteMany({
             where: {
               id: {
@@ -367,13 +300,7 @@ export class OrderServices implements OrderServiceInterface {
               },
             },
           });
-          logger.perf("Delete order items", Date.now() - deleteStartTime);
 
-          // Create deleted order items for audit
-          const auditStartTime = Date.now();
-          logger.db("deletedOrderItem.createMany", {
-            count: deletedItems.length,
-          });
           const deletedItemsCreated = await tx.deletedOrderItem.createMany({
             data: deletedItems.map((item) => ({
               orderId: response.id as number,
@@ -386,9 +313,6 @@ export class OrderServices implements OrderServiceInterface {
               createdAt: item.createdAt ?? undefined,
               reason: data.reason || "",
             })),
-          });
-          logger.perf("Create audit records", Date.now() - auditStartTime, {
-            createdCount: deletedItemsCreated.count,
           });
 
           // Calculate quantities to add back to supplies
@@ -405,20 +329,12 @@ export class OrderServices implements OrderServiceInterface {
             const prevQty = deletedItemMap.get(name) ?? 0;
             deletedItemMap.set(name, prevQty + (orderItem.quantity ?? 0));
           }
-          logger.debug("Deleted item quantities calculated", {
-            deletedItemMap: Object.fromEntries(deletedItemMap),
-          });
 
           // Add back quantities to supplies
           const supplyRestoreStartTime = Date.now();
           await Promise.all(
             Array.from(deletedItemMap.entries()).map(
               async ([name, qtyToAdd]) => {
-                logger.debug("Processing supply restoration", {
-                  itemName: name,
-                  qtyToAdd,
-                });
-
                 const supplies = await tx.supply.findMany({
                   where: {
                     name: {
@@ -429,15 +345,6 @@ export class OrderServices implements OrderServiceInterface {
                   orderBy: {
                     remainingQuantity: "asc",
                   },
-                });
-
-                logger.debug("Found supplies for restoration", {
-                  itemName: name,
-                  suppliesCount: supplies.length,
-                  supplies: supplies.map((s) => ({
-                    id: s.id,
-                    remainingQuantity: s.remainingQuantity,
-                  })),
                 });
 
                 if (supplies.length > 0) {
@@ -451,13 +358,6 @@ export class OrderServices implements OrderServiceInterface {
                       remainingQuantity: newQuantity,
                     },
                   });
-
-                  logger.debug("Supply quantity restored", {
-                    supplyId: firstSupply.id,
-                    oldQuantity: firstSupply.remainingQuantity,
-                    addedQuantity: qtyToAdd,
-                    newQuantity,
-                  });
                 } else {
                   logger.warn("No supplies found for restoration", {
                     itemName: name,
@@ -466,35 +366,23 @@ export class OrderServices implements OrderServiceInterface {
               }
             )
           );
-          logger.perf(
-            "Supply restoration",
-            Date.now() - supplyRestoreStartTime
-          );
         }
 
         // Prepare items update object
         const itemsUpdate: any = {};
-        logger.debug("Preparing items update object");
 
         // Handle added items
         if (addedItems && addedItems.length > 0) {
-          logger.debug("Preparing new items for creation", {
-            count: addedItems.length,
-          });
           itemsUpdate.create = addedItems.map((item) => ({
             menuItemId: item.menuItemId,
             price: item.price,
             quantity: item.quantity,
             notes: item.notes,
           }));
-          logger.debug("New items prepared", { items: itemsUpdate.create });
         }
 
         // Handle existing items updates
         if (existingItems && existingItems.length > 0) {
-          logger.debug("Preparing existing items for update", {
-            count: existingItems.length,
-          });
           itemsUpdate.update = existingItems.map((item) => ({
             where: { id: item.id },
             data: {
@@ -504,9 +392,6 @@ export class OrderServices implements OrderServiceInterface {
               notes: item.notes,
             },
           }));
-          logger.debug("Existing items prepared", {
-            updates: itemsUpdate.update,
-          });
         }
 
         // Fetch menu items for supply calculations
@@ -711,6 +596,17 @@ export class OrderServices implements OrderServiceInterface {
             user: true,
             items: true,
             Invoice: {
+              include: {
+                invoices: {
+                  select: {
+                    customerDiscount: {
+                      select: {
+                        discount: true,
+                      },
+                    },
+                  },
+                },
+              },
               orderBy: { createdAt: "desc" },
             },
           },
@@ -725,21 +621,23 @@ export class OrderServices implements OrderServiceInterface {
             },
           });
         }
-        logger.perf("Order update", Date.now() - orderUpdateStartTime, {
-          orderId: order.id,
-          finalItemsCount: order.items.length,
-        });
 
         // Calculate totals and create new invoice
-        logger.debug("Processing invoice updates");
         const constants = await getConstantsDB(tx);
         const subtotal = order.items.reduce(
           (acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 0),
           0
         );
-        const total = calculateTotal(subtotal, constants);
 
-        logger.debug("Invoice calculations", { subtotal, total });
+        logger.info(
+          order.Invoice?.[0].invoices?.[0].customerDiscount?.discount
+        );
+
+        const total = calculateTotal(
+          subtotal,
+          constants,
+          order.Invoice?.[0].invoices?.[0].customerDiscount?.discount
+        );
 
         const invoiceRef = order.Invoice[0].id;
         const invoicesFromRef = await tx.invoice.findMany({
@@ -748,20 +646,11 @@ export class OrderServices implements OrderServiceInterface {
           },
         });
 
-        logger.info("Invoice From Ref: ", invoicesFromRef);
-
         const version = Math.max(
           ...invoicesFromRef.map((invoice) => invoice.version)
         );
 
-        logger.info("Invoice version calculation", {
-          invoiceRef,
-          currentVersion: version,
-          newVersion: version + 1,
-        });
-
         // Update old invoice version status
-        logger.db("invoice.update", { invoiceId, action: "mark_old_version" });
         await tx.invoice.update({
           where: {
             id: invoiceId,
@@ -773,7 +662,6 @@ export class OrderServices implements OrderServiceInterface {
 
         // Create new invoice
         const invoiceCreateStartTime = Date.now();
-        logger.db("invoice.create", { version: version + 1 });
         const invoice = await tx.invoice.create({
           data: {
             subtotal,
@@ -788,14 +676,6 @@ export class OrderServices implements OrderServiceInterface {
           },
         });
 
-        logger.perf("Create new invoice", Date.now() - invoiceCreateStartTime, {
-          invoiceId: invoice.id,
-          version: invoice.version,
-          subtotal: invoice.subtotal,
-          total: invoice.total,
-        });
-
-        logger.perf("Transaction", Date.now() - transactionStartTime);
         return { order, invoice };
       });
 

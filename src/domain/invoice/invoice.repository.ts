@@ -206,6 +206,10 @@ export const calculateTotal = (
 ): number => {
   let total = subtotal;
 
+  // Apply discount (percentage of total)
+  if (discount && discount > 0) {
+    total = subtotal - total * (discount / 100);
+  }
   // Add service charge (fixed amount)
   if (constants?.service?.amount) {
     total += constants.service.amount;
@@ -214,11 +218,6 @@ export const calculateTotal = (
   // Add tax (percentage of subtotal)
   if (constants?.tax?.rate) {
     total += subtotal * constants.tax.rate;
-  }
-
-  // Apply discount (percentage of total)
-  if (discount && discount > 0) {
-    total = total - total * (discount / 100);
   }
 
   return Number(total.toFixed(2));
