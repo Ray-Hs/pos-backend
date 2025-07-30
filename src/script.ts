@@ -134,6 +134,12 @@ const handleSetup = async () => {
             category: "finance",
           },
           {
+            key: "manage_finance_invoices",
+            name: "Manage Finance Invoices",
+            description: "Allow users to access finance invoices section",
+            category: "finance",
+          },
+          {
             key: "manage_finance_daily_exchange_rate",
             name: "Manage Finance Daily Exchange",
             description: "Allow users to access finance daily exchange section",
@@ -223,6 +229,12 @@ const handleSetup = async () => {
             key: "manage_settings_users",
             name: "Manage Users Settings",
             description: "Allow users to access settings users section",
+            category: "settings",
+          },
+          {
+            key: "manage_settings_constants",
+            name: "Manage Constants Settings",
+            description: "Allow users to access settings constants section",
             category: "settings",
           },
         ],

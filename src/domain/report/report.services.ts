@@ -79,7 +79,16 @@ class ReportService implements ReportServiceInterface {
           order: {
             select: {
               Invoice: {
-                select: { invoices: { select: { paymentMethod: true } } },
+                select: {
+                  invoices: {
+                    select: {
+                      paymentMethod: true,
+                      total: true,
+                      isLatestVersion: true,
+                      paid: true,
+                    },
+                  },
+                },
               },
               createdAt: true,
             },
@@ -127,7 +136,6 @@ class ReportService implements ReportServiceInterface {
           (orderItem.price || 0) * orderItem.quantity;
         acc[key].totalPurchasePrice +=
           (orderItem.menuItem.price || 0) * orderItem.quantity;
-
         // Track payment methods - handle array safely
         const invoices = orderItem.order?.Invoice?.[0]?.invoices;
         if (invoices && invoices.length > 0) {
@@ -177,9 +185,17 @@ class ReportService implements ReportServiceInterface {
           }
         }
 
-        return acc;
+        return acc; 
       }, {} as Record<string, any>);
 
+      const totalProfit = await prisma.invoice.aggregate({
+        _count: { total: true },
+        _sum: { total: true },
+        where: {
+          paid: true,
+          isLatestVersion: true,
+        },
+      });
       // Convert to percentages for payment methods and calculate final profit
       const data = Object.values(groupedData).map((item) => {
         const total = item.totalQuantityForPayment;
@@ -226,6 +242,8 @@ class ReportService implements ReportServiceInterface {
         return {
           ...cleanItem,
           paymentMethod,
+          totalProfit: totalProfit._sum.total,
+          totalCount: totalProfit._count.total,
         };
       });
 

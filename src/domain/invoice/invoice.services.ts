@@ -67,70 +67,56 @@ export class InvoiceServices implements InvoiceServiceInterface {
 
   async showcaseInvoices(q?: string, page?: number, limit?: number) {
     try {
-      const responseFunction = async () => {
-        const now = new Date();
-        const yesterday = new Date(now);
-        yesterday.setDate(now.getDate() - 1);
+      const now = new Date();
+      const yesterday = new Date(now);
+      yesterday.setDate(now.getDate() - 1);
 
-        let invoiceRef;
-        if (q) {
-          invoiceRef = {
-            id: parseInt(q as string),
-          };
-        }
+      let invoiceRef;
+      if (q) {
+        invoiceRef = parseInt(q as string);
+      }
 
-        const invoices = await prisma.invoice.findMany({
-          where: {
-            invoiceRef,
-            createdAt: {
-              gte: yesterday,
-              lte: now,
-            },
+      const invoices = await prisma.invoiceRef.findMany({
+        where: {
+          id: invoiceRef,
+          createdAt: {
+            gte: yesterday,
+            lte: now,
           },
-          take: Take(limit),
-          skip: calculateSkip(page, limit),
-          include: {
-            table: {
-              select: {
-                name: true,
-                id: true,
-              },
-            },
-            tax: true,
-            service: true,
-            invoiceRef: {
-              include: {
-                invoices: {
-                  select: {
-                    total: true,
-                    subtotal: true,
-                    discount: true,
-                    customerDiscount: true,
-                    id: true,
-                    createdAt: true,
-                    paid: true,
-                    paymentMethod: true,
-                    debt: true,
-                    version: true,
-                  },
-                },
-              },
-            },
+        },
+        take: Take(limit),
+        skip: calculateSkip(page, limit),
+        include: {
+          invoices: {
+            include: { service: true, tax: true, customerDiscount: true },
           },
-          orderBy: { createdAt: "desc" },
-        });
+        },
+        orderBy: { createdAt: "desc" },
+      });
 
-        // Group items by menuItem title for each invoice and calculate totals
-        return invoices.map((invoice) => {
-          return {
-            invoiceRef: {
-              ...invoice.invoiceRef,
-            },
-          };
-        });
-      };
-
-      const data = await responseFunction();
+      // Group items by menuItem title for each invoice and calculate totals
+      const data = invoices.map((invoice) => {
+        return {
+          invoiceRef: {
+            id: invoice.id,
+            createdAt: invoice.createdAt,
+            updatedAt: invoice.updatedAt,
+            orderId: invoice.orderId,
+            invoices: invoice.invoices.map((inv) => ({
+              total: inv.total,
+              subtotal: inv.subtotal,
+              discount: inv.discount,
+              customerDiscount: inv.customerDiscount,
+              id: inv.id,
+              createdAt: inv.createdAt,
+              paid: inv.paid,
+              paymentMethod: inv.paymentMethod,
+              debt: inv.debt,
+              version: inv.version,
+            })),
+          },
+        };
+      });
 
       if (!data || data.length === 0) {
         return {

@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "dotenv -- nodemon --exec ts-node ./src/server.ts",
-    "build:server": "npx prisma migrate dev --name='init' && npx prisma migrate deploy && prisma generate && tsc && node ./public/dist/src/script.js",
+    "build:server": "npx prisma migrate dev --name init && npx prisma generate && tsc && node ./public/dist/src/script.js",
     "build": "tsc",
     "vercel-build": "prisma generate && prisma migrate deploy && tsc",
     "start": "node public/dist/src/server.js",
@@ -27,7 +27,10 @@
     "seed:customers:1000000": "set CUSTOMER_COUNT=1000000 && ts-node data-script.ts",
     "seed:companies": "ts-node company-data-script.ts",
     "seed:supply": "ts-node supply-data-script.ts",
-    "seed:orders": "ts-node order-data-script.ts"
+    "seed:orders": "ts-node order-data-script.ts",
+    "clean:migrations": "del /S /Q .\\src\\infrastructure\\database\\prisma\\migrations\\*",
+    "db:reset": "npx prisma migrate reset --force",
+    "db:clean": "npm run clean:migrations && npm run db:reset"
   },
   "keywords": [],
   "author": "",

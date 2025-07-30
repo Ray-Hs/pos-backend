@@ -11398,3 +11398,332 @@ Invalid `prisma.orderItem.findMany()` invocation:
 
 
 Failed to convert rust `String` into napi `string`
+[2025-07-29 17:33:47] [31merror[39m: Create Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: NaN,
+    product: "Fresh Cotton Computer",
+    quantity: 0,
+    currency: "IQD",
+    invoiceNumber: "73478",
+    totalAmount: undefined,
+    userId: 1,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+[2025-07-29 17:33:52] [31merror[39m: Create Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: NaN,
+    product: "Fresh Cotton Computer",
+    quantity: 0,
+    currency: "IQD",
+    invoiceNumber: "73478",
+    totalAmount: undefined,
+    userId: 1,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+[2025-07-29 17:34:08] [31merror[39m: Create Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: NaN,
+    product: "Fresh Cotton Computer",
+    quantity: 0,
+    currency: "IQD",
+    invoiceNumber: "73478",
+    totalAmount: undefined,
+    userId: 1,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+[2025-07-30 11:24:08] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 11:24:32] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 11:25:43] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 12:11:20] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 12:11:25] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 12:12:36] error: Valid ID must be provided for update
+{
+  "stack": "Error: Valid ID must be provided for update\n    at updateConstantsDB (D:\\POS Backend\\src\\domain\\constants\\constants.repository.ts:60:11)\n    at ConstantsService.updateConstants (D:\\POS Backend\\src\\domain\\constants\\constants.services.ts:113:55)\n    at async updateConstants (D:\\POS Backend\\src\\api\\controllers\\constants\\constants.controller.ts:29:22)"
+}
+[2025-07-30 12:13:02] error: Valid ID must be provided for update
+{
+  "stack": "Error: Valid ID must be provided for update\n    at updateConstantsDB (D:\\POS Backend\\src\\domain\\constants\\constants.repository.ts:60:11)\n    at ConstantsService.updateConstants (D:\\POS Backend\\src\\domain\\constants\\constants.services.ts:113:55)\n    at async updateConstants (D:\\POS Backend\\src\\api\\controllers\\constants\\constants.controller.ts:29:22)"
+}
+[2025-07-30 15:19:46] error: Menu item Service:  
+Invalid `prisma.menuItem.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
+{
+  "code": "P2003",
+  "meta": {
+    "modelName": "MenuItem",
+    "constraint": "MenuItem_printersId_fkey"
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.menuItem.create()` invocation:\n\n\nForeign key constraint violated on the constraint: `MenuItem_printersId_fkey`\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async MenuItemServices.createItem (D:\\POS Backend\\src\\domain\\item\\item.services.ts:270:27)\n    at async createItem (D:\\POS Backend\\src\\api\\controllers\\storage\\item.controller.ts:65:18)"
+}
+[2025-07-30 16:32:14] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:32:26] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:32:39] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:32:54] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:33:33] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:34:52] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 18:11:46] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:49] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:52] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:55] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:02] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:05] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:08] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:11] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}

@@ -16506,3 +16506,1395 @@ Failed to convert rust `String` into napi `string`
 [2025-07-28 15:01:11] [33mwarn[39m: Brand Not Found
 [2025-07-28 15:01:12] [33mwarn[39m: Brand Not Found
 [2025-07-28 15:01:14] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:06:46] [33mwarn[39m: No Payments found.
+[2025-07-29 13:06:49] [33mwarn[39m: No Payments found.
+[2025-07-29 13:06:52] [33mwarn[39m: No Payments found.
+[2025-07-29 13:06:55] [33mwarn[39m: No Payments found.
+[2025-07-29 13:09:17] [33mwarn[39m: No Payments found.
+[2025-07-29 13:10:20] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:10:21] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:10:23] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:10:28] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:13:45] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:45] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:45] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:45] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:46] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:46] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:47] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:47] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:47] [33mwarn[39m: No Data Found
+[2025-07-29 13:13:47] [33mwarn[39m: No Data Found
+[2025-07-29 13:17:18] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:17:19] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:17:21] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:17:25] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:18:12] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:12] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:12] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:13] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:16] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:16] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:16] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:17] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:17] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:17] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:17] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:18] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:30] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:35] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:35] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:35] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:36] [33mwarn[39m: No Data Found
+[2025-07-29 13:18:48] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:18:49] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:19:22] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:22] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:22] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:23] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:24] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:27] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:28] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:29] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:31] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:31] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:31] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:31] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:37] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:37] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:37] [33mwarn[39m: No Data Found
+[2025-07-29 13:19:38] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:25] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:26] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:40] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:40] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:40] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:41] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:41] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:42] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:42] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:42] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:43] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:44] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:49] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:49] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:49] [33mwarn[39m: No Data Found
+[2025-07-29 13:21:50] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:28] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:25:29] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:25:31] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:25:35] [33mwarn[39m: Brand Not Found
+[2025-07-29 13:25:50] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:50] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:50] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:51] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:51] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:51] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:52] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:52] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:52] [33mwarn[39m: No Data Found
+[2025-07-29 13:25:53] [33mwarn[39m: No Data Found
+[2025-07-29 16:07:44] [33mwarn[39m: No Data Found
+[2025-07-29 16:07:44] [33mwarn[39m: No Data Found
+[2025-07-29 16:07:44] [33mwarn[39m: No Data Found
+[2025-07-29 16:07:45] [33mwarn[39m: No Data Found
+[2025-07-29 16:07:50] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:07:51] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:07:53] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:07:57] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:08:40] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:08:41] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:08:43] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:08:47] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:10:36] [33mwarn[39m: Brand Not Found
+[2025-07-29 16:10:37] [33mwarn[39m: No Data Found
+[2025-07-29 16:10:37] [33mwarn[39m: No Data Found
+[2025-07-29 16:10:37] [33mwarn[39m: No Data Found
+[2025-07-29 16:10:38] [33mwarn[39m: No Data Found
+[2025-07-29 16:15:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:15:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:15:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:15:35] [33mwarn[39m: No Data Found
+[2025-07-29 16:16:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:16:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:16:34] [33mwarn[39m: No Data Found
+[2025-07-29 16:16:35] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:13] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:13] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:13] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:14] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:14] [33mwarn[39m: No Data Found
+[2025-07-29 16:17:14] [33mwarn[39m: No Data Found
+[2025-07-29 17:33:47] [31merror[39m: Create Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: NaN,
+    product: "Fresh Cotton Computer",
+    quantity: 0,
+    currency: "IQD",
+    invoiceNumber: "73478",
+    totalAmount: undefined,
+    userId: 1,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+[2025-07-29 17:33:52] [31merror[39m: Create Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: NaN,
+    product: "Fresh Cotton Computer",
+    quantity: 0,
+    currency: "IQD",
+    invoiceNumber: "73478",
+    totalAmount: undefined,
+    userId: 1,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+[2025-07-29 17:34:08] [31merror[39m: Create Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: NaN,
+    product: "Fresh Cotton Computer",
+    quantity: 0,
+    currency: "IQD",
+    invoiceNumber: "73478",
+    totalAmount: undefined,
+    userId: 1,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+[2025-07-30 10:33:10] [33mwarn[39m: No Data Found
+[2025-07-30 10:33:10] [33mwarn[39m: No Data Found
+[2025-07-30 10:33:10] [33mwarn[39m: No Data Found
+[2025-07-30 10:33:11] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:02] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:02] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:02] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:03] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:17] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:17] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:17] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:18] [33mwarn[39m: No Data Found
+[2025-07-30 10:34:19] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:04] [33mwarn[39m: Printer 192.168.1.1 not connected
+[2025-07-30 10:36:39] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:39] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:39] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:39] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:40] [33mwarn[39m: No Data Found
+[2025-07-30 10:36:41] [33mwarn[39m: No Data Found
+[2025-07-30 10:37:19] [33mwarn[39m: No Data Found
+[2025-07-30 10:37:19] [33mwarn[39m: No Data Found
+[2025-07-30 10:50:52] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:50:53] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:50:55] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:50:59] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:51:55] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:51:56] [33mwarn[39m: Brand Not Found
+[2025-07-30 10:52:25] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:12:09] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:14:43] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:16:41] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:16:46] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:18:43] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:19:10] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:20:42] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:20:50] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:22:31] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:22:33] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:22:37] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:23:56] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:23:57] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:23:59] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:03] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:08] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 11:24:25] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:26] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:28] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:32] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:24:32] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 11:25:43] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 11:36:23] [33mwarn[39m: Brand Not Found
+[2025-07-30 11:36:24] [33mwarn[39m: Brand Not Found
+[2025-07-30 12:11:11] [33mwarn[39m: Brand Not Found
+[2025-07-30 12:11:12] [33mwarn[39m: Brand Not Found
+[2025-07-30 12:11:14] [33mwarn[39m: Brand Not Found
+[2025-07-30 12:11:18] [33mwarn[39m: Brand Not Found
+[2025-07-30 12:11:20] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 12:11:25] [31merror[39m: Valid ID must be provided for update
+[2025-07-30 12:12:36] error: Valid ID must be provided for update
+{
+  "stack": "Error: Valid ID must be provided for update\n    at updateConstantsDB (D:\\POS Backend\\src\\domain\\constants\\constants.repository.ts:60:11)\n    at ConstantsService.updateConstants (D:\\POS Backend\\src\\domain\\constants\\constants.services.ts:113:55)\n    at async updateConstants (D:\\POS Backend\\src\\api\\controllers\\constants\\constants.controller.ts:29:22)"
+}
+[2025-07-30 12:13:02] error: Valid ID must be provided for update
+{
+  "stack": "Error: Valid ID must be provided for update\n    at updateConstantsDB (D:\\POS Backend\\src\\domain\\constants\\constants.repository.ts:60:11)\n    at ConstantsService.updateConstants (D:\\POS Backend\\src\\domain\\constants\\constants.services.ts:113:55)\n    at async updateConstants (D:\\POS Backend\\src\\api\\controllers\\constants\\constants.controller.ts:29:22)"
+}
+[2025-07-30 12:13:32] warn: Brand Not Found
+[2025-07-30 12:13:33] warn: Brand Not Found
+[2025-07-30 12:13:35] warn: Brand Not Found
+[2025-07-30 12:13:39] warn: Brand Not Found
+[2025-07-30 12:13:49] warn: Brand Not Found
+[2025-07-30 12:13:50] warn: Brand Not Found
+[2025-07-30 12:13:52] warn: Brand Not Found
+[2025-07-30 12:18:55] warn: No supplies found for restoration
+{
+  "itemName": "coffee"
+}
+[2025-07-30 12:18:55] warn: No supplies found for restoration
+{
+  "itemName": "iced tea"
+}
+[2025-07-30 12:18:55] warn: No supplies found for item
+{
+  "itemName": "coffee"
+}
+[2025-07-30 12:19:10] warn: No supplies found for restoration
+{
+  "itemName": "iced tea"
+}
+[2025-07-30 12:19:10] warn: No supplies found for item
+{
+  "itemName": "coffee"
+}
+[2025-07-30 12:20:51] warn: No supplies found for item
+{
+  "itemName": "coffee"
+}
+[2025-07-30 12:21:15] warn: No supplies found for item
+{
+  "itemName": "coffee"
+}
+[2025-07-30 12:21:15] warn: No supplies found for item
+{
+  "itemName": "iced tea"
+}
+[2025-07-30 12:21:49] warn: Not Found
+[2025-07-30 12:22:25] warn: No Data Found
+[2025-07-30 12:22:25] warn: No Data Found
+[2025-07-30 12:22:25] warn: No Data Found
+[2025-07-30 12:22:26] warn: No Data Found
+[2025-07-30 12:22:35] warn: No Data Found
+[2025-07-30 12:22:35] warn: No Data Found
+[2025-07-30 12:22:35] warn: No Data Found
+[2025-07-30 12:22:36] warn: No Data Found
+[2025-07-30 12:22:36] warn: No Data Found
+[2025-07-30 12:22:36] warn: No Data Found
+[2025-07-30 12:22:36] warn: No Data Found
+[2025-07-30 12:22:37] warn: No Data Found
+[2025-07-30 12:22:37] warn: No Data Found
+[2025-07-30 12:22:37] warn: No Data Found
+[2025-07-30 12:22:37] warn: No Data Found
+[2025-07-30 12:22:37] warn: No Data Found
+[2025-07-30 12:22:38] warn: No Data Found
+[2025-07-30 12:22:38] warn: No Data Found
+[2025-07-30 12:22:38] warn: No Data Found
+[2025-07-30 12:22:38] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:39] warn: No Data Found
+[2025-07-30 12:22:40] warn: No Data Found
+[2025-07-30 12:22:40] warn: No Data Found
+[2025-07-30 12:22:40] warn: No Data Found
+[2025-07-30 12:22:41] warn: No Data Found
+[2025-07-30 12:22:41] warn: No Data Found
+[2025-07-30 12:22:41] warn: No Data Found
+[2025-07-30 12:22:41] warn: No Data Found
+[2025-07-30 12:22:41] warn: No Data Found
+[2025-07-30 12:22:50] warn: No Data Found
+[2025-07-30 12:22:51] warn: No Data Found
+[2025-07-30 12:22:51] warn: No Data Found
+[2025-07-30 12:22:52] warn: No Data Found
+[2025-07-30 12:41:12] warn: No Data Found
+[2025-07-30 12:41:16] warn: No Data Found
+[2025-07-30 12:41:25] warn: No Data Found
+[2025-07-30 12:41:25] warn: No Data Found
+[2025-07-30 12:41:25] warn: No Data Found
+[2025-07-30 12:41:26] warn: No Data Found
+[2025-07-30 12:41:35] warn: No Data Found
+[2025-07-30 12:41:35] warn: No Data Found
+[2025-07-30 12:41:36] warn: No Data Found
+[2025-07-30 12:42:07] warn: No Data Found
+[2025-07-30 12:42:07] warn: No Data Found
+[2025-07-30 12:42:08] warn: No Data Found
+[2025-07-30 13:25:49] warn: No Data Found
+[2025-07-30 13:25:49] warn: No Data Found
+[2025-07-30 13:25:49] warn: No Data Found
+[2025-07-30 13:25:50] warn: No Data Found
+[2025-07-30 13:25:51] warn: No Data Found
+[2025-07-30 13:25:51] warn: No Data Found
+[2025-07-30 13:25:51] warn: No Data Found
+[2025-07-30 13:25:52] warn: No Data Found
+[2025-07-30 13:25:52] warn: No Data Found
+[2025-07-30 13:25:52] warn: No Data Found
+[2025-07-30 13:59:25] warn: No Data Found
+[2025-07-30 13:59:25] warn: No Data Found
+[2025-07-30 13:59:25] warn: No Data Found
+[2025-07-30 13:59:26] warn: No Data Found
+[2025-07-30 14:01:56] warn: No Data Found
+[2025-07-30 14:01:56] warn: No Data Found
+[2025-07-30 14:01:56] warn: No Data Found
+[2025-07-30 14:01:57] warn: No Data Found
+[2025-07-30 14:01:58] warn: No Data Found
+[2025-07-30 14:01:58] warn: No Data Found
+[2025-07-30 14:01:58] warn: No Data Found
+[2025-07-30 14:01:58] warn: No Data Found
+[2025-07-30 14:01:59] warn: No Data Found
+[2025-07-30 14:01:59] warn: No Data Found
+[2025-07-30 14:01:59] warn: No Data Found
+[2025-07-30 14:03:04] warn: No Data Found
+[2025-07-30 14:03:04] warn: No Data Found
+[2025-07-30 14:03:04] warn: No Data Found
+[2025-07-30 14:03:05] warn: No Data Found
+[2025-07-30 14:03:11] warn: No Data Found
+[2025-07-30 14:03:12] warn: No Data Found
+[2025-07-30 14:03:12] warn: No Data Found
+[2025-07-30 14:03:12] warn: No Data Found
+[2025-07-30 14:03:13] warn: No Data Found
+[2025-07-30 14:03:25] warn: No Data Found
+[2025-07-30 14:03:25] warn: No Data Found
+[2025-07-30 14:03:25] warn: No Data Found
+[2025-07-30 14:03:26] warn: No Data Found
+[2025-07-30 14:04:02] warn: No Data Found
+[2025-07-30 14:04:02] warn: No Data Found
+[2025-07-30 14:04:02] warn: No Data Found
+[2025-07-30 14:04:03] warn: No Data Found
+[2025-07-30 14:04:04] warn: No Data Found
+[2025-07-30 14:04:04] warn: No Data Found
+[2025-07-30 14:04:05] warn: No Data Found
+[2025-07-30 14:04:05] warn: No Data Found
+[2025-07-30 14:04:05] warn: No Data Found
+[2025-07-30 14:04:05] warn: No Data Found
+[2025-07-30 14:04:36] warn: No Data Found
+[2025-07-30 14:04:36] warn: No Data Found
+[2025-07-30 14:04:36] warn: No Data Found
+[2025-07-30 14:04:37] warn: No Data Found
+[2025-07-30 14:06:00] warn: No Data Found
+[2025-07-30 14:06:00] warn: No Data Found
+[2025-07-30 14:06:00] warn: No Data Found
+[2025-07-30 14:06:01] warn: No Data Found
+[2025-07-30 14:06:02] warn: No Data Found
+[2025-07-30 14:06:02] warn: No Data Found
+[2025-07-30 14:06:03] warn: No Data Found
+[2025-07-30 14:06:03] warn: No Data Found
+[2025-07-30 14:07:21] warn: No Data Found
+[2025-07-30 14:07:21] warn: No Data Found
+[2025-07-30 14:07:21] warn: No Data Found
+[2025-07-30 14:07:22] warn: No Data Found
+[2025-07-30 14:07:59] warn: No Data Found
+[2025-07-30 14:07:59] warn: No Data Found
+[2025-07-30 14:07:59] warn: No Data Found
+[2025-07-30 14:08:00] warn: No Data Found
+[2025-07-30 14:08:00] warn: No Data Found
+[2025-07-30 14:08:00] warn: No Data Found
+[2025-07-30 14:08:17] warn: No Data Found
+[2025-07-30 14:08:17] warn: No Data Found
+[2025-07-30 14:08:17] warn: No Data Found
+[2025-07-30 14:08:18] warn: No Data Found
+[2025-07-30 14:08:43] warn: No Data Found
+[2025-07-30 14:08:43] warn: No Data Found
+[2025-07-30 14:08:43] warn: No Data Found
+[2025-07-30 14:08:44] warn: No Data Found
+[2025-07-30 14:08:53] warn: No Data Found
+[2025-07-30 14:08:53] warn: No Data Found
+[2025-07-30 14:08:54] warn: No Data Found
+[2025-07-30 14:08:54] warn: No Data Found
+[2025-07-30 14:08:55] warn: No Data Found
+[2025-07-30 14:08:55] warn: No Data Found
+[2025-07-30 14:09:12] warn: No Data Found
+[2025-07-30 14:09:12] warn: No Data Found
+[2025-07-30 14:09:12] warn: No Data Found
+[2025-07-30 14:09:13] warn: No Data Found
+[2025-07-30 14:09:31] warn: No Data Found
+[2025-07-30 14:09:31] warn: No Data Found
+[2025-07-30 14:09:31] warn: No Data Found
+[2025-07-30 14:09:32] warn: No Data Found
+[2025-07-30 14:09:32] warn: No Data Found
+[2025-07-30 14:09:32] warn: No Data Found
+[2025-07-30 14:09:33] warn: No Data Found
+[2025-07-30 14:09:33] warn: No Data Found
+[2025-07-30 14:09:33] warn: No Data Found
+[2025-07-30 14:09:45] warn: No Data Found
+[2025-07-30 14:09:45] warn: No Data Found
+[2025-07-30 14:09:45] warn: No Data Found
+[2025-07-30 14:09:46] warn: No Data Found
+[2025-07-30 14:10:10] warn: No Data Found
+[2025-07-30 14:10:10] warn: No Data Found
+[2025-07-30 14:10:11] warn: No Data Found
+[2025-07-30 14:10:11] warn: No Data Found
+[2025-07-30 14:10:12] warn: No Data Found
+[2025-07-30 14:10:35] warn: No Data Found
+[2025-07-30 14:10:35] warn: No Data Found
+[2025-07-30 14:10:35] warn: No Data Found
+[2025-07-30 14:10:36] warn: No Data Found
+[2025-07-30 14:11:12] warn: No Data Found
+[2025-07-30 14:11:13] warn: No Data Found
+[2025-07-30 14:12:14] warn: No Data Found
+[2025-07-30 14:12:14] warn: No Data Found
+[2025-07-30 14:12:14] warn: No Data Found
+[2025-07-30 14:12:15] warn: No Data Found
+[2025-07-30 14:13:39] warn: No Data Found
+[2025-07-30 14:13:39] warn: No Data Found
+[2025-07-30 14:13:39] warn: No Data Found
+[2025-07-30 14:13:40] warn: No Data Found
+[2025-07-30 14:13:40] warn: No Data Found
+[2025-07-30 14:13:40] warn: No Data Found
+[2025-07-30 14:13:40] warn: No Data Found
+[2025-07-30 14:13:41] warn: No Data Found
+[2025-07-30 14:13:41] warn: No Data Found
+[2025-07-30 14:13:41] warn: No Data Found
+[2025-07-30 14:13:41] warn: No Data Found
+[2025-07-30 14:13:41] warn: No Data Found
+[2025-07-30 14:14:05] warn: No Data Found
+[2025-07-30 14:14:05] warn: No Data Found
+[2025-07-30 14:14:05] warn: No Data Found
+[2025-07-30 14:14:07] warn: No Data Found
+[2025-07-30 14:17:27] warn: No Data Found
+[2025-07-30 14:17:27] warn: No Data Found
+[2025-07-30 14:17:29] warn: No Data Found
+[2025-07-30 14:32:32] warn: No Data Found
+[2025-07-30 14:32:32] warn: No Data Found
+[2025-07-30 14:32:32] warn: No Data Found
+[2025-07-30 14:32:33] warn: No Data Found
+[2025-07-30 14:32:36] warn: No Data Found
+[2025-07-30 14:32:37] warn: No Data Found
+[2025-07-30 14:33:16] warn: No Data Found
+[2025-07-30 14:33:16] warn: No Data Found
+[2025-07-30 14:33:16] warn: No Data Found
+[2025-07-30 14:33:17] warn: No Data Found
+[2025-07-30 14:33:48] warn: No Data Found
+[2025-07-30 14:33:48] warn: No Data Found
+[2025-07-30 14:33:48] warn: No Data Found
+[2025-07-30 14:33:49] warn: No Data Found
+[2025-07-30 14:33:57] warn: No Data Found
+[2025-07-30 14:33:58] warn: No Data Found
+[2025-07-30 14:34:29] warn: No Data Found
+[2025-07-30 14:34:29] warn: No Data Found
+[2025-07-30 14:34:29] warn: No Data Found
+[2025-07-30 14:34:31] warn: No Data Found
+[2025-07-30 14:34:40] warn: No Data Found
+[2025-07-30 14:34:40] warn: No Data Found
+[2025-07-30 14:34:40] warn: No Data Found
+[2025-07-30 14:34:41] warn: No Data Found
+[2025-07-30 14:34:43] warn: No Data Found
+[2025-07-30 14:34:43] warn: No Data Found
+[2025-07-30 14:34:49] warn: No Data Found
+[2025-07-30 14:34:49] warn: No Data Found
+[2025-07-30 14:34:49] warn: No Data Found
+[2025-07-30 14:34:50] warn: No Data Found
+[2025-07-30 14:35:39] warn: No Data Found
+[2025-07-30 14:35:40] warn: No Data Found
+[2025-07-30 14:35:56] warn: No Data Found
+[2025-07-30 14:35:56] warn: No Data Found
+[2025-07-30 14:35:56] warn: No Data Found
+[2025-07-30 14:35:57] warn: No Data Found
+[2025-07-30 14:43:59] warn: No Data Found
+[2025-07-30 14:43:59] warn: No Data Found
+[2025-07-30 14:43:59] warn: No Data Found
+[2025-07-30 14:44:00] warn: No Data Found
+[2025-07-30 14:44:41] warn: No Data Found
+[2025-07-30 14:44:41] warn: No Data Found
+[2025-07-30 14:44:41] warn: No Data Found
+[2025-07-30 14:44:42] warn: No Data Found
+[2025-07-30 14:44:44] warn: No Data Found
+[2025-07-30 14:44:44] warn: No Data Found
+[2025-07-30 14:44:45] warn: No Data Found
+[2025-07-30 14:44:46] warn: No Data Found
+[2025-07-30 14:46:08] warn: No Data Found
+[2025-07-30 14:46:08] warn: No Data Found
+[2025-07-30 14:46:08] warn: No Data Found
+[2025-07-30 14:46:09] warn: No Data Found
+[2025-07-30 14:48:12] warn: No Data Found
+[2025-07-30 14:48:12] warn: No Data Found
+[2025-07-30 14:48:13] warn: No Data Found
+[2025-07-30 14:48:15] warn: No Data Found
+[2025-07-30 14:48:15] warn: No Data Found
+[2025-07-30 14:48:15] warn: No Data Found
+[2025-07-30 14:48:17] warn: No Data Found
+[2025-07-30 14:48:25] warn: No Data Found
+[2025-07-30 14:48:26] warn: No Data Found
+[2025-07-30 14:48:40] warn: No Data Found
+[2025-07-30 14:48:40] warn: No Data Found
+[2025-07-30 14:48:41] warn: No Data Found
+[2025-07-30 14:48:42] warn: No Data Found
+[2025-07-30 14:51:33] warn: No Data Found
+[2025-07-30 14:51:33] warn: No Data Found
+[2025-07-30 14:51:33] warn: No Data Found
+[2025-07-30 14:51:34] warn: No Data Found
+[2025-07-30 14:51:38] warn: No Data Found
+[2025-07-30 14:51:39] warn: No Data Found
+[2025-07-30 14:51:49] warn: No Data Found
+[2025-07-30 14:51:49] warn: No Data Found
+[2025-07-30 14:51:49] warn: No Data Found
+[2025-07-30 14:51:50] warn: No Data Found
+[2025-07-30 15:16:28] warn: No Data Found
+[2025-07-30 15:16:28] warn: Not Data Found
+[2025-07-30 15:16:29] warn: No Data Found
+[2025-07-30 15:16:29] warn: Not Data Found
+[2025-07-30 15:16:31] warn: Not Data Found
+[2025-07-30 15:16:31] warn: No Data Found
+[2025-07-30 15:16:35] warn: Not Data Found
+[2025-07-30 15:16:35] warn: No Data Found
+[2025-07-30 15:16:38] warn: No Data Found
+[2025-07-30 15:17:23] warn: Get Categories Service Has No Entries.
+[2025-07-30 15:17:23] warn: No subcategories found.
+[2025-07-30 15:17:24] warn: No subcategories found.
+[2025-07-30 15:17:26] warn: No subcategories found.
+[2025-07-30 15:17:30] warn: No subcategories found.
+[2025-07-30 15:18:30] warn: No subcategories found.
+[2025-07-30 15:18:32] warn: No subcategories found.
+[2025-07-30 15:18:36] warn: No subcategories found.
+[2025-07-30 15:19:18] warn: No Printers Found
+[2025-07-30 15:19:21] warn: NOT FOUND
+[2025-07-30 15:19:22] warn: No Printers Found
+[2025-07-30 15:19:46] error: Menu item Service:  
+Invalid `prisma.menuItem.create()` invocation:
+
+
+Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
+{
+  "code": "P2003",
+  "meta": {
+    "modelName": "MenuItem",
+    "constraint": "MenuItem_printersId_fkey"
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.menuItem.create()` invocation:\n\n\nForeign key constraint violated on the constraint: `MenuItem_printersId_fkey`\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async MenuItemServices.createItem (D:\\POS Backend\\src\\domain\\item\\item.services.ts:270:27)\n    at async createItem (D:\\POS Backend\\src\\api\\controllers\\storage\\item.controller.ts:65:18)"
+}
+[2025-07-30 15:19:58] warn: Brand Not Found
+[2025-07-30 15:19:59] warn: Brand Not Found
+[2025-07-30 15:19:59] warn: NOT FOUND
+[2025-07-30 15:20:00] warn: NOT FOUND
+[2025-07-30 15:20:01] warn: Brand Not Found
+[2025-07-30 15:20:02] warn: No Printers Found
+[2025-07-30 15:20:03] warn: No Printers Found
+[2025-07-30 15:20:05] warn: Brand Not Found
+[2025-07-30 15:20:05] warn: No Printers Found
+[2025-07-30 15:20:06] warn: No Printers Found
+[2025-07-30 15:20:08] warn: No Printers Found
+[2025-07-30 15:20:12] warn: No Printers Found
+[2025-07-30 15:20:25] warn: NOT FOUND
+[2025-07-30 15:20:26] warn: NOT FOUND
+[2025-07-30 15:20:28] warn: NOT FOUND
+[2025-07-30 15:20:35] warn: NOT FOUND
+[2025-07-30 15:20:37] warn: NOT FOUND
+[2025-07-30 15:20:39] warn: NOT FOUND
+[2025-07-30 15:20:43] warn: NOT FOUND
+[2025-07-30 15:23:51] warn: No Data Found
+[2025-07-30 15:23:51] warn: No Data Found
+[2025-07-30 15:23:51] warn: No Data Found
+[2025-07-30 15:23:52] warn: No Data Found
+[2025-07-30 15:24:06] warn: No Data Found
+[2025-07-30 15:24:06] warn: No Data Found
+[2025-07-30 15:24:06] warn: No Data Found
+[2025-07-30 15:24:33] warn: No Data Found
+[2025-07-30 15:24:43] warn: No Data Found
+[2025-07-30 15:24:43] warn: No Data Found
+[2025-07-30 15:24:43] warn: No Data Found
+[2025-07-30 15:24:44] warn: No Data Found
+[2025-07-30 15:25:43] warn: No Data Found
+[2025-07-30 15:25:45] warn: No Data Found
+[2025-07-30 15:25:45] warn: No Data Found
+[2025-07-30 15:27:52] warn: No Data Found
+[2025-07-30 15:29:19] warn: Not Found
+[2025-07-30 15:29:31] warn: Not Found
+[2025-07-30 15:30:00] warn: Not Found
+[2025-07-30 15:31:16] warn: Not Found
+[2025-07-30 15:32:10] warn: No Data Found
+[2025-07-30 15:32:11] warn: No Data Found
+[2025-07-30 15:32:11] warn: No Data Found
+[2025-07-30 15:33:11] warn: No Data Found
+[2025-07-30 15:33:11] warn: No Data Found
+[2025-07-30 15:33:11] warn: No Data Found
+[2025-07-30 15:33:12] warn: No Data Found
+[2025-07-30 15:42:34] warn: No Data Found
+[2025-07-30 15:42:34] warn: No Data Found
+[2025-07-30 15:42:34] warn: No Data Found
+[2025-07-30 15:42:35] warn: No Data Found
+[2025-07-30 15:42:52] warn: No Data Found
+[2025-07-30 15:42:53] warn: No Data Found
+[2025-07-30 15:42:54] warn: No Data Found
+[2025-07-30 15:42:56] warn: No Data Found
+[2025-07-30 15:42:56] warn: No Data Found
+[2025-07-30 15:43:09] warn: No Data Found
+[2025-07-30 15:43:10] warn: No Data Found
+[2025-07-30 15:43:10] warn: No Data Found
+[2025-07-30 15:43:13] warn: No Data Found
+[2025-07-30 15:43:13] warn: No Data Found
+[2025-07-30 15:43:13] warn: No Data Found
+[2025-07-30 15:43:15] warn: No Data Found
+[2025-07-30 15:43:15] warn: No Data Found
+[2025-07-30 16:02:18] warn: Brand Not Found
+[2025-07-30 16:02:19] warn: Brand Not Found
+[2025-07-30 16:02:21] warn: Brand Not Found
+[2025-07-30 16:02:25] warn: Brand Not Found
+[2025-07-30 16:02:46] warn: Brand Not Found
+[2025-07-30 16:02:47] warn: Brand Not Found
+[2025-07-30 16:02:49] warn: Brand Not Found
+[2025-07-30 16:02:53] warn: Brand Not Found
+[2025-07-30 16:02:54] warn: Brand Not Found
+[2025-07-30 16:02:56] warn: Brand Not Found
+[2025-07-30 16:03:00] warn: Brand Not Found
+[2025-07-30 16:03:11] warn: Brand Not Found
+[2025-07-30 16:03:12] warn: Brand Not Found
+[2025-07-30 16:03:31] warn: Brand Not Found
+[2025-07-30 16:03:35] warn: Brand Not Found
+[2025-07-30 16:03:59] warn: Brand Not Found
+[2025-07-30 16:04:00] warn: Brand Not Found
+[2025-07-30 16:04:18] warn: Brand Not Found
+[2025-07-30 16:04:31] warn: Brand Not Found
+[2025-07-30 16:04:31] warn: Brand Not Found
+[2025-07-30 16:04:32] warn: Brand Not Found
+[2025-07-30 16:04:34] warn: Brand Not Found
+[2025-07-30 16:04:46] warn: Brand Not Found
+[2025-07-30 16:04:46] warn: Brand Not Found
+[2025-07-30 16:04:47] warn: Brand Not Found
+[2025-07-30 16:04:52] warn: Brand Not Found
+[2025-07-30 16:05:03] warn: Brand Not Found
+[2025-07-30 16:05:04] warn: Brand Not Found
+[2025-07-30 16:05:05] warn: Brand Not Found
+[2025-07-30 16:05:24] warn: Brand Not Found
+[2025-07-30 16:07:01] warn: Brand Not Found
+[2025-07-30 16:07:56] warn: Brand Not Found
+[2025-07-30 16:07:57] warn: Brand Not Found
+[2025-07-30 16:07:59] warn: Brand Not Found
+[2025-07-30 16:08:03] warn: Brand Not Found
+[2025-07-30 16:32:14] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:32:26] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:32:39] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:32:54] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:33:33] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:34:52] error: Order not found in database
+{
+  "orderId": 3
+}
+[2025-07-30 16:36:02] warn: No supplies found for restoration
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 16:36:02] warn: No supplies found for item
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 16:36:10] warn: No supplies found for item
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 16:36:28] warn: No supplies found for restoration
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 16:38:56] warn: No Data Found
+[2025-07-30 16:38:56] warn: No Data Found
+[2025-07-30 16:38:56] warn: No Data Found
+[2025-07-30 16:38:56] warn: No Data Found
+[2025-07-30 16:38:57] warn: No Data Found
+[2025-07-30 16:39:26] warn: No Data Found
+[2025-07-30 16:39:26] warn: No Data Found
+[2025-07-30 16:39:26] warn: No Data Found
+[2025-07-30 16:39:28] warn: No Data Found
+[2025-07-30 16:39:33] warn: Customers Not Found
+[2025-07-30 16:39:34] warn: Customers Not Found
+[2025-07-30 16:39:35] warn: Customers Not Found
+[2025-07-30 16:39:36] warn: Customers Not Found
+[2025-07-30 16:42:40] warn: No Data Found
+[2025-07-30 16:42:40] warn: No Data Found
+[2025-07-30 16:42:40] warn: No Data Found
+[2025-07-30 16:42:41] warn: No Data Found
+[2025-07-30 16:42:45] warn: No Data Found
+[2025-07-30 16:42:45] warn: No Data Found
+[2025-07-30 16:42:47] warn: No Data Found
+[2025-07-30 16:42:47] warn: No Data Found
+[2025-07-30 16:42:49] warn: No Data Found
+[2025-07-30 16:43:30] warn: No Data Found
+[2025-07-30 16:43:30] warn: No Data Found
+[2025-07-30 16:43:30] warn: No Data Found
+[2025-07-30 16:43:31] warn: No Data Found
+[2025-07-30 16:45:31] warn: No Data Found
+[2025-07-30 16:45:31] warn: No Data Found
+[2025-07-30 16:45:31] warn: No Data Found
+[2025-07-30 16:45:32] warn: No Data Found
+[2025-07-30 16:45:36] warn: No Data Found
+[2025-07-30 16:45:36] warn: No Data Found
+[2025-07-30 16:45:39] warn: No Data Found
+[2025-07-30 16:45:39] warn: No Data Found
+[2025-07-30 16:45:40] warn: No Data Found
+[2025-07-30 16:46:10] warn: No supplies found for restoration
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 16:46:10] warn: No supplies found for item
+{
+  "itemName": "lemonaza"
+}
+[2025-07-30 17:04:51] warn: No Data Found
+[2025-07-30 17:04:51] warn: No Data Found
+[2025-07-30 17:04:51] warn: No Data Found
+[2025-07-30 17:04:52] warn: No Data Found
+[2025-07-30 17:05:14] warn: No Data Found
+[2025-07-30 17:05:14] warn: No Data Found
+[2025-07-30 17:05:14] warn: No Data Found
+[2025-07-30 17:05:15] warn: No Data Found
+[2025-07-30 17:05:15] warn: No Data Found
+[2025-07-30 17:05:16] warn: No Data Found
+[2025-07-30 17:05:16] warn: No Data Found
+[2025-07-30 17:05:17] warn: No Data Found
+[2025-07-30 17:08:55] warn: No Data Found
+[2025-07-30 17:08:55] warn: No Data Found
+[2025-07-30 17:08:55] warn: No Data Found
+[2025-07-30 17:08:56] warn: No Data Found
+[2025-07-30 17:09:07] warn: No Data Found
+[2025-07-30 17:09:07] warn: No Data Found
+[2025-07-30 17:09:08] warn: No Data Found
+[2025-07-30 17:09:09] warn: No Data Found
+[2025-07-30 17:09:09] warn: No Data Found
+[2025-07-30 17:09:09] warn: No Data Found
+[2025-07-30 17:09:27] warn: No Data Found
+[2025-07-30 17:09:27] warn: No Data Found
+[2025-07-30 17:09:27] warn: No Data Found
+[2025-07-30 17:09:27] warn: No Data Found
+[2025-07-30 17:09:28] warn: No Data Found
+[2025-07-30 17:09:35] warn: No Data Found
+[2025-07-30 17:09:35] warn: No Data Found
+[2025-07-30 17:09:36] warn: No Data Found
+[2025-07-30 17:09:40] warn: No Data Found
+[2025-07-30 17:09:47] warn: No supplies found for restoration
+{
+  "itemName": "iced tea"
+}
+[2025-07-30 17:09:47] warn: No supplies found for item
+{
+  "itemName": "iced tea"
+}
+[2025-07-30 17:11:54] warn: No Data Found
+[2025-07-30 17:11:54] warn: No Data Found
+[2025-07-30 17:11:54] warn: No Data Found
+[2025-07-30 17:11:54] warn: No Data Found
+[2025-07-30 17:11:55] warn: No Data Found
+[2025-07-30 17:12:02] warn: No Data Found
+[2025-07-30 17:12:02] warn: No Data Found
+[2025-07-30 17:12:03] warn: No Data Found
+[2025-07-30 17:12:05] warn: No Data Found
+[2025-07-30 17:12:09] warn: No supplies found for restoration
+{
+  "itemName": "fries"
+}
+[2025-07-30 17:12:09] warn: No supplies found for item
+{
+  "itemName": "fries"
+}
+[2025-07-30 17:12:12] warn: Customers Not Found
+[2025-07-30 17:13:01] warn: No Data Found
+[2025-07-30 17:13:01] warn: No Data Found
+[2025-07-30 17:13:01] warn: No Data Found
+[2025-07-30 17:13:02] warn: No Data Found
+[2025-07-30 17:15:19] warn: Customers Not Found
+[2025-07-30 17:15:20] warn: Customers Not Found
+[2025-07-30 17:15:21] warn: Customers Not Found
+[2025-07-30 17:15:22] warn: Customers Not Found
+[2025-07-30 17:15:26] warn: Storage Not Found
+[2025-07-30 17:15:28] warn: Storage Not Found
+[2025-07-30 17:15:30] warn: Storage Not Found
+[2025-07-30 17:15:34] warn: Storage Not Found
+[2025-07-30 17:16:59] warn: No Data Found
+[2025-07-30 17:16:59] warn: No Data Found
+[2025-07-30 17:16:59] warn: No Data Found
+[2025-07-30 17:16:59] warn: No Data Found
+[2025-07-30 17:17:00] warn: No Data Found
+[2025-07-30 17:17:02] warn: No Data Found
+[2025-07-30 17:17:02] warn: No Data Found
+[2025-07-30 17:17:10] warn: No Data Found
+[2025-07-30 17:17:10] warn: No Data Found
+[2025-07-30 17:17:10] warn: No Data Found
+[2025-07-30 17:17:11] warn: No Data Found
+[2025-07-30 17:32:52] warn: No Data Found
+[2025-07-30 17:32:52] warn: No Data Found
+[2025-07-30 17:32:52] warn: No Data Found
+[2025-07-30 17:32:53] warn: No Data Found
+[2025-07-30 17:32:58] warn: No Data Found
+[2025-07-30 17:32:58] warn: No Data Found
+[2025-07-30 17:32:58] warn: No Data Found
+[2025-07-30 17:32:59] warn: No Data Found
+[2025-07-30 17:40:55] warn: Customers Not Found
+[2025-07-30 17:41:28] warn: No Data Found
+[2025-07-30 17:41:28] warn: No Data Found
+[2025-07-30 17:41:29] warn: No Data Found
+[2025-07-30 17:41:30] warn: No Data Found
+[2025-07-30 17:41:30] warn: No Data Found
+[2025-07-30 17:41:30] warn: No Data Found
+[2025-07-30 17:41:33] warn: No Data Found
+[2025-07-30 17:41:33] warn: No Data Found
+[2025-07-30 17:41:37] warn: No Data Found
+[2025-07-30 17:41:38] warn: No Data Found
+[2025-07-30 17:41:40] warn: No Data Found
+[2025-07-30 17:44:30] warn: No Data Found
+[2025-07-30 17:44:30] warn: No Data Found
+[2025-07-30 17:44:30] warn: No Data Found
+[2025-07-30 17:44:31] warn: No Data Found
+[2025-07-30 17:44:35] warn: No Data Found
+[2025-07-30 17:44:35] warn: No Data Found
+[2025-07-30 17:44:35] warn: No Data Found
+[2025-07-30 17:44:36] warn: No Data Found
+[2025-07-30 17:44:53] warn: No Data Found
+[2025-07-30 17:44:53] warn: No Data Found
+[2025-07-30 17:44:53] warn: No Data Found
+[2025-07-30 17:44:54] warn: No Data Found
+[2025-07-30 17:44:55] warn: No Data Found
+[2025-07-30 17:44:55] warn: No Data Found
+[2025-07-30 17:44:55] warn: No Data Found
+[2025-07-30 17:44:56] warn: No Data Found
+[2025-07-30 17:44:56] warn: No Data Found
+[2025-07-30 17:44:58] warn: No Data Found
+[2025-07-30 17:44:58] warn: No Data Found
+[2025-07-30 17:45:11] warn: No Data Found
+[2025-07-30 17:45:11] warn: No Data Found
+[2025-07-30 17:45:11] warn: No Data Found
+[2025-07-30 17:45:12] warn: No Data Found
+[2025-07-30 17:51:47] warn: No Payments found.
+[2025-07-30 18:03:19] warn: No Data Found
+[2025-07-30 18:03:19] warn: No Data Found
+[2025-07-30 18:03:19] warn: No Data Found
+[2025-07-30 18:03:20] warn: No Data Found
+[2025-07-30 18:03:32] warn: No Data Found
+[2025-07-30 18:03:35] warn: No Data Found
+[2025-07-30 18:03:35] warn: No Data Found
+[2025-07-30 18:05:39] warn: No Payments found.
+[2025-07-30 18:05:42] warn: No Payments found.
+[2025-07-30 18:05:45] warn: No Payments found.
+[2025-07-30 18:05:48] warn: No Payments found.
+[2025-07-30 18:05:51] warn: No Payments found.
+[2025-07-30 18:05:54] warn: No Payments found.
+[2025-07-30 18:06:01] warn: No Payments found.
+[2025-07-30 18:07:12] warn: No Payments found.
+[2025-07-30 18:11:04] warn: No Payments found.
+[2025-07-30 18:11:08] warn: No Payments found.
+[2025-07-30 18:11:11] warn: No Payments found.
+[2025-07-30 18:11:14] warn: No Payments found.
+[2025-07-30 18:11:46] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:46] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:49] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:49] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:52] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:52] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:55] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:11:55] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:02] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:02] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:05] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:05] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:08] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:08] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:11] error: Validation failed: [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:12:11] warn: Missing Info:  [
+  {
+    "code": "invalid_type",
+    "expected": "date",
+    "received": "string",
+    "path": [
+      "paymentDate"
+    ],
+    "message": "Expected date, received string"
+  }
+]
+{
+  "issues": [
+    {
+      "code": "invalid_type",
+      "expected": "date",
+      "received": "string",
+      "path": [
+        "paymentDate"
+      ],
+      "message": "Expected date, received string"
+    }
+  ],
+  "name": "ZodError",
+  "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
+}
+[2025-07-30 18:16:33] warn: No Payments found.
+[2025-07-30 18:16:36] warn: No Payments found.
+[2025-07-30 18:16:39] warn: No Payments found.
+[2025-07-30 18:16:42] warn: No Payments found.
+[2025-07-30 18:17:00] warn: No Payments found.
+[2025-07-30 18:17:03] warn: No Payments found.
+[2025-07-30 18:17:12] warn: No Payments found.
+[2025-07-30 18:17:15] warn: No Payments found.
+[2025-07-30 18:17:18] warn: No Payments found.
+[2025-07-30 18:17:21] warn: No Payments found.
+[2025-07-30 18:19:50] warn: No Payments found.
+[2025-07-30 18:19:53] warn: No Payments found.
+[2025-07-30 18:19:56] warn: No Payments found.
+[2025-07-30 18:19:59] warn: No Payments found.

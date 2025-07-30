@@ -47,8 +47,10 @@ export class FinanceController implements FinanceControllerInterface {
     const body = req.body;
     const user = decodeJWT(req, res);
     const financeInstance = new FinanceServices();
+    const paymentDate = new Date(req.body.paymentDate);
     const response = await financeInstance.createPayment({
       ...body,
+      paymentDate,
       userId: user?.id,
     });
 
