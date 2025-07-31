@@ -11727,3 +11727,31 @@ Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
   "name": "ZodError",
   "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
 }
+[2025-07-30 23:42:04] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:684:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:50:37] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:711:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:685:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:50:38] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:711:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:685:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:50:39] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:711:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:685:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:51:39] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:713:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:687:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:52:40] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:684:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:53:55] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:683:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}

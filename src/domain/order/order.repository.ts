@@ -19,7 +19,7 @@ export function getOrdersDB() {
 
 export function findOrderByIdDB(id: number, client: TxClientType) {
   return client.order.findFirst({
-    where: { tableId: id },
+    where: { id },
     include: {
       items: {
         include: {
