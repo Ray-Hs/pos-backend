@@ -17898,3 +17898,240 @@ Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
 [2025-07-30 18:19:53] warn: No Payments found.
 [2025-07-30 18:19:56] warn: No Payments found.
 [2025-07-30 18:19:59] warn: No Payments found.
+<<<<<<< HEAD
+=======
+[2025-07-30 23:42:04] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:684:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:50:37] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:711:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:685:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:50:38] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:711:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:685:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:50:39] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:711:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:685:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:51:39] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:713:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:687:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:52:40] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:684:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:53:55] error: Update Invoice Service:  Order with ID 162 not found
+{
+  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:683:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:55:48] warn: No Data Found
+[2025-07-30 23:55:48] warn: No Data Found
+[2025-07-30 23:55:48] warn: No Data Found
+[2025-07-30 23:55:49] warn: No Data Found
+[2025-07-31 00:00:32] warn: No Data Found
+[2025-07-31 00:00:33] warn: No Data Found
+[2025-07-31 00:00:33] warn: No Data Found
+[2025-07-31 13:55:16] warn: No Data Found
+[2025-07-31 13:55:17] warn: No Data Found
+[2025-07-31 13:55:17] warn: No Data Found
+>>>>>>> d8171cb67e2e3b4e348a56608d55573df7b530b5
+[2025-07-31 14:43:13] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
+}
+[2025-07-31 14:43:21] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
+}
+[2025-07-31 14:43:34] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
+}
+[2025-07-31 14:43:58] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
+}
+[2025-07-31 14:44:04] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
+}
+[2025-07-31 14:46:22] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:387:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
+}
+[2025-07-31 14:47:30] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
+}
