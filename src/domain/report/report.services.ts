@@ -55,7 +55,7 @@ class ReportService implements ReportServiceInterface {
     }
   }
 
-  async getDailyReport(from?: Date, to?: Date): Promise<TResult<Report[]>> {
+  async getDailyReport(from?: Date, to?: Date): Promise<any> {
     try {
       // build date filter
       const where: any = {};
@@ -185,17 +185,9 @@ class ReportService implements ReportServiceInterface {
           }
         }
 
-        return acc; 
+        return acc;
       }, {} as Record<string, any>);
 
-      const totalProfit = await prisma.invoice.aggregate({
-        _count: { total: true },
-        _sum: { total: true },
-        where: {
-          paid: true,
-          isLatestVersion: true,
-        },
-      });
       // Convert to percentages for payment methods and calculate final profit
       const data = Object.values(groupedData).map((item) => {
         const total = item.totalQuantityForPayment;
@@ -242,15 +234,26 @@ class ReportService implements ReportServiceInterface {
         return {
           ...cleanItem,
           paymentMethod,
-          totalProfit: totalProfit._sum.total,
-          totalCount: totalProfit._count.total,
         };
       });
 
       // Sort by product name
       data.sort((a, b) => a.productName.localeCompare(b.productName));
 
-      return { success: true, data };
+      const totalProfit = await prisma.invoice.aggregate({
+        _count: { total: true },
+        _sum: { total: true },
+        where: {
+          isLatestVersion: true,
+        },
+      });
+
+      return {
+        success: true,
+        data,
+        totalProfit: totalProfit._sum.total,
+        totalCount: totalProfit._count.total,
+      };
     } catch (error) {
       logger.error("Get Daily Report:", error);
       return {

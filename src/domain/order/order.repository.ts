@@ -17,9 +17,11 @@ export function getOrdersDB() {
   });
 }
 
+// TODO fix or add tableId
+
 export function findOrderByIdDB(id: number, client: TxClientType) {
   return client.order.findFirst({
-    where: { tableId: id },
+    where: { id },
     include: {
       items: {
         include: {

@@ -25,7 +25,7 @@ export interface ReportServiceInterface {
     company?: string
   ) => Promise<TResult<Report[]>>;
   closeDayShift?: () => Promise<TResult<Report[]>>;
-  getDailyReport: (from?: Date, to?: Date) => Promise<TResult<Report[]>>;
+  getDailyReport: (from?: Date, to?: Date) => Promise<any>;
   getCompanyReport: (
     from?: Date,
     to?: Date,

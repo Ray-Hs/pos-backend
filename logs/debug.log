@@ -21685,3 +21685,111 @@ Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
 [2025-07-30 18:19:56] warn: No Payments found.
 [2025-07-30 18:19:59] warn: No Payments found.
 [2025-07-30 18:22:08] info: Filter: 
+[2025-07-30 22:00:51] info: Filter: 
+[2025-07-30 23:36:34] info: Filter: 
+[2025-07-30 23:37:52] error: Update Invoice Service:  Order with ID 11 not found
+{
+  "stack": "Error: Order with ID 11 not found\n    at D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:684:41)\n    at async updateInvoice (D:\\POS Backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:38:03] warn: No Data Found
+[2025-07-30 23:38:03] warn: No Data Found
+[2025-07-30 23:38:03] warn: No Data Found
+[2025-07-30 23:38:03] warn: No Data Found
+[2025-07-30 23:38:04] warn: No Data Found
+[2025-07-30 23:38:06] warn: No Data Found
+[2025-07-30 23:38:06] warn: No Data Found
+[2025-07-30 23:38:07] warn: No Data Found
+[2025-07-30 23:38:13] error: Update Invoice Service:  Order with ID 12 not found
+{
+  "stack": "Error: Order with ID 12 not found\n    at D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:684:41)\n    at async updateInvoice (D:\\POS Backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:38:43] error: Update Invoice Service:  Order with ID 12 not found
+{
+  "stack": "Error: Order with ID 12 not found\n    at D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:635:21\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:614:41)\n    at async updateInvoice (D:\\POS Backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:40:17] error: Update Invoice Service:  Order with ID 12 not found
+{
+  "stack": "Error: Order with ID 12 not found\n    at D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:635:21\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:614:41)\n    at async updateInvoice (D:\\POS Backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:41:13] error: Update Invoice Service:  Order with ID 12 not found
+{
+  "stack": "Error: Order with ID 12 not found\n    at D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:635:21\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:614:41)\n    at async updateInvoice (D:\\POS Backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-30 23:47:10] info: Filter: 
+[2025-07-30 23:48:39] info: undefined
+[2025-07-31 00:00:38] info: Filter: 
+[2025-07-31 00:06:51] info: Filter: 
+[2025-07-31 00:11:56] info: Filter: 
+[2025-07-31 00:13:11] info: Filter: 
+[2025-07-31 10:42:25] info: Filter: 
+[2025-07-31 10:52:44] info: Excess payment amount: 10000
+[2025-07-31 10:53:13] info: Excess payment amount: 5000
+[2025-07-31 10:53:39] info: Excess payment amount: 5000
+[2025-07-31 10:55:29] info: Filter: 
+[2025-07-31 10:55:36] error: Update Invoice Service:  Order with ID 11 not found
+{
+  "stack": "Error: Order with ID 11 not found\n    at D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\POS Backend\\src\\domain\\invoice\\invoice.services.ts:684:41)\n    at async updateInvoice (D:\\POS Backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-07-31 10:56:45] warn: No Data Found
+[2025-07-31 10:56:45] warn: No Data Found
+[2025-07-31 10:56:45] warn: No Data Found
+[2025-07-31 10:56:46] warn: No Data Found
+[2025-07-31 10:57:12] warn: Not Found
+[2025-07-31 11:00:12] info: Item Quantity: 
+{
+  "supply": {
+    "id": 1,
+    "invoiceNO": "INT_5123",
+    "companyId": 1,
+    "paymentMethod": "DEBT",
+    "barcode": "PEP_234",
+    "name": "Pepsi",
+    "packageQty": 10,
+    "itemQty": 20,
+    "packagePrice": 7000,
+    "itemPrice": 350,
+    "itemSellPrice": 500,
+    "totalItems": 200,
+    "totalPrice": 70000,
+    "store": "STORAGE 1",
+    "note": "Menu item pepsi",
+    "remainingQuantity": 197,
+    "userId": null,
+    "expiryDate": "2025-12-30T21:00:00.000Z",
+    "purchasedAt": "2025-07-30T14:55:38.000Z",
+    "createdAt": "2025-07-30T15:00:45.594Z",
+    "updatedAt": "2025-07-30T20:38:08.787Z"
+  },
+  "quantity": 1
+}
+[2025-07-31 11:00:12] warn: No Data Found
+[2025-07-31 11:00:13] warn: No Data Found
+[2025-07-31 11:00:13] warn: No Data Found
+[2025-07-31 11:09:59] info: Filter: 
+[2025-07-31 11:11:50] warn: No Data Found
+[2025-07-31 11:11:50] warn: No Data Found
+[2025-07-31 11:11:50] warn: No Data Found
+[2025-07-31 11:11:51] warn: No Data Found
+[2025-07-31 11:26:29] info: Filter: 
+[2025-07-31 11:27:04] info: Filter: 
+[2025-07-31 11:28:34] info: Filter: 
+[2025-07-31 11:47:30] info: Filter: 
+[2025-07-31 11:51:40] warn: No Data Found
+[2025-07-31 11:51:40] warn: No Data Found
+[2025-07-31 11:51:41] warn: No Data Found
+[2025-07-31 11:51:42] warn: No Data Found
+[2025-07-31 11:51:42] warn: No Data Found
+[2025-07-31 11:51:42] warn: No Data Found
+[2025-07-31 11:51:48] info: Filter: 
+[2025-07-31 11:51:48] warn: No Data Found
+[2025-07-31 11:51:48] warn: No Data Found
+[2025-07-31 11:51:48] warn: No Data Found
+[2025-07-31 11:51:49] warn: No Data Found
+[2025-07-31 11:51:50] warn: No Data Found
+[2025-07-31 11:51:50] warn: No Data Found
+[2025-07-31 11:51:58] warn: No Data Found
+[2025-07-31 11:51:58] warn: No Data Found
+[2025-07-31 11:51:58] warn: No Data Found
+[2025-07-31 11:51:59] warn: No Data Found
+[2025-07-31 12:01:26] info: Filter: 
+[2025-07-31 12:03:42] info: Filter: 
