@@ -95,6 +95,7 @@ export interface SupplyServiceInterface {
     },
     expired?: { expired?: boolean | undefined; days?: number | undefined }
   ) => Promise<TResult<StorageSummary & { pages?: number }>>;
+  getStores: () => Promise<TResult<string[]>>;
   getSupplies: (
     q: string | undefined,
     pagination?: {
@@ -114,6 +115,10 @@ export interface SupplyControllerInterface {
     req: Request,
     res: Response
   ) => Promise<Response<TResult<StorageSummary>>>;
+  getStores: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<string[]>>>;
   getSupplies: (
     req: Request,
     res: Response

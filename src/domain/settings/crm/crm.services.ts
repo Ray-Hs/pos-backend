@@ -203,6 +203,10 @@ export class CRMServices implements CRMServiceInterface {
       }
 
       const data = customerInfos.map((customer) => {
+        const totalDebt = customer.Invoice.reduce(
+          (acc, invoice) => acc + (invoice.total || 0),
+          0
+        );
         return {
           customer: {
             id: customer.id,
@@ -211,6 +215,7 @@ export class CRMServices implements CRMServiceInterface {
             email: customer.email,
             debt: customer.debt,
             initialDebt: customer.initialDebt,
+            totalDebt,
             code: customer.code,
             note: customer.note,
             discount: customer.customerDiscount?.discount,

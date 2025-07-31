@@ -788,8 +788,9 @@ export class OrderServices implements OrderServiceInterface {
       }
 
       const supplyTransaction = await prisma.$transaction(async (tx) => {
-        const existingOrder = await getLatestOrderDB(
-          response.tableId as number
+        const existingOrder = await findOrderByIdDB(
+          response.tableId as number,
+          tx
         );
         if (!existingOrder) {
           logger.warn("Not Found");

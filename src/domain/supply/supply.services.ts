@@ -26,6 +26,7 @@ import {
 } from "./supply.repository";
 import { Supply, SupplySchema, SupplyServiceInterface } from "./supply.types";
 import { createItemDB } from "../item/item.repository";
+import { TResult } from "../../types/common";
 
 export class SupplyServices implements SupplyServiceInterface {
   async getSupplies(
@@ -91,6 +92,42 @@ export class SupplyServices implements SupplyServiceInterface {
       };
     } catch (error) {
       logger.error("Get Supplies: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async getStores() {
+    try {
+      const stores = await prisma.supply.findMany({
+        select: {
+          store: true,
+        },
+        distinct: ["store"],
+      });
+      const storeNames = stores
+        .map((s) => s.store)
+        .filter((name): name is string => typeof name === "string");
+
+      if (!stores || stores.length <= 0) {
+        logger.warn("Error no stores found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      return { success: true, data: storeNames };
+    } catch (error) {
+      logger.error("Get Stores: ", error);
       return {
         success: false,
         error: {

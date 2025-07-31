@@ -57,6 +57,13 @@ export async function createCustomerPaymentDB(
     // Get customer info
     const customerInfo = await tx.customerInfo.findUnique({
       where: { id: customerInfoId },
+      include: {
+        Invoice: {
+          select: {
+            total: true,
+          },
+        },
+      },
     });
 
     if (!customerInfo) {
@@ -259,6 +266,7 @@ export async function createCustomerPaymentDB(
       const payment = await tx.customerPayment.create({
         data: paymentData,
       });
+
       createdPayments.push(payment);
     }
 

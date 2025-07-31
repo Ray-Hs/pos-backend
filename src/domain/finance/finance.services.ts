@@ -29,6 +29,8 @@ import {
 
 // Helper functions for payment DB operations (to be implemented in finance.repository)
 import prisma from "../../infrastructure/database/prisma/client";
+import { calculatePages } from "../../infrastructure/utils/calculateSkip";
+import { User } from "../../types/common";
 import { getCompanyInfoByIdDB } from "../settings/crm/crm.repository";
 import {
   createPaymentDB,
@@ -37,8 +39,6 @@ import {
   getPaymentsDB,
   updatePaymentDB,
 } from "./finance.repository";
-import { User } from "../../types/common";
-import { calculatePages } from "../../infrastructure/utils/calculateSkip";
 
 export class FinanceServices implements FinanceServiceInterface {
   async getAllCompanyDebts() {
@@ -430,22 +430,24 @@ export class FinanceServices implements FinanceServiceInterface {
       const totalPages = await prisma.payment.count();
 
       // Ensure each payment object matches the expected shape
-      const payments: payment[] = data.map((item) => ({
-        ...item,
-        id: item.id,
-        userId: item.userId,
-        companyId: item.companyDebt.companyId,
-        companyDebtId: item.companyDebtId,
-        invoiceNumber: item.invoiceNumber,
-        amount: item.amount,
-        currency: item.currency,
-        note: item.note,
-        createdAt: item.createdAt,
-        updatedAt: item.updatedAt,
-        user: item.user as User,
-        company: item.companyDebt.company,
-        paymentDate: item.paymentDate,
-      }));
+      const payments: payment[] = data.map((item) => {
+        return {
+          ...item,
+          id: item.id,
+          userId: item.userId,
+          companyId: item.companyDebt.companyId,
+          companyDebtId: item.companyDebtId,
+          invoiceNumber: item.invoiceNumber,
+          amount: item.amount,
+          currency: item.currency,
+          note: item.note,
+          createdAt: item.createdAt,
+          updatedAt: item.updatedAt,
+          user: item.user as User,
+          company: item.companyDebt.company,
+          paymentDate: item.paymentDate,
+        };
+      });
 
       return {
         success: true,

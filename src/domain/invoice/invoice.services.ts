@@ -560,8 +560,6 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
 
-      console.table([invoice]);
-
       if (data.paymentMethod === "RECEIPT") {
         const updatedInvoice = await prisma.$transaction(async (tx) => {
           const printerServices = new printerService();
@@ -626,6 +624,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
                 id: invoice.invoiceRefId,
               },
             });
+
             const order = await findOrderByIdDB(
               invoiceRef?.orderId as number,
               tx
@@ -701,6 +700,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
                 id: invoice.invoiceRefId,
               },
             });
+
             const order = await findOrderByIdDB(
               invoiceRef?.orderId as number,
               tx

@@ -20,6 +20,12 @@ router.get(
 );
 
 router.get(
+  "/storage/stores",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.getStores)
+);
+
+router.get(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(controller.getSupplyById)
