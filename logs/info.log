@@ -5726,3 +5726,38 @@ Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
 [2025-07-31 13:55:16] warn: No Data Found
 [2025-07-31 13:55:17] warn: No Data Found
 [2025-07-31 13:55:17] warn: No Data Found
+[2025-07-31 14:00:54] warn: No Data Found
+[2025-07-31 14:00:54] warn: No Data Found
+[2025-07-31 14:00:54] warn: No Data Found
+[2025-07-31 14:02:25] info: PERF: Fetch menu items completed in 3ms
+{
+  "count": 2,
+  "menuItems": [
+    {
+      "id": 2,
+      "title": "pepsi"
+    },
+    {
+      "id": 2,
+      "title": "pepsi"
+    }
+  ]
+}
+[2025-07-31 14:02:25] info: Processing supply updates
+{
+  "itemNames": [
+    "pepsi"
+  ]
+}
+[2025-07-31 14:02:25] info: PERF: Supply updates completed in 2ms
+[2025-07-31 14:02:25] info: undefined
+[2025-07-31 14:02:25] info: PERF: updateOrder completed in 31ms
+{
+  "orderId": 172,
+  "finalItemsCount": 2,
+  "newInvoiceId": 423,
+  "newInvoiceVersion": 2
+}
+[2025-07-31 14:04:14] warn: No Data Found
+[2025-07-31 14:04:15] warn: No Data Found
+[2025-07-31 14:04:15] warn: No Data Found

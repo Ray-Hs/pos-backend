@@ -202,43 +202,64 @@ export class CRMServices implements CRMServiceInterface {
         };
       }
 
-      const data = customerInfos.map((customer) => {
-        const totalDebt = customer.Invoice.reduce(
-          (acc, invoice) => acc + (invoice.total || 0),
-          0
-        );
-        return {
-          customer: {
-            id: customer.id,
-            name: customer.name,
-            phoneNumber: customer.phoneNumber,
-            email: customer.email,
-            debt: customer.debt,
-            initialDebt: customer.initialDebt,
-            totalDebt,
-            code: customer.code,
-            note: customer.note,
-            discount: customer.customerDiscount?.discount,
-          },
-          invoices: customer.Invoice.map((invoice) => ({
-            id: invoice.id,
-            subtotal: invoice.subtotal,
-            total: invoice.total,
-            status: invoice.status,
-            debt: invoice.debt,
-            paymentMethod: invoice.paymentMethod,
-            paid: invoice.paid,
-            createdAt: invoice.createdAt,
-            items: invoice.invoiceRef.Order?.items.map((item) => ({
-              title_en: item.menuItem.title_en,
-              title_ar: item.menuItem.title_ar,
-              title_ku: item.menuItem.title_ku,
-              price: item.menuItem.price,
-              image: item.menuItem.image,
-            })),
-          })),
-        };
-      });
+      const data = await Promise.all(
+        customerInfos.map(async (customer) => {
+          const totalDebt = customer.Invoice.reduce(
+            (acc, invoice) => acc + (invoice.total || 0),
+            0
+          );
+
+          const invoices = await Promise.all(
+            customer.Invoice.map(async (invoice) => {
+              const payment = await prisma.customerPayment.aggregate({
+                where: {
+                  invoiceId: invoice.id,
+                },
+                _sum: {
+                  amount: true,
+                },
+              });
+
+              const totalPaid = payment._sum.amount;
+
+              return {
+                id: invoice.id,
+                subtotal: invoice.subtotal,
+                total: invoice.total,
+                status: invoice.status,
+                debt: invoice.debt,
+                remainingDebt: invoice.total - (totalPaid || 0),
+                paymentMethod: invoice.paymentMethod,
+                paid: invoice.paid,
+                createdAt: invoice.createdAt,
+                items: invoice.invoiceRef.Order?.items.map((item) => ({
+                  title_en: item.menuItem.title_en,
+                  title_ar: item.menuItem.title_ar,
+                  title_ku: item.menuItem.title_ku,
+                  price: item.menuItem.price,
+                  image: item.menuItem.image,
+                })),
+              };
+            })
+          );
+
+          return {
+            customer: {
+              id: customer.id,
+              name: customer.name,
+              phoneNumber: customer.phoneNumber,
+              email: customer.email,
+              debt: customer.debt,
+              initialDebt: customer.initialDebt,
+              totalDebt,
+              code: customer.code,
+              note: customer.note,
+              discount: customer.customerDiscount?.discount,
+            },
+            invoices,
+          };
+        })
+      );
 
       // Count only customers who have at least one DEBT invoice (isLatestVersion: true, paymentMethod: "DEBT")
       const totalPages = await prisma.customerInfo.count({

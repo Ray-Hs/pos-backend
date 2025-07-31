@@ -144,8 +144,20 @@ export async function getStorageDB(
   let totalValue = 0;
   let totalProfit = 0;
 
+  // Track totals by currency
+  const currencyTotals = new Map<
+    string,
+    {
+      currency: string;
+      totalItems: number;
+      totalValue: number;
+      totalProfit: number;
+    }
+  >();
+
   for (const supply of supplies) {
     const storeName = supply.store || "Default Store";
+    const currency = supply.company.currency || "USD"; // Default currency if not specified
 
     if (!storeMap.has(storeName)) {
       storeMap.set(storeName, {
@@ -160,17 +172,19 @@ export async function getStorageDB(
     const store = storeMap.get(storeName);
     const itemKey = `${supply.name}-${supply.barcode || "no-barcode"}`;
 
+    const itemQuantity = supply.remainingQuantity || 0;
+    const itemValue = itemQuantity * supply.itemPrice;
+    const itemProfit = itemQuantity * (supply.itemSellPrice - supply.itemPrice);
+
     if (!store.items.has(itemKey)) {
       // Create new storage item
       const storageItem = {
         item: supply.name,
-        quantity: supply.remainingQuantity || 0,
+        quantity: itemQuantity,
         price: supply.itemPrice,
         sellPrice: supply.itemSellPrice,
-        totalValue: (supply.remainingQuantity || 0) * supply.itemPrice,
-        profit:
-          (supply.remainingQuantity || 0) *
-          (supply.itemSellPrice - supply.itemPrice),
+        totalValue: itemValue,
+        profit: itemProfit,
         companyDetails: {
           id: supply.company.id,
           name: supply.company.name,
@@ -190,12 +204,9 @@ export async function getStorageDB(
     } else {
       // Update existing item (combine quantities)
       const existingItem = store.items.get(itemKey);
-      existingItem.quantity += supply.remainingQuantity || 0;
-      existingItem.totalValue +=
-        (supply.remainingQuantity || 0) * supply.itemPrice;
-      existingItem.profit +=
-        (supply.remainingQuantity || 0) *
-        (supply.itemSellPrice - supply.itemPrice);
+      existingItem.quantity += itemQuantity;
+      existingItem.totalValue += itemValue;
+      existingItem.profit += itemProfit;
 
       // Update earliest expiry date
       if (
@@ -214,6 +225,23 @@ export async function getStorageDB(
       ) {
         existingItem.lastRestock = supply.createdAt;
       }
+    }
+
+    // Update currency totals
+    if (!currencyTotals.has(currency)) {
+      currencyTotals.set(currency, {
+        currency,
+        totalItems: 0,
+        totalValue: 0,
+        totalProfit: 0,
+      });
+    }
+
+    const currencyTotal = currencyTotals.get(currency);
+    if (currencyTotal) {
+      currencyTotal.totalItems += itemQuantity;
+      currencyTotal.totalValue += itemValue;
+      currencyTotal.totalProfit += itemProfit;
     }
   }
 
@@ -240,12 +268,18 @@ export async function getStorageDB(
     a.storeName.localeCompare(b.storeName)
   );
 
+  // Convert currency totals to array and sort by currency
+  const totalsByCurrency = Array.from(currencyTotals.values()).sort((a, b) =>
+    a.currency.localeCompare(b.currency)
+  );
+
   return {
     stores,
     totalStores: stores.length,
     totalItems,
     totalValue,
     totalProfit,
+    totalsByCurrency, // New field with currency-categorized totals
   };
 }
 

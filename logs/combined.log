@@ -20488,3 +20488,119 @@ Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
 [2025-07-31 13:55:16] warn: No Data Found
 [2025-07-31 13:55:17] warn: No Data Found
 [2025-07-31 13:55:17] warn: No Data Found
+[2025-07-31 14:00:54] warn: No Data Found
+[2025-07-31 14:00:54] warn: No Data Found
+[2025-07-31 14:00:54] warn: No Data Found
+[2025-07-31 14:02:25] debug: DB: transaction
+{
+  "phase": "START"
+}
+[2025-07-31 14:02:25] debug: DB: menuItem.findFirst
+{
+  "itemCount": 2
+}
+[2025-07-31 14:02:25] info: PERF: Fetch menu items completed in 3ms
+{
+  "count": 2,
+  "menuItems": [
+    {
+      "id": 2,
+      "title": "pepsi"
+    },
+    {
+      "id": 2,
+      "title": "pepsi"
+    }
+  ]
+}
+[2025-07-31 14:02:25] debug: Calculating old item quantities
+[2025-07-31 14:02:25] debug: Old quantities calculated
+{
+  "oldItemMap": {
+    "pepsi": 3
+  }
+}
+[2025-07-31 14:02:25] debug: Calculating new item quantities
+[2025-07-31 14:02:25] debug: New quantities calculated
+{
+  "newItemMap": {
+    "pepsi": 2
+  }
+}
+[2025-07-31 14:02:25] info: Processing supply updates
+{
+  "itemNames": [
+    "pepsi"
+  ]
+}
+[2025-07-31 14:02:25] debug: Processing item supply update
+{
+  "itemName": "pepsi",
+  "oldQty": 3,
+  "newQty": 2,
+  "qtyDifference": -1
+}
+[2025-07-31 14:02:25] debug: Found supplies for item
+{
+  "itemName": "pepsi",
+  "suppliesCount": 8,
+  "supplies": [
+    {
+      "id": 25,
+      "remainingQuantity": 268
+    },
+    {
+      "id": 24,
+      "remainingQuantity": 245
+    },
+    {
+      "id": 26,
+      "remainingQuantity": 120
+    },
+    {
+      "id": 31,
+      "remainingQuantity": 24
+    },
+    {
+      "id": 23,
+      "remainingQuantity": 24
+    },
+    {
+      "id": 30,
+      "remainingQuantity": 24
+    },
+    {
+      "id": 27,
+      "remainingQuantity": 13
+    },
+    {
+      "id": 29,
+      "remainingQuantity": 12
+    }
+  ]
+}
+[2025-07-31 14:02:25] debug: Starting supply deduction process
+{
+  "itemName": "pepsi",
+  "totalToDeduct": -1
+}
+[2025-07-31 14:02:25] info: PERF: Supply updates completed in 2ms
+[2025-07-31 14:02:25] debug: DB: order.update
+{
+  "orderId": 172
+}
+[2025-07-31 14:02:25] info: undefined
+[2025-07-31 14:02:25] info: PERF: updateOrder completed in 31ms
+{
+  "orderId": 172,
+  "finalItemsCount": 2,
+  "newInvoiceId": 423,
+  "newInvoiceVersion": 2
+}
+[2025-07-31 14:02:25] debug: updateOrder - EXIT
+{
+  "success": true
+}
+[2025-07-31 14:04:14] warn: No Data Found
+[2025-07-31 14:04:15] warn: No Data Found
+[2025-07-31 14:04:15] warn: No Data Found
