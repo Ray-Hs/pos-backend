@@ -245,11 +245,6 @@ export class SupplyServices implements SupplyServiceInterface {
 
       const createdSupply = await prisma.$transaction(async (tx) => {
         const company = await getCompanyInfoByIdDB(data.companyId, tx);
-        const prevSupply = await tx.supply.findMany({
-          where: {
-            name: data.name,
-          },
-        });
 
         if (!company) {
           throw new Error(`No Company Exists with id: ${data.companyId}`);
@@ -258,15 +253,17 @@ export class SupplyServices implements SupplyServiceInterface {
         const totalPrice = totalItems * data.itemPrice;
 
         if (data.paymentMethod === "DEBT") {
+          console.log("Data: ", data);
+          console.table(["Debt", totalItems, totalPrice]);
           const createdDebt = await createCompanyDebtDB(
             {
-              price: (totalPrice || 0) / (totalItems || 0),
+              price: Math.round((totalPrice || 0) / (totalItems || 0)),
               product: data.name,
               quantity: totalItems || 0,
               companyId: company?.id,
               currency: company?.currency || "IQD",
               invoiceNumber: data.invoiceNO,
-              totalAmount: data.totalPrice,
+              totalAmount: totalPrice,
               userId: requestData.userId,
             },
             tx
@@ -373,7 +370,35 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
-      await updateSupplyDB(data, id.id);
+      await prisma.$transaction(async (tx) => {
+        const company = await getCompanyInfoByIdDB(data.companyId, tx);
+
+        if (!company) {
+          throw new Error(`No Company Exists with id: ${data.companyId}`);
+        }
+        const totalItems = data.itemQty * data.packageQty;
+        const totalPrice = totalItems * data.itemPrice;
+
+        if (data.paymentMethod === "DEBT") {
+          console.log("Data: ", data);
+          console.table(["Debt", totalItems, totalPrice]);
+          const createdDebt = await createCompanyDebtDB(
+            {
+              price: Math.round((totalPrice || 0) / (totalItems || 0)),
+              product: data.name,
+              quantity: totalItems || 0,
+              companyId: company?.id,
+              currency: company?.currency || "IQD",
+              invoiceNumber: data.invoiceNO,
+              totalAmount: data.totalPrice,
+              userId: requestData.userId,
+            },
+            tx
+          );
+        }
+
+        await updateSupplyDB(data, id.id as number);
+      });
       return {
         success: true,
         message: "Updated Supply Successfully",
