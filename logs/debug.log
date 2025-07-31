@@ -21752,3 +21752,37 @@ Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
 [2025-07-31 11:52:36] info: Filter: 
 [2025-07-31 11:58:55] info: Filter: 
 [2025-07-31 12:07:41] info: Filter: 
+[2025-07-31 12:16:52] info: Filter: 
+[2025-07-31 12:24:07] info: Excess payment amount: 8956000
+[2025-07-31 12:24:23] info: Filter: 
+[2025-07-31 13:55:13] info: Filter: 
+[2025-07-31 13:55:16] info: Item Quantity: 
+{
+  "supply": {
+    "id": 23,
+    "invoiceNO": "aWfawfaFW",
+    "companyId": 1,
+    "paymentMethod": "CASH",
+    "barcode": "1245125155",
+    "name": "pepsi",
+    "packageQty": 1,
+    "itemQty": 12,
+    "packagePrice": 20000,
+    "itemPrice": 1666,
+    "itemSellPrice": 1000,
+    "totalItems": 12,
+    "totalPrice": 20000.04,
+    "store": "Box",
+    "note": "",
+    "remainingQuantity": 22,
+    "userId": null,
+    "expiryDate": "2025-07-30T21:00:00.000Z",
+    "purchasedAt": "2025-07-23T13:16:05.000Z",
+    "createdAt": "2025-07-23T13:17:33.785Z",
+    "updatedAt": "2025-07-30T12:00:47.398Z"
+  },
+  "quantity": 2
+}
+[2025-07-31 13:55:16] warn: No Data Found
+[2025-07-31 13:55:17] warn: No Data Found
+[2025-07-31 13:55:17] warn: No Data Found

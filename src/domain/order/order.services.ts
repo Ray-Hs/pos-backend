@@ -789,7 +789,7 @@ export class OrderServices implements OrderServiceInterface {
 
       const supplyTransaction = await prisma.$transaction(async (tx) => {
         const existingOrder = await getLatestOrderDB(
-          response.tableId as number,
+          response.tableId as number
         );
         if (!existingOrder) {
           logger.warn("Not Found");
@@ -802,9 +802,23 @@ export class OrderServices implements OrderServiceInterface {
           };
         }
 
+        const reducedItems = existingOrder.items.reduce((acc: any[], item) => {
+          const existingItem = acc.find(
+            (i: any) => item.menuItem.title_en === i.menuItem.title_en
+          );
+          if (existingItem) {
+            existingItem.quantity += item.quantity ?? 1;
+          } else {
+            acc.push({ ...item });
+          }
+          return acc;
+        }, []);
+
+        console.log("Reduced Items: ", reducedItems);
+
         // Get supply items for each menu item
         const menuItemsWithSupply = await Promise.all(
-          existingOrder.items.map(async (item) => {
+          reducedItems.map(async (item) => {
             const supply = await tx.supply.findFirst({
               where: {
                 name: item.menuItem.title_en,
@@ -825,7 +839,7 @@ export class OrderServices implements OrderServiceInterface {
           }
         >();
 
-        existingOrder.items.forEach((item, idx) => {
+        reducedItems.forEach((item, idx) => {
           const supply = menuItemsWithSupply[idx];
           if (supply && item?.quantity) {
             const key = supply.id;
@@ -841,7 +855,6 @@ export class OrderServices implements OrderServiceInterface {
 
         // Update supply quantities by adding back the canceled order quantities
         for (const item of menuItemsWithQuantity) {
-          logger.info("Item Quantity: ", item);
           const prevSupply = await tx.supply.findFirst({
             where: {
               id: item.supply.id,
