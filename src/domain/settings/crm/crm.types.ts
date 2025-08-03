@@ -88,6 +88,7 @@ export interface CRMServiceInterface {
   createCustomerPayment: (
     requestData: CustomerPaymentRequest
   ) => Promise<TResult<void>>;
+  deleteCustomerPayment: (requestId: any) => Promise<TResult<void>>;
   getCustomerPayments: () => Promise<TResult<any[]>>;
 
   getCompanies(pagination: {
@@ -150,6 +151,10 @@ export interface CRMControllerInterface {
     res: Response
   ) => Promise<Response<TResult<any[]>>>;
   createCustomerPayment: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<void>>>;
+  deleteCustomerPayment: (
     req: Request,
     res: Response
   ) => Promise<Response<TResult<void>>>;

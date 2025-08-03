@@ -285,6 +285,71 @@ export async function createCustomerPaymentDB(
   });
 }
 
+export async function deleteCustomerPayment(id: number) {
+  return prisma.$transaction(async (tx) => {
+    const payment = await tx.customerPayment.findFirst({
+      where: {
+        id,
+      },
+      include: {
+        customerInfo: true,
+        invoice: true,
+      },
+    });
+
+    if (!payment) {
+      throw new Error("Payment not found");
+    }
+
+    const customerInfo = await tx.customerInfo.findFirst({
+      where: {
+        id: payment.customerInfoId,
+      },
+    });
+
+    if (!customerInfo) {
+      throw new Error("Customer info not found");
+    }
+
+    // Add the payment amount back to the customer debt
+    await tx.customerInfo.update({
+      where: { id: customerInfo.id },
+      data: {
+        debt: (customerInfo.debt || 0) + payment.amount,
+      },
+    });
+
+    // If payment is associated with an invoice, update the invoice debt
+    if (payment.invoiceId && payment.invoice) {
+      const currentInvoiceDebt = payment.invoice.debt || 0;
+      const newInvoiceDebt = currentInvoiceDebt + payment.amount;
+
+      // Update invoice status based on new debt amount
+      const isFullyPaid = newInvoiceDebt === 0;
+      const isPartiallyPaid =
+        newInvoiceDebt > 0 && newInvoiceDebt < payment.invoice.total;
+
+      await tx.invoice.update({
+        where: { id: payment.invoiceId },
+        data: {
+          debt: newInvoiceDebt,
+          paid: isFullyPaid,
+          status: isFullyPaid
+            ? "PAID"
+            : isPartiallyPaid
+            ? "PARTIAL"
+            : "PENDING",
+        },
+      });
+    }
+
+    // Delete the payment
+    await tx.customerPayment.delete({
+      where: { id },
+    });
+  });
+}
+
 export async function getCustomerPaymentsByCustomerIdDB(
   customerInfoId: number
 ) {
@@ -297,6 +362,13 @@ export async function getCustomerPaymentsByCustomerIdDB(
         },
       },
     },
+    orderBy: { createdAt: "desc" },
+  });
+}
+
+export async function getCustomerPaymentByIdDB(id: number) {
+  return prisma.invoice.findMany({
+    where: { id },
     orderBy: { createdAt: "desc" },
   });
 }

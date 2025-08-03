@@ -191,6 +191,15 @@ export class CRMController implements CRMControllerInterface {
       .json(response);
   }
 
+  async deleteCustomerPayment(req: Request, res: Response) {
+    const id = parseInt(req.params.id, 10);
+    const crmService = new CRMServices();
+    const response = await crmService.deleteCustomerPayment(id);
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
   async getCustomerPayments(req: Request, res: Response) {
     const page = parseInt(req.query.page as string, 10);
     const limit = parseInt(req.query.limit as string, 10);

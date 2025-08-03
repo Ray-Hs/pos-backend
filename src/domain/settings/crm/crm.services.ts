@@ -1,4 +1,4 @@
-import { ZodError } from "zod";
+import { z, ZodError } from "zod";
 import prisma from "../../../infrastructure/database/prisma/client";
 import {
   BAD_REQUEST_BODY_ERR,
@@ -20,12 +20,15 @@ import {
   deleteCompanyInfoDB,
   deleteCustomerDiscountDB,
   deleteCustomerInfoDB,
+  deleteCustomerPayment,
   getCompaniesInfoDB,
   getCompanyInfoByIdDB,
   getCustomerByIdDB,
   getCustomerByPhoneDB,
   getCustomerDiscountByIdDB,
   getCustomerDiscountDB,
+  getCustomerPaymentByIdDB,
+  getCustomerPaymentsByCustomerIdDB,
   getCustomersInfoDB,
   updateCompanyInfoDB,
   updateCustomerDiscountDB,
@@ -129,6 +132,55 @@ export class CRMServices implements CRMServiceInterface {
       };
     } catch (error) {
       logger.error("Create Customer Payment: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: error instanceof Error ? error.message : INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
+  async deleteCustomerPayment(requestId: any) {
+    try {
+      const data = await validateType(
+        { id: requestId },
+        z.object({ id: z.number() })
+      );
+
+      if (!data || data instanceof ZodError) {
+        logger.warn("Type Error: ", data);
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_BODY_ERR,
+          },
+        };
+      }
+
+      // Validate customer exists
+      const customer = await getCustomerPaymentByIdDB(data.id);
+      if (!customer) {
+        logger.warn("Customer not found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: "Customer not found",
+          },
+        };
+      }
+
+      await deleteCustomerPayment(data.id);
+
+      return {
+        success: true,
+        message: "Deleted Customer Payment Successfully",
+      };
+    } catch (error) {
+      logger.error("Delete Customer Payment: ", error);
       return {
         success: false,
         error: {
