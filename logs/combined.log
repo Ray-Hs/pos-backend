@@ -20604,3 +20604,44 @@ Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
 [2025-07-31 14:04:14] warn: No Data Found
 [2025-07-31 14:04:15] warn: No Data Found
 [2025-07-31 14:04:15] warn: No Data Found
+[2025-07-31 15:48:07] info: Filter: 
+[2025-07-31 15:50:12] info: Filter: 
+[2025-08-03 14:30:39] info: Excess payment amount: 76000
+[2025-08-03 14:34:41] error: Get Payments Service:  
+Invalid `prisma.payment.findMany()` invocation:
+
+{
+  where: {
+    paymentDate: {
+      gte: new Date("Invalid Date")
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+    }
+  },
+  orderBy: {
+    createdAt: "desc"
+  },
+  include: {
+    user: {
+      select: {
+        role: true,
+        username: true
+      }
+    },
+    companyDebt: {
+      include: {
+        company: true
+      }
+    }
+  },
+  take: 20,
+  skip: 0
+}
+
+Invalid value for argument `gte`: Provided Date object is invalid. Expected Date.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.payment.findMany()` invocation:\n\n{\n  where: {\n    paymentDate: {\n      gte: new Date(\"Invalid Date\")\n           ~~~~~~~~~~~~~~~~~~~~~~~~\n    }\n  },\n  orderBy: {\n    createdAt: \"desc\"\n  },\n  include: {\n    user: {\n      select: {\n        role: true,\n        username: true\n      }\n    },\n    companyDebt: {\n      include: {\n        company: true\n      }\n    }\n  },\n  take: 20,\n  skip: 0\n}\n\nInvalid value for argument `gte`: Provided Date object is invalid. Expected Date.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at e.throwValidationError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:10051)\n    at Ia (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:7488)\n    at ka (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:8741)\n    at Ia (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:8272)\n    at ka (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:8741)\n    at Ia (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:8272)\n    at ka (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:8741)\n    at Et (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:5845)\n    at Nn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:5747)"
+}
+[2025-08-03 15:14:37] warn: Not Found
+[2025-08-03 15:16:03] info: Excess payment amount: 10000

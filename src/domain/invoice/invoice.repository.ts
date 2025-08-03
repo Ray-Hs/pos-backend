@@ -1,6 +1,5 @@
 import prisma from "../../infrastructure/database/prisma/client";
 import { LIMIT_CONSTANT } from "../../infrastructure/utils/constants";
-import loggerWithHelpers from "../../infrastructure/utils/logger";
 import { Invoice, PaymentMethod, TxClientType } from "../../types/common";
 
 // Get all invoices with optional pagination
