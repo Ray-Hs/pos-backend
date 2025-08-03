@@ -256,10 +256,11 @@ export class CRMServices implements CRMServiceInterface {
 
       const data = await Promise.all(
         customerInfos.map(async (customer) => {
-          const totalDebt = customer.Invoice.reduce(
-            (acc, invoice) => acc + (invoice.total || 0),
-            0
-          );
+          const totalDebt =
+            customer.Invoice.reduce(
+              (acc, invoice) => acc + (invoice.total || 0),
+              0
+            ) + (customer.initialDebt || 0);
 
           const invoices = await Promise.all(
             customer.Invoice.map(async (invoice) => {
@@ -280,7 +281,7 @@ export class CRMServices implements CRMServiceInterface {
                 total: invoice.total,
                 status: invoice.status,
                 debt: invoice.debt,
-                remainingDebt: invoice.total - (totalPaid || 0),
+                remainingDebt: Math.abs(invoice.total - (totalPaid || 0)),
                 paymentMethod: invoice.paymentMethod,
                 paid: invoice.paid,
                 createdAt: invoice.createdAt,

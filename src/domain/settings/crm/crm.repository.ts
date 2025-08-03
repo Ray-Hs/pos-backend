@@ -161,7 +161,6 @@ export async function createCustomerPaymentDB(
         const payment = prisma.$transaction(async (tx) => {
           const customer = await updateCustomerInfoDB(
             {
-              ...customerInfo,
               debt: (customerInfo.debt || 0) - amount,
             },
             customerInfoId,
@@ -185,7 +184,6 @@ export async function createCustomerPaymentDB(
         const payment = prisma.$transaction(async (tx) => {
           const customer = await updateCustomerInfoDB(
             {
-              ...customerInfo,
               debt: 0,
             },
             customerInfoId,
@@ -416,7 +414,7 @@ export async function createCustomerInfoDB(data: CustomerInfo) {
 }
 
 export async function updateCustomerInfoDB(
-  data: CustomerInfo,
+  data: Partial<CustomerInfo>,
   id: number,
   client: TxClientType
 ) {

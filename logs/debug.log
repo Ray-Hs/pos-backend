@@ -21943,3 +21943,584 @@ Invalid value for argument `gte`: Provided Date object is invalid. Expected Date
 }
 [2025-08-03 15:14:37] warn: Not Found
 [2025-08-03 15:16:03] info: Excess payment amount: 10000
+[2025-08-03 16:25:34] warn: Not Found
+[2025-08-03 16:26:15] error: Delete Customer Payment:  Payment not found
+{
+  "stack": "Error: Payment not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.repository.ts:301:13\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.deleteCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:176:7)\n    at async deleteCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:197:22)"
+}
+[2025-08-03 17:38:24] warn: No Data Found
+[2025-08-03 17:38:24] info: Filter: 
+[2025-08-03 17:38:24] warn: No Data Found
+[2025-08-03 17:38:24] warn: No Data Found
+[2025-08-03 17:38:25] warn: No Data Found
+[2025-08-03 17:38:25] warn: No Data Found
+[2025-08-03 17:38:26] warn: No Data Found
+[2025-08-03 17:38:30] warn: No Data Found
+[2025-08-03 17:38:30] warn: No Data Found
+[2025-08-03 17:38:30] warn: No Data Found
+[2025-08-03 17:38:31] warn: No Data Found
+[2025-08-03 20:02:07] info: Filter: 
+[2025-08-03 20:02:46] debug: DB: transaction
+{
+  "phase": "START"
+}
+[2025-08-03 20:02:46] debug: DB: menuItem.findFirst
+{
+  "itemCount": 1
+}
+[2025-08-03 20:02:46] info: PERF: Fetch menu items completed in 2ms
+{
+  "count": 1,
+  "menuItems": [
+    {
+      "id": 1,
+      "title": "Calzone"
+    }
+  ]
+}
+[2025-08-03 20:02:46] debug: Calculating old item quantities
+[2025-08-03 20:02:46] debug: Old quantities calculated
+{
+  "oldItemMap": {
+    "pepsi": 1
+  }
+}
+[2025-08-03 20:02:46] debug: Calculating new item quantities
+[2025-08-03 20:02:46] debug: New quantities calculated
+{
+  "newItemMap": {
+    "calzone": 1
+  }
+}
+[2025-08-03 20:02:46] info: Processing supply updates
+{
+  "itemNames": [
+    "pepsi",
+    "calzone"
+  ]
+}
+[2025-08-03 20:02:46] debug: Processing item supply update
+{
+  "itemName": "pepsi",
+  "oldQty": 1,
+  "newQty": 0,
+  "qtyDifference": -1
+}
+[2025-08-03 20:02:46] debug: Processing item supply update
+{
+  "itemName": "calzone",
+  "oldQty": 0,
+  "newQty": 1,
+  "qtyDifference": 1
+}
+[2025-08-03 20:02:46] debug: Found supplies for item
+{
+  "itemName": "pepsi",
+  "suppliesCount": 9,
+  "supplies": [
+    {
+      "id": 25,
+      "remainingQuantity": 268
+    },
+    {
+      "id": 24,
+      "remainingQuantity": 245
+    },
+    {
+      "id": 26,
+      "remainingQuantity": 122
+    },
+    {
+      "id": 30,
+      "remainingQuantity": 24
+    },
+    {
+      "id": 31,
+      "remainingQuantity": 24
+    },
+    {
+      "id": 23,
+      "remainingQuantity": 24
+    },
+    {
+      "id": 27,
+      "remainingQuantity": 13
+    },
+    {
+      "id": 32,
+      "remainingQuantity": 12
+    },
+    {
+      "id": 29,
+      "remainingQuantity": 12
+    }
+  ]
+}
+[2025-08-03 20:02:46] debug: Starting supply deduction process
+{
+  "itemName": "pepsi",
+  "totalToDeduct": -1
+}
+[2025-08-03 20:02:46] debug: Found supplies for item
+{
+  "itemName": "calzone",
+  "suppliesCount": 0,
+  "supplies": []
+}
+[2025-08-03 20:02:46] warn: No supplies found for item
+{
+  "itemName": "calzone"
+}
+[2025-08-03 20:02:46] info: PERF: Supply updates completed in 7ms
+[2025-08-03 20:02:46] debug: DB: order.update
+{
+  "orderId": 171
+}
+[2025-08-03 20:02:46] info: undefined
+[2025-08-03 20:02:46] info: PERF: updateOrder completed in 77ms
+{
+  "orderId": 171,
+  "finalItemsCount": 1,
+  "newInvoiceId": 425,
+  "newInvoiceVersion": 5
+}
+[2025-08-03 20:02:46] debug: updateOrder - EXIT
+{
+  "success": true
+}
+[2025-08-03 20:03:07] debug: DB: transaction
+{
+  "phase": "START"
+}
+[2025-08-03 20:03:07] debug: DB: menuItem.findFirst
+{
+  "itemCount": 1
+}
+[2025-08-03 20:03:07] info: PERF: Fetch menu items completed in 1ms
+{
+  "count": 1,
+  "menuItems": [
+    {
+      "id": 1,
+      "title": "Calzone"
+    }
+  ]
+}
+[2025-08-03 20:03:07] debug: Calculating old item quantities
+[2025-08-03 20:03:07] debug: Old quantities calculated
+{
+  "oldItemMap": {
+    "calzone": 1
+  }
+}
+[2025-08-03 20:03:07] debug: Calculating new item quantities
+[2025-08-03 20:03:07] debug: New quantities calculated
+{
+  "newItemMap": {
+    "calzone": 1
+  }
+}
+[2025-08-03 20:03:07] info: Processing supply updates
+{
+  "itemNames": [
+    "calzone"
+  ]
+}
+[2025-08-03 20:03:07] debug: Processing item supply update
+{
+  "itemName": "calzone",
+  "oldQty": 1,
+  "newQty": 1,
+  "qtyDifference": 0
+}
+[2025-08-03 20:03:07] debug: No quantity change for item
+{
+  "itemName": "calzone"
+}
+[2025-08-03 20:03:07] info: PERF: Supply updates completed in 0ms
+[2025-08-03 20:03:07] debug: DB: order.update
+{
+  "orderId": 171
+}
+[2025-08-03 20:03:07] info: undefined
+[2025-08-03 20:03:07] info: PERF: updateOrder completed in 21ms
+{
+  "orderId": 171,
+  "finalItemsCount": 1,
+  "newInvoiceId": 426,
+  "newInvoiceVersion": 6
+}
+[2025-08-03 20:03:07] debug: updateOrder - EXIT
+{
+  "success": true
+}
+[2025-08-03 20:03:28] warn: Printer 192.168.1.21 not connected
+[2025-08-03 20:03:28] warn: Printer 192.168.1.100 not connected
+[2025-08-03 20:05:01] info: Filter: 
+[2025-08-03 20:07:20] warn: No Data Found
+[2025-08-03 20:07:20] warn: No Data Found
+[2025-08-03 20:07:20] warn: No Data Found
+[2025-08-03 20:07:21] warn: No Data Found
+[2025-08-03 20:08:01] warn: No Data Found
+[2025-08-03 20:08:01] warn: No Data Found
+[2025-08-03 20:08:01] warn: No Data Found
+[2025-08-03 20:08:01] warn: No Data Found
+[2025-08-03 20:08:02] warn: No Data Found
+[2025-08-03 20:08:02] warn: No Data Found
+[2025-08-03 20:08:02] warn: No Data Found
+[2025-08-03 20:08:18] warn: No Data Found
+[2025-08-03 20:08:19] warn: No Data Found
+[2025-08-03 20:08:19] warn: No Data Found
+[2025-08-03 20:12:51] info: Filter: 
+[2025-08-03 20:24:23] warn: No Data Found
+[2025-08-03 20:24:23] info: Filter: 
+[2025-08-03 20:24:23] warn: No Data Found
+[2025-08-03 20:24:23] warn: No Data Found
+[2025-08-03 20:24:24] warn: No Data Found
+[2025-08-03 20:24:24] warn: No Data Found
+[2025-08-03 20:24:25] warn: No Data Found
+[2025-08-03 20:24:49] debug: DB: transaction
+{
+  "phase": "START"
+}
+[2025-08-03 20:24:49] debug: DB: menuItem.findFirst
+{
+  "itemCount": 4
+}
+[2025-08-03 20:24:49] info: PERF: Fetch menu items completed in 3ms
+{
+  "count": 4,
+  "menuItems": [
+    {
+      "id": 1,
+      "title": "Calzone"
+    },
+    {
+      "id": 1,
+      "title": "Calzone"
+    },
+    {
+      "id": 1,
+      "title": "Calzone"
+    },
+    {
+      "id": 1,
+      "title": "Calzone"
+    }
+  ]
+}
+[2025-08-03 20:24:49] debug: Calculating old item quantities
+[2025-08-03 20:24:49] debug: Old quantities calculated
+{
+  "oldItemMap": {
+    "calzone": 2
+  }
+}
+[2025-08-03 20:24:49] debug: Calculating new item quantities
+[2025-08-03 20:24:49] debug: New quantities calculated
+{
+  "newItemMap": {
+    "calzone": 4
+  }
+}
+[2025-08-03 20:24:49] info: Processing supply updates
+{
+  "itemNames": [
+    "calzone"
+  ]
+}
+[2025-08-03 20:24:49] debug: Processing item supply update
+{
+  "itemName": "calzone",
+  "oldQty": 2,
+  "newQty": 4,
+  "qtyDifference": 2
+}
+[2025-08-03 20:24:49] debug: Found supplies for item
+{
+  "itemName": "calzone",
+  "suppliesCount": 0,
+  "supplies": []
+}
+[2025-08-03 20:24:49] warn: No supplies found for item
+{
+  "itemName": "calzone"
+}
+[2025-08-03 20:24:49] info: PERF: Supply updates completed in 3ms
+[2025-08-03 20:24:49] debug: DB: order.update
+{
+  "orderId": 175
+}
+[2025-08-03 20:24:49] info: undefined
+[2025-08-03 20:24:49] info: PERF: updateOrder completed in 29ms
+{
+  "orderId": 175,
+  "finalItemsCount": 4,
+  "newInvoiceId": 429,
+  "newInvoiceVersion": 2
+}
+[2025-08-03 20:24:49] debug: updateOrder - EXIT
+{
+  "success": true
+}
+[2025-08-03 20:25:33] debug: DB: transaction
+{
+  "phase": "START"
+}
+[2025-08-03 20:25:33] warn: No supplies found for restoration
+{
+  "itemName": "calzone"
+}
+[2025-08-03 20:25:33] debug: DB: menuItem.findFirst
+{
+  "itemCount": 3
+}
+[2025-08-03 20:25:33] info: PERF: Fetch menu items completed in 3ms
+{
+  "count": 3,
+  "menuItems": [
+    {
+      "id": 1,
+      "title": "Calzone"
+    },
+    {
+      "id": 1,
+      "title": "Calzone"
+    },
+    {
+      "id": 1,
+      "title": "Calzone"
+    }
+  ]
+}
+[2025-08-03 20:25:33] debug: Calculating old item quantities
+[2025-08-03 20:25:33] debug: Old quantities calculated
+{
+  "oldItemMap": {
+    "calzone": 4
+  }
+}
+[2025-08-03 20:25:33] debug: Calculating new item quantities
+[2025-08-03 20:25:33] debug: New quantities calculated
+{
+  "newItemMap": {
+    "calzone": 3
+  }
+}
+[2025-08-03 20:25:33] info: Processing supply updates
+{
+  "itemNames": [
+    "calzone"
+  ]
+}
+[2025-08-03 20:25:33] debug: Processing item supply update
+{
+  "itemName": "calzone",
+  "oldQty": 4,
+  "newQty": 3,
+  "qtyDifference": -1
+}
+[2025-08-03 20:25:33] debug: Found supplies for item
+{
+  "itemName": "calzone",
+  "suppliesCount": 0,
+  "supplies": []
+}
+[2025-08-03 20:25:33] warn: No supplies found for item
+{
+  "itemName": "calzone"
+}
+[2025-08-03 20:25:33] info: PERF: Supply updates completed in 3ms
+[2025-08-03 20:25:33] debug: DB: order.update
+{
+  "orderId": 175
+}
+[2025-08-03 20:25:33] info: undefined
+[2025-08-03 20:25:33] info: PERF: updateOrder completed in 37ms
+{
+  "orderId": 175,
+  "finalItemsCount": 3,
+  "newInvoiceId": 430,
+  "newInvoiceVersion": 3
+}
+[2025-08-03 20:25:33] debug: updateOrder - EXIT
+{
+  "success": true
+}
+[2025-08-03 20:26:00] warn: No Data Found
+[2025-08-03 20:26:00] warn: No Data Found
+[2025-08-03 20:26:00] warn: No Data Found
+[2025-08-03 20:26:01] warn: No Data Found
+[2025-08-03 20:26:20] warn: No Data Found
+[2025-08-03 20:26:20] warn: No Data Found
+[2025-08-03 20:26:20] warn: No Data Found
+[2025-08-03 20:26:21] warn: No Data Found
+[2025-08-03 20:26:36] warn: No Data Found
+[2025-08-03 20:26:36] warn: No Data Found
+[2025-08-03 20:26:37] warn: No Data Found
+[2025-08-03 20:26:52] warn: No Data Found
+[2025-08-03 20:26:52] warn: No Data Found
+[2025-08-03 20:26:52] warn: No Data Found
+[2025-08-03 20:26:53] warn: No Data Found
+[2025-08-03 20:28:28] info: undefined
+[2025-08-03 20:29:12] error: Update Customer Discount:  
+Invalid `prisma.customerDiscount.update()` invocation:
+
+
+Error occurred during query execution:
+ConnectorError(ConnectorError { user_facing_error: None, kind: QueryError(Error { kind: ToSql(7), cause: Some(Error { kind: ConversionError("Unable to fit integer value '1754242140138' into an INT4 (32-bit signed integer)."), original_code: None, original_message: None }) }), transient: false })
+{
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientUnknownRequestError",
+  "stack": "PrismaClientUnknownRequestError: \nInvalid `prisma.customerDiscount.update()` invocation:\n\n\nError occurred during query execution:\nConnectorError(ConnectorError { user_facing_error: None, kind: QueryError(Error { kind: ToSql(7), cause: Some(Error { kind: ConversionError(\"Unable to fit integer value '1754242140138' into an INT4 (32-bit signed integer).\"), original_code: None, original_message: None }) }), transient: false })\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7649)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.updateCustomerDiscount (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:859:7)\n    at async updateCustomerDiscount (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:158:22)"
+}
+[2025-08-03 21:42:34] info: Filter: 
+[2025-08-03 21:44:07] warn: A User with the same phone number exists already.
+[2025-08-03 21:44:09] warn: A User with the same phone number exists already.
+[2025-08-03 21:44:11] warn: A User with the same phone number exists already.
+[2025-08-03 21:44:13] warn: A User with the same phone number exists already.
+[2025-08-03 21:44:15] warn: A User with the same phone number exists already.
+[2025-08-03 21:44:17] warn: A User with the same phone number exists already.
+[2025-08-03 21:49:30] info: Filter: 
+[2025-08-03 21:49:30] warn: No Data Found
+[2025-08-03 21:49:30] warn: No Data Found
+[2025-08-03 21:49:30] warn: No Data Found
+[2025-08-03 21:49:31] warn: No Data Found
+[2025-08-03 21:49:33] warn: No Data Found
+[2025-08-03 21:49:33] warn: No Data Found
+[2025-08-03 21:49:45] warn: No Data Found
+[2025-08-03 21:49:45] warn: No Data Found
+[2025-08-03 21:49:46] warn: No Data Found
+[2025-08-03 21:49:47] warn: No Data Found
+[2025-08-03 22:00:50] error: Create Customer Payment:  
+Invalid `prisma.customerInfo.update()` invocation:
+
+{
+  where: {
+    id: 22
+  },
+  data: {
+    code: "CUST007",
+    name: "rezgar mohammed",
+    phoneNumber: "07518202484",
+    email: "",
+    debt: 80000,
+    initialDebt: 100000,
+    note: "Got some goods",
+    createdAt: new Date("2025-08-03T18:44:44.782Z"),
+    updatedAt: new Date("2025-08-03T18:59:16.680Z"),
+    Invoice: [
+      {
+        total: 7600
+      }
+    ],
+    ~~~~~~~~~~~~~~~
+    CRMId: 1
+  }
+}
+
+Argument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerInfo.update()` invocation:\n\n{\n  where: {\n    id: 22\n  },\n  data: {\n    code: \"CUST007\",\n    name: \"rezgar mohammed\",\n    phoneNumber: \"07518202484\",\n    email: \"\",\n    debt: 80000,\n    initialDebt: 100000,\n    note: \"Got some goods\",\n    createdAt: new Date(\"2025-08-03T18:44:44.782Z\"),\n    updatedAt: new Date(\"2025-08-03T18:59:16.680Z\"),\n    Invoice: [\n      {\n        total: 7600\n      }\n    ],\n    ~~~~~~~~~~~~~~~\n    CRMId: 1\n  }\n}\n\nArgument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.repository.ts:162:28\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:127:7)\n    at async createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:185:22)"
+}
+[2025-08-03 22:01:03] error: Create Customer Payment:  
+Invalid `prisma.customerInfo.update()` invocation:
+
+{
+  where: {
+    id: 22
+  },
+  data: {
+    code: "CUST007",
+    name: "rezgar mohammed",
+    phoneNumber: "07518202484",
+    email: "",
+    debt: 80000,
+    initialDebt: 100000,
+    note: "Got some goods",
+    createdAt: new Date("2025-08-03T18:44:44.782Z"),
+    updatedAt: new Date("2025-08-03T18:59:16.680Z"),
+    Invoice: [
+      {
+        total: 7600
+      }
+    ],
+    ~~~~~~~~~~~~~~~
+    CRMId: 1
+  }
+}
+
+Argument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerInfo.update()` invocation:\n\n{\n  where: {\n    id: 22\n  },\n  data: {\n    code: \"CUST007\",\n    name: \"rezgar mohammed\",\n    phoneNumber: \"07518202484\",\n    email: \"\",\n    debt: 80000,\n    initialDebt: 100000,\n    note: \"Got some goods\",\n    createdAt: new Date(\"2025-08-03T18:44:44.782Z\"),\n    updatedAt: new Date(\"2025-08-03T18:59:16.680Z\"),\n    Invoice: [\n      {\n        total: 7600\n      }\n    ],\n    ~~~~~~~~~~~~~~~\n    CRMId: 1\n  }\n}\n\nArgument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.repository.ts:162:28\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:127:7)\n    at async createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:185:22)"
+}
+[2025-08-03 22:01:30] error: Create Customer Payment:  
+Invalid `prisma.customerInfo.update()` invocation:
+
+{
+  where: {
+    id: 22
+  },
+  data: {
+    code: "CUST007",
+    name: "rezgar mohammed",
+    phoneNumber: "07518202484",
+    email: "",
+    debt: 80000,
+    initialDebt: 100000,
+    note: "Got some goods",
+    createdAt: new Date("2025-08-03T18:44:44.782Z"),
+    updatedAt: new Date("2025-08-03T18:59:16.680Z"),
+    Invoice: [
+      {
+        total: 7600
+      }
+    ],
+    ~~~~~~~~~~~~~~~
+    CRMId: 1
+  }
+}
+
+Argument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerInfo.update()` invocation:\n\n{\n  where: {\n    id: 22\n  },\n  data: {\n    code: \"CUST007\",\n    name: \"rezgar mohammed\",\n    phoneNumber: \"07518202484\",\n    email: \"\",\n    debt: 80000,\n    initialDebt: 100000,\n    note: \"Got some goods\",\n    createdAt: new Date(\"2025-08-03T18:44:44.782Z\"),\n    updatedAt: new Date(\"2025-08-03T18:59:16.680Z\"),\n    Invoice: [\n      {\n        total: 7600\n      }\n    ],\n    ~~~~~~~~~~~~~~~\n    CRMId: 1\n  }\n}\n\nArgument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.repository.ts:162:28\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:127:7)\n    at async createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:185:22)"
+}
+[2025-08-03 22:02:06] error: Create Customer Payment:  
+Invalid `prisma.customerInfo.update()` invocation:
+
+{
+  where: {
+    id: 22
+  },
+  data: {
+    code: "CUST007",
+    name: "rezgar mohammed",
+    phoneNumber: "07518202484",
+    email: "",
+    debt: 90000,
+    initialDebt: 100000,
+    note: "Got some goods",
+    createdAt: new Date("2025-08-03T18:44:44.782Z"),
+    updatedAt: new Date("2025-08-03T18:59:16.680Z"),
+    Invoice: [
+      {
+        total: 7600
+      }
+    ],
+    ~~~~~~~~~~~~~~~
+    CRMId: 1
+  }
+}
+
+Argument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerInfo.update()` invocation:\n\n{\n  where: {\n    id: 22\n  },\n  data: {\n    code: \"CUST007\",\n    name: \"rezgar mohammed\",\n    phoneNumber: \"07518202484\",\n    email: \"\",\n    debt: 90000,\n    initialDebt: 100000,\n    note: \"Got some goods\",\n    createdAt: new Date(\"2025-08-03T18:44:44.782Z\"),\n    updatedAt: new Date(\"2025-08-03T18:59:16.680Z\"),\n    Invoice: [\n      {\n        total: 7600\n      }\n    ],\n    ~~~~~~~~~~~~~~~\n    CRMId: 1\n  }\n}\n\nArgument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.repository.ts:162:28\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:127:7)\n    at async createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:185:22)"
+}

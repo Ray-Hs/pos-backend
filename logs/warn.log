@@ -17979,3 +17979,230 @@ Invalid value for argument `gte`: Provided Date object is invalid. Expected Date
   "stack": "PrismaClientValidationError: \nInvalid `prisma.payment.findMany()` invocation:\n\n{\n  where: {\n    paymentDate: {\n      gte: new Date(\"Invalid Date\")\n           ~~~~~~~~~~~~~~~~~~~~~~~~\n    }\n  },\n  orderBy: {\n    createdAt: \"desc\"\n  },\n  include: {\n    user: {\n      select: {\n        role: true,\n        username: true\n      }\n    },\n    companyDebt: {\n      include: {\n        company: true\n      }\n    }\n  },\n  take: 20,\n  skip: 0\n}\n\nInvalid value for argument `gte`: Provided Date object is invalid. Expected Date.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at e.throwValidationError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:10051)\n    at Ia (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:7488)\n    at ka (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:8741)\n    at Ia (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:8272)\n    at ka (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:8741)\n    at Ia (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:8272)\n    at ka (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:8741)\n    at Et (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:5845)\n    at Nn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:5747)"
 }
 [2025-08-03 15:14:37] warn: Not Found
+[2025-08-03 16:25:34] warn: Not Found
+[2025-08-03 16:26:15] error: Delete Customer Payment:  Payment not found
+{
+  "stack": "Error: Payment not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.repository.ts:301:13\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.deleteCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:176:7)\n    at async deleteCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:197:22)"
+}
+[2025-08-03 17:38:24] warn: No Data Found
+[2025-08-03 17:38:24] warn: No Data Found
+[2025-08-03 17:38:24] warn: No Data Found
+[2025-08-03 17:38:25] warn: No Data Found
+[2025-08-03 17:38:25] warn: No Data Found
+[2025-08-03 17:38:26] warn: No Data Found
+[2025-08-03 17:38:30] warn: No Data Found
+[2025-08-03 17:38:30] warn: No Data Found
+[2025-08-03 17:38:30] warn: No Data Found
+[2025-08-03 17:38:31] warn: No Data Found
+[2025-08-03 20:02:46] warn: No supplies found for item
+{
+  "itemName": "calzone"
+}
+[2025-08-03 20:03:28] warn: Printer 192.168.1.21 not connected
+[2025-08-03 20:03:28] warn: Printer 192.168.1.100 not connected
+[2025-08-03 20:07:20] warn: No Data Found
+[2025-08-03 20:07:20] warn: No Data Found
+[2025-08-03 20:07:20] warn: No Data Found
+[2025-08-03 20:07:21] warn: No Data Found
+[2025-08-03 20:08:01] warn: No Data Found
+[2025-08-03 20:08:01] warn: No Data Found
+[2025-08-03 20:08:01] warn: No Data Found
+[2025-08-03 20:08:01] warn: No Data Found
+[2025-08-03 20:08:02] warn: No Data Found
+[2025-08-03 20:08:02] warn: No Data Found
+[2025-08-03 20:08:02] warn: No Data Found
+[2025-08-03 20:08:18] warn: No Data Found
+[2025-08-03 20:08:19] warn: No Data Found
+[2025-08-03 20:08:19] warn: No Data Found
+[2025-08-03 20:24:23] warn: No Data Found
+[2025-08-03 20:24:23] warn: No Data Found
+[2025-08-03 20:24:23] warn: No Data Found
+[2025-08-03 20:24:24] warn: No Data Found
+[2025-08-03 20:24:24] warn: No Data Found
+[2025-08-03 20:24:25] warn: No Data Found
+[2025-08-03 20:24:49] warn: No supplies found for item
+{
+  "itemName": "calzone"
+}
+[2025-08-03 20:25:33] warn: No supplies found for restoration
+{
+  "itemName": "calzone"
+}
+[2025-08-03 20:25:33] warn: No supplies found for item
+{
+  "itemName": "calzone"
+}
+[2025-08-03 20:26:00] warn: No Data Found
+[2025-08-03 20:26:00] warn: No Data Found
+[2025-08-03 20:26:00] warn: No Data Found
+[2025-08-03 20:26:01] warn: No Data Found
+[2025-08-03 20:26:20] warn: No Data Found
+[2025-08-03 20:26:20] warn: No Data Found
+[2025-08-03 20:26:20] warn: No Data Found
+[2025-08-03 20:26:21] warn: No Data Found
+[2025-08-03 20:26:36] warn: No Data Found
+[2025-08-03 20:26:36] warn: No Data Found
+[2025-08-03 20:26:37] warn: No Data Found
+[2025-08-03 20:26:52] warn: No Data Found
+[2025-08-03 20:26:52] warn: No Data Found
+[2025-08-03 20:26:52] warn: No Data Found
+[2025-08-03 20:26:53] warn: No Data Found
+[2025-08-03 20:29:12] error: Update Customer Discount:  
+Invalid `prisma.customerDiscount.update()` invocation:
+
+
+Error occurred during query execution:
+ConnectorError(ConnectorError { user_facing_error: None, kind: QueryError(Error { kind: ToSql(7), cause: Some(Error { kind: ConversionError("Unable to fit integer value '1754242140138' into an INT4 (32-bit signed integer)."), original_code: None, original_message: None }) }), transient: false })
+{
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientUnknownRequestError",
+  "stack": "PrismaClientUnknownRequestError: \nInvalid `prisma.customerDiscount.update()` invocation:\n\n\nError occurred during query execution:\nConnectorError(ConnectorError { user_facing_error: None, kind: QueryError(Error { kind: ToSql(7), cause: Some(Error { kind: ConversionError(\"Unable to fit integer value '1754242140138' into an INT4 (32-bit signed integer).\"), original_code: None, original_message: None }) }), transient: false })\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7649)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.updateCustomerDiscount (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:859:7)\n    at async updateCustomerDiscount (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:158:22)"
+}
+[2025-08-03 21:44:07] warn: A User with the same phone number exists already.
+[2025-08-03 21:44:09] warn: A User with the same phone number exists already.
+[2025-08-03 21:44:11] warn: A User with the same phone number exists already.
+[2025-08-03 21:44:13] warn: A User with the same phone number exists already.
+[2025-08-03 21:44:15] warn: A User with the same phone number exists already.
+[2025-08-03 21:44:17] warn: A User with the same phone number exists already.
+[2025-08-03 21:49:30] warn: No Data Found
+[2025-08-03 21:49:30] warn: No Data Found
+[2025-08-03 21:49:30] warn: No Data Found
+[2025-08-03 21:49:31] warn: No Data Found
+[2025-08-03 21:49:33] warn: No Data Found
+[2025-08-03 21:49:33] warn: No Data Found
+[2025-08-03 21:49:45] warn: No Data Found
+[2025-08-03 21:49:45] warn: No Data Found
+[2025-08-03 21:49:46] warn: No Data Found
+[2025-08-03 21:49:47] warn: No Data Found
+[2025-08-03 22:00:50] error: Create Customer Payment:  
+Invalid `prisma.customerInfo.update()` invocation:
+
+{
+  where: {
+    id: 22
+  },
+  data: {
+    code: "CUST007",
+    name: "rezgar mohammed",
+    phoneNumber: "07518202484",
+    email: "",
+    debt: 80000,
+    initialDebt: 100000,
+    note: "Got some goods",
+    createdAt: new Date("2025-08-03T18:44:44.782Z"),
+    updatedAt: new Date("2025-08-03T18:59:16.680Z"),
+    Invoice: [
+      {
+        total: 7600
+      }
+    ],
+    ~~~~~~~~~~~~~~~
+    CRMId: 1
+  }
+}
+
+Argument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerInfo.update()` invocation:\n\n{\n  where: {\n    id: 22\n  },\n  data: {\n    code: \"CUST007\",\n    name: \"rezgar mohammed\",\n    phoneNumber: \"07518202484\",\n    email: \"\",\n    debt: 80000,\n    initialDebt: 100000,\n    note: \"Got some goods\",\n    createdAt: new Date(\"2025-08-03T18:44:44.782Z\"),\n    updatedAt: new Date(\"2025-08-03T18:59:16.680Z\"),\n    Invoice: [\n      {\n        total: 7600\n      }\n    ],\n    ~~~~~~~~~~~~~~~\n    CRMId: 1\n  }\n}\n\nArgument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.repository.ts:162:28\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:127:7)\n    at async createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:185:22)"
+}
+[2025-08-03 22:01:03] error: Create Customer Payment:  
+Invalid `prisma.customerInfo.update()` invocation:
+
+{
+  where: {
+    id: 22
+  },
+  data: {
+    code: "CUST007",
+    name: "rezgar mohammed",
+    phoneNumber: "07518202484",
+    email: "",
+    debt: 80000,
+    initialDebt: 100000,
+    note: "Got some goods",
+    createdAt: new Date("2025-08-03T18:44:44.782Z"),
+    updatedAt: new Date("2025-08-03T18:59:16.680Z"),
+    Invoice: [
+      {
+        total: 7600
+      }
+    ],
+    ~~~~~~~~~~~~~~~
+    CRMId: 1
+  }
+}
+
+Argument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerInfo.update()` invocation:\n\n{\n  where: {\n    id: 22\n  },\n  data: {\n    code: \"CUST007\",\n    name: \"rezgar mohammed\",\n    phoneNumber: \"07518202484\",\n    email: \"\",\n    debt: 80000,\n    initialDebt: 100000,\n    note: \"Got some goods\",\n    createdAt: new Date(\"2025-08-03T18:44:44.782Z\"),\n    updatedAt: new Date(\"2025-08-03T18:59:16.680Z\"),\n    Invoice: [\n      {\n        total: 7600\n      }\n    ],\n    ~~~~~~~~~~~~~~~\n    CRMId: 1\n  }\n}\n\nArgument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.repository.ts:162:28\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:127:7)\n    at async createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:185:22)"
+}
+[2025-08-03 22:01:30] error: Create Customer Payment:  
+Invalid `prisma.customerInfo.update()` invocation:
+
+{
+  where: {
+    id: 22
+  },
+  data: {
+    code: "CUST007",
+    name: "rezgar mohammed",
+    phoneNumber: "07518202484",
+    email: "",
+    debt: 80000,
+    initialDebt: 100000,
+    note: "Got some goods",
+    createdAt: new Date("2025-08-03T18:44:44.782Z"),
+    updatedAt: new Date("2025-08-03T18:59:16.680Z"),
+    Invoice: [
+      {
+        total: 7600
+      }
+    ],
+    ~~~~~~~~~~~~~~~
+    CRMId: 1
+  }
+}
+
+Argument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerInfo.update()` invocation:\n\n{\n  where: {\n    id: 22\n  },\n  data: {\n    code: \"CUST007\",\n    name: \"rezgar mohammed\",\n    phoneNumber: \"07518202484\",\n    email: \"\",\n    debt: 80000,\n    initialDebt: 100000,\n    note: \"Got some goods\",\n    createdAt: new Date(\"2025-08-03T18:44:44.782Z\"),\n    updatedAt: new Date(\"2025-08-03T18:59:16.680Z\"),\n    Invoice: [\n      {\n        total: 7600\n      }\n    ],\n    ~~~~~~~~~~~~~~~\n    CRMId: 1\n  }\n}\n\nArgument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.repository.ts:162:28\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:127:7)\n    at async createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:185:22)"
+}
+[2025-08-03 22:02:06] error: Create Customer Payment:  
+Invalid `prisma.customerInfo.update()` invocation:
+
+{
+  where: {
+    id: 22
+  },
+  data: {
+    code: "CUST007",
+    name: "rezgar mohammed",
+    phoneNumber: "07518202484",
+    email: "",
+    debt: 90000,
+    initialDebt: 100000,
+    note: "Got some goods",
+    createdAt: new Date("2025-08-03T18:44:44.782Z"),
+    updatedAt: new Date("2025-08-03T18:59:16.680Z"),
+    Invoice: [
+      {
+        total: 7600
+      }
+    ],
+    ~~~~~~~~~~~~~~~
+    CRMId: 1
+  }
+}
+
+Argument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerInfo.update()` invocation:\n\n{\n  where: {\n    id: 22\n  },\n  data: {\n    code: \"CUST007\",\n    name: \"rezgar mohammed\",\n    phoneNumber: \"07518202484\",\n    email: \"\",\n    debt: 90000,\n    initialDebt: 100000,\n    note: \"Got some goods\",\n    createdAt: new Date(\"2025-08-03T18:44:44.782Z\"),\n    updatedAt: new Date(\"2025-08-03T18:59:16.680Z\"),\n    Invoice: [\n      {\n        total: 7600\n      }\n    ],\n    ~~~~~~~~~~~~~~~\n    CRMId: 1\n  }\n}\n\nArgument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.repository.ts:162:28\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:127:7)\n    at async createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:185:22)"
+}
