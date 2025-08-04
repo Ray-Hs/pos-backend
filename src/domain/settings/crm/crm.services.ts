@@ -1,4 +1,4 @@
-import { ZodError } from "zod";
+import { z, ZodError } from "zod";
 import prisma from "../../../infrastructure/database/prisma/client";
 import {
   BAD_REQUEST_BODY_ERR,
@@ -20,12 +20,15 @@ import {
   deleteCompanyInfoDB,
   deleteCustomerDiscountDB,
   deleteCustomerInfoDB,
+  deleteCustomerPayment,
   getCompaniesInfoDB,
   getCompanyInfoByIdDB,
   getCustomerByIdDB,
   getCustomerByPhoneDB,
   getCustomerDiscountByIdDB,
   getCustomerDiscountDB,
+  getCustomerPaymentByIdDB,
+  getCustomerPaymentsByCustomerIdDB,
   getCustomersInfoDB,
   updateCompanyInfoDB,
   updateCustomerDiscountDB,
@@ -139,6 +142,55 @@ export class CRMServices implements CRMServiceInterface {
     }
   }
 
+  async deleteCustomerPayment(requestId: any) {
+    try {
+      const data = await validateType(
+        { id: requestId },
+        z.object({ id: z.number() })
+      );
+
+      if (!data || data instanceof ZodError) {
+        logger.warn("Type Error: ", data);
+        return {
+          success: false,
+          error: {
+            code: BAD_REQUEST_STATUS,
+            message: BAD_REQUEST_BODY_ERR,
+          },
+        };
+      }
+
+      // Validate customer exists
+      const customer = await getCustomerPaymentByIdDB(data.id);
+      if (!customer) {
+        logger.warn("Customer not found");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: "Customer not found",
+          },
+        };
+      }
+
+      await deleteCustomerPayment(data.id);
+
+      return {
+        success: true,
+        message: "Deleted Customer Payment Successfully",
+      };
+    } catch (error) {
+      logger.error("Delete Customer Payment: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: error instanceof Error ? error.message : INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
+
   async getCustomerDebts(pagination: { page: number; limit: number }) {
     try {
       const customerInfos = await prisma.customerInfo.findMany({
@@ -218,10 +270,11 @@ export class CRMServices implements CRMServiceInterface {
 
       const data = await Promise.all(
         customerInfos.map(async (customer) => {
-          const totalDebt = customer.Invoice.reduce(
-            (acc, invoice) => acc + (invoice.total || 0),
-            0
-          );
+          const totalDebt =
+            customer.Invoice.reduce(
+              (acc, invoice) => acc + (invoice.total || 0),
+              0
+            ) + (customer.initialDebt || 0);
 
           const invoices = await Promise.all(
             customer.Invoice.map(async (invoice) => {
@@ -242,7 +295,7 @@ export class CRMServices implements CRMServiceInterface {
                 total: invoice.total,
                 status: invoice.status,
                 debt: invoice.debt,
-                remainingDebt: invoice.total - (totalPaid || 0),
+                remainingDebt: Math.abs(invoice.total - (totalPaid || 0)),
                 paymentMethod: invoice.paymentMethod,
                 paid: invoice.paid,
                 createdAt: invoice.createdAt,

@@ -1,6 +1,5 @@
 import prisma from "../../infrastructure/database/prisma/client";
 import { calculateSkip, Take } from "../../infrastructure/utils/calculateSkip";
-import { LIMIT_CONSTANT } from "../../infrastructure/utils/constants";
 import { TxClientType } from "../../types/common";
 import { companyDebt, payment } from "./finance.types";
 
@@ -219,7 +218,72 @@ export const updatePaymentDB = async (
 
 // Delete payment
 export const deletePaymentDB = async (id: number) => {
-  return prisma.payment.delete({
-    where: { id },
+  return prisma.$transaction(async (tx) => {
+    const payment = await tx.payment.findFirst({
+      where: { id },
+      select: {
+        amount: true,
+        companyDebtId: true,
+      },
+    });
+
+    if (!payment) {
+      throw new Error("Payment not found");
+    }
+
+    const companyDebt = await tx.companyDebt.findFirst({
+      where: {
+        id: payment.companyDebtId,
+      },
+      select: {
+        id: true,
+        totalAmount: true,
+        // Instead of using remainingAmount, recalculate from all payments
+      },
+    });
+
+    if (!companyDebt) {
+      throw new Error("Company debt not found");
+    }
+
+    // Get all payments for this companyDebt, except the one being deleted
+    const payments = await tx.payment.findMany({
+      where: {
+        companyDebtId: companyDebt.id,
+        id: { not: id },
+      },
+      select: {
+        amount: true,
+      },
+    });
+
+    // Calculate the new remaining amount after deleting the payment
+    // Sum all other payments
+    const totalPaid = payments.reduce((sum, p) => sum + (p.amount || 0), 0);
+    const newRemainingAmount = (companyDebt.totalAmount || 0) - totalPaid;
+
+    // Determine the correct status based on the new remaining amount
+    let newStatus: "PENDING" | "PARTIAL" | "PAID";
+    if (newRemainingAmount === companyDebt.totalAmount) {
+      newStatus = "PENDING";
+    } else if (newRemainingAmount === 0) {
+      newStatus = "PAID";
+    } else {
+      newStatus = "PARTIAL";
+    }
+
+    // Update the company debt with the new remaining amount and status
+    await tx.companyDebt.update({
+      where: { id: companyDebt.id },
+      data: {
+        remainingAmount: newRemainingAmount,
+        status: newStatus,
+      },
+    });
+
+    // Delete the payment
+    await tx.payment.delete({
+      where: { id },
+    });
   });
 };

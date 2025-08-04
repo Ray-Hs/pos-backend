@@ -31,6 +31,12 @@ router.post(
   asyncRouteHandler(isAdmin),
   asyncRouteHandler(client.createCustomerPayment)
 );
+router.delete(
+  "/customer-payments/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(client.deleteCustomerPayment)
+);
 // Company Debts
 router.get(
   "/company-debts",
