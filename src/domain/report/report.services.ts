@@ -58,7 +58,20 @@ class ReportService implements ReportServiceInterface {
   async getDailyReport(from?: Date, to?: Date): Promise<any> {
     try {
       // build date filter
-      const where: any = {};
+      const where: any = {
+        order: {
+          Invoice: {
+            some: {
+              invoices: {
+                some: {
+                  isLatestVersion: true,
+                  paid: true,
+                },
+              },
+            },
+          },
+        },
+      };
       if (from || to) {
         where.createdAt = {};
         if (from) where.createdAt.gte = from;
@@ -244,6 +257,7 @@ class ReportService implements ReportServiceInterface {
         _count: { total: true },
         _sum: { total: true },
         where: {
+          paid: true,
           isLatestVersion: true,
         },
       });
