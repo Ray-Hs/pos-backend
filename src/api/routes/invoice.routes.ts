@@ -13,19 +13,16 @@ router.get("/order/:id", asyncRouteHandler(invoice.findInvoice));
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
   asyncRouteHandler(invoice.createInvoice)
 );
 router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
   asyncRouteHandler(invoice.updateInvoice)
 );
 router.delete(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
   asyncRouteHandler(invoice.deleteInvoice)
 );
 

@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
 import { ConstantsController } from "../controllers/constants/constants.controller";
-import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
+import { hasPermission, isAuthenticated } from "../middlewares/auth.middleware";
 
 const router: Router = express.Router();
 const client = new ConstantsController();
@@ -14,19 +14,19 @@ router.get(
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_settings_constants")),
   asyncRouteHandler(client.createConstants)
 );
 router.patch(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_settings_constants")),
   asyncRouteHandler(client.updateConstants)
 );
 router.delete(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_settings_constants")),
   asyncRouteHandler(client.deleteConstants)
 );
 
