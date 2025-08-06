@@ -11727,33 +11727,1996 @@ Foreign key constraint violated on the constraint: `MenuItem_printersId_fkey`
   "name": "ZodError",
   "stack": "ZodError: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"date\",\n    \"received\": \"string\",\n    \"path\": [\n      \"paymentDate\"\n    ],\n    \"message\": \"Expected date, received string\"\n  }\n]\n    at Object.get error [as error] (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:55:31)\n    at ZodObject.parseAsync (D:\\POS Backend\\node_modules\\zod\\lib\\types.js:196:22)\n    at async validateType (D:\\POS Backend\\src\\infrastructure\\utils\\validateType.ts:9:20)\n    at async FinanceServices.createPayment (D:\\POS Backend\\src\\domain\\finance\\finance.services.ts:98:20)\n    at async createPayment (D:\\POS Backend\\src\\api\\controllers\\finance\\finance.controller.ts:50:22)"
 }
-[2025-07-30 23:42:04] error: Update Invoice Service:  Order with ID 162 not found
+[2025-07-31 14:43:13] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
 {
-  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:684:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
 }
-[2025-07-30 23:50:37] error: Update Invoice Service:  Order with ID 162 not found
+
+Argument `company` is missing.
 {
-  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:711:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:685:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
 }
-[2025-07-30 23:50:38] error: Update Invoice Service:  Order with ID 162 not found
+[2025-07-31 14:43:21] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
 {
-  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:711:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:685:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
 }
-[2025-07-30 23:50:39] error: Update Invoice Service:  Order with ID 162 not found
+
+Argument `company` is missing.
 {
-  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:711:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:685:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
 }
-[2025-07-30 23:51:39] error: Update Invoice Service:  Order with ID 162 not found
+[2025-07-31 14:43:34] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
 {
-  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:713:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:687:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
 }
-[2025-07-30 23:52:40] error: Update Invoice Service:  Order with ID 162 not found
+
+Argument `company` is missing.
 {
-  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:684:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
 }
-[2025-07-30 23:53:55] error: Update Invoice Service:  Order with ID 162 not found
+[2025-07-31 14:43:58] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
 {
-  "stack": "Error: Order with ID 162 not found\n    at D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:710:21\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:683:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
+}
+[2025-07-31 14:44:04] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
+}
+[2025-07-31 14:46:22] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:387:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
+}
+[2025-07-31 14:47:30] error: Update Supply:  
+Invalid `prisma.companyDebt.create()` invocation:
+
+{
+  data: {
+    price: 50,
+    product: "Life Water",
+    quantity: 300,
+    currency: "IQD",
+    invoiceNumber: undefined,
+    totalAmount: undefined,
+    userId: undefined,
+    companyId: 1,
+    remainingAmount: undefined,
++   company: {
++     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,
++     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,
++     connect: CompanyInfoWhereUniqueInput
++   }
+  }
+}
+
+Argument `company` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.companyDebt.create()` invocation:\n\n{\n  data: {\n    price: 50,\n    product: \"Life Water\",\n    quantity: 300,\n    currency: \"IQD\",\n    invoiceNumber: undefined,\n    totalAmount: undefined,\n    userId: undefined,\n    companyId: 1,\n    remainingAmount: undefined,\n+   company: {\n+     create: CompanyInfoCreateWithoutCompanyDebtInput | CompanyInfoUncheckedCreateWithoutCompanyDebtInput,\n+     connectOrCreate: CompanyInfoCreateOrConnectWithoutCompanyDebtInput,\n+     connect: CompanyInfoWhereUniqueInput\n+   }\n  }\n}\n\nArgument `company` is missing.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:385:31\n    at async Proxy._transactionWithCallback (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async SupplyServices.updateSupply (D:\\POS Backend\\src\\domain\\supply\\supply.services.ts:373:7)\n    at async updateSupply (D:\\POS Backend\\src\\api\\controllers\\supply\\supply.controller.ts:100:22)"
+}
+[2025-08-04 13:21:32] error: Update Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+{
+  "code": "P2002",
+  "meta": {
+    "modelName": "Table",
+    "target": [
+      "name"
+    ]
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.table.update()` invocation:\n\n\nUnique constraint failed on the fields: (`name`)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async TableServices.updateTable (D:\\POS Backend\\public\\dist\\src\\domain\\table\\table.services.js:188:34)\n    at async updateTable (D:\\POS Backend\\public\\dist\\src\\api\\controllers\\table\\table.controller.js:49:26)"
+}
+[2025-08-04 13:21:37] error: Update Table Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+Unique constraint failed on the fields: (`name`)
+{
+  "code": "P2002",
+  "meta": {
+    "modelName": "Table",
+    "target": [
+      "name"
+    ]
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.table.update()` invocation:\n\n\nUnique constraint failed on the fields: (`name`)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async TableServices.updateTable (D:\\POS Backend\\public\\dist\\src\\domain\\table\\table.services.js:188:34)\n    at async updateTable (D:\\POS Backend\\public\\dist\\src\\api\\controllers\\table\\table.controller.js:49:26)"
+}
+[2025-08-04 14:21:09] error: Delete Printer:  
+Invalid `prisma.printers.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.
+{
+  "code": "P2025",
+  "meta": {
+    "modelName": "Printers",
+    "cause": "No record was found for a delete."
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.printers.delete()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. No record was found for a delete.\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async printerService.deletePrinter (D:\\POS Backend\\public\\dist\\src\\domain\\settings\\printers\\printer.services.js:224:36)\n    at async deletePrinter (D:\\POS Backend\\public\\dist\\src\\api\\controllers\\settings\\printer\\printer.controller.js:46:26)"
+}
+[2025-08-04 14:21:49] error: Delete Printer:  
+Invalid `prisma.printers.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.
+{
+  "code": "P2025",
+  "meta": {
+    "modelName": "Printers",
+    "cause": "No record was found for a delete."
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.printers.delete()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. No record was found for a delete.\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async printerService.deletePrinter (D:\\POS Backend\\public\\dist\\src\\domain\\settings\\printers\\printer.services.js:224:36)\n    at async deletePrinter (D:\\POS Backend\\public\\dist\\src\\api\\controllers\\settings\\printer\\printer.controller.js:46:26)"
+}
+[2025-08-04 14:32:55] error: Delete Printer:  
+Invalid `prisma.printers.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.
+{
+  "code": "P2025",
+  "meta": {
+    "modelName": "Printers",
+    "cause": "No record was found for a delete."
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.printers.delete()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. No record was found for a delete.\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async printerService.deletePrinter (D:\\POS Backend\\public\\dist\\src\\domain\\settings\\printers\\printer.services.js:224:36)\n    at async deletePrinter (D:\\POS Backend\\public\\dist\\src\\api\\controllers\\settings\\printer\\printer.controller.js:46:26)"
+}
+[2025-08-04 14:33:08] error: Delete Printer:  
+Invalid `prisma.printers.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.
+{
+  "code": "P2025",
+  "meta": {
+    "modelName": "Printers",
+    "cause": "No record was found for a delete."
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.printers.delete()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. No record was found for a delete.\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async printerService.deletePrinter (D:\\POS Backend\\public\\dist\\src\\domain\\settings\\printers\\printer.services.js:224:36)\n    at async deletePrinter (D:\\POS Backend\\public\\dist\\src\\api\\controllers\\settings\\printer\\printer.controller.js:46:26)"
+}
+[2025-08-04 14:33:29] error: Delete Printer:  
+Invalid `prisma.printers.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.
+{
+  "code": "P2025",
+  "meta": {
+    "modelName": "Printers",
+    "cause": "No record was found for a delete."
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.printers.delete()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. No record was found for a delete.\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async printerService.deletePrinter (D:\\POS Backend\\public\\dist\\src\\domain\\settings\\printers\\printer.services.js:224:36)\n    at async deletePrinter (D:\\POS Backend\\public\\dist\\src\\api\\controllers\\settings\\printer\\printer.controller.js:46:26)"
+}
+[2025-08-04 14:33:39] error: Delete Printer:  
+Invalid `prisma.printers.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.
+{
+  "code": "P2025",
+  "meta": {
+    "modelName": "Printers",
+    "cause": "No record was found for a delete."
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.printers.delete()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. No record was found for a delete.\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async printerService.deletePrinter (D:\\POS Backend\\public\\dist\\src\\domain\\settings\\printers\\printer.services.js:224:36)\n    at async deletePrinter (D:\\POS Backend\\public\\dist\\src\\api\\controllers\\settings\\printer\\printer.controller.js:46:26)"
+}
+[2025-08-04 14:36:25] error: Delete Printer:  
+Invalid `prisma.printers.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. No record was found for a delete.
+{
+  "code": "P2025",
+  "meta": {
+    "modelName": "Printers",
+    "cause": "No record was found for a delete."
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.printers.delete()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. No record was found for a delete.\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async printerService.deletePrinter (D:\\POS Backend\\public\\dist\\src\\domain\\settings\\printers\\printer.services.js:224:36)\n    at async deletePrinter (D:\\POS Backend\\public\\dist\\src\\api\\controllers\\settings\\printer\\printer.controller.js:46:26)"
+}
+[2025-08-04 16:36:23] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:36:24] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:36:26] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:36:30] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:38:34] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:38:35] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:38:37] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:38:41] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:39:07] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:39:08] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:39:10] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:39:14] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:39:25] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:39:26] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:41:06] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:41:07] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:41:09] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:41:13] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:41:24] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:41:25] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:41:27] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:42:33] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:42:34] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
+}
+[2025-08-04 16:42:36] error: Get Daily Report: 
+Invalid `prisma.orderItem.findMany()` invocation:
+
+{
+  where: {
+    paid: true,
+    ~~~~
+    createdAt: {
+      gte: new Date("2025-08-02T21:00:00.000Z"),
+      lte: new Date("2025-08-04T20:59:00.000Z")
+    },
+?   AND?: OrderItemWhereInput | OrderItemWhereInput[],
+?   OR?: OrderItemWhereInput[],
+?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],
+?   id?: IntFilter | Int,
+?   orderId?: IntFilter | Int,
+?   menuItemId?: IntFilter | Int,
+?   quantity?: IntFilter | Int,
+?   price?: FloatFilter | Float,
+?   notes?: StringNullableFilter | String | Null,
+?   sortOrder?: IntFilter | Int,
+?   order?: OrderScalarRelationFilter | OrderWhereInput,
+?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput
+  },
+  include: {
+    menuItem: {
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        SubCategory: {
+          select: {
+            Category: {
+              select: {
+                title_en: true
+              }
+            }
+          }
+        }
+      }
+    },
+    order: {
+      select: {
+        Invoice: {
+          select: {
+            invoices: {
+              select: {
+                paymentMethod: true,
+                total: true,
+                isLatestVersion: true,
+                paid: true
+              }
+            }
+          }
+        },
+        createdAt: true
+      }
+    }
+  }
+}
+
+Unknown argument `paid`. Did you mean `id`? Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.orderItem.findMany()` invocation:\n\n{\n  where: {\n    paid: true,\n    ~~~~\n    createdAt: {\n      gte: new Date(\"2025-08-02T21:00:00.000Z\"),\n      lte: new Date(\"2025-08-04T20:59:00.000Z\")\n    },\n?   AND?: OrderItemWhereInput | OrderItemWhereInput[],\n?   OR?: OrderItemWhereInput[],\n?   NOT?: OrderItemWhereInput | OrderItemWhereInput[],\n?   id?: IntFilter | Int,\n?   orderId?: IntFilter | Int,\n?   menuItemId?: IntFilter | Int,\n?   quantity?: IntFilter | Int,\n?   price?: FloatFilter | Float,\n?   notes?: StringNullableFilter | String | Null,\n?   sortOrder?: IntFilter | Int,\n?   order?: OrderScalarRelationFilter | OrderWhereInput,\n?   menuItem?: MenuItemScalarRelationFilter | MenuItemWhereInput\n  },\n  include: {\n    menuItem: {\n      include: {\n        company: {\n          select: {\n            name: true\n          }\n        },\n        SubCategory: {\n          select: {\n            Category: {\n              select: {\n                title_en: true\n              }\n            }\n          }\n        }\n      }\n    },\n    order: {\n      select: {\n        Invoice: {\n          select: {\n            invoices: {\n              select: {\n                paymentMethod: true,\n                total: true,\n                isLatestVersion: true,\n                paid: true\n              }\n            }\n          }\n        },\n        createdAt: true\n      }\n    }\n  }\n}\n\nUnknown argument `paid`. Did you mean `id`? Available options are marked with ?.\n    at kn (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\POS Backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async ReportService.getDailyReport (D:\\POS Backend\\src\\domain\\report\\report.services.ts:70:24)\n    at async getDailyReport (D:\\POS Backend\\src\\api\\controllers\\report\\report.controller.ts:27:20)"
 }
 [2025-08-03 14:34:41] error: Get Payments Service:  
 Invalid `prisma.payment.findMany()` invocation:

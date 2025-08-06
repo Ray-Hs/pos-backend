@@ -194,6 +194,20 @@ export class CRMServices implements CRMServiceInterface {
   async getCustomerDebts(pagination: { page: number; limit: number }) {
     try {
       const customerInfos = await prisma.customerInfo.findMany({
+        where: {
+          OR: [
+            {
+              debt: {
+                gt: 0,
+              },
+            },
+            {
+              initialDebt: {
+                gt: 0,
+              },
+            },
+          ],
+        },
         include: {
           Invoice: {
             where: {
@@ -318,6 +332,7 @@ export class CRMServices implements CRMServiceInterface {
       );
 
       // Count only customers who have at least one DEBT invoice (isLatestVersion: true, paymentMethod: "DEBT")
+      // TODO Verify this code.
       const totalPages = await prisma.customerInfo.count({
         where: {
           Invoice: {
@@ -328,6 +343,8 @@ export class CRMServices implements CRMServiceInterface {
           },
         },
       });
+
+      console.log(totalPages);
 
       return {
         success: true,

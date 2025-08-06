@@ -367,23 +367,24 @@ export class SupplyServices implements SupplyServiceInterface {
         }
         const totalItems = data.itemQty * data.packageQty;
         const totalPrice = totalItems * data.itemPrice;
+        const prevSupply = await getSupplyByIdDB(id.id as number);
 
-        if (data.paymentMethod === "DEBT") {
-          console.log("Data: ", data);
-          console.table(["Debt", totalItems, totalPrice]);
-          const createdDebt = await createCompanyDebtDB(
-            {
+        if (
+          data.paymentMethod === "DEBT" &&
+          prevSupply?.paymentMethod !== "DEBT"
+        ) {
+          const createdDebt = await tx.companyDebt.create({
+            data: {
               price: Math.round((totalPrice || 0) / (totalItems || 0)),
               product: data.name,
               quantity: totalItems || 0,
               companyId: company?.id,
               currency: company?.currency || "IQD",
               invoiceNumber: data.invoiceNO,
-              totalAmount: data.totalPrice,
+              totalAmount: totalPrice,
               userId: requestData.userId,
             },
-            tx
-          );
+          });
         }
 
         await updateSupplyDB(data, id.id as number);
