@@ -51,7 +51,7 @@ router.delete(
   asyncRouteHandler(isAdmin),
   asyncRouteHandler(orderController.deleteOrder)
 );
-router.get(
+router.post(
   "/cancel/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(isAdmin),

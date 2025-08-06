@@ -118,6 +118,85 @@ export class MenuItemServices implements MenuItemInterface {
       };
     }
   }
+  async searchItems(q?: string) {
+    try {
+      const data = await getItemsDB({
+        q,
+      });
+      if (!data || data.length === 0) {
+        logger.warn("NOT FOUND");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      const formattedItems: MenuItem[] = data.map((item) => {
+        const categoryId = item.SubCategory?.Category?.id || null;
+        const category = {
+          title_ar: item.SubCategory?.Category?.title_ar || "",
+          title_ku: item.SubCategory?.Category?.title_ku || "",
+          title_en: item.SubCategory?.Category?.title_en || "",
+        };
+        const subcategory = {
+          title_ar: item.SubCategory?.title_ar || "",
+          title_ku: item.SubCategory?.title_ku || "",
+          title_en: item.SubCategory?.title_en || "",
+        };
+        const company = item.company
+          ? {
+              name: item.company.name,
+              currency: item.company.currency ?? null,
+              phoneNumber: item.company.phoneNumber ?? "",
+              id: item.company.id,
+              code: item.company.code ?? null,
+              email: item.company.email ?? null,
+              note: item.company.note ?? null,
+              CRMId: item.company.CRMId ?? undefined,
+            }
+          : null;
+        return {
+          id: item.id,
+          title_ar: item.title_ar,
+          title_ku: item.title_ku,
+          title_en: item.title_en,
+          description_ar: item.description_ar,
+          description_en: item.description_en,
+          description_ku: item.description_ku,
+          discount: item.discount,
+          isActive: item.isActive,
+          price: item.price,
+          subCategoryId: item.subCategoryId,
+          categoryId,
+          companyId: item.companyId,
+          company: company,
+          image: item.image,
+          category,
+          subcategory,
+          printersId: item.printersId,
+          createdAt: item.createdAt,
+          updatedAt: item.updatedAt,
+        };
+      });
+
+      return {
+        success: true,
+        data: formattedItems,
+      };
+    } catch (error) {
+      logger.error("Menu item Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
   async getItemsByCategory(
     id: any,
     q?: string,

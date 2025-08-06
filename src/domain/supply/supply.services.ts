@@ -13,6 +13,7 @@ import {
 import logger from "../../infrastructure/utils/logger";
 import validateType from "../../infrastructure/utils/validateType";
 import { createCompanyDebtDB } from "../finance/finance.repository";
+import { createItemDB } from "../item/item.repository";
 import { getCompanyInfoByIdDB } from "../settings/crm/crm.repository";
 import {
   createSupplyDB,
@@ -24,9 +25,7 @@ import {
   getSupplyByIdDB,
   updateSupplyDB,
 } from "./supply.repository";
-import { Supply, SupplySchema, SupplyServiceInterface } from "./supply.types";
-import { createItemDB } from "../item/item.repository";
-import { TResult } from "../../types/common";
+import { SupplySchema, SupplyServiceInterface } from "./supply.types";
 
 export class SupplyServices implements SupplyServiceInterface {
   async getSupplies(
@@ -52,22 +51,12 @@ export class SupplyServices implements SupplyServiceInterface {
           },
         };
       }
-      const response = await getSuppliesDB("", expired);
       const totalPages = await getSuppliesCountDB(expired);
-      const supplies = await prisma.supply.findMany({
-        include: {
-          company: {
-            select: {
-              currency: true,
-            },
-          },
-        },
-      });
       // Calculate total purchase and selling values for IQD and USD based on company currency
       let totalPurchaseValue = { IQD: 0, USD: 0 };
       let totalSellingValue = { IQD: 0, USD: 0 };
 
-      supplies.forEach((supply) => {
+      data.forEach((supply) => {
         if (supply.company.currency === "USD") {
           totalPurchaseValue.USD += supply.totalPrice || 0;
           totalSellingValue.USD += supply.itemSellPrice || 0;

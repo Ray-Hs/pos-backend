@@ -15,6 +15,7 @@ export interface MenuItemInterface {
     sortby?: FilterBy,
     language?: Language
   ) => Promise<TResult<MenuItem[]>>;
+  searchItems: (q: string) => Promise<TResult<MenuItem[]>>;
   getItemById: (requestId: any) => Promise<TResult<MenuItem>>;
   getItemsByCategory: (
     id: any,
@@ -31,6 +32,10 @@ export interface MenuItemInterface {
 
 export interface MenuItemControllerInterface {
   getItems: (
+    req: Request,
+    res: Response
+  ) => Promise<Response<TResult<MenuItem[]>>>;
+  searchItems: (
     req: Request,
     res: Response
   ) => Promise<Response<TResult<MenuItem[]>>>;

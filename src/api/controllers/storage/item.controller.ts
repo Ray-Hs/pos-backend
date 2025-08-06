@@ -27,6 +27,15 @@ export class MenuItemController implements MenuItemControllerInterface {
       .status(items.success ? OK_STATUS : items.error?.code || 500)
       .json(items);
   }
+  async searchItems(req: Request, res: Response) {
+    const q = req.query?.q as string;
+    const menuItemService = new MenuItemServices();
+    const items = await menuItemService.searchItems(q);
+
+    return res
+      .status(items.success ? OK_STATUS : items.error?.code || 500)
+      .json(items);
+  }
   async getItemsByCategory(req: Request, res: Response) {
     const categoryId = parseInt(req.params?.id as string, 10);
     const subcategoryId = parseInt(req.query?.subcategoryId as string, 10);

@@ -90,11 +90,16 @@ export class OrderController implements OrderControllerInterface {
 
   async cancelOrder(req: Request, res: Response) {
     const id = parseInt(req.params?.id, 10);
-    const orderService = new OrderServices();
-    const response = await orderService.cancelOrder(id);
+    const cancellationReason = req.params.cancellationReason || "";
+    const user = decodeJWT(req, res) as UserWithoutPassword;
 
-    return res
-      .status(response.success ? OK_STATUS : response.error?.code || 500)
-      .json(response);
+    const orderService = new OrderServices();
+    const response = await orderService.cancelOrder(
+      id,
+      user,
+      cancellationReason.toString()
+    );
+
+    return res.status(response.success ? OK_STATUS : 500).json(response);
   }
 }

@@ -12,6 +12,11 @@ router.get(
   asyncRouteHandler(MenuItemInstance.getItems)
 );
 router.get(
+  "/search",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(MenuItemInstance.searchItems)
+);
+router.get(
   "/:id",
   asyncRouteHandler(isAuthenticated),
   asyncRouteHandler(MenuItemInstance.getItemById)

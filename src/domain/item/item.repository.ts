@@ -45,6 +45,13 @@ export async function getItemsDB(filter?: {
             mode: Prisma.QueryMode.insensitive,
           },
         },
+        {
+          code: {
+            contains: filter.q,
+            mode: Prisma.QueryMode.insensitive,
+          },
+        },
+        {},
       ],
     });
   }
