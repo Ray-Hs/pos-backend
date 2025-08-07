@@ -24,7 +24,11 @@ RUN npm install
 COPY . .
 
 # Build your TypeScript server (and run any Prisma stuff if needed)
-RUN npm run build:server
+RUN if [ ! -f .built ]; then \
+    npm run build:server && touch .built; \
+    else \
+    npm run build; \
+    fi
 
 # Expose port (optional; only needed if you're testing locally or using Docker standalone)
 EXPOSE 3000
