@@ -336,6 +336,17 @@ export class MenuItemServices implements MenuItemInterface {
       const data = await validateType(requestData, MenuItemSchema);
       if (data instanceof ZodError) {
         logger.warn("Missing Info: ", data);
+
+        if (data.message === "No Printer Provided.") {
+          return {
+            success: false,
+            error: {
+              code: BAD_REQUEST_STATUS,
+              message: "No Printer Provided.",
+            },
+          };
+        }
+
         return {
           success: false,
           error: {
@@ -385,6 +396,17 @@ export class MenuItemServices implements MenuItemInterface {
 
       if (data instanceof ZodError) {
         logger.warn("Missing Data: ", data);
+
+        if (data.message === "No Printer Provided.") {
+          return {
+            success: false,
+            error: {
+              code: BAD_REQUEST_STATUS,
+              message: "No Printer Provided.",
+            },
+          };
+        }
+
         return {
           success: false,
           error: {
