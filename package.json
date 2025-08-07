@@ -12,6 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "dotenv -- nodemon --exec ts-node ./src/server.ts",
     "build:server": "npx prisma migrate dev --name init && npx prisma generate && tsc && node ./public/dist/src/script.js",
+    "preinstall": "npm install canvas --build-from-source=false",
     "build": "tsc",
     "vercel-build": "tsc",
     "start": "node public/dist/src/server.js",
