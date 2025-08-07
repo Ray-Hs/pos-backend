@@ -1,7 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const compression = require('compression');
+import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import compression from 'compression';
 
 // Create Express app
 const app = express();
@@ -44,4 +44,4 @@ app.use('/api', (req, res) => {
   res.json({ message: 'API endpoints will be available here' });
 });
 
-module.exports = app; 
+export default app; 
