@@ -23,15 +23,16 @@ RUN npm install
 # Copy the entire project
 COPY . .
 
-# Build your TypeScript server (and run any Prisma stuff if needed)
-RUN if [ ! -f .built ]; then \
-    npm run build:server && touch .built; \
-    else \
-    npm run build; \
-    fi
+# Build your TypeScript server (skip migrations - they'll run at runtime)
+RUN npm run build:docker
 
 # Expose port (optional; only needed if you're testing locally or using Docker standalone)
 EXPOSE 3000
 
-# Run the compiled server
-CMD ["node", "public/dist/src/server.js"]
+# Create a startup script that handles migrations at runtime
+RUN echo '#!/bin/sh\n\
+npx prisma migrate deploy\n\
+node public/dist/src/server.js' > /app/start.sh && chmod +x /app/start.sh
+
+# Run the startup script
+CMD ["/app/start.sh"]
