@@ -3,6 +3,7 @@ FROM node:20-slim AS builder
 
 # Install system dependencies required for native builds
 RUN apt-get update && apt-get install -y \
+    openssl \
     python3 \
     make \
     g++ \
@@ -11,8 +12,7 @@ RUN apt-get update && apt-get install -y \
     libpango1.0-dev \
     libgif-dev \
     librsvg2-dev \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get clean
 
 # Set working directory
 WORKDIR /app
@@ -63,8 +63,8 @@ EXPOSE 3000
 
 # Create a startup script that handles migrations at runtime
 RUN echo '#!/bin/sh\n\
-npx prisma migrate deploy\n\
-node public/dist/src/server.js' > /app/start.sh && chmod +x /app/start.sh
+    npx prisma migrate deploy\n\
+    node public/dist/src/server.js' > /app/start.sh && chmod +x /app/start.sh
 
 # Run the startup script
 CMD ["/app/start.sh"]
