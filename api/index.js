@@ -1,3 +1,4 @@
-const app = require('../src/app.ts').default;
+const app = require("../src/app.ts").default;
+const serverless = require("serverless-http");
 
-module.exports = app; 
+module.exports = serverless(app);

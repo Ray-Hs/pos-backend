@@ -73,6 +73,7 @@
     "pdfkit-table": "^0.1.99",
     "puppeteer": "^24.12.0",
     "receiptline": "^1.16.2",
+    "serverless-http": "^3.2.0",
     "winston": "^3.17.0",
     "zod": "^3.24.2"
   },
