@@ -14,7 +14,7 @@
     "preinstall": "npm install canvas --build-from-source=false",
     "postinstall": "npm run migrate-dev && npm run migrate-deploy && npm run generate",
     "build:server": "npx prisma migrate dev --name init && npx prisma generate && tsc && node ./public/dist/src/script.js",
-    "build:conditional": "sh -c 'if [ -f .build ]; then npm run build; else npm run build:server && touch .build; fi'",
+    "build:conditional": "sh -c 'if [ -f /app/data/.build ]; then npm run build; else npm run build:server && mkdir -p /app/data && touch /app/data/.build; fi'",
     "build": "tsc",
     "start": "node public/dist/src/server.js",
     "migrate-dev": "npx prisma migrate dev",
