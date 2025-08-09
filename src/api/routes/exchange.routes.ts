@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
+import { asyncMiddlewareHandler, asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
 import { ExchangeRateController } from "../controllers/exchange/exchange.controller";
 import { hasPermission, isAuthenticated } from "../middlewares/auth.middleware";
 
@@ -19,7 +19,7 @@ router.get(
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_finance_daily_exchange_rate")),
+  asyncMiddlewareHandler(hasPermission("manage_finance_daily_exchange_rate")),
   asyncRouteHandler(exchangeInstance.createExchangeRate)
 );
 

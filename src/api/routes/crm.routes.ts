@@ -1,6 +1,6 @@
 import express, { Router } from "express";
 import { CRMController } from "../controllers/settings/crm/crm.controller";
-import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
+import { asyncMiddlewareHandler, asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
 import {
   hasPermission,
   isAdmin,
@@ -29,19 +29,19 @@ router.get(
 router.post(
   "/customers",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_crm_customers")),
+  asyncMiddlewareHandler(hasPermission("manage_crm_customers")),
   asyncRouteHandler(controller.createCustomer)
 );
 router.patch(
   "/customers/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_crm_customers")),
+  asyncMiddlewareHandler(hasPermission("manage_crm_customers")),
   asyncRouteHandler(controller.updateCustomer)
 );
 router.delete(
   "/customers/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_crm_customers")),
+  asyncMiddlewareHandler(hasPermission("manage_crm_customers")),
   asyncRouteHandler(controller.deleteCustomer)
 );
 
@@ -59,19 +59,19 @@ router.get(
 router.post(
   "/companies",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_crm_companies")),
+  asyncMiddlewareHandler(hasPermission("manage_crm_companies")),
   asyncRouteHandler(controller.createCompany)
 );
 router.patch(
   "/companies/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_crm_companies")),
+  asyncMiddlewareHandler(hasPermission("manage_crm_companies")),
   asyncRouteHandler(controller.updateCompany)
 );
 router.delete(
   "/companies/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_crm_companies")),
+  asyncMiddlewareHandler(hasPermission("manage_crm_companies")),
   asyncRouteHandler(controller.deleteCompany)
 );
 
@@ -89,25 +89,25 @@ router.get(
 router.post(
   "/customer-discounts",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_crm_customer_discounts")),
+  asyncMiddlewareHandler(hasPermission("manage_crm_customer_discounts")),
   asyncRouteHandler(controller.createCustomerDiscount)
 );
 router.patch(
   "/customer-discounts/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_crm_customer_discounts")),
+  asyncMiddlewareHandler(hasPermission("manage_crm_customer_discounts")),
   asyncRouteHandler(controller.updateCustomerDiscount)
 );
 router.patch(
   "/customer-discounts/:id/change-discount",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_crm_customer_discounts")),
+  asyncMiddlewareHandler(hasPermission("manage_crm_customer_discounts")),
   asyncRouteHandler(controller.changeCustomerDiscount)
 );
 router.delete(
   "/customer-discounts/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_crm_customer_discounts")),
+  asyncMiddlewareHandler(hasPermission("manage_crm_customer_discounts")),
   asyncRouteHandler(controller.deleteCustomerDiscount)
 );
 

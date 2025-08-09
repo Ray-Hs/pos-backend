@@ -77,3 +77,49 @@
 [2025-08-07 12:20:48] warn: No Data Found
 [2025-08-07 12:20:48] warn: No Data Found
 [2025-08-07 12:20:49] warn: No Data Found
+[2025-08-09 11:34:03] warn: No Data Found
+[2025-08-09 11:34:03] warn: Not Data Found
+[2025-08-09 11:34:05] warn: Not Data Found
+[2025-08-09 11:34:05] warn: No Data Found
+[2025-08-09 11:34:07] warn: Not Data Found
+[2025-08-09 11:34:07] warn: No Data Found
+[2025-08-09 11:34:12] warn: Not Data Found
+[2025-08-09 11:34:12] warn: No Data Found
+[2025-08-09 11:35:13] warn: No Data Found
+[2025-08-09 11:35:13] warn: No Data Found
+[2025-08-09 11:35:13] warn: No Data Found
+[2025-08-09 11:35:14] warn: No Data Found
+[2025-08-09 11:35:24] warn: No Data Found
+[2025-08-09 11:35:24] warn: No Data Found
+[2025-08-09 11:35:24] warn: No Data Found
+[2025-08-09 11:35:25] warn: No Data Found
+[2025-08-09 11:35:25] warn: No Data Found
+[2025-08-09 11:35:26] warn: No Data Found
+[2025-08-09 11:35:47] error: Order cancellation print failed on 192.168.1.100: Socket timeout
+{
+  "stack": "Error: Socket timeout\n    at Socket.<anonymous> (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\node-thermal-printer\\lib\\interfaces\\network.js:76:16)\n    at Socket.emit (node:events:507:28)\n    at Socket.emit (node:domain:489:12)\n    at Socket._onTimeout (node:net:604:8)\n    at listOnTimeout (node:internal/timers:608:17)\n    at processTimers (node:internal/timers:543:7)"
+}
+[2025-08-09 11:35:55] warn: No Data Found
+[2025-08-09 11:35:55] warn: No Data Found
+[2025-08-09 11:35:55] warn: No Data Found
+[2025-08-09 11:35:56] warn: No Data Found
+[2025-08-09 11:36:01] warn: No Data Found
+[2025-08-09 11:36:01] warn: No Data Found
+[2025-08-09 11:36:02] warn: No Data Found
+[2025-08-09 11:36:05] warn: No Data Found
+[2025-08-09 11:36:05] warn: No Data Found
+[2025-08-09 11:36:05] warn: No Data Found
+[2025-08-09 11:36:06] warn: No Data Found
+[2025-08-09 11:36:15] warn: No Data Found
+[2025-08-09 11:36:15] warn: No Data Found
+[2025-08-09 11:36:15] warn: No Data Found
+[2025-08-09 11:36:16] warn: No Data Found
+[2025-08-09 11:36:21] warn: No Data Found
+[2025-08-09 11:36:21] warn: No Data Found
+[2025-08-09 11:36:22] warn: No Data Found
+[2025-08-09 11:36:54] warn: No Data Found
+[2025-08-09 11:37:08] warn: Printer 192.168.1.100 not connected
+[2025-08-09 11:37:14] warn: No Data Found
+[2025-08-09 11:37:14] warn: No Data Found
+[2025-08-09 11:37:14] warn: No Data Found
+[2025-08-09 11:37:15] warn: No Data Found

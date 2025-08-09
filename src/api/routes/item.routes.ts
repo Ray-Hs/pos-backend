@@ -1,6 +1,9 @@
 import express, { Router } from "express";
 import { MenuItemController } from "../controllers/storage/item.controller";
-import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
+import {
+  asyncMiddlewareHandler,
+  asyncRouteHandler,
+} from "../../infrastructure/utils/asyncRouteHandler";
 import {
   hasPermission,
   isAdmin,
@@ -33,19 +36,19 @@ router.get(
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory_add_menu_items")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory_add_menu_items")),
   asyncRouteHandler(MenuItemInstance.createItem)
 );
 router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory_menu_items")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory_menu_items")),
   asyncRouteHandler(MenuItemInstance.updateItem)
 );
 router.delete(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory_menu_items")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory_menu_items")),
   asyncRouteHandler(MenuItemInstance.deleteItem)
 );
 

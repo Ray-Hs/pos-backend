@@ -1,6 +1,6 @@
 // src/routes/report.routes.ts
 import { Router } from "express";
-import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
+import { asyncMiddlewareHandler, asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
 import reportController from "../controllers/report/report.controller";
 import {
   hasPermission,
@@ -19,25 +19,25 @@ router.get(
 router.get(
   "/daily-report",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_reports_end_of_day")),
+  asyncMiddlewareHandler(hasPermission("manage_reports_end_of_day")),
   asyncRouteHandler(reportController.getDailyReport)
 );
 router.get(
   "/company-report",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_reports_general_reports")),
+  asyncMiddlewareHandler(hasPermission("manage_reports_general_reports")),
   asyncRouteHandler(reportController.getCompanyReport)
 );
 router.get(
   "/employee-report",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_reports_general_reports")),
+  asyncMiddlewareHandler(hasPermission("manage_reports_general_reports")),
   asyncRouteHandler(reportController.getEmployeeReport)
 );
 router.get(
   "/deleted-items",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_reports_deleted_order_items")),
+  asyncMiddlewareHandler(hasPermission("manage_reports_deleted_order_items")),
   asyncRouteHandler(reportController.getDeletedItemsReport)
 );
 

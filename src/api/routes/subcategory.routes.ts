@@ -1,5 +1,8 @@
 import express, { Router } from "express";
-import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
+import {
+  asyncMiddlewareHandler,
+  asyncRouteHandler,
+} from "../../infrastructure/utils/asyncRouteHandler";
 import { SubcategoryController } from "../controllers/storage/subcategory.controller";
 import { hasPermission, isAuthenticated } from "../middlewares/auth.middleware";
 
@@ -25,21 +28,21 @@ router.get(
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory")),
   asyncRouteHandler(SubcategoryInstance.createSubcategory)
 );
 
 router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory")),
   asyncRouteHandler(SubcategoryInstance.updateSubcategory)
 );
 
 router.delete(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory")),
   asyncRouteHandler(SubcategoryInstance.deleteSubcategory)
 );
 

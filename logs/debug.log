@@ -100,3 +100,167 @@
 [2025-08-07 12:24:52] info: Image uploaded successfully: http://localhost:3001/api/images/92d6593d-96a9-41aa-a2b7-61dfc70fc14f/2aecb91e-8b25-4da2-b984-32b0a34adba4-ar-24878-bbq-chicken-pizza-beauty-4x3-39cd80585ad04941914dca4bd82eae3d.jpg
 [2025-08-07 12:25:59] info: Image uploaded successfully: http://localhost:3001/api/images/84469216-4fd2-4130-b211-e93020351965/4f0f1906-6e1f-4e6f-ae22-6bbeec4f393a-ar-24878-bbq-chicken-pizza-beauty-4x3-39cd80585ad04941914dca4bd82eae3d.jpg
 [2025-08-07 12:25:59] info: Image uploaded successfully: http://localhost:3001/api/images/84469216-4fd2-4130-b211-e93020351965/4f0f1906-6e1f-4e6f-ae22-6bbeec4f393a-ar-24878-bbq-chicken-pizza-beauty-4x3-39cd80585ad04941914dca4bd82eae3d.jpg
+[2025-08-09 11:34:03] warn: No Data Found
+[2025-08-09 11:34:03] warn: Not Data Found
+[2025-08-09 11:34:05] warn: Not Data Found
+[2025-08-09 11:34:05] warn: No Data Found
+[2025-08-09 11:34:07] warn: Not Data Found
+[2025-08-09 11:34:07] warn: No Data Found
+[2025-08-09 11:34:12] warn: Not Data Found
+[2025-08-09 11:34:12] warn: No Data Found
+[2025-08-09 11:35:13] info: Filter: 
+[2025-08-09 11:35:13] warn: No Data Found
+[2025-08-09 11:35:13] warn: No Data Found
+[2025-08-09 11:35:13] warn: No Data Found
+[2025-08-09 11:35:14] warn: No Data Found
+[2025-08-09 11:35:24] info: Filter: 
+[2025-08-09 11:35:24] warn: No Data Found
+[2025-08-09 11:35:24] warn: No Data Found
+[2025-08-09 11:35:24] warn: No Data Found
+[2025-08-09 11:35:25] warn: No Data Found
+[2025-08-09 11:35:25] warn: No Data Found
+[2025-08-09 11:35:26] warn: No Data Found
+[2025-08-09 11:35:35] info: Order 14 marked as cancelled in database
+[2025-08-09 11:35:47] error: Order cancellation print failed on 192.168.1.100: Socket timeout
+{
+  "stack": "Error: Socket timeout\n    at Socket.<anonymous> (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\node-thermal-printer\\lib\\interfaces\\network.js:76:16)\n    at Socket.emit (node:events:507:28)\n    at Socket.emit (node:domain:489:12)\n    at Socket._onTimeout (node:net:604:8)\n    at listOnTimeout (node:internal/timers:608:17)\n    at processTimers (node:internal/timers:543:7)"
+}
+[2025-08-09 11:35:55] warn: No Data Found
+[2025-08-09 11:35:55] info: Filter: 
+[2025-08-09 11:35:55] warn: No Data Found
+[2025-08-09 11:35:55] warn: No Data Found
+[2025-08-09 11:35:56] warn: No Data Found
+[2025-08-09 11:36:01] warn: No Data Found
+[2025-08-09 11:36:01] warn: No Data Found
+[2025-08-09 11:36:02] warn: No Data Found
+[2025-08-09 11:36:05] warn: No Data Found
+[2025-08-09 11:36:05] warn: No Data Found
+[2025-08-09 11:36:05] warn: No Data Found
+[2025-08-09 11:36:06] warn: No Data Found
+[2025-08-09 11:36:15] warn: No Data Found
+[2025-08-09 11:36:15] info: Filter: 
+[2025-08-09 11:36:15] warn: No Data Found
+[2025-08-09 11:36:15] warn: No Data Found
+[2025-08-09 11:36:16] warn: No Data Found
+[2025-08-09 11:36:21] warn: No Data Found
+[2025-08-09 11:36:21] warn: No Data Found
+[2025-08-09 11:36:22] warn: No Data Found
+[2025-08-09 11:36:54] warn: No Data Found
+[2025-08-09 11:36:55] debug: DB: transaction
+{
+  "phase": "START"
+}
+[2025-08-09 11:36:55] debug: DB: menuItem.findFirst
+{
+  "itemCount": 4
+}
+[2025-08-09 11:36:55] info: PERF: Fetch menu items completed in 3ms
+{
+  "count": 4,
+  "menuItems": [
+    {
+      "id": 1,
+      "title": "Pizza"
+    },
+    {
+      "id": 1,
+      "title": "Pizza"
+    },
+    {
+      "id": 1,
+      "title": "Pizza"
+    },
+    {
+      "id": 1,
+      "title": "Pizza"
+    }
+  ]
+}
+[2025-08-09 11:36:55] debug: Calculating old item quantities
+[2025-08-09 11:36:55] debug: Old quantities calculated
+{
+  "oldItemMap": {
+    "pizza": 3
+  }
+}
+[2025-08-09 11:36:55] debug: Calculating new item quantities
+[2025-08-09 11:36:55] debug: New quantities calculated
+{
+  "newItemMap": {
+    "pizza": 4
+  }
+}
+[2025-08-09 11:36:55] info: Processing supply updates
+{
+  "itemNames": [
+    "pizza"
+  ]
+}
+[2025-08-09 11:36:55] debug: Processing item supply update
+{
+  "itemName": "pizza",
+  "oldQty": 3,
+  "newQty": 4,
+  "qtyDifference": 1
+}
+[2025-08-09 11:36:55] debug: Found supplies for item
+{
+  "itemName": "pizza",
+  "suppliesCount": 1,
+  "supplies": [
+    {
+      "id": 1,
+      "remainingQuantity": 102
+    }
+  ]
+}
+[2025-08-09 11:36:55] debug: Starting supply deduction process
+{
+  "itemName": "pizza",
+  "totalToDeduct": 1
+}
+[2025-08-09 11:36:55] debug: Processing individual supply
+{
+  "supplyId": 1,
+  "currentRemaining": 102,
+  "remainingToDeduct": 1,
+  "calculatedNewQty": 101
+}
+[2025-08-09 11:36:55] debug: Supply fully satisfied deduction
+{
+  "supplyId": 1,
+  "oldQuantity": 102,
+  "newQuantity": 101,
+  "deducted": 1
+}
+[2025-08-09 11:36:55] info: PERF: Supply updates completed in 3ms
+[2025-08-09 11:36:55] debug: DB: order.update
+{
+  "orderId": 15
+}
+[2025-08-09 11:36:55] info: undefined
+[2025-08-09 11:36:55] info: PERF: updateOrder completed in 21ms
+{
+  "orderId": 15,
+  "finalItemsCount": 4,
+  "newInvoiceId": 20,
+  "newInvoiceVersion": 2
+}
+[2025-08-09 11:36:55] debug: updateOrder - EXIT
+{
+  "success": true
+}
+[2025-08-09 11:36:58] info: Order 15 marked as cancelled in database
+[2025-08-09 11:37:08] warn: Printer 192.168.1.100 not connected
+[2025-08-09 11:37:14] warn: No Data Found
+[2025-08-09 11:37:14] warn: No Data Found
+[2025-08-09 11:37:14] warn: No Data Found
+[2025-08-09 11:37:15] warn: No Data Found
+[2025-08-09 12:53:25] info: Filter: 
+[2025-08-09 12:53:51] info: Image uploaded successfully: http://localhost:3001/api/images/14e27fe4-0269-4b11-9d00-60050eb0cf34/f38cefc8-ba56-4b38-9214-dd53e32db328-asian-grilled-chicken-7.jpg
+[2025-08-09 12:53:51] info: Image uploaded successfully: http://localhost:3001/api/images/14e27fe4-0269-4b11-9d00-60050eb0cf34/f38cefc8-ba56-4b38-9214-dd53e32db328-asian-grilled-chicken-7.jpg
+[2025-08-09 12:53:51] info: Filter: 
+[2025-08-09 12:55:22] info: Filter: 
+[2025-08-09 12:55:42] info: Image uploaded successfully: http://localhost:3001/api/images/5425c630-2f63-4fd4-93a2-132fc3f59895/388a9634-0936-49cf-a093-8b026fd76dba-25202beef-stroganoff-iii-ddmfs-3x4-233-0f26fa477e9c446b970a32502468efc6.jpg
+[2025-08-09 12:55:42] info: Image uploaded successfully: http://localhost:3001/api/images/5425c630-2f63-4fd4-93a2-132fc3f59895/388a9634-0936-49cf-a093-8b026fd76dba-25202beef-stroganoff-iii-ddmfs-3x4-233-0f26fa477e9c446b970a32502468efc6.jpg
+[2025-08-09 12:55:42] info: Filter: 

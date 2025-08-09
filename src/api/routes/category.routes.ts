@@ -1,6 +1,9 @@
 import express, { Router } from "express";
 import { CategoryController } from "../controllers/storage/category.controller";
-import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
+import {
+  asyncMiddlewareHandler,
+  asyncRouteHandler,
+} from "../../infrastructure/utils/asyncRouteHandler";
 import { hasPermission, isAuthenticated } from "../middlewares/auth.middleware";
 
 const router: Router = express.Router();
@@ -21,21 +24,21 @@ router.get(
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory")),
   asyncRouteHandler(categoryInstance.createCategory)
 );
 
 router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory")),
   asyncRouteHandler(categoryInstance.updateCategory)
 );
 
 router.delete(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory")),
   asyncRouteHandler(categoryInstance.deleteCategory)
 );
 

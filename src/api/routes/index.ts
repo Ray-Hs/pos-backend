@@ -1,8 +1,12 @@
 import express, { Router } from "express";
+import fs from "fs";
+import path from "path";
+import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
 import {
   RATE_LIMIT,
   RATE_LIMIT_TIME_WINDOW,
 } from "../../infrastructure/utils/constants";
+import logger from "../../infrastructure/utils/logger";
 import rateLimiter from "../middlewares/limiter.middleware";
 import AuthRoutes from "./auth.routes";
 import CategoryRoutes from "./category.routes";
@@ -11,22 +15,18 @@ import CRMRoutes from "./crm.routes";
 import ExchangeRoutes from "./exchange.routes";
 import FinanceRoutes from "./finance.routes";
 import ImageRoutes from "./images.routes";
-import LocalImageRoutes from "./local-images.routes";
 import InvoiceRoutes from "./invoice.routes";
 import ItemRoutes from "./item.routes";
+import LocalImageRoutes from "./local-images.routes";
 import OrderRoutes from "./order.routes";
 import OrderItemRoutes from "./orderItem.routes";
 import PermissionsRoutes from "./permissions.routes";
+import ReportsRoutes from "./report.routes";
 import SectionRoutes from "./section.routes";
 import SettingsRoutes from "./settings.routes";
 import SubcategoryRoutes from "./subcategory.routes";
 import SupplyRoutes from "./supply.routes";
 import TableRoutes from "./table.routes";
-import ReportsRoutes from "./report.routes";
-import path from "path";
-import fs from "fs";
-import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
-import logger from "../../infrastructure/utils/logger";
 const router: Router = express.Router();
 
 // Auth Routes
@@ -147,6 +147,7 @@ router.use(
   rateLimiter(RATE_LIMIT, RATE_LIMIT_TIME_WINDOW),
   ReportsRoutes
 );
+
 // Static file serving endpoint for images - serve by full URL path
 router.get(
   "/*",

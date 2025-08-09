@@ -1,5 +1,8 @@
 import express, { Router } from "express";
-import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
+import {
+  asyncMiddlewareHandler,
+  asyncRouteHandler,
+} from "../../infrastructure/utils/asyncRouteHandler";
 import { ConstantsController } from "../controllers/constants/constants.controller";
 import { hasPermission, isAuthenticated } from "../middlewares/auth.middleware";
 
@@ -14,19 +17,19 @@ router.get(
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_settings_constants")),
+  asyncMiddlewareHandler(hasPermission("manage_settings_constants")),
   asyncRouteHandler(client.createConstants)
 );
 router.patch(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_settings_constants")),
+  asyncMiddlewareHandler(hasPermission("manage_settings_constants")),
   asyncRouteHandler(client.updateConstants)
 );
 router.delete(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_settings_constants")),
+  asyncMiddlewareHandler(hasPermission("manage_settings_constants")),
   asyncRouteHandler(client.deleteConstants)
 );
 

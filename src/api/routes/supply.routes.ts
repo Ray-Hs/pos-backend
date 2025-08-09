@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
+import { asyncMiddlewareHandler, asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
 import {
   hasPermission,
   isAdmin,
@@ -20,7 +20,7 @@ router.get(
 router.get(
   "/storage",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory_read_storage")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory_read_storage")),
   asyncRouteHandler(controller.getStorage)
 );
 
@@ -39,21 +39,21 @@ router.get(
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory")),
   asyncRouteHandler(controller.createSupply)
 );
 
 router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory")),
   asyncRouteHandler(controller.updateSupply)
 );
 
 router.delete(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(hasPermission("manage_inventory")),
+  asyncMiddlewareHandler(hasPermission("manage_inventory")),
   asyncRouteHandler(controller.deleteSupply)
 );
 

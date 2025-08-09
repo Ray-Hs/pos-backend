@@ -20,6 +20,7 @@ import { decodeJWT } from "../../infrastructure/utils/decodeJWT";
 import logger from "../../infrastructure/utils/logger";
 import { User } from "../../types/common";
 import ms from "ms";
+import prisma from "../../infrastructure/database/prisma/client";
 dotenv.config();
 const SECRET_KEY: string | undefined = process.env.JWT_SECRET_KEY;
 
@@ -39,7 +40,7 @@ export async function isAuthenticated(
   try {
     const token = await req.cookies?.session;
 
-    if (!token)
+    if (!token) {
       return res.status(NO_TOKEN_STATUS).json({
         success: false,
         error: {
@@ -47,6 +48,7 @@ export async function isAuthenticated(
           message: NO_TOKEN_ERR,
         },
       });
+    }
 
     const session = decodeJWT(req, res) as JwtPayload & User;
 
@@ -71,9 +73,25 @@ export async function isAuthenticated(
       });
     }
 
-    const userExists = await findUserDB(session?.id);
+    const userExists = await prisma.user.findFirst({
+      where: {
+        id: session?.id,
+      },
+      select: {
+        isActive: true,
+        role: {
+          select: {
+            permissions: {
+              select: {
+                key: true,
+              },
+            },
+          },
+        },
+      },
+    });
 
-    if (!userExists)
+    if (!userExists) {
       return res.status(NOT_FOUND_STATUS).json({
         success: false,
         error: {
@@ -81,16 +99,17 @@ export async function isAuthenticated(
           message: NOT_FOUND_ERR,
         },
       });
+    }
 
     if (!userExists.isActive) {
       logger.warn("User is not active.");
-      return {
+      return res.status(UNAUTHORIZED_STATUS).json({
         success: false,
         error: {
           code: UNAUTHORIZED_STATUS,
           message: "User is not active, please contact admin to activate.",
         },
-      };
+      });
     }
 
     jwt.verify(token, SECRET_KEY as string, (err: any, user: any) => {
@@ -118,7 +137,7 @@ export async function isAuthenticated(
       }
 
       req.user = userExists;
-      next();
+      return next(); // ensure no code is executed after sending the response
     });
   } catch (error) {
     logger.error("Authenticated middleware: ", error);
@@ -159,7 +178,12 @@ export function hasPermission(permission: string) {
     try {
       const user = req.user as User | undefined;
 
+      console.log("User:", user);
+      console.log("User Role:", user?.role);
+      console.log("Permissions:", user?.role?.permissions);
+
       if (!user || !user.role || !Array.isArray(user.role.permissions)) {
+        console.log("Permission error");
         return res.status(FORBIDDEN_STATUS).json({
           success: false,
           error: {
@@ -182,7 +206,7 @@ export function hasPermission(permission: string) {
       next();
     } catch (error) {
       logger.error("Permission Middleware: ", error);
-      res.status(INTERNAL_SERVER_STATUS).json({
+      return res.status(INTERNAL_SERVER_STATUS).json({
         error: {
           code: INTERNAL_SERVER_STATUS,
           message: INTERNAL_SERVER_ERR,
