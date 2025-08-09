@@ -1,0 +1,116 @@
+model Settings {
+    id Int @id @default(autoincrement())
+
+    // Branding
+    brand    Branding?
+    // Printing
+    printers Printers[]
+    // User
+    users    User[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Branding {
+    id             Int     @id @default(autoincrement())
+    restaurantName String?
+    address        String?
+    phoneNumber    String?
+    email          String?
+    website        String?
+
+    restaurantLogo String?
+    receiptHeader  String?
+    receiptFooter  String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    settingsId Int      @unique
+    settings   Settings @relation(fields: [settingsId], references: [id])
+}
+
+model Printers {
+    id Int @id @default(autoincrement())
+
+    ip          String     @default("0.0.0.0")
+    name        String     @default("New Printer")
+    description String?
+    items       MenuItem[]
+    settingsId  Int?
+    Settings    Settings?  @relation(fields: [settingsId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model CRM {
+    id               Int                @id @default(autoincrement())
+    // Customer Info Management
+    customerInfo     CustomerInfo[]
+    // Company Info Management
+    companyInfo      CompanyInfo[]
+    // Customer Discount Management
+    customerDiscount CustomerDiscount[]
+}
+
+model CustomerInfo {
+    id          Int     @id @default(autoincrement())
+    code        String? @unique
+    name        String
+    phoneNumber String  @unique
+    email       String?
+    debt        Int?
+    initialDebt Int?    @default(0)
+    note        String?
+    CRMId       Int?
+    CRM         CRM?    @relation(fields: [CRMId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    Invoice   Invoice[]
+
+    customerDiscount CustomerDiscount?
+    CustomerPayment  CustomerPayment[]
+}
+
+enum Currency {
+    IQD
+    USD
+}
+
+model CompanyInfo {
+    id          Int        @id @default(autoincrement())
+    code        String?    @unique
+    currency    Currency?
+    name        String
+    phoneNumber String?
+    email       String?
+    note        String?
+    CRMId       Int?
+    CRM         CRM?       @relation(fields: [CRMId], references: [id])
+    supply      supply[]
+    MenuItem    MenuItem[]
+
+    createdAt   DateTime      @default(now())
+    updatedAt   DateTime      @updatedAt
+    CompanyDebt CompanyDebt[]
+}
+
+model CustomerDiscount {
+    id          Int      @id @default(autoincrement())
+    name        String
+    phoneNumber String?  @unique
+    discount    Int
+    isActive    Boolean? @default(true)
+    CRMId       Int?
+    CRM         CRM?     @relation(fields: [CRMId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    Invoice   Invoice[]
+
+    customerInfoId Int?          @unique
+    customerInfo   CustomerInfo? @relation(fields: [customerInfoId], references: [id])
+}

@@ -1,0 +1,54 @@
+enum PaymentMethod {
+    CASH
+    CARD
+    DEBT
+    RECEIPT
+    SPLIT
+}
+
+model InvoiceRef {
+    id        Int      @id @default(autoincrement()) // Stable identifier
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    orderId Int?
+
+    invoices Invoice[] // All versions
+    Order    Order?    @relation(fields: [orderId], references: [id])
+}
+
+model Invoice {
+    id              Int     @id @default(autoincrement())
+    invoiceRefId    Int
+    version         Int
+    isLatestVersion Boolean @default(true)
+
+    subtotal      Float
+    total         Float
+    debt          Float?         @default(0)
+    paymentMethod PaymentMethod?
+    paid          Boolean        @default(false)
+    status        PaymentStatus  @default(PENDING)
+
+    taxId              Int?
+    serviceId          Int?
+    userId             Int
+    tableId            Int?
+    customerDiscountId Int?
+    customerInfoId     Int?
+
+    customer         CustomerInfo?     @relation(fields: [customerInfoId], references: [id])
+    customerDiscount CustomerDiscount? @relation(fields: [customerDiscountId], references: [id])
+    discount         Int?
+    tax              Tax?              @relation(fields: [taxId], references: [id])
+    service          Service?          @relation(fields: [serviceId], references: [id])
+    user             User              @relation(fields: [userId], references: [id])
+    table            Table?            @relation(fields: [tableId], references: [id])
+    invoiceRef       InvoiceRef        @relation(fields: [invoiceRefId], references: [id])
+
+    createdAt        DateTime           @default(now())
+    DeletedOrderItem DeletedOrderItem[]
+    CustomerPayment  CustomerPayment[]
+
+    @@index([invoiceRefId, isLatestVersion])
+}

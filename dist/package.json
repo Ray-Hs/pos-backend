@@ -1,0 +1,19 @@
+{
+  "name": "pos-backend-runtime",
+  "version": "1.0.0",
+  "description": "Runtime dependencies for bundled POS backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "install-deps": "npm install --only=production"
+  },
+  "dependencies": {
+    "canvas": "^3.1.2",
+    "puppeteer": "^24.12.0",
+    "node-thermal-printer": "^4.5.0",
+    "@point-of-sale/network-receipt-printer": "^2.0.1",
+    "node-html-to-image": "^5.0.0",
+    "html-to-image": "^1.11.13",
+    "pdf-to-printer": "^5.6.0"
+  }
+}

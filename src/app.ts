@@ -13,6 +13,7 @@ const corsOptions: CorsOptions = {
     "http://localhost:3001",
     "http://localhost:3002",
     "https://8lm4xlg4-3002.euw.devtunnels.ms",
+    "https://8lm4xlg4-4173.euw.devtunnels.ms",
     "http://localhost:3000",
     "http://localhost:8080",
     "http://192.168.43.74:3000",

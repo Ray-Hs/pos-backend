@@ -13901,3 +13901,19 @@ Argument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCus
   "clientVersion": "6.9.0",
   "stack": "PrismaClientValidationError: \nInvalid `prisma.customerInfo.update()` invocation:\n\n{\n  where: {\n    id: 22\n  },\n  data: {\n    code: \"CUST007\",\n    name: \"rezgar mohammed\",\n    phoneNumber: \"07518202484\",\n    email: \"\",\n    debt: 90000,\n    initialDebt: 100000,\n    note: \"Got some goods\",\n    createdAt: new Date(\"2025-08-03T18:44:44.782Z\"),\n    updatedAt: new Date(\"2025-08-03T18:59:16.680Z\"),\n    Invoice: [\n      {\n        total: 7600\n      }\n    ],\n    ~~~~~~~~~~~~~~~\n    CRMId: 1\n  }\n}\n\nArgument `Invoice`: Invalid value provided. Expected InvoiceUpdateManyWithoutCustomerNestedInput or InvoiceUncheckedUpdateManyWithoutCustomerNestedInput, provided (Object).\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.repository.ts:162:28\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async CRMServices.createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:127:7)\n    at async createCustomerPayment (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:185:22)"
 }
+[2025-08-06 19:08:39] error: Image deletion failed: Image not found
+[2025-08-06 19:26:04] error: Menu item Service:  
+Invalid `prisma.menuItem.delete()` invocation:
+
+
+Foreign key constraint violated on the constraint: `OrderItem_menuItemId_fkey`
+{
+  "code": "P2003",
+  "meta": {
+    "modelName": "MenuItem",
+    "constraint": "OrderItem_menuItemId_fkey"
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.menuItem.delete()` invocation:\n\n\nForeign key constraint violated on the constraint: `OrderItem_menuItemId_fkey`\n    at _Re.handleRequestError (D:\\POS Backend\\dist\\server.js:176:7488)\n    at _Re.handleAndLogRequestError (D:\\POS Backend\\dist\\server.js:176:6809)\n    at _Re.request (D:\\POS Backend\\dist\\server.js:176:6516)\n    at async c (D:\\POS Backend\\dist\\server.js:185:9699)\n    at async Xs.deleteItem (D:\\POS Backend\\dist\\server.js:938:23659)\n    at async deleteItem (D:\\POS Backend\\dist\\server.js:938:24818)"
+}
