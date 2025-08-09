@@ -81,6 +81,7 @@ export async function isAuthenticated(
         isActive: true,
         role: {
           select: {
+            name: true,
             permissions: {
               select: {
                 key: true,
