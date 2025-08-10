@@ -87,8 +87,6 @@ export class LocalImageController implements ImageControllerInterface {
           .status(result.error?.code || BAD_REQUEST_STATUS)
           .json(result);
       }
-      logger.info(`Image deleted successfully: ${url}`);
-      return res.status(200).json(result);
     } catch (error) {
       logger.error("Error in deleteImage controller:", error);
       return res.status(INTERNAL_SERVER_STATUS).json({

@@ -716,6 +716,7 @@ export class OrderServices implements OrderServiceInterface {
         executionTime: totalTime,
       });
       logger.trace("updateOrder", "EXIT", { success: false });
+      
       return {
         success: false,
         error: {
