@@ -238,6 +238,15 @@ export class InvoiceServices implements InvoiceServiceInterface {
         };
       }
 
+      const invoicesCount = await prisma.invoiceRef.count({
+        where: {
+          createdAt: {
+            gte: yesterday,
+            lte: now,
+          },
+        },
+      });
+
       return {
         success: true,
         data,
@@ -245,7 +254,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
         totalUnpaid,
         totalPaidDebt,
         totalUnPaidDebt,
-        totalPages: calculatePages(data.length, limit),
+        totalPages: calculatePages(invoicesCount, limit),
       };
     } catch (error) {
       logger.error("Showcase Invoices: ", error);
