@@ -36,25 +36,21 @@ router.get(
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
   asyncRouteHandler(orderController.createOrder)
 );
 router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
   asyncRouteHandler(orderController.updateOrder)
 );
 router.delete(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
   asyncRouteHandler(orderController.deleteOrder)
 );
-router.get(
+router.post(
   "/cancel/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
   asyncRouteHandler(orderController.cancelOrder)
 );
 

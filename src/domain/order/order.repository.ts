@@ -1,9 +1,18 @@
 import { z } from "zod";
 import prisma from "../../infrastructure/database/prisma/client";
-import { Order, TxClientType } from "../../types/common";
+import { Order, TxClientType, UserSchema } from "../../types/common";
 import { getConstantsDB } from "../constants/constants.repository";
 import { calculateTotal } from "../invoice/invoice.repository";
 import { findTableByIdDB } from "../table/table.repository";
+import puppeteer from "puppeteer";
+import path from "path";
+import fs from "fs";
+import logger from "../../infrastructure/utils/logger";
+import {
+  BAD_REQUEST_BODY_ERR,
+  BAD_REQUEST_STATUS,
+} from "../../infrastructure/utils/constants";
+import { PrinterTypes, ThermalPrinter } from "node-thermal-printer";
 
 export function getOrdersDB() {
   return prisma.order.findMany({
@@ -352,32 +361,5 @@ export function deleteOrderDB(id: number) {
     include: {
       items: true,
     },
-  });
-}
-
-export function cancelOrderDB(id: number) {
-  return prisma.$transaction(async (tx) => {
-    const latestOrder = await getLatestOrderDB(id);
-
-    if (!latestOrder) {
-      throw new Error("There is no order to cancel.");
-    }
-    const table = await findTableByIdDB(id);
-
-    if (table?.status !== "OCCUPIED") {
-      throw new Error("Can not cancel receipted/available orders.");
-    }
-
-    await tx.table.update({
-      where: {
-        id: latestOrder.tableId || 0,
-      },
-      data: {
-        orders: {
-          disconnect: { id: latestOrder.id },
-        },
-        status: "AVAILABLE",
-      },
-    });
   });
 }

@@ -84,7 +84,7 @@ export const MenuItemSchema = z.object({
     .nullable()
     .optional(),
 
-  printersId: z.number().nullable(),
+  printersId: z.number({ message: "No Printer Provided." }).nullable(),
 
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),

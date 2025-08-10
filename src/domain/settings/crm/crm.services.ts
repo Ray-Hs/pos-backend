@@ -210,7 +210,10 @@ export class CRMServices implements CRMServiceInterface {
         },
         include: {
           Invoice: {
-            where: { isLatestVersion: true, paymentMethod: "DEBT" },
+            where: {
+              isLatestVersion: true,
+              paymentMethod: "DEBT",
+            },
             select: {
               id: true,
               subtotal: true,
@@ -333,7 +336,7 @@ export class CRMServices implements CRMServiceInterface {
       const totalPages = await prisma.customerInfo.count({
         where: {
           Invoice: {
-            some: {
+            every: {
               isLatestVersion: true,
               paymentMethod: "DEBT",
             },
@@ -978,7 +981,11 @@ export class CRMServices implements CRMServiceInterface {
         return acc;
       }, {});
 
-      return { success: true, data: Object.values(formattedData) };
+      return {
+        success: true,
+        data: Object.values(formattedData),
+        pages: calculatePages(payments.length, pagination?.limit),
+      };
     } catch (error) {
       logger.error("Get Customer Payments: ", error);
       return {

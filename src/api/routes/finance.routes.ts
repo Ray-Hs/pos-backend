@@ -1,9 +1,9 @@
 import express, { Router } from "express";
 import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
-import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
 import { FinanceController } from "../controllers/finance/finance.controller";
-import { CRMController } from "../controllers/settings/crm/crm.controller";
 import { InvoiceController } from "../controllers/invoice/invoice.controller";
+import { CRMController } from "../controllers/settings/crm/crm.controller";
+import { hasPermission, isAuthenticated } from "../middlewares/auth.middleware";
 
 const router: Router = express.Router();
 const controller = new FinanceController();
@@ -13,6 +13,7 @@ const invoice = new InvoiceController();
 router.get(
   "/customer-debts",
   asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(hasPermission("manage_finance_customer_debts")),
   asyncRouteHandler(client.getCustomerDebts)
 );
 
@@ -28,13 +29,13 @@ router.get(
 router.post(
   "/customer-payments",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_finance_customer_payments")),
   asyncRouteHandler(client.createCustomerPayment)
 );
 router.delete(
   "/customer-payments/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_finance_customer_payments")),
   asyncRouteHandler(client.deleteCustomerPayment)
 );
 // Company Debts
@@ -51,19 +52,19 @@ router.get(
 router.post(
   "/company-debts",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_finance_company_debts")),
   asyncRouteHandler(controller.createCompanyDebt)
 );
 router.patch(
   "/company-debts/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_finance_company_debts")),
   asyncRouteHandler(controller.updateCompanyDebt)
 );
 router.delete(
   "/company-debts/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_finance_company_debts")),
   asyncRouteHandler(controller.deleteCompanyDebt)
 );
 
@@ -81,19 +82,19 @@ router.get(
 router.post(
   "/payments",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_finance_company_payments_tab")),
   asyncRouteHandler(controller.createPayment)
 );
 router.patch(
   "/payments/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_finance_company_payments_tab")),
   asyncRouteHandler(controller.updatePayment)
 );
 router.delete(
   "/payments/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_finance_company_payments_tab")),
   asyncRouteHandler(controller.deletePayment)
 );
 

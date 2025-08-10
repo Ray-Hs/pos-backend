@@ -3,7 +3,11 @@ import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler"
 import { BrandController } from "../controllers/settings/branding/brand.controller";
 import { CRMController } from "../controllers/settings/crm/crm.controller";
 import { PrinterController } from "../controllers/settings/printer/printer.controller";
-import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
+import {
+  hasPermission,
+  isAdmin,
+  isAuthenticated,
+} from "../middlewares/auth.middleware";
 const router: Router = express.Router();
 const client = new PrinterController();
 const brandClient = new BrandController();
@@ -27,19 +31,19 @@ router.post(
 router.post(
   "/printers",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_settings_printers")),
   asyncRouteHandler(client.createPrinter)
 );
 router.patch(
   "/printers/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_settings_printers")),
   asyncRouteHandler(client.updatePrinter)
 );
 router.delete(
   "/printers/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_settings_printers")),
   asyncRouteHandler(client.deletePrinter)
 );
 

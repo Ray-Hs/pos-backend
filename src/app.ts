@@ -1,7 +1,7 @@
 import cookieParser from "cookie-parser";
 import cors, { CorsOptions } from "cors";
 import express, { Request, Response } from "express";
-import Routes from "./api/routes";
+import Routes from "./api/routes/index";
 import compression from "compression";
 import { constants } from "zlib";
 

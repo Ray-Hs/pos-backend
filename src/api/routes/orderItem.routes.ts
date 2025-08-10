@@ -19,19 +19,16 @@ router.get(
 router.post(
   "/",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
   asyncRouteHandler(client.createOrderItem)
 );
 router.patch(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
   asyncRouteHandler(client.updateOrderItem)
 );
 router.delete(
   "/:id",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
   asyncRouteHandler(client.deleteOrderItem)
 );
 

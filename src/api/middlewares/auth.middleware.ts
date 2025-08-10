@@ -132,7 +132,7 @@ export async function isAdmin(req: Request, res: Response, next: NextFunction) {
   try {
     const { role } = (req.user as User) || {};
 
-    if (role?.name !== "ADMIN") {
+    if (role?.name.toUpperCase() !== "ADMIN") {
       return res.status(FORBIDDEN_STATUS).json({
         success: false,
         error: {

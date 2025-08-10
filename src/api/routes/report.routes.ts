@@ -2,7 +2,11 @@
 import { Router } from "express";
 import { asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
 import reportController from "../controllers/report/report.controller";
-import { isAdmin, isAuthenticated } from "../middlewares/auth.middleware";
+import {
+  hasPermission,
+  isAdmin,
+  isAuthenticated,
+} from "../middlewares/auth.middleware";
 
 const router = Router();
 
@@ -15,25 +19,25 @@ router.get(
 router.get(
   "/daily-report",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_reports_end_of_day")),
   asyncRouteHandler(reportController.getDailyReport)
 );
 router.get(
   "/company-report",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_reports_general_reports")),
   asyncRouteHandler(reportController.getCompanyReport)
 );
 router.get(
   "/employee-report",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_reports_general_reports")),
   asyncRouteHandler(reportController.getEmployeeReport)
 );
 router.get(
   "/deleted-items",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(isAdmin),
+  asyncRouteHandler(hasPermission("manage_reports_deleted_order_items")),
   asyncRouteHandler(reportController.getDeletedItemsReport)
 );
 

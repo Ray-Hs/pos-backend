@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Invoice, Order, TResult } from "../../types/common";
+import { Invoice, Order, TResult, User } from "../../types/common";
 
 export interface OrderServiceInterface {
   getOrders: () => Promise<TResult<Order[]>>;
@@ -14,7 +14,11 @@ export interface OrderServiceInterface {
     requestData: any
   ) => Promise<TResult<{ order: Order; invoice: Invoice }>>;
   deleteOrder: (requestId: any) => Promise<TResult<void>>;
-  cancelOrder: (tableId: any) => Promise<TResult<void>>;
+  cancelOrder: (
+    tableId: any,
+    user: User,
+    cancellationReason: string
+  ) => Promise<TResult<void>>;
 }
 
 export interface OrderControllerInterface {

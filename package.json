@@ -17,8 +17,8 @@
     "build:bundle": "npx prisma generate && node build-bundle.js",
     "build:prisma": "npx prisma generate --schema=src/infrastructure/database/prisma/schema",
     "vercel-build": "prisma generate && prisma migrate deploy && tsc",
-    "start": "node dist/server.js",
     "start:dev": "node public/dist/src/server.js",
+    "start": "node public/dist/src/server.js",
     "migrate-dev": "npx prisma migrate dev",
     "migrate-deploy": "npx prisma migrate deploy",
     "generate": "npx prisma generate",
@@ -77,6 +77,7 @@
     "pdfkit-table": "^0.1.99",
     "puppeteer": "^24.12.0",
     "receiptline": "^1.16.2",
+    "serverless-http": "^3.2.0",
     "winston": "^3.17.0",
     "zod": "^3.24.2"
   },

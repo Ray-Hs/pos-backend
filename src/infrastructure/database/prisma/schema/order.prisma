@@ -1,7 +1,9 @@
 model Order {
-    id      Int  @id @default(autoincrement())
-    tableId Int?
-    userId  Int
+    id                 Int       @id @default(autoincrement())
+    tableId            Int?
+    userId             Int
+    cancelledAt        DateTime?
+    cancellationReason String?
 
     table   Table?       @relation(fields: [tableId], references: [id])
     user    User         @relation(fields: [userId], references: [id])
@@ -54,27 +56,27 @@ model DeletedOrderItem {
 }
 
 model OrderPrintQueue {
-    id            Int         @id @default(autoincrement())
-    orderId       Int
-    printerId     Int
-    printerIp     String
-    status        PrintStatus @default(PENDING)
-    printType     PrintType   @default(ORDER_UPDATE)
-    
+    id        Int         @id @default(autoincrement())
+    orderId   Int
+    printerId Int
+    printerIp String
+    status    PrintStatus @default(PENDING)
+    printType PrintType   @default(ORDER_UPDATE)
+
     // Change tracking
-    addedItems    Json?       // Array of added items with details
-    deletedItems  Json?       // Array of deleted items with details  
-    updatedItems  Json?       // Array of updated items with old/new quantities
-    
+    addedItems   Json? // Array of added items with details
+    deletedItems Json? // Array of deleted items with details  
+    updatedItems Json? // Array of updated items with old/new quantities
+
     // Order context
-    tableName     String?
-    userName      String?
-    orderNumber   Int?
-    
+    tableName   String?
+    userName    String?
+    orderNumber Int?
+
     // Timestamps
-    createdAt     DateTime    @default(now())
-    updatedAt     DateTime    @updatedAt
-    printedAt     DateTime?
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    printedAt DateTime?
 
     @@index([orderId, printerId])
     @@index([status, createdAt])
