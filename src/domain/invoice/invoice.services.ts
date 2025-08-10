@@ -1,6 +1,10 @@
 import { ZodError } from "zod";
 import prisma from "../../infrastructure/database/prisma/client";
-import { calculateSkip, Take } from "../../infrastructure/utils/calculateSkip";
+import {
+  calculatePages,
+  calculateSkip,
+  Take,
+} from "../../infrastructure/utils/calculateSkip";
 import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
@@ -249,6 +253,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
         totalUnpaid,
         totalPaidDebt,
         totalUnPaidDebt,
+        totalPages: calculatePages(data.length, limit),
       };
     } catch (error) {
       logger.error("Showcase Invoices: ", error);
