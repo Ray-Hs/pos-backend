@@ -127,8 +127,6 @@ export class InvoiceServices implements InvoiceServiceInterface {
           _sum: {
             total: true,
           },
-          take: Take(limit),
-          skip: calculateSkip(page, limit),
           where: {
             paid: true,
             paymentMethod: "DEBT",
@@ -145,8 +143,6 @@ export class InvoiceServices implements InvoiceServiceInterface {
           _sum: {
             debt: true,
           },
-          take: Take(limit),
-          skip: calculateSkip(page, limit),
           where: {
             paid: false,
             isLatestVersion: true,
@@ -162,8 +158,6 @@ export class InvoiceServices implements InvoiceServiceInterface {
           _sum: {
             total: true,
           },
-          take: Take(limit),
-          skip: calculateSkip(page, limit),
           where: {
             paid: true,
             isLatestVersion: true,
@@ -179,8 +173,6 @@ export class InvoiceServices implements InvoiceServiceInterface {
           _sum: {
             total: true,
           },
-          take: Take(limit),
-          skip: calculateSkip(page, limit),
           where: {
             paid: false,
             isLatestVersion: true,
