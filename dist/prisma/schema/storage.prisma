@@ -1,0 +1,75 @@
+model Category {
+    id             Int    @id @default(autoincrement())
+    title_en       String
+    title_ku       String
+    title_ar       String
+    description_en String @default("")
+    description_ku String @default("")
+    description_ar String @default("")
+
+    sortOrder Int     @default(0)
+    isActive  Boolean @default(true)
+    image     String?
+
+    subCategory SubCategory[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([sortOrder, isActive])
+}
+
+model SubCategory {
+    id             Int    @id @default(autoincrement())
+    title_en       String
+    title_ku       String
+    title_ar       String
+    description_en String @default("")
+    description_ku String @default("")
+    description_ar String @default("")
+
+    sortOrder Int     @default(0)
+    isActive  Boolean @default(true)
+    image     String?
+
+    Category   Category? @relation(fields: [categoryId], references: [id])
+    categoryId Int
+
+    items MenuItem[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([isActive, categoryId])
+}
+
+model MenuItem {
+    id             Int    @id @default(autoincrement())
+    title_en       String
+    title_ku       String
+    title_ar       String
+    description_en String @default("")
+    description_ku String @default("")
+    description_ar String @default("")
+
+    SubCategory   SubCategory? @relation(fields: [subCategoryId], references: [id])
+    subCategoryId Int?
+
+    price     Float
+    company   CompanyInfo? @relation(fields: [companyId], references: [id])
+    code      String?      @default("")
+    discount  Float        @default(0)
+    isActive  Boolean      @default(true)
+    image     String?
+    sortOrder Int          @default(0)
+
+    createdAt        DateTime           @default(now())
+    updatedAt        DateTime           @updatedAt
+    OrderItem        OrderItem[]
+    DeletedOrderItem DeletedOrderItem[]
+    Printer          Printers?          @relation(fields: [printersId], references: [id])
+    printersId       Int?
+    companyId        Int?
+
+    @@index([isActive, subCategoryId])
+}

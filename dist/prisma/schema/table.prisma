@@ -1,0 +1,37 @@
+enum TableStatus {
+    AVAILABLE
+    OCCUPIED
+    RECEIPT
+    SPLIT
+}
+
+model Table {
+    id        Int          @id @default(autoincrement())
+    name      String       @unique
+    capacity  Int          @default(4)
+    available Boolean      @default(true)
+    orders    Order[]
+    status    TableStatus? @default(AVAILABLE)
+    createdAt DateTime     @default(now())
+    updatedAt DateTime     @updatedAt
+
+    sectionId Int?
+
+    invoice Invoice[]
+    Section Section?  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+    sortOrder Int @default(0)
+
+    @@index([sectionId, status, sortOrder])
+}
+
+model Section {
+    id   Int    @id @default(autoincrement())
+    name String @default("New Section")
+
+    sortOrder Int     @default(0)
+    tables    Table[]
+    available Int?
+
+    @@index([sortOrder, available])
+}

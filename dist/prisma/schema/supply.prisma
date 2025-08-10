@@ -1,0 +1,33 @@
+enum SupplyPaymentMethod {
+    CASH
+    CARD
+    DEBT
+}
+
+model supply {
+    id Int @id @default(autoincrement())
+
+    invoiceNO         String?
+    companyId         Int
+    company           CompanyInfo         @relation(fields: [companyId], references: [id])
+    paymentMethod     SupplyPaymentMethod @default(CASH)
+    barcode           String?
+    name              String
+    packageQty        Int
+    itemQty           Int
+    packagePrice      Int
+    itemPrice         Int
+    itemSellPrice     Float
+    totalItems        Int?
+    totalPrice        Float?
+    store             String?
+    note              String?             @default("")
+    remainingQuantity Int?                @default(0)
+    userId            Int?
+    user              User?               @relation(fields: [userId], references: [id])
+
+    expiryDate  DateTime?
+    purchasedAt DateTime  @default(now())
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+}
