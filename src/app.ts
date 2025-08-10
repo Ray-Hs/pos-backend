@@ -23,6 +23,7 @@ const corsOptions: CorsOptions = {
     "http://192.168.1.249:3000",
     "http://192.168.1.251:3000",
     "http://192.168.1.249:3001",
+    "https://restaurant-pos-front.vercel.app",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
