@@ -123,3 +123,115 @@
 [2025-08-09 11:37:14] warn: No Data Found
 [2025-08-09 11:37:14] warn: No Data Found
 [2025-08-09 11:37:15] warn: No Data Found
+[2025-08-10 15:37:59] error: Create Order Service:  Transaction API error: Transaction already closed: A commit cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 7527 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.
+{
+  "code": "P2028",
+  "meta": {
+    "error": "Transaction already closed: A commit cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 7527 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction."
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: Transaction API error: Transaction already closed: A commit cannot be executed on an expired transaction. The timeout for this transaction was 5000 ms, however 7527 ms passed since the start of the transaction. Consider increasing the interactive transaction timeout or doing less work in the transaction.\n    at Gr.transaction (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:111:12816)\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8173)\n    at async OrderServices.createOrder (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\order\\order.services.ts:207:28)\n    at async createOrder (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\table\\order.controller.ts:55:22)"
+}
+[2025-08-10 15:38:48] warn: No Data Found
+[2025-08-10 15:38:48] warn: No Data Found
+[2025-08-10 15:38:49] warn: No Data Found
+[2025-08-10 15:38:50] warn: No Data Found
+[2025-08-10 15:38:59] warn: No Data Found
+[2025-08-10 15:39:00] warn: No Data Found
+[2025-08-10 15:39:01] warn: No Data Found
+[2025-08-10 15:40:20] warn: No Data Found
+[2025-08-10 15:40:20] warn: No Data Found
+[2025-08-10 15:40:21] warn: No Data Found
+[2025-08-10 15:40:21] warn: No Data Found
+[2025-08-10 15:40:22] warn: No Data Found
+[2025-08-10 15:40:24] warn: No Data Found
+[2025-08-10 15:40:24] warn: No Data Found
+[2025-08-10 15:40:25] warn: No Data Found
+[2025-08-10 15:40:29] error: Update Invoice Service:  
+Invalid `prisma.table.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. No record was found for an update.
+{
+  "code": "P2025",
+  "meta": {
+    "modelName": "Table",
+    "cause": "No record was found for an update."
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.table.update()` invocation:\n\n\nAn operation failed because it depends on one or more records that were required but not found. No record was found for an update.\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:713:27\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async InvoiceServices.updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\invoice\\invoice.services.ts:683:41)\n    at async updateInvoice (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\invoice\\invoice.controller.ts:94:22)"
+}
+[2025-08-10 15:40:40] warn: No Data Found
+[2025-08-10 15:40:41] warn: No Data Found
+[2025-08-10 15:40:41] warn: No Data Found
+[2025-08-10 15:40:42] warn: No Data Found
+[2025-08-10 15:40:42] warn: No Data Found
+[2025-08-10 15:40:42] warn: No Data Found
+[2025-08-10 15:40:43] warn: No Data Found
+[2025-08-10 15:40:43] warn: No Data Found
+[2025-08-10 15:40:45] warn: No Data Found
+[2025-08-10 15:40:46] warn: No Data Found
+[2025-08-10 15:40:47] warn: No Data Found
+[2025-08-10 15:41:13] warn: No Data Found
+[2025-08-10 15:41:13] warn: No Data Found
+[2025-08-10 15:41:14] warn: No Data Found
+[2025-08-10 15:41:15] warn: No Data Found
+[2025-08-10 15:46:12] warn: No Data Found
+[2025-08-10 15:46:13] warn: No Data Found
+[2025-08-10 15:46:16] warn: No Data Found
+[2025-08-10 15:46:16] warn: No Data Found
+[2025-08-10 15:46:38] warn: No Data Found
+[2025-08-10 15:46:39] warn: No Data Found
+[2025-08-10 15:46:39] warn: No Data Found
+[2025-08-10 15:46:40] warn: No Data Found
+[2025-08-10 15:46:59] warn: No Data Found
+[2025-08-10 15:47:00] warn: No Data Found
+[2025-08-10 15:47:01] warn: No Data Found
+[2025-08-10 15:47:03] warn: No Data Found
+[2025-08-10 15:47:26] warn: No Data Found
+[2025-08-10 15:47:26] warn: No Data Found
+[2025-08-10 15:47:27] warn: No Data Found
+[2025-08-10 15:47:28] warn: No Data Found
+[2025-08-10 15:48:23] warn: No Data Found
+[2025-08-10 15:48:23] warn: No Data Found
+[2025-08-10 15:48:24] warn: No Data Found
+[2025-08-10 15:48:25] warn: No Data Found
+[2025-08-10 15:51:52] warn: No Data Found
+[2025-08-10 15:51:53] warn: No Data Found
+[2025-08-10 15:51:55] warn: No Data Found
+[2025-08-10 15:51:56] warn: No Data Found
+[2025-08-10 15:51:57] error: 
+Invalid `prisma.service.findFirst()` invocation:
+
+
+Can't reach database server at `switchback.proxy.rlwy.net:51374`
+
+Please make sure your database server is running at `switchback.proxy.rlwy.net:51374`.
+{
+  "code": "P1001",
+  "meta": {
+    "modelName": "Service",
+    "database_host": "switchback.proxy.rlwy.net",
+    "database_port": 51374
+  },
+  "clientVersion": "6.9.0",
+  "name": "PrismaClientKnownRequestError",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.service.findFirst()` invocation:\n\n\nCan't reach database server at `switchback.proxy.rlwy.net:51374`\n\nPlease make sure your database server is running at `switchback.proxy.rlwy.net:51374`.\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async Promise.all (index 1)\n    at async getConstantsDB (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\constants\\constants.repository.ts:6:26)\n    at async ConstantsService.getConstants (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\constants\\constants.services.ts:24:20)\n    at async getConstants (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\constants\\constants.controller.ts:9:22)"
+}
+[2025-08-10 15:55:23] warn: No Data Found
+[2025-08-10 15:55:24] warn: No Data Found
+[2025-08-10 15:55:25] warn: No Data Found
+[2025-08-10 15:55:27] warn: No Data Found
+[2025-08-10 15:58:32] warn: No Data Found
+[2025-08-10 15:58:33] warn: No Data Found
+[2025-08-10 15:58:34] warn: No Data Found
+[2025-08-10 15:58:35] warn: No Data Found
+[2025-08-10 16:01:46] warn: No Data Found
+[2025-08-10 16:01:48] warn: No Data Found
+[2025-08-10 16:01:50] warn: No Data Found
+[2025-08-10 16:05:03] warn: No Data Found
+[2025-08-10 16:05:04] warn: No Data Found
+[2025-08-10 16:05:05] warn: No Data Found
+[2025-08-10 16:05:05] warn: No Data Found

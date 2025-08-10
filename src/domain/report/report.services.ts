@@ -57,29 +57,50 @@ class ReportService implements ReportServiceInterface {
 
   async getDailyReport(from?: Date, to?: Date): Promise<any> {
     try {
-      // build date filter
-      const where: any = {
+      // build date filter - Keep paid: true for financial accuracy
+      const paidOrdersWhere: any = {
         order: {
           Invoice: {
             some: {
               invoices: {
                 some: {
                   isLatestVersion: true,
-                  paid: true,
+                  paid: true, // Keep this for paid orders
                 },
               },
             },
           },
         },
       };
+
+      // Separate query for unpaid invoices to include in debt calculation
+      const unpaidOrdersWhere: any = {
+        order: {
+          Invoice: {
+            some: {
+              invoices: {
+                some: {
+                  isLatestVersion: true,
+                  paid: false, // Unpaid orders for debt calculation
+                },
+              },
+            },
+          },
+        },
+      };
+
       if (from || to) {
-        where.createdAt = {};
-        if (from) where.createdAt.gte = from;
-        if (to) where.createdAt.lte = to;
+        const dateFilter: any = {};
+        if (from) dateFilter.gte = from;
+        if (to) dateFilter.lte = to;
+
+        paidOrdersWhere.createdAt = dateFilter;
+        unpaidOrdersWhere.createdAt = dateFilter;
       }
 
-      const response = await getOrderItemsDB({
-        where,
+      // Get paid orders
+      const paidOrderItems = await getOrderItemsDB({
+        where: paidOrdersWhere,
         include: {
           menuItem: {
             include: {
@@ -109,7 +130,45 @@ class ReportService implements ReportServiceInterface {
         },
       });
 
-      if (!response || response.length === 0) {
+      // Get unpaid orders for debt calculation
+      const unpaidOrderItems = await getOrderItemsDB({
+        where: unpaidOrdersWhere,
+        include: {
+          menuItem: {
+            include: {
+              company: { select: { name: true } },
+              SubCategory: {
+                select: { Category: { select: { title_en: true } } },
+              },
+            },
+          },
+          order: {
+            select: {
+              Invoice: {
+                select: {
+                  invoices: {
+                    select: {
+                      paymentMethod: true,
+                      total: true,
+                      isLatestVersion: true,
+                      paid: true,
+                    },
+                  },
+                },
+              },
+              createdAt: true,
+            },
+          },
+        },
+      });
+
+      // Combine both arrays
+      const allOrderItems = [
+        ...(paidOrderItems || []),
+        ...(unpaidOrderItems || []),
+      ];
+
+      if (!allOrderItems || allOrderItems.length === 0) {
         return {
           success: false,
           error: { code: NOT_FOUND_STATUS, message: NOT_FOUND_ERR },
@@ -117,7 +176,7 @@ class ReportService implements ReportServiceInterface {
       }
 
       // Group by menu item title_en
-      const groupedData = response.reduce((acc, orderItem) => {
+      const groupedData = allOrderItems.reduce((acc, orderItem) => {
         const key = orderItem.menuItem.title_en;
 
         if (!acc[key]) {
@@ -149,39 +208,48 @@ class ReportService implements ReportServiceInterface {
           (orderItem.price || 0) * orderItem.quantity;
         acc[key].totalPurchasePrice +=
           (orderItem.menuItem.price || 0) * orderItem.quantity;
-        // Track payment methods - handle array safely
+
+        // DISTINCT PAYMENT METHOD LOGIC:
         const invoices = orderItem.order?.Invoice?.[0]?.invoices;
         if (invoices && invoices.length > 0) {
-          const paymentMethod = invoices[0]?.paymentMethod
-            ?.toLowerCase()
-            ?.trim();
-          if (paymentMethod === "card") {
-            acc[key].paymentMethod.card += orderItem.quantity;
-          } else if (paymentMethod === "cash") {
-            acc[key].paymentMethod.cash += orderItem.quantity;
-          } else if (paymentMethod === "debt") {
+          const invoice = invoices[0];
+
+          // 1. UNPAID INVOICES = Always count as DEBT (regardless of payment method field)
+          if (!invoice.paid) {
             acc[key].paymentMethod.debt += orderItem.quantity;
-          } else {
-            // If payment method doesn't match any of the above, default to cash
-            acc[key].paymentMethod.cash += orderItem.quantity;
+          }
+          // 2. PAID INVOICES = Count by actual payment method used
+          else if (invoice.paid) {
+            const paymentMethod = invoice.paymentMethod?.toLowerCase()?.trim();
+
+            if (paymentMethod === "card") {
+              acc[key].paymentMethod.card += orderItem.quantity;
+            } else if (paymentMethod === "cash") {
+              acc[key].paymentMethod.cash += orderItem.quantity;
+            } else if (paymentMethod === "debt") {
+              // This handles paid debt (like when debt was later settled)
+              acc[key].paymentMethod.debt += orderItem.quantity;
+            } else {
+              // Default unknown paid methods to cash
+              acc[key].paymentMethod.cash += orderItem.quantity;
+            }
           }
         } else {
-          // If no payment method found, default to cash
+          // If no invoice data, default to cash (this should rarely happen)
           acc[key].paymentMethod.cash += orderItem.quantity;
         }
 
-        // Track sales time by hour ONLY (remove duplicate tracking)
+        // Track sales time by hour
         if (orderItem.order?.createdAt) {
           const orderDate = new Date(orderItem.order.createdAt);
-          // Create hour key by setting minutes, seconds, milliseconds to 0
           const hourKey = new Date(
             orderDate.getFullYear(),
             orderDate.getMonth(),
             orderDate.getDate(),
             orderDate.getHours(),
-            0, // minutes
-            0, // seconds
-            0 // milliseconds
+            0,
+            0,
+            0
           );
 
           const existingHour = acc[key].salesTime.find(
@@ -215,12 +283,12 @@ class ReportService implements ReportServiceInterface {
             total > 0 ? Math.round((item.paymentMethod.debt / total) * 100) : 0,
         };
 
-        // Ensure percentages add up to 100% by adjusting the largest percentage
+        // Ensure percentages add up to 100%
         const percentageSum =
           paymentMethod.card + paymentMethod.cash + paymentMethod.debt;
         if (percentageSum !== 100 && total > 0) {
           const difference = 100 - percentageSum;
-          // Find the payment method with the highest value and adjust it
+          // Adjust the largest percentage
           if (
             paymentMethod.cash >= paymentMethod.card &&
             paymentMethod.cash >= paymentMethod.debt
@@ -238,21 +306,17 @@ class ReportService implements ReportServiceInterface {
           (a: any, b: any) => a.time.getTime() - b.time.getTime()
         );
 
-        // Calculate final profit
+        // Calculate final profit (only from paid orders to maintain financial accuracy)
         item.profit = item.totalSellingPrice - item.totalPurchasePrice;
 
-        // Remove helper field and return clean object
         const { totalQuantityForPayment, ...cleanItem } = item;
-
-        return {
-          ...cleanItem,
-          paymentMethod,
-        };
+        return { ...cleanItem, paymentMethod };
       });
 
       // Sort by product name
       data.sort((a, b) => a.productName.localeCompare(b.productName));
 
+      // Keep original totalProfit calculation for financial accuracy (paid only)
       const totalProfit = await prisma.invoice.aggregate({
         _count: { total: true },
         _sum: { total: true },

@@ -121,22 +121,35 @@ export class InvoiceServices implements InvoiceServiceInterface {
       const totalPaidDebt = (
         await prisma.invoice.aggregate({
           _sum: {
-            debt: true,
+            total: true,
           },
+          take: Take(limit),
+          skip: calculateSkip(page, limit),
           where: {
             paid: true,
+            paymentMethod: "DEBT",
             isLatestVersion: true,
+            createdAt: {
+              gte: yesterday,
+              lte: now,
+            },
           },
         })
-      )._sum.debt;
+      )._sum.total;
       const totalUnPaidDebt = (
         await prisma.invoice.aggregate({
           _sum: {
             debt: true,
           },
+          take: Take(limit),
+          skip: calculateSkip(page, limit),
           where: {
             paid: false,
             isLatestVersion: true,
+            createdAt: {
+              gte: yesterday,
+              lte: now,
+            },
           },
         })
       )._sum.debt;
@@ -145,9 +158,15 @@ export class InvoiceServices implements InvoiceServiceInterface {
           _sum: {
             total: true,
           },
+          take: Take(limit),
+          skip: calculateSkip(page, limit),
           where: {
             paid: true,
             isLatestVersion: true,
+            createdAt: {
+              gte: yesterday,
+              lte: now,
+            },
           },
         })
       )._sum.total;
@@ -156,9 +175,15 @@ export class InvoiceServices implements InvoiceServiceInterface {
           _sum: {
             total: true,
           },
+          take: Take(limit),
+          skip: calculateSkip(page, limit),
           where: {
             paid: false,
             isLatestVersion: true,
+            createdAt: {
+              gte: yesterday,
+              lte: now,
+            },
           },
         })
       )._sum.total;
@@ -189,6 +214,7 @@ export class InvoiceServices implements InvoiceServiceInterface {
                 }
               });
               return {
+                status: inv.status,
                 total: inv.total,
                 subtotal: inv.subtotal,
                 discount: inv.discount,
