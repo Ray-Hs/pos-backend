@@ -5,7 +5,7 @@
   "prisma": {
     "schema": "src/infrastructure/database/prisma/schema",
     "migrations": {
-      "path": "src/infrastructure/database/prisma/migrations"
+      "path": "src/infrastructure/database/prisma/schema/migrations"
     }
   },
   "scripts": {
