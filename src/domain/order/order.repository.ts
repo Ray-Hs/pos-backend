@@ -144,25 +144,41 @@ export async function createOrderDB(data: Order) {
     // 2. Update supplies accordingly
     const supplies = await Promise.all(
       Array.from(itemMap.entries()).map(async ([name, totalQty]) => {
-        const supply = await tx.supply.findFirst({
+        // Find all supplies with the same name
+        const allSupplies = await tx.supply.findMany({
           where: {
             name: {
               equals: name,
               mode: "insensitive",
             },
           },
+          orderBy: {
+            remainingQuantity: 'asc' // Start with supplies that have less quantity
+          }
         });
 
-        if (supply) {
+        if (allSupplies.length === 0) return null;
+
+        let remainingQtyToDeduct = totalQty;
+
+        // Deduct from supplies sequentially until we've deducted all needed quantity
+        for (const supply of allSupplies) {
+          if (remainingQtyToDeduct <= 0) break;
+
+          const currentQty = supply.remainingQuantity || 0;
+          const qtyToDeduct = Math.min(currentQty, remainingQtyToDeduct);
+          
           await tx.supply.update({
             where: { id: supply.id },
             data: {
-              remainingQuantity: (supply.remainingQuantity || 0) - totalQty,
+              remainingQuantity: Math.max(0, currentQty - qtyToDeduct),
             },
           });
+
+          remainingQtyToDeduct -= qtyToDeduct;
         }
 
-        return supply;
+        return allSupplies[0]; // Return the first supply for reference
       })
     );
 
@@ -298,29 +314,66 @@ export async function updateOrderDB(
 
       if (qtyDifference === 0) return null;
       console.log("Quantity: ", qtyDifference);
-      const supply = await client.supply.findFirst({
-        where: {
-          name: {
-            equals: name,
-            mode: "insensitive",
-          },
-        },
-      });
+      
+      if (qtyDifference > 0) {
+                 // Need to deduct more items - check all supplies with same name
+         const allSupplies = await client.supply.findMany({
+           where: {
+             name: {
+               equals: name,
+               mode: "insensitive",
+             },
+           },
+           orderBy: {
+             remainingQuantity: 'asc' // Start with supplies that have less quantity
+           }
+         });
 
-      if (supply) {
-        // Add back the old quantity first, then subtract the new quantity
-        const currentRemaining = supply.remainingQuantity || 0;
-        const newRemainingQty = currentRemaining + qtyDifference;
+        if (allSupplies.length === 0) return null;
 
-        await client.supply.update({
-          where: { id: supply.id },
-          data: {
-            remainingQuantity: newRemainingQty,
+        let remainingQtyToDeduct = qtyDifference;
+
+        // Deduct from supplies sequentially until we've deducted all needed quantity
+        for (const supply of allSupplies) {
+          if (remainingQtyToDeduct <= 0) break;
+
+          const currentQty = supply.remainingQuantity || 0;
+          const qtyToDeduct = Math.min(currentQty, remainingQtyToDeduct);
+          
+          await client.supply.update({
+            where: { id: supply.id },
+            data: {
+              remainingQuantity: Math.max(0, currentQty - qtyToDeduct),
+            },
+          });
+
+          remainingQtyToDeduct -= qtyToDeduct;
+        }
+      } else {
+        // Need to add back items - find the first supply and add back
+        const supply = await client.supply.findFirst({
+          where: {
+            name: {
+              equals: name,
+              mode: "insensitive",
+            },
           },
         });
+
+        if (supply) {
+          const currentRemaining = supply.remainingQuantity || 0;
+          const newRemainingQty = currentRemaining + Math.abs(qtyDifference);
+
+          await client.supply.update({
+            where: { id: supply.id },
+            data: {
+              remainingQuantity: newRemainingQty,
+            },
+          });
+        }
       }
 
-      return supply;
+      return null; // Return null since we're handling multiple supplies
     })
   );
 
