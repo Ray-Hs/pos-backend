@@ -235,3 +235,127 @@ Please make sure your database server is running at `switchback.proxy.rlwy.net:5
 [2025-08-10 16:05:04] warn: No Data Found
 [2025-08-10 16:05:05] warn: No Data Found
 [2025-08-10 16:05:05] warn: No Data Found
+[2025-08-11 11:11:34] warn: No Data Found
+[2025-08-11 11:11:34] warn: No Data Found
+[2025-08-11 11:11:35] warn: No Data Found
+[2025-08-11 11:11:37] warn: No Data Found
+[2025-08-11 11:13:10] warn: No Data Found
+[2025-08-11 11:13:10] warn: No Data Found
+[2025-08-11 11:13:11] warn: No Data Found
+[2025-08-11 11:13:11] warn: No Data Found
+[2025-08-11 11:13:12] warn: No Data Found
+[2025-08-11 11:13:14] warn: No Data Found
+[2025-08-11 11:13:26] warn: No Data Found
+[2025-08-11 11:13:26] warn: No Data Found
+[2025-08-11 11:13:27] warn: No Data Found
+[2025-08-11 11:13:27] warn: No Data Found
+[2025-08-11 11:13:28] warn: No Data Found
+[2025-08-11 11:13:29] warn: No Data Found
+[2025-08-11 11:13:29] warn: No Data Found
+[2025-08-11 11:13:31] warn: No Data Found
+[2025-08-11 11:14:23] warn: No Data Found
+[2025-08-11 11:14:24] warn: No Data Found
+[2025-08-11 11:14:24] warn: Printer 192.168.1.123 not connected
+[2025-08-11 11:14:24] warn: No Data Found
+[2025-08-11 11:14:26] warn: No Data Found
+[2025-08-11 11:16:13] warn: No Data Found
+[2025-08-11 11:16:14] warn: No Data Found
+[2025-08-11 11:16:15] warn: No Data Found
+[2025-08-11 11:16:16] warn: No Data Found
+[2025-08-11 11:16:16] warn: No Data Found
+[2025-08-11 11:16:17] warn: No Data Found
+[2025-08-11 11:16:19] warn: No Data Found
+[2025-08-11 11:19:06] error: updateOrder failed
+{
+  "error": "\nInvalid `prisma.invoice.create()` invocation:\n\n\nTransaction API error: Transaction not found. Transaction ID is invalid, refers to an old closed transaction Prisma doesn't have information about anymore, or was obtained before disconnecting.",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.invoice.create()` invocation:\n\n\nTransaction API error: Transaction not found. Transaction ID is invalid, refers to an old closed transaction Prisma doesn't have information about anymore, or was obtained before disconnecting.\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\order\\order.services.ts:668:25\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async OrderServices.updateOrder (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\order\\order.services.ts:272:28)\n    at async updateOrder (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\table\\order.controller.ts:71:22)",
+  "requestId": 16,
+  "requestData": {
+    "tableId": 8,
+    "items": [
+      {
+        "id": 54,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      },
+      {
+        "id": 55,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      },
+      {
+        "id": 56,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      },
+      {
+        "id": 49,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      }
+    ],
+    "userId": 1,
+    "reason": "Testing",
+    "invoiceId": 19
+  },
+  "executionTime": 5626
+}
+[2025-08-11 11:21:55] warn: No Data Found
+[2025-08-11 11:21:55] warn: No Data Found
+[2025-08-11 11:21:56] warn: No Data Found
+[2025-08-11 11:21:58] warn: No Data Found
+[2025-08-11 11:26:20] warn: No Data Found
+[2025-08-11 11:26:21] warn: No Data Found
+[2025-08-11 11:26:22] warn: No Data Found
+[2025-08-11 11:26:23] warn: No Data Found
+[2025-08-11 11:30:56] warn: No Data Found
+[2025-08-11 11:31:00] warn: No Data Found
+[2025-08-11 11:31:02] warn: No Data Found
+[2025-08-11 11:54:07] warn: No Data Found
+[2025-08-11 11:54:07] warn: No Data Found
+[2025-08-11 11:54:08] warn: No Data Found
+[2025-08-11 11:54:28] warn: No Data Found
+[2025-08-11 11:54:28] warn: No Data Found
+[2025-08-11 11:54:29] warn: No Data Found
+[2025-08-11 11:55:26] warn: No Data Found
+[2025-08-11 11:55:28] warn: No Data Found
+[2025-08-11 11:55:30] warn: No Data Found
+[2025-08-11 11:55:31] warn: No Data Found
+[2025-08-11 11:55:31] warn: No Data Found
+[2025-08-11 11:55:33] warn: No Data Found
+[2025-08-11 11:55:37] warn: No Data Found
+[2025-08-11 11:55:39] warn: No Data Found
+[2025-08-11 11:56:58] warn: No Data Found
+[2025-08-11 11:56:58] warn: No Data Found
+[2025-08-11 11:56:59] warn: No Data Found
+[2025-08-11 11:57:00] warn: No Data Found
+[2025-08-11 11:57:01] warn: No Data Found
+[2025-08-11 11:57:05] warn: No Data Found
+[2025-08-11 11:57:06] warn: No Data Found
+[2025-08-11 12:02:06] warn: No Data Found
+[2025-08-11 12:02:10] warn: No Data Found
+[2025-08-11 12:02:11] warn: No Data Found
+[2025-08-11 12:02:11] warn: No Data Found
+[2025-08-11 12:02:13] warn: No Data Found
+[2025-08-11 12:32:44] warn: No Data Found
+[2025-08-11 12:32:44] warn: No Data Found
+[2025-08-11 12:32:44] warn: No Data Found
+[2025-08-11 12:32:46] warn: No Data Found
+[2025-08-11 12:33:03] warn: No Data Found
+[2025-08-11 12:33:03] warn: No Data Found
+[2025-08-11 12:33:04] warn: No Data Found
+[2025-08-11 12:33:05] warn: No Data Found
+[2025-08-11 12:33:05] warn: No Data Found
+[2025-08-11 12:33:07] warn: No Data Found
+[2025-08-11 12:34:57] warn: No Data Found
+[2025-08-11 12:34:58] warn: No Data Found
+[2025-08-11 12:34:59] warn: No Data Found
+[2025-08-11 12:35:00] warn: No Data Found

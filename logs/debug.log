@@ -383,3 +383,526 @@ Please make sure your database server is running at `switchback.proxy.rlwy.net:5
 [2025-08-10 16:05:04] warn: No Data Found
 [2025-08-10 16:05:05] warn: No Data Found
 [2025-08-10 16:05:05] warn: No Data Found
+[2025-08-11 11:11:16] info: Filter: 
+[2025-08-11 11:11:34] warn: No Data Found
+[2025-08-11 11:11:34] warn: No Data Found
+[2025-08-11 11:11:35] warn: No Data Found
+[2025-08-11 11:11:37] warn: No Data Found
+[2025-08-11 11:13:10] warn: No Data Found
+[2025-08-11 11:13:10] warn: No Data Found
+[2025-08-11 11:13:11] warn: No Data Found
+[2025-08-11 11:13:11] warn: No Data Found
+[2025-08-11 11:13:12] warn: No Data Found
+[2025-08-11 11:13:14] warn: No Data Found
+[2025-08-11 11:13:26] warn: No Data Found
+[2025-08-11 11:13:26] warn: No Data Found
+[2025-08-11 11:13:27] warn: No Data Found
+[2025-08-11 11:13:27] warn: No Data Found
+[2025-08-11 11:13:28] warn: No Data Found
+[2025-08-11 11:13:29] warn: No Data Found
+[2025-08-11 11:13:29] warn: No Data Found
+[2025-08-11 11:13:31] warn: No Data Found
+[2025-08-11 11:13:56] info: Filter: 
+[2025-08-11 11:14:14] info: Order 15 marked as cancelled in database
+[2025-08-11 11:14:23] info: Filter: 
+[2025-08-11 11:14:23] warn: No Data Found
+[2025-08-11 11:14:24] warn: No Data Found
+[2025-08-11 11:14:24] warn: Printer 192.168.1.123 not connected
+[2025-08-11 11:14:24] warn: No Data Found
+[2025-08-11 11:14:26] warn: No Data Found
+[2025-08-11 11:15:12] info: Filter: 
+[2025-08-11 11:16:13] warn: No Data Found
+[2025-08-11 11:16:14] warn: No Data Found
+[2025-08-11 11:16:15] warn: No Data Found
+[2025-08-11 11:16:16] warn: No Data Found
+[2025-08-11 11:16:16] warn: No Data Found
+[2025-08-11 11:16:17] warn: No Data Found
+[2025-08-11 11:16:19] warn: No Data Found
+[2025-08-11 11:16:35] info: Filter: 
+[2025-08-11 11:17:13] debug: DB: transaction
+{
+  "phase": "START"
+}
+[2025-08-11 11:17:14] debug: DB: menuItem.findFirst
+{
+  "itemCount": 1
+}
+[2025-08-11 11:17:15] info: PERF: Fetch menu items completed in 223ms
+{
+  "count": 1,
+  "menuItems": [
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    }
+  ]
+}
+[2025-08-11 11:17:15] debug: Calculating old item quantities
+[2025-08-11 11:17:15] debug: Old quantities calculated
+{
+  "oldItemMap": {
+    "mixed pizza": 2
+  }
+}
+[2025-08-11 11:17:15] debug: Calculating new item quantities
+[2025-08-11 11:17:15] debug: New quantities calculated
+{
+  "newItemMap": {
+    "mixed pizza": 1
+  }
+}
+[2025-08-11 11:17:15] info: Processing supply updates
+{
+  "itemNames": [
+    "mixed pizza"
+  ]
+}
+[2025-08-11 11:17:15] debug: Processing item supply update
+{
+  "itemName": "mixed pizza",
+  "oldQty": 2,
+  "newQty": 1,
+  "qtyDifference": -1
+}
+[2025-08-11 11:17:15] debug: Found supplies for item
+{
+  "itemName": "mixed pizza",
+  "suppliesCount": 2,
+  "supplies": [
+    {
+      "id": 2,
+      "remainingQuantity": 276
+    },
+    {
+      "id": 3,
+      "remainingQuantity": 5
+    }
+  ]
+}
+[2025-08-11 11:17:15] debug: Starting supply deduction process
+{
+  "itemName": "mixed pizza",
+  "totalToDeduct": -1
+}
+[2025-08-11 11:17:15] info: PERF: Supply updates completed in 207ms
+[2025-08-11 11:17:15] debug: DB: order.update
+{
+  "orderId": 16
+}
+[2025-08-11 11:17:17] info: undefined
+[2025-08-11 11:17:17] info: PERF: updateOrder completed in 4756ms
+{
+  "orderId": 16,
+  "finalItemsCount": 1,
+  "newInvoiceId": 18,
+  "newInvoiceVersion": 2
+}
+[2025-08-11 11:17:17] debug: updateOrder - EXIT
+{
+  "success": true
+}
+[2025-08-11 11:17:25] info: Filter: 
+[2025-08-11 11:17:55] info: Filter: 
+[2025-08-11 11:18:11] debug: DB: transaction
+{
+  "phase": "START"
+}
+[2025-08-11 11:18:11] debug: DB: menuItem.findFirst
+{
+  "itemCount": 7
+}
+[2025-08-11 11:18:12] info: PERF: Fetch menu items completed in 793ms
+{
+  "count": 7,
+  "menuItems": [
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    }
+  ]
+}
+[2025-08-11 11:18:12] debug: Calculating old item quantities
+[2025-08-11 11:18:12] debug: Old quantities calculated
+{
+  "oldItemMap": {
+    "mixed pizza": 1
+  }
+}
+[2025-08-11 11:18:12] debug: Calculating new item quantities
+[2025-08-11 11:18:12] debug: New quantities calculated
+{
+  "newItemMap": {
+    "mixed pizza": 7
+  }
+}
+[2025-08-11 11:18:12] info: Processing supply updates
+{
+  "itemNames": [
+    "mixed pizza"
+  ]
+}
+[2025-08-11 11:18:12] debug: Processing item supply update
+{
+  "itemName": "mixed pizza",
+  "oldQty": 1,
+  "newQty": 7,
+  "qtyDifference": 6
+}
+[2025-08-11 11:18:12] debug: Found supplies for item
+{
+  "itemName": "mixed pizza",
+  "suppliesCount": 2,
+  "supplies": [
+    {
+      "id": 2,
+      "remainingQuantity": 276
+    },
+    {
+      "id": 3,
+      "remainingQuantity": 5
+    }
+  ]
+}
+[2025-08-11 11:18:12] debug: Starting supply deduction process
+{
+  "itemName": "mixed pizza",
+  "totalToDeduct": 6
+}
+[2025-08-11 11:18:12] debug: Processing individual supply
+{
+  "supplyId": 2,
+  "currentRemaining": 276,
+  "remainingToDeduct": 6,
+  "calculatedNewQty": 270
+}
+[2025-08-11 11:18:12] debug: Supply fully satisfied deduction
+{
+  "supplyId": 2,
+  "oldQuantity": 276,
+  "newQuantity": 270,
+  "deducted": 6
+}
+[2025-08-11 11:18:12] info: PERF: Supply updates completed in 227ms
+[2025-08-11 11:18:12] debug: DB: order.update
+{
+  "orderId": 16
+}
+[2025-08-11 11:18:14] info: undefined
+[2025-08-11 11:18:14] info: PERF: updateOrder completed in 3494ms
+{
+  "orderId": 16,
+  "finalItemsCount": 7,
+  "newInvoiceId": 19,
+  "newInvoiceVersion": 3
+}
+[2025-08-11 11:18:14] debug: updateOrder - EXIT
+{
+  "success": true
+}
+[2025-08-11 11:18:23] info: Filter: 
+[2025-08-11 11:19:01] debug: DB: transaction
+{
+  "phase": "START"
+}
+[2025-08-11 11:19:02] debug: DB: menuItem.findFirst
+{
+  "itemCount": 4
+}
+[2025-08-11 11:19:03] info: PERF: Fetch menu items completed in 570ms
+{
+  "count": 4,
+  "menuItems": [
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    }
+  ]
+}
+[2025-08-11 11:19:03] debug: Calculating old item quantities
+[2025-08-11 11:19:03] debug: Old quantities calculated
+{
+  "oldItemMap": {
+    "mixed pizza": 7
+  }
+}
+[2025-08-11 11:19:03] debug: Calculating new item quantities
+[2025-08-11 11:19:03] debug: New quantities calculated
+{
+  "newItemMap": {
+    "mixed pizza": 4
+  }
+}
+[2025-08-11 11:19:03] info: Processing supply updates
+{
+  "itemNames": [
+    "mixed pizza"
+  ]
+}
+[2025-08-11 11:19:03] debug: Processing item supply update
+{
+  "itemName": "mixed pizza",
+  "oldQty": 7,
+  "newQty": 4,
+  "qtyDifference": -3
+}
+[2025-08-11 11:19:03] debug: Found supplies for item
+{
+  "itemName": "mixed pizza",
+  "suppliesCount": 2,
+  "supplies": [
+    {
+      "id": 2,
+      "remainingQuantity": 270
+    },
+    {
+      "id": 3,
+      "remainingQuantity": 8
+    }
+  ]
+}
+[2025-08-11 11:19:03] debug: Starting supply deduction process
+{
+  "itemName": "mixed pizza",
+  "totalToDeduct": -3
+}
+[2025-08-11 11:19:03] info: PERF: Supply updates completed in 221ms
+[2025-08-11 11:19:03] debug: DB: order.update
+{
+  "orderId": 16
+}
+[2025-08-11 11:19:06] info: undefined
+[2025-08-11 11:19:06] error: updateOrder failed
+{
+  "error": "\nInvalid `prisma.invoice.create()` invocation:\n\n\nTransaction API error: Transaction not found. Transaction ID is invalid, refers to an old closed transaction Prisma doesn't have information about anymore, or was obtained before disconnecting.",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.invoice.create()` invocation:\n\n\nTransaction API error: Transaction not found. Transaction ID is invalid, refers to an old closed transaction Prisma doesn't have information about anymore, or was obtained before disconnecting.\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\order\\order.services.ts:668:25\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async OrderServices.updateOrder (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\order\\order.services.ts:272:28)\n    at async updateOrder (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\table\\order.controller.ts:71:22)",
+  "requestId": 16,
+  "requestData": {
+    "tableId": 8,
+    "items": [
+      {
+        "id": 54,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      },
+      {
+        "id": 55,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      },
+      {
+        "id": 56,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      },
+      {
+        "id": 49,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      }
+    ],
+    "userId": 1,
+    "reason": "Testing",
+    "invoiceId": 19
+  },
+  "executionTime": 5626
+}
+[2025-08-11 11:19:06] debug: updateOrder - EXIT
+{
+  "success": false
+}
+[2025-08-11 11:19:18] debug: DB: transaction
+{
+  "phase": "START"
+}
+[2025-08-11 11:19:18] debug: DB: menuItem.findFirst
+{
+  "itemCount": 4
+}
+[2025-08-11 11:19:19] info: PERF: Fetch menu items completed in 526ms
+{
+  "count": 4,
+  "menuItems": [
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    },
+    {
+      "id": 3,
+      "title": "Mixed Pizza"
+    }
+  ]
+}
+[2025-08-11 11:19:19] debug: Calculating old item quantities
+[2025-08-11 11:19:19] debug: Old quantities calculated
+{
+  "oldItemMap": {
+    "mixed pizza": 7
+  }
+}
+[2025-08-11 11:19:19] debug: Calculating new item quantities
+[2025-08-11 11:19:19] debug: New quantities calculated
+{
+  "newItemMap": {
+    "mixed pizza": 4
+  }
+}
+[2025-08-11 11:19:19] info: Processing supply updates
+{
+  "itemNames": [
+    "mixed pizza"
+  ]
+}
+[2025-08-11 11:19:19] debug: Processing item supply update
+{
+  "itemName": "mixed pizza",
+  "oldQty": 7,
+  "newQty": 4,
+  "qtyDifference": -3
+}
+[2025-08-11 11:19:19] debug: Found supplies for item
+{
+  "itemName": "mixed pizza",
+  "suppliesCount": 2,
+  "supplies": [
+    {
+      "id": 2,
+      "remainingQuantity": 270
+    },
+    {
+      "id": 3,
+      "remainingQuantity": 8
+    }
+  ]
+}
+[2025-08-11 11:19:19] debug: Starting supply deduction process
+{
+  "itemName": "mixed pizza",
+  "totalToDeduct": -3
+}
+[2025-08-11 11:19:19] info: PERF: Supply updates completed in 227ms
+[2025-08-11 11:19:19] debug: DB: order.update
+{
+  "orderId": 16
+}
+[2025-08-11 11:19:21] info: undefined
+[2025-08-11 11:19:22] info: PERF: updateOrder completed in 4547ms
+{
+  "orderId": 16,
+  "finalItemsCount": 4,
+  "newInvoiceId": 20,
+  "newInvoiceVersion": 4
+}
+[2025-08-11 11:19:22] debug: updateOrder - EXIT
+{
+  "success": true
+}
+[2025-08-11 11:19:32] info: Filter: 
+[2025-08-11 11:21:55] warn: No Data Found
+[2025-08-11 11:21:55] warn: No Data Found
+[2025-08-11 11:21:56] warn: No Data Found
+[2025-08-11 11:21:58] warn: No Data Found
+[2025-08-11 11:26:20] warn: No Data Found
+[2025-08-11 11:26:21] warn: No Data Found
+[2025-08-11 11:26:22] warn: No Data Found
+[2025-08-11 11:26:23] warn: No Data Found
+[2025-08-11 11:30:56] warn: No Data Found
+[2025-08-11 11:31:00] info: Filter: 
+[2025-08-11 11:31:00] warn: No Data Found
+[2025-08-11 11:31:02] warn: No Data Found
+[2025-08-11 11:54:07] info: Filter: 
+[2025-08-11 11:54:07] warn: No Data Found
+[2025-08-11 11:54:07] warn: No Data Found
+[2025-08-11 11:54:08] warn: No Data Found
+[2025-08-11 11:54:27] info: Filter: 
+[2025-08-11 11:54:28] warn: No Data Found
+[2025-08-11 11:54:28] warn: No Data Found
+[2025-08-11 11:54:29] warn: No Data Found
+[2025-08-11 11:55:26] warn: No Data Found
+[2025-08-11 11:55:28] warn: No Data Found
+[2025-08-11 11:55:30] info: Filter: 
+[2025-08-11 11:55:30] warn: No Data Found
+[2025-08-11 11:55:31] warn: No Data Found
+[2025-08-11 11:55:31] warn: No Data Found
+[2025-08-11 11:55:33] warn: No Data Found
+[2025-08-11 11:55:37] warn: No Data Found
+[2025-08-11 11:55:39] warn: No Data Found
+[2025-08-11 11:56:58] warn: No Data Found
+[2025-08-11 11:56:58] warn: No Data Found
+[2025-08-11 11:56:59] warn: No Data Found
+[2025-08-11 11:57:00] warn: No Data Found
+[2025-08-11 11:57:01] warn: No Data Found
+[2025-08-11 11:57:05] warn: No Data Found
+[2025-08-11 11:57:06] warn: No Data Found
+[2025-08-11 12:02:06] warn: No Data Found
+[2025-08-11 12:02:10] info: Filter: 
+[2025-08-11 12:02:10] warn: No Data Found
+[2025-08-11 12:02:11] warn: No Data Found
+[2025-08-11 12:02:11] warn: No Data Found
+[2025-08-11 12:02:13] warn: No Data Found
+[2025-08-11 12:32:31] info: Filter: 
+[2025-08-11 12:32:44] warn: No Data Found
+[2025-08-11 12:32:44] warn: No Data Found
+[2025-08-11 12:32:44] warn: No Data Found
+[2025-08-11 12:32:46] warn: No Data Found
+[2025-08-11 12:33:03] warn: No Data Found
+[2025-08-11 12:33:03] warn: No Data Found
+[2025-08-11 12:33:04] warn: No Data Found
+[2025-08-11 12:33:05] warn: No Data Found
+[2025-08-11 12:33:05] warn: No Data Found
+[2025-08-11 12:33:07] warn: No Data Found
+[2025-08-11 12:34:57] warn: No Data Found
+[2025-08-11 12:34:58] warn: No Data Found
+[2025-08-11 12:34:59] warn: No Data Found
+[2025-08-11 12:35:00] warn: No Data Found

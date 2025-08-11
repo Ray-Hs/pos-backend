@@ -4,4 +4,10 @@ node_modules
 
 /logs/*
 /logs
+logs/combined.log
+logs/debug.log
+logs/error.log
+logs/info.log
+logs/warn.log
+
 /public/dist

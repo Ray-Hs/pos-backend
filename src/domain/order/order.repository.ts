@@ -1,18 +1,7 @@
-import { z } from "zod";
 import prisma from "../../infrastructure/database/prisma/client";
-import { Order, TxClientType, UserSchema } from "../../types/common";
+import { Order, TxClientType } from "../../types/common";
 import { getConstantsDB } from "../constants/constants.repository";
 import { calculateTotal } from "../invoice/invoice.repository";
-import { findTableByIdDB } from "../table/table.repository";
-import puppeteer from "puppeteer";
-import path from "path";
-import fs from "fs";
-import logger from "../../infrastructure/utils/logger";
-import {
-  BAD_REQUEST_BODY_ERR,
-  BAD_REQUEST_STATUS,
-} from "../../infrastructure/utils/constants";
-import { PrinterTypes, ThermalPrinter } from "node-thermal-printer";
 
 export function getOrdersDB() {
   return prisma.order.findMany({
@@ -153,8 +142,8 @@ export async function createOrderDB(data: Order) {
             },
           },
           orderBy: {
-            remainingQuantity: 'asc' // Start with supplies that have less quantity
-          }
+            remainingQuantity: "asc", // Start with supplies that have less quantity
+          },
         });
 
         if (allSupplies.length === 0) return null;
@@ -167,7 +156,7 @@ export async function createOrderDB(data: Order) {
 
           const currentQty = supply.remainingQuantity || 0;
           const qtyToDeduct = Math.min(currentQty, remainingQtyToDeduct);
-          
+
           await tx.supply.update({
             where: { id: supply.id },
             data: {
@@ -314,20 +303,20 @@ export async function updateOrderDB(
 
       if (qtyDifference === 0) return null;
       console.log("Quantity: ", qtyDifference);
-      
+
       if (qtyDifference > 0) {
-                 // Need to deduct more items - check all supplies with same name
-         const allSupplies = await client.supply.findMany({
-           where: {
-             name: {
-               equals: name,
-               mode: "insensitive",
-             },
-           },
-           orderBy: {
-             remainingQuantity: 'asc' // Start with supplies that have less quantity
-           }
-         });
+        // Need to deduct more items - check all supplies with same name
+        const allSupplies = await client.supply.findMany({
+          where: {
+            name: {
+              equals: name,
+              mode: "insensitive",
+            },
+          },
+          orderBy: {
+            remainingQuantity: "asc", // Start with supplies that have less quantity
+          },
+        });
 
         if (allSupplies.length === 0) return null;
 
@@ -339,7 +328,7 @@ export async function updateOrderDB(
 
           const currentQty = supply.remainingQuantity || 0;
           const qtyToDeduct = Math.min(currentQty, remainingQtyToDeduct);
-          
+
           await client.supply.update({
             where: { id: supply.id },
             data: {

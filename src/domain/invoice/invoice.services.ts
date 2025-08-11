@@ -100,6 +100,8 @@ export class InvoiceServices implements InvoiceServiceInterface {
                 select: {
                   Order: {
                     select: {
+                      cancelledAt: true,
+                      cancellationReason: true,
                       items: {
                         select: {
                           price: true,
@@ -210,6 +212,8 @@ export class InvoiceServices implements InvoiceServiceInterface {
                 }
               });
               return {
+                cancelledAt: inv.invoiceRef.Order?.cancelledAt,
+                cancellationReason: inv.invoiceRef.Order?.cancellationReason,
                 status: inv.status,
                 total: inv.total,
                 subtotal: inv.subtotal,

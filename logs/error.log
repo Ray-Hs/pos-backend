@@ -47,3 +47,46 @@ Please make sure your database server is running at `switchback.proxy.rlwy.net:5
   "name": "PrismaClientKnownRequestError",
   "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.service.findFirst()` invocation:\n\n\nCan't reach database server at `switchback.proxy.rlwy.net:51374`\n\nPlease make sure your database server is running at `switchback.proxy.rlwy.net:51374`.\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async Promise.all (index 1)\n    at async getConstantsDB (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\constants\\constants.repository.ts:6:26)\n    at async ConstantsService.getConstants (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\constants\\constants.services.ts:24:20)\n    at async getConstants (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\constants\\constants.controller.ts:9:22)"
 }
+[2025-08-11 11:19:06] error: updateOrder failed
+{
+  "error": "\nInvalid `prisma.invoice.create()` invocation:\n\n\nTransaction API error: Transaction not found. Transaction ID is invalid, refers to an old closed transaction Prisma doesn't have information about anymore, or was obtained before disconnecting.",
+  "stack": "PrismaClientKnownRequestError: \nInvalid `prisma.invoice.create()` invocation:\n\n\nTransaction API error: Transaction not found. Transaction ID is invalid, refers to an old closed transaction Prisma doesn't have information about anymore, or was obtained before disconnecting.\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7459)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\order\\order.services.ts:668:25\n    at async Proxy._transactionWithCallback (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:8139)\n    at async OrderServices.updateOrder (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\order\\order.services.ts:272:28)\n    at async updateOrder (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\table\\order.controller.ts:71:22)",
+  "requestId": 16,
+  "requestData": {
+    "tableId": 8,
+    "items": [
+      {
+        "id": 54,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      },
+      {
+        "id": 55,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      },
+      {
+        "id": 56,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      },
+      {
+        "id": 49,
+        "menuItemId": 3,
+        "price": 9000,
+        "quantity": 1,
+        "notes": ""
+      }
+    ],
+    "userId": 1,
+    "reason": "Testing",
+    "invoiceId": 19
+  },
+  "executionTime": 5626
+}
