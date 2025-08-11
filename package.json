@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "prisma": {
-    "schema": "src/infrastructure/database/prisma/schema/schema.prisma",
+    "schema": "src/infrastructure/database/prisma/schema",
     "migrations": {
       "path": "src/infrastructure/database/prisma/migrations"
     }
@@ -18,7 +18,7 @@
     "build": "tsc",
     "build:production": "npm run build:bundle && npm run build:prisma",
     "build:bundle": "npx prisma generate && node build-bundle.js",
-    "build:prisma": "npx prisma generate --schema=src/infrastructure/database/prisma/schema",
+    "build:prisma": "npx prisma generate --schema=src/infrastructure/database/prisma/schema/schema.prisma",
     "vercel-build": "prisma generate && prisma migrate deploy && tsc",
     "start:dev": "node public/dist/src/server.js",
     "start": "node public/dist/src/server.js",
