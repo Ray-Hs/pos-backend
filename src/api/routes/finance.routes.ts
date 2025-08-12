@@ -1,5 +1,8 @@
 import express, { Router } from "express";
-import { asyncMiddlewareHandler, asyncRouteHandler } from "../../infrastructure/utils/asyncRouteHandler";
+import {
+  asyncMiddlewareHandler,
+  asyncRouteHandler,
+} from "../../infrastructure/utils/asyncRouteHandler";
 import { FinanceController } from "../controllers/finance/finance.controller";
 import { InvoiceController } from "../controllers/invoice/invoice.controller";
 import { CRMController } from "../controllers/settings/crm/crm.controller";
@@ -22,9 +25,14 @@ router.get("/invoices", asyncRouteHandler(invoice.showcaseInvoices));
 
 // Customer Payments
 router.get(
-  "/customer-payments",
+  "/customer-payments/customers",
   asyncRouteHandler(isAuthenticated),
-  asyncRouteHandler(client.getCustomerPayments)
+  asyncRouteHandler(controller.getCustomers)
+);
+router.get(
+  "/customer-payments/:id",
+  asyncRouteHandler(isAuthenticated),
+  asyncRouteHandler(controller.getPaymentByCustomerId)
 );
 router.post(
   "/customer-payments",
@@ -32,6 +40,7 @@ router.post(
   asyncMiddlewareHandler(hasPermission("manage_finance_customer_payments")),
   asyncRouteHandler(client.createCustomerPayment)
 );
+
 router.delete(
   "/customer-payments/:id",
   asyncRouteHandler(isAuthenticated),

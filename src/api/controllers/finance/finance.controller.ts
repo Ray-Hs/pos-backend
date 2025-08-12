@@ -6,6 +6,7 @@ import {
   OK_STATUS,
 } from "../../../infrastructure/utils/constants";
 import { decodeJWT } from "../../../infrastructure/utils/decodeJWT";
+import { CRMServices } from "../../../domain/settings/crm/crm.services";
 
 export class FinanceController implements FinanceControllerInterface {
   async listPayments(req: Request, res: Response) {
@@ -18,6 +19,29 @@ export class FinanceController implements FinanceControllerInterface {
       { fromDate, toDate },
       { page, limit }
     );
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async getCustomers(req: Request, res: Response) {
+    const limit = parseInt(req.query.limit as string, 10);
+    const page = parseInt(req.query.page as string, 10);
+    const financeInstance = new FinanceServices();
+    const response = await financeInstance.getCustomers({ page, limit });
+
+    return res
+      .status(response.success ? OK_STATUS : response.error?.code || 500)
+      .json(response);
+  }
+
+  async getPaymentByCustomerId(req: Request, res: Response) {
+    const id = parseInt(req.params.id, 10);
+    const limit = parseInt(req.query.limit as string, 10);
+    const page = parseInt(req.query.page as string, 10);
+    const crmInstance = new CRMServices();
+    const response = await crmInstance.getCustomerPayments(id, { page, limit });
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)

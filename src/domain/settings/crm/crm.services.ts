@@ -941,22 +941,12 @@ export class CRMServices implements CRMServiceInterface {
   }
 
   async getCustomerPayments(
-    pagination?: { limit: number; page: number },
-    dates?: { startDate?: Date; endDate?: Date }
+    id: number,
+    pagination?: { limit: number; page: number }
   ) {
     try {
-      let where: any = {
-        paymentDate: {},
-      };
-      if (dates?.startDate) {
-        where.paymentDate.gte = dates.startDate;
-      }
-      if (dates?.endDate) {
-        where.paymentDate.lte = dates.endDate;
-      }
-
       const payments = await prisma.customerPayment.findMany({
-        where,
+        where: { customerInfoId: id },
         include: {
           customerInfo: {
             select: {
@@ -979,39 +969,24 @@ export class CRMServices implements CRMServiceInterface {
         skip: calculateSkip(pagination?.page, pagination?.limit),
       });
 
-      const formattedData = payments.reduce((acc: any, payment) => {
-        const customerKey = payment.customerInfo.id;
+      if (!payments || payments.length === 0) {
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
 
-        if (!acc[customerKey]) {
-          acc[customerKey] = {
-            customer: {
-              name: payment.customerInfo.name,
-              phoneNumber: payment.customerInfo.phoneNumber,
-              email: payment.customerInfo.email,
-              debt: payment.customerInfo.debt,
-              initialDebt: payment.customerInfo.initialDebt,
-            },
-            payments: [],
-          };
-        }
-
-        // Add this specific payment to the customer's payments array
-        acc[customerKey].payments.push({
-          id: payment.id,
-          amount: payment.amount,
-          note: payment.note,
-          paymentDate: payment.paymentDate,
-          createdAt: payment.createdAt,
-          invoiceNumber: payment.invoiceNumber,
-        });
-
-        return acc;
-      }, {});
+      const paymentsLength = await prisma.customerPayment.count({
+        where: { customerInfoId: id },
+      });
 
       return {
         success: true,
-        data: Object.values(formattedData),
-        pages: calculatePages(payments.length, pagination?.limit),
+        data: payments,
+        pages: calculatePages(paymentsLength, pagination?.limit),
       };
     } catch (error) {
       logger.error("Get Customer Payments: ", error);

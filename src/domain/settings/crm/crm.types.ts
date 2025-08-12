@@ -93,8 +93,8 @@ export interface CRMServiceInterface {
   ) => Promise<TResult<void>>;
   deleteCustomerPayment: (requestId: any) => Promise<TResult<void>>;
   getCustomerPayments: (
-    pagination: { limit: number; page: number },
-    dates: { startDate: Date | undefined; endDate: Date | undefined }
+    id: number,
+    pagination: { limit: number; page: number }
   ) => Promise<TResult<any[]>>;
 
   getCompanies(pagination: {

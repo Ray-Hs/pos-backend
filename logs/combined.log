@@ -1018,3 +1018,315 @@ Unknown argument `isLatestVersion`. Available options are marked with ?.
   "clientVersion": "6.9.0",
   "stack": "PrismaClientValidationError: \nInvalid `prisma.customerPayment.findMany()` invocation:\n\n{\n  where: {\n    createdAt: {},\n    isLatestVersion: true,\n    ~~~~~~~~~~~~~~~\n    paymentMethod: \"PAYMENT\",\n?   AND?: CustomerPaymentWhereInput | CustomerPaymentWhereInput[],\n?   OR?: CustomerPaymentWhereInput[],\n?   NOT?: CustomerPaymentWhereInput | CustomerPaymentWhereInput[],\n?   id?: IntFilter | Int,\n?   customerInfoId?: IntFilter | Int,\n?   invoiceId?: IntNullableFilter | Int | Null,\n?   invoiceNumber?: StringNullableFilter | String | Null,\n?   amount?: IntFilter | Int,\n?   note?: StringNullableFilter | String | Null,\n?   paymentDate?: DateTimeFilter | DateTime,\n?   updatedAt?: DateTimeFilter | DateTime,\n?   customerInfo?: CustomerInfoScalarRelationFilter | CustomerInfoWhereInput,\n?   invoice?: InvoiceNullableScalarRelationFilter | InvoiceWhereInput | Null\n  },\n  include: {\n    customerInfo: {\n      select: {\n        id: true,\n        name: true,\n        phoneNumber: true,\n        email: true,\n        debt: true,\n        initialDebt: true\n      }\n    },\n    invoice: {\n      select: {\n        total: true\n      }\n    }\n  },\n  orderBy: {\n    createdAt: \"desc\"\n  },\n  take: 20,\n  skip: 0\n}\n\nUnknown argument `isLatestVersion`. Available options are marked with ?.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async CRMServices.getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:960:24)\n    at async getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:222:22)"
 }
+[2025-08-12 17:56:46] error: Get Customer Payments:  
+Invalid `prisma.customerPayment.findMany()` invocation:
+
+{
+  where: {
++   id: {
++     equals: Int | IntFieldRefInput,
++     in: Int[] | ListIntFieldRefInput,
++     notIn: Int[] | ListIntFieldRefInput,
++     lt: Int | IntFieldRefInput,
++     lte: Int | IntFieldRefInput,
++     gt: Int | IntFieldRefInput,
++     gte: Int | IntFieldRefInput,
++     not: Int | NestedIntFilter
++   }
+  },
+  include: {
+    customerInfo: {
+      select: {
+        id: true,
+        name: true,
+        phoneNumber: true,
+        email: true,
+        debt: true,
+        initialDebt: true
+      }
+    },
+    invoice: {
+      select: {
+        total: true
+      }
+    }
+  },
+  orderBy: {
+    createdAt: "desc"
+  },
+  take: 20,
+  skip: 0
+}
+
+Argument `id` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerPayment.findMany()` invocation:\n\n{\n  where: {\n+   id: {\n+     equals: Int | IntFieldRefInput,\n+     in: Int[] | ListIntFieldRefInput,\n+     notIn: Int[] | ListIntFieldRefInput,\n+     lt: Int | IntFieldRefInput,\n+     lte: Int | IntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  include: {\n    customerInfo: {\n      select: {\n        id: true,\n        name: true,\n        phoneNumber: true,\n        email: true,\n        debt: true,\n        initialDebt: true\n      }\n    },\n    invoice: {\n      select: {\n        total: true\n      }\n    }\n  },\n  orderBy: {\n    createdAt: \"desc\"\n  },\n  take: 20,\n  skip: 0\n}\n\nArgument `id` is missing.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async CRMServices.getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:948:24)\n    at async getPaymentByCustomerId (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\finance\\finance.controller.ts:44:22)"
+}
+[2025-08-12 17:57:20] error: Get Customer Payments:  
+Invalid `prisma.customerPayment.findMany()` invocation:
+
+{
+  where: {
++   id: {
++     equals: Int | IntFieldRefInput,
++     in: Int[] | ListIntFieldRefInput,
++     notIn: Int[] | ListIntFieldRefInput,
++     lt: Int | IntFieldRefInput,
++     lte: Int | IntFieldRefInput,
++     gt: Int | IntFieldRefInput,
++     gte: Int | IntFieldRefInput,
++     not: Int | NestedIntFilter
++   }
+  },
+  include: {
+    customerInfo: {
+      select: {
+        id: true,
+        name: true,
+        phoneNumber: true,
+        email: true,
+        debt: true,
+        initialDebt: true
+      }
+    },
+    invoice: {
+      select: {
+        total: true
+      }
+    }
+  },
+  orderBy: {
+    createdAt: "desc"
+  },
+  take: 20,
+  skip: 0
+}
+
+Argument `id` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerPayment.findMany()` invocation:\n\n{\n  where: {\n+   id: {\n+     equals: Int | IntFieldRefInput,\n+     in: Int[] | ListIntFieldRefInput,\n+     notIn: Int[] | ListIntFieldRefInput,\n+     lt: Int | IntFieldRefInput,\n+     lte: Int | IntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  include: {\n    customerInfo: {\n      select: {\n        id: true,\n        name: true,\n        phoneNumber: true,\n        email: true,\n        debt: true,\n        initialDebt: true\n      }\n    },\n    invoice: {\n      select: {\n        total: true\n      }\n    }\n  },\n  orderBy: {\n    createdAt: \"desc\"\n  },\n  take: 20,\n  skip: 0\n}\n\nArgument `id` is missing.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async CRMServices.getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:948:24)\n    at async getPaymentByCustomerId (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\finance\\finance.controller.ts:44:22)"
+}
+[2025-08-12 17:57:22] error: Get Customer Payments:  
+Invalid `prisma.customerPayment.findMany()` invocation:
+
+{
+  where: {
++   id: {
++     equals: Int | IntFieldRefInput,
++     in: Int[] | ListIntFieldRefInput,
++     notIn: Int[] | ListIntFieldRefInput,
++     lt: Int | IntFieldRefInput,
++     lte: Int | IntFieldRefInput,
++     gt: Int | IntFieldRefInput,
++     gte: Int | IntFieldRefInput,
++     not: Int | NestedIntFilter
++   }
+  },
+  include: {
+    customerInfo: {
+      select: {
+        id: true,
+        name: true,
+        phoneNumber: true,
+        email: true,
+        debt: true,
+        initialDebt: true
+      }
+    },
+    invoice: {
+      select: {
+        total: true
+      }
+    }
+  },
+  orderBy: {
+    createdAt: "desc"
+  },
+  take: 20,
+  skip: 0
+}
+
+Argument `id` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerPayment.findMany()` invocation:\n\n{\n  where: {\n+   id: {\n+     equals: Int | IntFieldRefInput,\n+     in: Int[] | ListIntFieldRefInput,\n+     notIn: Int[] | ListIntFieldRefInput,\n+     lt: Int | IntFieldRefInput,\n+     lte: Int | IntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  include: {\n    customerInfo: {\n      select: {\n        id: true,\n        name: true,\n        phoneNumber: true,\n        email: true,\n        debt: true,\n        initialDebt: true\n      }\n    },\n    invoice: {\n      select: {\n        total: true\n      }\n    }\n  },\n  orderBy: {\n    createdAt: \"desc\"\n  },\n  take: 20,\n  skip: 0\n}\n\nArgument `id` is missing.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async CRMServices.getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:948:24)\n    at async getPaymentByCustomerId (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\finance\\finance.controller.ts:44:22)"
+}
+[2025-08-12 17:57:23] error: Get Customer Payments:  
+Invalid `prisma.customerPayment.findMany()` invocation:
+
+{
+  where: {
++   id: {
++     equals: Int | IntFieldRefInput,
++     in: Int[] | ListIntFieldRefInput,
++     notIn: Int[] | ListIntFieldRefInput,
++     lt: Int | IntFieldRefInput,
++     lte: Int | IntFieldRefInput,
++     gt: Int | IntFieldRefInput,
++     gte: Int | IntFieldRefInput,
++     not: Int | NestedIntFilter
++   }
+  },
+  include: {
+    customerInfo: {
+      select: {
+        id: true,
+        name: true,
+        phoneNumber: true,
+        email: true,
+        debt: true,
+        initialDebt: true
+      }
+    },
+    invoice: {
+      select: {
+        total: true
+      }
+    }
+  },
+  orderBy: {
+    createdAt: "desc"
+  },
+  take: 20,
+  skip: 0
+}
+
+Argument `id` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerPayment.findMany()` invocation:\n\n{\n  where: {\n+   id: {\n+     equals: Int | IntFieldRefInput,\n+     in: Int[] | ListIntFieldRefInput,\n+     notIn: Int[] | ListIntFieldRefInput,\n+     lt: Int | IntFieldRefInput,\n+     lte: Int | IntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  include: {\n    customerInfo: {\n      select: {\n        id: true,\n        name: true,\n        phoneNumber: true,\n        email: true,\n        debt: true,\n        initialDebt: true\n      }\n    },\n    invoice: {\n      select: {\n        total: true\n      }\n    }\n  },\n  orderBy: {\n    createdAt: \"desc\"\n  },\n  take: 20,\n  skip: 0\n}\n\nArgument `id` is missing.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async CRMServices.getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:948:24)\n    at async getPaymentByCustomerId (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\finance\\finance.controller.ts:44:22)"
+}
+[2025-08-12 18:07:04] error: Get Customers Service:  
+Invalid `prisma.customerPayment.aggregate()` invocation:
+
+{
+  select: {
+    _sum: {
+      select: {
+        amount: true
+      }
+    },
+    _count: {
+      select: {
+?       id?: true,
+?       customerInfoId?: true,
+?       invoiceId?: true,
+?       invoiceNumber?: true,
+?       amount?: true,
+?       note?: true,
+?       paymentDate?: true,
+?       createdAt?: true,
+?       updatedAt?: true,
+?       _all?: true
+      }
+    }
+  },
+  where: {
+    customerInfoId: 1
+  }
+}
+
+The `select` statement for type CustomerPaymentCountAggregateOutputType must not be empty. Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerPayment.aggregate()` invocation:\n\n{\n  select: {\n    _sum: {\n      select: {\n        amount: true\n      }\n    },\n    _count: {\n      select: {\n?       id?: true,\n?       customerInfoId?: true,\n?       invoiceId?: true,\n?       invoiceNumber?: true,\n?       amount?: true,\n?       note?: true,\n?       paymentDate?: true,\n?       createdAt?: true,\n?       updatedAt?: true,\n?       _all?: true\n      }\n    }\n  },\n  where: {\n    customerInfoId: 1\n  }\n}\n\nThe `select` statement for type CustomerPaymentCountAggregateOutputType must not be empty. Available options are marked with ?.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\finance\\finance.services.ts:93:35\n    at async Promise.all (index 0)\n    at async FinanceServices.getCustomers (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\finance\\finance.services.ts:91:15)\n    at async getCustomers (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\finance\\finance.controller.ts:32:22)"
+}
+[2025-08-12 18:12:32] error: Get Customer Payments:  
+Invalid `prisma.customerPayment.findMany()` invocation:
+
+{
+  where: {
++   customerInfoId: {
++     equals: Int | IntFieldRefInput,
++     in: Int[] | ListIntFieldRefInput,
++     notIn: Int[] | ListIntFieldRefInput,
++     lt: Int | IntFieldRefInput,
++     lte: Int | IntFieldRefInput,
++     gt: Int | IntFieldRefInput,
++     gte: Int | IntFieldRefInput,
++     not: Int | NestedIntFilter
++   }
+  },
+  include: {
+    customerInfo: {
+      select: {
+        id: true,
+        name: true,
+        phoneNumber: true,
+        email: true,
+        debt: true,
+        initialDebt: true
+      }
+    },
+    invoice: {
+      select: {
+        total: true
+      }
+    }
+  },
+  orderBy: {
+    createdAt: "desc"
+  },
+  take: 20,
+  skip: 0
+}
+
+Argument `customerInfoId` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerPayment.findMany()` invocation:\n\n{\n  where: {\n+   customerInfoId: {\n+     equals: Int | IntFieldRefInput,\n+     in: Int[] | ListIntFieldRefInput,\n+     notIn: Int[] | ListIntFieldRefInput,\n+     lt: Int | IntFieldRefInput,\n+     lte: Int | IntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  include: {\n    customerInfo: {\n      select: {\n        id: true,\n        name: true,\n        phoneNumber: true,\n        email: true,\n        debt: true,\n        initialDebt: true\n      }\n    },\n    invoice: {\n      select: {\n        total: true\n      }\n    }\n  },\n  orderBy: {\n    createdAt: \"desc\"\n  },\n  take: 20,\n  skip: 0\n}\n\nArgument `customerInfoId` is missing.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async CRMServices.getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:948:24)\n    at async getPaymentByCustomerId (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\finance\\finance.controller.ts:44:22)"
+}
+[2025-08-12 18:12:34] error: Get Customer Payments:  
+Invalid `prisma.customerPayment.findMany()` invocation:
+
+{
+  where: {
++   customerInfoId: {
++     equals: Int | IntFieldRefInput,
++     in: Int[] | ListIntFieldRefInput,
++     notIn: Int[] | ListIntFieldRefInput,
++     lt: Int | IntFieldRefInput,
++     lte: Int | IntFieldRefInput,
++     gt: Int | IntFieldRefInput,
++     gte: Int | IntFieldRefInput,
++     not: Int | NestedIntFilter
++   }
+  },
+  include: {
+    customerInfo: {
+      select: {
+        id: true,
+        name: true,
+        phoneNumber: true,
+        email: true,
+        debt: true,
+        initialDebt: true
+      }
+    },
+    invoice: {
+      select: {
+        total: true
+      }
+    }
+  },
+  orderBy: {
+    createdAt: "desc"
+  },
+  take: 20,
+  skip: 0
+}
+
+Argument `customerInfoId` is missing.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerPayment.findMany()` invocation:\n\n{\n  where: {\n+   customerInfoId: {\n+     equals: Int | IntFieldRefInput,\n+     in: Int[] | ListIntFieldRefInput,\n+     notIn: Int[] | ListIntFieldRefInput,\n+     lt: Int | IntFieldRefInput,\n+     lte: Int | IntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  include: {\n    customerInfo: {\n      select: {\n        id: true,\n        name: true,\n        phoneNumber: true,\n        email: true,\n        debt: true,\n        initialDebt: true\n      }\n    },\n    invoice: {\n      select: {\n        total: true\n      }\n    }\n  },\n  orderBy: {\n    createdAt: \"desc\"\n  },\n  take: 20,\n  skip: 0\n}\n\nArgument `customerInfoId` is missing.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async CRMServices.getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:948:24)\n    at async getPaymentByCustomerId (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\finance\\finance.controller.ts:44:22)"
+}

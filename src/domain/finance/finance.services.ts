@@ -29,7 +29,11 @@ import {
 
 // Helper functions for payment DB operations (to be implemented in finance.repository)
 import prisma from "../../infrastructure/database/prisma/client";
-import { calculatePages } from "../../infrastructure/utils/calculateSkip";
+import {
+  calculatePages,
+  calculateSkip,
+  Take,
+} from "../../infrastructure/utils/calculateSkip";
 import { User } from "../../types/common";
 import { getCompanyInfoByIdDB } from "../settings/crm/crm.repository";
 import {
@@ -41,6 +45,81 @@ import {
 } from "./finance.repository";
 
 export class FinanceServices implements FinanceServiceInterface {
+  async getCustomers(pagination?: { limit?: number; page?: number }) {
+    try {
+      const totalPages = await prisma.customerInfo.count();
+      const data = await prisma.customerInfo.findMany({
+        where: {
+          OR: [
+            {
+              debt: {
+                gt: 0,
+              },
+            },
+            {
+              initialDebt: {
+                gt: 0,
+              },
+            },
+          ],
+        },
+        select: {
+          id: true,
+          name: true,
+          phoneNumber: true,
+          initialDebt: true,
+          debt: true,
+          email: true,
+        },
+        take: Take(pagination?.limit),
+        skip: calculateSkip(pagination?.page, pagination?.limit),
+      });
+
+      if (!data) {
+        logger.warn("No Customers Found.");
+        return {
+          success: false,
+          error: {
+            code: NOT_FOUND_STATUS,
+            message: NOT_FOUND_ERR,
+          },
+        };
+      }
+
+      return {
+        success: true,
+        data: await Promise.all(
+          data.map(async (customer) => {
+            const totalPayments = await prisma.customerPayment.aggregate({
+              where: {
+                customerInfoId: customer.id,
+              },
+              _sum: {
+                amount: true,
+              },
+              _count: { _all: true },
+            });
+
+            return {
+              ...customer,
+              totalPayments: totalPayments._sum.amount ?? 0,
+              paymentsCount: totalPayments._count._all,
+            };
+          })
+        ),
+        pages: calculatePages(totalPages, pagination?.limit),
+      };
+    } catch (error) {
+      logger.error("Get Customers Service: ", error);
+      return {
+        success: false,
+        error: {
+          code: INTERNAL_SERVER_STATUS,
+          message: INTERNAL_SERVER_ERR,
+        },
+      };
+    }
+  }
   async getAllCompanyDebts() {
     try {
       const dataResponse = await prisma.companyDebt.findMany({
