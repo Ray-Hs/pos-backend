@@ -365,3 +365,109 @@ Please make sure your database server is running at `switchback.proxy.rlwy.net:5
 [2025-08-12 15:57:41] warn: Customers Not Found
 [2025-08-12 15:57:48] warn: Customers Not Found
 [2025-08-12 15:57:52] warn: Customers Not Found
+[2025-08-12 16:05:50] error: Get Customer Payments:  
+Invalid `prisma.customerPayment.findMany()` invocation:
+
+{
+  where: {
+    createdAt: {},
+    isLatestVersion: true,
+    ~~~~~~~~~~~~~~~
+    paymentMethod: "PAYMENT",
+?   AND?: CustomerPaymentWhereInput | CustomerPaymentWhereInput[],
+?   OR?: CustomerPaymentWhereInput[],
+?   NOT?: CustomerPaymentWhereInput | CustomerPaymentWhereInput[],
+?   id?: IntFilter | Int,
+?   customerInfoId?: IntFilter | Int,
+?   invoiceId?: IntNullableFilter | Int | Null,
+?   invoiceNumber?: StringNullableFilter | String | Null,
+?   amount?: IntFilter | Int,
+?   note?: StringNullableFilter | String | Null,
+?   paymentDate?: DateTimeFilter | DateTime,
+?   updatedAt?: DateTimeFilter | DateTime,
+?   customerInfo?: CustomerInfoScalarRelationFilter | CustomerInfoWhereInput,
+?   invoice?: InvoiceNullableScalarRelationFilter | InvoiceWhereInput | Null
+  },
+  include: {
+    customerInfo: {
+      select: {
+        id: true,
+        name: true,
+        phoneNumber: true,
+        email: true,
+        debt: true,
+        initialDebt: true
+      }
+    },
+    invoice: {
+      select: {
+        total: true
+      }
+    }
+  },
+  orderBy: {
+    createdAt: "desc"
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `isLatestVersion`. Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerPayment.findMany()` invocation:\n\n{\n  where: {\n    createdAt: {},\n    isLatestVersion: true,\n    ~~~~~~~~~~~~~~~\n    paymentMethod: \"PAYMENT\",\n?   AND?: CustomerPaymentWhereInput | CustomerPaymentWhereInput[],\n?   OR?: CustomerPaymentWhereInput[],\n?   NOT?: CustomerPaymentWhereInput | CustomerPaymentWhereInput[],\n?   id?: IntFilter | Int,\n?   customerInfoId?: IntFilter | Int,\n?   invoiceId?: IntNullableFilter | Int | Null,\n?   invoiceNumber?: StringNullableFilter | String | Null,\n?   amount?: IntFilter | Int,\n?   note?: StringNullableFilter | String | Null,\n?   paymentDate?: DateTimeFilter | DateTime,\n?   updatedAt?: DateTimeFilter | DateTime,\n?   customerInfo?: CustomerInfoScalarRelationFilter | CustomerInfoWhereInput,\n?   invoice?: InvoiceNullableScalarRelationFilter | InvoiceWhereInput | Null\n  },\n  include: {\n    customerInfo: {\n      select: {\n        id: true,\n        name: true,\n        phoneNumber: true,\n        email: true,\n        debt: true,\n        initialDebt: true\n      }\n    },\n    invoice: {\n      select: {\n        total: true\n      }\n    }\n  },\n  orderBy: {\n    createdAt: \"desc\"\n  },\n  take: 20,\n  skip: 0\n}\n\nUnknown argument `isLatestVersion`. Available options are marked with ?.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async CRMServices.getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:960:24)\n    at async getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:222:22)"
+}
+[2025-08-12 16:05:56] error: Get Customer Payments:  
+Invalid `prisma.customerPayment.findMany()` invocation:
+
+{
+  where: {
+    createdAt: {},
+    isLatestVersion: true,
+    ~~~~~~~~~~~~~~~
+    paymentMethod: "PAYMENT",
+?   AND?: CustomerPaymentWhereInput | CustomerPaymentWhereInput[],
+?   OR?: CustomerPaymentWhereInput[],
+?   NOT?: CustomerPaymentWhereInput | CustomerPaymentWhereInput[],
+?   id?: IntFilter | Int,
+?   customerInfoId?: IntFilter | Int,
+?   invoiceId?: IntNullableFilter | Int | Null,
+?   invoiceNumber?: StringNullableFilter | String | Null,
+?   amount?: IntFilter | Int,
+?   note?: StringNullableFilter | String | Null,
+?   paymentDate?: DateTimeFilter | DateTime,
+?   updatedAt?: DateTimeFilter | DateTime,
+?   customerInfo?: CustomerInfoScalarRelationFilter | CustomerInfoWhereInput,
+?   invoice?: InvoiceNullableScalarRelationFilter | InvoiceWhereInput | Null
+  },
+  include: {
+    customerInfo: {
+      select: {
+        id: true,
+        name: true,
+        phoneNumber: true,
+        email: true,
+        debt: true,
+        initialDebt: true
+      }
+    },
+    invoice: {
+      select: {
+        total: true
+      }
+    }
+  },
+  orderBy: {
+    createdAt: "desc"
+  },
+  take: 20,
+  skip: 0
+}
+
+Unknown argument `isLatestVersion`. Available options are marked with ?.
+{
+  "name": "PrismaClientValidationError",
+  "clientVersion": "6.9.0",
+  "stack": "PrismaClientValidationError: \nInvalid `prisma.customerPayment.findMany()` invocation:\n\n{\n  where: {\n    createdAt: {},\n    isLatestVersion: true,\n    ~~~~~~~~~~~~~~~\n    paymentMethod: \"PAYMENT\",\n?   AND?: CustomerPaymentWhereInput | CustomerPaymentWhereInput[],\n?   OR?: CustomerPaymentWhereInput[],\n?   NOT?: CustomerPaymentWhereInput | CustomerPaymentWhereInput[],\n?   id?: IntFilter | Int,\n?   customerInfoId?: IntFilter | Int,\n?   invoiceId?: IntNullableFilter | Int | Null,\n?   invoiceNumber?: StringNullableFilter | String | Null,\n?   amount?: IntFilter | Int,\n?   note?: StringNullableFilter | String | Null,\n?   paymentDate?: DateTimeFilter | DateTime,\n?   updatedAt?: DateTimeFilter | DateTime,\n?   customerInfo?: CustomerInfoScalarRelationFilter | CustomerInfoWhereInput,\n?   invoice?: InvoiceNullableScalarRelationFilter | InvoiceWhereInput | Null\n  },\n  include: {\n    customerInfo: {\n      select: {\n        id: true,\n        name: true,\n        phoneNumber: true,\n        email: true,\n        debt: true,\n        initialDebt: true\n      }\n    },\n    invoice: {\n      select: {\n        total: true\n      }\n    }\n  },\n  orderBy: {\n    createdAt: \"desc\"\n  },\n  take: 20,\n  skip: 0\n}\n\nUnknown argument `isLatestVersion`. Available options are marked with ?.\n    at kn (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:29:1363)\n    at Zn.handleRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:7102)\n    at Zn.handleAndLogRequestError (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6784)\n    at Zn.request (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:121:6491)\n    at async l (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\node_modules\\@prisma\\client\\runtime\\library.js:130:9778)\n    at async CRMServices.getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\domain\\settings\\crm\\crm.services.ts:960:24)\n    at async getCustomerPayments (D:\\Programing\\WorkFolders\\restaurant-pos\\backend\\src\\api\\controllers\\settings\\crm\\crm.controller.ts:222:22)"
+}

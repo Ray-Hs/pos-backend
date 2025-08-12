@@ -940,9 +940,23 @@ export class CRMServices implements CRMServiceInterface {
     }
   }
 
-  async getCustomerPayments(pagination?: { limit: number; page: number }) {
+  async getCustomerPayments(
+    pagination?: { limit: number; page: number },
+    dates?: { startDate?: Date; endDate?: Date }
+  ) {
     try {
+      let where: any = {
+        paymentDate: {},
+      };
+      if (dates?.startDate) {
+        where.paymentDate.gte = dates.startDate;
+      }
+      if (dates?.endDate) {
+        where.paymentDate.lte = dates.endDate;
+      }
+
       const payments = await prisma.customerPayment.findMany({
+        where,
         include: {
           customerInfo: {
             select: {
