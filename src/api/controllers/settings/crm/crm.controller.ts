@@ -22,8 +22,17 @@ export class CRMController implements CRMControllerInterface {
   async getCustomerDebts(req: Request, res: Response) {
     const limit = parseInt(req.query.limit as string, 10);
     const page = parseInt(req.query.page as string, 10);
+    const startDate = req.query.startDate
+      ? new Date(req.query.startDate as string)
+      : undefined;
+    const endDate = req.query.endDate
+      ? new Date(req.query.endDate as string)
+      : undefined;
     const crmService = new CRMServices();
-    const response = await crmService.getCustomerDebts({ page, limit });
+    const response = await crmService.getCustomerDebts(
+      { page, limit },
+      { startDate, endDate }
+    );
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
       .json(response);

@@ -1,12 +1,16 @@
 import { z, ZodError } from "zod";
 import prisma from "../../../infrastructure/database/prisma/client";
 import {
+  calculatePages,
+  calculateSkip,
+  Take,
+} from "../../../infrastructure/utils/calculateSkip";
+import {
   BAD_REQUEST_BODY_ERR,
   BAD_REQUEST_ID_ERR,
   BAD_REQUEST_STATUS,
   INTERNAL_SERVER_ERR,
   INTERNAL_SERVER_STATUS,
-  LIMIT_CONSTANT,
   NOT_FOUND_ERR,
   NOT_FOUND_STATUS,
 } from "../../../infrastructure/utils/constants";
@@ -28,7 +32,6 @@ import {
   getCustomerDiscountByIdDB,
   getCustomerDiscountDB,
   getCustomerPaymentByIdDB,
-  getCustomerPaymentsByCustomerIdDB,
   getCustomersInfoDB,
   updateCompanyInfoDB,
   updateCustomerDiscountDB,
@@ -41,11 +44,6 @@ import {
   CustomerInfoSchema,
   CustomerPaymentRequestSchema,
 } from "./crm.types";
-import {
-  calculatePages,
-  calculateSkip,
-  Take,
-} from "../../../infrastructure/utils/calculateSkip";
 
 export class CRMServices implements CRMServiceInterface {
   async getCustomers(
@@ -191,7 +189,25 @@ export class CRMServices implements CRMServiceInterface {
     }
   }
 
-  async getCustomerDebts(pagination: { page: number; limit: number }) {
+  async getCustomerDebts(
+    pagination: { page: number; limit: number },
+    { startDate, endDate }: { startDate?: Date; endDate?: Date }
+  ) {
+    let where: any = {
+      isLatestVersion: true,
+      paymentMethod: "DEBT",
+    };
+
+    // Initialize createdAt filter if dates are provided
+    if (startDate || endDate) {
+      where.createdAt = {};
+      if (startDate) {
+        where.createdAt.gte = startDate;
+      }
+      if (endDate) {
+        where.createdAt.lte = endDate;
+      }
+    }
     try {
       const customerInfos = await prisma.customerInfo.findMany({
         where: {
@@ -210,10 +226,7 @@ export class CRMServices implements CRMServiceInterface {
         },
         include: {
           Invoice: {
-            where: {
-              isLatestVersion: true,
-              paymentMethod: "DEBT",
-            },
+            where,
             select: {
               id: true,
               subtotal: true,
