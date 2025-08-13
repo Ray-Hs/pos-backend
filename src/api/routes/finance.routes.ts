@@ -27,6 +27,7 @@ router.get("/invoices", asyncRouteHandler(invoice.showcaseInvoices));
 router.get(
   "/customer-payments/customers",
   asyncRouteHandler(isAuthenticated),
+  asyncMiddlewareHandler(hasPermission("manage_finance_customer_debts")),
   asyncRouteHandler(controller.getCustomers)
 );
 router.get(

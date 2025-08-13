@@ -45,11 +45,20 @@ import {
 } from "./finance.repository";
 
 export class FinanceServices implements FinanceServiceInterface {
-  async getCustomers(pagination?: { limit?: number; page?: number }) {
+  async getCustomers(
+    pagination?: { limit?: number; page?: number },
+    q?: string
+  ) {
     try {
       const totalPages = await prisma.customerInfo.count();
       const data = await prisma.customerInfo.findMany({
         where: {
+          name: q
+            ? {
+                contains: q,
+                mode: "insensitive",
+              }
+            : undefined,
           OR: [
             {
               debt: {

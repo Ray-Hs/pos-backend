@@ -28,8 +28,9 @@ export class FinanceController implements FinanceControllerInterface {
   async getCustomers(req: Request, res: Response) {
     const limit = parseInt(req.query.limit as string, 10);
     const page = parseInt(req.query.page as string, 10);
+    const q = req.query.q as string;
     const financeInstance = new FinanceServices();
-    const response = await financeInstance.getCustomers({ page, limit });
+    const response = await financeInstance.getCustomers({ page, limit }, q);
 
     return res
       .status(response.success ? OK_STATUS : response.error?.code || 500)
